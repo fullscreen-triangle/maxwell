@@ -1,0 +1,68 @@
+# =============================================================================
+# Maxwell Project - Cargo Configuration
+# =============================================================================
+
+[alias]
+# Common aliases
+b = "build"
+br = "build --release"
+t = "test"
+c = "check"
+cl = "clippy"
+d = "doc --open"
+
+# Project-specific aliases
+demo = "run --release -- demo"
+dissolution = "run --release -- dissolution"
+validate = "run --release -- demo && run --release -- dissolution"
+
+[build]
+# Use all available cores
+jobs = -1
+
+# Enable incremental compilation
+incremental = true
+
+[term]
+# Colored output
+color = "auto"
+
+# Show progress
+quiet = false
+verbose = false
+
+[net]
+# Git fetch with CLI
+git-fetch-with-cli = true
+
+# Retry failed downloads
+retry = 3
+
+[profile.dev]
+# Faster debug builds
+opt-level = 0
+debug = true
+
+[profile.dev.package."*"]
+# Optimize dependencies even in dev
+opt-level = 2
+
+[profile.release]
+# Maximum optimization
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+
+[profile.bench]
+# Inherit from release but keep debug info
+inherits = "release"
+debug = true
+
+# Environment variables
+[env]
+# Default log level
+RUST_LOG = { value = "info", force = false }
+
+# Enable backtraces in development
+RUST_BACKTRACE = { value = "1", force = false }
+

@@ -1,0 +1,54 @@
+# =============================================================================
+# Maxwell Project - Docker Compose
+# =============================================================================
+
+version: "3.9"
+
+services:
+  # ---------------------------------------------------------------------------
+  # Maxwell Processor
+  # ---------------------------------------------------------------------------
+  processor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: maxwell-processor:latest
+    container_name: maxwell-processor
+    command: ["demo", "--molecules", "1000"]
+    volumes:
+      - ./output:/home/maxwell/output
+    environment:
+      - RUST_LOG=info
+
+  # ---------------------------------------------------------------------------
+  # Python Validation
+  # ---------------------------------------------------------------------------
+  validation:
+    image: python:3.11-slim
+    container_name: maxwell-validation
+    working_dir: /app
+    volumes:
+      - ./validation:/app
+    command: >
+      bash -c "pip install -e . && python -m maxwell_validation.dissolution"
+    depends_on:
+      - processor
+
+  # ---------------------------------------------------------------------------
+  # Development Environment
+  # ---------------------------------------------------------------------------
+  dev:
+    image: rust:1.75-slim-bookworm
+    container_name: maxwell-dev
+    working_dir: /app
+    volumes:
+      - .:/app
+      - cargo-cache:/usr/local/cargo/registry
+    command: ["cargo", "watch", "-x", "check", "-x", "test"]
+    environment:
+      - RUST_LOG=debug
+      - RUST_BACKTRACE=1
+
+volumes:
+  cargo-cache:
+

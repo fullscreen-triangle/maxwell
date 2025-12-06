@@ -1,0 +1,77 @@
+# =============================================================================
+# Maxwell - Workspace Configuration
+# =============================================================================
+# Complementarity-Aware Processor for Categorical Phase-Lock Dynamics
+# Resolution of Maxwell's Demon Through Categorical Phase-Lock Topology
+# =============================================================================
+
+[workspace]
+resolver = "2"
+members = [
+    "processor",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+authors = ["Kundai Farai Sachikonye <kundai.sachikonye@wzw.tum.de>"]
+license = "MIT"
+repository = "https://github.com/sachikonye/maxwell"
+homepage = "https://github.com/sachikonye/maxwell"
+documentation = "https://github.com/sachikonye/maxwell"
+keywords = ["categorical-dynamics", "phase-lock", "thermodynamics", "maxwell-demon", "information-theory"]
+categories = ["science", "simulation", "mathematics"]
+
+[workspace.dependencies]
+# Core numerics
+ndarray = "0.15"
+num-complex = "0.4"
+num-traits = "0.2"
+
+# Random number generation
+rand = "0.8"
+rand_distr = "0.4"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Graph structures
+petgraph = "0.6"
+
+# Parallel computation
+rayon = "1.8"
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# CLI
+clap = { version = "4.4", features = ["derive"] }
+
+# Synchronization
+parking_lot = "0.12"
+
+# Testing
+criterion = "0.5"
+approx = "0.5"
+
+[profile.dev]
+opt-level = 0
+debug = true
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true
+
+[profile.bench]
+inherits = "release"
+debug = true
+

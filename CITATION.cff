@@ -1,0 +1,62 @@
+# =============================================================================
+# Maxwell Project - Citation File Format
+# =============================================================================
+# https://citation-file-format.github.io/
+
+cff-version: 1.2.0
+title: "Maxwell: Resolution of Maxwell's Demon Through Categorical Phase-Lock Topology"
+message: "If you use this software, please cite it as below."
+type: software
+
+authors:
+  - family-names: "Sachikonye"
+    given-names: "Kundai Farai"
+    email: "kundai.sachikonye@wzw.tum.de"
+    affiliation: "Technical University of Munich"
+    orcid: ""
+
+repository-code: "https://github.com/sachikonye/maxwell"
+url: "https://github.com/sachikonye/maxwell"
+license: MIT
+version: "0.1.0"
+date-released: "2024-12-06"
+
+keywords:
+  - maxwell-demon
+  - categorical-dynamics
+  - phase-lock-networks
+  - thermodynamics
+  - information-theory
+  - complementarity
+  - entropy
+
+abstract: >-
+  A computational implementation of the theoretical framework resolving
+  Maxwell's Demon paradox through categorical phase-lock topology. The
+  processor demonstrates that information has two conjugate faces
+  (categorical and kinetic) that cannot be simultaneously observed.
+  The "demon" Maxwell perceived was the projection of hidden categorical
+  dynamics onto the observable kinetic face.
+
+references:
+  - type: article
+    authors:
+      - family-names: "Sachikonye"
+        given-names: "Kundai Farai"
+    title: "Resolution of Maxwell's Demon Through Categorical Phase-Lock Topology"
+    year: 2024
+    
+  - type: article
+    authors:
+      - family-names: "Sachikonye"
+        given-names: "Kundai Farai"
+    title: "Categorical Resolution of Gibbs' Paradox"
+    year: 2024
+    
+  - type: article
+    authors:
+      - family-names: "Sachikonye"
+        given-names: "Kundai Farai"
+    title: "On the Consequences of Categorical Completion on Pixels"
+    year: 2024
+
