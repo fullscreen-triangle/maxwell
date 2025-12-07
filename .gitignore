@@ -181,7 +181,53 @@ secrets/
 *.pkl
 *.pickle
 
-# Generated figures (keep source, regenerate)
-# Uncomment if you want to ignore generated figures:
+# -----------------------------------------------------------------------------
+# Large Media Files (GitHub limit: 100MB)
+# -----------------------------------------------------------------------------
+# GIF files (often large animations)
+*.gif
+
+# Video files
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+
+# Large image files
+*.psd
+*.ai
+*.eps
+*.tiff
+*.tif
+*.bmp
+
+# Archive files
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Model files
+*.onnx
+*.pt
+*.pth
+*.pb
+*.h5
+*.keras
+
+# -----------------------------------------------------------------------------
+# Documentation Figures
+# -----------------------------------------------------------------------------
+# Keep small PNGs but ignore large files
+# If you need to include specific large files, use Git LFS
+
+# Specific large files that caused issues
+docs/foundation/pixel-maxwell-demon/figures/*.gif
+docs/**/figures/*.gif
+
+# Generated figures that can be regenerated
+# Uncomment if you want to ignore all generated figures:
 # docs/**/figures/*.png
 
