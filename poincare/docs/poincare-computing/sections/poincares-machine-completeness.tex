@@ -1,0 +1,274 @@
+\section{Computational Completeness: Trajectory Equivalence}
+\label{sec:completeness}
+
+This section establishes that Poincaré Computing constitutes a computational framework categorically distinct from Turing computation. We prove that the standard notion of Turing completeness does not apply, and we develop an alternative completeness criterion based on trajectory equivalence.
+
+\subsection{The Algorithmic Assumption}
+
+Turing machines \citep{turing1936computable} are predicated on the following assumptions:
+
+\begin{axiom}[Algorithmic Computation]
+\label{ax:algorithmic}
+Computation consists of:
+\begin{enumerate}
+    \item A finite set of explicit instructions (transition function $\delta: Q \times \Gamma \to Q \times \Gamma \times \{L, R\}$)
+    \item An input encoding on the tape that contains no information about the output
+    \item Deterministic state transitions from each configuration to exactly one successor
+    \item Termination in an accept state as the criterion for successful computation
+\end{enumerate}
+\end{axiom}
+
+\begin{definition}[Turing Completeness]
+\label{def:turing_complete}
+A computational system $\mathcal{S}$ is \textbf{Turing complete} if for every Turing machine $M$, there exists an encoding of $M$ as an instance of $\mathcal{S}$ that produces equivalent input-output behavior \citep{sipser2012introduction}.
+\end{definition}
+
+The critical property of Turing computation is that the algorithm—the sequence of instructions—is the computation. Two Turing machines computing the same function via different algorithms are distinct computational objects.
+
+\subsection{Poincaré Computing: A Non-Algorithmic Framework}
+
+Poincaré Computing does not satisfy Axiom~\ref{ax:algorithmic}. We establish this formally.
+
+\begin{theorem}[Non-Algorithmic Structure]
+\label{thm:non_algorithmic}
+Poincaré Computing violates each condition of Axiom~\ref{ax:algorithmic}:
+\begin{enumerate}
+    \item Instructions are not explicit but encoded in the constraint structure $\mathcal{C}$
+    \item The initial state $\Scoord_0$ may contain partial information about valid solutions
+    \item Dynamics admit multiple valid trajectories from a single initial state
+    \item Completion is defined by recurrence, not termination in a designated state
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+We address each condition:
+
+\textbf{(1) Implicit Instructions:} The constraint predicate $\mathcal{C}: \Sspace^* \to \{\text{true}, \text{false}\}$ specifies which trajectories are valid but does not prescribe a sequence of operations. The dynamics \eqref{eq:dsk_dt}--\eqref{eq:dse_dt} evolve the state continuously; there is no discrete instruction pointer.
+
+\textbf{(2) Partial Solution in Input:} The initial state $\Scoord_0$ encodes problem structure through its coordinates. For constraints $\mathcal{C}$ that are satisfiable, the structure of $\mathcal{C}$ necessarily encodes properties of valid solutions. If $\mathcal{C}$ is constructible, information about solution structure is present in the problem specification.
+
+\textbf{(3) Multiple Valid Trajectories:} Theorem~\ref{thm:non_uniqueness} establishes that the solution set $\mathcal{A}(P)$ generically contains uncountably many trajectories. Different trajectories satisfy the same constraints, violating determinism.
+
+\textbf{(4) Recurrence vs. Termination:} The halting condition is $\|\gamma(T) - \Scoord_0\| < \epsilon$ (return to origin), not arrival at a designated accept state. The system does not ``halt''—it completes a cycle.
+\end{proof}
+
+\subsection{Answer Equivalence}
+
+We introduce an equivalence relation fundamentally different from algorithmic equivalence.
+
+\begin{definition}[Output Projection]
+\label{def:output_projection}
+For a trajectory $\gamma: [0, T] \to \Sspace$, the \textbf{output projection} is a function $\pi_{\text{out}}: C([0,T], \Sspace) \to \mathcal{Y}$ that extracts the computational result from the trajectory.
+\end{definition}
+
+\begin{definition}[Answer Equivalence]
+\label{def:answer_equivalence}
+Two problems $P_1 = (\Scoord_0, \mathcal{C}_1, \epsilon)$ and $P_2 = (\Scoord_0', \mathcal{C}_2, \epsilon')$ are \textbf{answer-equivalent}, written $P_1 \sim_A P_2$, if for all satisfying trajectories $\gamma_1 \in \mathcal{A}(P_1)$ and $\gamma_2 \in \mathcal{A}(P_2)$:
+\begin{equation}
+\pi_{\text{out}}(\gamma_1) = \pi_{\text{out}}(\gamma_2)
+\label{eq:answer_equivalence}
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Answer Equivalence is an Equivalence Relation]
+\label{prop:equiv_relation}
+The relation $\sim_A$ is reflexive, symmetric, and transitive on the space of problems.
+\end{proposition}
+
+\begin{proof}
+Reflexivity: $\pi_{\text{out}}(\gamma) = \pi_{\text{out}}(\gamma)$ for any $\gamma \in \mathcal{A}(P)$.
+
+Symmetry: If $\pi_{\text{out}}(\gamma_1) = \pi_{\text{out}}(\gamma_2)$, then $\pi_{\text{out}}(\gamma_2) = \pi_{\text{out}}(\gamma_1)$.
+
+Transitivity: If $\pi_{\text{out}}(\gamma_1) = \pi_{\text{out}}(\gamma_2)$ and $\pi_{\text{out}}(\gamma_2) = \pi_{\text{out}}(\gamma_3)$, then $\pi_{\text{out}}(\gamma_1) = \pi_{\text{out}}(\gamma_3)$.
+\end{proof}
+
+\subsection{Non-Algorithmic Equivalence}
+
+The central result is that answer equivalence does not imply any form of algorithmic similarity.
+
+\begin{theorem}[Non-Algorithmic Equivalence]
+\label{thm:non_algo_equiv}
+There exist problems $P_1$ and $P_2$ such that:
+\begin{enumerate}
+    \item $P_1 \sim_A P_2$ (answer-equivalent)
+    \item $\Scoord_0 \neq \Scoord_0'$ (different initial states)
+    \item $\mathcal{C}_1 \neq \mathcal{C}_2$ (different constraint structures)
+    \item $\gamma_1$ and $\gamma_2$ have disjoint images in $\Sspace$ except at the output extraction point
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Consider the following construction. Let $y^* \in \mathcal{Y}$ be a target output value. Define:
+
+\textbf{Problem $P_1$:} Initial state $\Scoord_0 = (0.1, 0.2, 0.3)$ with constraint $\mathcal{C}_1$ requiring the trajectory to pass through region $R_1 = [0.1, 0.2]^3$ before returning.
+
+\textbf{Problem $P_2$:} Initial state $\Scoord_0' = (0.8, 0.7, 0.6)$ with constraint $\mathcal{C}_2$ requiring the trajectory to pass through region $R_2 = [0.7, 0.8]^3$ before returning.
+
+Both constraints are constructed such that $\pi_{\text{out}}(\gamma_i) = y^*$ for any satisfying trajectory. The regions $R_1 \cap R_2 = \emptyset$, so the trajectories are geometrically disjoint in their constraint-satisfying portions.
+
+Yet $P_1 \sim_A P_2$ because they produce the same output.
+\end{proof}
+
+\begin{corollary}[Path Independence]
+\label{cor:path_independence}
+The computational ``algorithm'' (trajectory geometry) is not an invariant of the computation. Only the output is invariant.
+\end{corollary}
+
+\subsection{Multiple Paths to Identical Answers}
+
+We formalize the observation that entirely different problem formulations can yield identical results.
+
+\begin{definition}[Problem Reformulation]
+\label{def:reformulation}
+A \textbf{reformulation} of problem $P = (\Scoord_0, \mathcal{C}, \epsilon)$ is any problem $P' = (\Scoord_0', \mathcal{C}', \epsilon')$ such that $P \sim_A P'$.
+\end{definition}
+
+\begin{theorem}[Reformulation Abundance]
+\label{thm:reformulation_abundance}
+For any problem $P$ with non-empty solution set $\mathcal{A}(P) \neq \emptyset$, the equivalence class $[P]_{\sim_A}$ contains uncountably many distinct problems.
+\end{theorem}
+
+\begin{proof}
+Let $y^* = \pi_{\text{out}}(\gamma)$ for some $\gamma \in \mathcal{A}(P)$. For any initial state $\Scoord_0' \in \Sspace$, we can construct a constraint $\mathcal{C}'$ such that:
+\begin{enumerate}
+    \item Trajectories from $\Scoord_0'$ satisfying $\mathcal{C}'$ exist (by Poincaré recurrence)
+    \item The output projection of any such trajectory equals $y^*$
+\end{enumerate}
+
+Since $\Sspace = [0,1]^3$ is uncountable and each point can serve as an initial state for a reformulation, $[P]_{\sim_A}$ is uncountable.
+\end{proof}
+
+\begin{example}[Arithmetic Reformulation]
+\label{ex:arithmetic}
+Consider computing the value $1000$:
+\begin{itemize}
+    \item $P_1$: Initial state encoding ``$10^3$'' with exponentiation constraints
+    \item $P_2$: Initial state encoding ``$995 + 5$'' with addition constraints
+    \item $P_3$: Initial state encoding ``$2000 / 2$'' with division constraints
+    \item $P_4$: Initial state encoding ``$\sqrt{1000000}$'' with root constraints
+\end{itemize}
+All four problems are answer-equivalent: $P_1 \sim_A P_2 \sim_A P_3 \sim_A P_4$. Their trajectories, constraint structures, and initial states are entirely distinct.
+\end{example}
+
+\subsection{The Representation-Solution Gap}
+
+We formalize the relationship between problem encoding and solution existence.
+
+\begin{definition}[Encoding Fidelity]
+\label{def:encoding_fidelity}
+For a function $f: \mathcal{X} \to \mathcal{Y}$ and a problem encoding $\iota: \mathcal{X} \to \Sspace \times \mathcal{C}$, the \textbf{encoding fidelity} is:
+\begin{equation}
+\mathcal{F}(\iota, f) = \frac{|\{x \in \mathcal{X} : \pi_{\text{out}}(\gamma_{\iota(x)}) = f(x)\}|}{|\mathcal{X}|}
+\end{equation}
+where $\gamma_{\iota(x)}$ is a satisfying trajectory for the encoded problem.
+\end{definition}
+
+\begin{theorem}[Representation-Solution Gap]
+\label{thm:representation_gap}
+Let $f: \mathcal{X} \to \mathcal{Y}$ be the intended computation. Define:
+\begin{itemize}
+    \item $\mathcal{A}(P)$ = set of trajectories satisfying recurrence and constraints
+    \item $\mathcal{S}(f)$ = set of trajectories whose output equals $f(\text{input})$
+\end{itemize}
+Then in general:
+\begin{equation}
+\mathcal{A}(P) \not\subseteq \mathcal{S}(f) \quad \text{and} \quad \mathcal{S}(f) \not\subseteq \mathcal{A}(P)
+\end{equation}
+The intersection $\mathcal{A}(P) \cap \mathcal{S}(f) \neq \emptyset$ if and only if $\mathcal{F}(\iota, f) > 0$.
+\end{theorem}
+
+\begin{proof}
+The set $\mathcal{A}(P)$ is determined by the dynamics and constraints, independent of external interpretation. The set $\mathcal{S}(f)$ is determined by the semantic function $f$, independent of the dynamics.
+
+If the encoding $\iota$ does not correctly capture $f$, then trajectories satisfying the constraints may produce outputs different from $f(x)$, giving $\mathcal{A}(P) \not\subseteq \mathcal{S}(f)$.
+
+Conversely, there may exist trajectories that would compute $f$ correctly but violate the constraints, giving $\mathcal{S}(f) \not\subseteq \mathcal{A}(P)$.
+
+The intersection is non-empty precisely when at least one trajectory both satisfies constraints and produces correct output.
+\end{proof}
+
+\begin{corollary}[Perfect Encoding Paradox]
+\label{cor:perfect_encoding}
+If the encoding $\iota$ perfectly captures the function $f$ (i.e., $\mathcal{F}(\iota, f) = 1$), then the constraint structure $\mathcal{C}$ contains sufficient information to determine $f(x)$ for any input $x$. The dynamics become unnecessary—the ``answer'' is encoded in the problem specification.
+\end{corollary}
+
+\begin{proof}
+If $\mathcal{F}(\iota, f) = 1$, then for every $x$, the constraints force trajectories to produce $f(x)$. This means $\mathcal{C}$ distinguishes correct from incorrect outputs, which requires $\mathcal{C}$ to encode the graph of $f$.
+\end{proof}
+
+\subsection{Trajectory Completeness}
+
+We define an appropriate completeness notion for Poincaré Computing.
+
+\begin{definition}[Trajectory Completeness]
+\label{def:trajectory_complete}
+A dynamical system on $\Sspace$ is \textbf{trajectory-complete} if for every constraint set $\mathcal{C}$ with non-empty solution space, there exists an initial state $\Scoord_0$ such that the dynamics produce a satisfying trajectory:
+\begin{equation}
+\forall \mathcal{C} : \mathcal{S}(\mathcal{C}) \neq \emptyset \implies \exists \Scoord_0 \in \Sspace : \mathcal{A}(\Scoord_0, \mathcal{C}, \epsilon) \neq \emptyset
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Poincaré Trajectory Completeness]
+\label{thm:trajectory_complete}
+The categorical dynamics on $\Sspace$ with measure-preserving flow are trajectory-complete.
+\end{theorem}
+
+\begin{proof}
+By the Poincaré recurrence theorem (Theorem~\ref{thm:poincare_recurrence}), almost every initial state returns arbitrarily close to itself under measure-preserving dynamics. 
+
+Let $\mathcal{C}$ be a constraint with non-empty solution space $\mathcal{S}(\mathcal{C}) \neq \emptyset$. By definition, there exists at least one trajectory $\gamma^*$ satisfying $\mathcal{C}$. Let $\Scoord_0 = \gamma^*(0)$. Then $\gamma^* \in \mathcal{A}(\Scoord_0, \mathcal{C}, \epsilon)$ for sufficiently small $\epsilon$.
+
+Therefore, for any satisfiable constraint, an initial state exists producing a satisfying trajectory.
+\end{proof}
+
+\subsection{Categorical Distinction from Turing Machines}
+
+\begin{theorem}[Incomparability]
+\label{thm:incomparability}
+Poincaré Computing and Turing computation are incomparable computational frameworks:
+\begin{enumerate}
+    \item Poincaré Computing is not Turing complete
+    \item Turing machines are not trajectory-complete
+    \item Neither framework subsumes the other
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\textbf{(1) Not Turing Complete:} Turing completeness requires simulation of arbitrary Turing machines. Poincaré Computing does not execute instructions sequentially; it evolves states continuously. There is no instruction pointer, no tape head, no discrete transition function. The computational model is categorically different.
+
+\textbf{(2) Not Trajectory Complete:} Turing machines produce a single computational path from each input. They do not explore trajectory spaces or satisfy recurrence conditions. A Turing machine cannot ``find'' a trajectory—it executes one predetermined sequence.
+
+\textbf{(3) Incomparability:} The equivalence relations differ fundamentally. Turing equivalence identifies machines by algorithmic structure. Answer equivalence identifies problems by output. Problems that are answer-equivalent may require entirely different Turing machines. Turing-equivalent machines may produce different trajectories in $\Sspace$.
+\end{proof}
+
+\begin{remark}
+The incomparability is not a limitation but a categorical fact. Asking whether Poincaré Computing is Turing complete is analogous to asking whether a differential equation is Turing complete. The question applies a criterion from one computational paradigm to a fundamentally different one.
+\end{remark}
+
+\subsection{Implications}
+
+\begin{proposition}[Computation Without Algorithm]
+\label{prop:no_algorithm}
+In Poincaré Computing, the notion of ``algorithm'' is not well-defined. There is no sequence of instructions, only:
+\begin{itemize}
+    \item Initial state $\Scoord_0$
+    \item Continuous dynamics governed by \eqref{eq:dsk_dt}--\eqref{eq:dse_dt}
+    \item Constraint satisfaction $\mathcal{C}$
+    \item Recurrence condition $\|\gamma(T) - \Scoord_0\| < \epsilon$
+\end{itemize}
+\end{proposition}
+
+\begin{proposition}[Answer Primacy]
+\label{prop:answer_primacy}
+The fundamental invariant of Poincaré computation is the answer, not the procedure. Two computations are equivalent if and only if they produce the same output, regardless of:
+\begin{itemize}
+    \item Initial state differences
+    \item Constraint structure differences  
+    \item Trajectory geometry differences
+    \item Recurrence time differences
+\end{itemize}
+\end{proposition}
+
+This completes the formal distinction between Poincaré Computing and algorithmic computation. The frameworks operate on different mathematical objects (trajectories vs. instruction sequences), with different equivalence relations (answer equivalence vs. algorithmic equivalence), and different completeness criteria (trajectory completeness vs. Turing completeness).
+

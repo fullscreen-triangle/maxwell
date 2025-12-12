@@ -18,7 +18,7 @@ This repository contains the theoretical foundation and experimental validation 
 | **Categorical Memory** | S-entropy coordinate addressing with precision-by-difference navigation | `docs/categorical-memory/` |
 | **Categorical Computing** | Unified computation through molecular structure prediction | `docs/categorical-computing/` |
 | **Maxwell Demon Resolution** | Seven-argument dissolution through categorical phase-lock topology | `docs/resolution/` |
-| **Virtual Gas Ensemble** | Hardware oscillations as categorical gas substrate | `poincare/` |
+| **Poincaré Computing** | Unified computation where recurrence = solution | `poincare/` |
 
 ## Core Concepts
 
@@ -47,6 +47,17 @@ The measurement apparatus and measured entity are the same categorical state. Th
 ### Spatial Distance Irrelevance
 
 Categorical navigation does not involve spatial propagation. Jupiter's core and a local molecule are equally accessible—both are S-coordinate positions reached through categorical navigation.
+
+### Poincaré Computing
+
+Named for Henri Poincaré's recurrence theorem: in a bounded phase space, a dynamical system returns to its initial state. In this framework, **recurrence is solution**—computation completes when the categorical state returns to its origin.
+
+The trajectory through S-entropy space IS the answer. A single categorical state is simultaneously:
+- **Memory**: S-coordinates are addresses
+- **Processor**: Oscillation frequency is processing rate  
+- **Semantics**: Harmonic structure is meaning
+
+There is no separation between these subsystems. The categorical state doesn't "call" memory or "invoke" processing—it IS all three, viewed from different perspectives.
 
 ## Repository Structure
 

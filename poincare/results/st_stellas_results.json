@@ -1,0 +1,1472 @@
+{
+  "timestamp": "2025-12-12 19:05:29",
+  "experiments": {
+    "miraculous_solutions": {
+      "results": [
+        {
+          "n_subtasks": 5,
+          "n_miraculous": 0,
+          "global_s": 0.040908194002003295,
+          "global_finite": true,
+          "miracle_principle_holds": false
+        },
+        {
+          "n_subtasks": 5,
+          "n_miraculous": 1,
+          "global_s": 3.926601025930557,
+          "global_finite": true,
+          "miracle_principle_holds": true
+        },
+        {
+          "n_subtasks": 5,
+          "n_miraculous": 2,
+          "global_s": 0.2658106119235495,
+          "global_finite": true,
+          "miracle_principle_holds": true
+        },
+        {
+          "n_subtasks": 5,
+          "n_miraculous": 3,
+          "global_s": 4.549754009799172,
+          "global_finite": true,
+          "miracle_principle_holds": true
+        }
+      ],
+      "demonstrates_miracle_principle": true
+    },
+    "processor_oscillator_duality": {
+      "oscillator_samples": [
+        {
+          "oscillator_id": 0,
+          "frequency": 469268.0899768591,
+          "processing_rate": 469268.0899768591,
+          "completions_in_dt": 0.46926808997685904,
+          "expected_completions": 0.4692680899768591,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 1,
+          "frequency": 912942.5537759532,
+          "processing_rate": 912942.5537759532,
+          "completions_in_dt": 0.9129425537759532,
+          "expected_completions": 0.9129425537759532,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 2,
+          "frequency": 59838.76860868068,
+          "processing_rate": 59838.76860868068,
+          "completions_in_dt": 0.059838768608680655,
+          "expected_completions": 0.059838768608680676,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 3,
+          "frequency": 1231250.0617045902,
+          "processing_rate": 1231250.0617045902,
+          "completions_in_dt": 1.23125006170459,
+          "expected_completions": 1.23125006170459,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 4,
+          "frequency": 1786429.5433546752,
+          "processing_rate": 1786429.5433546752,
+          "completions_in_dt": 1.7864295433546753,
+          "expected_completions": 1.786429543354675,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 5,
+          "frequency": 202611.42283225706,
+          "processing_rate": 202611.42283225706,
+          "completions_in_dt": 0.20261142283225708,
+          "expected_completions": 0.20261142283225705,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 6,
+          "frequency": 565537.0667803367,
+          "processing_rate": 565537.0667803367,
+          "completions_in_dt": 0.5655370667803367,
+          "expected_completions": 0.5655370667803367,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 7,
+          "frequency": 150234.52872733868,
+          "processing_rate": 150234.52872733868,
+          "completions_in_dt": 0.15023452872733864,
+          "expected_completions": 0.15023452872733867,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 8,
+          "frequency": 608934.687859775,
+          "processing_rate": 608934.687859775,
+          "completions_in_dt": 0.6089346878597749,
+          "expected_completions": 0.608934687859775,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 9,
+          "frequency": 722029.1550331278,
+          "processing_rate": 722029.1550331278,
+          "completions_in_dt": 0.7220291550331277,
+          "expected_completions": 0.7220291550331277,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 10,
+          "frequency": 935333.0206496101,
+          "processing_rate": 935333.0206496101,
+          "completions_in_dt": 0.9353330206496101,
+          "expected_completions": 0.93533302064961,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 11,
+          "frequency": 2973687.7935069306,
+          "processing_rate": 2973687.7935069306,
+          "completions_in_dt": 2.9736877935069304,
+          "expected_completions": 2.9736877935069304,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 12,
+          "frequency": 363287.8599687583,
+          "processing_rate": 363287.8599687583,
+          "completions_in_dt": 0.3632878599687583,
+          "expected_completions": 0.3632878599687583,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 13,
+          "frequency": 580090.8425853983,
+          "processing_rate": 580090.8425853983,
+          "completions_in_dt": 0.5800908425853983,
+          "expected_completions": 0.5800908425853983,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 14,
+          "frequency": 34993.72144347909,
+          "processing_rate": 34993.72144347909,
+          "completions_in_dt": 0.0349937214434791,
+          "expected_completions": 0.034993721443479085,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 15,
+          "frequency": 1086255.7985649803,
+          "processing_rate": 1086255.7985649803,
+          "completions_in_dt": 1.0862557985649803,
+          "expected_completions": 1.0862557985649801,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 16,
+          "frequency": 791223.7979817975,
+          "processing_rate": 791223.7979817975,
+          "completions_in_dt": 0.7912237979817974,
+          "expected_completions": 0.7912237979817974,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 17,
+          "frequency": 1492245.3771381408,
+          "processing_rate": 1492245.3771381408,
+          "completions_in_dt": 1.4922453771381408,
+          "expected_completions": 1.4922453771381408,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 18,
+          "frequency": 911054.412383275,
+          "processing_rate": 911054.412383275,
+          "completions_in_dt": 0.9110544123832752,
+          "expected_completions": 0.911054412383275,
+          "duality_holds": true
+        },
+        {
+          "oscillator_id": 19,
+          "frequency": 218134.69463126746,
+          "processing_rate": 218134.69463126746,
+          "completions_in_dt": 0.2181346946312675,
+          "expected_completions": 0.21813469463126745,
+          "duality_holds": true
+        }
+      ],
+      "all_duality_holds": true,
+      "interpretation": "R_compute = f (processing rate equals frequency)"
+    },
+    "processor_memory_unification": {
+      "projection_validation": {
+        "projection_samples": [
+          {
+            "state_id": 0,
+            "s_coord": [
+              0.3745401188473625,
+              0.9507143064099162,
+              0.7319939418114051
+            ],
+            "memory": {
+              "address": 95,
+              "s_k_component": 0.3745401188473625
+            },
+            "processor": {
+              "opcode": 14,
+              "s_t_component": 0.9507143064099162
+            },
+            "semantic": {
+              "semantic_id": 731,
+              "s_e_component": 0.7319939418114051
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 1,
+            "s_coord": [
+              0.5986584841970366,
+              0.15601864044243652,
+              0.15599452033620265
+            ],
+            "memory": {
+              "address": 152,
+              "s_k_component": 0.5986584841970366
+            },
+            "processor": {
+              "opcode": 2,
+              "s_t_component": 0.15601864044243652
+            },
+            "semantic": {
+              "semantic_id": 155,
+              "s_e_component": 0.15599452033620265
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 2,
+            "s_coord": [
+              0.05808361216819946,
+              0.8661761457749352,
+              0.6011150117432088
+            ],
+            "memory": {
+              "address": 14,
+              "s_k_component": 0.05808361216819946
+            },
+            "processor": {
+              "opcode": 12,
+              "s_t_component": 0.8661761457749352
+            },
+            "semantic": {
+              "semantic_id": 601,
+              "s_e_component": 0.6011150117432088
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 3,
+            "s_coord": [
+              0.7080725777960455,
+              0.020584494295802447,
+              0.9699098521619943
+            ],
+            "memory": {
+              "address": 180,
+              "s_k_component": 0.7080725777960455
+            },
+            "processor": {
+              "opcode": 0,
+              "s_t_component": 0.020584494295802447
+            },
+            "semantic": {
+              "semantic_id": 969,
+              "s_e_component": 0.9699098521619943
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 4,
+            "s_coord": [
+              0.8324426408004217,
+              0.21233911067827616,
+              0.18182496720710062
+            ],
+            "memory": {
+              "address": 212,
+              "s_k_component": 0.8324426408004217
+            },
+            "processor": {
+              "opcode": 3,
+              "s_t_component": 0.21233911067827616
+            },
+            "semantic": {
+              "semantic_id": 181,
+              "s_e_component": 0.18182496720710062
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 5,
+            "s_coord": [
+              0.18340450985343382,
+              0.3042422429595377,
+              0.5247564316322378
+            ],
+            "memory": {
+              "address": 46,
+              "s_k_component": 0.18340450985343382
+            },
+            "processor": {
+              "opcode": 4,
+              "s_t_component": 0.3042422429595377
+            },
+            "semantic": {
+              "semantic_id": 524,
+              "s_e_component": 0.5247564316322378
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 6,
+            "s_coord": [
+              0.43194501864211576,
+              0.2912291401980419,
+              0.6118528947223795
+            ],
+            "memory": {
+              "address": 110,
+              "s_k_component": 0.43194501864211576
+            },
+            "processor": {
+              "opcode": 4,
+              "s_t_component": 0.2912291401980419
+            },
+            "semantic": {
+              "semantic_id": 611,
+              "s_e_component": 0.6118528947223795
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 7,
+            "s_coord": [
+              0.13949386065204183,
+              0.29214464853521815,
+              0.3663618432936917
+            ],
+            "memory": {
+              "address": 35,
+              "s_k_component": 0.13949386065204183
+            },
+            "processor": {
+              "opcode": 4,
+              "s_t_component": 0.29214464853521815
+            },
+            "semantic": {
+              "semantic_id": 366,
+              "s_e_component": 0.3663618432936917
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 8,
+            "s_coord": [
+              0.45606998421703593,
+              0.7851759613930136,
+              0.19967378215835974
+            ],
+            "memory": {
+              "address": 116,
+              "s_k_component": 0.45606998421703593
+            },
+            "processor": {
+              "opcode": 11,
+              "s_t_component": 0.7851759613930136
+            },
+            "semantic": {
+              "semantic_id": 199,
+              "s_e_component": 0.19967378215835974
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 9,
+            "s_coord": [
+              0.5142344384136116,
+              0.5924145688620425,
+              0.046450412719997725
+            ],
+            "memory": {
+              "address": 131,
+              "s_k_component": 0.5142344384136116
+            },
+            "processor": {
+              "opcode": 8,
+              "s_t_component": 0.5924145688620425
+            },
+            "semantic": {
+              "semantic_id": 46,
+              "s_e_component": 0.046450412719997725
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 10,
+            "s_coord": [
+              0.6075448519014384,
+              0.17052412368729153,
+              0.06505159298527952
+            ],
+            "memory": {
+              "address": 154,
+              "s_k_component": 0.6075448519014384
+            },
+            "processor": {
+              "opcode": 2,
+              "s_t_component": 0.17052412368729153
+            },
+            "semantic": {
+              "semantic_id": 65,
+              "s_e_component": 0.06505159298527952
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 11,
+            "s_coord": [
+              0.9488855372533332,
+              0.9656320330745594,
+              0.8083973481164611
+            ],
+            "memory": {
+              "address": 241,
+              "s_k_component": 0.9488855372533332
+            },
+            "processor": {
+              "opcode": 14,
+              "s_t_component": 0.9656320330745594
+            },
+            "semantic": {
+              "semantic_id": 808,
+              "s_e_component": 0.8083973481164611
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 12,
+            "s_coord": [
+              0.3046137691733707,
+              0.09767211400638387,
+              0.6842330265121569
+            ],
+            "memory": {
+              "address": 77,
+              "s_k_component": 0.3046137691733707
+            },
+            "processor": {
+              "opcode": 1,
+              "s_t_component": 0.09767211400638387
+            },
+            "semantic": {
+              "semantic_id": 684,
+              "s_e_component": 0.6842330265121569
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 13,
+            "s_coord": [
+              0.4401524937396013,
+              0.12203823484477883,
+              0.4951769101112702
+            ],
+            "memory": {
+              "address": 112,
+              "s_k_component": 0.4401524937396013
+            },
+            "processor": {
+              "opcode": 1,
+              "s_t_component": 0.12203823484477883
+            },
+            "semantic": {
+              "semantic_id": 495,
+              "s_e_component": 0.4951769101112702
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 14,
+            "s_coord": [
+              0.034388521115218396,
+              0.9093204020787821,
+              0.2587799816000169
+            ],
+            "memory": {
+              "address": 8,
+              "s_k_component": 0.034388521115218396
+            },
+            "processor": {
+              "opcode": 13,
+              "s_t_component": 0.9093204020787821
+            },
+            "semantic": {
+              "semantic_id": 258,
+              "s_e_component": 0.2587799816000169
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 15,
+            "s_coord": [
+              0.662522284353982,
+              0.31171107608941095,
+              0.5200680211778108
+            ],
+            "memory": {
+              "address": 168,
+              "s_k_component": 0.662522284353982
+            },
+            "processor": {
+              "opcode": 4,
+              "s_t_component": 0.31171107608941095
+            },
+            "semantic": {
+              "semantic_id": 520,
+              "s_e_component": 0.5200680211778108
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 16,
+            "s_coord": [
+              0.5467102793432796,
+              0.18485445552552704,
+              0.9695846277645586
+            ],
+            "memory": {
+              "address": 139,
+              "s_k_component": 0.5467102793432796
+            },
+            "processor": {
+              "opcode": 2,
+              "s_t_component": 0.18485445552552704
+            },
+            "semantic": {
+              "semantic_id": 969,
+              "s_e_component": 0.9695846277645586
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 17,
+            "s_coord": [
+              0.7751328233611146,
+              0.9394989415641891,
+              0.8948273504276488
+            ],
+            "memory": {
+              "address": 197,
+              "s_k_component": 0.7751328233611146
+            },
+            "processor": {
+              "opcode": 14,
+              "s_t_component": 0.9394989415641891
+            },
+            "semantic": {
+              "semantic_id": 894,
+              "s_e_component": 0.8948273504276488
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 18,
+            "s_coord": [
+              0.5978999788110851,
+              0.9218742350231168,
+              0.0884925020519195
+            ],
+            "memory": {
+              "address": 152,
+              "s_k_component": 0.5978999788110851
+            },
+            "processor": {
+              "opcode": 13,
+              "s_t_component": 0.9218742350231168
+            },
+            "semantic": {
+              "semantic_id": 88,
+              "s_e_component": 0.0884925020519195
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 19,
+            "s_coord": [
+              0.1959828624191452,
+              0.045227288910538066,
+              0.32533033076326434
+            ],
+            "memory": {
+              "address": 49,
+              "s_k_component": 0.1959828624191452
+            },
+            "processor": {
+              "opcode": 0,
+              "s_t_component": 0.045227288910538066
+            },
+            "semantic": {
+              "semantic_id": 325,
+              "s_e_component": 0.32533033076326434
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 20,
+            "s_coord": [
+              0.388677289689482,
+              0.2713490317738959,
+              0.8287375091519293
+            ],
+            "memory": {
+              "address": 99,
+              "s_k_component": 0.388677289689482
+            },
+            "processor": {
+              "opcode": 4,
+              "s_t_component": 0.2713490317738959
+            },
+            "semantic": {
+              "semantic_id": 828,
+              "s_e_component": 0.8287375091519293
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 21,
+            "s_coord": [
+              0.3567533266935893,
+              0.28093450968738076,
+              0.5426960831582485
+            ],
+            "memory": {
+              "address": 90,
+              "s_k_component": 0.3567533266935893
+            },
+            "processor": {
+              "opcode": 4,
+              "s_t_component": 0.28093450968738076
+            },
+            "semantic": {
+              "semantic_id": 542,
+              "s_e_component": 0.5426960831582485
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 22,
+            "s_coord": [
+              0.14092422497476265,
+              0.8021969807540397,
+              0.07455064367977082
+            ],
+            "memory": {
+              "address": 35,
+              "s_k_component": 0.14092422497476265
+            },
+            "processor": {
+              "opcode": 12,
+              "s_t_component": 0.8021969807540397
+            },
+            "semantic": {
+              "semantic_id": 74,
+              "s_e_component": 0.07455064367977082
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 23,
+            "s_coord": [
+              0.9868869366005173,
+              0.7722447692966574,
+              0.1987156815341724
+            ],
+            "memory": {
+              "address": 251,
+              "s_k_component": 0.9868869366005173
+            },
+            "processor": {
+              "opcode": 11,
+              "s_t_component": 0.7722447692966574
+            },
+            "semantic": {
+              "semantic_id": 198,
+              "s_e_component": 0.1987156815341724
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 24,
+            "s_coord": [
+              0.005522117123602399,
+              0.8154614284548342,
+              0.7068573438476171
+            ],
+            "memory": {
+              "address": 1,
+              "s_k_component": 0.005522117123602399
+            },
+            "processor": {
+              "opcode": 12,
+              "s_t_component": 0.8154614284548342
+            },
+            "semantic": {
+              "semantic_id": 706,
+              "s_e_component": 0.7068573438476171
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 25,
+            "s_coord": [
+              0.7290071680409873,
+              0.7712703466859457,
+              0.07404465173409036
+            ],
+            "memory": {
+              "address": 185,
+              "s_k_component": 0.7290071680409873
+            },
+            "processor": {
+              "opcode": 11,
+              "s_t_component": 0.7712703466859457
+            },
+            "semantic": {
+              "semantic_id": 74,
+              "s_e_component": 0.07404465173409036
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 26,
+            "s_coord": [
+              0.3584657285442726,
+              0.11586905952512971,
+              0.8631034258755935
+            ],
+            "memory": {
+              "address": 91,
+              "s_k_component": 0.3584657285442726
+            },
+            "processor": {
+              "opcode": 1,
+              "s_t_component": 0.11586905952512971
+            },
+            "semantic": {
+              "semantic_id": 863,
+              "s_e_component": 0.8631034258755935
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 27,
+            "s_coord": [
+              0.6232981268275579,
+              0.3308980248526492,
+              0.06355835028602363
+            ],
+            "memory": {
+              "address": 158,
+              "s_k_component": 0.6232981268275579
+            },
+            "processor": {
+              "opcode": 4,
+              "s_t_component": 0.3308980248526492
+            },
+            "semantic": {
+              "semantic_id": 63,
+              "s_e_component": 0.06355835028602363
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 28,
+            "s_coord": [
+              0.3109823217156622,
+              0.32518332202674705,
+              0.7296061783380641
+            ],
+            "memory": {
+              "address": 79,
+              "s_k_component": 0.3109823217156622
+            },
+            "processor": {
+              "opcode": 4,
+              "s_t_component": 0.32518332202674705
+            },
+            "semantic": {
+              "semantic_id": 729,
+              "s_e_component": 0.7296061783380641
+            },
+            "single_source": true
+          },
+          {
+            "state_id": 29,
+            "s_coord": [
+              0.6375574713552131,
+              0.8872127425763265,
+              0.4722149251619493
+            ],
+            "memory": {
+              "address": 162,
+              "s_k_component": 0.6375574713552131
+            },
+            "processor": {
+              "opcode": 13,
+              "s_t_component": 0.8872127425763265
+            },
+            "semantic": {
+              "semantic_id": 472,
+              "s_e_component": 0.4722149251619493
+            },
+            "single_source": true
+          }
+        ],
+        "demonstrates_unification": true,
+        "interpretation": "Memory, processor, semantic from single categorical state"
+      },
+      "bottleneck_elimination": {
+        "pairs": [
+          {
+            "address": 43,
+            "opcode": 4,
+            "simultaneous": true
+          },
+          {
+            "address": 22,
+            "opcode": 1,
+            "simultaneous": true
+          },
+          {
+            "address": 52,
+            "opcode": 5,
+            "simultaneous": true
+          },
+          {
+            "address": 176,
+            "opcode": 0,
+            "simultaneous": true
+          },
+          {
+            "address": 160,
+            "opcode": 1,
+            "simultaneous": true
+          },
+          {
+            "address": 234,
+            "opcode": 0,
+            "simultaneous": true
+          },
+          {
+            "address": 205,
+            "opcode": 11,
+            "simultaneous": true
+          },
+          {
+            "address": 53,
+            "opcode": 5,
+            "simultaneous": true
+          },
+          {
+            "address": 157,
+            "opcode": 5,
+            "simultaneous": true
+          },
+          {
+            "address": 190,
+            "opcode": 0,
+            "simultaneous": true
+          },
+          {
+            "address": 181,
+            "opcode": 13,
+            "simultaneous": true
+          },
+          {
+            "address": 135,
+            "opcode": 1,
+            "simultaneous": true
+          },
+          {
+            "address": 135,
+            "opcode": 3,
+            "simultaneous": true
+          },
+          {
+            "address": 96,
+            "opcode": 0,
+            "simultaneous": true
+          },
+          {
+            "address": 53,
+            "opcode": 4,
+            "simultaneous": true
+          },
+          {
+            "address": 227,
+            "opcode": 8,
+            "simultaneous": true
+          },
+          {
+            "address": 201,
+            "opcode": 7,
+            "simultaneous": true
+          },
+          {
+            "address": 136,
+            "opcode": 8,
+            "simultaneous": true
+          },
+          {
+            "address": 110,
+            "opcode": 1,
+            "simultaneous": true
+          },
+          {
+            "address": 92,
+            "opcode": 9,
+            "simultaneous": true
+          },
+          {
+            "address": 90,
+            "opcode": 14,
+            "simultaneous": true
+          },
+          {
+            "address": 60,
+            "opcode": 1,
+            "simultaneous": true
+          },
+          {
+            "address": 62,
+            "opcode": 2,
+            "simultaneous": true
+          },
+          {
+            "address": 72,
+            "opcode": 2,
+            "simultaneous": true
+          },
+          {
+            "address": 20,
+            "opcode": 7,
+            "simultaneous": true
+          },
+          {
+            "address": 250,
+            "opcode": 1,
+            "simultaneous": true
+          },
+          {
+            "address": 247,
+            "opcode": 12,
+            "simultaneous": true
+          },
+          {
+            "address": 65,
+            "opcode": 2,
+            "simultaneous": true
+          },
+          {
+            "address": 236,
+            "opcode": 8,
+            "simultaneous": true
+          },
+          {
+            "address": 71,
+            "opcode": 11,
+            "simultaneous": true
+          },
+          {
+            "address": 82,
+            "opcode": 6,
+            "simultaneous": true
+          },
+          {
+            "address": 61,
+            "opcode": 1,
+            "simultaneous": true
+          },
+          {
+            "address": 73,
+            "opcode": 8,
+            "simultaneous": true
+          },
+          {
+            "address": 122,
+            "opcode": 7,
+            "simultaneous": true
+          },
+          {
+            "address": 85,
+            "opcode": 2,
+            "simultaneous": true
+          },
+          {
+            "address": 252,
+            "opcode": 4,
+            "simultaneous": true
+          },
+          {
+            "address": 64,
+            "opcode": 10,
+            "simultaneous": true
+          },
+          {
+            "address": 151,
+            "opcode": 7,
+            "simultaneous": true
+          },
+          {
+            "address": 88,
+            "opcode": 13,
+            "simultaneous": true
+          },
+          {
+            "address": 246,
+            "opcode": 1,
+            "simultaneous": true
+          },
+          {
+            "address": 239,
+            "opcode": 2,
+            "simultaneous": true
+          },
+          {
+            "address": 188,
+            "opcode": 8,
+            "simultaneous": true
+          },
+          {
+            "address": 35,
+            "opcode": 11,
+            "simultaneous": true
+          },
+          {
+            "address": 41,
+            "opcode": 2,
+            "simultaneous": true
+          },
+          {
+            "address": 169,
+            "opcode": 7,
+            "simultaneous": true
+          },
+          {
+            "address": 223,
+            "opcode": 5,
+            "simultaneous": true
+          },
+          {
+            "address": 111,
+            "opcode": 5,
+            "simultaneous": true
+          },
+          {
+            "address": 76,
+            "opcode": 11,
+            "simultaneous": true
+          },
+          {
+            "address": 59,
+            "opcode": 13,
+            "simultaneous": true
+          },
+          {
+            "address": 138,
+            "opcode": 13,
+            "simultaneous": true
+          }
+        ],
+        "all_simultaneous": true,
+        "bottleneck_eliminated": true
+      }
+    },
+    "categorical_temperature": {
+      "n_molecules": 1000,
+      "categorical_temperature": 0.04625046166345951,
+      "free_energy": 0.927504040117369,
+      "mean_s_entropy": 0.7425894971230976,
+      "std_s_entropy": 0.1853243294022118,
+      "entropy_distribution": [
+        0.6442398941089966,
+        0.8868259707693145,
+        0.595688332052727,
+        0.35399969078168386,
+        0.7916559001638457,
+        1.011466550065492,
+        1.0224535291764845,
+        1.0021280121589047,
+        0.8696459489237707,
+        0.7947363098055632,
+        0.7821521729251766,
+        0.255503166223786,
+        0.8489333906460248,
+        0.9659321204927243,
+        0.5521412467909306,
+        0.9761342793389229,
+        0.6721403533988994,
+        0.35551254300229773,
+        0.5970901188631783,
+        0.8247429792895891,
+        0.8769160929755065,
+        1.0560923927476438,
+        0.6465048419380581,
+        0.5337169802669495,
+        0.4402920084943118,
+        0.6234747114052186,
+        0.7445566395883714,
+        0.8357608669584993,
+        0.9585418943594377,
+        0.7474575106579685,
+        0.7030056182043856,
+        0.8731348893941597,
+        0.7957180689375439,
+        0.6365810939891627,
+        0.7956760213516683,
+        0.9235996060405554,
+        0.8937749049075647,
+        0.5341617050435342,
+        0.5847953984093696,
+        0.7476847166082398,
+        0.6353476045947937,
+        0.9432579407686232,
+        0.32794870797612863,
+        1.042028067087378,
+        0.6763083945321768,
+        0.9532322705692476,
+        0.4325093983255693,
+        1.0560357605070818,
+        0.7811741418358618,
+        0.8545181543323258
+      ]
+    },
+    "scale_ambiguity": {
+      "max_depth": 5,
+      "depth_comparisons": [
+        {
+          "depth_pair": [
+            0,
+            1
+          ],
+          "similarity": 1.0
+        },
+        {
+          "depth_pair": [
+            1,
+            2
+          ],
+          "similarity": 1.0
+        },
+        {
+          "depth_pair": [
+            2,
+            3
+          ],
+          "similarity": 1.0
+        },
+        {
+          "depth_pair": [
+            3,
+            4
+          ],
+          "similarity": 1.0
+        },
+        {
+          "depth_pair": [
+            4,
+            5
+          ],
+          "similarity": 1.0
+        }
+      ],
+      "mean_similarity": 1.0,
+      "scale_ambiguous": "True",
+      "interpretation": "High similarity = cannot distinguish depth from local structure"
+    },
+    "s_entropy_distribution": {
+      "n_samples": 2000,
+      "mean": 0.7495769983029678,
+      "std": 0.182887837756494,
+      "min": 0.08731298252975707,
+      "max": 1.101179980075862,
+      "histogram": [
+        0.019726453320215224,
+        0.029589679980322827,
+        0.07890581328086091,
+        0.11835871992129138,
+        0.16767485322182946,
+        0.21699098652236729,
+        0.5819303729463493,
+        0.6312465062468873,
+        0.9370065327102234,
+        1.2822194658139898,
+        1.361125279094851,
+        1.676748532218291,
+        2.1600466385635677,
+        2.1304569585832445,
+        1.893739518740662,
+        1.8641498387603392,
+        1.6570220788980794,
+        1.361125279094851,
+        0.9863226660107594,
+        0.5720671462862416
+      ],
+      "bin_edges": [
+        0.08731298252975707,
+        0.1380063324070623,
+        0.18869968228436756,
+        0.2393930321616728,
+        0.290086382038978,
+        0.34077973191628325,
+        0.39147308179358853,
+        0.44216643167089376,
+        0.492859781548199,
+        0.5435531314255042,
+        0.5942464813028094,
+        0.6449398311801147,
+        0.69563318105742,
+        0.7463265309347252,
+        0.7970198808120305,
+        0.8477132306893357,
+        0.8984065805666409,
+        0.9490999304439461,
+        0.9997932803212514,
+        1.0504866301985567,
+        1.101179980075862
+      ]
+    },
+    "bmd_navigation_equivalence": {
+      "trials": [
+        {
+          "trial": 0,
+          "bmd_decision": "False",
+          "nav_favorable": "False",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 1,
+          "bmd_decision": "False",
+          "nav_favorable": "False",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 2,
+          "bmd_decision": "False",
+          "nav_favorable": "False",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 3,
+          "bmd_decision": "True",
+          "nav_favorable": "True",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 4,
+          "bmd_decision": "True",
+          "nav_favorable": "True",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 5,
+          "bmd_decision": "True",
+          "nav_favorable": "True",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 6,
+          "bmd_decision": "False",
+          "nav_favorable": "False",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 7,
+          "bmd_decision": "True",
+          "nav_favorable": "True",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 8,
+          "bmd_decision": "True",
+          "nav_favorable": "True",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 9,
+          "bmd_decision": "False",
+          "nav_favorable": "False",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 10,
+          "bmd_decision": "False",
+          "nav_favorable": "False",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 11,
+          "bmd_decision": "False",
+          "nav_favorable": "False",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 12,
+          "bmd_decision": "False",
+          "nav_favorable": "False",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 13,
+          "bmd_decision": "True",
+          "nav_favorable": "True",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 14,
+          "bmd_decision": "True",
+          "nav_favorable": "True",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 15,
+          "bmd_decision": "False",
+          "nav_favorable": "False",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 16,
+          "bmd_decision": "False",
+          "nav_favorable": "False",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 17,
+          "bmd_decision": "True",
+          "nav_favorable": "True",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 18,
+          "bmd_decision": "True",
+          "nav_favorable": "True",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        },
+        {
+          "trial": 19,
+          "bmd_decision": "False",
+          "nav_favorable": "False",
+          "cat_completed": true,
+          "all_equivalent": "True"
+        }
+      ],
+      "all_consistent": true
+    },
+    "sufficient_s_value": {
+      "demonstrations": [
+        {
+          "n_components": 5,
+          "n_impossible": 0,
+          "component_sum": 9.291087819168617,
+          "S_sufficient": 0.4664667851933472,
+          "compression_achieved": true
+        },
+        {
+          "n_components": 6,
+          "n_impossible": 0,
+          "component_sum": 11.509461211750107,
+          "S_sufficient": 0.5872496660792227,
+          "compression_achieved": true
+        },
+        {
+          "n_components": 5,
+          "n_impossible": 1,
+          "component_sum": 7.128338339981716,
+          "S_sufficient": 1.5044643008634848,
+          "compression_achieved": true
+        },
+        {
+          "n_components": 5,
+          "n_impossible": 0,
+          "component_sum": 9.79447215624604,
+          "S_sufficient": 0.45895238200686417,
+          "compression_achieved": true
+        },
+        {
+          "n_components": 4,
+          "n_impossible": 0,
+          "component_sum": 5.102644988900401,
+          "S_sufficient": 0.5890073358847961,
+          "compression_achieved": true
+        },
+        {
+          "n_components": 5,
+          "n_impossible": 0,
+          "component_sum": 3.9360302118471453,
+          "S_sufficient": 0.2065331263262265,
+          "compression_achieved": true
+        },
+        {
+          "n_components": 4,
+          "n_impossible": 1,
+          "component_sum": 5.582463576315667,
+          "S_sufficient": 0.46799231502083694,
+          "compression_achieved": true
+        },
+        {
+          "n_components": 7,
+          "n_impossible": 0,
+          "component_sum": 5.534005580823998,
+          "S_sufficient": 0.9417266346776249,
+          "compression_achieved": true
+        },
+        {
+          "n_components": 5,
+          "n_impossible": 0,
+          "component_sum": 2.608624416355114,
+          "S_sufficient": 0.21708941018046146,
+          "compression_achieved": true
+        },
+        {
+          "n_components": 5,
+          "n_impossible": 1,
+          "component_sum": 10.332374086911795,
+          "S_sufficient": 0.04024340650036559,
+          "compression_achieved": true
+        }
+      ],
+      "compression_demonstrated": true
+    }
+  }
+}

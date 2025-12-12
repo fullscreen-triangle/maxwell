@@ -1,18 +1,29 @@
 """
-Poincaré: Virtual Categorical Gas Chamber
-==========================================
+Poincaré Computing
+==================
 
-This is NOT a simulation.
+A unified computational framework where processor, memory, and semantic 
+processing are the same categorical state viewed from different perspectives.
 
-The computer's hardware oscillations ARE the categorical gas.
-Each timing measurement IS a molecule's categorical state.
-The spectrometer IS the molecule being measured.
+Named for Henri Poincaré and his recurrence theorem: in a bounded phase space,
+a dynamical system returns to its initial state. In Poincaré Computing,
+**recurrence is solution**—computation completes when the categorical state
+returns to its origin. The trajectory through S-entropy space IS the answer.
 
-Key principles:
-1. The hook defines the catch - your apparatus shapes what can be measured
-2. No surprise - you catch exactly what your tackle can catch
-3. Cursor = Molecule = Spectrometer - they are the same categorical state
-4. No propagation - categorical distance is independent of spatial distance
+Core Principles:
+1. The computer IS the gas (not a device that processes gas)
+2. Molecule = Address = Processor State = Meaning (simultaneously)
+3. Computation is navigation, not execution
+4. Return to origin = problem solved
+5. No separation between processor/memory/semantics
+6. Hardware oscillations create real categorical states
+
+The Poincaré Recurrence Connection:
+- S-entropy space is bounded ([0,1]³) → recurrence guaranteed
+- Problem specification = initial state
+- Categorical completion = phase space dynamics
+- Solution = trajectory that returns to origin
+- No return = unsatisfiable constraints
 """
 
 from .virtual_molecule import CategoricalState, VirtualMolecule

@@ -1,0 +1,29 @@
+{
+  "timestamp": "2025-12-12 15:17:30",
+  "panels": [
+    {
+      "name": "sliding_window",
+      "file": "C:\\Users\\kundai\\Documents\\foundry\\maxwell\\poincare\\results\\panels\\panel_ensemble_sliding_window.png",
+      "molecules": 3
+    },
+    {
+      "name": "hardware_mapping",
+      "file": "C:\\Users\\kundai\\Documents\\foundry\\maxwell\\poincare\\results\\panels\\panel_ensemble_hardware_mapping.png",
+      "molecules": 3,
+      "hardware_data": [
+        {
+          "delta_ns": 1000,
+          "delta_p": 1.0000000000000002e-06
+        },
+        {
+          "delta_ns": 2800,
+          "delta_p": 2.8000000000000003e-06
+        },
+        {
+          "delta_ns": 3200,
+          "delta_p": 3.2000000000000003e-06
+        }
+      ]
+    }
+  ]
+}

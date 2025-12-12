@@ -1,0 +1,86 @@
+\section{Bounded Phase Space}
+\label{sec:finite_space}
+
+The S-entropy coordinate space $\Sspace = [0,1]^3$ is a compact metric space under the Euclidean metric. This section establishes the topological and measure-theoretic properties required for the application of Poincaré's recurrence theorem.
+
+\subsection{Compactness and Boundedness}
+
+\begin{proposition}[Compactness of $\Sspace$]
+\label{prop:compactness}
+The S-entropy space $\Sspace = [0,1]^3$ is compact in the Euclidean topology.
+\end{proposition}
+
+\begin{proof}
+The unit interval $[0,1]$ is compact in $\mathbb{R}$ by the Heine-Borel theorem \citep{rudin1976principles}. The product of finitely many compact spaces is compact by Tychonoff's theorem \citep{kelley1955general}. Therefore $\Sspace = [0,1] \times [0,1] \times [0,1]$ is compact.
+\end{proof}
+
+The diameter of $\Sspace$ under the Euclidean metric is:
+\begin{equation}
+\text{diam}(\Sspace) = \sup_{\Scoord_1, \Scoord_2 \in \Sspace} \|\Scoord_1 - \Scoord_2\| = \sqrt{3}
+\label{eq:diameter}
+\end{equation}
+
+\subsection{Measure Structure}
+
+We equip $\Sspace$ with the Lebesgue measure $\mu$ restricted to $[0,1]^3$.
+
+\begin{definition}[Lebesgue Measure on $\Sspace$]
+The measure $\mu: \mathcal{B}(\Sspace) \to [0,1]$ is the three-dimensional Lebesgue measure, where $\mathcal{B}(\Sspace)$ denotes the Borel $\sigma$-algebra on $\Sspace$. For any measurable set $A \subseteq \Sspace$:
+\begin{equation}
+\mu(A) = \int_A d\Sk \, d\St \, d\Se
+\end{equation}
+\end{definition}
+
+The total measure is finite:
+\begin{equation}
+\mu(\Sspace) = \int_0^1 \int_0^1 \int_0^1 d\Sk \, d\St \, d\Se = 1
+\label{eq:total_measure}
+\end{equation}
+
+\subsection{Hierarchical Discretization}
+
+For computational purposes, $\Sspace$ admits a hierarchical discretization into $3^k$ cells at depth $k$.
+
+\begin{definition}[Hierarchical Partition]
+\label{def:hierarchical_partition}
+The \textbf{depth-$k$ partition} of $\Sspace$ is:
+\begin{equation}
+\mathcal{P}_k = \left\{ C_{i_1 i_2 \ldots i_k} : i_j \in \{0, 1, 2\}, j = 1, \ldots, k \right\}
+\end{equation}
+where each cell $C_{i_1 i_2 \ldots i_k}$ is a cube of side length $3^{-k}$.
+\end{definition}
+
+\begin{proposition}[Partition Properties]
+\label{prop:partition_properties}
+The hierarchical partition satisfies:
+\begin{enumerate}
+    \item $|\mathcal{P}_k| = 3^k$ (cardinality)
+    \item $\bigcup_{C \in \mathcal{P}_k} C = \Sspace$ (covering)
+    \item $C \cap C' = \partial C \cap \partial C'$ for $C \neq C'$ (disjoint interiors)
+    \item $\mu(C) = 3^{-k}$ for all $C \in \mathcal{P}_k$ (uniform measure)
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Each coordinate is partitioned into 3 equal intervals at each level, giving $3^k$ cells. The cells cover $\Sspace$ by construction and have disjoint interiors. The measure of each cell is $(3^{-k})^3 \cdot 3^k = 3^{-k}$ after normalization by the branching factor.
+\end{proof}
+
+\subsection{Recurrence Preconditions}
+
+The following theorem establishes that $\Sspace$ satisfies the preconditions for Poincaré recurrence.
+
+\begin{theorem}[Recurrence Preconditions]
+\label{thm:recurrence_preconditions}
+The measure space $(\Sspace, \mathcal{B}(\Sspace), \mu)$ satisfies:
+\begin{enumerate}
+    \item Finite total measure: $\mu(\Sspace) = 1 < \infty$
+    \item $\sigma$-finite: $\Sspace$ is covered by countably many sets of finite measure
+    \item Complete: Every subset of a null set is measurable
+\end{enumerate}
+These are the necessary conditions for Poincaré's recurrence theorem \citep{poincare1890probleme, halmos1956lectures}.
+\end{theorem}
+
+\begin{proof}
+Condition (1) follows from equation~\eqref{eq:total_measure}. Condition (2) is satisfied since $\Sspace$ itself has finite measure. Condition (3) holds because Lebesgue measure on $\mathbb{R}^n$ is complete \citep{royden1988real}.
+\end{proof}
+

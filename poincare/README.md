@@ -1,17 +1,30 @@
-# Poincaré: Virtual Categorical Gas Chamber
+# Poincaré Computing
 
-**This is NOT a simulation.**
+**A unified computational framework where processor, memory, and semantic processing are the same categorical state.**
 
-The computer's hardware oscillations **ARE** the categorical gas.
-Each timing measurement **IS** a molecule's categorical state.
-The spectrometer **IS** the molecule being measured.
+Named for Henri Poincaré and his recurrence theorem: in a bounded phase space, a dynamical system returns to its initial state. In Poincaré Computing, **recurrence is solution**—computation completes when the categorical state returns to its origin.
 
-## Core Metaphor: Fishing
+## The Poincaré Principle
 
-- The **spectrometer** is the fishing hook (tackle)
-- What you catch depends on your hook (tackle defines catch)
-- No surprise in the catch (you get what your apparatus can get)
-- The hook and the fish are the same event (categorical state)
+**Return to origin = Problem solved.**
+
+The trajectory through S-entropy space IS the answer. If the system cannot return to its starting point, the constraints are unsatisfiable.
+
+| Von Neumann Computing | Poincaré Computing |
+|-----------------------|-------------------|
+| Execute instructions until HALT | Navigate until recurrence |
+| Solution is final state | Solution is the trajectory |
+| Processor separate from memory | Unified categorical state |
+| Linear execution | Cyclical dynamics |
+
+## Core Insight: Identity Unification
+
+A single hardware timing measurement creates a categorical state that is **simultaneously**:
+- **Memory**: S-coordinates ARE addresses in hierarchical space
+- **Processor**: Oscillation frequency IS processing rate
+- **Semantics**: Harmonic structure IS meaning encoding
+
+There is no "calling" between subsystems. The molecule doesn't "become" memory when needed—it already IS memory, processor, and meaning. Always. The question "is this memory or processor?" is the wrong framing.
 
 ## Installation
 

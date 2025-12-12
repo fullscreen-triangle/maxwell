@@ -1,0 +1,107 @@
+\section{Problem Specification as Initial State}
+\label{sec:initial_state}
+
+In this framework, computational problems are specified as initial states in S-entropy space together with constraint sets. This section formalizes problem definition and constraint representation.
+
+\subsection{Problem Definition}
+
+\begin{definition}[Computational Problem]
+\label{def:computational_problem}
+A \textbf{computational problem} is a tuple $P = (\Scoord_0, \mathcal{C}, \epsilon)$ where:
+\begin{itemize}
+    \item $\Scoord_0 \in \Sspace$ is the initial state (problem specification)
+    \item $\mathcal{C}: \Sspace^* \to \{\text{true}, \text{false}\}$ is a constraint predicate on trajectories
+    \item $\epsilon > 0$ is the recurrence tolerance
+\end{itemize}
+\end{definition}
+
+The initial state $\Scoord_0 = (\Sk^{(0)}, \St^{(0)}, \Se^{(0)})$ encodes the problem through its coordinate values:
+
+\begin{itemize}
+    \item $\Sk^{(0)}$: The knowledge entropy specifies the information content or uncertainty in the input. Low $\Sk$ indicates well-specified inputs; high $\Sk$ indicates ambiguous inputs.
+    
+    \item $\St^{(0)}$: The temporal entropy specifies timing constraints or sequencing requirements.
+    
+    \item $\Se^{(0)}$: The evolution entropy specifies the expected complexity of the solution trajectory.
+\end{itemize}
+
+\subsection{Constraint Representation}
+
+Constraints are predicates on trajectories in $\Sspace$. We distinguish three constraint classes.
+
+\begin{definition}[Pointwise Constraints]
+\label{def:pointwise_constraints}
+A \textbf{pointwise constraint} $c_p: \Sspace \to \{\text{true}, \text{false}\}$ specifies conditions that must hold at specific points along the trajectory:
+\begin{equation}
+\mathcal{C}_p(\gamma) = \bigwedge_{t \in T_c} c_p(\gamma(t))
+\end{equation}
+where $T_c \subseteq [0, T]$ is the set of constraint times.
+\end{definition}
+
+\begin{definition}[Trajectory Constraints]
+\label{def:trajectory_constraints}
+A \textbf{trajectory constraint} $c_\gamma: C([0,T], \Sspace) \to \{\text{true}, \text{false}\}$ specifies conditions on the entire path:
+\begin{equation}
+\mathcal{C}_\gamma(\gamma) = c_\gamma(\gamma)
+\end{equation}
+Examples include monotonicity constraints, bounded variation, and continuity.
+\end{definition}
+
+\begin{definition}[Harmonic Constraints]
+\label{def:harmonic_constraints}
+A \textbf{harmonic constraint} specifies frequency relationships between trajectory components. For trajectory $\gamma(t) = (\Sk(t), \St(t), \Se(t))$, the Fourier components must satisfy:
+\begin{equation}
+\mathcal{C}_h(\gamma) = \exists (n_k, n_t, n_e) \in \mathbb{Z}^3 : n_k \omega_k + n_t \omega_t + n_e \omega_e = 0
+\label{eq:harmonic_constraint}
+\end{equation}
+where $\omega_k$, $\omega_t$, $\omega_e$ are the dominant frequencies of each coordinate evolution \citep{arnold1989mathematical}.
+\end{definition}
+
+\subsection{Problem Encoding}
+
+We establish that the initial state encodes sufficient information for problem specification.
+
+\begin{proposition}[Encoding Sufficiency]
+\label{prop:encoding_sufficiency}
+For any computable function $f: \{0,1\}^n \to \{0,1\}^m$, there exists an encoding $\iota: \{0,1\}^n \to \Sspace$ and constraint set $\mathcal{C}_f$ such that:
+\begin{equation}
+f(x) = y \iff \exists \gamma: \gamma(0) = \iota(x), \|\gamma(T) - \gamma(0)\| < \epsilon, \mathcal{C}_f(\gamma) = \text{true}, \pi_{\text{out}}(\gamma) = y
+\end{equation}
+where $\pi_{\text{out}}$ is the output extraction projection.
+\end{proposition}
+
+\begin{proof}
+Encode input $x \in \{0,1\}^n$ as:
+\begin{equation}
+\iota(x) = \left( \frac{1}{2^n} \sum_{i=1}^n x_i 2^{n-i}, \frac{1}{n}, \frac{H(x)}{n} \right)
+\end{equation}
+where $H(x) = |\{i : x_i = 1\}|$ is the Hamming weight. This encoding is injective for $n < \infty$.
+
+The constraint set $\mathcal{C}_f$ is constructed to force trajectories through intermediate states corresponding to the computation of $f$. The output is extracted from the final recurrence state.
+\end{proof}
+
+\subsection{Problem Complexity}
+
+The complexity of a problem is characterized by the S-coordinates of its initial state.
+
+\begin{definition}[Problem Complexity Measure]
+\label{def:complexity_measure}
+The \textbf{complexity} of problem $P = (\Scoord_0, \mathcal{C}, \epsilon)$ is:
+\begin{equation}
+\kappa(P) = \frac{\Se^{(0)}}{\epsilon} \cdot |\mathcal{C}|
+\end{equation}
+where $|\mathcal{C}|$ denotes the description length of the constraint set.
+\end{definition}
+
+\begin{proposition}[Complexity Bounds]
+\label{prop:complexity_bounds}
+For problem $P$ with complexity $\kappa(P)$, the minimum trajectory length satisfies:
+\begin{equation}
+T_{\min} \geq \Omega\left( \log_3 \kappa(P) \right)
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The hierarchical structure of $\Sspace$ requires $k$ steps to navigate to a cell of measure $3^{-k}$. The recurrence tolerance $\epsilon$ corresponds to depth $k \approx \log_3(1/\epsilon)$. The constraint satisfaction requires trajectory length proportional to $|\mathcal{C}|$. Combined, the minimum length scales as $\log_3 \kappa(P)$.
+\end{proof}
+

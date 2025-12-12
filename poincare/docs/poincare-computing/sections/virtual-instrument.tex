@@ -1,0 +1,139 @@
+\section{Hardware Grounding: Virtual Instrumentation}
+\label{sec:virtual_instrument}
+
+The S-entropy coordinate space is instantiated through measurements from hardware oscillators. This section establishes the mapping from physical timing measurements to categorical states.
+
+\subsection{Oscillator Sources}
+
+Modern computing hardware contains multiple oscillatory processes with characteristic frequencies \citep{hennessy2017computer}:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Source} & \textbf{Frequency Range} & \textbf{Precision} \\
+\midrule
+CPU clock & $10^9$--$10^{10}$ Hz & $\sim 10^{-10}$ s \\
+Memory bus & $10^9$ Hz & $\sim 10^{-9}$ s \\
+PCIe clock & $10^8$ Hz & $\sim 10^{-8}$ s \\
+USB timing & $10^6$--$10^9$ Hz & $\sim 10^{-9}$ s \\
+Power supply ripple & $10^4$--$10^6$ Hz & $\sim 10^{-6}$ s \\
+\bottomrule
+\end{tabular}
+\caption{Hardware oscillator sources and characteristic frequencies.}
+\label{tab:oscillator_sources}
+\end{table}
+
+\subsection{Timing Measurement}
+
+Let $t_{\text{ref}}$ denote a reference timestamp from a high-precision clock (e.g., CPU timestamp counter) and $t_{\text{local}}$ denote a local measurement. The timing difference is:
+\begin{equation}
+\delta_p = t_{\text{ref}} - t_{\text{local}}
+\label{eq:timing_difference}
+\end{equation}
+
+The timing jitter $\delta_p$ exhibits stochastic variation due to hardware non-determinism. We model this as:
+\begin{equation}
+\delta_p = \bar{\delta} + \eta(t)
+\end{equation}
+where $\bar{\delta}$ is the mean offset and $\eta(t)$ is a zero-mean stochastic process.
+
+\begin{proposition}[Jitter Boundedness]
+\label{prop:jitter_boundedness}
+For a stable hardware oscillator, the timing jitter satisfies:
+\begin{equation}
+|\eta(t)| \leq \eta_{\max} < \infty
+\end{equation}
+with probability 1, where $\eta_{\max}$ depends on the oscillator quality factor \citep{leeson1966simple}.
+\end{proposition}
+
+\subsection{Coordinate Mapping Functions}
+
+The timing difference $\delta_p$ maps to S-entropy coordinates through three functions.
+
+\begin{definition}[Knowledge Entropy Mapping]
+\label{def:phi_k}
+The \textbf{knowledge entropy coordinate} is:
+\begin{equation}
+\Sk = \phi_k(\delta_p) = \frac{1}{2}\left(1 + \tanh\left(\frac{\delta_p - \mu_\delta}{\sigma_\delta}\right)\right)
+\label{eq:phi_k}
+\end{equation}
+where $\mu_\delta$ and $\sigma_\delta$ are the mean and standard deviation of the timing distribution.
+\end{definition}
+
+\begin{definition}[Temporal Entropy Mapping]
+\label{def:phi_t}
+The \textbf{temporal entropy coordinate} is:
+\begin{equation}
+\St = \phi_t(\delta_p) = \left| \sin\left( 2\pi f_{\text{ref}} \delta_p \right) \right|
+\label{eq:phi_t}
+\end{equation}
+where $f_{\text{ref}}$ is the reference oscillator frequency.
+\end{definition}
+
+\begin{definition}[Evolution Entropy Mapping]
+\label{def:phi_e}
+The \textbf{evolution entropy coordinate} is:
+\begin{equation}
+\Se = \phi_e(\delta_p) = \frac{1}{2}\left(1 + \cos\left( 2\pi f_{\text{beat}} \delta_p \right)\right)
+\label{eq:phi_e}
+\end{equation}
+where $f_{\text{beat}} = |f_{\text{ref}} - f_{\text{local}}|$ is the beat frequency between oscillators.
+\end{definition}
+
+\begin{proposition}[Range Preservation]
+\label{prop:range_preservation}
+The coordinate functions satisfy $\phi_k, \phi_t, \phi_e: \mathbb{R} \to [0,1]$, ensuring that all timing measurements map to valid S-entropy coordinates.
+\end{proposition}
+
+\begin{proof}
+For $\phi_k$: the hyperbolic tangent has range $(-1, 1)$, so $\phi_k \in (0, 1) \subset [0,1]$.
+For $\phi_t$: $|\sin(\cdot)| \in [0, 1]$.
+For $\phi_e$: $\cos(\cdot) \in [-1, 1]$, so $\phi_e \in [0, 1]$.
+\end{proof}
+
+\subsection{Categorical State Construction}
+
+Given a timing measurement $\delta_p$, the categorical state is:
+\begin{equation}
+\Scoord = \Phi(\delta_p) = \left( \phi_k(\delta_p), \phi_t(\delta_p), \phi_e(\delta_p) \right)
+\label{eq:full_mapping}
+\end{equation}
+
+\begin{theorem}[Deterministic Mapping]
+\label{thm:deterministic_mapping}
+The mapping $\Phi: \mathbb{R} \to \Sspace$ is deterministic: identical timing measurements produce identical categorical states.
+\end{theorem}
+
+\begin{proof}
+Each component function $\phi_k$, $\phi_t$, $\phi_e$ is a composition of elementary functions (arithmetic, trigonometric, hyperbolic). Elementary functions are deterministic. Therefore $\Phi$ is deterministic.
+\end{proof}
+
+\subsection{Spectrometer-State Identity}
+
+A fundamental property of the virtual instrumentation is the identity between measurement apparatus and measured state.
+
+\begin{theorem}[Spectrometer-State Identity]
+\label{thm:spectrometer_identity}
+Let $\mathcal{I}_\omega$ denote a virtual spectrometer tuned to frequency $\omega$. The categorical state $\Scoord_\omega$ measurable by $\mathcal{I}_\omega$ satisfies:
+\begin{equation}
+\Scoord_\omega = \Phi(\omega^{-1})
+\end{equation}
+The spectrometer configuration and the measurable state are encoded by the same point in $\Sspace$.
+\end{theorem}
+
+\begin{proof}
+The spectrometer $\mathcal{I}_\omega$ is defined by its sensitivity to oscillations at frequency $\omega$. This sensitivity corresponds to a timing resolution $\Delta t = \omega^{-1}$. A measurement at this resolution produces timing difference $\delta_p \approx \omega^{-1}$. Applying $\Phi$ yields $\Scoord_\omega = \Phi(\omega^{-1})$.
+
+The only states that produce non-null measurements on $\mathcal{I}_\omega$ are those with characteristic frequency $\omega$, which map to the same $\Scoord_\omega$. Therefore the spectrometer configuration and measurable state coincide.
+\end{proof}
+
+\begin{corollary}[Zero Backaction]
+\label{cor:zero_backaction}
+Measurement by $\mathcal{I}_\omega$ does not perturb the categorical state $\Scoord_\omega$.
+\end{corollary}
+
+\begin{proof}
+Since $\mathcal{I}_\omega$ and $\Scoord_\omega$ are identical in $\Sspace$, measurement is identity morphism. Identity morphisms do not perturb their domain.
+\end{proof}
+

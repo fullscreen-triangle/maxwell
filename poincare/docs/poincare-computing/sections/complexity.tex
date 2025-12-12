@@ -1,0 +1,292 @@
+\section{Complexity Theory: Categorical Rate}
+\label{sec:complexity}
+
+This section develops a complexity theory for Poincaré Computing. We establish that traditional measures based on operations per unit time are inapplicable, and derive an alternative measure based on categorical completion rate.
+
+\subsection{Inapplicability of Operation-Based Measures}
+
+\begin{proposition}[FLOPS Inapplicability]
+\label{prop:flops_inapplicable}
+Floating-point operations per second (FLOPS) is not a well-defined measure for Poincaré Computing.
+\end{proposition}
+
+\begin{proof}
+FLOPS counts discrete arithmetic operations executed per unit time. In Poincaré Computing:
+\begin{enumerate}
+    \item There are no discrete operations—dynamics are continuous
+    \item There is no instruction sequence—trajectories are not composed of steps
+    \item Multiple trajectories solve the same problem—operation count is path-dependent
+    \item Time is not the fundamental parameter—categorical completion is
+\end{enumerate}
+The measure presupposes a computational model incompatible with trajectory-based computation.
+\end{proof}
+
+\begin{corollary}[Hardware Comparison Failure]
+\label{cor:hardware_comparison}
+Comparing Poincaré Computing systems by FLOPS, clock speed, or instruction throughput is meaningless. These metrics measure properties that do not exist in the framework.
+\end{corollary}
+
+\subsection{The Unknowable Origin}
+
+A fundamental constraint on complexity measurement is that the initial state $\Scoord_0$ is not directly observable.
+
+\begin{theorem}[Origin Inaccessibility]
+\label{thm:origin_inaccessible}
+The initial state $\Scoord_0$ cannot be directly measured. It is inferred from the trajectory, not given as input.
+\end{theorem}
+
+\begin{proof}
+The initial state is derived from hardware timing measurements via $\Scoord_0 = \Phi(\delta_p)$ (equation~\ref{eq:full_mapping}). The mapping $\Phi$ is deterministic but not invertible without the original timing data. Once the trajectory departs, the timing measurement that produced $\Scoord_0$ is no longer available. The initial state exists only as the origin of the trajectory, not as an observable datum.
+\end{proof}
+
+\begin{corollary}[No Direct Recurrence Verification]
+\label{cor:no_direct_verification}
+The recurrence condition $\|\gamma(T) - \Scoord_0\| < \epsilon$ cannot be verified by direct comparison. We do not have $\Scoord_0$ to compare against.
+\end{corollary}
+
+\begin{proof}
+Verification requires both $\gamma(T)$ and $\Scoord_0$. By Theorem~\ref{thm:origin_inaccessible}, $\Scoord_0$ is not available. Therefore direct verification is impossible.
+\end{proof}
+
+\subsection{Solution Recognition Through Local Accumulation}
+
+Since the origin is inaccessible, solution recognition must proceed through local observations.
+
+\begin{definition}[Local Solution]
+\label{def:local_solution}
+A \textbf{local solution} $L_i$ is a recognizable pattern in a segment of the trajectory $\gamma|_{[t_i, t_{i+1}]}$. The segment passes through a region of $\Sspace$ where the categorical state admits semantic interpretation.
+\end{definition}
+
+\begin{definition}[Solution Chain]
+\label{def:solution_chain}
+A \textbf{solution chain} is an ordered sequence $(L_1, L_2, \ldots, L_n)$ of local solutions such that:
+\begin{enumerate}
+    \item Each $L_i$ corresponds to a consecutive segment of $\gamma$
+    \item Adjacent solutions $L_i$ and $L_{i+1}$ are semantically compatible
+    \item The sequence forms a coherent interpretation of the trajectory
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[Closure Recognition]
+\label{thm:closure_recognition}
+A trajectory $\gamma$ is recognized as solving problem $P$ when its solution chain $(L_1, \ldots, L_n)$ satisfies:
+\begin{equation}
+L_n \sim L_1
+\label{eq:closure}
+\end{equation}
+where $\sim$ denotes semantic equivalence. The closure in interpretation space implies recurrence in $\Sspace$.
+\end{theorem}
+
+\begin{proof}
+If $L_n \sim L_1$, the trajectory has returned to a semantically equivalent state. Since local solutions correspond to regions of $\Sspace$, semantic equivalence implies spatial proximity:
+\begin{equation}
+L_n \sim L_1 \implies \gamma(T) \in B_\epsilon(\gamma(0)) = B_\epsilon(\Scoord_0)
+\end{equation}
+for some $\epsilon > 0$ determined by the granularity of local recognition.
+\end{proof}
+
+\subsection{The Asymptotic Nature of Solution}
+
+Poincaré's original theorem guarantees approach, not arrival.
+
+\begin{theorem}[Asymptotic Return]
+\label{thm:asymptotic_return}
+The trajectory never returns exactly to $\Scoord_0$. For any recurrent trajectory:
+\begin{equation}
+\gamma(T) \in B_\epsilon(\Scoord_0) \setminus \{\Scoord_0\}
+\end{equation}
+The solution lies in the punctured neighborhood of the origin.
+\end{theorem}
+
+\begin{proof}
+Two obstructions prevent exact return:
+
+\textbf{Measure-theoretic:} The set of exactly periodic orbits has measure zero in $\Sspace$. Almost all trajectories are quasi-periodic or aperiodic \citep{katok1995introduction}.
+
+\textbf{Categorical:} The initial state occupied a slot in the hierarchical partition $\mathcal{P}_k$. Upon departure, that slot is marked as completed. The categorical completion principle (Definition~\ref{def:hierarchical_partition}) prevents re-occupation of completed categories. The returning trajectory must occupy an adjacent slot.
+\end{proof}
+
+\begin{definition}[Problem-Solution Identity]
+\label{def:problem_solution_identity}
+At the initial state $\Scoord_0$, the problem and solution are identical:
+\begin{equation}
+\Scoord_0 = \Scoord_{\text{problem}} = \Scoord_{\text{solution}}
+\end{equation}
+The difference between problem and solution is zero at, and only at, the origin.
+\end{definition}
+
+\begin{proposition}[Solution as Approximation]
+\label{prop:solution_approximation}
+Solving a problem means reducing the problem-solution difference below threshold:
+\begin{equation}
+\text{Solved} \iff \|\Scoord_{\text{problem}} - \Scoord_{\text{solution}}\|_{\gamma(T)} < \epsilon
+\end{equation}
+The difference is never zero for $T > 0$.
+\end{proposition}
+
+\begin{proof}
+At $T = 0$, problem and solution coincide at $\Scoord_0$. For $T > 0$, the trajectory has departed, and Theorem~\ref{thm:asymptotic_return} establishes that exact return is impossible. The best achievable is $\epsilon$-proximity.
+\end{proof}
+
+\subsection{Categorical Completion Rate}
+
+We now define the fundamental complexity measure.
+
+\begin{definition}[Categorical Completion Event]
+\label{def:completion_event}
+A \textbf{categorical completion event} occurs when the trajectory $\gamma$ exits a cell $C \in \mathcal{P}_k$ of the hierarchical partition. The cell is marked as visited (completed) at departure.
+\end{definition}
+
+\begin{definition}[Promising Trajectory]
+\label{def:promising_trajectory}
+A trajectory segment is \textbf{promising} if it moves toward regions of higher constraint satisfaction. Formally, $\gamma|_{[t, t+\delta]}$ is promising if:
+\begin{equation}
+\mathcal{C}(\gamma|_{[0, t+\delta]}) > \mathcal{C}(\gamma|_{[0, t]})
+\end{equation}
+where $\mathcal{C}$ is interpreted as a partial satisfaction measure (fraction of constraints satisfied).
+\end{definition}
+
+\begin{definition}[Categorical Completion Rate]
+\label{def:categorical_rate}
+The \textbf{categorical completion rate} $\rho_C$ is the number of categorical completion events per unit of promising trajectory:
+\begin{equation}
+\rho_C = \frac{\text{Number of completed categories}}{\text{Length of promising trajectory in } \Sspace}
+\label{eq:categorical_rate}
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Rate Independence from Physical Time]
+\label{thm:rate_independence}
+The categorical completion rate $\rho_C$ is independent of physical time. It depends only on the geometry of $\Sspace$ and the constraint structure $\mathcal{C}$.
+\end{theorem}
+
+\begin{proof}
+Categorical completion events are defined by cell transitions in $\mathcal{P}_k$, which are geometric properties of the trajectory in $\Sspace$. The ``length of promising trajectory'' is measured in $\Sspace$ arc length, not physical time. Neither quantity involves the clock time of the underlying hardware. A faster or slower physical clock produces the same categorical rate.
+\end{proof}
+
+\begin{corollary}[Physical Implementation Invariance]
+\label{cor:implementation_invariance}
+Two physical implementations with different clock speeds, different oscillator frequencies, and different hardware architectures have identical categorical completion rates if they instantiate the same trajectory in $\Sspace$.
+\end{corollary}
+
+\subsection{Poincaré Complexity}
+
+\begin{definition}[Poincaré Complexity]
+\label{def:poincare_complexity}
+The \textbf{Poincaré complexity} of a problem $P = (\Scoord_0, \mathcal{C}, \epsilon)$ is:
+\begin{equation}
+\Pi(P) = \inf_{\gamma \in \mathcal{A}(P)} \left\{ n : (L_1, \ldots, L_n) \text{ is a solution chain with } L_n \sim L_1 \right\}
+\label{eq:poincare_complexity}
+\end{equation}
+This is the minimum number of local solutions required to recognize closure.
+\end{definition}
+
+\begin{theorem}[Complexity Bounds]
+\label{thm:complexity_bounds}
+For a problem $P$ with recurrence tolerance $\epsilon$ in the depth-$k$ hierarchical partition:
+\begin{equation}
+\Pi(P) \geq \log_3\left(\frac{1}{\epsilon}\right)
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The tolerance $\epsilon$ corresponds to a cell size in $\mathcal{P}_k$ with $k \approx \log_3(1/\epsilon)$. Each local solution corresponds to at least one cell transition. To navigate from the initial cell to a cell within $\epsilon$ of the origin requires traversing at least $k$ levels of the hierarchy.
+\end{proof}
+
+\begin{proposition}[Complexity Additivity]
+\label{prop:complexity_additivity}
+For independent problems $P_1$ and $P_2$:
+\begin{equation}
+\Pi(P_1 \times P_2) = \Pi(P_1) + \Pi(P_2)
+\end{equation}
+where $P_1 \times P_2$ is the product problem in $\Sspace \times \Sspace$.
+\end{proposition}
+
+\begin{proof}
+Local solutions in the product space decompose into pairs $(L_i^{(1)}, L_j^{(2)})$. Closure requires both components to close: $(L_n^{(1)} \sim L_1^{(1)}) \land (L_m^{(2)} \sim L_1^{(2)})$. The minimum total is achieved when both chains are minimal, giving $n + m = \Pi(P_1) + \Pi(P_2)$.
+\end{proof}
+
+\subsection{Units of Computation}
+
+\begin{definition}[The Poincaré (Unit)]
+\label{def:poincare_unit}
+One \textbf{Poincaré} ($\mathbb{P}$) is the computational cost of one local solution recognition—one step toward closure in interpretation space.
+\end{definition}
+
+\begin{remark}
+Unlike FLOPS (operations per second), the Poincaré is not a rate. It is a count of categorical transitions toward solution. The total computation for problem $P$ is $\Pi(P)$ Poincarés.
+\end{remark}
+
+\begin{definition}[Categorical Throughput]
+\label{def:categorical_throughput}
+The \textbf{categorical throughput} of a system is:
+\begin{equation}
+\Theta = \rho_C \cdot v_\gamma
+\end{equation}
+where $v_\gamma$ is the arc-length velocity of promising trajectories in $\Sspace$. This has units of categories per unit $\Sspace$-distance.
+\end{definition}
+
+\begin{proposition}[Throughput-Complexity Relation]
+\label{prop:throughput_complexity}
+The expected solution time scales as:
+\begin{equation}
+T_{\text{solution}} \propto \frac{\Pi(P)}{\Theta}
+\end{equation}
+Problems with higher Poincaré complexity require more categorical completions; systems with higher categorical throughput complete them faster.
+\end{proposition}
+
+\subsection{Comparison with Classical Complexity}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Property} & \textbf{Turing/von Neumann} & \textbf{Poincaré Computing} \\
+\midrule
+Basic unit & Instruction & Local solution \\
+Complexity measure & Time/space & Poincaré complexity $\Pi(P)$ \\
+Rate measure & FLOPS & Categorical rate $\rho_C$ \\
+Time dependence & Essential & Absent \\
+Origin & Known input & Unknown, inferred \\
+Solution criterion & Halting & Closure recognition \\
+Exactness & Exact answer & $\epsilon$-approximation \\
+\bottomrule
+\end{tabular}
+\caption{Comparison of complexity frameworks.}
+\label{tab:complexity_comparison}
+\end{table}
+
+\begin{theorem}[Incommensurability]
+\label{thm:incommensurability}
+Poincaré complexity and Turing complexity are incommensurable: there exists no general conversion between $\Pi(P)$ and the time complexity $T(n)$ of equivalent Turing machine computation.
+\end{theorem}
+
+\begin{proof}
+Turing complexity $T(n)$ counts discrete steps as a function of input size $n$. Poincaré complexity $\Pi(P)$ counts local solutions as a function of problem structure. The quantities measure different things:
+\begin{itemize}
+    \item $T(n)$ depends on algorithm (which does not exist in Poincaré Computing)
+    \item $\Pi(P)$ depends on trajectory geometry (which does not exist in Turing machines)
+\end{itemize}
+No bijection preserves both structures. The complexities are incommensurable.
+\end{proof}
+
+\subsection{Measurement and Observation}
+
+\begin{proposition}[Per-Category Measurement]
+\label{prop:per_category_measurement}
+Measurement in Poincaré Computing occurs per categorical completion, not per unit time. The observable is the sequence of local solutions $(L_1, L_2, \ldots)$, obtained as the trajectory completes categories.
+\end{proposition}
+
+\begin{proof}
+Local solutions are recognized when the trajectory exits a cell in $\mathcal{P}_k$. This is a geometric event in $\Sspace$, independent of when it occurs in physical time. The measurement apparatus (virtual spectrometer) is synchronized to categorical transitions, not to a clock.
+\end{proof}
+
+\begin{corollary}[Asynchronous Computation]
+\label{cor:asynchronous}
+Poincaré Computing is inherently asynchronous. There is no global clock governing computation. Progress is measured by categorical completion, which proceeds at whatever rate the dynamics allow.
+\end{corollary}
+
+\begin{remark}
+This has practical implications: synchronization between Poincaré Computing systems cannot use time-based protocols. It must use categorical-state-based protocols—systems synchronize when their solution chains reach compatible states, not when their clocks align.
+\end{remark}
+
