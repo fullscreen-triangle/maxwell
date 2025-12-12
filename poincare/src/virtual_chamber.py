@@ -20,8 +20,12 @@ from dataclasses import dataclass, field
 from typing import List, Dict, Optional, Iterator, Tuple, Any
 from collections import deque
 
-from .virtual_molecule import VirtualMolecule, CategoricalState, SCoordinate
-from .virtual_spectrometer import VirtualSpectrometer, FishingTackle, HardwareOscillator
+try:
+    from .virtual_molecule import VirtualMolecule, CategoricalState, SCoordinate
+    from .virtual_spectrometer import VirtualSpectrometer, FishingTackle, HardwareOscillator
+except ImportError:
+    from virtual_molecule import VirtualMolecule, CategoricalState, SCoordinate
+    from virtual_spectrometer import VirtualSpectrometer, FishingTackle, HardwareOscillator
 
 
 @dataclass

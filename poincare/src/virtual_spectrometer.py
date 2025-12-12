@@ -21,7 +21,10 @@ import time
 import math
 from dataclasses import dataclass, field
 from typing import List, Dict, Optional, Set, Tuple, Any
-from .virtual_molecule import CategoricalState, VirtualMolecule, SCoordinate
+try:
+    from .virtual_molecule import CategoricalState, VirtualMolecule, SCoordinate
+except ImportError:
+    from virtual_molecule import CategoricalState, VirtualMolecule, SCoordinate
 
 
 @dataclass

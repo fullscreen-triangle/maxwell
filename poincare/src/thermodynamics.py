@@ -15,8 +15,12 @@ import math
 from dataclasses import dataclass
 from typing import List, Dict, Optional, Tuple
 
-from .virtual_molecule import VirtualMolecule, SCoordinate
-from .virtual_chamber import VirtualChamber, CategoricalGas
+try:
+    from .virtual_molecule import VirtualMolecule, SCoordinate
+    from .virtual_chamber import VirtualChamber, CategoricalGas
+except ImportError:
+    from virtual_molecule import VirtualMolecule, SCoordinate
+    from virtual_chamber import VirtualChamber, CategoricalGas
 
 
 # Physical constants (for reference and conversion)
@@ -203,7 +207,14 @@ class CategoricalThermodynamics:
         state = self.state()
         
         if state.volume == 0 or state.molecule_count == 0:
-            return {'consistency': 0.0}
+            return {
+                'consistency': 0.0,
+                'P': state.pressure,
+                'V': state.volume,
+                'N': state.molecule_count,
+                'T': state.temperature,
+                'k_effective': 0.0
+            }
         
         # Calculate PV/NT (should be constant for ideal gas)
         pv = state.pressure * state.volume

@@ -1,0 +1,29 @@
+{
+  "timestamp": "2025-12-12 14:26:34",
+  "panels": {
+    "s_space": {
+      "file": "C:\\Users\\kundai\\Documents\\foundry\\maxwell\\poincare\\results\\panels\\panel_s_space.png",
+      "molecules": 500
+    },
+    "maxwell_demon": {
+      "file": "C:\\Users\\kundai\\Documents\\foundry\\maxwell\\poincare\\results\\panels\\panel_maxwell_demon.png",
+      "observations": 200
+    },
+    "thermodynamics": {
+      "file": "C:\\Users\\kundai\\Documents\\foundry\\maxwell\\poincare\\results\\panels\\panel_thermodynamics.png",
+      "final_molecules": 1000
+    },
+    "harmonic": {
+      "file": "C:\\Users\\kundai\\Documents\\foundry\\maxwell\\poincare\\results\\panels\\panel_harmonic.png",
+      "interactions": 4754
+    },
+    "navigation": {
+      "file": "C:\\Users\\kundai\\Documents\\foundry\\maxwell\\poincare\\results\\panels\\panel_navigation.png",
+      "locations_measured": 6
+    },
+    "hardware_pipeline": {
+      "file": "C:\\Users\\kundai\\Documents\\foundry\\maxwell\\poincare\\results\\panels\\panel_hardware_pipeline.png",
+      "samples": 500
+    }
+  }
+}

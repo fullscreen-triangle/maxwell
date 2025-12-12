@@ -20,8 +20,12 @@ from dataclasses import dataclass, field
 from typing import List, Dict, Optional, Tuple, Any
 from enum import Enum
 
-from .virtual_molecule import VirtualMolecule, SCoordinate
-from .virtual_chamber import VirtualChamber, CategoricalGas
+try:
+    from .virtual_molecule import VirtualMolecule, SCoordinate
+    from .virtual_chamber import VirtualChamber, CategoricalGas
+except ImportError:
+    from virtual_molecule import VirtualMolecule, SCoordinate
+    from virtual_chamber import VirtualChamber, CategoricalGas
 
 
 class SortingCriterion(Enum):

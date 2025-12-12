@@ -1,0 +1,308 @@
+{
+  "timestamp": "2025-12-12 14:08:09",
+  "demonstration": "virtual_molecule",
+  "experiments": [
+    {
+      "name": "hardware_timing_molecules",
+      "description": "Molecules created from hardware timing measurements",
+      "molecule_count": 100,
+      "molecules": [
+        {
+          "index": 0,
+          "delta_p_ns": 2300,
+          "S_k": 1.0,
+          "S_t": 0.999861604406032,
+          "S_e": 0.0,
+          "identity": "43219c147e8fe4ac",
+          "frequency": 2301000000000.0,
+          "phase": 6.283185307178762,
+          "amplitude": 1.0
+        },
+        {
+          "index": 1,
+          "delta_p_ns": 2800,
+          "S_k": 1.0,
+          "S_t": 0.9998863179026249,
+          "S_e": 4.76837158203125e-07,
+          "identity": "7833c3b1dfd18c2e",
+          "frequency": 2801000000000.0005,
+          "phase": 2.1600499167107046e-12,
+          "amplitude": 1.0
+        },
+        {
+          "index": 2,
+          "delta_p_ns": 1200,
+          "S_k": 1.0,
+          "S_t": 0.9997347418229159,
+          "S_e": 2.384185791015625e-07,
+          "identity": "821a0829d0400d40",
+          "frequency": 1201000000000.0002,
+          "phase": 1.7053025658242404e-12,
+          "amplitude": 1.0
+        },
+        {
+          "index": 3,
+          "delta_p_ns": 1000,
+          "S_k": 1.0,
+          "S_t": 0.9996816902199195,
+          "S_e": 1.1920928955078125e-07,
+          "identity": "a367e284f82ce093",
+          "frequency": 1001000000000.0001,
+          "phase": 5.115907697472721e-13,
+          "amplitude": 1.0
+        },
+        {
+          "index": 4,
+          "delta_p_ns": 900,
+          "S_k": 1.0,
+          "S_t": 0.9996463224942309,
+          "S_e": 1.1920928955078125e-07,
+          "identity": "ba4d0cd50d73e347",
+          "frequency": 901000000000.0001,
+          "phase": 8.242295734817162e-13,
+          "amplitude": 0.9
+        },
+        {
+          "index": 5,
+          "delta_p_ns": 900,
+          "S_k": 1.0,
+          "S_t": 0.9996463224942309,
+          "S_e": 1.1920928955078125e-07,
+          "identity": "ba4d0cd50d73e347",
+          "frequency": 901000000000.0001,
+          "phase": 8.242295734817162e-13,
+          "amplitude": 0.9
+        },
+        {
+          "index": 6,
+          "delta_p_ns": 700,
+          "S_k": 1.0,
+          "S_t": 0.9995452719005047,
+          "S_e": 1.1920928955078125e-07,
+          "identity": "05ec873854c6c212",
+          "frequency": 701000000000.0001,
+          "phase": 5.400124791776761e-13,
+          "amplitude": 0.7000000000000001
+        },
+        {
+          "index": 7,
+          "delta_p_ns": 1000,
+          "S_k": 1.0,
+          "S_t": 0.9996816902199195,
+          "S_e": 1.1920928955078125e-07,
+          "identity": "a367e284f82ce093",
+          "frequency": 1001000000000.0001,
+          "phase": 5.115907697472721e-13,
+          "amplitude": 1.0
+        },
+        {
+          "index": 8,
+          "delta_p_ns": 800,
+          "S_k": 1.0,
+          "S_t": 0.9996021128495031,
+          "S_e": 1.1920928955078125e-07,
+          "identity": "cde60203b1b27084",
+          "frequency": 801000000000.0001,
+          "phase": 1.1368683772161603e-12,
+          "amplitude": 0.8
+        },
+        {
+          "index": 9,
+          "delta_p_ns": 900,
+          "S_k": 1.0,
+          "S_t": 0.9996463224942309,
+          "S_e": 1.1920928955078125e-07,
+          "identity": "ba4d0cd50d73e347",
+          "frequency": 901000000000.0001,
+          "phase": 8.242295734817162e-13,
+          "amplitude": 0.9
+        },
+        {
+          "index": 10,
+          "delta_p_ns": 800,
+          "S_k": 1.0,
+          "S_t": 0.9996021128495031,
+          "S_e": 1.1920928955078125e-07,
+          "identity": "cde60203b1b27084",
+          "frequency": 801000000000.0001,
+          "phase": 1.1368683772161603e-12,
+          "amplitude": 0.8
+        },
+        {
+          "index": 11,
+          "delta_p_ns": 1500,
+          "S_k": 1.0,
+          "S_t": 0.9997877934406488,
+          "S_e": 0.0,
+          "identity": "1c9609ea134115dc",
+          "frequency": 1501000000000.0,
+          "phase": 6.283185307179444,
+          "amplitude": 1.0
+        },
+        {
+          "index": 12,
+          "delta_p_ns": 1200,
+          "S_k": 1.0,
+          "S_t": 0.9997347418229159,
+          "S_e": 2.384185791015625e-07,
+          "identity": "821a0829d0400d40",
+          "frequency": 1201000000000.0002,
+          "phase": 1.7053025658242404e-12,
+          "amplitude": 1.0
+        },
+        {
+          "index": 13,
+          "delta_p_ns": 1900,
+          "S_k": 1.0,
+          "S_t": 0.999832468496425,
+          "S_e": 0.0,
+          "identity": "19a9881e32df18c7",
+          "frequency": 1901000000000.0,
+          "phase": 4.263256414560601e-13,
+          "amplitude": 1.0
+        },
+        {
+          "index": 14,
+          "delta_p_ns": 800,
+          "S_k": 1.0,
+          "S_t": 0.9996021128495031,
+          "S_e": 1.1920928955078125e-07,
+          "identity": "cde60203b1b27084",
+          "frequency": 801000000000.0001,
+          "phase": 1.1368683772161603e-12,
+          "amplitude": 0.8
+        },
+        {
+          "index": 15,
+          "delta_p_ns": 800,
+          "S_k": 1.0,
+          "S_t": 0.9996021128495031,
+          "S_e": 1.1920928955078125e-07,
+          "identity": "cde60203b1b27084",
+          "frequency": 801000000000.0001,
+          "phase": 1.1368683772161603e-12,
+          "amplitude": 0.8
+        },
+        {
+          "index": 16,
+          "delta_p_ns": 800,
+          "S_k": 1.0,
+          "S_t": 0.9996021128495031,
+          "S_e": 1.1920928955078125e-07,
+          "identity": "cde60203b1b27084",
+          "frequency": 801000000000.0001,
+          "phase": 1.1368683772161603e-12,
+          "amplitude": 0.8
+        },
+        {
+          "index": 17,
+          "delta_p_ns": 700,
+          "S_k": 1.0,
+          "S_t": 0.9995452719005047,
+          "S_e": 1.1920928955078125e-07,
+          "identity": "05ec873854c6c212",
+          "frequency": 701000000000.0001,
+          "phase": 5.400124791776761e-13,
+          "amplitude": 0.7000000000000001
+        },
+        {
+          "index": 18,
+          "delta_p_ns": 700,
+          "S_k": 1.0,
+          "S_t": 0.9995452719005047,
+          "S_e": 1.1920928955078125e-07,
+          "identity": "05ec873854c6c212",
+          "frequency": 701000000000.0001,
+          "phase": 5.400124791776761e-13,
+          "amplitude": 0.7000000000000001
+        },
+        {
+          "index": 19,
+          "delta_p_ns": 700,
+          "S_k": 1.0,
+          "S_t": 0.9995452719005047,
+          "S_e": 1.1920928955078125e-07,
+          "identity": "05ec873854c6c212",
+          "frequency": 701000000000.0001,
+          "phase": 5.400124791776761e-13,
+          "amplitude": 0.7000000000000001
+        }
+      ],
+      "statistics": {
+        "mean_S_k": 1.0,
+        "mean_S_t": 0.999605505915472,
+        "mean_S_e": 1.1861324310302734e-07,
+        "mean_delta_p_ns": 858.0
+      }
+    },
+    {
+      "name": "identity_demonstration",
+      "description": "Molecule = Spectrometer = Cursor (same categorical state)",
+      "molecule_identity": "3898cf85ee6205b9",
+      "cursor_position": [
+        1.0,
+        0.9998726760523171,
+        0.0
+      ],
+      "spectrometer_reading": {
+        "S_k": 1.0,
+        "S_t": 0.9998726760523171,
+        "S_e": 0.0,
+        "frequency_Hz": 2501000000000.0,
+        "phase_rad": 3.694822225952521e-13,
+        "amplitude": 1.0,
+        "identity": "3898cf85ee6205b9"
+      },
+      "conclusion": "These are ONE categorical state, not three separate things"
+    },
+    {
+      "name": "jupiter_core_access",
+      "description": "Jupiter core is categorically accessible (no spatial propagation)",
+      "jupiter_core": {
+        "S_k": 0.95,
+        "S_t": 0.73,
+        "S_e": 0.88,
+        "source": "jupiter_core_definition"
+      },
+      "local_molecule": {
+        "S_k": 1.0,
+        "S_t": 0.9998726760523171,
+        "S_e": 0.0,
+        "source": "perf_counter"
+      },
+      "s_distance": 0.9218086901736384,
+      "conclusion": "Both accessed instantaneously - spatial distance irrelevant"
+    },
+    {
+      "name": "categorical_distance_independence",
+      "description": "Categorical distance is independent of spatial distance",
+      "locations": {
+        "jupiter_core": {
+          "S_k": 0.95,
+          "S_t": 0.73,
+          "S_e": 0.88,
+          "spatial_distance_km": 600000000.0
+        },
+        "room_temperature": {
+          "S_k": 0.5,
+          "S_t": 0.5,
+          "S_e": 0.5,
+          "spatial_distance_km": 0
+        },
+        "sun_center": {
+          "S_k": 0.99,
+          "S_t": 0.85,
+          "S_e": 0.95,
+          "spatial_distance_km": 150000000.0
+        },
+        "deep_space": {
+          "S_k": 0.01,
+          "S_t": 0.01,
+          "S_e": 0.01,
+          "spatial_distance_km": 1000000000000000.0
+        }
+      },
+      "conclusion": "All locations accessed the same way - via S-coordinate navigation"
+    }
+  ]
+}

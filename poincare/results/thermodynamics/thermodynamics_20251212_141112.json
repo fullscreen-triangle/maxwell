@@ -1,0 +1,113 @@
+{
+  "timestamp": "2025-12-12 14:11:10",
+  "demonstration": "categorical_thermodynamics",
+  "experiments": [
+    {
+      "name": "thermodynamic_state",
+      "description": "Complete thermodynamic state from hardware",
+      "state": {
+        "temperature": 0.08208987831755264,
+        "pressure": 13279.736319629175,
+        "entropy": 2.2986248010402517,
+        "internal_energy": 123.13481747632896,
+        "free_energy": 122.94612364611386,
+        "molecule_count": 1000,
+        "volume": 0.0
+      },
+      "note": "All quantities derived from REAL hardware timing"
+    },
+    {
+      "name": "maxwell_boltzmann_fit",
+      "description": "Checking if timing jitter follows MB distribution",
+      "fit_quality": 0.5000000001030132,
+      "mean_S_e": 0.5062682723999024,
+      "variance_S_e": 0.08208987830063998,
+      "temperature": 0.08208987831755264,
+      "expected_variance": 0.04104493915877632,
+      "note": "Hardware timing should approximately follow MB distribution"
+    },
+    {
+      "name": "ideal_gas_law",
+      "description": "Checking PV = NkT analog",
+      "consistency": 0.0,
+      "P": 7863.675324651407,
+      "V": 0.0,
+      "N": 1000,
+      "T": 0.08208987831755264,
+      "k_effective": 0.0
+    },
+    {
+      "name": "temperature_evolution",
+      "description": "Temperature changes as chamber evolves",
+      "samples": 100,
+      "initial_temperature": 0.08208164876836928,
+      "final_temperature": 0.0819407503191136,
+      "evolution": [
+        {
+          "time": 0.0034478000015951693,
+          "temperature": 0.08208164876836928,
+          "molecule_count": 1001
+        },
+        {
+          "time": 0.15681049998966046,
+          "temperature": 0.08230317461776904,
+          "molecule_count": 1011
+        },
+        {
+          "time": 0.31582769998931326,
+          "temperature": 0.08236392368589204,
+          "molecule_count": 1021
+        },
+        {
+          "time": 0.4803638999874238,
+          "temperature": 0.08237208058978111,
+          "molecule_count": 1031
+        },
+        {
+          "time": 0.6372440000122879,
+          "temperature": 0.08212610878808808,
+          "molecule_count": 1041
+        },
+        {
+          "time": 0.7975328000029549,
+          "temperature": 0.08207666371160696,
+          "molecule_count": 1051
+        },
+        {
+          "time": 1.0115931000036653,
+          "temperature": 0.08195629183431945,
+          "molecule_count": 1061
+        },
+        {
+          "time": 1.1862064999877475,
+          "temperature": 0.08205758397743995,
+          "molecule_count": 1071
+        },
+        {
+          "time": 1.3366843000112567,
+          "temperature": 0.08218437823913033,
+          "molecule_count": 1081
+        },
+        {
+          "time": 1.4937862000078894,
+          "temperature": 0.08233031872472837,
+          "molecule_count": 1091
+        }
+      ]
+    },
+    {
+      "name": "second_law_check",
+      "description": "Verifying thermodynamic consistency",
+      "categorical_entropy": 2.2997033294517095,
+      "physical_entropy_preserved": true,
+      "reason": "Categorical operations are orthogonal to physical phase space"
+    },
+    {
+      "name": "physical_temperature",
+      "description": "Estimating physical temperature from categorical",
+      "reference_K": 300.0,
+      "estimated_K": 324.5822250957341,
+      "note": "Requires calibration against known temperature"
+    }
+  ]
+}

@@ -1,5 +1,11 @@
 # Maxwell
 
+
+<div align="center">
+  <img src="assets/img/Alexander_VI.png" alt="Borgia Logo" width="200"/>
+</div>
+
+
 **Resolution of Maxwell's Demon Through Categorical Phase-Lock Topology**
 
 This repository contains:

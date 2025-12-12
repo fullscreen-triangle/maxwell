@@ -10,8 +10,12 @@ import math
 from typing import List, Dict, Optional, Tuple, Any
 from dataclasses import dataclass
 
-from .virtual_molecule import VirtualMolecule, SCoordinate
-from .virtual_chamber import VirtualChamber
+try:
+    from .virtual_molecule import VirtualMolecule, SCoordinate
+    from .virtual_chamber import VirtualChamber
+except ImportError:
+    from virtual_molecule import VirtualMolecule, SCoordinate
+    from virtual_chamber import VirtualChamber
 
 
 @dataclass

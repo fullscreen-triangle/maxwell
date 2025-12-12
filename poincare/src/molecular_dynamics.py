@@ -19,7 +19,10 @@ from dataclasses import dataclass, field
 from typing import List, Dict, Optional, Tuple
 from enum import Enum
 
-from .virtual_molecule import VirtualMolecule, SCoordinate
+try:
+    from .virtual_molecule import VirtualMolecule, SCoordinate
+except ImportError:
+    from virtual_molecule import VirtualMolecule, SCoordinate
 
 
 class InteractionType(Enum):

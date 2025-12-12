@@ -1,0 +1,1687 @@
+{
+  "timestamp": "2025-12-12 14:10:20",
+  "package": "poincare",
+  "description": "Virtual Categorical Gas Chamber - Complete Experimental Results",
+  "experiments": {
+    "virtual_molecule": {
+      "timestamp": "2025-12-12 14:10:20",
+      "demonstration": "virtual_molecule",
+      "experiments": [
+        {
+          "name": "hardware_timing_molecules",
+          "description": "Molecules created from hardware timing measurements",
+          "molecule_count": 100,
+          "molecules": [
+            {
+              "index": 0,
+              "delta_p_ns": 1200,
+              "S_k": 1.0,
+              "S_t": 0.9997347418229159,
+              "S_e": 2.384185791015625e-07,
+              "identity": "821a0829d0400d40",
+              "frequency": 1201000000000.0002,
+              "phase": 1.7053025658242404e-12,
+              "amplitude": 1.0
+            },
+            {
+              "index": 1,
+              "delta_p_ns": 1000,
+              "S_k": 1.0,
+              "S_t": 0.9996816902199195,
+              "S_e": 1.1920928955078125e-07,
+              "identity": "a367e284f82ce093",
+              "frequency": 1001000000000.0001,
+              "phase": 5.115907697472721e-13,
+              "amplitude": 1.0
+            },
+            {
+              "index": 2,
+              "delta_p_ns": 900,
+              "S_k": 1.0,
+              "S_t": 0.9996463224942309,
+              "S_e": 1.1920928955078125e-07,
+              "identity": "ba4d0cd50d73e347",
+              "frequency": 901000000000.0001,
+              "phase": 8.242295734817162e-13,
+              "amplitude": 0.9
+            },
+            {
+              "index": 3,
+              "delta_p_ns": 500,
+              "S_k": 1.0,
+              "S_t": 0.9993633810764567,
+              "S_e": 5.960464477539063e-08,
+              "identity": "bfde97755cfa7d5d",
+              "frequency": 501000000000.00006,
+              "phase": 2.5579538487363607e-13,
+              "amplitude": 0.5000000000000001
+            },
+            {
+              "index": 4,
+              "delta_p_ns": 600,
+              "S_k": 1.0,
+              "S_t": 0.9994694840142452,
+              "S_e": 1.1920928955078125e-07,
+              "identity": "f325e42d25f49c1c",
+              "frequency": 601000000000.0001,
+              "phase": 8.526512829121202e-13,
+              "amplitude": 0.6000000000000001
+            },
+            {
+              "index": 5,
+              "delta_p_ns": 300,
+              "S_k": 1.0,
+              "S_t": 0.9989389709757794,
+              "S_e": 5.960464477539063e-08,
+              "identity": "c07cda860cb77085",
+              "frequency": 301000000000.00006,
+              "phase": 4.263256414560601e-13,
+              "amplitude": 0.30000000000000004
+            },
+            {
+              "index": 6,
+              "delta_p_ns": 200,
+              "S_k": 1.0,
+              "S_t": 0.998408463831794,
+              "S_e": 2.9802322387695312e-08,
+              "identity": "898d6c68cf50cdc1",
+              "frequency": 201000000000.00003,
+              "phase": 2.8421709430404007e-13,
+              "amplitude": 0.2
+            },
+            {
+              "index": 7,
+              "delta_p_ns": 300,
+              "S_k": 1.0,
+              "S_t": 0.9989389709757794,
+              "S_e": 5.960464477539063e-08,
+              "identity": "c07cda860cb77085",
+              "frequency": 301000000000.00006,
+              "phase": 4.263256414560601e-13,
+              "amplitude": 0.30000000000000004
+            },
+            {
+              "index": 8,
+              "delta_p_ns": 300,
+              "S_k": 1.0,
+              "S_t": 0.9989389709757794,
+              "S_e": 5.960464477539063e-08,
+              "identity": "c07cda860cb77085",
+              "frequency": 301000000000.00006,
+              "phase": 4.263256414560601e-13,
+              "amplitude": 0.30000000000000004
+            },
+            {
+              "index": 9,
+              "delta_p_ns": 200,
+              "S_k": 1.0,
+              "S_t": 0.998408463831794,
+              "S_e": 2.9802322387695312e-08,
+              "identity": "898d6c68cf50cdc1",
+              "frequency": 201000000000.00003,
+              "phase": 2.8421709430404007e-13,
+              "amplitude": 0.2
+            },
+            {
+              "index": 10,
+              "delta_p_ns": 300,
+              "S_k": 1.0,
+              "S_t": 0.9989389709757794,
+              "S_e": 5.960464477539063e-08,
+              "identity": "c07cda860cb77085",
+              "frequency": 301000000000.00006,
+              "phase": 4.263256414560601e-13,
+              "amplitude": 0.30000000000000004
+            },
+            {
+              "index": 11,
+              "delta_p_ns": 800,
+              "S_k": 1.0,
+              "S_t": 0.9996021128495031,
+              "S_e": 1.1920928955078125e-07,
+              "identity": "cde60203b1b27084",
+              "frequency": 801000000000.0001,
+              "phase": 1.1368683772161603e-12,
+              "amplitude": 0.8
+            },
+            {
+              "index": 12,
+              "delta_p_ns": 600,
+              "S_k": 1.0,
+              "S_t": 0.9994694840142452,
+              "S_e": 1.1920928955078125e-07,
+              "identity": "f325e42d25f49c1c",
+              "frequency": 601000000000.0001,
+              "phase": 8.526512829121202e-13,
+              "amplitude": 0.6000000000000001
+            },
+            {
+              "index": 13,
+              "delta_p_ns": 500,
+              "S_k": 1.0,
+              "S_t": 0.9993633810764567,
+              "S_e": 5.960464477539063e-08,
+              "identity": "bfde97755cfa7d5d",
+              "frequency": 501000000000.00006,
+              "phase": 2.5579538487363607e-13,
+              "amplitude": 0.5000000000000001
+            },
+            {
+              "index": 14,
+              "delta_p_ns": 300,
+              "S_k": 1.0,
+              "S_t": 0.9989389709757794,
+              "S_e": 5.960464477539063e-08,
+              "identity": "c07cda860cb77085",
+              "frequency": 301000000000.00006,
+              "phase": 4.263256414560601e-13,
+              "amplitude": 0.30000000000000004
+            },
+            {
+              "index": 15,
+              "delta_p_ns": 300,
+              "S_k": 1.0,
+              "S_t": 0.9989389709757794,
+              "S_e": 5.960464477539063e-08,
+              "identity": "c07cda860cb77085",
+              "frequency": 301000000000.00006,
+              "phase": 4.263256414560601e-13,
+              "amplitude": 0.30000000000000004
+            },
+            {
+              "index": 16,
+              "delta_p_ns": 300,
+              "S_k": 1.0,
+              "S_t": 0.9989389709757794,
+              "S_e": 5.960464477539063e-08,
+              "identity": "c07cda860cb77085",
+              "frequency": 301000000000.00006,
+              "phase": 4.263256414560601e-13,
+              "amplitude": 0.30000000000000004
+            },
+            {
+              "index": 17,
+              "delta_p_ns": 300,
+              "S_k": 1.0,
+              "S_t": 0.9989389709757794,
+              "S_e": 5.960464477539063e-08,
+              "identity": "c07cda860cb77085",
+              "frequency": 301000000000.00006,
+              "phase": 4.263256414560601e-13,
+              "amplitude": 0.30000000000000004
+            },
+            {
+              "index": 18,
+              "delta_p_ns": 300,
+              "S_k": 1.0,
+              "S_t": 0.9989389709757794,
+              "S_e": 5.960464477539063e-08,
+              "identity": "c07cda860cb77085",
+              "frequency": 301000000000.00006,
+              "phase": 4.263256414560601e-13,
+              "amplitude": 0.30000000000000004
+            },
+            {
+              "index": 19,
+              "delta_p_ns": 300,
+              "S_k": 1.0,
+              "S_t": 0.9989389709757794,
+              "S_e": 5.960464477539063e-08,
+              "identity": "c07cda860cb77085",
+              "frequency": 301000000000.00006,
+              "phase": 4.263256414560601e-13,
+              "amplitude": 0.30000000000000004
+            }
+          ],
+          "statistics": {
+            "mean_S_k": 1.0,
+            "mean_S_t": 0.9989954333344826,
+            "mean_S_e": 6.377696990966797e-08,
+            "mean_delta_p_ns": 376.0
+          }
+        },
+        {
+          "name": "identity_demonstration",
+          "description": "Molecule = Spectrometer = Cursor (same categorical state)",
+          "molecule_identity": "76c5042d8fca64af",
+          "cursor_position": [
+            1.0,
+            0.9998010563470393,
+            2.384185791015625e-07
+          ],
+          "spectrometer_reading": {
+            "S_k": 1.0,
+            "S_t": 0.9998010563470393,
+            "S_e": 2.384185791015625e-07,
+            "frequency_Hz": 1601000000000.0002,
+            "phase_rad": 2.2737367544323206e-12,
+            "amplitude": 1.0,
+            "identity": "76c5042d8fca64af"
+          },
+          "conclusion": "These are ONE categorical state, not three separate things"
+        },
+        {
+          "name": "jupiter_core_access",
+          "description": "Jupiter core is categorically accessible (no spatial propagation)",
+          "jupiter_core": {
+            "S_k": 0.95,
+            "S_t": 0.73,
+            "S_e": 0.88,
+            "source": "jupiter_core_definition"
+          },
+          "local_molecule": {
+            "S_k": 1.0,
+            "S_t": 0.9998010563470393,
+            "S_e": 2.384185791015625e-07,
+            "source": "perf_counter"
+          },
+          "s_distance": 0.9217874974143097,
+          "conclusion": "Both accessed instantaneously - spatial distance irrelevant"
+        },
+        {
+          "name": "categorical_distance_independence",
+          "description": "Categorical distance is independent of spatial distance",
+          "locations": {
+            "jupiter_core": {
+              "S_k": 0.95,
+              "S_t": 0.73,
+              "S_e": 0.88,
+              "spatial_distance_km": 600000000.0
+            },
+            "room_temperature": {
+              "S_k": 0.5,
+              "S_t": 0.5,
+              "S_e": 0.5,
+              "spatial_distance_km": 0
+            },
+            "sun_center": {
+              "S_k": 0.99,
+              "S_t": 0.85,
+              "S_e": 0.95,
+              "spatial_distance_km": 150000000.0
+            },
+            "deep_space": {
+              "S_k": 0.01,
+              "S_t": 0.01,
+              "S_e": 0.01,
+              "spatial_distance_km": 1000000000000000.0
+            }
+          },
+          "conclusion": "All locations accessed the same way - via S-coordinate navigation"
+        }
+      ]
+    },
+    "virtual_spectrometer": {
+      "timestamp": "2025-12-12 14:10:21",
+      "demonstration": "virtual_spectrometer",
+      "experiments": [
+        {
+          "name": "fishing_tackle",
+          "description": "The tackle defines what can be caught",
+          "tackle": {
+            "oscillator_count": 3,
+            "frequencies": [
+              1000000000.0,
+              3000000000.0,
+              2100000000.0
+            ],
+            "s_resolution": 1e-06,
+            "max_reach": 1.0
+          },
+          "oscillators": [
+            {
+              "name": "perf_counter",
+              "frequency_Hz": 1000000000.0
+            },
+            {
+              "name": "cpu_cycle",
+              "frequency_Hz": 3000000000.0
+            },
+            {
+              "name": "memory_bus",
+              "frequency_Hz": 2100000000.0
+            }
+          ]
+        },
+        {
+          "name": "categorical_navigation",
+          "description": "Measuring at different categorical locations",
+          "locations_measured": 5,
+          "measurements": {
+            "origin": {
+              "requested_coords": [
+                0.5,
+                0.5,
+                0.5
+              ],
+              "measured_coords": [
+                0.5,
+                0.5,
+                0.5
+              ],
+              "identity": "30931b49ede03d50",
+              "catch_probability": 0.5909090909090909
+            },
+            "jupiter_core": {
+              "requested_coords": [
+                0.95,
+                0.73,
+                0.88
+              ],
+              "measured_coords": [
+                0.95,
+                0.73,
+                0.88
+              ],
+              "identity": "9d4a404dd4b315db",
+              "catch_probability": 0.5909090909090909
+            },
+            "deep_space": {
+              "requested_coords": [
+                0.01,
+                0.01,
+                0.01
+              ],
+              "measured_coords": [
+                0.01,
+                0.01,
+                0.01
+              ],
+              "identity": "68b1c2bbe9d7b1ee",
+              "catch_probability": 0.6976190476190476
+            },
+            "sun_center": {
+              "requested_coords": [
+                0.99,
+                0.85,
+                0.95
+              ],
+              "measured_coords": [
+                0.99,
+                0.85,
+                0.95
+              ],
+              "identity": "45fb54d0b8f4a21d",
+              "catch_probability": 0.5909090909090909
+            },
+            "earth_mantle": {
+              "requested_coords": [
+                0.7,
+                0.5,
+                0.6
+              ],
+              "measured_coords": [
+                0.7,
+                0.5,
+                0.6
+              ],
+              "identity": "2a99c05745337b77",
+              "catch_probability": 0.5909090909090909
+            }
+          },
+          "conclusion": "All locations accessed equally fast - no spatial propagation"
+        },
+        {
+          "name": "hardware_defined_measurement",
+          "description": "Let hardware define where to measure",
+          "measurement_count": 50,
+          "measurements": [
+            {
+              "index": 0,
+              "S_k": 1.0,
+              "S_t": 0.9999999079532638,
+              "S_e": 0.109375,
+              "identity": "dca91b19b7eeceb2"
+            },
+            {
+              "index": 1,
+              "S_k": 1.0,
+              "S_t": 0.9999997723865042,
+              "S_e": 0.881103515625,
+              "identity": "c69876a6c5a4eae6"
+            },
+            {
+              "index": 2,
+              "S_k": 1.0,
+              "S_t": 0.9999998113495612,
+              "S_e": 0.155029296875,
+              "identity": "41c517f3f39b3e9e"
+            },
+            {
+              "index": 3,
+              "S_k": 1.0,
+              "S_t": 0.999999817566549,
+              "S_e": 0.06689453125,
+              "identity": "a56944d17384da08"
+            },
+            {
+              "index": 4,
+              "S_k": 1.0,
+              "S_t": 0.9999997536873112,
+              "S_e": 0.810791015625,
+              "identity": "5fd25eb2849a7f00"
+            },
+            {
+              "index": 5,
+              "S_k": 1.0,
+              "S_t": 0.999999815561631,
+              "S_e": 0.9951171875,
+              "identity": "70e6ee0021fe6eb3"
+            },
+            {
+              "index": 6,
+              "S_k": 1.0,
+              "S_t": 0.9999998161864724,
+              "S_e": 0.971923828125,
+              "identity": "39e3fdf484485ee7"
+            },
+            {
+              "index": 7,
+              "S_k": 1.0,
+              "S_t": 0.9999998097825473,
+              "S_e": 0.7421875,
+              "identity": "50ff8b6674572c60"
+            },
+            {
+              "index": 8,
+              "S_k": 1.0,
+              "S_t": 0.99999992591989,
+              "S_e": 0.55224609375,
+              "identity": "aad1c7033f3eabd3"
+            },
+            {
+              "index": 9,
+              "S_k": 1.0,
+              "S_t": 0.9999998301985025,
+              "S_e": 0.794189453125,
+              "identity": "17a028eec02b367f"
+            }
+          ],
+          "statistics": {
+            "mean_S_k": 1.0,
+            "mean_S_t": 0.9999998164547139,
+            "mean_S_e": 0.479326171875
+          }
+        },
+        {
+          "name": "tackle_comparison",
+          "description": "Different tackle = different possible catches",
+          "comparison": {
+            "limited": {
+              "oscillators": 1,
+              "max_reach": 0.3,
+              "can_reach_jupiter": false
+            },
+            "full": {
+              "oscillators": 3,
+              "max_reach": 1.0,
+              "can_reach_jupiter": true
+            }
+          },
+          "conclusion": "The tackle DEFINES what can be measured"
+        },
+        {
+          "name": "measurement_history",
+          "description": "All molecules created through measurement",
+          "total_measurements": 55,
+          "unique_identities": 55
+        }
+      ]
+    },
+    "virtual_chamber": {
+      "timestamp": "2025-12-12 14:10:21",
+      "demonstration": "virtual_chamber",
+      "experiments": [
+        {
+          "name": "chamber_population",
+          "description": "Populating chamber from hardware oscillations",
+          "final_molecule_count": 1000,
+          "population_dynamics": [
+            {
+              "molecules": 0,
+              "temperature": 0.0,
+              "pressure": 0.0,
+              "volume": 0.0
+            },
+            {
+              "molecules": 100,
+              "temperature": 0.07854175204524848,
+              "pressure": 51263.649431788996,
+              "volume": 0.0
+            },
+            {
+              "molecules": 200,
+              "temperature": 0.07791354239117339,
+              "pressure": 57603.6869322736,
+              "volume": 0.0
+            },
+            {
+              "molecules": 300,
+              "temperature": 0.07617507630733489,
+              "pressure": 52266.629574722545,
+              "volume": 0.0
+            },
+            {
+              "molecules": 400,
+              "temperature": 0.07812274547805874,
+              "pressure": 51520.49885657659,
+              "volume": 0.0
+            },
+            {
+              "molecules": 500,
+              "temperature": 0.07894093313639669,
+              "pressure": 47198.75400494642,
+              "volume": 0.0
+            },
+            {
+              "molecules": 600,
+              "temperature": 0.0789987219775863,
+              "pressure": 32642.402477835618,
+              "volume": 0.0
+            },
+            {
+              "molecules": 700,
+              "temperature": 0.08233711858651627,
+              "pressure": 30945.381431819966,
+              "volume": 0.0
+            },
+            {
+              "molecules": 800,
+              "temperature": 0.0812702767122005,
+              "pressure": 30555.926897723093,
+              "volume": 0.0
+            },
+            {
+              "molecules": 900,
+              "temperature": 0.08156877934831958,
+              "pressure": 28735.08171753478,
+              "volume": 0.0
+            },
+            {
+              "molecules": 1000,
+              "temperature": 0.08227320227060057,
+              "pressure": 27094.470304777347,
+              "volume": 0.0
+            }
+          ]
+        },
+        {
+          "name": "chamber_statistics",
+          "description": "Real thermodynamic quantities from hardware",
+          "statistics": {
+            "molecule_count": 1000,
+            "mean_S_k": 1.0,
+            "mean_S_t": 0.9999722798158561,
+            "mean_S_e": 0.5012270984649658,
+            "temperature": 0.08227320227060057,
+            "pressure": 18938.927645157204,
+            "volume": 0.0,
+            "S_k_variance": 0.0,
+            "S_t_variance": 1.1439660196376518e-10,
+            "S_e_variance": 0.08227320215620376
+          },
+          "note": "Temperature IS hardware timing jitter, Pressure IS sampling rate"
+        },
+        {
+          "name": "molecule_distribution",
+          "description": "Distribution of molecules in S-space",
+          "histograms": {
+            "S_k": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1000
+            ],
+            "S_t": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1000
+            ],
+            "S_e": [
+              89,
+              122,
+              111,
+              83,
+              90,
+              91,
+              99,
+              106,
+              123,
+              86
+            ]
+          }
+        },
+        {
+          "name": "categorical_navigation",
+          "description": "Navigating to different categorical locations",
+          "locations": {
+            "room_temperature": {
+              "accessible": true,
+              "S_k": 0.5,
+              "S_t": 0.5,
+              "S_e": 0.5
+            },
+            "jupiter_core": {
+              "accessible": true,
+              "S_k": 0.95,
+              "S_t": 0.73,
+              "S_e": 0.88
+            },
+            "deep_space": {
+              "accessible": true,
+              "S_k": 0.01,
+              "S_t": 0.01,
+              "S_e": 0.01
+            },
+            "sun_center": {
+              "accessible": true,
+              "S_k": 0.99,
+              "S_t": 0.85,
+              "S_e": 0.95
+            },
+            "earth_mantle": {
+              "accessible": true,
+              "S_k": 0.7,
+              "S_t": 0.5,
+              "S_e": 0.6
+            }
+          },
+          "conclusion": "All locations accessed instantaneously - no spatial propagation"
+        },
+        {
+          "name": "extreme_molecules",
+          "description": "Finding coldest and hottest molecules (by S_e)",
+          "coldest": {
+            "S_k": 1.0,
+            "S_t": 0.9999837596907275,
+            "S_e": 0.00254058837890625
+          },
+          "hottest": {
+            "S_k": 1.0,
+            "S_t": 0.9999761565884924,
+            "S_e": 0.9951210021972656
+          },
+          "temperature_range": 0.9925804138183594
+        },
+        {
+          "name": "timing_analysis",
+          "description": "Analysis of sampling timing",
+          "sample_count": 100,
+          "mean_sample_time_ns": 27749.0,
+          "samples": [
+            {
+              "sample_time_ns": 73400,
+              "S_k": 1.0,
+              "S_t": 0.9999998890887001,
+              "S_e": 0.48974609375
+            },
+            {
+              "sample_time_ns": 31600,
+              "S_k": 1.0,
+              "S_t": 0.9999956306116387,
+              "S_e": 0.148101806640625
+            },
+            {
+              "sample_time_ns": 26400,
+              "S_k": 1.0,
+              "S_t": 0.9999903978932817,
+              "S_e": 0.8963356018066406
+            },
+            {
+              "sample_time_ns": 48600,
+              "S_k": 1.0,
+              "S_t": 0.9999886923648136,
+              "S_e": 0.25994110107421875
+            },
+            {
+              "sample_time_ns": 42800,
+              "S_k": 1.0,
+              "S_t": 0.9999940944365747,
+              "S_e": 0.566253662109375
+            },
+            {
+              "sample_time_ns": 21600,
+              "S_k": 1.0,
+              "S_t": 0.9999925454367944,
+              "S_e": 0.7318801879882812
+            },
+            {
+              "sample_time_ns": 23800,
+              "S_k": 1.0,
+              "S_t": 0.9999865691981858,
+              "S_e": 0.5949020385742188
+            },
+            {
+              "sample_time_ns": 36100,
+              "S_k": 1.0,
+              "S_t": 0.9999914776487644,
+              "S_e": 0.9380340576171875
+            },
+            {
+              "sample_time_ns": 15700,
+              "S_k": 1.0,
+              "S_t": 0.9999872420817085,
+              "S_e": 0.79638671875
+            },
+            {
+              "sample_time_ns": 30100,
+              "S_k": 1.0,
+              "S_t": 0.9999814936269487,
+              "S_e": 0.9641380310058594
+            }
+          ]
+        }
+      ]
+    },
+    "maxwell_demon": {
+      "timestamp": "2025-12-12 14:10:21",
+      "demonstration": "maxwell_demon",
+      "experiments": [
+        {
+          "name": "zero_backaction_observation",
+          "description": "Demon observes molecules with zero backaction",
+          "observations_made": 100,
+          "total_observation_cost": 0.0,
+          "total_backaction": 0.0,
+          "sample_observations": [
+            {
+              "S_k": 1.0,
+              "S_t": 0.9999916672836067,
+              "S_e": 0.2574005126953125,
+              "observation_cost": 0.0,
+              "backaction": 0.0
+            },
+            {
+              "S_k": 1.0,
+              "S_t": 0.9999934905945767,
+              "S_e": 0.9298553466796875,
+              "observation_cost": 0.0,
+              "backaction": 0.0
+            },
+            {
+              "S_k": 1.0,
+              "S_t": 0.9999877337201839,
+              "S_e": 0.28975677490234375,
+              "observation_cost": 0.0,
+              "backaction": 0.0
+            },
+            {
+              "S_k": 1.0,
+              "S_t": 0.9999893541877575,
+              "S_e": 0.6233406066894531,
+              "observation_cost": 0.0,
+              "backaction": 0.0
+            },
+            {
+              "S_k": 1.0,
+              "S_t": 0.9999852974680998,
+              "S_e": 0.7139511108398438,
+              "observation_cost": 0.0,
+              "backaction": 0.0
+            },
+            {
+              "S_k": 1.0,
+              "S_t": 0.9999852974582175,
+              "S_e": 0.7987213134765625,
+              "observation_cost": 0.0,
+              "backaction": 0.0
+            },
+            {
+              "S_k": 1.0,
+              "S_t": 0.9999890615171847,
+              "S_e": 0.028644561767578125,
+              "observation_cost": 0.0,
+              "backaction": 0.0
+            },
+            {
+              "S_k": 1.0,
+              "S_t": 0.9999896316001178,
+              "S_e": 0.3028068542480469,
+              "observation_cost": 0.0,
+              "backaction": 0.0
+            },
+            {
+              "S_k": 1.0,
+              "S_t": 0.9999867370845317,
+              "S_e": 0.9429130554199219,
+              "observation_cost": 0.0,
+              "backaction": 0.0
+            },
+            {
+              "S_k": 1.0,
+              "S_t": 0.9999833780741026,
+              "S_e": 0.395751953125,
+              "observation_cost": 0.0,
+              "backaction": 0.0
+            }
+          ],
+          "conclusion": "Zero energy cost, zero backaction - categorical observables commute"
+        },
+        {
+          "name": "sorting_by_S_e",
+          "description": "Demon sorts molecules by evolution entropy",
+          "threshold": 0.5,
+          "hot_count": 506,
+          "cold_count": 494,
+          "hot_mean_S_e": 0.748285679949131,
+          "cold_mean_S_e": 0.24377429050955213,
+          "temperature_gradient": 0.5045113894395789,
+          "decision_energy_cost": 0.0
+        },
+        {
+          "name": "multi_criteria_sorting",
+          "description": "Sorting by different S-entropy coordinates",
+          "criteria_results": {
+            "knowledge_entropy": {
+              "hot_count": 1000,
+              "cold_count": 0,
+              "gradient": 0.0
+            },
+            "temporal_entropy": {
+              "hot_count": 1000,
+              "cold_count": 0,
+              "gradient": 0.0
+            },
+            "evolution_entropy": {
+              "hot_count": 506,
+              "cold_count": 494,
+              "gradient": 0.5045113894395789
+            }
+          }
+        },
+        {
+          "name": "demon_report",
+          "description": "Complete report of demon activities",
+          "report": {
+            "observations": 4100,
+            "sorts": 4000,
+            "hot_count": 506,
+            "cold_count": 494,
+            "temperature_gradient": 0.5045113894395789,
+            "decision_energy_cost": 0.0,
+            "backaction": 0.0,
+            "thermodynamic_violation": false
+          },
+          "thermodynamic_analysis": {
+            "second_law_violated": false,
+            "reason": "Categorical observables commute with physical observables",
+            "information_gain_source": "Categorical space (orthogonal to physical)",
+            "energy_for_decisions": 0.0,
+            "energy_for_physical_moves": "Only if physically moving data"
+          }
+        },
+        {
+          "name": "extreme_molecules",
+          "description": "Demon finds extreme molecules",
+          "coldest": {
+            "S_k": 1.0,
+            "S_t": 0.9999850207022161,
+            "S_e": 0.001373291015625
+          },
+          "hottest": {
+            "S_k": 1.0,
+            "S_t": 0.9999683274323428,
+            "S_e": 0.9974555969238281
+          }
+        }
+      ]
+    },
+    "molecular_dynamics": {
+      "timestamp": "2025-12-12 14:10:21",
+      "demonstration": "molecular_dynamics",
+      "experiments": [
+        {
+          "name": "trajectory_tracking",
+          "description": "Tracking molecule trajectories in S-space",
+          "molecules_tracked": 10,
+          "trajectories": [
+            {
+              "identity": "e3178535",
+              "points": 51,
+              "total_distance": 15.65527343757059,
+              "mean_velocity": 92.08832699877934
+            },
+            {
+              "identity": "639e5df9",
+              "points": 51,
+              "total_distance": 19.97644043004968,
+              "mean_velocity": 117.52803807885182
+            },
+            {
+              "identity": "55e94085",
+              "points": 51,
+              "total_distance": 17.7842559827162,
+              "mean_velocity": 104.62477922038548
+            },
+            {
+              "identity": "9b0b6129",
+              "points": 51,
+              "total_distance": 16.97814941564997,
+              "mean_velocity": 99.87557966434491
+            },
+            {
+              "identity": "b4a2a023",
+              "points": 51,
+              "total_distance": 15.12451935134329,
+              "mean_velocity": 88.9528482084545
+            },
+            {
+              "identity": "a9bb4c61",
+              "points": 51,
+              "total_distance": 21.83355713113617,
+              "mean_velocity": 128.40255217503605
+            },
+            {
+              "identity": "c1f44b47",
+              "points": 51,
+              "total_distance": 18.161933902346323,
+              "mean_velocity": 106.79382108667951
+            },
+            {
+              "identity": "1d7967fa",
+              "points": 51,
+              "total_distance": 21.012614131967318,
+              "mean_velocity": 123.53879099420531
+            },
+            {
+              "identity": "92d5167d",
+              "points": 51,
+              "total_distance": 15.145309468069254,
+              "mean_velocity": 89.03249879970672
+            },
+            {
+              "identity": "a6baf84c",
+              "points": 51,
+              "total_distance": 16.44348144718442,
+              "mean_velocity": 96.64398667848018
+            }
+          ]
+        },
+        {
+          "name": "harmonic_interactions",
+          "description": "Finding harmonic coincidences between molecules",
+          "molecules_tested": 20,
+          "interactions_found": 157,
+          "sample_interactions": [
+            {
+              "type": "harmonic_coincidence",
+              "strength": 0.09090909090909091,
+              "s_distance": 0.1251029970260755,
+              "harmonic_order": [
+                8,
+                3
+              ]
+            },
+            {
+              "type": "harmonic_coincidence",
+              "strength": 0.07692307692307693,
+              "s_distance": 0.2012863161323326,
+              "harmonic_order": [
+                10,
+                3
+              ]
+            },
+            {
+              "type": "harmonic_coincidence",
+              "strength": 0.1111111111111111,
+              "s_distance": 0.12977218670810473,
+              "harmonic_order": [
+                7,
+                2
+              ]
+            },
+            {
+              "type": "harmonic_coincidence",
+              "strength": 0.1111111111111111,
+              "s_distance": 0.5625534058568542,
+              "harmonic_order": [
+                7,
+                2
+              ]
+            },
+            {
+              "type": "harmonic_coincidence",
+              "strength": 0.1111111111111111,
+              "s_distance": 0.35990142836389355,
+              "harmonic_order": [
+                7,
+                2
+              ]
+            },
+            {
+              "type": "harmonic_coincidence",
+              "strength": 0.07692307692307693,
+              "s_distance": 0.3768577576981751,
+              "harmonic_order": [
+                10,
+                3
+              ]
+            },
+            {
+              "type": "harmonic_coincidence",
+              "strength": 0.07692307692307693,
+              "s_distance": 0.2860565187055269,
+              "harmonic_order": [
+                10,
+                3
+              ]
+            },
+            {
+              "type": "harmonic_coincidence",
+              "strength": 0.1111111111111111,
+              "s_distance": 0.31956481951236365,
+              "harmonic_order": [
+                7,
+                2
+              ]
+            },
+            {
+              "type": "harmonic_coincidence",
+              "strength": 0.1,
+              "s_distance": 0.5422897339115536,
+              "harmonic_order": [
+                7,
+                3
+              ]
+            },
+            {
+              "type": "harmonic_coincidence",
+              "strength": 0.1,
+              "s_distance": 0.1371803284761967,
+              "harmonic_order": [
+                7,
+                3
+              ]
+            }
+          ]
+        },
+        {
+          "name": "diffusion_analysis",
+          "description": "Categorical diffusion coefficients",
+          "molecules_analyzed": 10,
+          "diffusion_coefficients": [
+            {
+              "identity": "e3178535",
+              "diffusion_coefficient": 0.306442004619333
+            },
+            {
+              "identity": "639e5df9",
+              "diffusion_coefficient": 0.12144957599531131
+            },
+            {
+              "identity": "55e94085",
+              "diffusion_coefficient": 0.212090578669706
+            },
+            {
+              "identity": "9b0b6129",
+              "diffusion_coefficient": 0.22241898717836295
+            },
+            {
+              "identity": "b4a2a023",
+              "diffusion_coefficient": 0.09861100497694027
+            },
+            {
+              "identity": "a9bb4c61",
+              "diffusion_coefficient": 0.09904046495685645
+            },
+            {
+              "identity": "c1f44b47",
+              "diffusion_coefficient": 0.08678830333284442
+            },
+            {
+              "identity": "1d7967fa",
+              "diffusion_coefficient": 0.20750693065374753
+            },
+            {
+              "identity": "92d5167d",
+              "diffusion_coefficient": 0.08606192413301658
+            },
+            {
+              "identity": "a6baf84c",
+              "diffusion_coefficient": 0.11106234954192129
+            }
+          ],
+          "mean_diffusion_coefficient": 0.15514721240580398
+        },
+        {
+          "name": "velocity_analysis",
+          "description": "Velocity vectors in S-space",
+          "velocities": [
+            {
+              "identity": "e3178535",
+              "v_S_k": 0.0,
+              "v_S_t": 3.815393221677227e-06,
+              "v_S_e": 0.0
+            },
+            {
+              "identity": "639e5df9",
+              "v_S_k": 0.0,
+              "v_S_t": 0.00019418236601595346,
+              "v_S_e": 1.0
+            },
+            {
+              "identity": "55e94085",
+              "v_S_k": 0.0,
+              "v_S_t": 0.0006362667377982735,
+              "v_S_e": 1.0
+            },
+            {
+              "identity": "9b0b6129",
+              "v_S_k": 0.0,
+              "v_S_t": 0.0008697421201238233,
+              "v_S_e": 0.0
+            },
+            {
+              "identity": "b4a2a023",
+              "v_S_k": 0.0,
+              "v_S_t": 0.0003537383888956393,
+              "v_S_e": 1.0
+            },
+            {
+              "identity": "a9bb4c61",
+              "v_S_k": 0.0,
+              "v_S_t": 0.0012535472715355558,
+              "v_S_e": 1.0
+            },
+            {
+              "identity": "c1f44b47",
+              "v_S_k": 0.0,
+              "v_S_t": 0.0009078985268788164,
+              "v_S_e": 0.0
+            },
+            {
+              "identity": "1d7967fa",
+              "v_S_k": 0.0,
+              "v_S_t": 0.0012303725231921627,
+              "v_S_e": 1.0
+            },
+            {
+              "identity": "92d5167d",
+              "v_S_k": 0.0,
+              "v_S_t": 0.001110879819481505,
+              "v_S_e": 1.0
+            },
+            {
+              "identity": "a6baf84c",
+              "v_S_k": 0.0,
+              "v_S_t": 0.0008863638609824188,
+              "v_S_e": 1.0
+            }
+          ]
+        },
+        {
+          "name": "position_prediction",
+          "description": "Predicting future S-space positions",
+          "predictions": [
+            {
+              "identity": "e3178535",
+              "current": [
+                1.0,
+                0.9999998630542364,
+                0.7470703125
+              ],
+              "predicted": [
+                1.0,
+                1.0,
+                0.7470703125
+              ],
+              "time_ahead_s": 0.1
+            },
+            {
+              "identity": "639e5df9",
+              "current": [
+                1.0,
+                0.9999984242084501,
+                0.64654541015625
+              ],
+              "predicted": [
+                1.0,
+                1.0,
+                0.74654541015625
+              ],
+              "time_ahead_s": 0.1
+            },
+            {
+              "identity": "55e94085",
+              "current": [
+                1.0,
+                0.9999952702842301,
+                0.37081146240234375
+              ],
+              "predicted": [
+                1.0,
+                1.0,
+                0.47081146240234373
+              ],
+              "time_ahead_s": 0.1
+            },
+            {
+              "identity": "9b0b6129",
+              "current": [
+                1.0,
+                0.9999944737868942,
+                0.36126708984375
+              ],
+              "predicted": [
+                1.0,
+                1.0,
+                0.36126708984375
+              ],
+              "time_ahead_s": 0.1
+            },
+            {
+              "identity": "b4a2a023",
+              "current": [
+                1.0,
+                0.9999937278832178,
+                0.827362060546875
+              ],
+              "predicted": [
+                1.0,
+                1.0,
+                0.927362060546875
+              ],
+              "time_ahead_s": 0.1
+            }
+          ]
+        }
+      ]
+    },
+    "thermodynamics": {
+      "error": "'P'"
+    },
+    "visualization": {
+      "timestamp": "2025-12-12 14:10:22",
+      "demonstration": "categorical_visualization",
+      "experiments": [
+        {
+          "name": "s_space_scatter",
+          "description": "3D scatter plot of molecules in S-entropy space",
+          "title": "Molecules in S-Entropy Space",
+          "point_count": 500,
+          "x_range": [
+            1.0,
+            1.0
+          ],
+          "y_range": [
+            0.9999816006009229,
+            0.9999998328467744
+          ],
+          "z_range": [
+            0.001373291015625,
+            0.9976615905761719
+          ],
+          "sample_points": [
+            [
+              1.0,
+              0.9999965040098372,
+              0.6903839111328125
+            ],
+            [
+              1.0,
+              0.9999987585417971,
+              0.45947265625
+            ],
+            [
+              1.0,
+              0.9999905964571512,
+              0.12646484375
+            ],
+            [
+              1.0,
+              0.9999881888731535,
+              0.7831268310546875
+            ],
+            [
+              1.0,
+              0.9999989537883875,
+              0.0865478515625
+            ],
+            [
+              1.0,
+              0.9999979463878516,
+              0.3388671875
+            ],
+            [
+              1.0,
+              0.9999879428061123,
+              0.8117713928222656
+            ],
+            [
+              1.0,
+              0.9999916781729592,
+              0.06683349609375
+            ],
+            [
+              1.0,
+              0.9999885293766071,
+              0.3778228759765625
+            ],
+            [
+              1.0,
+              0.9999888312315723,
+              0.3326225280761719
+            ]
+          ]
+        },
+        {
+          "name": "histograms",
+          "description": "Distribution histograms for S-coordinates",
+          "S_k_histogram": {
+            "bins": [
+              1.0
+            ],
+            "counts": [
+              500
+            ]
+          },
+          "S_t_histogram": {
+            "bins": [
+              0.9999825122132155,
+              0.9999843354378006,
+              0.9999861586623857,
+              0.9999879818869709,
+              0.9999898051115561,
+              0.9999916283361412,
+              0.9999934515607264,
+              0.9999952747853116,
+              0.9999970980098967,
+              0.9999989212344818
+            ],
+            "counts": [
+              20,
+              196,
+              102,
+              60,
+              50,
+              34,
+              11,
+              6,
+              8,
+              13
+            ]
+          },
+          "S_e_histogram": {
+            "bins": [
+              0.05118770599365234,
+              0.150816535949707,
+              0.2504453659057617,
+              0.3500741958618164,
+              0.4497030258178711,
+              0.5493318557739257,
+              0.6489606857299803,
+              0.7485895156860352,
+              0.8482183456420898,
+              0.9478471755981446
+            ],
+            "counts": [
+              50,
+              44,
+              49,
+              53,
+              47,
+              53,
+              45,
+              50,
+              51,
+              58
+            ]
+          }
+        },
+        {
+          "name": "phase_space_projections",
+          "description": "2D projections of S-space",
+          "projections": {
+            "S_k_vs_S_e": {
+              "title": "Phase Space: S_k vs S_e",
+              "point_count": 500,
+              "x_range": [
+                1.0,
+                1.0
+              ],
+              "y_range": [
+                0.001373291015625,
+                0.9976615905761719
+              ]
+            },
+            "S_k_vs_S_t": {
+              "title": "Phase Space: S_k vs S_t",
+              "point_count": 500,
+              "x_range": [
+                1.0,
+                1.0
+              ],
+              "y_range": [
+                0.9999816006009229,
+                0.9999998328467744
+              ]
+            },
+            "S_t_vs_S_e": {
+              "title": "Phase Space: S_t vs S_e",
+              "point_count": 500,
+              "x_range": [
+                0.9999816006009229,
+                0.9999998328467744
+              ],
+              "y_range": [
+                0.001373291015625,
+                0.9976615905761719
+              ]
+            }
+          }
+        },
+        {
+          "name": "maxwell_boltzmann_comparison",
+          "description": "Comparing S_e distribution to MB theory",
+          "actual": {
+            "bins": [
+              0.034582901000976565,
+              0.1010021209716797,
+              0.1674213409423828,
+              0.23384056091308597,
+              0.3002597808837891,
+              0.36667900085449223,
+              0.43309822082519533,
+              0.4995174407958985,
+              0.5659366607666017,
+              0.6323558807373046,
+              0.6987751007080079,
+              0.7651943206787111,
+              0.8316135406494141,
+              0.8980327606201173,
+              0.9644519805908205
+            ],
+            "normalized_counts": [
+              0.7777777777777778,
+              0.6444444444444445,
+              0.6666666666666666,
+              0.6888888888888889,
+              0.6888888888888889,
+              0.8888888888888888,
+              0.5111111111111111,
+              0.8222222222222222,
+              0.8888888888888888,
+              0.6,
+              0.8,
+              0.7111111111111111,
+              0.8,
+              0.6222222222222222,
+              1.0
+            ]
+          },
+          "theoretical": {
+            "bins": [
+              0.034582901000976565,
+              0.1010021209716797,
+              0.1674213409423828,
+              0.23384056091308597,
+              0.3002597808837891,
+              0.36667900085449223,
+              0.43309822082519533,
+              0.4995174407958985,
+              0.5659366607666017,
+              0.6323558807373046,
+              0.6987751007080079,
+              0.7651943206787111,
+              0.8316135406494141,
+              0.8980327606201173,
+              0.9644519805908205
+            ],
+            "probability_density": [
+              0.8673316119984169,
+              1.0,
+              0.8686012487606605,
+              0.6925565669345721,
+              0.5294490819068535,
+              0.39472890130660965,
+              0.2894205698023194,
+              0.20969680371266036,
+              0.1505846434170642,
+              0.1073885157785404,
+              0.07615984616342678,
+              0.053767953234501425,
+              0.03781627085916338,
+              0.02651211056633059,
+              0.018536118835379128
+            ]
+          }
+        },
+        {
+          "name": "demon_sorting",
+          "description": "Visualization of Maxwell demon sorting",
+          "hot_compartment": {
+            "count": 257,
+            "x_range": [
+              1.0,
+              1.0
+            ],
+            "y_range": [
+              0.5042915344238281,
+              0.9976615905761719
+            ]
+          },
+          "cold_compartment": {
+            "count": 243,
+            "x_range": [
+              1.0,
+              1.0
+            ],
+            "y_range": [
+              0.001373291015625,
+              0.49707794189453125
+            ]
+          }
+        },
+        {
+          "name": "harmonic_network",
+          "description": "Network of harmonic coincidences between molecules",
+          "node_count": 30,
+          "edge_count": 1600,
+          "sample_nodes": [
+            {
+              "id": 0,
+              "S_k": 1.0,
+              "S_t": 0.9999965040098372,
+              "S_e": 0.6903839111328125,
+              "freq": 91050994807690.38
+            },
+            {
+              "id": 1,
+              "S_k": 1.0,
+              "S_t": 0.9999987585417971,
+              "S_e": 0.45947265625,
+              "freq": 256401002399459.47
+            },
+            {
+              "id": 2,
+              "S_k": 1.0,
+              "S_t": 0.9999905964571512,
+              "S_e": 0.12646484375,
+              "freq": 33850995816126.465
+            },
+            {
+              "id": 3,
+              "S_k": 1.0,
+              "S_t": 0.9999881888731535,
+              "S_e": 0.7831268310546875,
+              "freq": 26951001483783.125
+            },
+            {
+              "id": 4,
+              "S_k": 1.0,
+              "S_t": 0.9999989537883875,
+              "S_e": 0.0865478515625,
+              "freq": 304251002955086.5
+            }
+          ],
+          "sample_edges": [
+            {
+              "source": 0,
+              "target": 1,
+              "harmonic": [
+                1,
+                3
+              ],
+              "strength": 0.25
+            },
+            {
+              "source": 0,
+              "target": 1,
+              "harmonic": [
+                2,
+                5
+              ],
+              "strength": 0.14285714285714285
+            },
+            {
+              "source": 0,
+              "target": 1,
+              "harmonic": [
+                3,
+                7
+              ],
+              "strength": 0.1
+            },
+            {
+              "source": 0,
+              "target": 1,
+              "harmonic": [
+                4,
+                9
+              ],
+              "strength": 0.07692307692307693
+            },
+            {
+              "source": 0,
+              "target": 2,
+              "harmonic": [
+                8,
+                3
+              ],
+              "strength": 0.09090909090909091
+            }
+          ]
+        },
+        {
+          "name": "ascii_visualizations",
+          "description": "ASCII art visualizations for terminal",
+          "histogram_ascii": "Distribution of Evolution Entropy (S_e)\n=======================================\n\n0.051 | \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 (50)\n0.151 | \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 (44)\n0.250 | \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 (49)\n0.350 | \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 (53)\n0.450 | \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 (47)\n0.549 | \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 (53)\n0.649 | \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 (45)\n0.749 | \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 (50)\n0.848 | \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 (51)\n0.948 | \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 (58)",
+          "scatter_ascii": "Phase Space: S_k vs S_e\n=======================\n\n  1.00 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n       \u2502\u25cf                                                           \u2502\n  0.00 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n       1.00                                                  1.00\n       S_k"
+        }
+      ]
+    }
+  }
+}

@@ -241,7 +241,10 @@ class VirtualMolecule(CategoricalState):
         what your apparatus can catch.
         """
         # Import here to avoid circular import
-        from .virtual_spectrometer import FishingTackle
+        try:
+            from .virtual_spectrometer import FishingTackle
+        except ImportError:
+            from virtual_spectrometer import FishingTackle
         
         if not isinstance(tackle, FishingTackle):
             return False

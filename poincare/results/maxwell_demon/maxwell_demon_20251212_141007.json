@@ -1,0 +1,153 @@
+{
+  "timestamp": "2025-12-12 14:10:06",
+  "demonstration": "maxwell_demon",
+  "experiments": [
+    {
+      "name": "zero_backaction_observation",
+      "description": "Demon observes molecules with zero backaction",
+      "observations_made": 100,
+      "total_observation_cost": 0.0,
+      "total_backaction": 0.0,
+      "sample_observations": [
+        {
+          "S_k": 1.0,
+          "S_t": 0.9999951141998509,
+          "S_e": 0.12529754638671875,
+          "observation_cost": 0.0,
+          "backaction": 0.0
+        },
+        {
+          "S_k": 1.0,
+          "S_t": 0.9999970983603537,
+          "S_e": 0.7546844482421875,
+          "observation_cost": 0.0,
+          "backaction": 0.0
+        },
+        {
+          "S_k": 1.0,
+          "S_t": 0.9999954001453895,
+          "S_e": 0.0777587890625,
+          "observation_cost": 0.0,
+          "backaction": 0.0
+        },
+        {
+          "S_k": 1.0,
+          "S_t": 0.9999900528194274,
+          "S_e": 0.14418792724609375,
+          "observation_cost": 0.0,
+          "backaction": 0.0
+        },
+        {
+          "S_k": 1.0,
+          "S_t": 0.999981547253405,
+          "S_e": 0.7735786437988281,
+          "observation_cost": 0.0,
+          "backaction": 0.0
+        },
+        {
+          "S_k": 1.0,
+          "S_t": 0.9999806498482517,
+          "S_e": 0.17888259887695312,
+          "observation_cost": 0.0,
+          "backaction": 0.0
+        },
+        {
+          "S_k": 1.0,
+          "S_t": 0.999976594864267,
+          "S_e": 0.7032337188720703,
+          "observation_cost": 0.0,
+          "backaction": 0.0
+        },
+        {
+          "S_k": 1.0,
+          "S_t": 0.9999724407040811,
+          "S_e": 0.9070549011230469,
+          "observation_cost": 0.0,
+          "backaction": 0.0
+        },
+        {
+          "S_k": 1.0,
+          "S_t": 0.9999727940310228,
+          "S_e": 0.08105850219726562,
+          "observation_cost": 0.0,
+          "backaction": 0.0
+        },
+        {
+          "S_k": 1.0,
+          "S_t": 0.999973909037726,
+          "S_e": 0.3277435302734375,
+          "observation_cost": 0.0,
+          "backaction": 0.0
+        }
+      ],
+      "conclusion": "Zero energy cost, zero backaction - categorical observables commute"
+    },
+    {
+      "name": "sorting_by_S_e",
+      "description": "Demon sorts molecules by evolution entropy",
+      "threshold": 0.5,
+      "hot_count": 509,
+      "cold_count": 491,
+      "hot_mean_S_e": 0.7529566376991497,
+      "cold_mean_S_e": 0.2447845979523513,
+      "temperature_gradient": 0.5081720397467984,
+      "decision_energy_cost": 0.0
+    },
+    {
+      "name": "multi_criteria_sorting",
+      "description": "Sorting by different S-entropy coordinates",
+      "criteria_results": {
+        "knowledge_entropy": {
+          "hot_count": 1000,
+          "cold_count": 0,
+          "gradient": 0.0
+        },
+        "temporal_entropy": {
+          "hot_count": 1000,
+          "cold_count": 0,
+          "gradient": 0.0
+        },
+        "evolution_entropy": {
+          "hot_count": 509,
+          "cold_count": 491,
+          "gradient": 0.5081720397467984
+        }
+      }
+    },
+    {
+      "name": "demon_report",
+      "description": "Complete report of demon activities",
+      "report": {
+        "observations": 4100,
+        "sorts": 4000,
+        "hot_count": 509,
+        "cold_count": 491,
+        "temperature_gradient": 0.5081720397467984,
+        "decision_energy_cost": 0.0,
+        "backaction": 0.0,
+        "thermodynamic_violation": false
+      },
+      "thermodynamic_analysis": {
+        "second_law_violated": false,
+        "reason": "Categorical observables commute with physical observables",
+        "information_gain_source": "Categorical space (orthogonal to physical)",
+        "energy_for_decisions": 0.0,
+        "energy_for_physical_moves": "Only if physically moving data"
+      }
+    },
+    {
+      "name": "extreme_molecules",
+      "description": "Demon finds extreme molecules",
+      "coldest": {
+        "S_k": 1.0,
+        "S_t": 0.9999937463670052,
+        "S_e": 0.001373291015625
+      },
+      "hottest": {
+        "S_k": 1.0,
+        "S_t": 0.9999912190375131,
+        "S_e": 0.9953231811523438
+      }
+    }
+  ]
+}
