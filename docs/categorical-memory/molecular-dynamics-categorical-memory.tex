@@ -98,7 +98,7 @@ The precision-by-difference value at each step determines which branch to take a
 
 This reconceptualization has several consequences. First, data that are accessed in similar patterns will have similar addresses, as their trajectories through the hierarchy will be similar. This provides automatic clustering of related data without explicit indexing. Second, the address encodes temporal context: two accesses to the same physical data at different times in different access patterns will have different categorical addresses, reflecting their different semantic contexts. Third, the memory controller can operate as a Maxwell demon \cite{leff2002maxwell}, using categorical position to predict future accesses and optimize data placement across memory tiers.
 
-The structure of this paper is as follows. Section \ref{sec:sentropy} develops the S-entropy coordinate system and its mathematical properties (Figure~\ref{fig:information_complementarity}). Section \ref{sec:precision} formalizes precision-by-difference calculation (Figure~\ref{fig:precision_by_difference}). Section \ref{sec:hardware} describes hardware oscillation capture (Figure~\ref{fig:hardware_virtual_spectrometer}, \ref{fig:oscillator_processor_duality}). Section \ref{sec:hierarchy} presents the recursive $3^k$ hierarchical structure (Figure~\ref{fig:categorical_addressing}). Section \ref{sec:memory} describes the complete memory architecture (Figure~\ref{fig:categorical_memory}). Section \ref{sec:controller} describes the categorical memory controller (Figure~\ref{fig:categorical_memory_operations}). Section \ref{sec:formal} provides formal verification of key theorems using the Lean 4 and Coq proof assistants. Section \ref{sec:validation} provides experimental validation. Section \ref{sec:discussion} discusses implications and Section \ref{sec:conclusion} concludes.
+The structure of this paper is as follows. Section \ref{sec:sentropy} develops the S-entropy coordinate system and its mathematical properties (Figure~\ref{fig:information_complementarity}). Section \ref{sec:precision} formalizes precision-by-difference calculation (Figure~\ref{fig:precision_by_difference}). Section \ref{sec:hardware} describes hardware oscillation capture (Figure~\ref{fig:hardware_virtual_spectrometer}, \ref{fig:oscillator_processor_duality}). Section \ref{sec:virtual_gas} establishes the virtual gas ensemble as the memory substrate, demonstrating that the computer itself constitutes a categorical gas chamber where molecules are addresses and addresses are molecules. Section \ref{sec:hierarchy} presents the recursive $3^k$ hierarchical structure (Figure~\ref{fig:categorical_addressing}). Section \ref{sec:memory} describes the complete memory architecture (Figure~\ref{fig:categorical_memory}). Section \ref{sec:controller} describes the categorical memory controller (Figure~\ref{fig:categorical_memory_operations}). Section \ref{sec:formal} provides formal verification of key theorems using the Lean 4 and Coq proof assistants. Section \ref{sec:validation} provides experimental validation. Section \ref{sec:discussion} discusses implications and Section \ref{sec:conclusion} concludes.
 
 \section{S-Entropy Addressing}
 \label{sec:sentropy}
@@ -111,6 +111,10 @@ The structure of this paper is as follows. Section \ref{sec:sentropy} develops t
 \section{Hardware Oscillation Capture}
 \label{sec:hardware}
 \input{sections/hardware-oscillations}
+
+\section{Virtual Gas Ensemble as Memory Substrate}
+\label{sec:virtual_gas}
+\input{sections/virtual-gas-ensemble}
 
 \section{Categorical Hierarchy}
 \label{sec:hierarchy}
