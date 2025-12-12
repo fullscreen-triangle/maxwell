@@ -36,6 +36,18 @@ Crucially, $P(\Gamma) > 0$ for \textit{every} configuration, including the ``sor
 \forall \epsilon > 0, \exists T_{\text{rec}} < \infty : |\Gamma(T_{\text{rec}}) - \Gamma_{\text{sorted}}| < \epsilon
 \end{equation}
 
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/arg3_retrieval_paradox.png}
+\caption{\textbf{Argument 3: The Retrieval Paradox—Velocity-Based Sorting is Self-Defeating.}
+\textbf{(A)} Timescale hierarchy showing collisions happen first. Molecular collision timescale $\tau_{\text{coll}} \sim 10^{-10}$ s (red bar) is orders of magnitude faster than measurement ($\sim 10^{-8}$ s), gate operation ($\sim 10^{-6}$ s), sorting ($\sim 10^{-3}$ s), and demon decision-making ($\sim 10^{-1}$ s). The collision rate $\nu_{\text{coll}} \sim 10^{10}$ collisions/s in gases at STP ensures velocities randomize before any sorting operation can complete. The label ``TOO SLOW!'' emphasizes that sorting timescale exceeds thermalization timescale by $10^7$, making velocity-based sorting operationally impossible.
+\textbf{(B)} Phase space scrambling showing sorted states randomize in $\tau_{\text{coll}}$. Initially sorted molecules (blue points, $t=0$) with velocities clustered in one region of phase space become completely randomized (red points, $t > \tau_{\text{coll}}$) after a single collision time. The velocity distribution returns to Maxwell-Boltzmann, erasing any sorting. This demonstrates that maintaining sorted states requires infinite retrieval operations.
+\textbf{(C)} Sorting versus thermalization dynamics. The sorting signal strength $S(t) = |\langle v_A \rangle - \langle v_B \rangle|/\sigma_v$ (teal curve) decays exponentially as $S(t) = S_0 \exp(-t/\tau_{\text{coll}})$, while thermal randomization (red shaded region) dominates. The system relaxes to equilibrium ($S \to 0$) within $\sim 2\tau_{\text{coll}}$. The demon's sorting attempt (starting from yellow circle at $S_0 \approx 0.9$) is overwhelmed by thermalization.
+\textbf{(D)} Long-term sorting attempts always return to 50/50 equilibrium. Three independent sorting attempts (colored traces) show fast/total molecule ratio fluctuating around equilibrium value 0.5 (red dashed line). Despite initial deviations, all attempts converge to the equilibrium distribution within $\sim 50$ time steps. The red shaded band indicates $\pm 2\sigma$ fluctuations. This confirms that velocity-sorted states cannot be maintained: the retrieval paradox makes the demon's operation self-defeating.}
+\label{fig:retrieval_paradox}
+\end{figure*}
+
+
 Therefore, the demon does not create anything that would not occur naturally. It merely (supposedly) accelerates what statistical mechanics already predicts. But acceleration is not violation---the second law concerns what \textit{can} happen, not how \textit{quickly} it happens.
 
 The demon is temporally trivial: it is redundant with natural fluctuations. \qed
@@ -283,6 +295,18 @@ When you observe only one face, the dynamics of the conjugate face appear as \te
 But the ``demon'' was not an agent. It was the conjugate face of information completing categorical states according to phase-lock topology. The ``sorting'' Maxwell observed was the projection of categorical completion onto the kinetic energy face. \qed
 \end{proof}
 
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/panel_arg7_information_complementarity.png}
+\caption{\textbf{Argument 7: Information Complementarity—The Demon is a Projection Artifact.}
+\textbf{(A)} Two complementary faces of information. Venn diagram showing the kinetic face (red circle: velocities, energy, temperature) and categorical face (purple circle: network topology, phase-lock structure) with minimal overlap (small purple square in center). The two faces are complementary: observing one face renders the other hidden, analogous to conjugate observables in quantum mechanics. The annotation ``Complementary: cannot observe both simultaneously'' emphasizes measurement incompatibility. Maxwell observed only the kinetic face; the categorical face remained hidden, creating the illusion of a demon.
+\textbf{(B)} Ammeter-voltmeter analogy. Schematic of an electrical component with ammeter (A, red) measuring current and voltmeter (V, purple) measuring voltage. The fundamental constraint ``Cannot use both meters simultaneously on same element'' illustrates complementarity: inserting an ammeter (low resistance) changes the circuit, making voltage measurement impossible, and vice versa. Similarly, observing molecular velocities (kinetic face) obscures phase-lock network structure (categorical face). The demon paradox arises from observing only one meter while the other remains hidden.
+\textbf{(C)} Demon as projection artifact. Schematic showing categorical dynamics (purple box, hidden) projecting onto the kinetic face (red box, observed). The demon (yellow box with annotation ``DEMON = Shadow of hidden dynamics'') is not an agent but a projection artifact—the shadow cast by categorical completion onto the observable kinetic face. Three downward arrows represent multiple projection paths from hidden categorical dynamics to observed kinetic behavior. What Maxwell interpreted as intelligent sorting is actually the visible manifestation of automatic topological navigation occurring on the hidden face. The demon is an epiphenomenon, not a causal agent.
+\textbf{(D)} Complete picture resolves the paradox. Two-column comparison showing Maxwell's incomplete view versus the complete picture. \textit{Left column (Maxwell's View)}: Observing kinetic properties only (``Kinetic only $\to$'') leads to the interpretation of ``Demon sorting'' (red text)—an apparent agent performing intelligent operations. \textit{Right column (Complete View)}: Observing both faces (``Both faces $\to$'') reveals ``Automatic topology'' (green text)—deterministic categorical completion through phase-lock networks. The yellow box at bottom states the resolution: ``NO DEMON EXISTS / Only categorical completion / along network topology.'' The vertical dashed line separates incomplete from complete understanding. The paradox dissolves when both faces are visible: what appeared to require an information-processing demon is revealed as automatic navigation through categorical state space, visible only from the complementary face. This is the deepest resolution: the demon was never real, only a shadow of hidden dynamics.}
+\label{fig:information_complementarity}
+\end{figure*}
+
+
 \begin{corollary}[The Demon as Projection]
 \label{cor:demon_projection}
 Maxwell's Demon is the projection of hidden categorical dynamics onto the observable kinetic face:
@@ -398,9 +422,9 @@ We have shown that Maxwell's Demon dissolves under categorical analysis through 
 
 \textbf{(6) The demon violates no laws} (Theorem~\ref{thm:dissolution_second_law}): Categorical completion increases entropy.
 
-\textbf{(7) The demon is a projection artefact} (Theorem~\ref{thm:information_complementarity}): Information has two conjugate faces; Maxwell observed only the kinetic face while categorical dynamics occurred on the hidden face, making them appear as external intervention.
+\textbf{(7) The demon is a projection artefact} (Theorem~\ref{thm:information_complementarity}): Information has two conjugate faces; There is no demon.
 
-There is no demon. There is only the phase-lock network, completing categorical states according to topology, revealing structure that was always present, increasing entropy as the second law demands. Maxwell saw a demon because he was looking at one face of information; the ``demon'' was the hidden face doing what physics demands.
+There is only the phase-lock network, completing categorical states according to topology, revealing structure that was always present and increasing entropy as the second law demands. Maxwell saw a demon because he was looking at one face of information; the ``demon'' was the hidden face doing what physics demands. Maxwell saw a demon because he was looking at one face of information; the ``''
 \end{remark}
 
 \subsection{Summary of the Seven-Fold Dissolution}

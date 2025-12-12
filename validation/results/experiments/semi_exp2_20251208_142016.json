@@ -1,0 +1,18 @@
+{
+  "experiment_id": "semi_exp2",
+  "experiment_name": "Oscillatory Hole Dynamics",
+  "timestamp": "20251208_142016",
+  "hypothesis": "Holes exhibit mobility of 0.0123 cm\u00b2/(V\u00b7s)",
+  "conclusion": "Mobility = 0.0123 cm\u00b2/(V\u00b7s), D = 5.26e-23 cm\u00b2/s",
+  "validated": false,
+  "data": {
+    "mobility": 0.0123,
+    "diffusion_coefficient": 5.2644146370000004e-23,
+    "drift_velocity_at_1e6": 12300.0
+  },
+  "metrics": {
+    "mobility_cm2_per_Vs": 0.0123,
+    "diffusion_cm2_per_s": 5.2644146370000004e-23
+  },
+  "figures": []
+}

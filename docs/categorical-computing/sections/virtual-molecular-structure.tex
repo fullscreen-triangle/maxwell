@@ -1,0 +1,145 @@
+
+\subsection{Molecular Encoding Principle}
+
+The molecular encoding maps linguistic units (words) to virtual molecules with physical properties. This encoding enables semantic operations to be performed using the mathematical framework of molecular spectroscopy.
+
+\begin{definition}[Virtual Molecule]
+A virtual molecule $\mathcal{M}$ for word $w$ consists of:
+\begin{align}
+\mathcal{M}(w) &= (\omega_0, \{\omega_1, \ldots, \omega_k\}, \Scoord, m, q)
+\end{align}
+where:
+\begin{itemize}
+    \item $\omega_0$ is the fundamental vibrational frequency
+    \item $\{\omega_1, \ldots, \omega_k\}$ are harmonic overtones
+    \item $\Scoord = (\Sk, \St, \Se)$ are S-entropy coordinates
+    \item $m$ is the molecular mass (derived from word length)
+    \item $q$ is the molecular charge (derived from word properties)
+\end{itemize}
+\end{definition}
+
+\subsection{Fundamental Frequency Computation}
+
+The fundamental frequency is derived from the word's orthographic structure.
+
+\begin{definition}[Fundamental Frequency]
+For word $w$ with character sequence $(c_1, \ldots, c_n)$:
+\begin{equation}
+\omega_0(w) = \omega_{\text{base}} \cdot f_{\text{hash}}(w) \cdot f_{\text{length}}(|w|)
+\end{equation}
+where:
+\begin{itemize}
+    \item $\omega_{\text{base}} = 10^{12}$ Hz (molecular frequency scale)
+    \item $f_{\text{hash}}(w) = (h(w) \mod 10^{14}) / 10^{14}$ for hash function $h$
+    \item $f_{\text{length}}(n) = 1/\sqrt{n}$ (heavier molecules vibrate slower)
+\end{itemize}
+\end{definition}
+
+The hash function produces a deterministic pseudo-random value from the word, distributing frequencies across the molecular range $[10^{12}, 10^{14}]$ Hz.
+
+\subsection{Harmonic Overtones}
+
+Harmonic overtones are derived from the character sequence, analogous to molecular vibrational modes.
+
+\begin{definition}[Harmonic Modes]
+The $k$-th harmonic mode of word $w$ is:
+\begin{equation}
+\omega_k(w) = \omega_0(w) \cdot (k + 1) \cdot \left(1 + 0.01 \cdot (c_{k \mod |w|} - 97)\right)
+\end{equation}
+where $c_i$ is the ASCII code of the $i$-th character (assuming lowercase letters).
+\end{definition}
+
+The overtones are approximately integer multiples of the fundamental, with small perturbations based on character values. This mirrors the structure of molecular vibrational spectra, where overtones appear near integer multiples of fundamental frequencies with anharmonic corrections.
+
+\subsection{S-Coordinate Derivation}
+
+The S-entropy coordinates of a word-molecule are derived from its orthographic properties.
+
+\begin{proposition}[Word S-Coordinates]
+For word $w$ with characters $\{c_1, \ldots, c_n\}$:
+\begin{align}
+\Sk(w) &= \frac{|\text{unique}(c_1, \ldots, c_n)|}{26} \\
+\St(w) &= \frac{\text{vowel\_count}(w)}{|w|} \\
+\Se(w) &= \frac{H(c_1, \ldots, c_n)}{\ln 26}
+\end{align}
+where $H$ is the character entropy and 26 is the alphabet size.
+\end{proposition}
+
+Interpretation:
+\begin{itemize}
+    \item $\Sk$: Words using more distinct characters have higher knowledge entropy.
+    \item $\St$: Words with more vowels have higher temporal flow (vowels determine rhythm).
+    \item $\Se$: Words with more uniform character distributions have higher entropy.
+\end{itemize}
+
+\subsection{Molecular Mass and Charge}
+
+Additional molecular properties encode word characteristics.
+
+\begin{definition}[Molecular Mass]
+\begin{equation}
+m(w) = |w|
+\end{equation}
+Mass equals word length, reflecting the linguistic intuition that longer words are ``heavier.''
+\end{definition}
+
+\begin{definition}[Molecular Charge]
+Charge encodes sentiment or polarity:
+\begin{equation}
+q(w) = \sum_{i} q_{\text{char}}(c_i)
+\end{equation}
+where $q_{\text{char}}$ assigns charges based on character type (positive for vowels, negative for certain consonants, etc.).
+\end{definition}
+
+\subsection{Frequency Distance}
+
+The frequency distance between two word-molecules quantifies their spectroscopic similarity.
+
+\begin{definition}[Frequency Distance]
+\begin{equation}
+d_\omega(\mathcal{M}_1, \mathcal{M}_2) = |\ln \omega_0^{(1)} - \ln \omega_0^{(2)}| + \frac{1}{k}\sum_{i=1}^{k} |\ln \omega_i^{(1)} - \ln \omega_i^{(2)}|
+\end{equation}
+\end{definition}
+
+The logarithmic scale is appropriate for frequencies spanning multiple orders of magnitude. Small frequency distance indicates spectroscopically similar words, which tend to be semantically related.
+
+\subsection{Encoding Properties}
+
+The molecular encoding exhibits several properties relevant to semantic processing.
+
+\begin{proposition}[Morphological Sensitivity]
+Words sharing morphological structure (prefixes, suffixes, roots) produce similar fundamental frequencies and overlapping harmonics.
+\end{proposition}
+
+\begin{proof}[Sketch]
+Morphological affixes (``un-'', ``-ing'', ``-tion'') contribute consistent character patterns to the hash computation. Words sharing affixes therefore have correlated hash values and hence correlated frequencies.
+\end{proof}
+
+\begin{proposition}[Length Normalization]
+The mass factor $1/\sqrt{|w|}$ normalizes for word length, preventing long words from dominating frequency calculations.
+\end{proposition}
+
+\begin{proposition}[Deterministic Encoding]
+The encoding is deterministic: identical words produce identical molecules. This ensures reproducibility.
+\end{proposition}
+
+\subsection{Relationship to Physical Molecules}
+
+The virtual molecular encoding is analogous to, but distinct from, physical molecular structure.
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Property & Physical Molecule & Virtual Molecule \\
+\midrule
+Mass & Atomic masses & Word length \\
+Frequency & Bond vibrations & Hash of characters \\
+Harmonics & Overtones & Character perturbations \\
+Spectrum & IR/Raman & Frequency signature \\
+Coincidences & Energy transfer & Semantic relationship \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The mathematical structure is identical; only the physical interpretation differs. This enables the application of molecular spectroscopy techniques to semantic analysis.
+

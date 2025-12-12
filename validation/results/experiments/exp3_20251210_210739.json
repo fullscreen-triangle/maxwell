@@ -1,0 +1,22 @@
+{
+  "experiment_id": "exp3",
+  "experiment_name": "Distance Inequivalence",
+  "timestamp": "20251210_210739",
+  "hypothesis": "Categorical \u2260 Spatial \u2260 Kinetic distance",
+  "conclusion": "Distance metrics are inequivalent: max |r| = 0.4128",
+  "validated": true,
+  "data": {
+    "correlations": {
+      "spatial_vs_kinetic": 0.024522485976037924,
+      "spatial_vs_categorical": 0.4128382742523639,
+      "kinetic_vs_categorical": -0.033058591872263524
+    }
+  },
+  "metrics": {
+    "max_correlation": 0.4128382742523639,
+    "spatial_vs_kinetic": 0.024522485976037924,
+    "spatial_vs_categorical": 0.4128382742523639,
+    "kinetic_vs_categorical": -0.033058591872263524
+  },
+  "figures": []
+}

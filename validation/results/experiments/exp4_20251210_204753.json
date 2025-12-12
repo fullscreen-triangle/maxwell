@@ -1,0 +1,21 @@
+{
+  "experiment_id": "exp4",
+  "experiment_name": "Temperature Emergence",
+  "timestamp": "20251210_204753",
+  "hypothesis": "Temperature is statistical observable of phase-lock clusters",
+  "conclusion": "Cluster mean (1.848) matches global (2.00)",
+  "validated": true,
+  "data": {
+    "global_temp": 2.0,
+    "n_clusters": 52,
+    "mean_cluster_temp": 1.8481334476574303,
+    "std_cluster_temp": 0.8090361437828706
+  },
+  "metrics": {
+    "global_temp": 2.0,
+    "mean_cluster_temp": 1.8481334476574303,
+    "std_cluster_temp": 0.8090361437828706,
+    "n_clusters": 52
+  },
+  "figures": []
+}

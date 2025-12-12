@@ -1,0 +1,19 @@
+{
+  "experiment_id": "exp6",
+  "experiment_name": "Velocity-Blind Categorical Completion",
+  "timestamp": "20251207_054643",
+  "hypothesis": "Categorical paths independent of velocity distribution",
+  "conclusion": "Paths identical in 100.0% of trials",
+  "validated": true,
+  "data": {
+    "match_rate": 1.0,
+    "max_path_variation": NaN,
+    "n_trials": 100,
+    "n_pairs": 20
+  },
+  "metrics": {
+    "match_rate": 1.0,
+    "max_path_variation": NaN
+  },
+  "figures": []
+}

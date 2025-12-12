@@ -1,0 +1,196 @@
+
+\subsection{Runtime Architecture}
+
+The categorical runtime executes problems by navigating through S-entropy space rather than by executing instructions. Navigation continues until a categorical completion point is reached---a position where all constraints are satisfied.
+
+\begin{definition}[Categorical Runtime]
+A categorical runtime $\mathcal{R}$ consists of:
+\begin{enumerate}
+    \item An oscillator capture module for precision-by-difference values
+    \item A precision calculator for S-coordinate computation
+    \item A categorical hierarchy for position representation
+    \item A memory controller for state management
+    \item A navigation engine for completion search
+\end{enumerate}
+\end{definition}
+
+\subsection{Execution Context}
+
+Each problem execution maintains a context that tracks the current state.
+
+\begin{definition}[Execution Context]
+An execution context $\xi$ consists of:
+\begin{align}
+\xi &= (\mathcal{P}, \Scoord_{\text{current}}, \sigma, \tau, V, t_0)
+\end{align}
+where:
+\begin{itemize}
+    \item $\mathcal{P}$ is the problem being executed
+    \item $\Scoord_{\text{current}}$ is the current S-entropy position
+    \item $\sigma$ is the current variable/entity state
+    \item $\tau$ is the trajectory of positions visited
+    \item $V$ is the map of constraint violations
+    \item $t_0$ is the execution start time
+\end{itemize}
+\end{definition}
+
+\subsection{Navigation Strategies}
+
+The runtime supports multiple navigation strategies, each suited to different problem types.
+
+\subsubsection{Gradient Descent}
+
+Gradient navigation follows the constraint gradient toward satisfaction.
+
+\begin{definition}[Constraint Gradient]
+The constraint gradient at state $\sigma$ is:
+\begin{equation}
+\nabla_\sigma V = \sum_{c \in \mathcal{C}} \nabla_\sigma \text{violation}(c, \sigma)
+\end{equation}
+\end{definition}
+
+\begin{algorithmic}[1]
+\Function{GradientStep}{context $\xi$, step size $\alpha$}
+    \State Compute gradient: $g \gets \nabla_\sigma V$
+    \For{each variable $x$ in $\sigma$}
+        \State $\sigma[x] \gets \sigma[x] - \alpha \cdot g[x]$
+        \State Enforce bounds on $\sigma[x]$ if applicable
+    \EndFor
+    \State Update S-coordinate from new state
+    \State \Return updated context
+\EndFunction
+\end{algorithmic}
+
+\subsubsection{Categorical Completion}
+
+Categorical completion navigates toward the predicted trajectory endpoint.
+
+\begin{definition}[Completion Navigation]
+Given current trajectory $\tau$ with predicted completion $\Scoord^*$, the navigation direction is:
+\begin{equation}
+\mathbf{d} = \frac{\Scoord^* - \Scoord_{\text{current}}}{\|\Scoord^* - \Scoord_{\text{current}}\|}
+\end{equation}
+\end{definition}
+
+\begin{algorithmic}[1]
+\Function{CompletionStep}{context $\xi$, step size $\alpha$}
+    \State Predict completion: $\Scoord^* \gets$ predict($\tau$)
+    \State Compute direction: $\mathbf{d} \gets (\Scoord^* - \Scoord_{\text{current}}) / \|\cdot\|$
+    \State Update position: $\Scoord_{\text{new}} \gets \Scoord_{\text{current}} + \alpha \cdot \mathbf{d}$
+    \State Map back to state space: $\sigma \gets$ coordinate\_to\_state($\Scoord_{\text{new}}$)
+    \State \Return updated context
+\EndFunction
+\end{algorithmic}
+
+\subsubsection{Simulated Annealing}
+
+Simulated annealing provides stochastic exploration with temperature-controlled acceptance.
+
+\begin{definition}[Annealing Temperature]
+The temperature at step $k$ is:
+\begin{equation}
+T(k) = \frac{T_0}{1 + \beta k}
+\end{equation}
+where $T_0$ is the initial temperature and $\beta$ controls cooling rate.
+\end{definition}
+
+\begin{algorithmic}[1]
+\Function{AnnealingStep}{context $\xi$, step $k$}
+    \State Compute temperature: $T \gets T_0 / (1 + \beta k)$
+    \State Generate perturbation: $\delta \gets \mathcal{N}(0, T)$
+    \State Perturb state: $\sigma' \gets \sigma + \delta$
+    \State Evaluate: $V' \gets$ total\_violation($\sigma'$)
+    \If{$V' < V$ or $\text{random}() < \exp(-(V' - V)/T)$}
+        \State Accept: $\sigma \gets \sigma'$
+    \EndIf
+    \State \Return updated context
+\EndFunction
+\end{algorithmic}
+
+\subsubsection{Harmony Search}
+
+Harmony search uses harmonic coincidences from hardware oscillations to guide navigation.
+
+\begin{algorithmic}[1]
+\Function{HarmonyStep}{context $\xi$}
+    \State Capture precision signature: $\boldsymbol{\delta} \gets$ capture\_signature()
+    \For{each variable $x$ in $\sigma$}
+        \State Get harmonic factor: $h \gets 1 + \boldsymbol{\delta}[x \mod |\boldsymbol{\delta}|] \cdot 10$
+        \State Compute harmonic position: $p \gets (\sin(h \cdot \pi) + 1) / 2$
+        \State Map to variable bounds: $\sigma[x] \gets \text{lo}[x] + p \cdot (\text{hi}[x] - \text{lo}[x])$
+    \EndFor
+    \State \Return updated context
+\EndFunction
+\end{algorithmic}
+
+\subsection{Convergence Criteria}
+
+Navigation terminates when convergence criteria are met.
+
+\begin{definition}[Convergence]
+A context $\xi$ has converged when:
+\begin{equation}
+\sum_{c \in \mathcal{C}} \text{violation}(c, \sigma) < \epsilon
+\end{equation}
+where $\epsilon$ is the convergence threshold.
+\end{definition}
+
+Additional termination conditions:
+\begin{itemize}
+    \item Maximum steps reached: $|\tau| > K_{\max}$
+    \item Timeout exceeded: $t_{\text{current}} - t_0 > T_{\max}$
+    \item Position stagnation: $\|\Scoord_k - \Scoord_{k-1}\| < \epsilon_{\text{move}}$ for multiple steps
+\end{itemize}
+
+\subsection{Solution Construction}
+
+Upon convergence, the solution is extracted from the final context.
+
+\begin{definition}[Categorical Solution]
+A solution $\mathcal{S}$ consists of:
+\begin{align}
+\mathcal{S} &= (\text{solved}, \text{result}, \tau, V, \Scoord^*, t_{\text{solve}})
+\end{align}
+where:
+\begin{itemize}
+    \item solved indicates whether convergence was achieved
+    \item result contains the solution values
+    \item $\tau$ is the complete navigation trajectory
+    \item $V$ is the final constraint violation map
+    \item $\Scoord^*$ is the final S-coordinate (completion point)
+    \item $t_{\text{solve}}$ is the total solution time
+\end{itemize}
+\end{definition}
+
+The result format depends on problem type:
+\begin{itemize}
+    \item Optimization: Variable values achieving minimum/maximum
+    \item Search: Entity satisfying target condition
+    \item Constraint: Variable assignment satisfying all constraints
+    \item Pattern Match: Matching candidates ranked by similarity
+\end{itemize}
+
+\subsection{State-Coordinate Mapping}
+
+The runtime maintains bidirectional mapping between variable states and S-coordinates.
+
+\begin{definition}[State to Coordinate]
+Given state $\sigma = \{x_1, \ldots, x_n\}$ with numeric values:
+\begin{align}
+\Sk &= \text{std}(\{x_1, \ldots, x_n\}) \\
+\St &= \text{mean}(\{x_1, \ldots, x_n\}) \\
+\Se &= H(\{x_1, \ldots, x_n\})
+\end{align}
+where $H$ is histogram entropy.
+\end{definition}
+
+\begin{definition}[Coordinate to State]
+Given S-coordinate $\Scoord = (\Sk, \St, \Se)$ and variable bounds:
+\begin{equation}
+x_i = \St + \left(i - \frac{n}{2}\right) \cdot \frac{2\Sk}{n}
+\end{equation}
+with clamping to bounds $[\text{lo}_i, \text{hi}_i]$.
+\end{definition}
+
+This mapping enables navigation in S-space to translate to variable updates, and variable changes to translate to S-space movement.
+

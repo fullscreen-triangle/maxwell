@@ -1,0 +1,43 @@
+{
+  "run_id": "20251210_210739",
+  "timestamp": "2025-12-10T21:16:49.690994",
+  "total_experiments": 7,
+  "all_validated": true,
+  "experiments": {
+    "exp1": {
+      "name": "Temperature Independence",
+      "validated": true,
+      "conclusion": "Network topology is independent of kinetic energy"
+    },
+    "exp2": {
+      "name": "Kinetic Independence",
+      "validated": true,
+      "conclusion": "Zero correlation confirmed: max |r| = 0.0601"
+    },
+    "exp3": {
+      "name": "Distance Inequivalence",
+      "validated": true,
+      "conclusion": "Distance metrics are inequivalent: max |r| = 0.4128"
+    },
+    "exp4": {
+      "name": "Temperature Emergence",
+      "validated": true,
+      "conclusion": "Cluster mean (1.848) matches global (2.00)"
+    },
+    "exp5": {
+      "name": "Sorting Increases Entropy",
+      "validated": true,
+      "conclusion": "Entropy increased: \u0394S = +0.0400"
+    },
+    "exp6": {
+      "name": "Velocity-Blind Categorical Completion",
+      "validated": true,
+      "conclusion": "Paths identical in 100.0% of trials"
+    },
+    "exp7": {
+      "name": "Information Complementarity",
+      "validated": true,
+      "conclusion": "Demon is projection of hidden categorical dynamics onto kinetic face"
+    }
+  }
+}

@@ -103,6 +103,17 @@ The wavefront size evolves according to:
 where $\gamma(t_n)$ is the set of already-completed states.
 \end{proposition}
 
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/panel_arg5_dissolution_decision.png}
+\caption{\textbf{Argument 5: Dissolution of Decision—Categorical Completion is Automatic, Not Deliberative.}
+\textbf{(A)} No decision tree exists in phase-lock network topology. The schematic shows a molecule (top teal node) with multiple potential paths (gray dashed lines indicate non-existent alternatives). Only one path (solid green line through teal nodes) exists in the network topology, determined by categorical adjacency. Red lines with crosses mark paths that are topologically forbidden. The system has no choice points: navigation is deterministic. The caption ``Only ONE path exists in topology'' emphasizes that categorical completion requires no decision-making.
+\textbf{(B)} Automatic path following through configuration space. The trajectory (dark teal curve) shows completion progress from start (green circle, configuration $\approx 0.5$) to end (red star, categorical progress $= 1.0$). The smooth, deterministic path follows the gradient of categorical distance $\nabla d_{\text{cat}}(\mathbf{q})$ with no branching points. The system automatically follows network structure without decisions, as indicated by the annotation ``Automatic following / No decisions required.'' The configuration parameter represents position in categorical state space, not physical space.
+\textbf{(C)} No branching implies no decision. Bar plot showing the number of available options at each completion step. All bars are exactly 1.0 (marked by red dashed line), confirming ``Always exactly 1 option'' at every step. If decision-making were required, we would observe $n_{\text{options}} > 1$ at branch points. The constant value $n = 1$ proves that categorical completion is a deterministic flow, not a stochastic or deliberative process. This directly contradicts the demon's purported role as a decision-maker.
+\textbf{(D)} Deterministic reproducibility across 10 independent runs. The completion curve (dark teal) shows identical trajectories for all 10 runs, with completion increasing from 0 to 1.0 following $C(t) = 1 - \exp(-t/\tau_{\text{cat}})$ where $\tau_{\text{cat}}$ is the categorical completion timescale. Perfect overlap of all runs confirms deterministic dynamics: given the same initial categorical state, the system always follows the same path. This demonstrates that categorical completion is automatic and reproducible, requiring no agent, no information processing, and no decisions. The demon's ``choice'' to open the door is revealed as automatic topological navigation.}
+\label{fig:dissolution_decision}
+\end{figure*}
+
 \subsection{Selection Without Information}
 
 We now prove the central result: categorical selection requires no external information.

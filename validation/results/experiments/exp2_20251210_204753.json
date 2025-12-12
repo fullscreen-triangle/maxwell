@@ -1,0 +1,25 @@
+{
+  "experiment_id": "exp2",
+  "experiment_name": "Kinetic Independence",
+  "timestamp": "20251210_204753",
+  "hypothesis": "\u2202G/\u2202E_kin = 0",
+  "conclusion": "Zero correlation confirmed: max |r| = 0.0601",
+  "validated": true,
+  "data": {
+    "correlations": {
+      "KE_vs_edges": 0.04599987908680947,
+      "KE_vs_degree": 0.04599987908680946,
+      "KE_vs_clustering": 0.06014918281255481,
+      "KE_vs_density": 0.04599987908680947
+    },
+    "n_trials": 1000
+  },
+  "metrics": {
+    "max_correlation": 0.06014918281255481,
+    "KE_vs_edges": 0.04599987908680947,
+    "KE_vs_degree": 0.04599987908680946,
+    "KE_vs_clustering": 0.06014918281255481,
+    "KE_vs_density": 0.04599987908680947
+  },
+  "figures": []
+}

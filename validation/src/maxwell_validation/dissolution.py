@@ -10,26 +10,22 @@ Validates the seven-fold dissolution of Maxwell's Demon:
 5. Dissolution of Decision
 6. Dissolution of Second Law
 7. Information Complementarity
+
+Based on the theoretical framework demonstrating that the demon
+does not exist - what appears as intelligent sorting is categorical
+completion through phase-lock network topology.
 """
 
 import numpy as np
 from dataclasses import dataclass
 from typing import Tuple, Dict, List
-from enum import Enum
 
-
-class DissolutionArgument(Enum):
-    TEMPORAL_TRIVIALITY = 1
-    PHASE_LOCK_TEMPERATURE_INDEPENDENCE = 2
-    RETRIEVAL_PARADOX = 3
-    DISSOLUTION_OF_OBSERVATION = 4
-    DISSOLUTION_OF_DECISION = 5
-    DISSOLUTION_OF_SECOND_LAW = 6
-    INFORMATION_COMPLEMENTARITY = 7
+from .types import DissolutionArgument
 
 
 @dataclass
 class DissolutionResult:
+    """Result of a dissolution argument validation"""
     argument: DissolutionArgument
     validated: bool
     message: str

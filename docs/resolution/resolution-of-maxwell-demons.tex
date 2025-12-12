@@ -10,8 +10,10 @@
 \usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{cleveref}
+\DeclareMathOperator*{\argmax}{arg\,max}
 \usepackage{physics}
 \usepackage{natbib}
+\usepackage{tikz-cd}
 
 \geometry{margin=1in}
 
@@ -51,7 +53,7 @@
 \maketitle
 
 \begin{abstract}
-We present a complete resolution of Maxwell's Demon paradox through the theory of categorical phase-lock networks. The standard formulation asks how a demon can sort molecules by kinetic energy without violating the second law of thermodynamics, with proposed resolutions invoking information-theoretic costs of measurement and memory erasure. We demonstrate that this framing is fundamentally misconceived: there is no demon because there is no sorting by kinetic energy. Gas molecules exist in phase-lock networks formed through Van der Waals forces ($\sim r^{-6}$) and dipole interactions ($\sim r^{-3}$)---interactions that depend on spatial configuration and electronic structure, not molecular velocity. 
+We present a complete resolution of Maxwell's Demon paradox through the theory of categorical phase-lock networks. The standard formulation asks how a demon can sort molecules by kinetic energy without violating the second law of thermodynamics, with proposed resolutions invoking information-theoretic costs of measurement and memory erasure. We demonstrate that this framing is fundamentally misconceived: there is no demon because there is no sorting by kinetic energy. Gas molecules exist in phase-lock networks formed through Van der Waals forces ($\sim r^{-6}$) and dipole interactions ($\sim r^{-3}$)---interactions that depend on spatial configuration and electronic structure, not molecular velocity.
 
 We prove six independent results that collectively dissolve the paradox: (1) \textit{Temporal triviality}: any configuration the demon purportedly creates will occur naturally through thermal fluctuations, rendering the demon redundant; (2) \textit{Phase-lock temperature independence}: the same phase-lock network (spatial arrangement and categorical structure) can exist at any temperature---a ``snapshot'' of positions is velocity-blind; (3) \textit{The retrieval paradox}: velocity-based sorting is self-defeating because thermal equilibration ($\sim 10^{10}$ collisions/s) randomises velocities faster than any sorting can occur, requiring infinite retrieval operations; (4) \textit{Phase-lock kinetic independence}: $\partial \phaselockgraph / \partial E_{\text{kin}} = 0$---network topology does not depend on molecular velocities; (5) \textit{Categorical-physical distance inequivalence}: categorical adjacency does not correspond to spatial proximity or kinetic similarity; (6) \textit{Temperature emergence}: temperature is a statistical observable of phase-lock cluster structure, not a sorting criterion.
 
@@ -86,9 +88,9 @@ The dominant resolution, developed through contributions by Szilard \citep{szila
 
 \begin{enumerate}
     \item \textbf{Measurement cost}: The demon must acquire information about molecular velocities, requiring interaction with the molecules that generates entropy.
-    
+
     \item \textbf{Memory erasure}: The demon's memory, after accumulating sorting decisions, must eventually be erased. Landauer's principle establishes that erasing one bit of information dissipates at least $kT \ln 2$ of heat, generating entropy $\Delta S \geq k \ln 2$ per bit.
-    
+
     \item \textbf{Computational irreversibility}: Bennett showed that logically irreversible operations (including measurement with finite memory) necessarily produce entropy, offsetting any decrease from sorting.
 \end{enumerate}
 
@@ -206,15 +208,15 @@ Our analysis reveals that each step is either unnecessary, misconceived, or impo
 
 \begin{enumerate}
     \item \textbf{No measurement needed}: Phase-lock network topology encodes categorical structure without any measurement. The ``information'' about which molecules belong together is structural, not acquired.
-    
+
     \item \textbf{No decisions required}: Categorical completion follows network topology deterministically. Accessible states are determined by phase-lock adjacency, not by deliberation.
-    
+
     \item \textbf{No door operation}: The partition between categorical clusters is topological, not physical. ``Opening the door'' is selecting a categorical state, which makes phase-lock adjacent states accessible.
-    
+
     \item \textbf{No sorting by temperature}: Phase-lock structure is temperature-independent. The same categorical arrangement exists at any temperature---a snapshot of positions is velocity-blind. The demon sorts the wrong property.
-    
+
     \item \textbf{No maintenance possible}: Even if sorting occurred, the demon cannot maintain it. Thermal equilibration randomises velocities on the collision timescale ($10^{-10}$ s). The demon would require infinite retrieval operations, defeating itself.
-    
+
     \item \textbf{No special outcome}: The ``sorted'' configuration will occur naturally through fluctuations. The demon is temporally redundant---it creates nothing that wouldn't happen anyway.
 \end{enumerate}
 
@@ -247,11 +249,11 @@ The resolution makes testable predictions:
 
 \begin{enumerate}
     \item \textbf{Phase-lock correlation spectroscopy}: Categorical structure should be detectable through correlation measurements independent of temperature.
-    
+
     \item \textbf{Isothermal categorical separation}: Under isothermal conditions, categorical clusters should remain distinguishable while temperature-based ``sorting'' is impossible.
-    
+
     \item \textbf{Residual phase correlations}: After physical separation, molecules from the same categorical cluster should exhibit residual phase correlations detectable through interference measurements.
-    
+
     \item \textbf{Network topology determines dynamics}: Molecular dynamics should follow phase-lock adjacency rather than kinetic energy similarity, testable through trajectory analysis.
 \end{enumerate}
 

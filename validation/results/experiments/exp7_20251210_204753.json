@@ -1,0 +1,32 @@
+{
+  "experiment_id": "exp7",
+  "experiment_name": "Information Complementarity",
+  "timestamp": "20251210_204753",
+  "hypothesis": "Kinetic and categorical faces are complementary",
+  "conclusion": "Demon is projection of hidden categorical dynamics onto kinetic face",
+  "validated": true,
+  "data": {
+    "kinetic_face": {
+      "temperature": 0.9654392131923941,
+      "kinetic_energy": 144.81588197885912
+    },
+    "categorical_face": {
+      "n_nodes": 100,
+      "n_edges": 106.0,
+      "degree_mean": 2.12,
+      "degree_std": 1.3948476619330155,
+      "degree_max": 5.0,
+      "clustering_mean": 0.27399999999999997,
+      "clustering_std": 0.3629073955953195,
+      "avg_path_length": 4.283400809716599,
+      "density": 0.021414141414141413
+    },
+    "complementarity": "demonstrated"
+  },
+  "metrics": {
+    "temperature": 0.9654392131923941,
+    "kinetic_energy": 144.81588197885912,
+    "network_edges": 106.0
+  },
+  "figures": []
+}

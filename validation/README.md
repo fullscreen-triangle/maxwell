@@ -1,140 +1,171 @@
-# Maxwell Validation
+# Maxwell Validation Package
 
-**Python validation suite for the Complementarity-Aware Processor**
+A comprehensive Python validation framework for the Maxwell Processor, demonstrating the seven-fold dissolution of Maxwell's Demon.
 
-This package provides independent validation of the theoretical framework resolving Maxwell's Demon through categorical phase-lock topology.
+## The Central Thesis
+
+**THERE IS NO DEMON.**
+
+What appears as intelligent sorting is categorical completion through phase-lock network topology. Maxwell observed the kinetic face of information while the categorical dynamics remained hidden.
+
+## Components
+
+### Core Types (`types.py`)
+- **S-Coordinates**: Tri-dimensional entropy coordinates (S_k, S_t, S_e)
+- **Oscillatory Signatures**: Molecular oscillatory patterns (amplitude, frequency, phase)
+- **Oscillatory Holes**: P-type carriers (functional absences)
+- **Molecular Carriers**: N-type carriers (pharmaceutical molecules)
+- **Categorical/Kinetic States**: Ground truth vs observable projections
+
+### Biological Semiconductor (`semiconductor.py`)
+Implements the oscillatory semiconductor framework:
+- **Oscillatory Holes**: Missing components that behave as charge carriers
+- **P-N Junctions**: Therapeutic rectification and directional flow
+- **Conductivity**: σ = n μ_n e + p μ_p e
+- **Recombination**: Carriers fill holes through signature matching
+
+### Biological ALU (`alu.py`)
+- **BMD Transistors**: Information switches through pattern recognition
+- **Tri-dimensional Logic Gates**: AND, OR, XOR, NOT, Hadamard, Phase in S-space
+- **Gear Networks**: Frequency transformations (ω_therapeutic = G × ω_drug)
+- **S-Dictionary Memory**: Information storage indexed by S-coordinates
+
+### Main Processor (`processor.py`)
+The Complementarity-Aware Maxwell Processor integrating:
+- **Categorical Engine**: Ground truth (phase-lock networks, completion)
+- **Kinetic Engine**: Observable projections (velocities, temperature)
+- **Complementarity Manager**: Face switching (only one observable at a time)
+- **Projection Explainer**: Why Maxwell saw a demon
+- **Equivalence Filter**: State space reduction
+- **Recursive Completion**: 3^k hierarchical navigation
+
+### Dissolution Validator (`dissolution.py`)
+Validates all seven arguments dissolving the demon:
+
+1. **Temporal Triviality**: Any configuration occurs naturally through fluctuations
+2. **Phase-Lock Temperature Independence**: Same arrangement exists at any temperature
+3. **Retrieval Paradox**: Cannot outpace thermal equilibration
+4. **Dissolution of Observation**: Topology determines accessibility without measurement
+5. **Dissolution of Decision**: Pathways follow automatically
+6. **Dissolution of Second Law**: Categorical entropy increases
+7. **Information Complementarity**: Demon is projection of hidden face
 
 ## Installation
 
 ```bash
+cd validation
 pip install -e .
-
-# With development dependencies
-pip install -e ".[dev]"
 ```
 
 ## Usage
 
-### Run All Validations
-
-```bash
-python -m maxwell_validation.dissolution
-```
-
-### Individual Validators
-
+### Quick Start
 ```python
-from maxwell_validation import (
-    CategoricalValidator,
-    KineticValidator,
-    ComplementarityValidator,
-    DissolutionValidator,
-)
+from maxwell_validation import MaxwellProcessor, run_full_validation
 
-# Validate categorical operations
-cat = CategoricalValidator()
-results = cat.run_all_validations()
-
-# Validate kinetic operations
-kin = KineticValidator(temperature=300.0)
-results = kin.run_all_validations()
-
-# Validate complementarity
-comp = ComplementarityValidator()
-results = comp.run_all_validations()
-
-# Validate all seven dissolution arguments
-diss = DissolutionValidator()
-results = diss.run_all_validations()
-diss.print_summary(results)
+# Run comprehensive validation
+results = run_full_validation()
 ```
 
-## Validation Modules
+### Demonstrate No Demon
+```python
+from maxwell_validation import MaxwellProcessor, ProcessorConfig
 
-### `categorical.py`
+config = ProcessorConfig(num_molecules=100, temperature=300.0)
+processor = MaxwellProcessor(config)
+processor.initialize_system(100)
 
-Validates the categorical engine:
-- Phase-lock network construction (position-based, NOT velocity-based)
-- Categorical completion irreversibility
-- Network density increases entropy
-- Conjugate relationship between faces
+result = processor.demonstrate_no_demon()
+print(result["final_conclusion"])  # "THE DEMON DOES NOT EXIST"
+```
 
-### `kinetic.py`
+### Validate Dissolution Arguments
+```python
+from maxwell_validation import DissolutionValidator
 
-Validates the kinetic engine:
-- Maxwell-Boltzmann velocity distribution
-- Temperature computation from kinetic energies
-- Demon sorting (what Maxwell would see)
-- Retrieval paradox demonstration
+validator = DissolutionValidator()
+results = validator.run_all_validations()
+validator.print_summary(results)
+```
 
-### `complementarity.py`
+### Use the Biological ALU
+```python
+from maxwell_validation import BiologicalALU, SCoordinates
+from maxwell_validation.alu import ALUOperation
 
-Validates complementarity constraints:
-- Cannot observe both faces simultaneously
-- Face switching works correctly
-- Derivation vs measurement distinction
-- Ammeter/voltmeter analogy
+alu = BiologicalALU()
 
-### `dissolution.py`
+# S-coordinate operations
+a = SCoordinates(1.0, 2.0, 3.0)
+b = SCoordinates(0.5, 1.0, 1.5)
+result = alu.execute(ALUOperation.ADD, a, b)
 
-Validates all seven dissolution arguments:
+# Logic gates
+and_result = alu.apply_gate("AND", a, b)
+not_result = alu.apply_gate("NOT", a)
 
-1. **Temporal Triviality**: Fluctuations produce same configurations
-2. **Phase-Lock Temperature Independence**: Same arrangement at any T
-3. **Retrieval Paradox**: Cannot outpace thermal equilibration
-4. **Dissolution of Observation**: Topology determines accessibility
-5. **Dissolution of Decision**: Pathways follow automatically
-6. **Dissolution of Second Law**: Categorical entropy increases
-7. **Information Complementarity**: Demon is projection artifact
+# Memory operations
+alu.store(a, "therapeutic_state")
+value = alu.load(a)
+```
 
-## Testing
+### Use the Semiconductor Network
+```python
+from maxwell_validation import SemiconductorNetwork
+
+network = SemiconductorNetwork()
+p_sub = network.create_p_substrate("disease_region", n_holes=5)
+n_sub = network.create_n_substrate("drug_region", n_carriers=3)
+junction = network.create_junction("disease_region", "drug_region")
+
+# Get rectification ratio
+ratio = junction.rectification_ratio(0.1)
+print(f"Rectification ratio: {ratio}")
+```
+
+## Running Tests
 
 ```bash
-pytest -v
+cd validation
+pytest tests/ -v
 ```
 
-## Output Example
+## Key Equations
 
+### Oscillatory Hole Mobility
 ```
-======================================================================
-THE SEVEN-FOLD DISSOLUTION OF MAXWELL'S DEMON
-======================================================================
-
-✓ Argument 1: TEMPORAL_TRIVIALITY
-  Temporal triviality validated
-  Sorted configurations occur naturally through fluctuations.
-
-✓ Argument 2: PHASE_LOCK_TEMPERATURE_INDEPENDENCE
-  Phase-lock temperature independence validated
-  Same positions produce same phase-lock network regardless of temperature.
-
-✓ Argument 3: RETRIEVAL_PARADOX
-  Retrieval paradox validated
-  Sorting ratio stays ~0.50. Cannot outpace equilibration.
-
-✓ Argument 4: DISSOLUTION_OF_OBSERVATION
-  Dissolution of observation validated
-  Network determined purely by topology, not velocity measurement.
-
-✓ Argument 5: DISSOLUTION_OF_DECISION
-  Dissolution of decision validated
-  Path followed automatically from topology, no decisions made.
-
-✓ Argument 6: DISSOLUTION_OF_SECOND_LAW
-  Dissolution of second law validated
-  Entropy increased. Second law upheld.
-
-✓ Argument 7: INFORMATION_COMPLEMENTARITY
-  Information complementarity validated
-  The demon is the projection of hidden categorical dynamics.
-
-======================================================================
-ALL SEVEN ARGUMENTS VALIDATED
-THERE IS NO DEMON.
-======================================================================
+μ_h = q_h τ_h / m_h*
 ```
+
+### Therapeutic Conductivity
+```
+σ = n μ_n e + p μ_p e
+```
+
+### P-N Junction Built-in Potential
+```
+V_bi = (k_B T / q) ln(N_A N_D / n_i²)
+```
+
+### Gear Ratio Frequency Transformation
+```
+ω_therapeutic = G_pathway × ω_drug
+```
+
+### Categorical Entropy
+```
+S = k_B × |E|
+```
+where |E| is the number of phase-lock edges.
+
+## Theoretical Foundation
+
+Based on the papers:
+- "Categorical Resolution of Gibbs' Paradox"
+- "Biological Oscillatory Semiconductors"
+- "Resolution of Maxwell's Demon Through Categorical Phase-Lock Topology"
+- "Properties of the Observation Boundary"
 
 ## License
 
-MIT
-
+MIT License - See LICENSE file.

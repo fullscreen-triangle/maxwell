@@ -1,0 +1,163 @@
+
+\subsection{Translation Overview}
+
+The problem translator converts computational problems from conventional descriptions into categorical form. This is analogous to compilation in conventional computing, but rather than generating machine instructions, the translator generates categorical structures that the runtime can navigate.
+
+\begin{definition}[Categorical Problem]
+A categorical problem $\mathcal{P}$ consists of:
+\begin{enumerate}
+    \item A set of entities $\mathcal{E} = \{e_1, e_2, \ldots, e_n\}$
+    \item A set of relations $\mathcal{R} = \{r_1, r_2, \ldots, r_m\}$ between entities
+    \item A set of constraints $\mathcal{C} = \{c_1, c_2, \ldots, c_k\}$ that must be satisfied
+    \item An objective function $f: \mathcal{E} \to \mathbb{R}$ (optional, for optimization problems)
+\end{enumerate}
+\end{definition}
+
+The translator's task is to extract these components from problem descriptions and encode them in a form suitable for categorical navigation.
+
+\subsection{Entity Extraction}
+
+Entities are the objects of the problem---things that have identity and properties.
+
+\begin{definition}[Categorical Entity]
+An entity $e$ consists of:
+\begin{align}
+e &= (\text{name}, \text{category}, \text{properties}, \Scoord)
+\end{align}
+where:
+\begin{itemize}
+    \item name is a unique identifier
+    \item category classifies the entity type
+    \item properties is a dictionary of attribute-value pairs
+    \item $\Scoord$ is the entity's S-entropy coordinate
+\end{itemize}
+\end{definition}
+
+Entity S-coordinates are derived from their properties:
+\begin{align}
+\Sk &= \frac{|\text{properties}|}{|\text{properties}|_{\max}} \\
+\St &= \text{mean}(\{v : v \in \text{properties}, v \in \mathbb{R}\}) \\
+\Se &= \frac{|\{\text{unique property values}\}|}{|\text{properties}|}
+\end{align}
+
+\subsection{Relation Encoding}
+
+Relations specify how entities connect to each other.
+
+\begin{definition}[Categorical Relation]
+A relation $r$ consists of:
+\begin{align}
+r &= (\text{source}, \text{target}, \text{type}, \text{strength}, \text{properties})
+\end{align}
+where:
+\begin{itemize}
+    \item source and target are entity identifiers
+    \item type classifies the relation
+    \item strength $\in [0, 1]$ indicates relation magnitude
+    \item properties contains additional attributes
+\end{itemize}
+\end{definition}
+
+Relations induce structure on the entity set. The relation graph can be represented as an adjacency matrix:
+\begin{equation}
+A_{ij} = \begin{cases}
+\text{strength}(r) & \text{if } r = (e_i, e_j, \cdot, \cdot, \cdot) \in \mathcal{R} \\
+0 & \text{otherwise}
+\end{cases}
+\end{equation}
+
+\subsection{Constraint Specification}
+
+Constraints define what constitutes a valid solution.
+
+\begin{definition}[Categorical Constraint]
+A constraint $c$ consists of:
+\begin{align}
+c &= (\text{name}, \text{type}, \text{expression}, \text{entities})
+\end{align}
+where:
+\begin{itemize}
+    \item name is a unique identifier
+    \item type $\in \{\text{equality}, \text{inequality}, \text{membership}, \text{structure}\}$
+    \item expression is a logical/arithmetic formula
+    \item entities lists the entities involved
+\end{itemize}
+\end{definition}
+
+Constraint types:
+\begin{enumerate}
+    \item \textbf{Equality}: Expression of form ``$a = b$'', satisfied when the two sides are equal.
+    \item \textbf{Inequality}: Expression of form ``$a < b$'' or ``$a > b$'', satisfied when the ordering holds.
+    \item \textbf{Membership}: Expression of form ``$x \in S$'', satisfied when element belongs to set.
+    \item \textbf{Structure}: Custom predicate, satisfied when predicate returns true.
+\end{enumerate}
+
+\begin{definition}[Constraint Evaluation]
+Evaluating a constraint $c$ on state $\sigma$ produces:
+\begin{equation}
+\text{eval}(c, \sigma) = (\text{satisfied}, \text{violation})
+\end{equation}
+where satisfied $\in \{\text{true}, \text{false}\}$ and violation $\in [0, \infty)$ measures the degree of violation.
+\end{definition}
+
+For satisfied constraints, violation $= 0$. For unsatisfied constraints, violation measures how far the current state is from satisfaction.
+
+\subsection{Problem Type Detection}
+
+The translator automatically detects the problem type from the description.
+
+\begin{definition}[Problem Types]
+\begin{itemize}
+    \item \textbf{Optimization}: Contains objective function to minimize/maximize.
+    \item \textbf{Search}: Contains target condition to find.
+    \item \textbf{Constraint Satisfaction}: Contains constraints without objective.
+    \item \textbf{Pattern Matching}: Contains pattern to match against candidates.
+    \item \textbf{Biological}: Contains molecular/biological entities.
+\end{itemize}
+\end{definition}
+
+Detection uses pattern matching on the problem description:
+\begin{itemize}
+    \item Optimization: matches ``minimize'', ``maximize'', ``optimal''
+    \item Search: matches ``find'', ``locate'', ``search''
+    \item Constraint: matches ``such that'', ``subject to'', ``must''
+    \item Biological: matches ``protein'', ``molecule'', ``enzyme''
+\end{itemize}
+
+\subsection{S-Entropy Manifold Construction}
+
+The translated problem defines a manifold in S-entropy space.
+
+\begin{definition}[Problem Manifold]
+The S-entropy manifold $\mathcal{M}$ of problem $\mathcal{P}$ consists of:
+\begin{equation}
+\mathcal{M} = \{(\Scoord_e, e) : e \in \mathcal{E}\}
+\end{equation}
+where $\Scoord_e$ is the S-coordinate of entity $e$.
+\end{definition}
+
+The manifold represents the problem structure in coordinate form. Entities become points; relations become distances or connections between points; constraints become regions that solutions must occupy.
+
+\begin{proposition}[Manifold Properties]
+The problem manifold satisfies:
+\begin{enumerate}
+    \item Entities with similar properties have nearby S-coordinates.
+    \item Related entities have S-coordinates connected by short paths.
+    \item Valid solutions occupy regions where all constraint violations are zero.
+\end{enumerate}
+\end{proposition}
+
+\subsection{Compilation}
+
+The final step of translation compiles constraints for efficient evaluation.
+
+\begin{definition}[Constraint Compilation]
+Compiling constraint $c$ produces an evaluator function:
+\begin{equation}
+\text{compile}(c) = f_c: \Sigma \to (\{\text{true}, \text{false}\}, \mathbb{R}_{\geq 0})
+\end{equation}
+where $\Sigma$ is the space of possible states.
+\end{definition}
+
+Compiled constraints can be evaluated repeatedly during navigation without re-parsing the constraint expression.
+

@@ -1,0 +1,26 @@
+{
+  "experiment_id": "ic_exp7",
+  "experiment_name": "Consciousness-Software Interface",
+  "timestamp": "20251208_135249",
+  "hypothesis": "Interface provides 242% fire-circle enhancement and 78% pathway efficiency",
+  "conclusion": "Fire-circle = 242%, efficiency = 78%",
+  "validated": true,
+  "data": {
+    "placebo_baseline": 0.39,
+    "fire_circle_enhancement": 2.42,
+    "pathway_efficiency": 0.78,
+    "clinical_coordinates": 12,
+    "current_intention": {
+      "s_k": 1.0,
+      "s_t": 1.0,
+      "s_e": 1.0
+    },
+    "intention_strength": 0.8
+  },
+  "metrics": {
+    "fire_circle_enhancement_pct": 242.0,
+    "pathway_efficiency_pct": 78.0,
+    "mean_placebo_effect_pct": 76.30857583091476
+  },
+  "figures": []
+}

@@ -1,0 +1,20 @@
+{
+  "experiment_id": "exp5",
+  "experiment_name": "Sorting Increases Entropy",
+  "timestamp": "20251207_054643",
+  "hypothesis": "Attempting to sort by velocity increases entropy",
+  "conclusion": "Entropy increased: \u0394S = +0.0400",
+  "validated": true,
+  "data": {
+    "initial_entropy": 1.06,
+    "final_entropy": 1.1,
+    "delta_entropy": 0.040000000000000036,
+    "n_steps": 100
+  },
+  "metrics": {
+    "initial_entropy": 1.06,
+    "final_entropy": 1.1,
+    "delta_entropy": 0.040000000000000036
+  },
+  "figures": []
+}

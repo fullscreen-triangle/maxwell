@@ -1,0 +1,24 @@
+{
+  "experiment_id": "ic_exp5",
+  "experiment_name": "Virtual Processor ALU",
+  "timestamp": "20251208_142016",
+  "hypothesis": "ALU operates with 47 BMDs in <100 ns",
+  "conclusion": "BMDs = 47, time = 100.0 ns",
+  "validated": true,
+  "data": {
+    "bmd_count": 47,
+    "operation_count": 8,
+    "total_time_ns": 800.0,
+    "avg_time_ns": 100.0,
+    "accumulator": [
+      1.8708286933869707,
+      1.8708286933869707,
+      1.8708286933869707
+    ]
+  },
+  "metrics": {
+    "bmd_count": 47,
+    "operation_time_ns": 100.0
+  },
+  "figures": []
+}

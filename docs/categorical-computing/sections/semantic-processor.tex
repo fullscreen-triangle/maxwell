@@ -1,0 +1,186 @@
+
+\subsection{Processor Architecture}
+
+The semantic processor integrates molecular encoding, harmonic networks, and atmospheric memory into a complete language understanding system.
+
+\begin{definition}[Semantic Processor]
+The semantic processor $\mathcal{P}_{\text{sem}}$ consists of:
+\begin{enumerate}
+    \item Molecular encoder: Maps words to virtual molecules
+    \item Coincidence network: Discovers harmonic relationships
+    \item Atmospheric memory: Stores words by S-coordinate
+    \item Prediction engine: Computes meaning via structure prediction
+\end{enumerate}
+\end{definition}
+
+\subsection{Atmospheric Memory}
+
+The atmospheric memory stores word-molecules in a virtual gas, addressable by S-entropy coordinates.
+
+\begin{definition}[Atmospheric Semantic Memory]
+The atmospheric memory $\mathcal{A}$ is characterized by:
+\begin{itemize}
+    \item Virtual volume $V$ (in cm$^3$)
+    \item Molecular density $\rho = 2.5 \times 10^{19}$ molecules/cm$^3$
+    \item Total molecules $N = \rho \cdot V$
+    \item S-resolution $\Delta S$ (categorical precision)
+    \item Address count $(1/\Delta S)^3$
+\end{itemize}
+\end{definition}
+
+\begin{proposition}[Storage Capacity]
+For $V = 10$ cm$^3$ and $\Delta S = 0.01$:
+\begin{align}
+N_{\text{molecules}} &= 2.5 \times 10^{20} \\
+N_{\text{addresses}} &= 10^6 \\
+N_{\text{molecules/address}} &= 2.5 \times 10^{14}
+\end{align}
+\end{proposition}
+
+Words are stored at S-coordinates determined by their molecular properties. Retrieval is by categorical address (S-coordinate neighborhood), not by position.
+
+\subsection{Storage Operation}
+
+Storing a word in atmospheric memory:
+
+\begin{algorithmic}[1]
+\Function{Store}{word $w$}
+    \State Encode molecule: $\mathcal{M} \gets$ encode($w$)
+    \State Add to network: network.add($\mathcal{M}$)
+    \State Compute address: $\mathbf{a} \gets$ s\_to\_address($\Scoord(\mathcal{M})$)
+    \State Store at address: memory[$\mathbf{a}$].append($\mathcal{M}$)
+    \State \Return $\mathbf{a}$
+\EndFunction
+\end{algorithmic}
+
+The word is simultaneously added to the coincidence network (for harmonic discovery) and to the atmospheric memory (for retrieval).
+
+\subsection{Retrieval Operation}
+
+Retrieving words by S-coordinate:
+
+\begin{algorithmic}[1]
+\Function{Retrieve}{$\Scoord^*$, radius $r$}
+    \State results $\gets \emptyset$
+    \State base $\gets$ s\_to\_address($\Scoord^*$)
+    \For{each address $\mathbf{a}$ within radius $r$ of base}
+        \State results $\gets$ results $\cup$ memory[$\mathbf{a}$]
+    \EndFor
+    \State \Return results
+\EndFunction
+\end{algorithmic}
+
+Retrieval returns all word-molecules stored at addresses within the specified radius of the target S-coordinate. This categorical retrieval naturally groups semantically related words.
+
+\subsection{Meaning Prediction}
+
+Predicting the meaning of a word from context:
+
+\begin{algorithmic}[1]
+\Function{PredictMeaning}{word $w$, context $C$}
+    \State Store context: \textbf{for} $c \in C$ \textbf{do} Store($c$)
+    \State Predict frequency: $\omega^*, \text{conf} \gets$ network.predict($w$, $C$)
+    \State Compute S-coordinate from context molecules:
+    \State \quad $\Sk \gets$ mean($\{\Sk(\mathcal{M}(c)) : c \in C\}$)
+    \State \quad $\St \gets$ mean($\{\St(\mathcal{M}(c)) : c \in C\}$)
+    \State \quad $\Se \gets$ mean($\{\Se(\mathcal{M}(c)) : c \in C\}$)
+    \State Find related: related $\gets$ network.neighbors($C$)
+    \State \Return \{word, $\omega^*$, conf, $\Scoord$, related\}
+\EndFunction
+\end{algorithmic}
+
+The prediction combines frequency prediction from harmonic coincidences with S-coordinate estimation from context.
+
+\subsection{Semantic Understanding}
+
+Complete semantic understanding of text:
+
+\begin{algorithmic}[1]
+\Function{Understand}{text $T$, query $Q$}
+    \State words $\gets$ tokenize($T$)
+    \State addresses $\gets$ [Store($w$) for $w$ in words]
+    \For{$w$ in words}
+        \State network.add(encode($w$))
+    \EndFor
+    \If{$Q$ is not null}
+        \State predictions $\gets$ [PredictMeaning($q$, words) for $q$ in tokenize($Q$)]
+    \Else
+        \State predictions $\gets \emptyset$
+    \EndIf
+    \State completions $\gets$ predict\_next(words)
+    \State \Return \{words, predictions, completions, network.stats\}
+\EndFunction
+\end{algorithmic}
+
+Understanding processes text by:
+\begin{enumerate}
+    \item Tokenizing into words
+    \item Storing each word in atmospheric memory
+    \item Building the coincidence network
+    \item If query provided, predicting meanings for query words in context
+    \item Predicting likely next words (completion)
+\end{enumerate}
+
+\subsection{Text Comparison}
+
+Comparing texts using molecular similarity:
+
+\begin{algorithmic}[1]
+\Function{Compare}{text$_1$, text$_2$}
+    \State $M_1 \gets$ [encode($w$) for $w$ in tokenize(text$_1$)]
+    \State $M_2 \gets$ [encode($w$) for $w$ in tokenize(text$_2$)]
+    \State $\Scoord_1 \gets$ mean([$\Scoord(\mathcal{M})$ for $\mathcal{M}$ in $M_1$])
+    \State $\Scoord_2 \gets$ mean([$\Scoord(\mathcal{M})$ for $\mathcal{M}$ in $M_2$])
+    \State $d_S \gets \|\Scoord_1 - \Scoord_2\|$
+    \State $\omega_1 \gets$ [$\omega_0(\mathcal{M})$ for $\mathcal{M}$ in $M_1$]
+    \State $\omega_2 \gets$ [$\omega_0(\mathcal{M})$ for $\mathcal{M}$ in $M_2$]
+    \State overlap $\gets |\text{round}(\log \omega_1) \cap \text{round}(\log \omega_2)|$
+    \State similarity $\gets 0.6 \cdot (1/(1+d_S)) + 0.4 \cdot (\text{overlap}/\max(|M_1|, |M_2|))$
+    \State \Return similarity
+\EndFunction
+\end{algorithmic}
+
+Comparison combines S-entropy distance (categorical similarity) with frequency overlap (spectroscopic similarity).
+
+\subsection{Complexity Analysis}
+
+\begin{proposition}[Processing Complexity]
+The semantic processor has the following complexities:
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+Operation & Complexity \\
+\midrule
+Word encoding & $O(|w|)$ \\
+Network insertion & $O(N \cdot K^2)$ for $N$ existing words, $K$ harmonics checked \\
+Storage & $O(1)$ \\
+Retrieval (by S-coordinate) & $O(r^3)$ for radius $r$ \\
+Meaning prediction & $O(|C| \cdot K^2)$ for context size $|C|$ \\
+Full understanding & $O(|T| \cdot N \cdot K^2)$ for text length $|T|$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{proposition}
+
+The quadratic factor in network operations is due to checking harmonic coincidences. For fixed $K$ (maximum harmonic order), this is effectively linear in the number of words.
+
+\subsection{Comparison with Attention}
+
+The harmonic coincidence mechanism provides context-dependent processing analogous to attention.
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Property & Attention & Harmonic Coincidence \\
+\midrule
+Learned & Yes (QKV weights) & No (intrinsic) \\
+Complexity & $O(n^2)$ sequence length & $O(n K^2)$ harmonics \\
+Context range & All tokens equally & Harmonic neighbors \\
+Computation & Matrix multiplication & Frequency comparison \\
+Parameters & $O(d^2)$ per layer & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Attention computes weighted combinations with learned weights. Harmonic coincidence identifies related words through frequency relationships, with no learned parameters.
+

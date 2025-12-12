@@ -1,0 +1,151 @@
+
+\subsection{Optimization Problems}
+
+Optimization problems seek variable values that minimize or maximize an objective function subject to constraints.
+
+\begin{definition}[Optimization Problem Encoding]
+An optimization problem is encoded as:
+\begin{itemize}
+    \item Entities: Variables $\{x_1, \ldots, x_n\}$ with bounds $[\text{lo}_i, \text{hi}_i]$
+    \item Relations: Dependencies between variables (if any)
+    \item Constraints: Feasibility conditions
+    \item Objective: Function $f(x_1, \ldots, x_n)$ to minimize/maximize
+\end{itemize}
+\end{definition}
+
+\begin{example}[Quadratic Optimization]
+The problem $\min_{\mathbf{x}} \mathbf{x}^T A \mathbf{x} + \mathbf{b}^T \mathbf{x}$ subject to $\mathbf{x} \in [l, u]^n$ encodes as:
+\begin{itemize}
+    \item Entities: Variables $x_1, \ldots, x_n$ with bounds $[l, u]$
+    \item Objective: ``$\sum_{i,j} A_{ij} x_i x_j + \sum_i b_i x_i$''
+\end{itemize}
+Navigation minimizes the objective while respecting bounds.
+\end{example}
+
+\subsection{Search Problems}
+
+Search problems seek an element from a collection that satisfies a target condition.
+
+\begin{definition}[Search Problem Encoding]
+A search problem is encoded as:
+\begin{itemize}
+    \item Entities: Elements of the search space $\{e_1, \ldots, e_n\}$
+    \item Relations: Similarity or ordering between elements
+    \item Constraints: Target condition as a structural constraint
+\end{itemize}
+\end{definition}
+
+\begin{example}[Binary Search]
+Finding value $v$ in sorted list $[a_1, \ldots, a_n]$ encodes as:
+\begin{itemize}
+    \item Entities: List elements with properties $\{\text{value}: a_i\}$
+    \item Constraint: ``$|e.\text{value} - v| < \epsilon$'' (structure type)
+\end{itemize}
+Navigation converges to elements satisfying the target condition.
+\end{example}
+
+\subsection{Constraint Satisfaction Problems}
+
+Constraint satisfaction problems seek variable assignments that satisfy all constraints, without optimization.
+
+\begin{definition}[CSP Encoding]
+A constraint satisfaction problem is encoded as:
+\begin{itemize}
+    \item Entities: Variables with domains
+    \item Relations: Constraint dependencies
+    \item Constraints: Conditions that must all be satisfied
+\end{itemize}
+\end{definition}
+
+\begin{example}[N-Queens]
+Placing $N$ queens on an $N \times N$ board such that none attack each other:
+\begin{itemize}
+    \item Entities: Variables $q_0, \ldots, q_{N-1}$ with domain $[0, N-1]$, where $q_i$ is the row of the queen in column $i$
+    \item Constraints:
+    \begin{itemize}
+        \item No two queens in same row: $|q_i - q_j| > 0$ for $i \neq j$
+        \item No two queens on same diagonal: $|q_i - q_j| \neq |i - j|$ for $i \neq j$
+    \end{itemize}
+\end{itemize}
+Navigation finds an assignment where all constraints evaluate to satisfied.
+\end{example}
+
+\subsection{Pattern Matching Problems}
+
+Pattern matching problems seek elements that match a given pattern.
+
+\begin{definition}[Pattern Match Encoding]
+A pattern matching problem is encoded as:
+\begin{itemize}
+    \item Entities: Pattern entity plus candidate entities
+    \item Relations: Similarity relations between pattern and each candidate
+    \item Constraints: Minimum similarity threshold
+\end{itemize}
+\end{definition}
+
+\begin{proposition}[Match Score]
+The match score between pattern $p$ and candidate $c$ is:
+\begin{equation}
+\text{score}(p, c) = \frac{\sum_{k \in \text{keys}(p)} \mathbf{1}[p[k] = c[k]]}{|\text{keys}(p)|}
+\end{equation}
+\end{proposition}
+
+Navigation finds candidates with high match scores, ranked by similarity to the pattern.
+
+\subsection{Biological System Problems}
+
+Biological problems model molecular systems, interactions, and pathways.
+
+\begin{definition}[Biological Problem Encoding]
+A biological problem is encoded as:
+\begin{itemize}
+    \item Entities: Molecules with properties (mass, charge, binding sites, etc.)
+    \item Relations: Interactions (binding, catalysis, inhibition)
+    \item Constraints: Biochemical feasibility conditions
+    \item Objective: Target property (binding affinity, pathway flux, etc.)
+\end{itemize}
+\end{definition}
+
+\begin{example}[Ligand-Receptor Binding]
+Modeling drug binding to a receptor:
+\begin{itemize}
+    \item Entities: Ligand molecule and receptor molecule with physical properties
+    \item Relations: Binding interaction between ligand and receptor
+    \item Constraints: Favorable binding energy (negative)
+    \item Objective: Minimize binding energy (maximize affinity)
+\end{itemize}
+\end{example}
+
+\begin{example}[Metabolic Pathway]
+Modeling a metabolic pathway:
+\begin{itemize}
+    \item Entities: Enzymes and substrates/metabolites
+    \item Relations: Catalytic reactions (enzyme + substrate $\to$ product)
+    \item Constraints: Conservation of mass, thermodynamic feasibility
+    \item Objective: Maximize pathway flux
+\end{itemize}
+\end{example}
+
+\subsection{Problem Complexity}
+
+Different problem types have different navigation characteristics.
+
+\begin{proposition}[Navigation Complexity by Type]
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Problem Type & Constraint Landscape & Typical Convergence \\
+\midrule
+Optimization (convex) & Single minimum & Fast ($O(\log \epsilon^{-1})$) \\
+Optimization (non-convex) & Multiple minima & Variable \\
+Search & Sparse solutions & Fast ($O(\log n)$) \\
+Constraint satisfaction & Discrete feasible set & Variable \\
+Pattern matching & Smooth similarity & Fast \\
+Biological & Complex interactions & Variable \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{proposition}
+
+The categorical approach is most effective for problems with smooth constraint landscapes, where gradient-based navigation can efficiently find completion points. Problems with highly discrete or discontinuous constraints may require stochastic strategies.
+

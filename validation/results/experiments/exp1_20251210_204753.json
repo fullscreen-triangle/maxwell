@@ -1,0 +1,25 @@
+{
+  "experiment_id": "exp1",
+  "experiment_name": "Temperature Independence",
+  "timestamp": "20251210_204753",
+  "hypothesis": "Same spatial configuration can exist at different temperatures",
+  "conclusion": "Network topology is independent of kinetic energy",
+  "validated": true,
+  "data": {
+    "temperatures": [
+      0.5,
+      1.0,
+      2.0,
+      5.0,
+      10.0
+    ],
+    "edge_variance": 0.0,
+    "degree_variance": 0.0
+  },
+  "metrics": {
+    "edge_variance": 0.0,
+    "degree_variance": 0.0,
+    "n_temperatures": 5
+  },
+  "figures": []
+}

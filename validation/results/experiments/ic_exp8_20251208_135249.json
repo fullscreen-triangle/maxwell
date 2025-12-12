@@ -1,0 +1,61 @@
+{
+  "experiment_id": "ic_exp8",
+  "experiment_name": "Complete Integrated Circuit",
+  "timestamp": "20251208_135249",
+  "hypothesis": "7-component circuit operates as specified",
+  "conclusion": "All components integrated, duality verified",
+  "validated": true,
+  "data": {
+    "total_components": 57,
+    "transistors": 47,
+    "logic_gates": 10,
+    "interconnects": 100,
+    "routing_edges": 100,
+    "timing_precision_s": 7.51e-50,
+    "enaqt_enhancement": 0.24,
+    "memory": {
+      "entries": 0,
+      "capacity": 10000,
+      "hole_utilization": 0.0,
+      "total_stores": 0,
+      "total_retrievals": 0,
+      "cache_hit_rate": 0.0,
+      "equivalence_classes": 0,
+      "addressable_states": 10000000000.0
+    },
+    "alu": {
+      "bmd_count": 47,
+      "operation_count": 0,
+      "total_time_ns": 0.0,
+      "avg_time_ns": 0.0,
+      "accumulator": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "io": {
+      "channels": 7,
+      "active_channels": 7,
+      "aggregate_bandwidth_bits_per_s": 1000000000000.0,
+      "total_bytes_read": 0,
+      "total_bytes_written": 0
+    },
+    "consciousness": {
+      "placebo_baseline": 0.39,
+      "fire_circle_enhancement": 2.42,
+      "pathway_efficiency": 0.78,
+      "clinical_coordinates": 12,
+      "current_intention": null,
+      "intention_strength": 0.0
+    },
+    "bmd_probability_enhancement": 1000000000000.0,
+    "circuit_pathway_duality_threshold": 0.1
+  },
+  "metrics": {
+    "total_components": 57,
+    "duality_distance": 0.030000000000000027,
+    "timing_precision": 7.51e-50
+  },
+  "figures": []
+}

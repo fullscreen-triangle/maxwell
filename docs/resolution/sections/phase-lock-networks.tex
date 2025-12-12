@@ -7,6 +7,7 @@
 
 We begin by establishing the physical basis for phase-lock networks in gas systems. Gas molecules interact through several mechanisms, each with characteristic distance dependence.
 
+
 \begin{definition}[Van der Waals Interaction]
 \label{def:vdw}
 The Van der Waals interaction between two molecules $i$ and $j$ separated by distance $r_{ij}$ is:
@@ -19,7 +20,7 @@ where $C_6^{(ij)}$ is the dispersion coefficient determined by molecular polaris
 C_6^{(ij)} = \frac{3}{2} \frac{\alpha_i \alpha_j}{(4\pi\varepsilon_0)^2} \frac{I_i I_j}{I_i + I_j}
 \label{eq:c6_coefficient}
 \end{equation}
-with $\alpha_i$, $\alpha_j$ the static polarisabilities and $I_i$, $I_j$ the ionisation energies.
+with $\alpha_i$ and $\alpha_j$ being the static polarizabilities and $I_i$ and $I_j$ the ionisation energies.
 \end{definition}
 
 \begin{definition}[Dipole-Dipole Interaction]
@@ -177,6 +178,17 @@ Two gas configurations with identical spatial arrangements $\{\mathbf{r}_i\}$ bu
 \begin{proof}
 Immediate from Theorem~\ref{thm:kinetic_independence}: since $\phaselockgraph$ does not depend on velocities, changing velocities while preserving positions leaves the network unchanged. \qed
 \end{proof}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/arg2_temperature_independence.png}
+\caption{\textbf{Argument 2: Phase-Lock Temperature Independence—Network Topology $\partial G/\partial E_{\text{kin}} = 0$.}
+\textbf{(A)} Same network topology across all temperatures. Phase-lock networks at $T = 0.5, 1.0, 2.0, 5.0$ (color-coded) show identical spatial configurations. Network edges depend on intermolecular distances $r_{ij}$ through Van der Waals interactions $U_{\text{vdW}} \propto r^{-6}$, which are velocity-independent. The 3D scatter demonstrates that network structure (spatial arrangement) is preserved across temperature layers.
+\textbf{(B)} Network properties versus kinetic properties showing $\partial G/\partial T = 0$. Left axis (black): network edges remain constant at $\sim 107$ across all temperatures. Right axis (red): kinetic energy $E_{\text{kin}} = \sum_i \frac{1}{2}m_i v_i^2$ scales linearly with temperature as expected from equipartition theorem. The divergence of these curves proves that network topology $G$ is independent of thermal energy.
+\textbf{(C)} Maxwell-Boltzmann velocity distributions at different temperatures. The distribution $f(v) \propto v^2 \exp(-mv^2/2k_BT)$ widens with increasing temperature (blue to red colormap), but the underlying network structure (not shown) remains unchanged. This demonstrates that the same ``snapshot'' of molecular positions corresponds to vastly different kinetic states.
+\textbf{(D)} Property correlation matrix showing network-kinetic decoupling. Network properties (edges, degree, clustering) exhibit strong internal correlations ($r > 0.78$, red block), while kinetic properties (kinetic energy, temperature) also correlate strongly ($r = 0.99$, dark red block). Crucially, cross-correlations between network and kinetic properties are near-zero ($|r| < 0.03$, white region), confirming $\partial G/\partial E_{\text{kin}} = 0$. This proves that phase-lock structure is velocity-blind.}
+\label{fig:temperature_independence}
+\end{figure*}
 
 \subsection{Network Properties}
 

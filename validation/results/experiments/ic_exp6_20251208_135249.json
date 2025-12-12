@@ -1,0 +1,20 @@
+{
+  "experiment_id": "ic_exp6",
+  "experiment_name": "Seven-Channel I/O",
+  "timestamp": "20251208_135249",
+  "hypothesis": "I/O provides 7 channels with >10\u00b9\u00b2 bits/s bandwidth",
+  "conclusion": "Channels = 7, bandwidth = 1.00e+12",
+  "validated": true,
+  "data": {
+    "channels": 7,
+    "active_channels": 7,
+    "aggregate_bandwidth_bits_per_s": 1000000000000.0,
+    "total_bytes_read": 0,
+    "total_bytes_written": 245
+  },
+  "metrics": {
+    "channel_count": 7,
+    "bandwidth_bits_per_s": 1000000000000.0
+  },
+  "figures": []
+}

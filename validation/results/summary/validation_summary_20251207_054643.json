@@ -1,0 +1,9 @@
+{
+  "run_id": "20251207_054643",
+  "timestamp": "2025-12-07T05:46:58.762800",
+  "total_experiments": 7,
+  "all_validated": true,
+  "experiments": {
+    "exp1": {
+      "name": "Temperature Independence",
+      "validated": 

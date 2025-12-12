@@ -1,0 +1,142 @@
+
+\subsection{Harmonic Coincidence Networks}
+
+Harmonic coincidences between word-molecules provide the mechanism for semantic relationship detection.
+
+\begin{definition}[Harmonic Coincidence]
+Two word-molecules $\mathcal{M}_1$ and $\mathcal{M}_2$ exhibit a harmonic coincidence if there exist integers $n, m$ such that:
+\begin{equation}
+\left|\frac{n \cdot \omega^{(1)}}{m \cdot \omega^{(2)}} - 1\right| < \epsilon
+\end{equation}
+where $\omega^{(1)}$ and $\omega^{(2)}$ are frequencies from the respective molecules and $\epsilon$ is the coincidence tolerance.
+\end{definition}
+
+\begin{definition}[Coincidence Network]
+The coincidence network $\mathcal{G} = (V, E)$ has:
+\begin{itemize}
+    \item Vertices $V$: word-molecules
+    \item Edges $E$: harmonic coincidences with attributes $(n, m, \omega_1, \omega_2, \text{error})$
+\end{itemize}
+\end{definition}
+
+\begin{proposition}[Network Density]
+For $N$ words with $M$ frequencies each, checking all harmonic ratios $n:m$ for $n, m \leq K$ produces at most $N^2 M^2 K^2$ potential coincidences. With tolerance $\epsilon$, the expected number of coincidences is:
+\begin{equation}
+|E| \approx N^2 M^2 K^2 \cdot \epsilon
+\end{equation}
+\end{proposition}
+
+For typical values ($N = 1000$, $M = 5$, $K = 10$, $\epsilon = 0.01$), this yields $\sim 2.5 \times 10^7$ coincidences, producing a densely connected network.
+
+\subsection{Structure Prediction Principle}
+
+The structure prediction principle states that unknown properties can be inferred from known properties through harmonic relationships.
+
+\begin{theorem}[Harmonic Prediction]
+\label{thm:harmonic-prediction}
+Let $\mathcal{M}_{\text{target}}$ be a word-molecule with unknown frequency $\omega^*$, and let $\{\mathcal{M}_1, \ldots, \mathcal{M}_k\}$ be context word-molecules with known frequencies. If harmonic coincidences exist between context molecules, the target frequency can be predicted as:
+\begin{equation}
+\omega^* = \frac{\sum_{i} w_i \cdot \omega_{\text{predicted}}^{(i)}}{\sum_i w_i}
+\end{equation}
+where $\omega_{\text{predicted}}^{(i)}$ is the frequency predicted from molecule $i$ via harmonic ratio, and $w_i$ is the coincidence strength.
+\end{theorem}
+
+\begin{proof}[Sketch]
+Each harmonic coincidence $(n, m)$ between context molecule $\mathcal{M}_i$ and the target provides an estimate:
+\begin{equation}
+\omega_{\text{predicted}}^{(i)} = \omega^{(i)} \cdot \frac{m}{n}
+\end{equation}
+The weighted average combines estimates, with weights reflecting coincidence strength (lower error = higher weight).
+\end{proof}
+
+\subsection{Meaning as Frequency}
+
+Semantic meaning is encoded in the frequency signature of a word-molecule.
+
+\begin{definition}[Semantic Meaning]
+The meaning of word $w$ is the position of its molecule $\mathcal{M}(w)$ in frequency space:
+\begin{equation}
+\text{meaning}(w) = (\omega_0(w), \omega_1(w), \ldots, \omega_k(w))
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Meaning Prediction]
+The meaning of an unknown word can be predicted from context by:
+\begin{enumerate}
+    \item Encoding context words as molecules
+    \item Building the coincidence network among context molecules
+    \item Predicting target frequencies via harmonic relationships
+    \item Reconstructing meaning as the predicted frequency signature
+\end{enumerate}
+\end{proposition}
+
+\subsection{Comparison with Molecular Spectroscopy}
+
+The prediction framework parallels molecular spectroscopy.
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Concept & Molecular Spectroscopy & Semantic Processing \\
+\midrule
+Unknown & Unknown vibrational mode & Unknown word meaning \\
+Known & Measured frequencies & Context word frequencies \\
+Method & Harmonic prediction & Coincidence network \\
+Result & Predicted mode frequency & Predicted semantic position \\
+Error & $<1\%$ (from experiments) & Context-dependent \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The mathematical structure is identical. Unknown molecular modes are predicted from known modes by exploiting harmonic relationships; unknown word meanings are predicted from known context by the same mechanism.
+
+\subsection{Context as Known Modes}
+
+Context words serve as the ``known vibrational modes'' from which unknown meaning is predicted.
+
+\begin{definition}[Contextual Meaning Prediction]
+Given context $C = \{w_1, \ldots, w_n\}$ and target word $w^*$:
+\begin{enumerate}
+    \item Encode context: $\mathcal{M}_i = \mathcal{M}(w_i)$ for $i = 1, \ldots, n$
+    \item Build network: Add molecules to coincidence network
+    \item Predict: Use Theorem \ref{thm:harmonic-prediction} to estimate $\omega^*$
+    \item Compute S-coordinate: Map predicted frequencies to $\Scoord^*$
+\end{enumerate}
+\end{definition}
+
+The prediction quality depends on:
+\begin{itemize}
+    \item Context size: More context provides more constraints
+    \item Context relevance: Related words provide tighter predictions
+    \item Network connectivity: Denser coincidences enable more pathways
+\end{itemize}
+
+\subsection{Training-Free Learning}
+
+The critical difference from neural approaches is that no training is required.
+
+\begin{proposition}[Zero Training]
+The harmonic coincidence network requires no training because:
+\begin{enumerate}
+    \item Molecular encoding is computed directly from word structure
+    \item Harmonic relationships are discovered, not learned
+    \item Prediction uses mathematical relationships, not learned weights
+\end{enumerate}
+\end{proposition}
+
+Neural language models learn which words are related by observing co-occurrences in training data. The categorical approach discovers relationships from the intrinsic structure of the molecular encoding. Words with similar phonetic, morphological, or orthographic structure produce similar frequencies and exhibit harmonic coincidences without any training.
+
+\subsection{Semantic Distance Amplification}
+
+The molecular encoding amplifies semantic distinctions.
+
+\begin{proposition}[Distance Amplification]
+The frequency distance $d_\omega$ between semantically distinct words is larger than the S-entropy distance $d_S$:
+\begin{equation}
+d_\omega(\mathcal{M}_1, \mathcal{M}_2) > \alpha \cdot d_S(\Scoord_1, \Scoord_2)
+\end{equation}
+for amplification factor $\alpha > 1$.
+\end{proposition}
+
+The logarithmic frequency scale and harmonic structure amplify small differences in word structure into larger differences in frequency space. This makes semantic distinctions more detectable.
+

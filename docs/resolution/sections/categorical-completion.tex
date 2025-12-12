@@ -56,6 +56,17 @@ The completed set grows monotonically.
 Immediate from Axiom~\ref{axiom:categorical_irreversibility}: once $C \in \gamma(t_1)$, we have $\mu(C, t_1) = 1$, hence $\mu(C, t_2) = 1$, so $C \in \gamma(t_2)$. \qed
 \end{proof}
 
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/arg1_temporal_triviality.png}
+\caption{\textbf{Argument 1: Temporal Triviality—Any Configuration Occurs Naturally Through Thermal Fluctuations.}
+\textbf{(A)} Boltzmann probability landscape showing all configurations are thermally accessible. The probability distribution $P(\text{config}) = \exp(-E/k_BT)/Z$ ensures every spatial arrangement, including ``sorted'' states, occurs naturally through fluctuations.
+\textbf{(B)} Poincaré recurrence times as a function of sorting degree. Higher sorting corresponds to exponentially longer recurrence times $\tau_{\text{rec}} \sim \exp(N\Delta S)$, but all states eventually recur. The horizontal dashed line indicates laboratory timescales; even highly sorted states recur within observable time for small systems.
+\textbf{(C)} Configuration space flow field showing all trajectories converge to equilibrium. The flow follows $\dot{\mathbf{q}} = -\nabla_{\mathbf{q}} F(\mathbf{q})$ where $F$ is the free energy. Red squares mark ``sorted'' configurations; yellow circles mark equilibrium. All paths lead to the central attractor, demonstrating that sorted states are unstable fixed points.
+\textbf{(D)} Entropy evolution over time showing fluctuations enable access to all states. The solid black line shows total entropy $S(t) = -k_B \sum_i p_i \ln p_i$ increasing monotonically toward equilibrium (horizontal dashed line). The dotted red line marks the entropy of the ``sorted'' state. Yellow triangles indicate moments when the system spontaneously visits sorted configurations through thermal fluctuations, demonstrating temporal triviality: the demon's purported action is redundant.}
+\label{fig:temporal_triviality}
+\end{figure*}
+
 \subsection{Phase-Lock Degeneracy}
 
 \begin{theorem}[Phase-Lock Degeneracy]
