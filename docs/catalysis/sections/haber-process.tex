@@ -1,0 +1,190 @@
+%==============================================================================
+\section{The Haber Process: Categorical Pathway Creation}
+\label{sec:haber}
+%==============================================================================
+
+The Haber process for ammonia synthesis provides a paradigmatic example of categorical pathway creation through heterogeneous catalysis.
+
+\subsection{The Reaction}
+
+\begin{equation}
+\text{N}_2(g) + 3\text{H}_2(g) \rightleftharpoons 2\text{NH}_3(g) \quad \Delta H = -92 \text{ kJ/mol}
+\end{equation}
+
+Despite thermodynamic favorability, the uncatalyzed reaction does not proceed at measurable rates under any conditions. The N$\equiv$N triple bond (945 kJ/mol) is too strong for gas-phase dissociation.
+
+\subsection{Categorical Analysis of the Uncatalyzed Reaction}
+
+\textbf{Gas-phase pathway (hypothetical):}
+\begin{equation}
+\text{N}_2 + 3\text{H}_2 \to [\text{N}_2\text{H}_6]^* \to 2\text{NH}_3
+\end{equation}
+
+The transition state $[\text{N}_2\text{H}_6]^*$ requires:
+\begin{itemize}
+    \item Complete or partial breaking of N$\equiv$N bond
+    \item Formation of six N-H bonds
+    \item Precise positioning of six H atoms around two N atoms
+\end{itemize}
+
+This is a single, enormously complex categorical transition.
+
+\begin{proposition}[Infinite Categorical Distance]
+The uncatalyzed gas-phase reaction has effectively infinite categorical distance:
+\begin{equation}
+\dcat^{\mathrm{uncat}}(\text{N}_2 + 3\text{H}_2, 2\text{NH}_3) = \infty
+\end{equation}
+because no accessible intermediate states exist between reactants and products.
+\end{proposition}
+
+\subsection{Iron as Categorical Aperture Creator}
+
+The iron catalyst creates categorical apertures that decompose the impossible single transition into accessible steps \citep{ertl2008, honkala2005}.
+
+\textbf{Step 1: N$_2$ adsorption (first aperture)}
+\begin{equation}
+\text{N}_2(g) \to \text{N}_2^*
+\end{equation}
+
+The Fe(111) surface provides a geometric aperture:
+\begin{itemize}
+    \item Three Fe atoms in triangular arrangement
+    \item Fe-Fe distance: $\sim$2.5 \AA
+    \item N$_2$ binds end-on or side-on
+    \item N-N bond weakened by back-donation from Fe d-orbitals
+\end{itemize}
+
+\textbf{Step 2: N$_2$ dissociation (second aperture)}
+\begin{equation}
+\text{N}_2^* \to 2\text{N}^*
+\end{equation}
+
+Surface-bound N$_2$ dissociates:
+\begin{itemize}
+    \item N atoms occupy adjacent adsorption sites
+    \item N-N distance stretched from 1.1 \AA{} to $\sim$1.4 \AA{} at transition state
+    \item Bond breaks when Fe-N phase-lock exceeds N-N phase-lock
+\end{itemize}
+
+This is the rate-limiting step, with activation energy $\sim$1.5 eV on Fe(111).
+
+\textbf{Step 3: H$_2$ adsorption and dissociation}
+\begin{equation}
+\text{H}_2(g) \to 2\text{H}^*
+\end{equation}
+
+Occurs readily on iron surfaces with low activation barrier.
+
+\textbf{Step 4: Stepwise hydrogenation (three apertures)}
+\begin{align}
+\text{N}^* + \text{H}^* &\to \text{NH}^* \\
+\text{NH}^* + \text{H}^* &\to \text{NH}_2^* \\
+\text{NH}_2^* + \text{H}^* &\to \text{NH}_3^*
+\end{align}
+
+Each step is an elementary categorical transition with $\dcat = 1$.
+
+\textbf{Step 5: NH$_3$ desorption}
+\begin{equation}
+\text{NH}_3^* \to \text{NH}_3(g)
+\end{equation}
+
+Product release frees the catalytic site.
+
+\subsection{Categorical Distance on Iron}
+
+The complete catalyzed pathway:
+\begin{equation}
+\Ccat_{\text{Fe}} = \{C_{\text{N}_2,g}, C_{\text{N}_2^*}, C_{2\text{N}^*}, C_{\text{H}^*}, C_{\text{NH}^*}, C_{\text{NH}_2^*}, C_{\text{NH}_3^*}, C_{\text{NH}_3,g}\}
+\end{equation}
+
+Categorical distance:
+\begin{equation}
+\dcat^{\text{Fe}}(\text{N}_2 + 3\text{H}_2, 2\text{NH}_3) \approx 8
+\end{equation}
+
+\begin{theorem}[Pathway Creation]
+\label{thm:haber}
+Iron catalyzes the Haber process by creating a categorical pathway where none existed:
+\begin{equation}
+\dcat: \infty \to 8
+\end{equation}
+
+Iron does not ``accelerate'' the reaction. It makes the reaction possible.
+\end{theorem}
+
+\subsection{Why Iron Specifically?}
+
+The Sabatier principle \citep{sabatier1913} states that optimal catalysts have intermediate binding strength. In categorical terms:
+
+\textbf{Weak binding (Ag, Au):}
+\begin{itemize}
+    \item N$_2$ does not adsorb
+    \item First aperture ($C_{\text{N}_2,g} \to C_{\text{N}_2^*}$) has $\dcat = \infty$
+    \item No catalysis
+\end{itemize}
+
+\textbf{Strong binding (W, Mo):}
+\begin{itemize}
+    \item N atoms bind too strongly
+    \item Final aperture ($C_{\text{NH}_3^*} \to C_{\text{NH}_3,g}$) has $\dcat \gg 1$
+    \item Products do not desorb; catalyst poisons
+\end{itemize}
+
+\textbf{Optimal binding (Fe, Ru):}
+\begin{itemize}
+    \item All apertures have finite, accessible $\dcat$
+    \item Complete catalytic cycle possible
+    \item Maximum turnover
+\end{itemize}
+
+\begin{proposition}[Sabatier as Categorical Optimization]
+The Sabatier principle reflects minimization of total categorical distance:
+\begin{equation}
+\dcat^{\mathrm{total}} = \sum_{i} \dcat_i
+\end{equation}
+subject to all apertures being accessible ($\dcat_i < \infty$).
+\end{proposition}
+
+\subsection{Surface Geometry as Aperture}
+
+Different iron crystal faces have different catalytic activities \citep{ertl2008}:
+
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+Surface & Relative Activity \\
+\midrule
+Fe(111) & 100 \\
+Fe(100) & 25 \\
+Fe(110) & 1 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This reflects different aperture geometries:
+\begin{itemize}
+    \item Fe(111): ``C7'' sites with seven-fold coordination---optimal for N$_2$ dissociation
+    \item Fe(100): Four-fold hollow sites---less optimal geometry
+    \item Fe(110): Corrugated surface---poor geometric match for N$_2$
+\end{itemize}
+
+The activity difference is entirely geometric. All faces are iron; only the aperture geometry differs.
+
+\subsection{Comparison Summary}
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Property & Uncatalyzed & Fe-Catalyzed \\
+\midrule
+Categorical distance & $\infty$ & 8 \\
+Intermediate states & None accessible & 6 surface species \\
+Rate-limiting step & N$\equiv$N breaking & N$_2^* \to 2$N$^*$ \\
+Mechanism & Single impossible step & Sequential apertures \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Iron does not accelerate time. Iron creates categorical space.
+

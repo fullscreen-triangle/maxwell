@@ -1,0 +1,55 @@
+{
+  "experiment": "Maxwell Demon Resolution - Symmetric Entropy Increase",
+  "key_result": "Entropy increases in BOTH containers for ANY molecule transfer",
+  "velocity_independence": true,
+  "simulations": [
+    {
+      "velocity_class": "slow",
+      "velocity": 100,
+      "n_molecules": 20,
+      "initial_edges_a": 114,
+      "initial_edges_b": 114,
+      "final_edges_a": 119,
+      "final_edges_b": 134,
+      "S_init_a": 1.5732e-21,
+      "S_init_b": 1.5732e-21,
+      "S_final_a": 1.6422000000000001e-21,
+      "S_final_b": 1.8492e-21,
+      "delta_S_a": 6.900000000000004e-23,
+      "delta_S_b": 2.76e-22,
+      "delta_S_total": 3.45e-22
+    },
+    {
+      "velocity_class": "medium",
+      "velocity": 400,
+      "n_molecules": 20,
+      "initial_edges_a": 114,
+      "initial_edges_b": 114,
+      "final_edges_a": 119,
+      "final_edges_b": 134,
+      "S_init_a": 1.5732e-21,
+      "S_init_b": 1.5732e-21,
+      "S_final_a": 1.6422000000000001e-21,
+      "S_final_b": 1.8492e-21,
+      "delta_S_a": 6.900000000000004e-23,
+      "delta_S_b": 2.76e-22,
+      "delta_S_total": 3.45e-22
+    },
+    {
+      "velocity_class": "fast",
+      "velocity": 800,
+      "n_molecules": 20,
+      "initial_edges_a": 114,
+      "initial_edges_b": 114,
+      "final_edges_a": 119,
+      "final_edges_b": 134,
+      "S_init_a": 1.5732e-21,
+      "S_init_b": 1.5732e-21,
+      "S_final_a": 1.6422000000000001e-21,
+      "S_final_b": 1.8492e-21,
+      "delta_S_a": 6.900000000000004e-23,
+      "delta_S_b": 2.76e-22,
+      "delta_S_total": 3.45e-22
+    }
+  ]
+}

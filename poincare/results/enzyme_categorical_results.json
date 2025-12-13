@@ -1,0 +1,35 @@
+{
+  "experiment": "Enzyme Catalysis - Categorical Engine Model",
+  "key_finding": "Enzymes are categorical engines using geometry and phase-lock networks",
+  "examples": {
+    "chymotrypsin": {
+      "mechanism": "Ser-His-Asp catalytic triad",
+      "distances": {
+        "Ser195_to_peptide": "2.8 A",
+        "His57_to_Ser195": "3.0 A",
+        "Asp102_to_His57": "2.8 A"
+      },
+      "phase_lock": "Substrate <-> Ser195 <-> His57 <-> Asp102",
+      "completion": "Electron flow through H-bond network"
+    },
+    "carbonic_anhydrase": {
+      "mechanism": "Zn2+ coordination with His64 proton shuttle",
+      "features": {
+        "zn_coordination": "3 histidines",
+        "water_activation": "Zn2+ polarizes H2O -> OH-",
+        "proton_shuttle": "His64 at ~7 A",
+        "rate": "10^6 reactions/second"
+      },
+      "phase_lock": "CO2 <-> Zn-OH- <-> His64 <-> bulk water",
+      "speed_source": "Optimal geometric arrangement"
+    }
+  },
+  "evidence": {
+    "k_eq_unchanged": true,
+    "geometric_precision_critical": true,
+    "creates_new_categories": true,
+    "phase_lock_networks": true,
+    "no_time_compression": true
+  },
+  "conclusion": "Enzymes arrange geometry to create phase-lock networks that enable categorical completion. Speed comes from optimal geometry, not time acceleration. Categories are fundamental."
+}

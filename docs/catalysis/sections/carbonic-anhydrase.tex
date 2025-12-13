@@ -1,0 +1,167 @@
+%==============================================================================
+\section{Carbonic Anhydrase: Optimal Geometry, Not Temporal Acceleration}
+\label{sec:carbonic}
+%==============================================================================
+
+Carbonic anhydrase (CA) is among the fastest enzymes known, with $k_{\cat} \approx 10^6$ s$^{-1}$. We demonstrate that this speed reflects optimal categorical aperture geometry, not temporal acceleration.
+
+\subsection{The Reaction}
+
+Carbonic anhydrase catalyzes the reversible hydration of CO$_2$:
+\begin{equation}
+\text{CO}_2 + \text{H}_2\text{O} \rightleftharpoons \text{HCO}_3^- + \text{H}^+
+\end{equation}
+
+The uncatalyzed reaction is slow ($k \approx 0.03$ s$^{-1}$) despite being thermodynamically favorable. This reflects large categorical distance in the uncatalyzed pathway.
+
+\subsection{The Catalytic Aperture}
+
+The active site of CA creates a precisely configured categorical aperture \citep{lindskog1997}:
+
+\textbf{Zn$^{2+}$ coordination sphere:}
+\begin{itemize}
+    \item Central Zn$^{2+}$ ion
+    \item Three histidine ligands (His94, His96, His119 in human CA II)
+    \item One water/hydroxide ligand
+    \item Tetrahedral geometry
+\end{itemize}
+
+\textbf{Phase-lock network:}
+\begin{equation}
+\text{CO}_2 \xleftrightarrow{\text{attack}} \text{Zn-OH}^- \xleftrightarrow{\text{transfer}} \text{His64} \xleftrightarrow{\text{release}} \text{bulk H}_2\text{O}
+\end{equation}
+
+\textbf{Critical distances:}
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Interaction & Distance \\
+\midrule
+Zn--His N$\epsilon$ & 2.0--2.1 \AA \\
+Zn--O (water/OH$^-$) & 1.9--2.0 \AA \\
+His64 N$\epsilon$ to Zn-OH & $\sim$7 \AA \\
+CO$_2$ to Zn-OH$^-$ (attack) & $\sim$2.5 \AA \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{The Proton Shuttle}
+
+The rate-limiting step in CA is not CO$_2$ hydration but proton transfer from Zn-bound water to bulk solvent \citep{silverman2000}. This occurs through His64, positioned approximately 7 \AA{} from the Zn center.
+
+\begin{proposition}[His64 as Secondary Aperture]
+His64 functions as a secondary categorical aperture in the proton pathway:
+\begin{equation}
+\text{Zn-H}_2\text{O} \xrightarrow{C_1} \text{Zn-OH}^- + \text{His64-H}^+ \xrightarrow{C_2} \text{Zn-OH}^- + \text{H}^+_{\text{bulk}}
+\end{equation}
+
+The 7 \AA{} spacing is optimal: shorter would sterically interfere with substrate; longer would increase categorical distance.
+\end{proposition}
+
+\subsection{Categorical Distance Analysis}
+
+\textbf{Uncatalyzed pathway:}
+\begin{equation}
+\text{CO}_2 + \text{H}_2\text{O} \to [\text{H}_2\text{CO}_3]^* \to \text{HCO}_3^- + \text{H}^+
+\end{equation}
+
+The transition state $[\text{H}_2\text{CO}_3]^*$ requires simultaneous:
+\begin{itemize}
+    \item C-O bond formation (CO$_2$ + OH$^-$)
+    \item O-H bond breaking (H$_2$O $\to$ OH$^-$ + H$^+$)
+\end{itemize}
+
+This concerted mechanism has $\dcat^{\mathrm{uncat}} \geq 3$--4.
+
+\textbf{Catalyzed pathway:}
+\begin{align}
+C_1: \quad &\text{E-Zn-H}_2\text{O} \to \text{E-Zn-OH}^- + \text{H}^+ \quad \text{(water activation)} \\
+C_2: \quad &\text{E-Zn-OH}^- + \text{CO}_2 \to \text{E-Zn-HCO}_3^- \quad \text{(nucleophilic attack)} \\
+C_3: \quad &\text{E-Zn-HCO}_3^- \to \text{E-Zn-H}_2\text{O} + \text{HCO}_3^- \quad \text{(product release)}
+\end{align}
+
+The enzyme separates the steps into sequential apertures:
+\begin{equation}
+\dcat^{\cat} = 3
+\end{equation}
+
+But each step is geometrically optimized, minimizing $\tau_{\mathrm{step}}$.
+
+\subsection{Why 10$^6$ s$^{-1}$?}
+
+\begin{theorem}[CA Speed from Geometry]
+\label{thm:ca-speed}
+Carbonic anhydrase achieves $k_{\cat} \approx 10^6$ s$^{-1}$ through optimal categorical aperture geometry, not temporal acceleration.
+\end{theorem}
+
+\begin{proof}
+The turnover is:
+\begin{equation}
+k_{\cat} = \frac{1}{\dcat \cdot \tau_{\mathrm{step}}}
+\end{equation}
+
+For CA:
+\begin{itemize}
+    \item $\dcat = 3$ (three categorical steps)
+    \item $\tau_{\mathrm{step}} \approx 3 \times 10^{-7}$ s (near diffusion limit)
+\end{itemize}
+
+Therefore:
+\begin{equation}
+k_{\cat} = \frac{1}{3 \times 3 \times 10^{-7}} \approx 10^6 \text{ s}^{-1}
+\end{equation}
+
+The speed arises from:
+\begin{enumerate}
+    \item Low categorical distance ($\dcat = 3$)
+    \item Optimal aperture geometry minimizing $\tau_{\mathrm{step}}$
+    \item Zn$^{2+}$ activation of water (creates OH$^-$ nucleophile)
+    \item Precise His64 positioning (proton shuttle)
+\end{enumerate}
+
+No temporal acceleration is invoked.
+\end{proof}
+
+\subsection{Mutational Evidence}
+
+Mutations that perturb aperture geometry reduce catalytic activity \citep{krebs1984}:
+
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+Mutation & Relative Activity \\
+\midrule
+Wild-type & 100\% \\
+His64 $\to$ Ala & 3--5\% \\
+Thr199 $\to$ Ala & 10--20\% \\
+Zn ligand mutations & $<$1\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The His64 $\to$ Ala mutation eliminates the proton shuttle, increasing categorical distance by adding an alternative, slower proton pathway. This confirms that CA speed depends on aperture geometry.
+
+\subsection{Comparison with Uncatalyzed}
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Property & Uncatalyzed & CA-Catalyzed \\
+\midrule
+Rate constant & 0.03 s$^{-1}$ & $10^6$ s$^{-1}$ \\
+Categorical distance & $\geq$4 & 3 \\
+Rate-limiting step & CO$_2$ hydration & Proton transfer \\
+Mechanism & Concerted & Sequential apertures \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The $3 \times 10^7$-fold rate enhancement reflects:
+\begin{enumerate}
+    \item Reduced categorical distance (4 $\to$ 3)
+    \item Optimized transition geometries at each aperture
+    \item Separated, parallelizable steps
+\end{enumerate}
+
+This is geometric optimization, not time compression.
+

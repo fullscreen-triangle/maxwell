@@ -1,0 +1,11 @@
+{
+  "experiment": "Ball Game Thought Experiment",
+  "key_findings": {
+    "velocity_independence": true,
+    "autocatalytic_cascade": true,
+    "resistance_equation": "R = k / (n + m)",
+    "seeing_behind_wall": "Product creates categorical presence",
+    "kinetics": "Lag \u2192 Exponential \u2192 Saturation"
+  },
+  "conclusion": "Catalysis is inherently autocatalytic: each successful transit reduces resistance to subsequent transits, independent of velocity or time"
+}

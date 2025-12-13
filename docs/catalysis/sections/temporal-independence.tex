@@ -1,0 +1,192 @@
+%==============================================================================
+\section{Contradictions in Temporal Catalysis}
+\label{sec:temporal}
+%==============================================================================
+
+We formalize the three contradictions identified in the introduction.
+
+\subsection{The Instantaneous Concentration Paradox}
+
+\begin{theorem}[Instantaneous Concentration Paradox]
+\label{thm:instantaneous}
+If catalysts operated by temporal acceleration, reaction velocity would be unbounded at high substrate concentration. Michaelis-Menten saturation contradicts this. Therefore, catalysts do not operate by temporal acceleration.
+\end{theorem}
+
+\begin{proof}
+Assume catalysts operate by temporal acceleration with factor $\alpha([S])$ depending on substrate concentration.
+
+The reaction velocity would satisfy:
+\begin{equation}
+v = \alpha([S]) \cdot v_0
+\end{equation}
+where $v_0$ is the uncatalyzed velocity.
+
+If temporal acceleration increases with substrate availability (more substrate $\to$ more acceleration), then:
+\begin{equation}
+\lim_{[S] \to \infty} \alpha([S]) = \infty
+\end{equation}
+
+This implies:
+\begin{equation}
+\lim_{[S] \to \infty} v = \infty
+\end{equation}
+
+However, the Michaelis-Menten equation \citep{michaelis1913} gives:
+\begin{equation}
+v = \frac{V_{\max}[S]}{K_M + [S]}
+\end{equation}
+
+Taking the limit:
+\begin{equation}
+\lim_{[S] \to \infty} v = \lim_{[S] \to \infty} \frac{V_{\max}[S]}{K_M + [S]} = V_{\max} < \infty
+\end{equation}
+
+The finite saturation value $V_{\max}$ contradicts unbounded temporal acceleration.
+\end{proof}
+
+\begin{remark}
+The categorical interpretation of $V_{\max}$ is:
+\begin{equation}
+V_{\max} = \frac{[E]_{\mathrm{total}}}{\tau_{\cat}} = \frac{[E]_{\mathrm{total}}}{\dcat \cdot \tau_{\mathrm{step}}}
+\end{equation}
+where $\dcat$ is categorical distance (number of transitions) and $\tau_{\mathrm{step}}$ is time per categorical step. Saturation occurs because $\dcat$ is fixed---increasing substrate concentration cannot reduce categorical distance.
+\end{remark}
+
+\subsection{The Reversible Reaction Paradox}
+
+\begin{theorem}[Reversible Reaction Paradox]
+\label{thm:reversible}
+If catalysts operated by temporal acceleration, they could not preserve equilibrium constants in reversible reactions. All catalysts preserve equilibrium constants. Therefore, catalysts do not operate by temporal acceleration.
+\end{theorem}
+
+\begin{proof}
+Consider a reversible reaction A $\rightleftharpoons$ B with equilibrium constant:
+\begin{equation}
+K_{\mathrm{eq}} = \frac{k_f}{k_r}
+\end{equation}
+where $k_f$ and $k_r$ are forward and reverse rate constants.
+
+\textbf{Case 1: Forward acceleration only.}
+
+If the catalyst accelerates only the forward reaction:
+\begin{equation}
+k_f' = \alpha \cdot k_f, \quad k_r' = k_r \quad (\alpha > 1)
+\end{equation}
+
+Then:
+\begin{equation}
+K_{\mathrm{eq}}' = \frac{k_f'}{k_r'} = \frac{\alpha k_f}{k_r} = \alpha K_{\mathrm{eq}} > K_{\mathrm{eq}}
+\end{equation}
+
+Equilibrium shifts toward products. This contradicts the experimental observation that catalysts do not change $K_{\mathrm{eq}}$ \citep{haldane1930}.
+
+\textbf{Case 2: Reverse acceleration only.}
+
+If the catalyst accelerates only the reverse reaction:
+\begin{equation}
+k_f' = k_f, \quad k_r' = \alpha \cdot k_r \quad (\alpha > 1)
+\end{equation}
+
+Then:
+\begin{equation}
+K_{\mathrm{eq}}' = \frac{k_f}{k_r'} = \frac{k_f}{\alpha k_r} = \frac{K_{\mathrm{eq}}}{\alpha} < K_{\mathrm{eq}}
+\end{equation}
+
+Equilibrium shifts toward reactants. Again contradicts observation.
+
+\textbf{Case 3: Bidirectional acceleration.}
+
+If the catalyst accelerates time in both directions simultaneously, this requires time to flow forward and backward at once---a logical impossibility.
+
+All cases lead to contradiction. Temporal acceleration is impossible.
+\end{proof}
+
+\begin{corollary}[Equilibrium Preservation]
+\label{cor:keq}
+Catalysts create bidirectional categorical pathways with equal categorical distance in both directions:
+\begin{equation}
+\dcat(A \to B) = \dcat(B \to A)
+\end{equation}
+This automatically preserves $K_{\mathrm{eq}}$ because both directions are equally accelerated.
+\end{corollary}
+
+\subsection{The Step-Exclusion Paradox}
+
+\begin{theorem}[Step-Exclusion Paradox]
+\label{thm:step-exclusion}
+If catalysts operated by temporal acceleration, they would need to either execute identical steps faster (requiring unexplained energy) or skip steps (implying those steps are unnecessary). Both options are incoherent. Therefore, catalysts do not operate by temporal acceleration.
+\end{theorem}
+
+\begin{proof}
+Consider an uncatalyzed reaction proceeding through intermediates:
+\begin{equation}
+A \to B \to C \to D
+\end{equation}
+with $n = 3$ elementary steps.
+
+\textbf{Case 1: Same steps, faster execution.}
+
+The catalyzed reaction traverses:
+\begin{equation}
+A \to B \to C \to D \quad \text{(identical intermediates)}
+\end{equation}
+but each step is faster: $k_i^{\cat} > k_i^{\mathrm{uncat}}$.
+
+By transition state theory \citep{eyring1935}:
+\begin{equation}
+k = \frac{k_B T}{h} e^{-\Delta G^\ddagger / RT}
+\end{equation}
+
+Increasing $k$ requires decreasing $\Delta G^\ddagger$, i.e., stabilizing the transition state:
+\begin{equation}
+\Delta G^\ddagger_{\cat} < \Delta G^\ddagger_{\mathrm{uncat}}
+\end{equation}
+
+The stabilization energy is:
+\begin{equation}
+\Delta E_{\mathrm{stab}} = \Delta G^\ddagger_{\mathrm{uncat}} - \Delta G^\ddagger_{\cat} > 0
+\end{equation}
+
+This energy must come from somewhere. However, catalysts:
+\begin{itemize}
+    \item Do not consume ATP or other energy currencies
+    \item Do not absorb electromagnetic radiation
+    \item Do not generate heat (beyond that of the reaction itself)
+    \item Do not change the overall $\Delta G$ of reaction
+\end{itemize}
+
+No energy source exists for transition state stabilization beyond enzyme-substrate binding. But binding energy is already accounted for in the catalytic cycle. Contradiction.
+
+\textbf{Case 2: Fewer steps (skip intermediates).}
+
+The catalyzed reaction bypasses B and C:
+\begin{equation}
+A \to D \quad \text{(direct)}
+\end{equation}
+with $n' = 1$ step.
+
+Why does the uncatalyzed reaction traverse B and C? Because the direct pathway $A \to D$ has a higher barrier:
+\begin{equation}
+\Delta G^\ddagger(A \to D) > \Delta G^\ddagger(A \to B) + \Delta G^\ddagger(B \to C) + \Delta G^\ddagger(C \to D)
+\end{equation}
+
+If the catalyst enables the direct pathway:
+\begin{equation}
+\Delta G^\ddagger_{\cat}(A \to D) < \Delta G^\ddagger_{\mathrm{uncat}}(A \to B \to C \to D)
+\end{equation}
+
+Then the direct pathway is actually lower energy---but then why doesn't the uncatalyzed reaction use it?
+
+The necessity of intermediates B and C would depend on catalyst presence, which is absurd. Chemical necessity cannot be contingent on external factors.
+
+Both cases lead to contradiction.
+\end{proof}
+
+\begin{remark}[Categorical Resolution]
+The resolution is that catalyzed reactions traverse \emph{different} categorical space. The enzyme-bound intermediates:
+\begin{equation}
+A \to E{\cdot}A \to E{\cdot}B \to E{\cdot}C \to E{\cdot}D \to D
+\end{equation}
+are distinct from the uncatalyzed intermediates B and C. The catalyst creates new categorical states, not faster traversal of existing states.
+\end{remark}
+

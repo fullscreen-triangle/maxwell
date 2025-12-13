@@ -1,0 +1,13 @@
+{
+  "experiment": "Le Chatelier via Categorical Entropy",
+  "key_insight": "Equilibrium is where forward and reverse entropy production rates balance",
+  "K_eq": 1.25,
+  "eq_time": 8.9,
+  "eq_N_A": 55.47633406688267,
+  "eq_N_B": 44.52366593311732,
+  "unified_framework": [
+    "Maxwell Demon resolution",
+    "Gibbs paradox resolution",
+    "Le Chatelier principle"
+  ]
+}

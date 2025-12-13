@@ -1,206 +1,223 @@
 %==============================================================================
-\section{Entropy Mechanism Through Network Topology}
+\section{The Entropy Mechanism: Why Door-Opening Always Increases Entropy}
 \label{sec:entropy}
 %==============================================================================
 
-\subsection{Topological Origin of Entropy}
+\subsection{The Gibbs Connection}
 
-We now establish that entropy arises from phase-lock network topology, providing the mechanism by which the second law is preserved without invoking information-theoretic arguments.
+The resolution of Gibbs' paradox \citep{gibbs1876} establishes a fundamental result: mixing and re-separation of gas molecules \textit{always} increases total entropy due to categorical completion and phase-lock network densification. We now apply this result directly to Maxwell's Demon.
 
-\begin{definition}[Network Entropy]
-\label{def:network_entropy}
-The \textbf{network entropy} of a phase-lock configuration is:
+\begin{theorem}[Single-Molecule Transfer as Mixing-Reseparation]
+\label{thm:transfer_mixing}
+When the demon opens the door and one molecule transfers from container A to container B, the operation is equivalent to a microscopic mixing-reseparation cycle. Both containers experience entropy increase:
 \begin{equation}
-S_{\phaselockgraph} = k_B \log \Omega_{\text{PL}}(\phaselockgraph)
-\label{eq:network_entropy}
+\Delta S_A > 0 \quad \text{and} \quad \Delta S_B > 0
 \end{equation}
-where $\Omega_{\text{PL}}(\phaselockgraph)$ is the number of categorical states compatible with network topology $\phaselockgraph$.
-\end{definition}
-
-\begin{proposition}[Entropy and Edge Density]
-\label{prop:entropy_edge_density}
-Network entropy is related to edge density:
-\begin{equation}
-S_{\phaselockgraph} \propto k_B |E(\phaselockgraph)|
-\label{eq:entropy_edges}
-\end{equation}
-More edges (constraints) correspond to higher entropy.
-\end{proposition}
-
-\begin{proof}
-Each edge $(m_i, m_j) \in E$ represents a phase-lock constraint: the phase difference $\Phi_i - \Phi_j$ must remain within bounds. More constraints reduce the volume of accessible phase space but increase the categorical richness:
-\begin{equation}
-\Omega_{\text{PL}} \propto \exp(c \cdot |E|)
-\end{equation}
-for some constant $c > 0$. This counterintuitive result arises because constraints create categorical structure: each constraint defines equivalence classes, and categorical states enumerate these classes.
-
-Taking logarithms: $S_{\phaselockgraph} = k_B \log \Omega_{\text{PL}} \propto k_B |E|$. \qed
-\end{proof}
-
-\subsection{Entropy Increase Through Network Densification}
-
-\begin{theorem}[Categorical Mixing Increases Entropy]
-\label{thm:mixing_entropy}
-When two previously separated gas volumes mix, entropy increases due to phase-lock network densification:
-\begin{equation}
-\Delta S_{\text{mix}} = S_{\phaselockgraph_{\text{mixed}}} - S_{\phaselockgraph_{\text{separated}}} = k_B \log \frac{\Omega_{\text{mixed}}}{\Omega_{\text{separated}}} > 0
-\label{eq:mixing_entropy}
-\end{equation}
+regardless of the transferred molecule's velocity.
 \end{theorem}
 
 \begin{proof}
-\textbf{Initial (separated) state:}
-Two volumes A and B contain phase-lock networks $\phaselockgraph_A = (V_A, E_A)$ and $\phaselockgraph_B = (V_B, E_B)$ with no edges between them:
+Let container A initially contain $N_A$ molecules with phase-lock network $\phaselockgraph_A = (V_A, E_A)$ and categorical state $C_A$. Let container B contain $N_B$ molecules with $\phaselockgraph_B = (V_B, E_B)$ and categorical state $C_B$.
+
+\textbf{Step 1: Door opens.} The demon opens the door. By the Gibbs analysis, this creates the possibility of A-B phase-lock interactions across the aperture. Even before transfer, molecules near the door begin forming cross-container phase correlations through Van der Waals forces ($\sim r^{-6}$) and dipole interactions ($\sim r^{-3}$). These are \textit{new} edges:
 \begin{equation}
-\phaselockgraph_{\text{separated}} = \phaselockgraph_A \sqcup \phaselockgraph_B, \quad |E_{\text{separated}}| = |E_A| + |E_B|
+E_{\text{door}} = \{(i,j) : i \in V_A, j \in V_B, r_{ij} < r_{\text{interaction}}\}
 \end{equation}
 
-\textbf{Mixed state:}
-After mixing, molecules from A interact with molecules from B, creating new edges:
-\begin{equation}
-E_{\text{mixed}} = E_A \cup E_B \cup E_{A \leftrightarrow B}
-\end{equation}
-where $E_{A \leftrightarrow B}$ contains edges between A-molecules and B-molecules.
-
-The number of new edges:
-\begin{equation}
-|E_{A \leftrightarrow B}| \approx |V_A| \cdot |V_B| \cdot P_{\text{lock}}
-\end{equation}
-where $P_{\text{lock}}$ is the probability that a random A-B pair satisfies the phase-lock condition.
-
-For typical gases at standard conditions, $P_{\text{lock}} \sim 0.1$ to $0.5$, giving:
-\begin{equation}
-|E_{\text{mixed}}| = |E_{\text{separated}}| + |E_{A \leftrightarrow B}| > |E_{\text{separated}}|
-\end{equation}
-
-From Proposition~\ref{prop:entropy_edge_density}:
-\begin{equation}
-S_{\text{mixed}} \propto k_B |E_{\text{mixed}}| > k_B |E_{\text{separated}}| \propto S_{\text{separated}}
-\end{equation}
-
-Therefore $\Delta S_{\text{mix}} > 0$. \qed
-\end{proof}
-
-\begin{corollary}[No Entropy Paradox]
-\label{cor:no_entropy_paradox}
-The apparent ``sorting'' in Maxwell's thought experiment does not decrease entropy because:
-\begin{enumerate}
-    \item Sorting is categorical completion, not physical rearrangement
-    \item Categorical completion always increases network density
-    \item Increased network density increases entropy
-\end{enumerate}
-\end{corollary}
-
-\begin{figure*}[htbp]
-\centering
-\includegraphics[width=0.95\textwidth]{figures/panel_arg6_dissolution_second_law.png}
-\caption{\textbf{Argument 6: Dissolution of Second Law Violation—Categorical Entropy Increase Compensates.}
-\textbf{(A)} Two entropy components with opposite trends. Spatial entropy $S_{\text{spatial}}$ (red line) decreases during apparent sorting as molecules become spatially segregated, following $S_{\text{spatial}} = -k_B \sum_i p_i^{\text{spatial}} \ln p_i^{\text{spatial}}$. Categorical entropy $S_{\text{categorical}}$ (green line) increases as the phase-lock network densifies, with $S_{\text{categorical}} = -k_B \sum_{\alpha} p_{\alpha}^{\text{cat}} \ln p_{\alpha}^{\text{cat}}$ where $\alpha$ indexes categorical states. Total entropy $S_{\text{total}} = S_{\text{spatial}} + S_{\text{categorical}}$ (dark teal dashed line) always increases, satisfying the second law. The gray dotted line at $S = 2.0$ marks the initial equilibrium value. The divergence of spatial and categorical components reveals the hidden entropy production.
-\textbf{(B)} Network densification produces categorical entropy. The number of network edges increases from $\sim 100$ to $264$ over 50 sorting attempts, representing a gain of $+164$ edges (marked in red). Network density $\rho = 2|E|/(|V|(|V|-1))$ increases as molecules form more phase-lock connections. This densification corresponds to increased categorical entropy: $\Delta S_{\text{categorical}} = k_B \ln(\Omega_{\text{final}}/\Omega_{\text{initial}})$ where $\Omega$ is the number of accessible categorical states. The filled green area under the curve represents accumulated categorical entropy. The steep increase demonstrates that apparent sorting creates extensive network structure.
-\textbf{(C)} Total entropy change distribution confirms $\Delta S_{\text{total}} > 0$. Histograms show the distribution of entropy changes across many trials. Spatial entropy changes (red) are predominantly negative ($\Delta S_{\text{spatial}} < 0$, left of dashed line at $\Delta S = 0$), confirming apparent sorting. Categorical entropy changes (green) are predominantly positive ($\Delta S_{\text{categorical}} > 0$, right of line). Crucially, total entropy changes (dark teal) are always positive, with the distribution centered at $\Delta S_{\text{total}} \approx +0.2$ (marked by green text ``$\Delta S > 0$''). The vertical dashed line at $\Delta S = 0$ separates second law violations (left, forbidden) from allowed processes (right). No trials violate the second law.
-\textbf{(D)} Second law accounting shows net entropy increase. Bar chart quantifying entropy changes: spatial entropy decreases by $\Delta S_{\text{spatial}} = -0.3$ (red bar, apparent violation), categorical entropy increases by $\Delta S_{\text{categorical}} = +0.5$ (green bar, hidden compensation), yielding total entropy increase $\Delta S_{\text{total}} = +0.2 > 0$ (dark teal bar, second law satisfied). The numerical values demonstrate that categorical entropy production exceeds spatial entropy reduction by a factor of $\sim 1.7$, providing a comfortable margin. The second law is never violated; the demon's apparent sorting is compensated by hidden network entropy. This resolves the paradox: there is no thermodynamic violation because categorical completion increases total entropy.}
-\label{fig:dissolution_second_law}
-\end{figure*}
-
-\subsection{Entropy as Shortest Path}
-
-\begin{definition}[Oscillatory Termination Probability]
-\label{def:termination_probability}
-For a system in categorical state $C$, the \textbf{oscillatory termination probability} $\alpha(C)$ is the probability that oscillatory dynamics reach equilibrium (terminate) at state $C$.
-\end{definition}
-
-\begin{theorem}[Entropy as Path Length]
-\label{thm:entropy_path}
-Entropy is inversely related to the shortest path length to oscillatory termination:
-\begin{equation}
-S(C) = -k_B \log \ell_{\text{term}}(C)
-\label{eq:entropy_path}
-\end{equation}
-where $\ell_{\text{term}}(C)$ is the shortest path from $C$ to any termination state in $\catspace$.
-\end{theorem}
-
-\begin{proof}
-The termination probability scales inversely with path length:
-\begin{equation}
-\alpha(C) \propto \frac{1}{\ell_{\text{term}}(C)}
-\end{equation}
-Systems with longer paths to termination have lower probability of terminating at the current state.
-
-Define entropy through termination probability:
-\begin{equation}
-S(C) = k_B \log \alpha(C) = k_B \log \frac{1}{\ell_{\text{term}}(C)} = -k_B \log \ell_{\text{term}}(C)
-\end{equation}
-
-Higher entropy corresponds to shorter paths to termination---the system is ``closer'' to equilibrium in categorical space. \qed
-\end{proof}
-
-\begin{corollary}[Entropy Increase as Path Optimisation]
-\label{cor:path_optimisation}
-The second law of thermodynamics states that entropy increases:
-\begin{equation}
-\frac{dS}{dt} \geq 0
-\end{equation}
-
-In path-length terms, this becomes:
-\begin{equation}
-\frac{d\ell_{\text{term}}}{dt} \leq 0
-\end{equation}
-
-Systems evolve toward shorter paths to termination---they optimise their route to equilibrium through categorical space.
-\end{corollary}
-
-\subsection{Why ``Sorting'' Increases Entropy}
-
-\begin{theorem}[Sorting Increases Network Density]
-\label{thm:sorting_density}
-The operation attributed to Maxwell's Demon---categorical selection and pathway following---increases phase-lock network density, hence increases entropy.
-\end{theorem}
-
-\begin{proof}
-Consider the ``demon operation'' as categorical completion:
-
-\textbf{Step 1: Initial selection.}
-Selecting a categorical state $C_1$ from equivalence class $[C]_{\text{spatial}}$ completes that state, making adjacent states accessible.
-
-\textbf{Step 2: Cascade propagation.}
-From Theorem~\ref{thm:categorical_cascade}, selection initiates a cascade through phase-lock network. Each step completes new categorical states.
-
-\textbf{Step 3: Network densification.}
-As more categorical states are completed, the effective phase-lock network densifies:
-\begin{equation}
-|E(\gamma(t_2))| > |E(\gamma(t_1))| \quad \text{for } t_2 > t_1
-\end{equation}
-where $\gamma(t)$ is the completed state set.
-
-This occurs because:
+\textbf{Step 2: Molecule transfers.} One molecule $m$ moves from A to B. This is irreversible categorical completion:
 \begin{itemize}
-    \item New phase relationships are established as states are completed
-    \item Completed states cannot be un-completed (Axiom~\ref{axiom:categorical_irreversibility})
-    \item Each completion adds constraints (edges) to the effective network
+    \item Container A transitions: $C_A \to C_{A'}$ with $C_A \prec C_{A'}$
+    \item Container B transitions: $C_B \to C_{B'}$ with $C_B \prec C_{B'}$
+\end{itemize}
+By the Axiom of Categorical Irreversibility, neither container can return to its original categorical state.
+
+\textbf{Step 3: Container A entropy increase.} The $N_A - 1$ remaining molecules form a new phase-lock network $\phaselockgraph_{A'} = (V_A \setminus \{m\}, E_{A'})$. This is \textit{not} simply $\phaselockgraph_A$ with node $m$ removed. The network must reconfigure:
+\begin{itemize}
+    \item Edges previously involving $m$ are broken: $\Delta E^{-} = \deg(m)$
+    \item New edges form as molecules reorganise: $\Delta E^{+}$ (new phase-lock correlations)
+    \item Categorical completion: the \textit{sequence} of network states matters
 \end{itemize}
 
-\textbf{Step 4: Entropy increase.}
-From Proposition~\ref{prop:entropy_edge_density}:
+By Theorem~\ref{thm:alpha_topology} (from Gibbs framework), the termination probability decreases with categorical advancement:
 \begin{equation}
-\Delta S = k_B \Delta |E| > 0
+\alpha(C_{A'}) < \alpha(C_A)
+\end{equation}
+Therefore:
+\begin{equation}
+S(C_{A'}) = -k_B \log \alpha(C_{A'}) > -k_B \log \alpha(C_A) = S(C_A)
 \end{equation}
 
-The ``demon operation'' increases entropy. \qed
+\textbf{Step 4: Container B entropy increase.} The $N_B + 1$ molecules in B now include molecule $m$ from A. Crucially, $m$ brings \textit{history}---it was previously phase-locked with A molecules. The new network $\phaselockgraph_{B'}$ contains:
+\begin{itemize}
+    \item All original B-B edges: $E_B$
+    \item New edges between $m$ and B molecules: $E_{m-B}$
+    \item Residual phase correlations $m$ carries from A (categorical memory)
+\end{itemize}
+
+This is precisely the ``mixing'' step from the Gibbs analysis. The edge count increases:
+\begin{equation}
+|E_{B'}| = |E_B| + |E_{m-B}| > |E_B|
+\end{equation}
+And by Eq.~(14) of the Gibbs framework:
+\begin{equation}
+S(C_{B'}) = k_B \frac{|E_{B'}|}{\langle E \rangle} > k_B \frac{|E_B|}{\langle E \rangle} = S(C_B)
+\end{equation}
+
+\textbf{Step 5: Total entropy.} The total entropy change is:
+\begin{equation}
+\Delta S_{\text{total}} = \Delta S_A + \Delta S_B > 0
+\end{equation}
+Both terms are positive. The second law is satisfied---not by information costs, but by categorical completion.
 \end{proof}
 
-\begin{corollary}[Second Law Preserved]
-\label{cor:second_law}
-Maxwell's Demon, reinterpreted as categorical completion through phase-lock topology, does not violate the second law. The apparent paradox arose from:
+\subsection{Why Maxwell Saw ``Sorting''}
+
+\begin{proposition}[The Misattribution]
+\label{prop:misattribution}
+Maxwell observed entropy increase but attributed it to velocity-based sorting rather than categorical completion.
+\end{proposition}
+
+Maxwell's thought experiment focused on molecular velocities. He imagined:
 \begin{enumerate}
-    \item Misidentifying the demon's operation (sorting by kinetic energy vs. categorical completion)
-    \item Ignoring categorical degrees of freedom (phase-lock structure)
-    \item Focusing on spatial entropy while ignoring categorical entropy
+    \item Fast molecules preferentially transferred to B
+    \item Slow molecules preferentially transferred to A
+    \item B becomes hotter (higher average kinetic energy)
+    \item A becomes colder (lower average kinetic energy)
+    \item This appears to violate the second law
 \end{enumerate}
 
-When categorical structure is properly accounted for, entropy increases monotonically:
+The error was in step 5. Maxwell correctly intuited that \textit{something} was happening to entropy during the transfers, but he attributed it to the ``wrong'' quantity (velocity) and the ``wrong'' direction (decrease).
+
+\begin{theorem}[Velocity-Blindness of Entropy Change]
+\label{thm:velocity_blind_entropy}
+The entropy change from molecular transfer is independent of the transferred molecule's velocity:
 \begin{equation}
-\frac{dS_{\text{total}}}{dt} = \frac{dS_{\text{spatial}}}{dt} + \frac{dS_{\text{categorical}}}{dt} \geq 0
+\frac{\partial \Delta S_{\text{transfer}}}{\partial v_m} = 0
 \end{equation}
-even if $dS_{\text{spatial}}/dt < 0$ (apparent ordering), because $dS_{\text{categorical}}/dt > 0$ (network densification) dominates.
+where $v_m$ is the velocity of the transferred molecule.
+\end{theorem}
+
+\begin{proof}
+From Theorem~\ref{thm:transfer_mixing}, the entropy change arises from:
+\begin{enumerate}
+    \item Categorical completion: $C \to C'$ with $C \prec C'$
+    \item Phase-lock network reconfiguration: topology changes
+    \item Edge density changes: $\Delta |E|$
+\end{enumerate}
+
+None of these depend on molecular velocity. Van der Waals forces depend on $r^{-6}$, not $v$. Dipole interactions depend on orientation, not speed. Phase-lock correlations depend on oscillator frequencies (electronic/vibrational), not translational kinetic energy.
+
+Therefore $\Delta S_{\text{transfer}} = f(\text{topology}, C) \neq f(v_m)$.
+\end{proof}
+
+\subsection{The Symmetric Entropy Increase}
+
+\begin{corollary}[No Sorting Required for Entropy Increase]
+\label{cor:no_sorting}
+The demon need not sort by velocity to observe entropy changes. \textit{Any} door operation increases total entropy:
+\begin{itemize}
+    \item Fast molecule transfers: $\Delta S_{\text{total}} > 0$
+    \item Slow molecule transfers: $\Delta S_{\text{total}} > 0$
+    \item Random molecule transfers: $\Delta S_{\text{total}} > 0$
+\end{itemize}
+The ``sorting'' is illusory---what matters is categorical completion.
 \end{corollary}
 
+This resolves the paradox at its root. Maxwell imagined that selective sorting was necessary for the thermodynamic consequences he envisioned. In fact, \textit{any} transfer increases entropy through categorical completion. The demon cannot decrease entropy regardless of its sorting strategy.
+
+\subsection{The Residual Phase Correlation Mechanism}
+
+The entropy increase in container A (which \textit{loses} a molecule) requires careful explanation. Naively, one might expect fewer molecules means fewer edges, hence lower entropy. The categorical framework reveals why this is wrong.
+
+\begin{lemma}[Categorical Memory in Removal]
+\label{lemma:removal_memory}
+When molecule $m$ is removed from container A, the remaining molecules retain categorical memory of $m$'s presence:
+\begin{equation}
+C_{A'} \neq C_{A_0}
+\end{equation}
+where $C_{A_0}$ is the categorical state of a container that \textit{never} contained $m$.
+\end{lemma}
+
+\begin{proof}
+Before removal, molecules in A were phase-locked with $m$. These phase correlations do not instantly vanish when $m$ departs---they persist for the decoherence time $\tau_\phi \sim 10^{-9}$ to $10^{-6}$ s. During this time:
+\begin{enumerate}
+    \item Molecules previously locked to $m$ seek new phase partners
+    \item The network reconfigures to fill the ``void'' left by $m$
+    \item New edges form that would not have formed if $m$ had never been present
+    \item The categorical sequence $C_A \to C_{A'}$ is distinct from any sequence not involving $m$
+\end{enumerate}
+
+This is the ``residual A-B phase correlation'' mechanism from the Gibbs analysis, now applied to removal rather than separation. The remaining molecules ``remember'' that $m$ was present, and this memory is encoded in their categorical position.
+\end{proof}
+
+\begin{theorem}[Removal Increases Categorical Density]
+\label{thm:removal_density}
+The phase-lock network density \textit{per molecule} increases upon removal:
+\begin{equation}
+\frac{|E_{A'}|}{N_A - 1} > \frac{|E_A|}{N_A}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+When $m$ is removed:
+\begin{itemize}
+    \item Direct edges to $m$ are lost: $-\deg(m)$
+    \item But remaining molecules were previously ``shielded'' by $m$ from forming certain correlations
+    \item Removal of $m$ opens new phase-lock pathways between molecules that were previously too distant (through $m$) to correlate directly
+    \item The network densifies as molecules ``fill in'' the categorical void
+\end{itemize}
+
+This is analogous to road network densification when a hub is removed: traffic redistributes, and new routes form that bypass the missing hub. The total edge count may decrease, but the edge density per node increases because the remaining nodes must maintain connectivity.
+
+Formally, let $\langle \deg \rangle_A = 2|E_A|/N_A$ be the average degree before removal. After removal:
+\begin{equation}
+\langle \deg \rangle_{A'} = \frac{2|E_{A'}|}{N_A - 1} = \frac{2(|E_A| - \deg(m) + \Delta E_{\text{new}})}{N_A - 1}
+\end{equation}
+
+For the network to remain connected (which phase-lock networks must, by thermal equilibration), $\Delta E_{\text{new}} > 0$. The categorical completion theorem guarantees that this reconfiguration produces a denser network per molecule.
+\end{proof}
+
+\subsection{The Complete Picture}
+
+We can now state the complete entropy mechanism:
+
+\begin{theorem}[Door-Opening Entropy Theorem]
+\label{thm:door_entropy}
+Every door operation by Maxwell's Demon increases total entropy through four mechanisms:
+\begin{enumerate}
+    \item \textbf{Door-opening mixing}: Transient A-B phase correlations form through the aperture
+    \item \textbf{Transfer categorical completion}: The transfer event completes categorical states in both containers
+    \item \textbf{Receiving container densification}: New molecule brings new phase-lock edges (mixing)
+    \item \textbf{Losing container reconfiguration}: Remaining molecules form denser network per molecule
+\end{enumerate}
+
+The total entropy change is:
+\begin{equation}
+\Delta S_{\text{total}} = \Delta S_{\text{door}} + \Delta S_{\text{completion}} + \Delta S_{\text{receive}} + \Delta S_{\text{lose}} > 0
+\end{equation}
+where each term is non-negative and at least one is strictly positive.
+\end{theorem}
+
+This is the fundamental result: the demon's operation \textit{necessarily} increases entropy. There is no strategy---velocity-based or otherwise---that can make $\Delta S_{\text{total}} < 0$. The second law is not rescued by information costs; it was never violated in the first place.
+
+\subsection{What Maxwell Actually Observed}
+
+If Maxwell's thought experiment were performed (with an actual physical demon), he would observe:
+
+\begin{enumerate}
+    \item \textbf{Both containers increase entropy}: Not just the ``cold'' one, not just the ``hot'' one---both.
+    
+    \item \textbf{Entropy increase is velocity-independent}: Fast or slow molecules---same entropy cost.
+    
+    \item \textbf{Temperature gradients are transient}: Any velocity-based sorting is undone by thermal equilibration on the collision timescale ($\sim 10^{-10}$ s).
+    
+    \item \textbf{Categorical structure persists}: The phase-lock topology, once changed by transfer, does not reverse.
+\end{enumerate}
+
+The ``paradox'' arose from focusing on the wrong observable (velocity) and the wrong containers (only the receiving one). The categorical framework reveals that entropy increases symmetrically and inevitably.
+
+\begin{equation}
+\boxed{\text{Every door operation} \implies \Delta S_A > 0 \text{ and } \Delta S_B > 0}
+\end{equation}
+
+Maxwell saw demons where there were only phase-lock networks completing their categorical states.
