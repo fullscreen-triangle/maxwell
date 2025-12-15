@@ -1,0 +1,159 @@
+% Section: Irreversibility from Asymmetric Categorical Branching
+
+The standard explanation for categorical irreversibility---that categories cannot be re-occupied---is correct but incomplete. We establish the deeper mechanism: asymmetric branching, where every actualisation resolves infinitely many non-actualisations.
+
+\subsection{The Resolution of Non-Actualisations}
+
+\begin{definition}[Categorical Potential]
+For any system in state $S$, define:
+\begin{align}
+\mathcal{P}_{can}(S) &= \{E : E \text{ can happen from } S\} \\
+\mathcal{P}_{cannot}(S) &= \{E : E \text{ cannot happen from } S\}
+\end{align}
+where $\mathcal{P}_{can}$ is finite and $\mathcal{P}_{cannot}$ is infinite.
+\end{definition}
+
+\begin{example}[Cup on Table Edge]
+For a cup on a table edge:
+\begin{align}
+\mathcal{P}_{can} &= \{\text{fall}, \text{not fall}, \text{be pushed}, \ldots\} \quad (\text{finite}) \\
+\mathcal{P}_{cannot} &= \{\text{turn to gold}, \text{become sentient}, \text{fly upward}, \ldots\} \quad (\text{infinite})
+\end{align}
+\end{example}
+
+\begin{theorem}[Resolution Theorem]
+\label{thm:resolution}
+When event $E \in \mathcal{P}_{can}(S)$ actualises, every element of $\mathcal{P}_{cannot}(S)$ is simultaneously resolved as ``did not happen.''
+\end{theorem}
+
+\begin{proof}
+Let $E$ actualise at time $t$. For any $E' \in \mathcal{P}_{cannot}(S)$:
+\begin{enumerate}
+    \item Before $t$: $E'$ is in state ``cannot happen'' (undetermined non-possibility)
+    \item After $t$: $E'$ is in state ``did not happen'' (determined non-actualisation)
+\end{enumerate}
+
+The transition from ``cannot happen'' (potential) to ``did not happen'' (actual absence) constitutes categorical resolution. Since $|\mathcal{P}_{cannot}(S)| = \infty$, every actualisation resolves infinitely many non-actualisations.
+\end{proof}
+
+\begin{corollary}[Things That Cannot Happen, Happen]
+When an event occurs, things that cannot happen also ``happen''---they happen as not-happening. Their resolution into determined absence is itself a categorical event.
+\end{corollary}
+
+\subsection{Asymmetric Branching}
+
+\begin{definition}[Forward and Backward Branching]
+For transition $S \to S'$:
+\begin{align}
+B_{forward}(S \to S') &= |\mathcal{P}_{can}(S')| + |\text{resolved } \mathcal{P}_{cannot}(S)| \\
+B_{backward}(S' \to S) &= |\{\text{paths from } S' \text{ back to } S\}|
+\end{align}
+\end{definition}
+
+\begin{theorem}[Asymmetric Branching Theorem]
+\label{thm:asymmetric_branching}
+For any non-trivial transition:
+\begin{equation}
+\frac{B_{forward}}{B_{backward}} \to \infty
+\end{equation}
+The ratio of forward to backward categorical paths is unbounded.
+\end{theorem}
+
+\begin{proof}
+Forward branching includes:
+\begin{enumerate}
+    \item New possibilities from $S'$: $|\mathcal{P}_{can}(S')| \sim O(n)$
+    \item Resolved impossibilities: $|\mathcal{P}_{cannot}(S)| = \infty$
+\end{enumerate}
+
+Backward ``branching'' requires:
+\begin{enumerate}
+    \item Returning $S'$ to $S$ spatially
+    \item Un-resolving all ``did not happen'' back to ``cannot happen''
+\end{enumerate}
+
+But resolved non-actualisations are now categorical facts---they cannot be undetermined. There exists at most one precise backward path (and typically zero). Therefore:
+\begin{equation}
+\frac{B_{forward}}{B_{backward}} = \frac{\infty + O(n)}{O(1)} = \infty
+\end{equation}
+\end{proof}
+
+\subsection{The Category Self-Division Problem}
+
+\begin{definition}[Category Self-Division]
+A category $C$ satisfies normal self-division if:
+\begin{equation}
+\frac{C}{C} = 1
+\end{equation}
+meaning traversing $C$ and returning yields unity (identity).
+\end{definition}
+
+\begin{theorem}[Non-Unity of Categorical Return]
+\label{thm:non_unity}
+For categorical states:
+\begin{equation}
+\frac{C}{C} \neq 1
+\end{equation}
+Traversing a category and ``returning'' does not yield the original state.
+\end{theorem}
+
+\begin{proof}
+Let $C_0$ be the initial state. After occupation:
+\begin{enumerate}
+    \item $C_0$ is marked as completed (irreversibility axiom)
+    \item New categories $\{C_1, C_2, \ldots\}$ are created from resolved non-actualisations
+    \item Any ``return'' must occupy a new state $C_0'$ with $C_0' \neq C_0$
+\end{enumerate}
+
+The apparent return creates:
+\begin{equation}
+\frac{C_0}{C_0} = C_0' \neq C_0
+\end{equation}
+
+The residue $C_0' - C_0$ represents the categorical history accumulated during the traversal---the record of all non-actualisations that were resolved.
+\end{proof}
+
+\begin{corollary}[Categorical Residue]
+Every attempt to ``undo'' a categorical transition leaves residue: the accumulated record of what didn't happen. This residue is irreducible and constitutes new categorical information.
+\end{corollary}
+
+\subsection{Information Creation Through Non-Actualisation}
+
+\begin{theorem}[Information from Absence]
+\label{thm:information_absence}
+The broken cup contains more categorical information than the intact cup on the table.
+\end{theorem}
+
+\begin{proof}
+The broken cup's categorical state includes:
+\begin{enumerate}
+    \item Its current configuration (shard positions, etc.)
+    \item The resolved fact: ``did not turn to gold while falling''
+    \item The resolved fact: ``did not become sentient while falling''
+    \item The resolved fact: ``did not fly upward while falling''
+    \item ... (infinitely many resolved non-actualisations)
+\end{enumerate}
+
+The intact cup's state includes:
+\begin{enumerate}
+    \item Its current configuration (position on table)
+    \item Undetermined non-possibilities (not yet resolved)
+\end{enumerate}
+
+Determined facts constitute more information than undetermined possibilities. Therefore:
+\begin{equation}
+I(\text{broken cup}) > I(\text{intact cup})
+\end{equation}
+\end{proof}
+
+\begin{corollary}[Entropy as Accumulated Absence]
+Entropy increase measures the accumulation of resolved non-actualisations---the growing record of everything that didn't happen.
+\end{corollary}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/asymmetric_branching_panel.png}
+\caption{Asymmetric categorical branching. (A) Event actualisation resolving infinite non-possibilities. (B) Forward vs backward branching ratio. (C) Category self-division yielding residue, not unity. (D) Information content: broken cup $>$ intact cup. (E) Accumulation of ``didn't happen'' as categorical record. (F) Why reversal is impossible: un-resolving determined facts.}
+\label{fig:asymmetric_branching}
+\end{figure}
+

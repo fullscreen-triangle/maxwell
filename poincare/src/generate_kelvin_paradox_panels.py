@@ -870,6 +870,218 @@ def generate_unified_category_panel():
     print(f"Saved: {OUTPUT_DIR / 'unified_category_panel.png'}")
 
 
+def generate_partition_lag_panel():
+    """Generate panel for partition lag and origin of nothingness."""
+    fig = plt.figure(figsize=(16, 10))
+    gs = gridspec.GridSpec(2, 3, figure=fig, hspace=0.3, wspace=0.3)
+    
+    # Panel A: Static observer on moving number line
+    ax1 = fig.add_subplot(gs[0, 0])
+    ax1.set_xlim(0, 1)
+    ax1.set_ylim(0, 1)
+    ax1.axis('off')
+    ax1.set_title('(A) Static Observer,\nMoving Reality', fontsize=11, fontweight='bold')
+    
+    # Observer window (static)
+    window_rect = Rectangle((0.2, 0.5), 0.6, 0.3, facecolor=COLORS['quaternary'],
+                            edgecolor=COLORS['primary'], linewidth=3)
+    ax1.add_patch(window_rect)
+    ax1.text(0.5, 0.75, 'Observer Window', ha='center', va='center', fontsize=10, fontweight='bold')
+    ax1.text(0.5, 0.62, '(k partitions)', ha='center', va='center', fontsize=9, style='italic')
+    
+    # Number line moving below
+    for i, t in enumerate([0, 1, 2]):
+        offset = t * 0.15
+        color_alpha = 1 - t * 0.3
+        # Number line
+        y_pos = 0.35 - t * 0.08
+        ax1.annotate('', xy=(0.9 + offset, y_pos), xytext=(0.1 + offset, y_pos),
+                    arrowprops=dict(arrowstyle='->', lw=2, color=COLORS['secondary'], alpha=color_alpha))
+        # Numbers on line
+        for j, x in enumerate(np.linspace(0.15, 0.85, 5)):
+            ax1.text(x + offset, y_pos - 0.04, str(j + i*5), ha='center', fontsize=8, 
+                    alpha=color_alpha, color=COLORS['dark'])
+        # Time label
+        ax1.text(0.05, y_pos, f't={t}', fontsize=8, color=COLORS['tertiary'])
+    
+    # Arrow showing movement
+    ax1.annotate('', xy=(0.85, 0.15), xytext=(0.15, 0.15),
+                arrowprops=dict(arrowstyle='->', lw=3, color=COLORS['entropy']))
+    ax1.text(0.5, 0.08, 'Reality moves', ha='center', fontsize=10, fontweight='bold', color=COLORS['entropy'])
+    
+    # Panel B: Partition lag concept
+    ax2 = fig.add_subplot(gs[0, 1])
+    ax2.set_xlim(0, 1)
+    ax2.set_ylim(0, 1)
+    ax2.axis('off')
+    ax2.set_title('(B) Partition Lag:\nTime Passed During Partition', fontsize=11, fontweight='bold')
+    
+    # Timeline showing partition process
+    ax2.plot([0.1, 0.9], [0.7, 0.7], 'k-', linewidth=3)
+    ax2.scatter([0.1], [0.7], s=100, color=COLORS['primary'], zorder=5)
+    ax2.scatter([0.9], [0.7], s=100, color=COLORS['secondary'], zorder=5)
+    ax2.text(0.1, 0.75, r'$t_0$', ha='center', fontsize=10)
+    ax2.text(0.9, 0.75, r'$t_0 + k\tau_p$', ha='center', fontsize=10)
+    ax2.text(0.5, 0.63, 'Partition Time', ha='center', fontsize=9, style='italic')
+    
+    # Show what observer sees at start vs end
+    # Start
+    ax2.add_patch(Rectangle((0.15, 0.35), 0.3, 0.15, facecolor=COLORS['oscillation'], alpha=0.5))
+    ax2.text(0.3, 0.43, 'Reality at start', ha='center', fontsize=8)
+    ax2.text(0.1, 0.28, 'Partitioned:', fontsize=8, fontweight='bold')
+    
+    # End - shifted
+    ax2.add_patch(Rectangle((0.55, 0.35), 0.3, 0.15, facecolor=COLORS['entropy'], alpha=0.5))
+    ax2.text(0.7, 0.43, 'Reality at end', ha='center', fontsize=8)
+    ax2.text(0.55, 0.28, 'But now:', fontsize=8, fontweight='bold')
+    
+    # Gap indicator
+    ax2.annotate('', xy=(0.55, 0.42), xytext=(0.45, 0.42),
+                arrowprops=dict(arrowstyle='<->', lw=2, color=COLORS['secondary']))
+    ax2.text(0.5, 0.48, r'$\Delta$', ha='center', fontsize=12, color=COLORS['secondary'], fontweight='bold')
+    
+    ax2.text(0.5, 0.12, 'Lag = what moved during partitioning', ha='center', fontsize=9, 
+             fontweight='bold', color=COLORS['secondary'])
+    
+    # Panel C: Undetermined residue
+    ax3 = fig.add_subplot(gs[0, 2])
+    ax3.set_xlim(0, 1)
+    ax3.set_ylim(0, 1)
+    ax3.axis('off')
+    ax3.set_title('(C) Undetermined Residue\n= Nothingness', fontsize=11, fontweight='bold')
+    
+    # Three states of being
+    states = [
+        ('Not Absent', 'It existed at start', COLORS['oscillation'], 0.85),
+        ('Not Present', 'It moved away', COLORS['secondary'], 0.55),
+        ('Not Determinable', 'Never partitioned', COLORS['dark_matter'], 0.25)
+    ]
+    
+    for state, desc, color, y in states:
+        ax3.add_patch(Rectangle((0.15, y - 0.08), 0.7, 0.18, facecolor=color, alpha=0.3,
+                                edgecolor=color, linewidth=2))
+        ax3.text(0.5, y + 0.03, state, ha='center', fontsize=10, fontweight='bold')
+        ax3.text(0.5, y - 0.04, desc, ha='center', fontsize=9, style='italic')
+    
+    ax3.text(0.5, 0.05, 'This IS nothingness', ha='center', fontsize=11, 
+             fontweight='bold', color=COLORS['singularity'])
+    
+    # Panel D: Edge indeterminacy
+    ax4 = fig.add_subplot(gs[1, 0])
+    ax4.set_xlim(0, 1)
+    ax4.set_ylim(0, 1)
+    ax4.axis('off')
+    ax4.set_title('(D) Edge Indeterminacy:\nBoundaries Cannot Be Fixed', fontsize=11, fontweight='bold')
+    
+    # Observer window with fuzzy edges
+    center_x, center_y = 0.5, 0.6
+    width, height = 0.6, 0.25
+    
+    # Core region (certain)
+    ax4.add_patch(Rectangle((center_x - width/2 + 0.08, center_y - height/2), 
+                            width - 0.16, height, facecolor=COLORS['quaternary'], alpha=0.8))
+    ax4.text(center_x, center_y, 'Determined', ha='center', va='center', fontsize=10)
+    
+    # Fuzzy edges (uncertain)
+    for i in range(5):
+        alpha = 0.4 - i * 0.07
+        offset = i * 0.02
+        # Left edge
+        ax4.add_patch(Rectangle((center_x - width/2 + offset, center_y - height/2),
+                                0.08, height, facecolor=COLORS['dark_matter'], alpha=alpha))
+        # Right edge
+        ax4.add_patch(Rectangle((center_x + width/2 - 0.08 - offset, center_y - height/2),
+                                0.08, height, facecolor=COLORS['dark_matter'], alpha=alpha))
+    
+    ax4.text(center_x - width/2 - 0.02, center_y, '?', ha='center', va='center', fontsize=20, 
+             color=COLORS['secondary'], fontweight='bold')
+    ax4.text(center_x + width/2 + 0.02, center_y, '?', ha='center', va='center', fontsize=20,
+             color=COLORS['secondary'], fontweight='bold')
+    
+    ax4.text(center_x, 0.25, r'$\delta x_{min} = v \cdot \tau_p^{min} > 0$', ha='center', fontsize=11)
+    ax4.text(center_x, 0.12, 'Minimum edge uncertainty', ha='center', fontsize=9, style='italic')
+    
+    # Panel E: Pastness of observation
+    ax5 = fig.add_subplot(gs[1, 1])
+    ax5.set_xlim(0, 1)
+    ax5.set_ylim(0, 1)
+    ax5.axis('off')
+    ax5.set_title('(E) Observation Is Always Past:\nPresent Is Never Partitioned', fontsize=11, fontweight='bold')
+    
+    # Timeline
+    times = ['Past', 'Past', 'Past', 'Present']
+    x_positions = [0.15, 0.35, 0.55, 0.85]
+    
+    ax5.plot([0.1, 0.9], [0.6, 0.6], 'k-', linewidth=2)
+    
+    for x, label in zip(x_positions, times):
+        if label == 'Present':
+            color = COLORS['entropy']
+            marker = 's'
+            ax5.scatter([x], [0.6], s=150, color=color, zorder=5, marker=marker)
+            ax5.text(x, 0.7, 'NOW', ha='center', fontsize=9, fontweight='bold', color=color)
+        else:
+            color = COLORS['tertiary']
+            ax5.scatter([x], [0.6], s=100, color=color, zorder=5, alpha=0.7)
+    
+    # Partition labels
+    ax5.text(0.15, 0.45, r'$C_1$', ha='center', fontsize=10)
+    ax5.text(0.35, 0.45, r'$C_2$', ha='center', fontsize=10)
+    ax5.text(0.55, 0.45, r'$C_k$', ha='center', fontsize=10)
+    
+    # Bracket for partitioned region
+    ax5.plot([0.1, 0.6], [0.35, 0.35], 'k-', linewidth=2)
+    ax5.plot([0.1, 0.1], [0.35, 0.38], 'k-', linewidth=2)
+    ax5.plot([0.6, 0.6], [0.35, 0.38], 'k-', linewidth=2)
+    ax5.text(0.35, 0.28, 'All partitions are of THE PAST', ha='center', fontsize=9, 
+             fontweight='bold', color=COLORS['secondary'])
+    
+    ax5.text(0.85, 0.45, 'Never\npartitioned!', ha='center', fontsize=9, 
+             color=COLORS['entropy'], fontweight='bold')
+    
+    # Panel F: Dark matter accumulation
+    ax6 = fig.add_subplot(gs[1, 2])
+    ax6.set_xlim(0, 1)
+    ax6.set_ylim(0, 1)
+    ax6.axis('off')
+    ax6.set_title('(F) Dark Matter = Accumulated\nPartition Lag Residue', fontsize=11, fontweight='bold')
+    
+    # Show accumulation over time
+    n_steps = 6
+    for i in range(n_steps):
+        y = 0.9 - i * 0.13
+        width_observed = 0.5 - i * 0.04
+        width_residue = 0.3 + i * 0.05
+        
+        # Observed (shrinking)
+        ax6.add_patch(Rectangle((0.1, y - 0.04), width_observed, 0.08, 
+                                facecolor=COLORS['oscillation'], alpha=0.6))
+        # Residue (growing)
+        ax6.add_patch(Rectangle((0.1 + width_observed, y - 0.04), width_residue, 0.08,
+                                facecolor=COLORS['dark_matter'], alpha=0.6))
+        
+        if i == 0:
+            ax6.text(0.1 + width_observed/2, y, 'Observed', ha='center', va='center', fontsize=7)
+            ax6.text(0.1 + width_observed + width_residue/2, y, 'Residue', ha='center', va='center', fontsize=7)
+        
+        ax6.text(0.02, y, f't={i}', fontsize=7, va='center')
+    
+    # Arrow showing growth direction
+    ax6.annotate('', xy=(0.8, 0.2), xytext=(0.8, 0.85),
+                arrowprops=dict(arrowstyle='->', lw=2, color=COLORS['secondary']))
+    ax6.text(0.88, 0.5, 'Time', ha='center', va='center', fontsize=9, rotation=90)
+    
+    # Ratio
+    ax6.text(0.5, 0.05, r'$\frac{x}{\infty - x} \to 5.4$ (dark matter ratio)', 
+             ha='center', fontsize=11, fontweight='bold')
+    
+    plt.suptitle('Partition Lag: The Origin of Nothingness and Dark Matter', fontsize=14, fontweight='bold', y=0.98)
+    plt.savefig(OUTPUT_DIR / 'partition_lag_panel.png', dpi=300, bbox_inches='tight',
+                facecolor='white', edgecolor='none')
+    plt.close()
+    print(f"Saved: {OUTPUT_DIR / 'partition_lag_panel.png'}")
+
+
 def main():
     """Generate all panel visualizations for the Kelvin Paradox paper."""
     print("Generating panel visualizations for Kelvin Paradox paper...")
@@ -882,6 +1094,7 @@ def main():
     generate_entropy_emergence_panel()
     generate_geometric_ratio_panel()
     generate_unified_category_panel()
+    generate_partition_lag_panel()
     
     print("=" * 60)
     print(f"All panels saved to: {OUTPUT_DIR}")

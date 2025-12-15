@@ -1,0 +1,137 @@
+\section{Geometric Partitioning and Categorical Apertures}
+\label{sec:geometric_partitioning}
+
+\subsection{From Charge Fields to Geometric Apertures}
+
+We establish the connection between electron transport charge fields and categorical apertures---geometric constraints that select molecules based on configuration rather than velocity.
+
+\begin{definition}[Categorical Aperture]
+\label{def:categorical_aperture}
+A \emph{categorical aperture} $\mathcal{A}$ is a geometric constraint that partitions molecular phase space into ``pass'' and ``block'' categories based on molecular configuration $\mathbf{c}$:
+\begin{equation}
+    \mathcal{A}: \mathbf{c} \mapsto \{0, 1\}
+\end{equation}
+where $\mathcal{A}(\mathbf{c}) = 1$ indicates passage and $\mathcal{A}(\mathbf{c}) = 0$ indicates blocking.
+\end{definition}
+
+\begin{theorem}[Charge Fields Generate Apertures]
+\label{thm:charge_apertures}
+The electric field $\mathbf{E}(\mathbf{r})$ created by electron transport defines a categorical aperture through the equipotential surfaces:
+\begin{equation}
+    \mathcal{A}_{\Phi_0} = \{ \mathbf{r} : \Phi(\mathbf{r}) = \Phi_0 \}
+\end{equation}
+Molecules pass through $\mathcal{A}_{\Phi_0}$ if their charge distribution is compatible with the field geometry.
+\end{theorem}
+
+\begin{proof}
+The electrostatic potential $\Phi(\mathbf{r})$ satisfies Poisson's equation:
+\begin{equation}
+    \nabla^2 \Phi = -\frac{\rho}{\epsilon_0}
+\end{equation}
+
+Equipotential surfaces $\Phi = \Phi_0$ define regions where molecules of specific charge distributions experience zero net force. The geometry of these surfaces is determined by the charge distribution from electron transport, creating apertures of specific shape and size.
+
+A molecule $M$ with charge distribution $\rho_M(\mathbf{r})$ experiences potential energy:
+\begin{equation}
+    U_M = \int \rho_M(\mathbf{r}) \Phi(\mathbf{r}) \, d^3r
+\end{equation}
+
+Molecules with $U_M < U_{\text{barrier}}$ pass through; others are blocked. This is a geometric selection based on the spatial overlap between $\rho_M$ and $\Phi$.
+\end{proof}
+
+\subsection{Temperature Independence of Geometric Selection}
+
+\begin{theorem}[Temperature-Independent Selection]
+\label{thm:temp_independent_selection}
+Categorical aperture selection depends on molecular configuration $\mathbf{c}$, not molecular velocity $\mathbf{v}$. Therefore, selection probability is temperature-independent:
+\begin{equation}
+    P(\text{passage}|\mathbf{c}, T) = P(\text{passage}|\mathbf{c})
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Temperature affects the Maxwell-Boltzmann velocity distribution:
+\begin{equation}
+    f(\mathbf{v}) \propto \exp\left(-\frac{m|\mathbf{v}|^2}{2k_BT}\right)
+\end{equation}
+
+However, the aperture selection criterion $\mathcal{A}(\mathbf{c})$ depends only on configuration. At any temperature $T > 0$, molecules with configuration $\mathbf{c}$ satisfying $\mathcal{A}(\mathbf{c}) = 1$ will pass when they encounter the aperture.
+
+Temperature affects the \emph{rate} of encounters (through diffusion) but not the \emph{outcome} of each encounter (which depends only on $\mathbf{c}$).
+\end{proof}
+
+\begin{corollary}[Prebiotic Chemistry in Cold Environments]
+\label{cor:cold_chemistry}
+Categorical aperture chemistry can proceed at arbitrarily low temperatures. Low temperature reduces encounter rates but does not prevent selection. This explains prebiotic chemistry in cold interstellar environments.
+\end{corollary}
+
+\subsection{Aperture Cascades and Hierarchical Selection}
+
+\begin{definition}[Aperture Cascade]
+\label{def:aperture_cascade}
+An \emph{aperture cascade} is a sequence of categorical apertures $(\mathcal{A}_1, \mathcal{A}_2, \ldots, \mathcal{A}_n)$ where passage through $\mathcal{A}_i$ is required for access to $\mathcal{A}_{i+1}$:
+\begin{equation}
+    P(\text{final passage}) = \prod_{i=1}^{n} P(\text{passage}|\mathcal{A}_i)
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Selectivity Amplification]
+\label{thm:selectivity_amp}
+Aperture cascades exponentially amplify selectivity. For $n$ apertures each with selectivity $s < 1$:
+\begin{equation}
+    S_{\text{total}} = s^n
+\end{equation}
+This enables arbitrarily high specificity from moderately selective individual apertures.
+\end{theorem}
+
+\begin{proof}
+Each aperture $\mathcal{A}_i$ passes fraction $s_i$ of molecules. For identical apertures with $s_i = s$:
+\begin{equation}
+    S_{\text{total}} = \prod_{i=1}^{n} s_i = s^n
+\end{equation}
+
+For $s = 0.5$ and $n = 10$: $S_{\text{total}} = 2^{-10} \approx 10^{-3}$.
+
+For $s = 0.5$ and $n = 100$: $S_{\text{total}} = 2^{-100} \approx 10^{-30}$.
+
+Aperture cascades thus achieve selectivities comparable to enzymatic specificity through purely geometric means.
+\end{proof}
+
+\subsection{Electron Transport as Aperture Generator}
+
+\begin{theorem}[Autocatalytic Aperture Generation]
+\label{thm:autocatalytic_apertures}
+Autocatalytic electron transport systems generate apertures that select for molecules compatible with further electron transport. This creates a positive feedback loop:
+\begin{equation}
+    \text{ET} \xrightarrow{\text{creates}} \mathcal{A} \xrightarrow{\text{selects}} M_{\text{compatible}} \xrightarrow{\text{enables}} \text{ET}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Electron transport creates charge separation (Theorem~\ref{thm:et_creates_partition}). The resulting electric field defines apertures (Theorem~\ref{thm:charge_apertures}). These apertures select molecules based on charge distribution (Theorem~\ref{thm:charge_filter}).
+
+Molecules that pass the aperture are those with charge distributions compatible with the electric field geometry. Such molecules, by definition, can participate in further electron transport events, as their charge distributions are complementary to the existing charge separation.
+
+This creates a self-reinforcing cycle where electron transport selects for molecules that enable more electron transport.
+\end{proof}
+
+\subsection{Zero Information Requirement}
+
+\begin{theorem}[Information-Free Selection]
+\label{thm:info_free_selection}
+Categorical aperture selection requires zero Shannon information. The aperture does not ``know'' which molecules to select; selection emerges from geometric complementarity.
+\end{theorem}
+
+\begin{proof}
+Shannon information $I$ is defined as:
+\begin{equation}
+    I = -\sum_i p_i \log_2 p_i
+\end{equation}
+
+For an aperture $\mathcal{A}$ selecting molecules, no probability distribution is updated during selection. The aperture's geometry is fixed; molecules either fit or they don't. There is no measurement, no wavefunction collapse (in the information-theoretic sense), no bit erasure.
+
+Compare with Maxwell's demon, which requires information acquisition about molecular velocities and thus incurs Landauer erasure costs \citep{landauer1961irreversibility}. Categorical apertures involve no such information processing.
+\end{proof}
+
+This theorem establishes that the origin of molecular specificity does not require the prior existence of information storage systems, resolving Orgel's paradox at the level of selection mechanisms.
+

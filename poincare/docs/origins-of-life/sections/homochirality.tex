@@ -1,0 +1,191 @@
+\section{Homochirality as Proof of Partitioning Primacy}
+\label{sec:homochirality}
+
+\subsection{The Homochirality Observation}
+
+All known life exhibits universal homochirality across multiple organizational levels:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Molecular Class} & \textbf{Biological Form} & \textbf{Excluded Form} \\
+\midrule
+Amino acids & L-form & D-form \\
+Sugars (nucleotides) & D-ribose & L-ribose \\
+DNA helix & Right-handed & Left-handed \\
+$\alpha$-helices (proteins) & Right-handed & Left-handed \\
+Phospholipids & Specific stereochemistry & Mirror isomers \\
+\bottomrule
+\end{tabular}
+\caption{Universal homochirality across biological organization levels}
+\label{tab:homochirality}
+\end{table}
+
+\begin{theorem}[Homochirality as Binary Partition]
+\label{thm:homo_binary}
+Homochirality represents a binary partition: at each level, one chirality is selected and its mirror image is excluded. This partition propagates from molecular to macroscopic scales.
+\end{theorem}
+
+\subsection{Electron Transport Creates Chiral Preference}
+
+\begin{theorem}[Chiral Selection Through Electron Spin-Orbit Coupling]
+\label{thm:chiral_selection}
+Electron transport in the presence of magnetic fields creates chiral preference through spin-orbit coupling. The selection mechanism is:
+\begin{equation}
+    \mathcal{H}_{\text{SO}} = \frac{e\hbar}{4m_e^2c^2} \boldsymbol{\sigma} \cdot (\mathbf{E} \times \mathbf{p})
+\end{equation}
+where $\boldsymbol{\sigma}$ is the spin operator, $\mathbf{E}$ is the electric field, and $\mathbf{p}$ is momentum.
+\end{theorem}
+
+\begin{proof}
+The spin-orbit Hamiltonian couples electron spin to orbital motion. In a chiral molecule, the electric field $\mathbf{E}$ has a helical component that preferentially couples to one spin orientation.
+
+For an electron moving along a helical path (as in a chiral molecule):
+\begin{equation}
+    \langle \mathcal{H}_{\text{SO}} \rangle_L \neq \langle \mathcal{H}_{\text{SO}} \rangle_R
+\end{equation}
+
+The energy difference between L and R configurations is:
+\begin{equation}
+    \Delta E_{LR} = \langle \mathcal{H}_{\text{SO}} \rangle_L - \langle \mathcal{H}_{\text{SO}} \rangle_R \neq 0
+\end{equation}
+
+This energy difference, though small ($\sim 10^{-14}$ eV for typical molecules \citep{quack2002high}), creates a thermodynamic preference that becomes significant over geological timescales through autocatalytic amplification.
+\end{proof}
+
+\subsection{Chiral Induced Spin Selectivity (CISS)}
+
+\begin{theorem}[CISS Effect]
+\label{thm:ciss}
+Chiral molecules preferentially transport electrons of one spin polarization. This is the Chiral Induced Spin Selectivity (CISS) effect:
+\begin{equation}
+    P_{\uparrow} - P_{\downarrow} = \eta_{\text{CISS}} \neq 0
+\end{equation}
+where $P_{\uparrow}, P_{\downarrow}$ are probabilities of transporting spin-up and spin-down electrons, and $\eta_{\text{CISS}}$ is the CISS polarization factor.
+\end{theorem}
+
+For DNA and proteins, $\eta_{\text{CISS}}$ values of 60-80\% have been experimentally measured \citep{naaman2012chiral, gohler2011spin}. This demonstrates that chiral molecules are not merely chiral in structure but function as spin-selective electron transport elements.
+
+\subsection{Autocatalytic Chiral Amplification}
+
+\begin{theorem}[Chiral Autocatalysis]
+\label{thm:chiral_autocatalysis}
+An autocatalytic electron transport system with initial chiral preference $\chi_0$ amplifies that preference through self-selection:
+\begin{equation}
+    \chi(t) = \chi_0 \cdot e^{k_{\text{auto}} t}
+\end{equation}
+until complete homochirality ($\chi = 1$) is achieved.
+\end{theorem}
+
+\begin{proof}
+Let $[L]$ and $[D]$ denote concentrations of L and D enantiomers. For an autocatalytic system where L-molecules preferentially catalyze L-synthesis:
+\begin{align}
+    \frac{d[L]}{dt} &= k_L[L][S] + k_0[S] \\
+    \frac{d[D]}{dt} &= k_D[D][S] + k_0[S]
+\end{align}
+
+where $[S]$ is substrate concentration and $k_0$ is the non-catalyzed rate.
+
+The enantiomeric excess:
+\begin{equation}
+    ee = \frac{[L] - [D]}{[L] + [D]}
+\end{equation}
+
+evolves according to:
+\begin{equation}
+    \frac{d(ee)}{dt} = (k_L - k_D) \cdot (1 - ee^2) \cdot \frac{[S]}{[L] + [D]}
+\end{equation}
+
+For any initial $ee_0 \neq 0$, the system evolves toward $ee = \pm 1$ (complete homochirality). The Soai reaction demonstrates this experimentally with amplification factors exceeding $10^6$ \citep{soai1995asymmetric}.
+\end{proof}
+
+\subsection{Chiral Apertures}
+
+\begin{theorem}[Chiral Aperture Propagation]
+\label{thm:chiral_apertures}
+A chiral molecule creates chiral apertures that select for matching chirality:
+\begin{equation}
+    \mathcal{A}_L: \mathbf{c} \mapsto \begin{cases}
+        1 & \text{if } \mathbf{c} \in \mathcal{C}_L \\
+        0 & \text{if } \mathbf{c} \in \mathcal{C}_D
+    \end{cases}
+\end{equation}
+where $\mathcal{C}_L$ and $\mathcal{C}_D$ are the configuration spaces of L and D enantiomers.
+\end{theorem}
+
+\begin{proof}
+A chiral aperture has geometry that is non-superimposable on its mirror image. The passage criterion depends on the geometric fit between molecule and aperture:
+\begin{equation}
+    P(\text{passage}) \propto \exp\left(-\frac{U_{\text{mismatch}}}{k_BT}\right)
+\end{equation}
+
+For L-aperture and L-molecule: $U_{\text{mismatch}} \approx 0$.
+
+For L-aperture and D-molecule: $U_{\text{mismatch}} >> k_BT$ due to steric clash.
+
+This creates near-perfect chiral discrimination through geometric means.
+\end{proof}
+
+\subsection{Hierarchical Chiral Propagation}
+
+\begin{theorem}[Universal Chiral Inheritance]
+\label{thm:chiral_inheritance}
+The chirality established at the molecular level propagates to all higher organizational levels through aperture-mediated selection:
+\begin{equation}
+    \chi_0 \xrightarrow{\mathcal{A}_1} \chi_1 \xrightarrow{\mathcal{A}_2} \chi_2 \xrightarrow{\mathcal{A}_3} \cdots \xrightarrow{\mathcal{A}_n} \chi_n
+\end{equation}
+where each $\chi_i$ inherits chirality from $\chi_{i-1}$ through aperture $\mathcal{A}_i$.
+\end{theorem}
+
+\begin{proof}
+By induction:
+
+\textbf{Base case}: The primordial autocatalytic electron transport system establishes initial chirality $\chi_0$ through spin-orbit coupling (Theorem~\ref{thm:chiral_selection}).
+
+\textbf{Inductive step}: Given chirality $\chi_i$ at level $i$, the apertures created at this level (Theorem~\ref{thm:chiral_apertures}) select for matching chirality $\chi_{i+1} = \chi_i$ at level $i+1$.
+
+\textbf{Conclusion}: All levels inherit the original chirality, explaining the universal homochirality of biological systems.
+\end{proof}
+
+\subsection{Homochirality as Evidence}
+
+\begin{theorem}[Homochirality Implies Partitioning Primacy]
+\label{thm:homo_evidence}
+The universal homochirality of biological molecules constitutes evidence for partitioning primacy over information primacy in the origin of life.
+\end{theorem}
+
+\begin{proof}
+We consider three hypotheses:
+
+\textbf{H1 (Information-first)}: If information storage were primordial, there would be no mechanism for chiral selection. Nucleotides have no intrinsic chiral preference; L and D forms are energetically equivalent. Information-first scenarios predict racemic life or multiple chiral lineages.
+
+\textbf{H2 (Metabolism-first)}: If metabolism were primordial, chiral preference could arise from chiral catalysts. However, this requires explaining the origin of chiral catalysts without invoking prior chiral selection---a circular dependency.
+
+\textbf{H3 (Partitioning-first)}: If electron transport partitioning were primordial, chiral selection arises inevitably from spin-orbit coupling during electron transport. The resulting chiral apertures propagate this selection to all subsequent structures.
+
+Observation: Universal homochirality exists.
+
+H1 predicts: No homochirality or multiple chiral lineages. \textbf{Falsified}.
+
+H2 predicts: Homochirality possible but requires additional explanation. \textbf{Incomplete}.
+
+H3 predicts: Inevitable homochirality through physical mechanism. \textbf{Confirmed}.
+
+By inference to best explanation, partitioning primacy is supported.
+\end{proof}
+
+\subsection{Why Racemic Mixtures Cannot Generate Life}
+
+\begin{corollary}[Racemic Sterility]
+\label{cor:racemic_sterile}
+Racemic mixtures (50\% L, 50\% D) cannot generate life because they represent zero partitioning:
+\begin{equation}
+    ee_{\text{racemic}} = \frac{[L] - [D]}{[L] + [D]} = 0
+\end{equation}
+
+Without partitioning, no categorical selection occurs, no autocatalytic amplification is possible, and no hierarchical organization can develop.
+\end{corollary}
+
+This explains why prebiotic synthesis experiments producing racemic mixtures have not generated life-like complexity, and why life universally exhibits homochirality.
+

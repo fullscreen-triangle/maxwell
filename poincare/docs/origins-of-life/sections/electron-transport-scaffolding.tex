@@ -1,0 +1,175 @@
+\section{Membranes as Electron Transport Scaffolding}
+\label{sec:electron_transport_scaffolding}
+
+\subsection{Reinterpretation of Membrane Function}
+
+Traditional models view membranes as compartmentalization structures that enabled concentration of reactants. We propose a fundamental reinterpretation: membranes evolved as \emph{electron transport scaffolding}---structures that stabilize and optimize electron transport pathways.
+
+\begin{theorem}[Membrane as Electron Transport Scaffold]
+\label{thm:membrane_scaffold}
+Biological membranes function primarily as electron transport scaffolds, characterized by:
+\begin{enumerate}
+    \item \textbf{Net negative charge}: Phospholipid headgroups create electron-rich surfaces
+    \item \textbf{Electron transport proteins}: Integral proteins form electron transport chains
+    \item \textbf{Proton gradients}: Coupled to electron transport through chemiosmosis
+    \item \textbf{Redox organization}: Systematic arrangement of electron donors and acceptors
+\end{enumerate}
+Compartmentalization is a secondary consequence, not the primary function.
+\end{theorem}
+
+\subsection{Membrane Charge Architecture}
+
+\begin{definition}[Membrane Surface Charge Density]
+\label{def:membrane_charge}
+The surface charge density $\sigma$ of a biological membrane is:
+\begin{equation}
+    \sigma = \sum_i n_i q_i
+\end{equation}
+where $n_i$ is the surface density of charged species $i$ and $q_i$ is its charge.
+\end{definition}
+
+For typical biological membranes:
+\begin{equation}
+    \sigma \approx -0.02 \text{ to } -0.05 \text{ C/m}^2
+\end{equation}
+
+This negative charge density is not incidental but essential for membrane function.
+
+\begin{theorem}[Negative Charge as Electron Reservoir]
+\label{thm:neg_charge_reservoir}
+The negative membrane surface charge creates an electron reservoir enabling:
+\begin{enumerate}
+    \item Electron scarcity in the membrane interior (high signal-to-noise ratio)
+    \item Electric field driving electron transport
+    \item Concentration of cations for charge neutralization dynamics
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The Gouy-Chapman model describes the electric potential near a charged surface:
+\begin{equation}
+    \Phi(x) = \frac{2k_BT}{ze}\ln\left(\frac{1 + \gamma e^{-\kappa x}}{1 - \gamma e^{-\kappa x}}\right)
+\end{equation}
+
+where $\kappa$ is the Debye screening length and $\gamma$ depends on surface charge.
+
+This potential creates a region near the membrane where:
+\begin{itemize}
+    \item Anions are repelled (electron scarcity)
+    \item Cations are concentrated (charge carriers available)
+    \item Electric field exists (driving force for transport)
+\end{itemize}
+\end{proof}
+
+\subsection{Cellular Battery Architecture}
+
+\begin{definition}[Cellular Battery]
+\label{def:cellular_battery}
+The cell functions as an electrochemical battery:
+\begin{align}
+    \text{Cathode (membrane)}: & \quad \text{Negative surface charge} \\
+    \text{Anode (cytoplasm)}: & \quad \text{Neutral to basic pH} \\
+    \text{Electrolyte}: & \quad \text{Ionic cytoplasm} \\
+    \text{Potential difference}: & \quad \Delta\Phi \approx 50\text{-}100 \text{ mV}
+\end{align}
+\end{definition}
+
+\begin{theorem}[Battery Architecture Enables Electron Signaling]
+\label{thm:battery_signaling}
+The cellular battery architecture creates conditions where individual electrons carry significant information content:
+\begin{equation}
+    I_{\text{per electron}} = \frac{I_{\text{total}}}{N_{\text{mobile electrons}}}
+\end{equation}
+Electron scarcity in the membrane environment amplifies the information content per electron.
+\end{theorem}
+
+\subsection{Evolution of Membrane Scaffolding}
+
+\begin{theorem}[Thermodynamic Drive for Membrane Formation]
+\label{thm:membrane_formation}
+Amphipathic molecules spontaneously form membrane structures because:
+\begin{equation}
+    \Delta G_{\text{membrane}} = \Delta H_{\text{hydrophobic}} - T\Delta S_{\text{ordering}} < 0
+\end{equation}
+For typical phospholipids: $\Delta G_{\text{membrane}} \approx -40 \text{ to } -80$ kJ/mol.
+\end{theorem}
+
+\begin{proof}
+The hydrophobic effect drives assembly:
+\begin{equation}
+    \Delta H_{\text{hydrophobic}} \approx -3.5 \text{ kJ/mol per CH}_2 \text{ group}
+\end{equation}
+
+For a typical 16-carbon fatty acid chain:
+\begin{equation}
+    \Delta H_{\text{hydrophobic}} \approx -56 \text{ kJ/mol}
+\end{equation}
+
+The entropic cost of ordering:
+\begin{equation}
+    -T\Delta S_{\text{ordering}} \approx +20 \text{ kJ/mol at 300 K}
+\end{equation}
+
+Net free energy:
+\begin{equation}
+    \Delta G_{\text{membrane}} \approx -36 \text{ kJ/mol}
+\end{equation}
+
+This strongly negative value makes membrane formation thermodynamically spontaneous above critical concentrations.
+\end{proof}
+
+\subsection{Membrane-Electron Transport Coevolution}
+
+\begin{theorem}[Scaffolding Selection Pressure]
+\label{thm:scaffold_selection}
+Once electron transport establishes autocatalytic cycling, there is selection pressure for structures that stabilize transport pathways:
+\begin{equation}
+    \frac{d[\text{stable scaffold}]}{dt} \propto k_{\text{ET}} \times \tau_{\text{stability}}
+\end{equation}
+where $k_{\text{ET}}$ is electron transport rate and $\tau_{\text{stability}}$ is scaffold lifetime.
+\end{theorem}
+
+\begin{proof}
+Autocatalytic systems that maintain higher electron transport rates outcompete those with lower rates. Scaffolding that:
+\begin{enumerate}
+    \item Protects electron transport components from degradation
+    \item Maintains optimal spatial arrangement of donors and acceptors
+    \item Creates appropriate dielectric environment for tunneling
+\end{enumerate}
+provides competitive advantage. Amphipathic membrane scaffolding satisfies all three requirements, explaining its universal adoption.
+\end{proof}
+
+\subsection{Modern Membrane Electron Transport}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{System} & \textbf{Electrons/s} & \textbf{Span (nm)} & \textbf{Efficiency} \\
+\midrule
+Complex I (NADH-Q) & 50-200 & 7 & $\sim$40\% \\
+Complex III (Q-cyt c) & 100-500 & 6 & $\sim$50\% \\
+Complex IV (cyt c-O$_2$) & 200-1000 & 4 & $\sim$60\% \\
+Photosystem II & $10^3$ & 5 & $\sim$90\% \\
+\bottomrule
+\end{tabular}
+\caption{Electron transport characteristics of membrane protein complexes}
+\label{tab:membrane_et}
+\end{table}
+
+These high efficiencies and rates are enabled by the membrane scaffold, which:
+\begin{enumerate}
+    \item Positions redox centers at optimal tunneling distances (3-14 \AA)
+    \item Provides low-dielectric environment enhancing electric fields
+    \item Couples electron transport to proton pumping across the scaffold
+\end{enumerate}
+
+\subsection{Prediction: Membrane Disruption Halts Electron Transport}
+
+\begin{corollary}[Scaffold Disruption Test]
+\label{cor:scaffold_test}
+If membranes function as electron transport scaffolds, membrane disruption should halt electron transport before affecting compartmentalization functions.
+\end{corollary}
+
+Experimental evidence supports this: membrane-active agents (ionophores, detergents) inhibit electron transport at concentrations below those required to destroy compartmentalization \citep{nicholls2013bioenergetics}. This supports the scaffolding interpretation over the compartmentalization interpretation.
+

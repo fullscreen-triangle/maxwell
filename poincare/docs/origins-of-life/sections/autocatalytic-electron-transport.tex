@@ -1,0 +1,138 @@
+\section{Autocatalytic Electron Transport}
+\label{sec:autocatalytic_electron_transport}
+
+\subsection{Definition of Autocatalytic Electron Transport}
+
+We define the critical distinction between ordinary catalysis and autocatalytic electron transport.
+
+\begin{definition}[Ordinary Enzyme Catalysis]
+\label{def:ordinary_catalysis}
+In ordinary enzyme catalysis, electrons are moved in \emph{substrates} (molecules external to the enzyme):
+\begin{equation}
+    E + S \xrightarrow{e^- \text{ transfer}} E + P
+\end{equation}
+where enzyme $E$ remains unchanged after catalysis.
+\end{definition}
+
+\begin{definition}[Autocatalytic Electron Transport]
+\label{def:autocatalytic_et}
+In autocatalytic electron transport, electrons are moved \emph{within the catalytic structure itself}:
+\begin{equation}
+    M \xrightarrow{e^- \text{ internal transfer}} M'
+\end{equation}
+where $M'$ is a modified state of molecule $M$ that enables further electron transport.
+\end{definition}
+
+\begin{theorem}[Self-Reference in Autocatalytic Systems]
+\label{thm:self_reference}
+Autocatalytic electron transport is self-referential: the product of electron transport ($M'$) creates conditions that enable further electron transport. This constitutes a closed causal loop:
+\begin{equation}
+    M \xrightarrow{e^-} M' \xrightarrow{\text{enables}} M \xrightarrow{e^-} M' \xrightarrow{\text{enables}} \cdots
+\end{equation}
+\end{theorem}
+
+\subsection{Minimal Autocatalytic Structure}
+
+\begin{theorem}[Minimal Requirements for Autocatalysis]
+\label{thm:minimal_autocatalysis}
+The minimal structure capable of autocatalytic electron transport requires:
+\begin{enumerate}
+    \item \textbf{Electron donor site}: A site capable of releasing electrons
+    \item \textbf{Electron acceptor site}: A site capable of accepting electrons
+    \item \textbf{Coupling mechanism}: A pathway connecting donor and acceptor
+    \item \textbf{Regeneration pathway}: A mechanism for returning the system to its initial state
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Without an electron donor, no electrons are available for transport. Without an acceptor, transported electrons have no destination. Without coupling, donor and acceptor cannot interact. Without regeneration, the system exhausts after one cycle and is not autocatalytic.
+
+Each component is necessary. Sufficiency follows from the observation that systems possessing all four components (e.g., iron-sulfur clusters in appropriate environments) exhibit sustained electron transport \citep{beinert1997iron}.
+\end{proof}
+
+\subsection{Mathematical Model of Autocatalytic Electron Transport}
+
+\begin{definition}[Autocatalytic Rate Equation]
+\label{def:autocatalytic_rate}
+For an autocatalytic electron transport system with active site concentration $[A]$:
+\begin{equation}
+    \frac{d[A^*]}{dt} = k_{\text{et}}[A][D] - k_{\text{back}}[A^*] + k_{\text{auto}}[A^*][A]
+\end{equation}
+where:
+\begin{itemize}
+    \item $[A^*]$ = concentration of activated (electron-accepting) sites
+    \item $[D]$ = electron donor concentration
+    \item $k_{\text{et}}$ = electron transfer rate constant
+    \item $k_{\text{back}}$ = back-reaction rate constant
+    \item $k_{\text{auto}}$ = autocatalytic rate constant
+\end{itemize}
+\end{definition}
+
+\begin{theorem}[Bistability in Autocatalytic Systems]
+\label{thm:bistability}
+Autocatalytic electron transport systems exhibit bistability with two stable states:
+\begin{enumerate}
+    \item \textbf{Inactive state}: $[A^*] \approx 0$ (no sustained transport)
+    \item \textbf{Active state}: $[A^*] = [A^*]_{\text{ss}} > 0$ (sustained transport)
+\end{enumerate}
+The transition from inactive to active state requires crossing an activation threshold.
+\end{theorem}
+
+\begin{proof}
+At steady state, $d[A^*]/dt = 0$:
+\begin{equation}
+    k_{\text{et}}[A][D] - k_{\text{back}}[A^*] + k_{\text{auto}}[A^*][A] = 0
+\end{equation}
+
+Solving for $[A^*]$:
+\begin{equation}
+    [A^*]_{\text{ss}} = \frac{k_{\text{et}}[A][D]}{k_{\text{back}} - k_{\text{auto}}[A]}
+\end{equation}
+
+For $k_{\text{auto}}[A] < k_{\text{back}}$, the denominator is positive and a stable active state exists. For $k_{\text{auto}}[A] > k_{\text{back}}$, the system exhibits runaway activation. The threshold condition is:
+\begin{equation}
+    [A]_{\text{threshold}} = \frac{k_{\text{back}}}{k_{\text{auto}}}
+\end{equation}
+\end{proof}
+
+\subsection{Environmental Coupling in Autocatalytic Systems}
+
+\begin{theorem}[Environmental Shaping of Autocatalytic States]
+\label{thm:env_shaping}
+An autocatalytic electron transport system in environment $\mathcal{E}$ has its accessible states shaped by environmental factors:
+\begin{equation}
+    \mathcal{S}_{\text{accessible}} = \mathcal{S}_{\text{intrinsic}} \cap \mathcal{S}_{\text{permitted}}(\mathcal{E})
+\end{equation}
+where $\mathcal{S}_{\text{intrinsic}}$ are the system's intrinsic quantum states and $\mathcal{S}_{\text{permitted}}(\mathcal{E})$ are states permitted by environmental constraints.
+\end{theorem}
+
+\begin{proof}
+The Hamiltonian of the coupled system is:
+\begin{equation}
+    \mathcal{H}_{\text{total}} = \mathcal{H}_{\text{system}} + \mathcal{H}_{\text{environment}} + \mathcal{H}_{\text{interaction}}
+\end{equation}
+
+The interaction term $\mathcal{H}_{\text{interaction}}$ shifts energy levels and modifies selection rules, determining which transitions are allowed. The accessible states are those satisfying both intrinsic selection rules and environmental compatibility.
+\end{proof}
+
+\begin{corollary}[Environmental Sensing Through Self-Knowledge]
+\label{cor:env_sensing}
+An autocatalytic system that ``knows'' its own accessible states thereby ``knows'' environmental constraints, as accessible states are jointly determined by intrinsic and environmental factors.
+\end{corollary}
+
+\subsection{Primordial Autocatalytic Systems}
+
+\begin{theorem}[Iron-Sulfur Clusters as Primordial Autocatalysts]
+\label{thm:fes_primordial}
+Iron-sulfur (FeS) clusters satisfy all requirements for primordial autocatalytic electron transport:
+\begin{enumerate}
+    \item \textbf{Electron donor}: $Fe^{2+} \rightarrow Fe^{3+} + e^-$
+    \item \textbf{Electron acceptor}: $S^0 + 2e^- \rightarrow S^{2-}$
+    \item \textbf{Coupling}: Covalent Fe-S bonds provide electron pathway
+    \item \textbf{Regeneration}: Environmental $H_2S$ regenerates reduced sulfur
+    \item \textbf{Geochemical abundance}: Fe and S were abundant in early Earth environments
+\end{enumerate}
+\end{theorem}
+
+This theorem provides geochemical grounding for the electron transport partitioning framework, connecting abstract principles to specific primordial chemistry \citep{russell2007alkaline, wachtershauser1988before}.
+

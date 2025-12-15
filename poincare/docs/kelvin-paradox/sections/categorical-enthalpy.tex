@@ -1,0 +1,216 @@
+% Section: Categorical Enthalpy Through Partition Dynamics
+
+The standard definition of enthalpy treats the surroundings as uniform resistance---pressure-volume work against a featureless boundary. We establish that this is a coarse-grained approximation of the fundamental process: aperture reconfiguration work.
+
+\subsection{Standard Enthalpy}
+
+\begin{definition}[Classical Enthalpy]
+The enthalpy $H$ of a system is defined as:
+\begin{equation}
+H = U + PV
+\end{equation}
+where $U$ is internal energy, $P$ is pressure, and $V$ is volume.
+\end{definition}
+
+The enthalpy change in a process:
+\begin{equation}
+\Delta H = \Delta U + \Delta(PV) = \Delta U + P\Delta V + V\Delta P
+\end{equation}
+
+At constant pressure: $\Delta H = q_p$ (heat absorbed at constant pressure).
+
+\begin{remark}
+The $PV$ term represents ``pushing stuff out of the way''---work done against the uniform resistance of surroundings. This assumes the surroundings are homogeneous and respond uniformly to expansion.
+\end{remark}
+
+\subsection{The Partition Framework}
+
+\begin{definition}[Partition Configuration]
+A system's partition configuration is:
+\begin{equation}
+\Pi = \{(p_i, \mathcal{A}_i)\}_{i \in I}
+\end{equation}
+where:
+\begin{itemize}
+    \item $p_i$ is a partition (boundary/surface) in the system
+    \item $\mathcal{A}_i$ is the set of apertures on partition $p_i$
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Aperture]
+An aperture $a \in \mathcal{A}_i$ is a geometric constraint that selects molecules based on configuration:
+\begin{equation}
+\sigma_a(m) = \begin{cases} 1 & \text{if } \text{config}(m) \in \text{shape}(a) \\ 0 & \text{otherwise} \end{cases}
+\end{equation}
+where $\text{config}(m)$ is the molecular configuration and $\text{shape}(a)$ is the aperture geometry.
+\end{definition}
+
+\begin{definition}[Aperture Tensor]
+For apertures connecting region $\alpha$ to region $\beta$, define the aperture tensor:
+\begin{equation}
+A_{\alpha\beta} = \sum_{a \in \mathcal{A}_{\alpha\beta}} \sigma_a \otimes \phi_a
+\end{equation}
+where $\phi_a$ is the categorical potential of aperture $a$.
+\end{definition}
+
+\subsection{Aperture Potential}
+
+\begin{definition}[Categorical Potential]
+Each aperture has an associated categorical potential:
+\begin{equation}
+\Phi(a) = -k_B T \ln\left(\frac{\Omega_{\text{pass}}}{\Omega_{\text{total}}}\right)
+\end{equation}
+measuring the selectivity of the aperture---the categorical ``barrier'' it represents.
+\end{definition}
+
+\begin{theorem}[Selectivity-Potential Relation]
+\label{thm:selectivity_potential}
+For an aperture with selectivity $s = \Omega_{\text{pass}}/\Omega_{\text{total}}$:
+\begin{equation}
+\Phi(a) = -k_B T \ln s
+\end{equation}
+\begin{itemize}
+    \item $s = 1$ (no selectivity): $\Phi = 0$ (no barrier)
+    \item $s \to 0$ (high selectivity): $\Phi \to \infty$ (large barrier)
+\end{itemize}
+\end{theorem}
+
+\subsection{Categorical Enthalpy}
+
+\begin{definition}[Categorical Enthalpy]
+The categorical enthalpy of a system with partition configuration $\Pi$ is:
+\begin{equation}
+\mathcal{H}(\Pi, T) = U + \sum_{p \in \mathcal{P}} \sum_{a \in \mathcal{A}(p)} n_a \cdot \Phi_a(T)
+\end{equation}
+where:
+\begin{itemize}
+    \item $n_a$ = number of apertures of type $a$
+    \item $\Phi_a(T)$ = categorical potential of aperture $a$ at temperature $T$
+\end{itemize}
+\end{definition}
+
+\begin{theorem}[Enthalpy Change as Aperture Reconfiguration]
+\label{thm:enthalpy_aperture}
+The enthalpy change in any process is:
+\begin{equation}
+\Delta\mathcal{H} = \Delta U + \sum_a \left[ n_a^{\text{final}} \Phi_a^{\text{final}} - n_a^{\text{initial}} \Phi_a^{\text{initial}} \right]
+\end{equation}
+representing aperture creation, destruction, and modification.
+\end{theorem}
+
+\begin{proof}
+Consider a process transforming partition configuration $\Pi_1 \to \Pi_2$:
+\begin{enumerate}
+    \item Internal energy changes: $\Delta U$
+    \item Apertures destroyed: release potential $\sum_{a \in \Pi_1 \setminus \Pi_2} n_a \Phi_a$
+    \item Apertures created: absorb potential $\sum_{a \in \Pi_2 \setminus \Pi_1} n_a \Phi_a$
+    \item Apertures modified: net change in $\sum_{a \in \Pi_1 \cap \Pi_2} n_a \Delta\Phi_a$
+\end{enumerate}
+The total enthalpy change is the sum of these contributions.
+\end{proof}
+
+\subsection{Recovery of Classical Enthalpy}
+
+\begin{theorem}[Classical Limit]
+\label{thm:classical_limit}
+When apertures are everywhere and non-selective, categorical enthalpy reduces to classical enthalpy:
+\begin{equation}
+\lim_{\substack{n_a \to \infty \\ s_a \to 1}} \mathcal{H} = U + PV
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Consider a boundary with uniform aperture density $\rho_a$ and universal selectivity $s = 1$:
+\begin{enumerate}
+    \item Each aperture has $\Phi_a = -k_B T \ln(1) = 0$ (no barrier)
+    \item But infinitely many apertures with infinitesimal individual contribution
+    \item In the continuum limit: $\sum_a n_a \Phi_a \to \int_{\partial\Omega} P \, dA = PV$
+\end{enumerate}
+
+The pressure $P$ emerges as the aggregate effect of infinitely many non-selective apertures:
+\begin{equation}
+P = \lim_{s \to 1} \rho_a \cdot \Phi(s) = \text{force per unit area}
+\end{equation}
+
+Classical $PV$ work is the coarse-grained limit of aperture work when selectivity vanishes.
+\end{proof}
+
+\begin{corollary}[PV as Statistical Average]
+Pressure-volume work is the statistical average of many microscopic aperture interactions:
+\begin{equation}
+PV = \langle \text{aperture work} \rangle_{\text{non-selective limit}}
+\end{equation}
+\end{corollary}
+
+\subsection{Applications}
+
+\subsubsection{Chemical Bonds as Apertures}
+
+\begin{theorem}[Bond-Aperture Equivalence]
+\label{thm:bond_aperture}
+A chemical bond is an aperture---a geometric constraint selecting what can approach:
+\begin{equation}
+\Delta H_{\text{reaction}} = \sum_{\text{broken}} \Phi(\text{aperture}) - \sum_{\text{formed}} \Phi(\text{aperture})
+\end{equation}
+\end{theorem}
+
+The ``bond energy'' is the categorical potential of the aperture formed by the bond---the selectivity barrier that determines what other molecules can interact with the bonded system.
+
+\subsubsection{Enzyme Catalysis}
+
+\begin{theorem}[Catalyst Enthalpy Conservation]
+\label{thm:catalyst_enthalpy}
+For a catalyst that creates apertures during reaction and destroys them after:
+\begin{equation}
+\Delta H_{\text{catalyst}} = \Phi_{\text{created}} - \Phi_{\text{destroyed}} = 0
+\end{equation}
+The catalyst is recovered because aperture creation and destruction balance.
+\end{theorem}
+
+This explains why enzymes have $\Delta H \approx 0$: they create active site apertures, facilitate the reaction, and restore the original aperture configuration.
+
+\subsubsection{Phase Transitions}
+
+\begin{theorem}[Phase Transition Enthalpy]
+\label{thm:phase_transition}
+The enthalpy of phase transition equals the net aperture reconfiguration:
+\begin{align}
+\Delta H_{\text{fusion}} &= \sum \Phi(\text{lattice apertures destroyed}) \\
+\Delta H_{\text{vaporisation}} &= \sum \Phi(\text{liquid apertures destroyed})
+\end{align}
+\end{theorem}
+
+Melting destroys the periodic aperture structure of the crystal lattice. Vaporisation destroys the remaining liquid-phase apertures.
+
+\subsection{The Unified Formula}
+
+\begin{theorem}[General Enthalpy]
+\label{thm:general_enthalpy}
+The most general form of enthalpy is:
+\begin{equation}
+\boxed{\mathcal{H} = U + \int_{\partial \Omega} \sigma(x) \cdot \phi(x) \, dA}
+\end{equation}
+where:
+\begin{itemize}
+    \item $\partial \Omega$ = all boundaries in the system
+    \item $\sigma(x)$ = selectivity at point $x$ ($0 \leq \sigma \leq 1$)
+    \item $\phi(x)$ = categorical potential density at $x$
+    \item $dA$ = area element
+\end{itemize}
+\end{theorem}
+
+\begin{corollary}[Special Cases]
+\begin{enumerate}
+    \item $\sigma = 1$ everywhere, $\phi = P$ (constant): $\mathcal{H} = U + P \int dA = U + PV$ (classical)
+    \item $\sigma = 0$ on some regions: those regions are impermeable partitions
+    \item $0 < \sigma < 1$: selective apertures with categorical barriers
+\end{enumerate}
+\end{corollary}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/categorical_enthalpy_panel.png}
+\caption{Categorical enthalpy through partition dynamics. (A) Standard enthalpy: uniform $PV$ work against featureless boundary. (B) Categorical enthalpy: aperture reconfiguration work. (C) Aperture selectivity and potential relationship. (D) Bond as aperture: chemical reactions as aperture creation/destruction. (E) Enzyme catalysis: balanced aperture creation and destruction. (F) Classical limit: $PV$ emerges from infinitely many non-selective apertures.}
+\label{fig:categorical_enthalpy}
+\end{figure}
+
