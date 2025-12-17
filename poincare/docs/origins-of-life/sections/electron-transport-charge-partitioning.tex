@@ -3,7 +3,7 @@
 
 \subsection{Charge Separation as Fundamental Partition}
 
-We establish that electron transport constitutes the most fundamental form of partitioning---a categorical operation that divides phase space into distinct regions.
+We establish that electron transport constitutes the most fundamental form of partitioning—a categorical operation that divides phase space into distinct regions.
 
 \begin{definition}[Charge Partition]
 \label{def:charge_partition}
@@ -44,16 +44,30 @@ This creates an electric field:
     \mathbf{E}(\mathbf{r}) = \frac{e}{4\pi\epsilon_0} \left( \frac{\mathbf{r} - \mathbf{r}_2}{|\mathbf{r} - \mathbf{r}_2|^3} - \frac{\mathbf{r} - \mathbf{r}_1}{|\mathbf{r} - \mathbf{r}_1|^3} \right)
 \end{equation}
 
-This field constitutes a partition: regions near $\mathbf{r}_1$ are positive, regions near $\mathbf{r}_2$ are negative. The field itself resists recombination, as returning the electron requires work against the field.
+This field constitutes a partition: regions near $\mathbf{r}_1$ are positive, and regions near $\mathbf{r}_2$ are negative. The field itself resists recombination, as returning the electron requires work against the field.
 \end{proof}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/aperture_as_field_panel.png}
+\caption{\textbf{Apertures as External Charge Fields: Electromagnetic Molecular Selection.} 
+Categorical apertures function as external charge field configurations rather than mechanical filters. 
+\textbf{(A)} Monopole aperture (simple ion channel) creates radial field selecting ions by charge sign. 
+\textbf{(B)} Dipole aperture (K$^+$ selectivity filter) creates asymmetric field matching K$^+$ charge distribution while excluding Na$^+$. 
+\textbf{(C)} Quadrupole aperture (ribosome tRNA selection) creates complex field geometry matching correct tRNA charge configuration while rejecting incorrect tRNAs. 
+\textbf{(D)} Membrane as charge field barrier: $-70$ mV potential creates selection gradient. 
+\textbf{(E)} Ion channel as localized field aperture embedded in membrane barrier. 
+\textbf{(F)} Unifying principle: all molecular selection is electromagnetic (charge configuration matching), not mechanical (size filtering), explaining temperature-independent prebiotic chemistry and universal biological selectivity. Field lines show force direction; color indicates potential magnitude.}
+\label{fig:aperture_fields}
+\end{figure*}
 
 \subsection{Quantum Mechanical Foundation}
 
-Electron transport occurs through quantum tunneling, which is temperature-independent at the fundamental level.
+Electron transport occurs through quantum tunnelling, which is temperature-independent at the fundamental level.
 
 \begin{definition}[Electron Tunneling Probability]
 \label{def:tunneling_prob}
-For a barrier of height $V_0$, width $d$, and electron energy $E < V_0$, the tunneling probability is:
+For a barrier of height $V_0$, width $d$, and electron energy $E < V_0$, the tunnelling probability is:
 \begin{equation}
     P_{\text{tunnel}} = \frac{16E(V_0 - E)}{V_0^2} \exp\left(-\frac{2d}{\hbar}\sqrt{2m_e(V_0 - E)}\right)
 \end{equation}
@@ -62,11 +76,11 @@ where $m_e$ is the electron mass.
 
 \begin{theorem}[Temperature Independence of Quantum Tunneling]
 \label{thm:temp_independence}
-The tunneling probability $P_{\text{tunnel}}$ depends on barrier geometry $(V_0, d)$ and electron energy $E$, not on temperature $T$. Temperature affects only the population of electrons at energy $E$.
+The tunnelling probability $P_{\text{tunnel}}$ depends on barrier geometry $(V_0, d)$ and electron energy $E$, not on temperature $T$. Temperature affects only the population of electrons at energy $E$.
 \end{theorem}
 
 \begin{proof}
-The tunneling probability is determined by the Schrödinger equation:
+The tunnelling probability is determined by the Schrödinger equation:
 \begin{equation}
     -\frac{\hbar^2}{2m_e}\frac{d^2\psi}{dx^2} + V(x)\psi = E\psi
 \end{equation}
@@ -76,7 +90,7 @@ This equation contains no temperature dependence. Temperature enters only throug
     f(E) = \frac{1}{e^{(E-E_F)/k_BT} + 1}
 \end{equation}
 
-At low temperatures, $f(E)$ approaches a step function, but tunneling at energy $E$ remains possible with probability $P_{\text{tunnel}}(E)$.
+At low temperatures, $f(E)$ approaches a step function, but tunnelling at energy $E$ remains possible with a probability of $P_{\text{tunnel}}(E)$.
 \end{proof}
 
 \subsection{Electron Transport as Categorical Operation}
@@ -102,12 +116,12 @@ The electric field geometry created by electron transport functions as a molecul
 \end{theorem}
 
 \begin{proof}
-A molecule $M$ with charge distribution $\rho_M$ in electric field $\mathbf{E}$ experiences force:
+A molecule $M$ with charge distribution $\rho_M$ in an electric field $\mathbf{E}$ experiences a force:
 \begin{equation}
     \mathbf{F} = \int_M \rho_M(\mathbf{r}) \mathbf{E}(\mathbf{r}) \, d^3r
 \end{equation}
 
-Molecules with favorable charge distributions are attracted through the aperture; unfavorable distributions are repelled. This selection is geometric, depending on the spatial relationship between $\rho_M$ and $\mathbf{E}$, not on molecular velocity or temperature.
+Molecules with favourable charge distributions are attracted through the aperture; unfavourable distributions are repelled. This selection is geometric, depending on the spatial relationship between $\rho_M$ and $\mathbf{E}$, not on molecular velocity or temperature.
 \end{proof}
 
 \subsection{Energy Landscape of Charge Partitioning}

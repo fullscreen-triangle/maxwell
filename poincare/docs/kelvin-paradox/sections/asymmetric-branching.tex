@@ -1,159 +1,209 @@
 % Section: Irreversibility from Asymmetric Categorical Branching
 
-The standard explanation for categorical irreversibility---that categories cannot be re-occupied---is correct but incomplete. We establish the deeper mechanism: asymmetric branching, where every actualisation resolves infinitely many non-actualisations.
+The standard explanation for categorical irreversibility—that categories, once occupied, cannot be re-occupied—is correct in its observation but incomplete in its mechanistic understanding. We establish here the deeper mechanism underlying this irreversibility: asymmetric branching, wherein every actualisation of a possible event simultaneously resolves infinitely many non-actualisations, creating an unbounded asymmetry between forward and backward categorical paths that renders reversal impossible.
 
 \subsection{The Resolution of Non-Actualisations}
 
+To formalize the mechanism by which actualisations resolve non-actualisations, we first define the categorical potential of a system state, distinguishing between events that can occur and events that cannot occur from that state.
+
 \begin{definition}[Categorical Potential]
-For any system in state $S$, define:
-\begin{align}
-\mathcal{P}_{can}(S) &= \{E : E \text{ can happen from } S\} \\
-\mathcal{P}_{cannot}(S) &= \{E : E \text{ cannot happen from } S\}
-\end{align}
-where $\mathcal{P}_{can}$ is finite and $\mathcal{P}_{cannot}$ is infinite.
+For any system in state $S$, we define two complementary sets of potential events. The set of possible events is denoted:
+\begin{equation}
+\mathcal{P}_{can}(S) = \{E : E \text{ can happen from } S\}
+\end{equation}
+and represents all events that are physically and categorically accessible from state $S$. The set of impossible events is denoted:
+\begin{equation}
+\mathcal{P}_{cannot}(S) = \{E : E \text{ cannot happen from } S\}
+\end{equation}
+and represents all events that are physically or categorically inaccessible from state $S$. A fundamental asymmetry exists between these sets: $\mathcal{P}_{can}(S)$ is finite, bounded by the physical constraints and available energy of the system, while $\mathcal{P}_{cannot}(S)$ is infinite, encompassing all logically conceivable events that violate physical laws, conservation principles, or categorical constraints.
 \end{definition}
 
+This asymmetry between finite possibilities and infinite impossibilities is not merely a mathematical curiosity but reflects a fundamental feature of physical reality. We illustrate this with a concrete example that demonstrates the vast disparity between what can and cannot happen.
+
 \begin{example}[Cup on Table Edge]
-For a cup on a table edge:
-\begin{align}
-\mathcal{P}_{can} &= \{\text{fall}, \text{not fall}, \text{be pushed}, \ldots\} \quad (\text{finite}) \\
-\mathcal{P}_{cannot} &= \{\text{turn to gold}, \text{become sentient}, \text{fly upward}, \ldots\} \quad (\text{infinite})
-\end{align}
+Consider a cup positioned precariously on the edge of a table. The set of possible events from this state is finite and includes events such as falling off the edge, remaining balanced, being pushed by an external force, being picked up by a person, and similar physically accessible outcomes. Formally:
+\begin{equation}
+\mathcal{P}_{can} = \{\text{fall}, \text{not fall}, \text{be pushed}, \text{be picked up}, \ldots\} \quad (\text{finite})
+\end{equation}
+In contrast, the set of impossible events is infinite and includes all events that violate physical laws or categorical constraints, such as spontaneously transmuting into gold, acquiring sentience, levitating upward against gravity, teleporting to another location, transforming into a different object, and infinitely many other conceivable but physically impossible outcomes. Formally:
+\begin{equation}
+\mathcal{P}_{cannot} = \{\text{turn to gold}, \text{become sentient}, \text{fly upward}, \text{teleport}, \ldots\} \quad (\text{infinite})
+\end{equation}
+This example illustrates that for any physical system, the number of things that cannot happen vastly exceeds the number of things that can happen, establishing an asymmetry that will prove central to understanding irreversibility.
 \end{example}
+
+The key insight is that when an event actualises, it does not merely determine what happened—it simultaneously determines what did not happen. This resolution of non-actualisations constitutes a categorical transition that creates irreversibility.
 
 \begin{theorem}[Resolution Theorem]
 \label{thm:resolution}
-When event $E \in \mathcal{P}_{can}(S)$ actualises, every element of $\mathcal{P}_{cannot}(S)$ is simultaneously resolved as ``did not happen.''
+When an event $E \in \mathcal{P}_{can}(S)$ actualises at time $t$, every element of $\mathcal{P}_{cannot}(S)$ is simultaneously resolved from the state of "cannot happen" to the state of "did not happen." This resolution transforms infinitely many undetermined impossibilities into infinitely many determined non-actualisations, constituting a categorical transition that cannot be reversed.
 \end{theorem}
 
 \begin{proof}
-Let $E$ actualise at time $t$. For any $E' \in \mathcal{P}_{cannot}(S)$:
-\begin{enumerate}
-    \item Before $t$: $E'$ is in state ``cannot happen'' (undetermined non-possibility)
-    \item After $t$: $E'$ is in state ``did not happen'' (determined non-actualisation)
-\end{enumerate}
+Let $E$ be an event in $\mathcal{P}_{can}(S)$ that actualises at time $t$, and let $E'$ be any event in $\mathcal{P}_{cannot}(S)$. We examine the categorical status of $E'$ before and after the actualisation of $E$.
 
-The transition from ``cannot happen'' (potential) to ``did not happen'' (actual absence) constitutes categorical resolution. Since $|\mathcal{P}_{cannot}(S)| = \infty$, every actualisation resolves infinitely many non-actualisations.
+Before time $t$, the event $E'$ exists in the state "cannot happen," which represents an undetermined non-possibility. At this stage, $E'$ has not been tested against reality—it is merely categorically inaccessible based on the constraints of state $S$. The status of $E'$ is potential impossibility rather than actual absence.
+
+After time $t$, when $E$ has actualised, the event $E'$ transitions to the state "did not happen," which represents a determined non-actualisation. At this stage, $E'$ has been definitively excluded from reality—it is no longer merely impossible in principle but has been concretely resolved as absent from the actual sequence of events. The status of $E'$ is now actual absence rather than potential impossibility.
+
+The transition from "cannot happen" (a statement about potential) to "did not happen" (a statement about actuality) constitutes a categorical resolution. This resolution is not a trivial relabeling but represents a fundamental change in categorical status: before actualisation, $E'$ was undetermined with respect to the actual sequence of events; after actualisation, $E'$ is determined as absent from the actual sequence of events.
+
+Since the cardinality of $\mathcal{P}_{cannot}(S)$ is infinite, every actualisation of an event from $\mathcal{P}_{can}(S)$ resolves infinitely many non-actualisations. The actualisation of a single finite event thus has infinite categorical consequences through the resolution of all impossible events into determined absences.
 \end{proof}
 
+This theorem establishes that actualisation is not merely a positive process of bringing something into existence but simultaneously a negative process of resolving infinitely many things into non-existence. This dual nature of actualisation leads to a profound corollary.
+
 \begin{corollary}[Things That Cannot Happen, Happen]
-When an event occurs, things that cannot happen also ``happen''---they happen as not-happening. Their resolution into determined absence is itself a categorical event.
+When an event occurs, things that cannot happen also "happen" in a categorical sense—they happen as not-happening. Their resolution from undetermined impossibility into determined absence is itself a categorical event that contributes to the irreversibility of time. The actualisation of one event thus constitutes infinitely many categorical transitions through the simultaneous resolution of all impossible events.
 \end{corollary}
 
 \subsection{Asymmetric Branching}
 
+The resolution of non-actualizations creates a fundamental asymmetry between forward and backward categorical paths, which we formalise through the concept of categorical branching.
+
 \begin{definition}[Forward and Backward Branching]
-For transition $S \to S'$:
-\begin{align}
-B_{forward}(S \to S') &= |\mathcal{P}_{can}(S')| + |\text{resolved } \mathcal{P}_{cannot}(S)| \\
-B_{backward}(S' \to S) &= |\{\text{paths from } S' \text{ back to } S\}|
-\end{align}
+For a categorical transition from state $S$ to state $S'$, we define the forward branching factor as the total number of categorical paths accessible from $S'$ plus the number of resolved impossibilities from $S$:
+\begin{equation}
+B_{forward}(S \to S') = |\mathcal{P}_{can}(S')| + |\text{resolved } \mathcal{P}_{cannot}(S)|
+\end{equation}
+This quantity measures the total categorical expansion resulting from the transition, including both new possibilities that open from $S'$ and the infinitely many impossibilities from $S$ that have been resolved into determined absences.
+
+The backward branching factor is defined as the number of categorical paths that lead from $S'$ back to $S$:
+\begin{equation}
+B_{backward}(S' \to S) = |\{\text{paths from } S' \text{ back to } S\}|
+\end{equation}
+This quantity measures the categorical accessibility of the original state from the new state, representing the possibility of reversal.
 \end{definition}
+
+These definitions allow us to quantify the asymmetry between forward and backward categorical transitions, establishing the mathematical foundation for irreversibility.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/asymmetric_branching_panel.png}
+\caption{\textbf{Asymmetric categorical branching and the resolution of non-actualisations.} 
+\textbf{(A)} Event actualisation resolving infinite non-possibilities: when a single event from the finite set $\mathcal{P}_{can}$ actualises (blue arrow), it simultaneously resolves infinitely many events from $\mathcal{P}_{cannot}$ (red arrows) from "cannot happen" to "did not happen," creating unbounded categorical expansion. 
+\textbf{(B)} Forward versus backward branching ratio: forward branching includes new possibilities ($O(n)$) plus resolved impossibilities ($\infty$), while backward branching is bounded by $O(1)$, yielding ratio $\to \infty$ that renders reversal impossible. 
+\textbf{(C)} Category self-division yielding residue rather than unity: attempting to return to state $C_0$ after traversal produces new state $C_0'$ that differs from $C_0$ by accumulated categorical history (residue shown in orange), violating normal self-division $C/C = 1$. 
+\textbf{(D)} Information content comparison: broken cup contains more categorical information than intact cup because it carries complete record of resolved non-actualisations (infinitely many "did not happen" facts) in addition to current configuration, while intact cup contains only current configuration plus undetermined impossibilities. 
+\textbf{(E)} Accumulation of "didn't happen" as categorical record: each actualisation (vertical blue lines) resolves additional non-actualisations (red shading), creating monotonically increasing categorical history that cannot be erased or reversed. 
+\textbf{(F)} Why reversal is impossible: un-resolving determined facts requires transforming "did not happen" (actual absence) back into "cannot happen" (potential impossibility), which violates categorical axiom that occupied categories cannot be re-occupied; the categorical history is irreversible.}
+\label{fig:asymmetric_branching}
+\end{figure}
 
 \begin{theorem}[Asymmetric Branching Theorem]
 \label{thm:asymmetric_branching}
-For any non-trivial transition:
+For any non-trivial categorical transition from state $S$ to state $S'$, the ratio of forward to backward branching factors diverges to infinity:
 \begin{equation}
 \frac{B_{forward}}{B_{backward}} \to \infty
 \end{equation}
-The ratio of forward to backward categorical paths is unbounded.
+This unbounded ratio establishes that forward categorical transitions are infinitely more numerous than backward categorical transitions, rendering reversal categorically impossible.
 \end{theorem}
 
 \begin{proof}
-Forward branching includes:
-\begin{enumerate}
-    \item New possibilities from $S'$: $|\mathcal{P}_{can}(S')| \sim O(n)$
-    \item Resolved impossibilities: $|\mathcal{P}_{cannot}(S)| = \infty$
-\end{enumerate}
+We analyze the components of forward and backward branching separately to establish their relative magnitudes.
 
-Backward ``branching'' requires:
-\begin{enumerate}
-    \item Returning $S'$ to $S$ spatially
-    \item Un-resolving all ``did not happen'' back to ``cannot happen''
-\end{enumerate}
+The forward branching factor includes two distinct contributions. First, the new possibilities accessible from state $S'$ contribute a finite number of categorical paths, typically scaling as $|\mathcal{P}_{can}(S')| \sim O(n)$ where $n$ represents the degrees of freedom or available energy of the system. Second, the resolved impossibilities from state $S$ contribute an infinite number of categorical transitions, as $|\mathcal{P}_{cannot}(S)| = \infty$ by definition. The total forward branching is therefore:
+\begin{equation}
+B_{forward} = O(n) + \infty = \infty
+\end{equation}
 
-But resolved non-actualisations are now categorical facts---they cannot be undetermined. There exists at most one precise backward path (and typically zero). Therefore:
+The backward branching factor, in contrast, is severely constrained by two requirements. First, returning from $S'$ to $S$ spatially or configurationally requires reversing the physical changes that occurred during the forward transition, which typically admits at most one precise path (and often zero paths if the transition involved dissipation or symmetry breaking). Second, and more fundamentally, returning from $S'$ to $S$ categorically requires un-resolving all determined absences back into undetermined impossibilities—transforming all the "did not happen" facts back into "cannot happen" potentials.
+
+However, resolved non-actualisations are now categorical facts that have been determined by the actualisation process. They cannot be undetermined without violating the categorical axiom that occupied categories cannot be re-occupied. A fact that has been established—that a particular event did not happen—cannot be un-established or returned to a state of undetermined potential. The categorical history is irreversible.
+
+Therefore, the backward branching factor is bounded by:
+\begin{equation}
+B_{backward} \leq O(1)
+\end{equation}
+representing at most one precise backward path (and typically zero paths).
+
+The ratio of forward to backward branching is thus:
 \begin{equation}
 \frac{B_{forward}}{B_{backward}} = \frac{\infty + O(n)}{O(1)} = \infty
 \end{equation}
+establishing that forward categorical transitions are infinitely more numerous than backward categorical transitions, rendering reversal impossible.
 \end{proof}
+
+This asymmetry between forward and backward branching is not merely quantitative but represents a fundamental categorical distinction between processes that create new determinations and processes that would require un-creating established determinations.
 
 \subsection{The Category Self-Division Problem}
 
+The asymmetric branching theorem has profound implications for the mathematical structure of categorical transitions, particularly regarding the concept of returning to a previously occupied state.
+
 \begin{definition}[Category Self-Division]
-A category $C$ satisfies normal self-division if:
+A category $C$ satisfies normal self-division if traversing the category and then returning to the starting point yields the identity operation:
 \begin{equation}
 \frac{C}{C} = 1
 \end{equation}
-meaning traversing $C$ and returning yields unity (identity).
+This property holds for reversible mathematical operations and for physical processes that can be undone without leaving residue. Normal self-division implies that the category can be occupied, exited, and re-occupied without accumulating categorical history.
 \end{definition}
+
+However, categorical states do not satisfy normal self-division due to the irreversibility established by asymmetric branching.
 
 \begin{theorem}[Non-Unity of Categorical Return]
 \label{thm:non_unity}
-For categorical states:
+For categorical states subject to the irreversibility axiom and asymmetric branching, the self-division operation does not yield unity:
 \begin{equation}
 \frac{C}{C} \neq 1
 \end{equation}
-Traversing a category and ``returning'' does not yield the original state.
+Traversing a category and attempting to return does not yield the original state but instead produces a new state that differs from the original by the accumulated categorical history of the traversal.
 \end{theorem}
 
 \begin{proof}
-Let $C_0$ be the initial state. After occupation:
-\begin{enumerate}
-    \item $C_0$ is marked as completed (irreversibility axiom)
-    \item New categories $\{C_1, C_2, \ldots\}$ are created from resolved non-actualisations
-    \item Any ``return'' must occupy a new state $C_0'$ with $C_0' \neq C_0$
-\end{enumerate}
+Let $C_0$ represent the initial categorical state of a system. We examine what occurs when the system occupies this state, transitions to other states, and then attempts to return to the original configuration.
 
-The apparent return creates:
+After the initial occupation of $C_0$, three irreversible changes have occurred. First, the state $C_0$ is marked as completed according to the irreversibility axiom, which states that categories once occupied cannot be re-occupied. This marking is a categorical fact that cannot be undone. Second, new categories $\{C_1, C_2, \ldots\}$ are created from the resolved non-actualisations that occurred during the occupation of $C_0$. These resolved impossibilities now constitute determined absences that form part of the categorical history. Third, any subsequent occupation of a state with the same physical configuration as $C_0$ must occupy a new categorical state $C_0'$ that is distinct from $C_0$ by virtue of carrying the accumulated history of the intervening transitions.
+
+The apparent return to the original configuration thus creates not unity but a new state:
 \begin{equation}
 \frac{C_0}{C_0} = C_0' \neq C_0
 \end{equation}
+where the inequality reflects the categorical distinction between the original state and the apparently identical returned state.
 
-The residue $C_0' - C_0$ represents the categorical history accumulated during the traversal---the record of all non-actualisations that were resolved.
+The difference between $C_0'$ and $C_0$ can be expressed as a categorical residue:
+\begin{equation}
+C_0' - C_0 = \text{residue}
+\end{equation}
+This residue represents the categorical history accumulated during the traversal—the complete record of all non-actualisations that were resolved, all possibilities that were explored, and all categorical transitions that occurred. This residue is irreducible and cannot be eliminated without violating the fundamental axioms of categorical dynamics.
 \end{proof}
 
+This theorem establishes that categorical transitions accumulate history in an irreversible manner, preventing true return to previous states.
+
 \begin{corollary}[Categorical Residue]
-Every attempt to ``undo'' a categorical transition leaves residue: the accumulated record of what didn't happen. This residue is irreducible and constitutes new categorical information.
+Every attempt to reverse or undo a categorical transition leaves behind categorical residue consisting of the accumulated record of what didn't happen during the transition. This residue is irreducible—it cannot be eliminated or ignored—and constitutes new categorical information that distinguishes the apparently returned state from the original state. The accumulation of categorical residue provides a measure of the categorical distance traveled, even when physical configurations appear identical.
 \end{corollary}
 
 \subsection{Information Creation Through Non-Actualisation}
 
+The resolution of non-actualisations and the accumulation of categorical residue have profound implications for information theory, establishing that processes typically associated with information loss actually create categorical information.
+
 \begin{theorem}[Information from Absence]
 \label{thm:information_absence}
-The broken cup contains more categorical information than the intact cup on the table.
+A broken cup lying on the floor contains more categorical information than an intact cup sitting on a table, despite the broken cup representing a higher-entropy, more disordered state. This counterintuitive result follows from the fact that the broken cup carries the categorical history of all the non-actualisations resolved during its fall and breaking.
 \end{theorem}
 
 \begin{proof}
-The broken cup's categorical state includes:
-\begin{enumerate}
-    \item Its current configuration (shard positions, etc.)
-    \item The resolved fact: ``did not turn to gold while falling''
-    \item The resolved fact: ``did not become sentient while falling''
-    \item The resolved fact: ``did not fly upward while falling''
-    \item ... (infinitely many resolved non-actualisations)
-\end{enumerate}
+We compare the categorical information content of two states: an intact cup positioned on a table edge (state $S_1$) and a broken cup lying on the floor (state $S_2$), where $S_2$ resulted from the fall and breaking of a cup initially in state $S_1$.
 
-The intact cup's state includes:
-\begin{enumerate}
-    \item Its current configuration (position on table)
-    \item Undetermined non-possibilities (not yet resolved)
-\end{enumerate}
+The categorical state of the broken cup includes multiple components of information. First, it includes the current physical configuration: the positions, orientations, and velocities of all shards, the distribution of stress and strain in the material, the thermal energy dissipated during breaking, and all other physical parameters describing the present state. Second, and more importantly, it includes the complete record of resolved non-actualisations that occurred during the fall and breaking process. These include, but are not limited to: the resolved fact "did not turn to gold while falling," the resolved fact "did not become sentient while falling," the resolved fact "did not fly upward while falling," the resolved fact "did not reassemble itself mid-fall," the resolved fact "did not pass through the floor," and infinitely many other resolved impossibilities.
 
-Determined facts constitute more information than undetermined possibilities. Therefore:
+Each of these resolved non-actualisations represents a categorical transition from undetermined impossibility ("cannot happen") to determined absence ("did not happen"). Each such transition creates categorical information by establishing a fact about what did not occur. Since the number of resolved non-actualisations is infinite, the categorical information content associated with these resolved absences is unbounded.
+
+The categorical state of the intact cup, in contrast, includes only its current physical configuration (position on table, orientation, temperature, etc.) and a set of undetermined non-possibilities that have not yet been resolved. These undetermined impossibilities (the cup cannot turn to gold, cannot become sentient, etc.) remain in the status of "cannot happen" rather than "did not happen," and therefore do not yet constitute categorical information. They are potential impossibilities rather than actual absences.
+
+Determined facts—statements about what did or did not happen—constitute more information than undetermined possibilities—statements about what can or cannot happen. This is because determined facts constrain the space of possible histories, while undetermined possibilities do not. A determined fact eliminates alternative histories; an undetermined possibility merely describes the current constraint structure.
+
+Therefore, the categorical information content satisfies:
 \begin{equation}
 I(\text{broken cup}) > I(\text{intact cup})
 \end{equation}
+despite the broken cup having higher thermodynamic entropy. This establishes that categorical information and thermodynamic entropy are distinct concepts: entropy measures the number of microstates consistent with a macrostate, while categorical information measures the number of resolved non-actualisations accumulated in reaching that state.
 \end{proof}
 
+This theorem reveals a profound connection between irreversibility and information that differs from the standard thermodynamic perspective.
+
 \begin{corollary}[Entropy as Accumulated Absence]
-Entropy increase measures the accumulation of resolved non-actualisations---the growing record of everything that didn't happen.
+The increase in thermodynamic entropy during irreversible processes can be reinterpreted as measuring the accumulation of resolved non-actualisations—the growing record of everything that didn't happen during the process. Each microstate that could have been occupied but wasn't represents a resolved non-actualisation. The entropy increase thus quantifies not disorder but the expanding categorical history of determined absences. This reinterpretation connects thermodynamic irreversibility to categorical irreversibility, suggesting that the arrow of time emerges from the asymmetric resolution of possibilities into actualities and impossibilities into absences.
 \end{corollary}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures/asymmetric_branching_panel.png}
-\caption{Asymmetric categorical branching. (A) Event actualisation resolving infinite non-possibilities. (B) Forward vs backward branching ratio. (C) Category self-division yielding residue, not unity. (D) Information content: broken cup $>$ intact cup. (E) Accumulation of ``didn't happen'' as categorical record. (F) Why reversal is impossible: un-resolving determined facts.}
-\label{fig:asymmetric_branching}
-\end{figure}
 

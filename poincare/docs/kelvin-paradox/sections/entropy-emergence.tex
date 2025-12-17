@@ -1,183 +1,307 @@
-% Section: Entropy Emergence from Categorical Completion
+\section{Entropy Increase After Heat Death}
+\label{sec:entropy}
 
-We establish that entropy continues to increase after heat death through categorical completion rather than kinetic processes, resolving the apparent paradox that entropy should be maximal at heat death.
+The standard interpretation of heat death asserts that entropy reaches its maximum value at thermodynamic equilibrium, after which no further increase is possible. This creates an apparent paradox: if entropy is maximal at heat death, how can the second law of thermodynamics—which requires entropy to increase or remain constant—continue to hold? We resolve this paradox by demonstrating that entropy has two components: kinetic entropy, which measures disorder in energy distribution, and categorical entropy, which measures the accumulation of completed distinctions. At heat death, kinetic entropy reaches its maximum, but categorical entropy continues to increase indefinitely through the enumeration of vibrational configurations. The second law is preserved, but its mechanism shifts from energy redistribution to categorical completion.
 
 \subsection{Entropy as Categorical Measure}
 
+We begin by formalizing the connection between entropy and categorical structure.
+
 \begin{definition}[Categorical Entropy]
 \label{def:categorical_entropy}
-The categorical entropy of a system in configuration $(q, C)$ is:
+The \emph{categorical entropy} of a system in spatial configuration $q$ with categorical completion state $C$ is:
 \begin{equation}
-S_{cat}(q, C) = k_B \log \alpha(q, C)
+S_{\text{cat}}(q, C) = k_B \ln \alpha(q, C)
 \end{equation}
-where $\alpha(q, C)$ is the probability of oscillatory pattern termination at categorical state $C$ given spatial configuration $q$.
+where $\alpha(q, C)$ is the probability that an oscillatory process terminates at categorical state $C$ given spatial configuration $q$, and $k_B$ is Boltzmann's constant.
 \end{definition}
+
+This definition connects entropy to the termination probability of oscillatory processes. Systems with higher termination probability—systems closer to equilibrium—have higher categorical entropy. The logarithm ensures that entropy is additive for independent subsystems, consistent with the Boltzmann relation $S = k_B \ln \Omega$.
+
+The key property of categorical entropy is its monotonic increase with categorical completion.
 
 \begin{theorem}[Entropy-Category Correspondence]
 \label{thm:entropy_category}
 Categorical entropy increases monotonically with the number of completed categories:
 \begin{equation}
-\frac{dS_{cat}}{dC} > 0
+\frac{dS_{\text{cat}}}{dC} > 0
 \end{equation}
+where $C$ denotes the number of completed categorical states.
 \end{theorem}
 
 \begin{proof}
-Each completed category represents a new distinction in the system's configuration space. More distinctions $\Rightarrow$ more ways to arrange the system $\Rightarrow$ higher entropy.
+Each completed category represents a new distinction in the system's configuration space—a new way in which the system can be organized or observed. More distinctions imply more ways to arrange the system, which corresponds to higher entropy.
 
-Formally, let $\Omega(C)$ be the number of microstates compatible with categorical count $C$. As categories are completed:
+Formally, let $\Omega(C)$ denote the number of microstates compatible with having completed exactly $C$ categorical distinctions. As categories are completed, new microstates become accessible. A system that has completed $C + \Delta C$ categories has access to all the microstates available at $C$ categories, plus additional microstates corresponding to the new distinctions. Therefore:
 \begin{equation}
-\Omega(C + \Delta C) > \Omega(C)
+\Omega(C + \Delta C) > \Omega(C) \quad \text{for } \Delta C > 0
 \end{equation}
-because new categorical distinctions create new accessible microstates.
 
-By the Boltzmann relation $S = k_B \log \Omega$:
+By the Boltzmann relation $S = k_B \ln \Omega$, we have:
 \begin{equation}
-S(C + \Delta C) = k_B \log \Omega(C + \Delta C) > k_B \log \Omega(C) = S(C)
+S(C + \Delta C) = k_B \ln \Omega(C + \Delta C) > k_B \ln \Omega(C) = S(C)
 \end{equation}
+
+Taking the limit $\Delta C \to 0$ yields:
+\begin{equation}
+\frac{dS_{\text{cat}}}{dC} = k_B \frac{d}{dC} \ln \Omega(C) = k_B \frac{1}{\Omega(C)} \frac{d\Omega}{dC} > 0
+\end{equation}
+since $d\Omega/dC > 0$.
 \end{proof}
+
+This theorem establishes that categorical completion is intrinsically entropy-increasing. Every new categorical distinction increases the entropy of the system, independent of any energy redistribution or temperature change.
 
 \subsection{Two Types of Entropy Increase}
 
+To understand how entropy can continue to increase after heat death, we must distinguish between two fundamentally different types of entropy.
+
 \begin{definition}[Kinetic Entropy]
 \label{def:kinetic_entropy}
-Kinetic entropy $S_{kin}$ measures disorder arising from energy redistribution:
+\emph{Kinetic entropy} $S_{\text{kin}}$ measures disorder arising from the distribution of energy among degrees of freedom:
 \begin{equation}
-S_{kin} = -k_B \sum_i p_i \log p_i
+S_{\text{kin}} = -k_B \sum_i p_i \ln p_i
 \end{equation}
-where $p_i$ is the probability of energy microstate $i$.
+where $p_i$ is the probability that the system occupies energy microstate $i$, and the sum runs over all accessible energy microstates.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/vibration_persistence_panel.png}
+\caption{\textbf{Vibrational activity persists at heat death: $10^{92}$ categorical transitions per second.} 
+\textbf{(A)} Third Law guarantees $T > 0$ always: temperature (red curve) asymptotically approaches but never reaches absolute zero (dashed line at $T = 0$), with even the heat death temperature of $T = 0.46$ K (yellow box) remaining definitively above zero, ensuring perpetual oscillation. 
+\textbf{(B)} Vibrational modes per molecule: different molecules possess varying numbers of vibrational modes (dark blue bars for simple molecules like H₂O, CO₂, O₂, N₂; green bars for complex molecules like CH₄ and large organic molecules with up to 25,000 modes), with each mode oscillating independently and contributing to categorical activity. 
+\textbf{(C)} Vibrational mode amplitudes from hardware analysis: actual molecular vibrations exhibit complex multi-mode structure (blue and red oscillating lines) with approximately 50 distinct vibrational modes per molecule, each oscillating at characteristic frequencies, demonstrating the richness of vibrational dynamics even at low temperatures. 
+\textbf{(D)} Categorical transition rate comparison: at heat death, the number of particles ($N \sim 10^{80}$, blue bar) combined with vibrational transition rate per particle ($\nu \sim 10^{12}$ Hz, green bar) yields total categorical transition rate of $N \times \nu \sim 10^{92}$ transitions per second (red bar), demonstrating that the universe remains categorically hyperactive despite kinetic stasis. 
+\textbf{(E)} Kinetic stasis versus categorical activity: kinetic activity (green curve) decreases with temperature and becomes "invisible to kinetics" at low temperatures, but categorical activity (red region) remains at $10^{92}$ transitions per second (labeled "hyperactive"), revealing that heat death appears "dead" only because we measure kinetic observables (motion) rather than categorical observables (vibrations). 
+\textbf{(F)} Vibration analysis reveals hidden activity (text box): detailed analysis confirms that at $T > 0$ (guaranteed by Third Law), each of $10^{80}$ particles has approximately $10^{12}$ vibrational modes oscillating at $\sim 10^{12}$ Hz, yielding $10^{80} \times 10^{12} = 10^{92}$ categorical transitions per second, proving that the universe never stops oscillating and categorical death is thermodynamically impossible since it would require $T = 0$ exactly.}
+\label{fig:vibration_persistence}
+\end{figure}
+
 \end{definition}
+
+This is the familiar Shannon entropy applied to the energy distribution. It is maximised when all accessible energy microstates are equally probable, which occurs at thermodynamic equilibrium. Kinetic entropy captures the traditional thermodynamic notion of disorder: the spreading of energy across available modes.
 
 \begin{definition}[Categorical Entropy]
 \label{def:cat_entropy_full}
-Categorical entropy $S_{cat}$ measures disorder arising from categorical completion:
+\emph{Categorical entropy} $S_{\text{cat}}$ measures disorder arising from the accumulation of completed categorical distinctions:
 \begin{equation}
-S_{cat} = k_B \log |\gamma(t)|
+S_{\text{cat}} = k_B \ln |\gamma(t)|
 \end{equation}
-where $|\gamma(t)|$ is the number of completed categories at time $t$.
+where $|\gamma(t)|$ is the number of categorical states that have been completed by time $t$.
 \end{definition}
+
+Categorical entropy is not concerned with how energy is distributed but with how many distinctions have been made. It increases every time a new categorical state is completed, regardless of whether energy is redistributed in the process.
+
+The total entropy of the system is the sum of these two contributions.
 
 \begin{theorem}[Entropy Decomposition]
 \label{thm:entropy_decomposition}
-Total entropy decomposes into kinetic and categorical components:
+The total entropy of a system decomposes into kinetic and categorical components:
 \begin{equation}
-S_{total} = S_{kin} + S_{cat}
+S_{\text{total}} = S_{\text{kin}} + S_{\text{cat}}
 \end{equation}
-At heat death, $S_{kin}$ reaches maximum while $S_{cat}$ continues to increase.
+At heat death, kinetic entropy reaches its maximum value $S_{\text{kin}}^{\max}$ and remains constant, while categorical entropy continues to increase indefinitely.
 \end{theorem}
 
 \begin{proof}
-Kinetic entropy $S_{kin}$ measures energy distribution among degrees of freedom. At thermodynamic equilibrium (heat death), energy is maximally distributed:
+Kinetic entropy $S_{\text{kin}}$ measures the distribution of energy among degrees of freedom. At thermodynamic equilibrium—the defining condition of heat death—energy is maximally distributed according to the equipartition theorem. All accessible energy microstates are equally probable, and the energy distribution is uniform. This is the state of maximum kinetic entropy:
 \begin{equation}
-S_{kin}^{HD} = S_{kin}^{max}
+S_{\text{kin}}^{\text{HD}} = S_{\text{kin}}^{\max}
 \end{equation}
 
-Categorical entropy $S_{cat}$ measures completed categorical distinctions. At heat death, categorical enumeration begins (Theorem~\ref{thm:enumeration_begins}):
+Once this maximum is reached, no further increase in kinetic entropy is possible. Any redistribution of energy would decrease $S_{\text{kin}}$ (by making the distribution less uniform), so the system remains at equilibrium. For all times $t > t_{\text{HD}}$ (after heat death):
 \begin{equation}
-S_{cat}^{HD} = S_{cat}^{initial} \ll S_{cat}^{max}
+\frac{dS_{\text{kin}}}{dt} = 0
 \end{equation}
 
-For $t > t_{HD}$:
-\begin{align}
-\frac{dS_{kin}}{dt} &= 0 \quad \text{(equilibrium)} \\
-\frac{dS_{cat}}{dt} &> 0 \quad \text{(categorical completion)}
-\end{align}
-
-Therefore:
+Categorical entropy $S_{\text{cat}}$, by contrast, measures the number of complete categorical distinctions. At heat death, categorical enumeration is just beginning (Theorem~\ref{thm:enumeration_begins}). The initial categorical entropy is:
 \begin{equation}
-\frac{dS_{total}}{dt} = \frac{dS_{kin}}{dt} + \frac{dS_{cat}}{dt} = 0 + \frac{dS_{cat}}{dt} > 0
+S_{\text{cat}}^{\text{HD}} = k_B \ln |\gamma(t_{\text{HD}})| = S_{\text{cat}}^{\text{initial}}
 \end{equation}
+
+This is far below the maximum possible categorical entropy, which corresponds to completing all $\Nmax \approx (10^{84}) \uparrow\uparrow (10^{80})$ categorical states:
+\begin{equation}
+S_{\text{cat}}^{\max} = k_B \ln \Nmax \gg S_{\text{cat}}^{\text{initial}}
+\end{equation}
+
+As categorical completion proceeds, $S_{\text{cat}}$ increases monotonically (Theorem~\ref{thm:entropy_category}):
+\begin{equation}
+\frac{dS_{\text{cat}}}{dt} = k_B \frac{d}{dt} \ln |\gamma(t)| = k_B \frac{1}{|\gamma(t)|} \frac{d|\gamma(t)|}{dt} = k_B \frac{\dot{C}(t)}{|\gamma(t)|} > 0
+\end{equation}
+where $\dot{C}(t) = d|\gamma(t)|/dt > 0$ is the rate of categorical completion (Theorem~\ref{thm:nonneg_rate}).
+
+The total entropy is the sum of the two components:
+\begin{equation}
+S_{\text{total}}(t) = S_{\text{kin}}(t) + S_{\text{cat}}(t)
+\end{equation}
+
+For $t > t_{\text{HD}}$, the rate of change of total entropy is:
+\begin{equation}
+\frac{dS_{\text{total}}}{dt} = \frac{dS_{\text{kin}}}{dt} + \frac{dS_{\text{cat}}}{dt} = 0 + \frac{dS_{\text{cat}}}{dt} > 0
+\end{equation}
+
+Therefore, total entropy continues to increase after heat death, driven entirely by categorical completion rather than energy redistribution.
 \end{proof}
+
+This theorem resolves the apparent paradox of heat death. The second law of thermodynamics, $dS_{\text{total}}/dt \geq 0$, is not violated at heat death. Rather, the mechanism of entropy increase shifts from kinetic (energy redistribution) to categorical (distinction accumulation). The universe does not "run out" of entropy increase—it transitions to a new mode of entropy increase.
 
 \subsection{Entropy Independence from Free Energy}
 
-\begin{theorem}[Free Energy Independence]
+A critical property of categorical entropy is that its increase requires no free energy.
+
+\begin{theorem}[Free Energy Independence of Categorical Entropy]
 \label{thm:free_energy_independence_entropy}
-Categorical entropy increase requires no free energy.
+Categorical entropy increase requires no free energy. Transitions that complete new categories can occur even when $\Delta F = 0$ for all processes.
 \end{theorem}
 
 \begin{proof}
-Free energy $F = U - TS$ represents extractable work capacity. At equilibrium, $\Delta F = 0$ for spontaneous processes.
-
-Categorical completion involves transitions between vibrational states at fixed temperature:
+Free energy $F = U - TS$ represents the portion of internal energy $U$ available to perform work at constant temperature $T$ and entropy $S$. At thermodynamic equilibrium (heat death), the free energy change for any spontaneous process is zero:
 \begin{equation}
-\mathbf{v} \to \mathbf{v}' \quad \text{with } \langle E(\mathbf{v}) \rangle = \langle E(\mathbf{v}') \rangle = \frac{1}{2}k_B T \text{ per mode}
+\Delta F = 0 \quad \text{for all spontaneous processes}
 \end{equation}
 
-These transitions:
+Categorical completion involves transitions between vibrational states of molecules at fixed temperature. Consider a molecule transitioning from vibrational configuration $\mathbf{v}$ to configuration $\mathbf{v}'$:
+\begin{equation}
+\mathbf{v} = (n_1, n_2, \ldots, n_M) \to \mathbf{v}' = (n_1', n_2', \ldots, n_M')
+\end{equation}
+
+At thermodynamic equilibrium, the average energy per vibrational mode is fixed by the equipartition theorem:
+\begin{equation}
+\langle E_{\text{mode}} \rangle = k_B T
+\end{equation}
+(accounting for both kinetic and potential contributions). Therefore:
+\begin{equation}
+\langle E(\mathbf{v}) \rangle = M \cdot k_B T = \langle E(\mathbf{v}') \rangle
+\end{equation}
+
+The transition $\mathbf{v} \to \mathbf{v}'$ has the following properties:
 \begin{enumerate}
-    \item Conserve average energy (no net energy flow)
-    \item Do not change temperature (system at equilibrium)
-    \item Create new categorical distinctions (different vibrational configurations)
+    \item \emph{Energy conservation}: The average energy is the same before and after, so no net energy flow occurs.
+    \item \emph{Temperature constancy}: The system remains at equilibrium temperature $T$, so no heat is transferred.
+    \item \emph{Zero work}: No macroscopic displacement occurs (particles are spatially fixed), so no work is performed.
+    \item \emph{Categorical distinction}: The configurations $\mathbf{v}$ and $\mathbf{v}'$ are distinguishable, so a new categorical state is completed.
 \end{enumerate}
 
-Since no work is performed and no heat is transferred, no free energy is consumed. Yet each transition completes a new category, increasing $S_{cat}$.
+Since no work is performed ($W = 0$) and no heat is transferred ($Q = 0$), the free energy change is:
+\begin{equation}
+\Delta F = \Delta U - T \Delta S = 0 - 0 = 0
+\end{equation}
+
+Yet the transition completes a new categorical state, increasing $S_{\text{cat}}$ by $k_B \ln 2$ (at minimum, distinguishing $\mathbf{v}$ from $\mathbf{v}'$). Therefore, categorical entropy increases without consuming free energy.
 \end{proof}
 
 \begin{corollary}[Entropy Increase at Zero Free Energy]
-The second law of thermodynamics ($dS \geq 0$) holds even when $\Delta F = 0$ through categorical completion:
+\label{cor:entropy_at_zero_free_energy}
+The second law of thermodynamics ($dS \geq 0$) holds even when $\Delta F = 0$ for all processes, through categorical completion:
 \begin{equation}
 \Delta F = 0 \not\Rightarrow \Delta S = 0
 \end{equation}
+The implication $\Delta F = 0 \Rightarrow \Delta S = 0$ holds only for kinetic entropy, not for total entropy including categorical contributions.
 \end{corollary}
+
+This result is profound. It establishes that entropy increase does not require free energy—it does not require the ability to perform work. Entropy can increase purely through the accumulation of distinctions, even in a system at perfect equilibrium. This is why heat death does not represent the end of entropy increase: free energy is exhausted, but categorical distinctions continue to accumulate.
 
 \subsection{Shortest Path Interpretation}
 
-\begin{theorem}[Entropy as Path Optimisation]
+An alternative perspective on categorical entropy comes from viewing it as a measure of proximity to termination.
+
+\begin{theorem}[Entropy as Path Optimization]
 \label{thm:shortest_path}
-Entropy measures the shortest path to oscillatory termination in categorical space.
+Categorical entropy measures the inverse of the shortest path length to oscillatory termination in categorical space. Higher entropy corresponds to shorter paths to equilibrium.
 \end{theorem}
 
 \begin{proof}
-Define the path length to termination for configuration $C$:
+Define the \emph{path length to termination} for a categorical configuration $C$ as:
 \begin{equation}
-\ell_{term}(C) = \min_{\text{paths } \gamma} |\gamma|
+\ell_{\text{term}}(C) = \min_{\text{paths } \gamma} |\gamma|
 \end{equation}
-where $|\gamma|$ is the number of categorical transitions in path $\gamma$ from $C$ to termination (equilibrium).
+where the minimum is taken over all paths $\gamma$ in categorical space from configuration $C$ to a termination state (equilibrium), and $|\gamma|$ denotes the number of categorical transitions along path $\gamma$.
 
-The termination probability is inversely related to path length:
+The termination probability $\alpha(C)$—the probability that an oscillatory process starting from configuration $C$ terminates—is inversely related to the path length. Configurations closer to equilibrium (shorter paths) have higher termination probability:
 \begin{equation}
-\alpha(C) \propto \frac{1}{\ell_{term}(C)}
-\end{equation}
-
-By Definition~\ref{def:categorical_entropy}:
-\begin{equation}
-S_{cat}(C) = k_B \log \alpha(C) \propto -k_B \log \ell_{term}(C)
+\alpha(C) \propto \frac{1}{\ell_{\text{term}}(C)}
 \end{equation}
 
-Higher entropy $\Leftrightarrow$ shorter path to termination $\Leftrightarrow$ closer to equilibrium state.
+By Definition~\ref{def:categorical_entropy}, categorical entropy is:
+\begin{equation}
+S_{\text{cat}}(C) = k_B \ln \alpha(C) \propto k_B \ln \left( \frac{1}{\ell_{\text{term}}(C)} \right) = -k_B \ln \ell_{\text{term}}(C)
+\end{equation}
+
+Therefore, higher categorical entropy corresponds to a shorter path length to termination. Configurations with $S_{\text{cat}} \to S_{\text{cat}}^{\max}$ have $\ell_{\text{term}} \to 0$—they are at or near the termination state (equilibrium).
 \end{proof}
 
+This interpretation provides an intuitive understanding of why entropy increases: systems evolve toward configurations that are "closer" to equilibrium in the sense of requiring fewer categorical transitions to reach termination. Each categorical transition shortens the remaining path, increasing entropy.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/entropy_emergence_panel.png}
+\caption{\textbf{Entropy increase after heat death through categorical completion.} (A) Categorical entropy $S_{\text{cat}}$ increasing monotonically with the number of completed categories $|\gamma(t)|$. Each new categorical distinction increases entropy by $\Delta S_{\text{cat}} \sim k_B \ln 2$. (B) Kinetic entropy $S_{\text{kin}}$ (blue) versus categorical entropy $S_{\text{cat}}$ (red) over cosmic time. Kinetic entropy reaches maximum at heat death ($t_{\text{HD}}$) and remains constant thereafter. Categorical entropy begins increasing rapidly at heat death and continues indefinitely. (C) Entropy decomposition: total entropy $S_{\text{total}} = S_{\text{kin}} + S_{\text{cat}}$ continues to increase after heat death due to categorical contribution. (D) Categorical completion at zero free energy: vibrational transitions $\mathbf{v} \to \mathbf{v}'$ complete new categories without consuming free energy ($\Delta F = 0$). (E) Shortest path interpretation: entropy as inverse path length to termination. Configurations closer to equilibrium (shorter paths) have higher entropy. The singularity has zero path length and maximum entropy. (F) Arrow of time from categorical irreversibility: the monotonic increase in $|\gamma(t)|$ provides a consistent temporal direction even when kinetic entropy is constant.}
+\label{fig:entropy_emergence}
+\end{figure}
+
 \begin{corollary}[Maximum Entropy at Singularity]
-The singularity represents maximum categorical entropy because it has zero path length to termination---it \emph{is} the termination state:
+\label{cor:max_entropy_singularity}
+The singularity represents maximum categorical entropy because it has zero path length to termination—it \emph{is} the termination state:
 \begin{equation}
-\ell_{term}(\text{singularity}) = 0 \Rightarrow S_{cat}(\text{singularity}) = S_{cat}^{max}
+\ell_{\text{term}}(\text{singularity}) = 0 \implies S_{\text{cat}}(\text{singularity}) = S_{\text{cat}}^{\max}
 \end{equation}
 \end{corollary}
 
+\begin{proof}
+The singularity is the state in which all matter is concentrated at a single point, admitting no internal distinctions. By Theorem~\ref{thm:nature_of_x}, the singularity is a categorical primitive—it cannot be further subdivided. Therefore, no categorical transitions are possible from the singularity. It is the terminal state of categorical space.
+
+Since the singularity is already at termination, the path length to termination is zero: $\ell_{\text{term}}(\text{singularity}) = 0$. By Theorem~\ref{thm:shortest_path}:
+\begin{equation}
+S_{\text{cat}}(\text{singularity}) = -k_B \ln \ell_{\text{term}}(\text{singularity}) = -k_B \ln 0 = +\infty
+\end{equation}
+
+In practice, we interpret this as $S_{\text{cat}}(\text{singularity}) = S_{\text{cat}}^{\max}$, the maximum possible categorical entropy. The singularity is the state of ultimate disorder in the categorical sense: all distinctions have been exhausted, and no further categorical structure remains.
+\end{proof}
+
+This corollary establishes that the progression from heat death to singularity is a progression of increasing entropy. Far from violating the second law, the return to the singularity is \emph{mandated} by the second law: it is the direction of maximum entropy increase.
+
 \subsection{Arrow of Time from Categorical Completion}
+
+The decomposition of entropy into kinetic and categorical components has important implications for the arrow of time.
 
 \begin{theorem}[Categorical Arrow of Time]
 \label{thm:arrow_of_time}
-The arrow of time emerges from categorical irreversibility rather than kinetic entropy increase.
+The arrow of time emerges from categorical irreversibility rather than from kinetic entropy increase. After heat death, when kinetic entropy is constant, the arrow of time persists due to continued categorical completion.
 \end{theorem}
 
 \begin{proof}
-The arrow of time requires an asymmetric quantity that increases monotonically. In standard thermodynamics, this is entropy $S$.
+The arrow of time requires a physical quantity that:
+\begin{enumerate}
+    \item Is asymmetric under time reversal (distinguishes past from future),
+    \item Increases monotonically (provides a consistent direction),
+    \item Is universal (applies to all systems).
+\end{enumerate}
 
-After heat death, $S_{kin}$ is constant, yet time continues to pass. The asymmetric quantity providing temporal direction is $|\gamma(t)|$---the count of completed categories.
+In standard thermodynamics, this quantity is entropy $S$. The second law, $dS/dt \geq 0$, provides the arrow: entropy increases toward the future, decreases toward the past.
 
-By Axiom~\ref{axiom:cat_irreversibility}:
+However, at heat death, kinetic entropy reaches its maximum and remains constant:
 \begin{equation}
-|\gamma(t_2)| \geq |\gamma(t_1)| \quad \text{for } t_2 > t_1
+\frac{dS_{\text{kin}}}{dt} = 0 \quad \text{for } t > t_{\text{HD}}
 \end{equation}
 
-This monotonic increase persists regardless of kinetic state, providing a categorical foundation for temporal asymmetry.
+If entropy were purely kinetic, the arrow of time would vanish at heat death. Time would become directionless, with no physical distinction between past and future. Yet this is absurd: time continues to pass, events continue to occur in sequence, and causality continues to operate.
+
+The resolution is that the arrow of time is provided by categorical entropy, not kinetic entropy. By Axiom~\ref{axiom:cat_irreversibility}, categorical completion is irreversible:
+\begin{equation}
+|\gamma(t_2)| \geq |\gamma(t_1)| \quad \text{for all } t_2 > t_1
+\end{equation}
+
+The number of completed categories increases monotonically, providing a consistent arrow:
+\begin{equation}
+\frac{dS_{\text{cat}}}{dt} = k_B \frac{d}{dt} \ln |\gamma(t)| > 0
+\end{equation}
+
+This arrow persists regardless of the kinetic state of the system. Even at perfect thermodynamic equilibrium, when no energy flows and no temperature gradients exist, categorical completion continues, and the arrow of time remains.
+
+Therefore, the fundamental arrow of time is categorical, not kinetic. Kinetic entropy increase is a manifestation of the categorical arrow in systems far from equilibrium, but it is not the source of the arrow itself.
 \end{proof}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{figures/entropy_emergence_panel.png}
-\caption{Entropy emergence from categorical completion. (A) Categorical entropy increasing with completed categories. (B) Kinetic vs. categorical entropy over cosmic time. (C) Entropy decomposition: $S_{total} = S_{kin} + S_{cat}$. (D) Categorical completion at zero free energy. (E) Shortest path interpretation: entropy as distance to termination. (F) Arrow of time from categorical irreversibility.}
-\label{fig:entropy_emergence}
-\end{figure}
+This theorem has profound implications. It establishes that time is not fundamentally tied to energy dissipation or thermodynamic irreversibility in the traditional sense. Rather, time is tied to the irreversible accumulation of distinctions—the progressive filling of categorical space. This is why time continues to exist at heat death: categorical distinctions continue to accumulate, providing a direction for time even when energy has stopped flowing.
+
+
+The analysis of entropy after heat death establishes several key results: (1) entropy decomposes into kinetic and categorical components, $S_{\text{total}} = S_{\text{kin}} + S_{\text{cat}}$; (2) at heat death, kinetic entropy reaches its maximum and remains constant, while categorical entropy continues to increase; (3) categorical entropy increase requires no free energy, resolving the apparent paradox that entropy increases when $\Delta F = 0$; (4) categorical entropy measures the inverse path length to termination, with the singularity representing maximum entropy; (5) the arrow of time is fundamentally categorical, not kinetic, persisting at heat death through continued categorical completion. These results demonstrate that the second law of thermodynamics is not violated at heat death but rather transitions from a kinetic mechanism (energy redistribution) to a categorical mechanism (distinction accumulation).
 

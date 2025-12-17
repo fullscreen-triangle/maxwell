@@ -1,0 +1,138 @@
+\documentclass[12pt,a4paper]{article}
+
+% Packages
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{physics}
+\usepackage{siunitx}
+
+\geometry{margin=2.5cm}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{remark}[theorem]{Remark}
+
+% Title
+\title{Partition Coordinate Geometry in Bounded Oscillatory Systems}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We develop a mathematical framework for describing categorical states in bounded phase spaces using \emph{partition coordinates}---a four-parameter addressing system arising from nested boundary constraints. We prove that the geometry of bounded partitioning imposes strict constraints on coordinate values: the depth parameter $n \geq 1$, the complexity parameter $l \in \{0, 1, \ldots, n-1\}$, the orientation parameter $m \in \{-l, \ldots, +l\}$, and a binary chirality parameter $s \in \{-\frac{1}{2}, +\frac{1}{2}\}$. From these constraints alone, we derive a fundamental capacity theorem: the maximum number of distinct states at partition depth $n$ is exactly $2n^2$. We show that energy minimisation in partition space produces a specific filling order, and that transitions between coordinates follow selection rules determined by boundary continuity. Hardware-based virtual instruments are constructed to measure partition coordinates experimentally. The resulting framework exhibits structural similarities to several known physical systems, which we note in concluding remarks.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+%==============================================================================
+\part{Mathematical Foundations}
+\label{part:foundations}
+%==============================================================================
+
+\input{sections/partition-coordinates}
+\input{sections/geometric-constraints}
+\input{sections/energy-ordering}
+
+%==============================================================================
+\part{Measurement Theory}
+\label{part:measurement}
+%==============================================================================
+
+\input{sections/hardware-based-partitioning-coordinates}
+\input{sections/spectral-transitions}
+\input{sections/property-trends}
+
+%==============================================================================
+\part{Experimental Validation}
+\label{part:experimental}
+%==============================================================================
+
+\input{sections/virtual-instrument-measurements}
+\input{sections/coordinate-uniqueness}
+
+%==============================================================================
+\part{Discussion}
+\label{part:discussion}
+%==============================================================================
+
+\section{Summary of Results}
+\label{sec:summary}
+
+We have established the following results from first principles:
+
+\begin{enumerate}
+    \item \textbf{Partition coordinates} $(n, l, m, s)$ provide a complete addressing system for categorical states in bounded phase space.
+    
+    \item \textbf{Geometric constraints} arise from boundary nesting: $l < n$, $|m| \leq l$, $s = \pm\frac{1}{2}$.
+    
+    \item \textbf{Capacity formula}: The number of distinct states at depth $n$ is exactly $2n^2$.
+    
+    \item \textbf{Energy ordering} follows the $(n + \alpha l)$ rule, producing a specific filling sequence.
+    
+    \item \textbf{Transition rules} follow from boundary continuity: $\Delta l = \pm 1$, $\Delta m \in \{0, \pm 1\}$, $\Delta s = 0$.
+    
+    \item \textbf{Coordinate uniqueness}: No two categorical states can share identical coordinates.
+    
+    \item \textbf{Property trends}: Measurable quantities show systematic variation across partition space.
+\end{enumerate}
+
+\section{Structural Correspondences}
+\label{sec:correspondences}
+
+The mathematical structure derived here exhibits notable correspondences with known physical systems:
+
+\begin{itemize}
+    \item The partition coordinates $(n, l, m, s)$ have the same constraint structure as the quantum numbers $(n, l, m_l, m_s)$ of atomic physics.
+    
+    \item The capacity formula $2n^2$ matches the electron shell capacity in atoms.
+    
+    \item The energy ordering reproduces the aufbau filling principle.
+    
+    \item The transition selection rules match atomic spectral selection rules.
+    
+    \item The coordinate uniqueness principle has the same form as the Pauli exclusion principle.
+    
+    \item The property trends across partition space mirror periodic trends in chemistry.
+\end{itemize}
+
+These correspondences suggest that atomic structure may be a physical instantiation of partition coordinate geometry. If this interpretation is correct, then:
+
+\begin{enumerate}
+    \item The periodic table is a geometric necessity rather than an empirical accident.
+    
+    \item Chemical elements are defined by their partition coordinate signatures.
+    
+    \item Spectroscopy measures transitions between partition coordinates.
+    
+    \item Chemical properties emerge from the geometry of bounded phase space.
+\end{enumerate}
+
+We leave detailed investigation of these correspondences to future work.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have developed a complete mathematical theory of partition coordinates in bounded oscillatory systems. The theory is self-contained, requiring only the axioms of categorical partitioning and the constraint of bounded phase space. All results---including the $2n^2$ capacity formula, energy ordering, transition rules, and uniqueness principle---follow from geometry alone.
+
+The structural similarity between this framework and atomic physics is striking but not presupposed. We have not assumed any knowledge of quantum mechanics or chemistry in our derivations. The correspondences emerge as consequences of the mathematics.
+
+Whether these correspondences indicate a deep connection between categorical partitioning and the fundamental structure of matter remains an open question. The framework presented here provides the mathematical tools to investigate this possibility.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
+
