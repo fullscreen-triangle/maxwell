@@ -1,0 +1,193 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{natbib}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{import}
+
+\geometry{margin=1in}
+\pgfplotsset{compat=1.17}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{axiom}[theorem]{Axiom}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Custom commands
+\newcommand{\kB}{k_{\mathrm{B}}}
+\newcommand{\Sspace}{\mathcal{S}}
+\newcommand{\Cspace}{\mathcal{C}}
+\newcommand{\Toperator}{\mathbf{T}}
+\newcommand{\Svec}{\mathbf{S}}
+
+\title{\textbf{Categorical Current Flow: Derivation of Ohm's Law and Maxwell's Equations from S-Entropy Transformations in Bounded Conductors}}
+
+\author{
+Kundai Farai Sachikonye\\
+\texttt{kundai.sachikonye@wzw.tum.de}
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We derive electrical current flow from the partition-oscillation-category equivalence. The derivation proceeds from the identity $S = \kB M \ln n$, which holds for oscillatory systems with $M$ modes and $n$ accessible states. We prove that a three-dimensional conductor reduces to a zero-dimensional cross-section state (characterised by radius $r$) combined with a one-dimensional S-transformation along the conductor length. This dimensional reduction follows from the electron phase-lock network: conduction electrons form a dense categorical network where current propagates through successive displacement rather than individual electron drift.
+
+We demonstrate that Ohm's law $V = IR$ emerges as a continuum limit of discrete S-transformations. The resistance $R = \rho L/A$ follows with resistivity $\rho = \sum_{i,j} \tau_{s,ij} g_{ij} / (ne^2)$, where $\tau_{s,ij}$ is the scattering partition lag between electron-lattice pairs and $g_{ij}$ is the phase-lock coupling strength. Kirchhoff's current law $\sum I = 0$ follows from categorical state conservation at junctions. Kirchhoff's voltage law $\sum V = 0$ follows from S-potential single-valuedness around closed loops.
+
+We extend the framework to time-varying fields, deriving Maxwell's equations as the full frequency-dependent generalisation. The continuity equation $\partial\rho/\partial t + \nabla \cdot \mathbf{J} = 0$ follows from charge conservation. Faraday's law $\nabla \times \mathbf{E} = -\partial\mathbf{B}/\partial t$ emerges from S-curl dynamics. The displacement current $\varepsilon_0 \partial\mathbf{E}/\partial t$ in Ampère's law represents the S-transformation rate. The speed of light $c = 1/\sqrt{\mu_0\varepsilon_0}$ emerges from electromagnetic partition lag and vacuum coupling.
+
+Experimental validation on conductor measurements yields resistivity predictions with mean absolute error of 2.8\% relative to measured values. The framework reproduces the temperature dependence of resistance, the skin effect at high frequencies, and the transition to superconductivity at critical temperatures.
+
+\textbf{Keywords:} categorical current flow, S-entropy coordinates, Ohm's law, Kirchhoff's laws, Maxwell's equations, electron scattering, resistivity
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+%==============================================================================
+% INTRODUCTION
+%==============================================================================
+
+\section{Introduction}
+\label{sec:introduction}
+
+\subsection{Circuit Theory and Electromagnetic Theory}
+
+Classical electrical theory operates at two levels. Circuit theory, developed by Ohm \cite{ohm1827} and Kirchhoff \cite{kirchhoff1845}, treats conductors as discrete elements characterised by resistance, capacitance, and inductance. Electromagnetic field theory, developed by Maxwell \cite{maxwell1865}, treats fields as continuous distributions governed by partial differential equations.
+
+The relationship between these levels is well understood: circuit theory emerges as the low-frequency, quasi-static limit of electromagnetic theory. Kirchhoff's current law follows from charge conservation when $\partial\rho/\partial t \approx 0$. Kirchhoff's voltage law follows from Faraday's law when $\partial\mathbf{B}/\partial t \approx 0$. Ohm's law emerges from the linear response $\mathbf{J} = \sigma\mathbf{E}$ integrated over conductor geometry.
+
+Both frameworks treat their fundamental quantities as empirical inputs. Resistivity $\rho$ is measured and tabulated. Permittivity $\varepsilon_0$ and permeability $\mu_0$ are fundamental constants. The question of why conductors conduct, why resistance has the values it does, and why electromagnetic fields propagate at speed $c$ remains outside the scope of these theories.
+
+\subsection{The Categorical Framework}
+
+We approach electrical phenomena from the partition-oscillation-category equivalence established in prior work \cite{sachikonye2024partition}. The identity $S = \kB M \ln n$ holds across oscillatory, categorical, and partition formulations. This equivalence enables the derivation of transport phenomena from geometric principles rather than empirical parameterisation.
+
+The key insight is that current flow in conductors is fundamentally a categorical phenomenon. Electrons do not flow freely through conductors; they propagate through a dense phase-lock network of electron-lattice interactions. Each electron's motion is constrained by its categorical relationships with neighbouring electrons and lattice ions. Current emerges as the propagation of categorical state changes through this network—analogous to a Newton's cradle where momentum transfers through successive collisions without individual ball displacement.
+
+\subsection{Dimensional Reduction for Conductors}
+
+For conductors, the dimensional reduction takes a simpler form than for general fluids:
+
+\begin{theorem}[Conductor Dimensional Reduction]
+\label{thm:conductor_reduction}
+A conductor of length $L$ and cross-sectional area $A$ reduces to:
+\begin{equation}
+\text{3D Conductor} = \text{0D Cross-Section} \times \text{1D S-Transformation}
+\end{equation}
+The cross-section is characterised by the number of parallel conduction paths $N_\parallel = A/a_0^2$, where $a_0$ is the lattice spacing.
+\end{theorem}
+
+This reduction is simpler than the fluid case because conductors have uniform cross-sections and current flows along a single direction. The S-transformation along the conductor length captures all relevant physics: scattering, drift, and electron-electron coupling.
+
+\subsection{Paper Structure}
+
+Section~\ref{sec:newton_cradle} establishes the Newton's cradle model of electron propagation. Section~\ref{sec:dimensional_reduction} proves the dimensional reduction theorem for conductors. Section~\ref{sec:transformation} defines the S-transformation operator for current flow. Section~\ref{sec:ohms_law} derives Ohm's law and resistivity from partition lag. Section~\ref{sec:kirchhoff} derives Kirchhoff's laws from categorical conservation. Section~\ref{sec:maxwell} extends the framework to derive Maxwell's equations. Section~\ref{sec:transport} unifies transport coefficients across systems. Section~\ref{sec:current_cross_sectional_validation} validates the framework through cross-sectional S-coordinate measurements along conductors.
+
+%==============================================================================
+% SECTION IMPORTS
+%==============================================================================
+
+\import{sections/}{newton-cradle-propagation.tex}
+\import{sections/}{dimensional-reduction.tex}
+\import{sections/}{st-stellas-transform-operator.tex}
+\import{sections/}{partition-lag.tex}
+\import{sections/}{coupling.tex}
+\import{sections/}{ohms-law.tex}
+\import{sections/}{transport-coefficient.tex}
+\import{sections/}{maxwells-equations.tex}
+\import{sections/}{cross-sectional-validation.tex}
+
+%==============================================================================
+% DISCUSSION
+%==============================================================================
+
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Summary of Derivations}
+
+The partition-oscillation-category equivalence provides the foundation for deriving electrical phenomena from geometric principles. The identity $S = \kB M \ln n$ holds across oscillatory, categorical, and partition formulations, enabling unified treatment of current flow and electromagnetic fields.
+
+The Newton's cradle model (Section~\ref{sec:newton_cradle}) establishes that current propagates through electron displacement chains rather than individual electron drift. The drift velocity $v_d \sim 10^{-4}$ m/s is negligible compared to signal propagation at $\sim c$, confirming that current is a categorical phenomenon.
+
+The dimensional reduction theorem (Theorem~\ref{thm:conductor_reduction}) establishes that three-dimensional conductors reduce to zero-dimensional cross-sections and one-dimensional S-transformations. The cross-section determines the number of parallel paths; the S-transformation determines the resistance per unit length.
+
+Ohm's law emerges with resistivity $\rho = \sum \tau_{s,ij} g_{ij} / (ne^2)$, where $\tau_s$ is the scattering partition lag and $g$ is the electron-lattice coupling. This formula explains why metals with longer mean free paths have lower resistivity and why resistivity increases with temperature (increased scattering).
+
+Kirchhoff's laws follow from categorical conservation. The current law $\sum I = 0$ expresses conservation of categorical states at junctions. The voltage law $\sum V = 0$ expresses S-potential single-valuedness around loops.
+
+Maxwell's equations emerge as the full frequency-dependent generalisation. Ohm's law and Kirchhoff's laws are the low-frequency limits where time derivatives vanish. The displacement current $\varepsilon_0 \partial\mathbf{E}/\partial t$ represents the rate of S-transformation in the electromagnetic field.
+
+\subsection{The Speed of Light}
+
+The speed of light emerges from the framework as:
+\begin{equation}
+c = \frac{1}{\sqrt{\mu_0 \varepsilon_0}} = \frac{1}{\sqrt{\tau_p^{(\text{EM})} \cdot g^{(\text{EM})}}}
+\end{equation}
+where $\tau_p^{(\text{EM})}$ is the electromagnetic partition lag and $g^{(\text{EM})}$ is the vacuum field coupling. This provides a partition-geometric interpretation of why light has the speed it does.
+
+\subsection{Relationship to Standard Formulations}
+
+The categorical formulation does not contradict standard electromagnetic theory but provides a geometric foundation for it. Maxwell's equations remain valid as the field equations of electromagnetism. Ohm's law and Kirchhoff's laws remain valid as circuit equations.
+
+The categorical formulation explains \emph{why} these equations take their particular form. Resistance arises from scattering partition lag. Conservation laws arise from categorical state conservation. The displacement current arises from S-transformation dynamics. The speed of light arises from vacuum partition-coupling structure.
+
+%==============================================================================
+% CONCLUSIONS
+%==============================================================================
+
+\section{Conclusions}
+\label{sec:conclusions}
+
+We derived electrical current flow and electromagnetic field equations from the partition-oscillation-category equivalence. The derivation established six principal results:
+
+\begin{enumerate}
+\item The Newton's cradle model: current propagates through electron displacement chains at signal speed $\sim c$, not through electron drift at $v_d \sim 10^{-4}$ m/s.
+
+\item The dimensional reduction theorem: three-dimensional conductors decompose into zero-dimensional cross-sections (parallel paths) and one-dimensional S-transformations (resistance per length).
+
+\item Ohm's law: $V = IR$ with resistivity $\rho = \sum \tau_{s,ij} g_{ij} / (ne^2)$ from scattering partition lag and electron-lattice coupling.
+
+\item Kirchhoff's current law: $\sum I = 0$ from categorical state conservation at junctions.
+
+\item Kirchhoff's voltage law: $\sum V = 0$ from S-potential single-valuedness around loops.
+
+\item Maxwell's equations: emerge as frequency-dependent generalisation with displacement current $\varepsilon_0 \partial\mathbf{E}/\partial t$ representing S-transformation rate.
+\end{enumerate}
+
+Experimental validation on conductor measurements yielded resistivity predictions with 2.8\% mean absolute error. The framework reproduces temperature dependence, frequency dependence (skin effect), and critical phenomena (superconductivity).
+
+The categorical formulation reveals that circuit theory and electromagnetic theory share a common geometric foundation in partition-oscillation-category equivalence. Ohm's law and Maxwell's equations are not independent empirical discoveries but necessary consequences of categorical dynamics in bounded oscillatory systems.
+
+%==============================================================================
+% BIBLIOGRAPHY
+%==============================================================================
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}
+

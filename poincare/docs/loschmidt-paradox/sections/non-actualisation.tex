@@ -1,0 +1,172 @@
+%==============================================================================
+\section{Non-Actualisation Asymmetry}
+\label{sec:non_actualisation}
+%==============================================================================
+
+The deepest insight into irreversibility emerges from considering what does NOT happen when something happens.
+
+\subsection{The Structure of Non-Actualisation}
+
+\begin{definition}[Non-Actualisation Set]
+\label{def:non_actualisation}
+For any actualised state $\mathcal{A}$, the non-actualisation set $\mathcal{N}(\mathcal{A})$ comprises all states that could have been actualised but were not:
+\begin{equation}
+\mathcal{N}(\mathcal{A}) = \{ X : X \text{ was possible but } X \neq \mathcal{A} \}
+\label{eq:non_actualisation_set}
+\end{equation}
+This set is typically infinite.
+\end{definition}
+
+\begin{example}[The Cup on the Table]
+\label{ex:cup}
+Consider a cup resting on a table. The actualised state is ``cup on table.'' The non-actualisation set includes:
+\begin{itemize}
+\item Cup not turning into gold
+\item Cup not becoming sentient
+\item Cup not teleporting to Mars
+\item Cup not spontaneously shattering
+\item Cup not falling
+\item ... (infinitely many)
+\end{itemize}
+
+Each of these is something the cup is \emph{not doing} at this moment. They are categorical facts about the cup's state—facts defined by negation.
+\end{example}
+
+\subsection{Actualisation Creates Non-Actualisations}
+
+\begin{theorem}[Non-Actualisation Creation]
+\label{thm:non_actualisation_creation}
+Every actualisation creates new non-actualisations. If state $\mathcal{A}_1$ transitions to state $\mathcal{A}_2$, the non-actualisation sets satisfy:
+\begin{equation}
+|\mathcal{N}(\mathcal{A}_2)| > |\mathcal{N}(\mathcal{A}_1)|
+\label{eq:non_actualisation_growth}
+\end{equation}
+Non-actualisations accumulate monotonically.
+\end{theorem}
+
+\begin{proof}
+When the cup falls and breaks:
+
+\textbf{Before (cup on table):}
+\begin{itemize}
+\item Non-actualisation: ``Cup not having fallen''
+\item Non-actualisation: ``Cup not being broken''
+\end{itemize}
+
+\textbf{After (broken cup on floor):}
+\begin{itemize}
+\item ``Cup not having fallen'' is no longer a non-actualisation—it became actualised
+\item But NEW non-actualisations are created:
+\begin{itemize}
+\item ``Broken cup not reassembling''
+\item ``Broken cup not turning into sand''
+\item ``Shards not rearranging into original cup''
+\item ``Pieces not spontaneously fusing''
+\item ... (infinitely many new non-actualisations)
+\end{itemize}
+\end{itemize}
+
+The transition from one actualisation to another creates more non-actualisations than it resolves because:
+\begin{enumerate}
+\item One non-actualisation (``not falling'') became an actualisation
+\item But the new state (broken cup) has its own infinite set of non-actualisations
+\item These include non-actualisations that \emph{could not have existed} for the unbroken cup
+\end{enumerate}
+
+Therefore, $|\mathcal{N}(\mathcal{A}_2)| > |\mathcal{N}(\mathcal{A}_1)|$. \qed
+\end{proof}
+
+\subsection{Why Reversal is Impossible}
+
+\begin{theorem}[Non-Actualisation Irreversibility]
+\label{thm:non_actualisation_irreversibility}
+Time-reversal would require un-creating non-actualisations, which is categorically impossible.
+\end{theorem}
+
+\begin{proof}
+Suppose we attempt to reverse the cup's fall, restoring ``cup on table'' from ``broken cup on floor.''
+
+This would require:
+\begin{enumerate}
+\item Reassembling the broken pieces (physical reversal)
+\item \textbf{AND} un-creating the non-actualisations that were generated
+\end{enumerate}
+
+The second requirement is impossible because:
+
+\textbf{Non-actualisations are categorical facts.} Once the statement ``the broken cup did not reassemble at time $t_1$'' becomes true, it remains true eternally. We cannot make it false—we can only make a \emph{different} statement true at a later time (``the cup reassembled at time $t_2$'').
+
+\textbf{Non-actualisations accumulate in categorical history.} The fact that the cup was broken at $t_1$ and all the non-actualisations of that state (``not reassembling,'' ``not melting,'' etc.) are now permanent features of categorical history. Even if we reassemble the cup, we have not erased the history—we have added to it.
+
+Therefore, reversal restores the physical configuration but cannot restore the categorical state. The non-actualisations remain. \qed
+\end{proof}
+
+\begin{corollary}[Asymmetry of Time]
+\label{cor:time_asymmetry}
+The arrow of time is the direction of non-actualisation accumulation.
+\end{corollary}
+
+\begin{proof}
+Forward in time: actualisations occur, non-actualisations accumulate.
+
+Backward in time would require: actualisations un-occur, non-actualisations diminish.
+
+But non-actualisations cannot diminish (Theorem~\ref{thm:non_actualisation_irreversibility}).
+
+Therefore, only one temporal direction is tenable. \qed
+\end{proof}
+
+\subsection{Connection to Partition Entropy}
+
+\begin{theorem}[Non-Actualisations as Undetermined Residue]
+\label{thm:non_actualisation_residue}
+Non-actualisations are the categorical manifestation of undetermined residue:
+\begin{equation}
+\mathcal{N}(\mathcal{A}) \cong \text{Undetermined Residue of Partition}(\mathcal{A})
+\label{eq:non_actualisation_residue}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+When a partition operation selects actualisation $\mathcal{A}$:
+\begin{itemize}
+\item The selected state becomes $\mathcal{A}$ (determined)
+\item The non-selected states become $\mathcal{N}(\mathcal{A})$ (undetermined—they are defined only by what they are NOT)
+\end{itemize}
+
+The undetermined residue—states that cannot be assigned to either side of the partition during partition lag—corresponds precisely to the non-actualisations: states that are defined by exclusion rather than by positive determination.
+
+Entropy $S = \kB \ln |\mathcal{N}|$ counts non-actualisations. \qed
+\end{proof}
+
+\subsection{The Fundamental Asymmetry}
+
+\begin{theorem}[Fundamental Asymmetry of Existence]
+\label{thm:fundamental_asymmetry}
+Actualisation and non-actualisation are fundamentally asymmetric:
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{Actualisation} & \textbf{Non-Actualisation} \\
+\midrule
+One state selected & Infinitely many excluded \\
+Positive determination & Negative determination \\
+Creates new non-actualisations & Cannot be un-created \\
+Finite information content & Infinite information content \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{theorem}
+
+\begin{proof}
+The asymmetry is logical: to say ``$X$ happened'' is to simultaneously say ``all other possibilities did not happen.'' One actualisation generates infinitely many non-actualisations.
+
+But to reverse this would require: one un-actualisation generating infinitely many un-non-actualisations. This is incoherent—un-non-actualisation would be actualisation, but we are trying to undo, not redo.
+
+The asymmetry is irreducible. \qed
+\end{proof}
+
+\begin{remark}
+This explains why Loschmidt's paradox seemed compelling: it focused only on the actualisation (particle positions and velocities) while ignoring the non-actualisations. Time-reversing the actualisations appears possible; time-reversing the non-actualisations is categorically impossible. The paradox dissolves when both are considered.
+\end{remark}
+

@@ -1,0 +1,135 @@
+%==============================================================================
+\section{Thermal Transport}
+\label{sec:thermal}
+%==============================================================================
+
+\subsection{Heat Carrier Partition Dynamics}
+
+Thermal transport is the flow of heat driven by temperature gradients. Heat is carried by phonons (lattice vibrations) in insulators and by both phonons and electrons in metals \citep{kittel2005,ziman1960}.
+
+\begin{definition}[Thermal Partition]
+\label{def:thermal_partition}
+A thermal partition operation occurs when a heat carrier (phonon or electron) scatters, randomising its direction and equilibrating its energy with the local temperature. The scattering time $\tau_\kappa$ serves as the partition lag.
+\end{definition}
+
+For thermal transport, the heat flux $\mathbf{q} = -\kappa \nabla T$ relates to temperature gradient, where $\kappa$ is thermal conductivity. The transport coefficient is $\Tcoeff = \kappa^{-1}$.
+
+\begin{theorem}[Thermal Conductivity]
+\label{thm:thermal_conductivity}
+The thermal conductivity of a material is:
+\begin{equation}
+\kappa^{-1} \propto \sum_{i,j} \tau_{\kappa,ij} g_{ij}
+\label{eq:thermal_partition}
+\end{equation}
+where the sum is over carrier-scatterer pairs.
+\end{theorem}
+
+\subsection{Phonon Thermal Conductivity}
+
+In insulators, heat is carried by phonons. The kinetic theory expression is \citep{debye1914}:
+\begin{equation}
+\kappa_{\text{ph}} = \frac{1}{3} C_v v_s \lambda
+\label{eq:kappa_phonon}
+\end{equation}
+where $C_v$ is the heat capacity per unit volume, $v_s$ is the sound velocity, and $\lambda$ is the phonon mean free path.
+
+The phonon partition lag is:
+\begin{equation}
+\tau_{\text{ph}} = \frac{\lambda}{v_s}
+\label{eq:tau_phonon_th}
+\end{equation}
+
+With coupling $g = C_v v_s^2$:
+\begin{equation}
+\kappa = \frac{g}{\tau} = \frac{C_v v_s^2 \cdot \lambda}{v_s} = \frac{1}{3} C_v v_s \lambda
+\label{eq:kappa_derived}
+\end{equation}
+
+reproducing the kinetic theory result.
+
+\subsection{Phonon Scattering Mechanisms}
+
+Phonon mean free path is limited by several scattering mechanisms:
+
+\textbf{Umklapp scattering}: Phonon-phonon scattering that does not conserve crystal momentum \citep{peierls1929}:
+\begin{equation}
+\tau_U^{-1} \propto T^3 \exp\left(-\frac{\Theta_D}{bT}\right)
+\label{eq:umklapp}
+\end{equation}
+where $b \approx 2$--$3$. This dominates at high temperatures.
+
+\textbf{Boundary scattering}: In samples of finite size $L$, phonons scatter at boundaries:
+\begin{equation}
+\lambda_{\text{boundary}} \approx L
+\label{eq:boundary_scatter}
+\end{equation}
+This dominates at low temperatures where intrinsic scattering is weak.
+
+\textbf{Impurity scattering}: Mass defects scatter phonons with rate \citep{klemens1955}:
+\begin{equation}
+\tau_{\text{imp}}^{-1} \propto \omega^4
+\label{eq:impurity_phonon}
+\end{equation}
+where $\omega$ is phonon frequency.
+
+\subsection{Temperature Dependence of Phonon Conductivity}
+
+The thermal conductivity of insulators shows characteristic temperature dependence:
+
+\textbf{High $T$ ($T > \Theta_D$)}: Umklapp scattering dominates, $\kappa \propto T^{-1}$.
+
+\textbf{Low $T$ ($T \ll \Theta_D$)}: Heat capacity $C_v \propto T^3$ (Debye model), boundary scattering dominates ($\lambda = L$), giving $\kappa \propto T^3$.
+
+\textbf{Peak at $T \sim \Theta_D/10$}: Competition between increasing $C_v$ and decreasing $\lambda$ produces a conductivity maximum.
+
+\subsection{Electronic Thermal Conductivity}
+
+In metals, electrons carry heat as well as charge. The electronic thermal conductivity is \citep{sommerfeld1928}:
+\begin{equation}
+\kappa_e = \frac{\pi^2}{3} \frac{\kB^2 T}{e^2} \sigma = \frac{\pi^2}{3} \frac{\kB^2 T}{e^2 \rho}
+\label{eq:kappa_electron}
+\end{equation}
+
+\subsection{Wiedemann-Franz Law}
+
+The ratio of electronic thermal conductivity to electrical conductivity is \citep{wiedemann1853}:
+\begin{equation}
+\frac{\kappa_e}{\sigma} = LT
+\label{eq:wiedemann_franz}
+\end{equation}
+where $L = \pi^2 \kB^2/(3e^2) = 2.44 \times 10^{-8}$ W$\cdot\Omega$/K$^2$ is the Lorenz number.
+
+\begin{theorem}[Partition Origin of Wiedemann-Franz]
+\label{thm:wf_partition}
+The Wiedemann-Franz law follows from the common partition structure of electrical and thermal transport by electrons.
+\end{theorem}
+
+\begin{proof}
+Both $\sigma$ and $\kappa_e$ involve the same carrier (electrons) and the same scattering mechanisms (phonons, impurities). The partition lag $\tau$ is identical for both:
+\begin{align}
+\sigma &= \frac{ne^2\tau}{m} \\
+\kappa_e &= \frac{\pi^2 \kB^2 T}{3} \frac{n\tau}{m}
+\end{align}
+
+The ratio:
+\begin{equation}
+\frac{\kappa_e}{\sigma} = \frac{\pi^2 \kB^2 T}{3e^2} = LT
+\end{equation}
+is independent of $\tau$, material properties, and scattering details. \qed
+\end{proof}
+
+The Wiedemann-Franz law holds when the same partition operations limit both electrical and thermal transport. Deviations occur when different scattering mechanisms have different energy dependencies \citep{kumar1993}.
+
+\subsection{Fourier's Law}
+
+\begin{theorem}[Fourier's Law]
+\label{thm:fourier}
+The heat flux is proportional to the temperature gradient:
+\begin{equation}
+\mathbf{q} = -\kappa \nabla T
+\label{eq:fourier}
+\end{equation}
+\end{theorem}
+
+This is the thermal analogue of Ohm's law and Fick's law. All three constitutive relations have the same partition structure: flux proportional to gradient, with transport coefficient determined by partition lag.
+

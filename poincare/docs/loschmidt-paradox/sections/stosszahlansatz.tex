@@ -1,0 +1,72 @@
+%==============================================================================
+\section{The Stosszahlansatz as Theorem}
+\label{sec:stosszahlansatz}
+%==============================================================================
+
+\subsection{Boltzmann's Assumption}
+
+Boltzmann's H-theorem relies on the \emph{Stosszahlansatz} (molecular chaos assumption): the velocities of colliding molecules are uncorrelated before collision. This assumption has been criticized as smuggling irreversibility into the derivation \citep{price1996}.
+
+If molecular velocities were correlated in specific ways, entropy could decrease. The correlations required for entropy decrease are precisely those that would arise from time-reversal of an entropy-increasing trajectory. Loschmidt's paradox can be restated: why don't such correlations exist?
+
+\subsection{Correlations Exist but Are Inaccessible}
+
+\begin{theorem}[Correlation Inaccessibility]
+\label{thm:correlation_inaccessibility}
+Velocity correlations that would permit entropy decrease exist but reside in the undetermined residue of prior partition operations. They are thermodynamically inaccessible.
+\end{theorem}
+
+\begin{proof}
+Consider a collision between molecules $i$ and $j$ at time $t$. Before collision, each molecule's velocity was determined by prior collisions, each of which was a partition operation creating undetermined residue.
+
+The velocity correlations that would permit entropy decrease are precisely those involving the undetermined residue: knowing how residue states resolved would allow prediction of which velocity correlations exist. But undetermined residue is, by definition, undetermined—it cannot be accessed without further partition operations that generate additional entropy.
+
+Therefore:
+\begin{enumerate}
+\item Correlations permitting entropy decrease exist in principle
+\item These correlations reside in undetermined residue
+\item Accessing the correlations requires partition operations
+\item Partition operations generate entropy exceeding any recovery
+\end{enumerate}
+
+The correlations are inaccessible. \qed
+\end{proof}
+
+\begin{corollary}[Stosszahlansatz as Theorem]
+\label{cor:stosszahlansatz}
+The Stosszahlansatz is not an assumption but a necessary consequence of partition structure: accessible correlations are those consistent with entropy increase.
+\end{corollary}
+
+\begin{proof}
+From an observer's perspective, who can only access thermodynamically accessible information, molecular velocities appear uncorrelated because the correlations that would violate the Stosszahlansatz are hidden in undetermined residue.
+
+The Stosszahlansatz describes what is knowable, not what exists. It is a theorem about accessible information, not an assumption about physical reality. \qed
+\end{proof}
+
+\subsection{Resolution of the Paradox}
+
+\begin{theorem}[Resolution of Loschmidt's Paradox]
+\label{thm:resolution}
+Loschmidt's paradox dissolves: irreversibility arises from categorical partition structure, not from temporal asymmetry. Time-symmetric dynamics are fully compatible with entropy increase.
+\end{theorem}
+
+\begin{proof}
+The paradox assumes:
+\begin{enumerate}[label=(\alph*)]
+\item Irreversibility requires temporal asymmetry
+\item Time-symmetric dynamics cannot produce irreversibility
+\item Therefore, the H-theorem must rely on hidden temporal asymmetry
+\end{enumerate}
+
+We have shown:
+\begin{enumerate}[label=(\roman*)]
+\item Entropy arises from partition operations (Theorem~\ref{thm:partition_entropy})
+\item Partition entropy is time-reversal invariant (Theorem~\ref{thm:temporal_independence})
+\item Velocity reversal generates entropy (Theorem~\ref{thm:measurement_barrier})
+\item Partition boundaries cannot be erased (Theorem~\ref{thm:topological_irreversibility})
+\item The Stosszahlansatz is a theorem, not an assumption (Corollary~\ref{cor:stosszahlansatz})
+\end{enumerate}
+
+Premise (a) is false: irreversibility arises from categorical geometry, not temporal asymmetry. The time-symmetric dynamics of particles is fully compatible with entropy increase because entropy is not a temporal quantity but a categorical one. \qed
+\end{proof}
+

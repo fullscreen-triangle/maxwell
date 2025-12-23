@@ -1,0 +1,310 @@
+%==============================================================================
+% SECTION 9: MAXWELL'S EQUATIONS FROM S-DYNAMICS
+%==============================================================================
+
+\section{Maxwell's Equations from S-Dynamics}
+\label{sec:maxwell}
+
+\subsection{From Circuit Theory to Field Theory}
+
+Ohm's law and Kirchhoff's laws are valid in the quasi-static limit where time derivatives are negligible. Maxwell's equations are the full frequency-dependent generalisation, valid at all frequencies including electromagnetic radiation.
+
+\begin{theorem}[Quasi-Static Limit]
+\label{thm:quasi_static}
+In the limit of low frequencies and small systems:
+\begin{align}
+\text{Maxwell's equations} &\xrightarrow[\omega \to 0]{L \ll \lambda} \text{Kirchhoff's laws} \\
+\mathbf{J} = \sigma \mathbf{E} &\xrightarrow[\text{integrate}]{} V = IR
+\end{align}
+\end{theorem}
+
+\subsection{S-Potential and Electric Field}
+
+\begin{definition}[S-Potential and Electric Field]
+\label{def:s_field}
+The electric field is the gradient of the S-potential:
+\begin{equation}
+\mathbf{E} = -\nabla \Phi_S
+\label{eq:e_from_s}
+\end{equation}
+where $\Phi_S$ is the S-potential encoding categorical state information.
+\end{definition}
+
+\begin{theorem}[Gauss's Law from Mode Asymmetry]
+\label{thm:gauss_law}
+The divergence of the electric field equals the charge density:
+\begin{equation}
+\nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}
+\label{eq:gauss_law}
+\end{equation}
+where charge density $\rho = e(n_+ - n_-)$ is the mode occupation asymmetry.
+\end{theorem}
+
+\begin{proof}
+Charge is mode occupation asymmetry (see prior work on forces):
+\begin{equation}
+q = e \sum_n (N_n^+ - N_n^-)
+\end{equation}
+
+The S-potential is sourced by this asymmetry:
+\begin{equation}
+\nabla^2 \Phi_S = -\frac{\rho}{\varepsilon_0}
+\end{equation}
+
+Taking the divergence of $\mathbf{E} = -\nabla \Phi_S$:
+\begin{equation}
+\nabla \cdot \mathbf{E} = -\nabla^2 \Phi_S = \frac{\rho}{\varepsilon_0}
+\end{equation}
+\qed
+\end{proof}
+
+\subsection{Magnetic Field from S-Curl}
+
+\begin{definition}[S-Curl and Magnetic Field]
+\label{def:s_curl}
+The magnetic field is the curl of the S-potential vector:
+\begin{equation}
+\mathbf{B} = \nabla \times \mathbf{A}_S
+\label{eq:b_from_s}
+\end{equation}
+where $\mathbf{A}_S$ is the S-potential vector encoding current structure.
+\end{definition}
+
+\begin{theorem}[Gauss's Law for Magnetism]
+\label{thm:gauss_magnetism}
+The divergence of the magnetic field vanishes:
+\begin{equation}
+\nabla \cdot \mathbf{B} = 0
+\label{eq:gauss_magnetism}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By vector identity, the divergence of a curl vanishes:
+\begin{equation}
+\nabla \cdot \mathbf{B} = \nabla \cdot (\nabla \times \mathbf{A}_S) = 0
+\end{equation}
+
+Physically: there are no magnetic monopoles. The S-curl structure is topologically closed. \qed
+\end{proof}
+
+\subsection{Faraday's Law from Categorical Completion}
+
+\begin{theorem}[Faraday's Law]
+\label{thm:faraday}
+A changing magnetic field induces an electric field:
+\begin{equation}
+\nabla \times \mathbf{E} = -\frac{\partial \mathbf{B}}{\partial t}
+\label{eq:faraday}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The S-potential satisfies the consistency relation:
+\begin{equation}
+\nabla \times (-\nabla \Phi_S) = -\frac{\partial}{\partial t}(\nabla \times \mathbf{A}_S)
+\end{equation}
+
+For static fields, $\nabla \times \mathbf{E} = 0$ (conservative field). For time-varying fields, the S-curl evolves:
+\begin{equation}
+\mathbf{B} = \nabla \times \mathbf{A}_S \implies \frac{\partial \mathbf{B}}{\partial t} = \nabla \times \frac{\partial \mathbf{A}_S}{\partial t}
+\end{equation}
+
+The induced electric field is:
+\begin{equation}
+\mathbf{E}_{\text{induced}} = -\frac{\partial \mathbf{A}_S}{\partial t}
+\end{equation}
+
+Taking the curl:
+\begin{equation}
+\nabla \times \mathbf{E} = -\nabla \times \frac{\partial \mathbf{A}_S}{\partial t} = -\frac{\partial}{\partial t}(\nabla \times \mathbf{A}_S) = -\frac{\partial \mathbf{B}}{\partial t}
+\end{equation}
+\qed
+\end{proof}
+
+\begin{remark}
+Faraday's law is KVL with time-varying flux:
+\begin{equation}
+\oint \mathbf{E} \cdot d\mathbf{l} = -\frac{d\Phi_B}{dt}
+\end{equation}
+The loop integral of electric field equals the rate of magnetic flux change through the loop. In the quasi-static limit ($d\Phi_B/dt \to 0$), this reduces to KVL: $\sum V = 0$.
+\end{remark}
+
+\subsection{Ampère-Maxwell Law from S-Transformation Rate}
+
+\begin{theorem}[Ampère-Maxwell Law]
+\label{thm:ampere_maxwell}
+A changing electric field and current density produce magnetic field:
+\begin{equation}
+\nabla \times \mathbf{B} = \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}
+\label{eq:ampere_maxwell}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+\textbf{Step 1: Current density term.}
+
+Moving charges produce magnetic field:
+\begin{equation}
+\nabla \times \mathbf{B} = \mu_0 \mathbf{J}
+\end{equation}
+
+This is Ampère's original law.
+
+\textbf{Step 2: Displacement current.}
+
+Taking the divergence of Ampère's law:
+\begin{equation}
+\nabla \cdot (\nabla \times \mathbf{B}) = \mu_0 \nabla \cdot \mathbf{J}
+\end{equation}
+
+The left side vanishes (divergence of curl). For consistency:
+\begin{equation}
+\nabla \cdot \mathbf{J} = 0
+\end{equation}
+
+But charge conservation requires:
+\begin{equation}
+\frac{\partial \rho}{\partial t} + \nabla \cdot \mathbf{J} = 0 \implies \nabla \cdot \mathbf{J} = -\frac{\partial \rho}{\partial t}
+\end{equation}
+
+Using Gauss's law, $\rho = \varepsilon_0 \nabla \cdot \mathbf{E}$:
+\begin{equation}
+\nabla \cdot \mathbf{J} = -\varepsilon_0 \frac{\partial}{\partial t}(\nabla \cdot \mathbf{E}) = -\nabla \cdot \left( \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t} \right)
+\end{equation}
+
+Therefore:
+\begin{equation}
+\nabla \cdot \left( \mathbf{J} + \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t} \right) = 0
+\end{equation}
+
+The modified Ampère's law is:
+\begin{equation}
+\nabla \times \mathbf{B} = \mu_0 \left( \mathbf{J} + \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t} \right)
+\end{equation}
+\qed
+\end{proof}
+
+\begin{remark}
+The displacement current $\varepsilon_0 \partial\mathbf{E}/\partial t$ represents the \textbf{S-transformation rate}. Even without physical charge flow, a changing electric field represents categorical completion---the S-state evolving in time. This produces magnetic field just as physical current does.
+
+This is the key insight enabling electromagnetic wave propagation: changing E produces B (Ampère-Maxwell), changing B produces E (Faraday), creating self-sustaining oscillation.
+\end{remark}
+
+\subsection{Wave Equation and Speed of Light}
+
+\begin{theorem}[Electromagnetic Wave Equation]
+\label{thm:em_wave}
+In vacuum, the electric field satisfies:
+\begin{equation}
+\nabla^2 \mathbf{E} = \mu_0 \varepsilon_0 \frac{\partial^2 \mathbf{E}}{\partial t^2}
+\label{eq:em_wave}
+\end{equation}
+with wave speed:
+\begin{equation}
+c = \frac{1}{\sqrt{\mu_0 \varepsilon_0}} = 299792458 \text{ m/s}
+\label{eq:speed_of_light}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Taking the curl of Faraday's law:
+\begin{equation}
+\nabla \times (\nabla \times \mathbf{E}) = -\frac{\partial}{\partial t}(\nabla \times \mathbf{B})
+\end{equation}
+
+Using the vector identity $\nabla \times (\nabla \times \mathbf{E}) = \nabla(\nabla \cdot \mathbf{E}) - \nabla^2 \mathbf{E}$:
+
+In vacuum, $\nabla \cdot \mathbf{E} = 0$:
+\begin{equation}
+-\nabla^2 \mathbf{E} = -\frac{\partial}{\partial t}(\nabla \times \mathbf{B})
+\end{equation}
+
+Using Ampère-Maxwell law (with $\mathbf{J} = 0$ in vacuum):
+\begin{equation}
+\nabla \times \mathbf{B} = \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}
+\end{equation}
+
+Substituting:
+\begin{equation}
+\nabla^2 \mathbf{E} = \mu_0 \varepsilon_0 \frac{\partial^2 \mathbf{E}}{\partial t^2}
+\end{equation}
+
+This is the wave equation with speed:
+\begin{equation}
+c = \frac{1}{\sqrt{\mu_0 \varepsilon_0}}
+\end{equation}
+\qed
+\end{proof}
+
+\subsection{Speed of Light from Partition-Coupling Structure}
+
+\begin{theorem}[Speed of Light from S-Dynamics]
+\label{thm:c_from_s}
+The speed of light is determined by electromagnetic partition lag and vacuum coupling:
+\begin{equation}
+c = \frac{1}{\sqrt{\tau_p^{(\text{EM})} \cdot g^{(\text{EM})}}}
+\label{eq:c_from_partition}
+\end{equation}
+where $\tau_p^{(\text{EM})} = \mu_0$ (electromagnetic partition lag) and $g^{(\text{EM})} = \varepsilon_0$ (vacuum coupling).
+\end{theorem}
+
+\begin{proof}
+By analogy with the universal transport coefficient:
+\begin{equation}
+\Xi = \frac{1}{\mathcal{N}} \sum_{i,j} \tau_{p,ij} \cdot g_{ij}
+\end{equation}
+
+For electromagnetic wave propagation, the effective impedance is:
+\begin{equation}
+Z_0 = \sqrt{\frac{\mu_0}{\varepsilon_0}}
+\end{equation}
+
+The speed of propagation is:
+\begin{equation}
+c = \frac{1}{\sqrt{\mu_0 \varepsilon_0}}
+\end{equation}
+
+Identifying $\mu_0$ as the electromagnetic partition lag (field inertia) and $\varepsilon_0$ as the vacuum coupling (field flexibility):
+\begin{equation}
+c = \frac{1}{\sqrt{\tau_p^{(\text{EM})} \cdot g^{(\text{EM})}}}
+\end{equation}
+\qed
+\end{proof}
+
+\begin{remark}
+This provides a partition-geometric interpretation of the speed of light:
+\begin{itemize}
+\item $\mu_0 = 4\pi \times 10^{-7}$ H/m: electromagnetic partition lag (how long field changes take to propagate)
+\item $\varepsilon_0 = 8.854 \times 10^{-12}$ F/m: vacuum coupling (how strongly the vacuum responds to field changes)
+\end{itemize}
+
+The speed of light is not arbitrary but determined by the partition-coupling structure of the electromagnetic vacuum.
+\end{remark}
+
+\subsection{Summary: Maxwell's Equations}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Equation} & \textbf{Differential Form} & \textbf{S-Dynamics Interpretation} \\
+\midrule
+Gauss (E) & $\nabla \cdot \mathbf{E} = \rho/\varepsilon_0$ & S-potential sourced by mode asymmetry \\
+Gauss (B) & $\nabla \cdot \mathbf{B} = 0$ & S-curl has no sources \\
+Faraday & $\nabla \times \mathbf{E} = -\partial\mathbf{B}/\partial t$ & S-gradient curl = categorical rate \\
+Ampère-Maxwell & $\nabla \times \mathbf{B} = \mu_0\mathbf{J} + \mu_0\varepsilon_0\partial\mathbf{E}/\partial t$ & S-curl from current + transformation \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}
+Maxwell's equations are the S-dynamics of electromagnetic fields:
+\begin{itemize}
+\item Gauss's laws describe S-potential sources
+\item Faraday's law describes S-transformation inducing fields
+\item Ampère-Maxwell law describes currents and S-transformation rates
+\end{itemize}
+
+Ohm's law and Kirchhoff's laws are the low-frequency limits where $\partial/\partial t \to 0$.
+\end{remark}
+

@@ -1,0 +1,126 @@
+%==============================================================================
+\subsection{Partition Boundaries as Categorical Apertures}
+\label{subsec:apertures}
+%==============================================================================
+
+The partition framework acquires additional structure when partition boundaries are recognised as \emph{apertures}—geometric constraints that selectively allow certain configurations to pass while blocking others.
+
+\begin{definition}[Categorical Aperture]
+\label{def:aperture}
+An \emph{aperture} $a$ is a partition boundary with a selection function:
+\begin{equation}
+\sigma_a(\omega) = \begin{cases}
+1 & \text{if } \text{config}(\omega) \in \text{shape}(a) \\
+0 & \text{otherwise}
+\end{cases}
+\end{equation}
+where $\text{config}(\omega)$ is the configuration of state $\omega$ and $\text{shape}(a)$ is the set of configurations compatible with passage through aperture $a$.
+\end{definition}
+
+\begin{theorem}[Aperture Potential]
+\label{thm:aperture_potential}
+Each aperture carries a categorical potential:
+\begin{equation}
+\Phi_a = -\kB T \ln\left(\frac{\Omega_{\text{pass}}}{\Omega_{\text{total}}}\right) = -\kB T \ln s
+\end{equation}
+where $s = \Omega_{\text{pass}}/\Omega_{\text{total}}$ is the \emph{selectivity} of the aperture—the fraction of configurations that can pass.
+\end{theorem}
+
+\begin{proof}
+The aperture restricts the accessible configuration space from $\Omega_{\text{total}}$ to $\Omega_{\text{pass}}$. By the Boltzmann relation, this restriction corresponds to an entropy reduction:
+\begin{equation}
+\Delta S = \kB \ln \Omega_{\text{pass}} - \kB \ln \Omega_{\text{total}} = \kB \ln s
+\end{equation}
+
+Since $s \leq 1$, we have $\ln s \leq 0$, so $\Delta S \leq 0$. The energy required to enforce this restriction is:
+\begin{equation}
+\Phi_a = -T \Delta S = -\kB T \ln s
+\end{equation}
+\end{proof}
+
+\begin{corollary}[Selectivity Extremes]
+\label{cor:selectivity}
+The aperture potential has limiting cases:
+\begin{enumerate}
+\item $s = 1$ (no selectivity, all configurations pass): $\Phi_a = 0$
+\item $s \to 0$ (high selectivity, almost nothing passes): $\Phi_a \to +\infty$
+\item $0 < s < 1$ (partial selectivity): $0 < \Phi_a < \infty$
+\end{enumerate}
+\end{corollary}
+
+\begin{theorem}[Non-Actualisations as Aperture-Blocked States]
+\label{thm:non_actualisation_aperture}
+Non-actualisations are precisely the configurations blocked by partition apertures:
+\begin{equation}
+\mathcal{N}(\mathcal{A}) = \{ \omega : \sigma_a(\omega) = 0 \text{ for the aperture } a \text{ that produced } \mathcal{A} \}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+When a partition operation occurs with aperture $a$:
+\begin{itemize}
+\item Configurations with $\sigma_a(\omega) = 1$ can pass—these become candidates for actualisation
+\item Configurations with $\sigma_a(\omega) = 0$ are blocked—these become non-actualisations
+\end{itemize}
+
+The actualisation $\mathcal{A}$ is selected from the passing configurations. All blocked configurations become non-actualisations. Since $|\{\omega : \sigma_a(\omega) = 0\}| = \Omega_{\text{total}} - \Omega_{\text{pass}} = (1 - s)\Omega_{\text{total}}$, the number of non-actualisations is typically vast when $s \ll 1$ (high selectivity).
+\end{proof}
+
+\begin{remark}[Connection to Entropy]
+The partition entropy $\Delta S = \kB \ln n_{\text{res}}$ can now be expressed in aperture terms:
+\begin{equation}
+\Delta S = \kB \ln\left(\frac{1}{s}\right) = \frac{\Phi_a}{T}
+\end{equation}
+
+Higher selectivity (smaller $s$) produces more entropy. This makes physical sense: a highly selective partition creates more non-actualisations, hence more categorical facts, hence more entropy.
+\end{remark}
+
+\begin{theorem}[Catalysis as Aperture Cycling]
+\label{thm:catalysis_aperture}
+A catalyst operates by creating and then destroying apertures, with net aperture change zero:
+\begin{equation}
+\Delta\Phi_{\text{catalyst}} = \Phi_{\text{created}} - \Phi_{\text{destroyed}} = 0
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+A catalyst:
+\begin{enumerate}
+\item Binds the substrate, creating an active site aperture with potential $\Phi_{\text{active}}$
+\item Facilitates the reaction within the aperture
+\item Releases the product, destroying the aperture
+\end{enumerate}
+
+The aperture created equals the aperture destroyed: $\Phi_{\text{created}} = \Phi_{\text{destroyed}} = \Phi_{\text{active}}$. Therefore:
+\begin{equation}
+\Delta\Phi_{\text{catalyst}} = \Phi_{\text{active}} - \Phi_{\text{active}} = 0
+\end{equation}
+
+This explains why catalysts are not consumed: they create and destroy apertures in a balanced cycle.
+\end{proof}
+
+\begin{corollary}[Catalysis Does Not Affect Entropy Production]
+\label{cor:catalysis_entropy}
+A catalyst changes the \emph{path} through aperture space but not the \emph{total entropy production}:
+\begin{equation}
+\Delta S_{\text{catalysed}} = \Delta S_{\text{uncatalysed}}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Entropy is produced by the reaction itself (the partition from reactants to products), not by the catalyst. The catalyst provides a different sequence of apertures—a lower-barrier pathway—but the initial and final states are identical. Since entropy is a state function, $\Delta S$ depends only on these endpoints.
+\end{proof}
+
+\begin{remark}[Irreversibility Through Aperture Creation]
+This aperture framework deepens the resolution of Loschmidt's paradox. Every physical process creates apertures:
+\begin{itemize}
+\item Chemical bonds are apertures (geometric constraints on molecular approach)
+\item Phase transitions destroy or create apertures (lattice structure)
+\item Collisions are transient apertures (scattering cross-sections)
+\end{itemize}
+
+These apertures generate non-actualisations. Reversal would require un-creating the apertures and their associated non-actualisations. But apertures, once created, have determined what passed and what did not. This determination is categorical and cannot be erased.
+
+The impossibility of reversal is not merely thermodynamic (statistically improbable) but geometric (categorically impossible). Apertures are partition boundaries, and partition boundaries are permanent features of categorical space.
+\end{remark}
+

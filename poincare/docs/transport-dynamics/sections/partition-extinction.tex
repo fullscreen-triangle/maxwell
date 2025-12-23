@@ -1,0 +1,139 @@
+%==============================================================================
+\section{The Partition Extinction Theorem}
+\label{sec:extinction}
+%==============================================================================
+
+\subsection{Categorical Unification of Carriers}
+
+The transport coefficients derived in Sections~\ref{sec:electrical}--\ref{sec:thermal} all depend on partition operations between carriers. If partition operations cease, transport coefficients vanish. We now establish conditions under which partition operations become impossible.
+
+\begin{definition}[Phase-Locking]
+\label{def:phase_locking}
+Two carriers $i$ and $j$ are phase-locked if their oscillatory modes maintain a fixed phase relationship. Phase-locked carriers form a single categorical entity: they cannot be distinguished by any partition operation.
+\end{definition}
+
+Phase-locking requires energy. Let $\Delta_{\text{lock}}$ be the phase-locking energy---the binding energy that maintains the fixed phase relationship. Thermal fluctuations with energy $\kB T$ can disrupt phase-locking if $\kB T > \Delta_{\text{lock}}$.
+
+\begin{theorem}[Phase-Locking Condition]
+\label{thm:phase_lock}
+Carriers become phase-locked when:
+\begin{equation}
+\kB T < \Delta_{\text{lock}}
+\label{eq:phase_lock_condition}
+\end{equation}
+This defines the critical temperature:
+\begin{equation}
+T_c = \frac{\Delta_{\text{lock}}}{\kB}
+\label{eq:critical_temperature}
+\end{equation}
+\end{theorem}
+
+\subsection{Partition Extinction}
+
+\begin{theorem}[Partition Extinction]
+\label{thm:partition_extinction}
+When carriers become phase-locked, partition operations between them are undefined. The partition lag does not approach zero continuously but transitions discontinuously:
+\begin{equation}
+\taulag(T) = \begin{cases}
+\taulag_{\text{normal}}(T) & T > T_c \\
+0 & T < T_c
+\end{cases}
+\label{eq:tau_discontinuous}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Partition is a categorical operation that distinguishes entities. For partition to occur, entities must be distinguishable. Phase-locked carriers are categorically identical---they constitute a single entity, not multiple entities.
+
+Attempting to partition a single entity is undefined. There is nothing to partition. The partition lag is not ``very small'' but exactly zero because no partition operation occurs.
+
+The transition is discontinuous because categorical identity is discrete: carriers are either distinguishable (partition possible) or indistinguishable (partition impossible). There is no intermediate state of ``partial distinguishability.'' \qed
+\end{proof}
+
+\subsection{Transport Coefficient Vanishing}
+
+\begin{corollary}[Transport Coefficient Vanishing]
+\label{cor:transport_vanishing}
+Below $T_c$, the transport coefficient vanishes exactly:
+\begin{equation}
+\Tcoeff(T < T_c) = \frac{1}{\mathcal{N}} \sum_{i,j} \taulag_{ij}(T) g_{ij} = 0
+\label{eq:transport_zero}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+When all carriers are phase-locked, $\taulag_{ij} = 0$ for all pairs. The sum vanishes identically, not asymptotically. \qed
+\end{proof}
+
+\subsection{Physical Interpretation}
+
+The partition extinction theorem has a physical interpretation in terms of the Newton's cradle mechanism discussed in Section~\ref{sec:electrical}.
+
+At high temperature, carriers (electrons, molecules, atoms) undergo thermal motion in three dimensions. Sequential momentum transfer---the Newton's cradle mechanism---is disrupted by thermal jiggling. Each collision event is a partition operation that randomises carrier trajectories, producing resistance, viscosity, or diffusive scattering.
+
+At low temperature, thermal motion decreases. Carriers align more precisely. The Newton's cradle operates more cleanly.
+
+Below $T_c$, carriers become phase-locked. They no longer behave as individual entities but as a single collective mode. The Newton's cradle analogy breaks down: there are no individual balls to collide, only a single unified object. Transport occurs without scattering because there are no individual carriers to scatter.
+
+\subsection{The Role of Bosonic Statistics}
+
+For bosonic carriers (helium-4 atoms, photons, phonons), phase-locking produces Bose-Einstein condensation. All carriers occupy the same quantum state, which is the same as saying they form a single categorical entity.
+
+For fermionic carriers (electrons), phase-locking requires pairing. The Pauli exclusion principle prevents multiple fermions from occupying the same state. However, pairs of fermions (with opposite spin) form composite bosons that can condense. This is the Cooper pairing mechanism \citep{cooper1956}.
+
+\begin{proposition}[Cooper Pairing as Categorical Unification]
+\label{prop:cooper}
+Cooper pairs are categorically unified electron pairs. The pairing breaks the distinguishability of individual electrons, extinguishing partition operations.
+\end{proposition}
+
+The BCS gap $\Delta$ is the energy required to break a Cooper pair---equivalently, to restore distinguishability and enable partition. The relation $\Delta = 1.76\kB T_c$ follows from the partition extinction condition \citep{bardeen1957}.
+
+\subsection{Thermal de Broglie Wavelength}
+
+For atomic gases, phase-locking occurs when quantum wavefunctions overlap. The thermal de Broglie wavelength is:
+\begin{equation}
+\lambda_{\text{dB}} = \sqrt{\frac{2\pi\hbar^2}{m\kB T}}
+\label{eq:de_broglie}
+\end{equation}
+
+When $\lambda_{\text{dB}}$ exceeds the interatomic spacing $d \sim n^{-1/3}$:
+\begin{equation}
+\lambda_{\text{dB}} > n^{-1/3}
+\label{eq:overlap_condition}
+\end{equation}
+wavefunctions overlap and atoms become indistinguishable.
+
+This gives the BEC critical temperature:
+\begin{equation}
+T_{\text{BEC}} = \frac{2\pi\hbar^2}{m\kB} \left( \frac{n}{\zeta(3/2)} \right)^{2/3}
+\label{eq:T_BEC}
+\end{equation}
+where $\zeta(3/2) \approx 2.612$ is the Riemann zeta function \citep{bose1924,einstein1924}.
+
+\subsection{Connection to Absolute Zero}
+
+The partition extinction theorem connects to the thermodynamic limit $T \to 0$. As established in prior work \citep{sachikonye2024kelvin}, absolute zero is the boundary where time ceases to exist---where no categorical completions occur.
+
+Transport requires categorical operations (partition, scattering). As $T \to 0$:
+\begin{enumerate}
+\item Thermal fluctuations vanish
+\item Carriers phase-lock
+\item Partition becomes impossible
+\item Transport becomes dissipationless
+\end{enumerate}
+
+The dissipationless states (superconductivity, superfluidity, BEC) are partial approaches to the $T = 0$ limit. Carriers achieve categorical unification while the system remains at $T > 0$. Transport occurs, but without partition---without the entropy-producing scattering events that constitute dissipation.
+
+\subsection{Experimental Signatures}
+
+The discontinuous nature of partition extinction predicts:
+
+\begin{enumerate}
+\item Sharp transitions at $T_c$ rather than gradual crossovers
+\item Exactly zero transport coefficient below $T_c$, not merely small values
+\item Macroscopic quantum coherence (single categorical state)
+\item Quantised collective excitations (flux quanta, quantised vortices)
+\end{enumerate}
+
+All these signatures are observed experimentally in superconductors \citep{tinkham2004}, superfluids \citep{tilley1990}, and Bose-Einstein condensates \citep{pethick2008}.
+

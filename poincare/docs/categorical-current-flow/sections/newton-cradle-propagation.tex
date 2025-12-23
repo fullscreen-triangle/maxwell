@@ -1,0 +1,185 @@
+%==============================================================================
+% SECTION 2: NEWTON'S CRADLE PROPAGATION
+%==============================================================================
+
+\section{The Newton's Cradle Model of Current Flow}
+\label{sec:newton_cradle}
+
+\subsection{Electron Drift versus Signal Propagation}
+
+A fundamental distinction exists between the velocity of individual electrons and the velocity of current signals in conductors.
+
+\begin{definition}[Drift Velocity]
+\label{def:drift_velocity}
+The drift velocity $v_d$ is the average velocity of conduction electrons under an applied electric field:
+\begin{equation}
+v_d = \frac{I}{neA}
+\label{eq:drift_velocity}
+\end{equation}
+where $I$ is current, $n$ is electron density, $e$ is electron charge, and $A$ is cross-sectional area.
+\end{definition}
+
+\begin{example}[Copper Wire]
+For a copper wire with $I = 1$ A, $A = 1$ mm$^2$, and $n = 8.5 \times 10^{28}$ m$^{-3}$:
+\begin{equation}
+v_d = \frac{1}{8.5 \times 10^{28} \times 1.6 \times 10^{-19} \times 10^{-6}} \approx 7.4 \times 10^{-5} \text{ m/s}
+\end{equation}
+At this velocity, an electron would take approximately 4 hours to traverse 1 metre of wire.
+\end{example}
+
+\begin{definition}[Signal Velocity]
+\label{def:signal_velocity}
+The signal velocity $v_s$ is the speed at which electromagnetic disturbances propagate along the conductor:
+\begin{equation}
+v_s = \frac{c}{\sqrt{\varepsilon_r \mu_r}} \approx 0.5c \text{ to } 0.9c
+\label{eq:signal_velocity}
+\end{equation}
+where $\varepsilon_r$ and $\mu_r$ are relative permittivity and permeability of the medium.
+\end{definition}
+
+\begin{theorem}[Velocity Disparity]
+\label{thm:velocity_disparity}
+The ratio of signal velocity to drift velocity is:
+\begin{equation}
+\frac{v_s}{v_d} \sim 10^{12}
+\label{eq:velocity_ratio}
+\end{equation}
+Current propagation cannot be explained by electron transport.
+\end{theorem}
+
+\begin{proof}
+From the definitions:
+\begin{equation}
+\frac{v_s}{v_d} = \frac{c/\sqrt{\varepsilon_r \mu_r}}{I/(neA)} = \frac{neAc}{I\sqrt{\varepsilon_r \mu_r}}
+\end{equation}
+
+For typical values ($n \sim 10^{28}$ m$^{-3}$, $A \sim 10^{-6}$ m$^2$, $I \sim 1$ A):
+\begin{equation}
+\frac{v_s}{v_d} \sim \frac{10^{28} \times 10^{-19} \times 10^{-6} \times 10^8}{1} \sim 10^{12}
+\end{equation}
+
+The signal arrives $10^{12}$ times faster than electrons could carry it. \qed
+\end{proof}
+
+\subsection{The Newton's Cradle Mechanism}
+
+\begin{definition}[Newton's Cradle Propagation]
+\label{def:newton_cradle}
+In a Newton's cradle, momentum transfers through a chain of objects without individual objects traversing the chain:
+\begin{equation}
+\text{Ball}_1 \xrightarrow{\text{collision}} \text{Ball}_2 \xrightarrow{\text{collision}} \cdots \xrightarrow{\text{collision}} \text{Ball}_N
+\end{equation}
+The momentum transfer time $\tau_{\text{transfer}} \ll L/v_{\text{ball}}$, where $L$ is the chain length.
+\end{definition}
+
+\begin{theorem}[Electron Chain Transfer]
+\label{thm:electron_chain}
+Electrical current propagates through successive electron displacement:
+\begin{equation}
+e_1 \to e_2 \to e_3 \to \cdots \to e_N
+\end{equation}
+where each $e_i \to e_{i+1}$ represents a displacement event, not physical electron motion between sites.
+\end{theorem}
+
+\begin{proof}
+Consider a conductor of length $L$ with electron density $n$. The total number of electrons is $N = nAL$.
+
+When a potential difference is applied:
+\begin{enumerate}
+\item Electron $e_1$ at position $x_1$ shifts by $\delta x$ due to the field
+\item This shift displaces $e_2$ at position $x_2$ through Coulomb repulsion
+\item The displacement propagates through the electron gas at speed $v_s \sim c$
+\item Electron $e_N$ at the far end shifts, constituting current flow
+\end{enumerate}
+
+The propagation time is:
+\begin{equation}
+t_{\text{propagate}} = \frac{L}{v_s} \sim \frac{L}{c}
+\end{equation}
+
+The time for a single electron to traverse:
+\begin{equation}
+t_{\text{drift}} = \frac{L}{v_d} \sim \frac{L}{10^{-4} \text{ m/s}}
+\end{equation}
+
+Since $t_{\text{propagate}} \ll t_{\text{drift}}$, current propagation is a collective displacement, not individual transport. \qed
+\end{proof}
+
+\subsection{Phase-Lock Network of Conduction Electrons}
+
+\begin{definition}[Electron Phase-Lock Network]
+\label{def:electron_network}
+The conduction electrons in a metal form a phase-lock network $\mathcal{G} = (V, E)$ where:
+\begin{itemize}
+\item Vertices $V$: electron oscillatory modes
+\item Edges $E$: phase-lock relationships through Coulomb interaction
+\end{itemize}
+Edge weight $g_{ij}$ quantifies the coupling strength between electrons $i$ and $j$.
+\end{definition}
+
+\begin{theorem}[Network Density in Metals]
+\label{thm:metal_network_density}
+Conduction electrons in metals form a dense phase-lock network with density:
+\begin{equation}
+\rho_{\mathcal{G}} = \frac{|E|}{|V|(|V|-1)/2} \approx 1
+\label{eq:metal_network_density}
+\end{equation}
+This is the defining characteristic of metallic conduction.
+\end{theorem}
+
+\begin{proof}
+In metals, conduction electrons are delocalised across the lattice. The Fermi energy $E_F \sim 5$ eV corresponds to wavelength:
+\begin{equation}
+\lambda_F = \frac{h}{\sqrt{2m_e E_F}} \sim 0.5 \text{ nm}
+\end{equation}
+
+This is comparable to the lattice spacing $a \sim 0.3$ nm. Each electron's wavefunction overlaps with $\sim 10$ nearest neighbours. The resulting Coulomb coupling creates phase-lock edges between all overlapping electrons.
+
+For $N \sim 10^{28}$ electrons per m$^3$, essentially all pairs within the coherence length are coupled, giving $\rho_{\mathcal{G}} \approx 1$. \qed
+\end{proof}
+
+\begin{corollary}[Conductor versus Insulator]
+\label{cor:conductor_insulator}
+The distinction between conductors and insulators is:
+\begin{align}
+\text{Conductor:} \quad &\rho_{\mathcal{G}} \approx 1 \quad \text{(dense electron network)} \\
+\text{Insulator:} \quad &\rho_{\mathcal{G}} \ll 1 \quad \text{(sparse electron network)}
+\end{align}
+\end{corollary}
+
+\subsection{Categorical Interpretation}
+
+\begin{definition}[Current as Categorical Propagation]
+\label{def:current_categorical}
+Electric current is the propagation of categorical state changes through the electron phase-lock network:
+\begin{equation}
+I = \frac{dQ}{dt} = e \cdot \frac{d}{dt}\left[\sum_i C_i\right]
+\label{eq:current_categorical}
+\end{equation}
+where $C_i$ denotes the categorical state of electron $i$ and the sum represents the total categorical displacement.
+\end{definition}
+
+\begin{theorem}[Categorical Current Speed]
+\label{thm:categorical_speed}
+The speed of categorical propagation through the electron network equals the signal velocity:
+\begin{equation}
+v_{\text{categorical}} = v_s = \frac{c}{\sqrt{\varepsilon_r \mu_r}}
+\label{eq:categorical_speed}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Categorical state changes propagate through S-window adjacency. In a dense phase-lock network ($\rho_{\mathcal{G}} \approx 1$), every electron is within S-window distance of its neighbours. The S-transformation rate is limited only by the electromagnetic coupling speed.
+
+The electromagnetic field mediating electron-electron interaction propagates at:
+\begin{equation}
+v_{\text{EM}} = \frac{c}{\sqrt{\varepsilon_r \mu_r}}
+\end{equation}
+
+Therefore, categorical propagation occurs at this speed. \qed
+\end{proof}
+
+\begin{remark}
+The Newton's cradle model resolves the apparent paradox of slow electrons producing fast signals. Current is not electron flow; it is categorical state propagation. The dense electron network enables this propagation at electromagnetic speeds.
+\end{remark}
+

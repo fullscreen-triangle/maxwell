@@ -1,0 +1,163 @@
+%==============================================================================
+% SECTION 5: PARTITION LAG IN ELECTRON TRANSPORT
+%==============================================================================
+
+\section{Partition Lag in Electron Transport}
+\label{sec:partition_lag}
+
+\subsection{Definition of Scattering Partition Lag}
+
+\begin{definition}[Scattering Partition Lag]
+\label{def:scattering_lag}
+The scattering partition lag $\tau_{s,ij}$ is the irreducible temporal interval between an electron $i$ initiating a scattering event with lattice site $j$ and the establishment of the scattered state:
+\begin{equation}
+\tau_{s,ij} = t_{\text{scattered}} - t_{\text{incident}} > 0
+\label{eq:scattering_lag}
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Positive Scattering Time]
+\label{thm:positive_scattering}
+Scattering operations require positive time: $\tau_{s,ij} > 0$ for all scattering events.
+\end{theorem}
+
+\begin{proof}
+Scattering distinguishes between incident and scattered categorical states. Distinguishing requires information acquisition about the lattice potential. Information acquisition in physical systems requires finite time by causality constraints. Hence $\tau_{s,ij} > 0$. \qed
+\end{proof}
+
+\subsection{Mean Free Path and Scattering Time}
+
+\begin{definition}[Mean Free Path]
+\label{def:mean_free_path}
+The mean free path $\lambda$ is the average distance between scattering events:
+\begin{equation}
+\lambda = v_F \tau_s
+\label{eq:mean_free_path}
+\end{equation}
+where $v_F$ is the Fermi velocity and $\tau_s$ is the mean scattering time.
+\end{definition}
+
+\begin{theorem}[Scattering Time from Partition Lag]
+\label{thm:scattering_time}
+The mean scattering time is the average of individual partition lags:
+\begin{equation}
+\tau_s = \langle \tau_{s,ij} \rangle = \frac{1}{N_{\text{scatter}}} \sum_{i,j} \tau_{s,ij}
+\label{eq:mean_scattering_time}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Scattering events are statistically distributed across electron-lattice pairs. The mean scattering time is the expectation over all possible scattering interactions. Since each interaction has partition lag $\tau_{s,ij}$, the mean is:
+\begin{equation}
+\tau_s = \mathbb{E}[\tau_{s,ij}] = \frac{1}{N_{\text{scatter}}} \sum_{i,j} \tau_{s,ij}
+\end{equation}
+\qed
+\end{proof}
+
+\subsection{Temperature Dependence of Partition Lag}
+
+\begin{theorem}[Phonon Partition Lag]
+\label{thm:phonon_lag}
+The phonon-mediated partition lag increases with temperature:
+\begin{equation}
+\tau_{s,\text{phonon}}^{-1} = A_{\text{ph}} T \quad \text{for } T > \Theta_D
+\label{eq:phonon_lag}
+\end{equation}
+where $A_{\text{ph}}$ is a material-dependent constant and $\Theta_D$ is the Debye temperature.
+\end{theorem}
+
+\begin{proof}
+Phonon occupation number follows Bose-Einstein statistics:
+\begin{equation}
+n_{\text{ph}}(\omega) = \frac{1}{e^{\hbar\omega/\kB T} - 1}
+\end{equation}
+
+For $T > \Theta_D$, $\hbar\omega \ll \kB T$, so:
+\begin{equation}
+n_{\text{ph}} \approx \frac{\kB T}{\hbar\omega} \propto T
+\end{equation}
+
+Scattering rate is proportional to phonon occupation:
+\begin{equation}
+\frac{1}{\tau_{s,\text{phonon}}} \propto n_{\text{ph}} \propto T
+\end{equation}
+\qed
+\end{proof}
+
+\begin{corollary}[Residual Partition Lag]
+\label{cor:residual_lag}
+At $T \to 0$, phonon scattering vanishes, leaving only impurity and defect scattering:
+\begin{equation}
+\lim_{T \to 0} \frac{1}{\tau_s} = \frac{1}{\tau_{\text{impurity}}} + \frac{1}{\tau_{\text{defect}}} = \frac{1}{\tau_0}
+\label{eq:residual_lag}
+\end{equation}
+This gives the residual resistivity $\rho_0 = m_e/(ne^2\tau_0)$.
+\end{corollary}
+
+\subsection{Undetermined Residue in Scattering}
+
+\begin{definition}[Scattering Undetermined Residue]
+\label{def:scattering_residue}
+During scattering partition lag $\tau_{s,ij}$, the electron exists in undetermined superposition across possible scattered states. The undetermined residue $n_{\text{res}}^{(s)}$ counts states not assignable to either incident or scattered outcome.
+\end{definition}
+
+\begin{theorem}[Scattering Entropy Production]
+\label{thm:scattering_entropy}
+Each scattering event produces entropy:
+\begin{equation}
+\Delta S_{\text{scatter}} = \kB \ln n_{\text{res}}^{(s)} > 0
+\label{eq:scattering_entropy}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Undetermined residue represents states that cannot be classified during $\tau_{s,ij}$. These states contribute $\ln n_{\text{res}}^{(s)}$ to entropy. By Theorem~\ref{thm:positive_scattering}, $\tau_{s,ij} > 0$, hence $n_{\text{res}}^{(s)} > 1$, hence $\Delta S_{\text{scatter}} > 0$. \qed
+\end{proof}
+
+\begin{remark}
+This entropy production is the microscopic origin of Joule heating. Energy dissipated as heat is:
+\begin{equation}
+Q = T \Delta S_{\text{scatter}} = \kB T \ln n_{\text{res}}^{(s)}
+\end{equation}
+per scattering event. Summed over all scatterings, this gives $P = I^2 R$.
+\end{remark}
+
+\subsection{Partition Lag Statistics}
+
+\begin{definition}[Partition Lag Distribution]
+\label{def:lag_distribution}
+The partition lag distribution $P(\tau_s)$ describes the probability of scattering with lag $\tau_s$:
+\begin{equation}
+P(\tau_s) = \frac{1}{\langle \tau_s \rangle} e^{-\tau_s / \langle \tau_s \rangle}
+\label{eq:lag_distribution}
+\end{equation}
+This exponential distribution follows from Poisson scattering statistics.
+\end{definition}
+
+\begin{theorem}[Partition Lag Variance]
+\label{thm:lag_variance}
+The variance of partition lag is:
+\begin{equation}
+\text{Var}(\tau_s) = \langle \tau_s \rangle^2
+\label{eq:lag_variance}
+\end{equation}
+The coefficient of variation is unity: $\text{CV} = 1$.
+\end{theorem}
+
+\begin{proof}
+For exponential distribution with mean $\mu = \langle \tau_s \rangle$:
+\begin{equation}
+\text{Var}(\tau_s) = \mu^2 = \langle \tau_s \rangle^2
+\end{equation}
+
+The standard deviation equals the mean:
+\begin{equation}
+\sigma_{\tau_s} = \langle \tau_s \rangle \implies \text{CV} = \frac{\sigma_{\tau_s}}{\langle \tau_s \rangle} = 1
+\end{equation}
+\qed
+\end{proof}
+
+\begin{remark}
+The unit coefficient of variation indicates that scattering is highly stochastic. Individual electrons experience widely varying partition lags. Only ensemble averages produce deterministic transport behaviour (Ohm's law).
+\end{remark}
+

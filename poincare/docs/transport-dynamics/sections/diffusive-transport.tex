@@ -1,0 +1,119 @@
+%==============================================================================
+\section{Diffusive Transport}
+\label{sec:diffusive}
+%==============================================================================
+
+\subsection{Atomic Scattering Partition Dynamics}
+
+Diffusion is the transport of mass driven by concentration gradients. Atoms or molecules move from regions of high concentration to low concentration through random thermal motion interrupted by scattering events \citep{fick1855,einstein1905diffusion}.
+
+\begin{definition}[Diffusive Partition]
+\label{def:diffusive_partition}
+A diffusive partition operation occurs when a diffusing species interacts with the host medium, randomising its trajectory. The scattering time $\tau_d$ serves as the partition lag.
+\end{definition}
+
+For diffusive transport, the flux $\mathbf{J} = -D\nabla c$ relates to concentration gradient, where $D$ is the diffusivity. The transport coefficient is $\Tcoeff = D^{-1}$.
+
+\begin{theorem}[Diffusivity]
+\label{thm:diffusivity}
+The diffusivity of a species in a medium is:
+\begin{equation}
+D^{-1} \propto \sum_{i,j} \tau_{d,ij} g_{ij}
+\label{eq:diffusivity_partition}
+\end{equation}
+where the proportionality involves the mean square displacement per partition event.
+\end{theorem}
+
+\subsection{Einstein Relation}
+
+Einstein's theory of Brownian motion relates diffusivity to mobility \citep{einstein1905diffusion}:
+\begin{equation}
+D = \frac{\kB T}{6\pi\mu r}
+\label{eq:einstein_stokes}
+\end{equation}
+for spherical particles of radius $r$ in a medium with viscosity $\mu$.
+
+The viscosity $\mu = \sum \tau_c g$ from Section~\ref{sec:viscous} gives:
+\begin{equation}
+D = \frac{\kB T}{6\pi r \sum \tau_c g}
+\label{eq:diffusivity_viscosity}
+\end{equation}
+
+Thus $D^{-1} \propto \sum \tau_c g$, confirming the partition structure of diffusive transport.
+
+\subsection{Random Walk and Partition}
+
+Diffusive motion is a random walk with step length $\lambda$ (mean free path) and step time $\tau$ (partition lag) \citep{chandrasekhar1943}:
+\begin{equation}
+\langle x^2 \rangle = 2Dt = \frac{\lambda^2}{\tau} t
+\label{eq:random_walk}
+\end{equation}
+
+giving:
+\begin{equation}
+D = \frac{\lambda^2}{2\tau} = \frac{1}{2n\sigma^2\bar{v}\tau}
+\label{eq:diffusivity_random}
+\end{equation}
+
+Each step involves a partition operation (scattering event). The partition lag $\tau$ determines how often direction randomisation occurs. Frequent partitions ($\tau$ small) give slow diffusion; rare partitions ($\tau$ large) give fast diffusion.
+
+\subsection{Temperature Dependence}
+
+For gases, diffusivity increases with temperature:
+\begin{equation}
+D \propto T^{3/2}
+\label{eq:diffusivity_gas_T}
+\end{equation}
+
+This arises from $\lambda \propto T^0$ (ideal gas), $\bar{v} \propto T^{1/2}$, and $\tau = \lambda/\bar{v} \propto T^{-1/2}$, giving $D = \lambda^2/(2\tau) \propto T^{1/2} \cdot T = T^{3/2}$.
+
+For diffusion in solids, the Arrhenius form dominates:
+\begin{equation}
+D = D_0 \exp\left(-\frac{E_a}{\kB T}\right)
+\label{eq:diffusivity_solid_T}
+\end{equation}
+
+The activation energy $E_a$ represents the barrier for atomic jumps between lattice sites \citep{shewmon1963}. In partition terms, $E_a$ is the energy required to initiate a partition operation that moves the atom to an adjacent site.
+
+\subsection{Fick's Laws}
+
+\begin{theorem}[Fick's First Law]
+\label{thm:fick1}
+The diffusive flux is proportional to the concentration gradient:
+\begin{equation}
+\mathbf{J} = -D\nabla c
+\label{eq:fick1}
+\end{equation}
+\end{theorem}
+
+\begin{theorem}[Fick's Second Law]
+\label{thm:fick2}
+The concentration evolves according to:
+\begin{equation}
+\frac{\partial c}{\partial t} = D\nabla^2 c
+\label{eq:fick2}
+\end{equation}
+\end{theorem}
+
+These laws follow from mass conservation combined with the constitutive relation. The diffusivity $D = \lambda^2/(2\tau)$ sets the rate of concentration equilibration, with partition lag determining the equilibration timescale.
+
+\subsection{Self-Diffusion and Tracer Diffusion}
+
+Self-diffusion measures the motion of atoms in their own pure substance. Tracer diffusion measures motion of labelled atoms at low concentration. Both follow the partition structure:
+\begin{equation}
+D_{\text{self}} = \frac{\lambda_{\text{self}}^2}{2\tau_{\text{self}}}
+\label{eq:self_diffusion}
+\end{equation}
+
+The partition lag $\tau_{\text{self}}$ depends on atom-atom interactions in the pure substance, while $\tau_{\text{tracer}}$ depends on tracer-host interactions.
+
+\subsection{Knudsen Diffusion}
+
+In porous media with pore size $d$ smaller than the mean free path $\lambda$, Knudsen diffusion dominates \citep{knudsen1909}:
+\begin{equation}
+D_K = \frac{d}{3}\sqrt{\frac{8\kB T}{\pi m}}
+\label{eq:knudsen}
+\end{equation}
+
+Here, partition operations occur at pore walls rather than in gas-phase collisions. The pore diameter $d$ replaces the mean free path, and wall collisions replace molecular collisions. The partition structure remains: transport is limited by scattering (wall) events.
+

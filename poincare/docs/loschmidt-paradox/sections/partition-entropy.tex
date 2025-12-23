@@ -1,0 +1,89 @@
+%==============================================================================
+\section{Partition Entropy: Independent of Time}
+\label{sec:partition_entropy}
+%==============================================================================
+
+\subsection{The Partition Operation}
+
+\begin{definition}[Partition Operation]
+\label{def:partition}
+A partition operation $\Pi: \mathcal{C} \to \mathcal{C}_1 \sqcup \mathcal{C}_2$ divides a categorical state $\mathcal{C}$ into distinguishable sub-states $\mathcal{C}_1$ and $\mathcal{C}_2$. The partition creates a categorical boundary separating states that were previously indistinguishable.
+\end{definition}
+
+\begin{definition}[Partition Lag]
+\label{def:partition_lag}
+The partition lag $\taulag$ is the irreducible temporal interval between initiating a partition and establishing the partitioned result:
+\begin{equation}
+\taulag = t_{\text{partitioned}} - t_{\text{initiate}} > 0
+\label{eq:partition_lag}
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Positive Partition Lag]
+\label{thm:positive_lag}
+Partition operations require positive time: $\taulag > 0$ for all partitions.
+\end{theorem}
+
+\begin{proof}
+Partitioning distinguishes between categorical states. Distinguishing requires information acquisition about which side of the partition boundary a state occupies. Information acquisition in physical systems requires finite time by causality constraints. Hence $\taulag > 0$. \qed
+\end{proof}
+
+\subsection{Undetermined Residue}
+
+\begin{definition}[Undetermined Residue]
+\label{def:residue}
+During partition lag $\taulag$, the system exists in undetermined superposition across the partition boundary. The undetermined residue $n_{\text{res}}$ counts states that cannot be assigned to either $\mathcal{C}_1$ or $\mathcal{C}_2$ during the partition interval.
+\end{definition}
+
+\begin{theorem}[Partition Entropy Production]
+\label{thm:partition_entropy}
+Every partition operation produces entropy:
+\begin{equation}
+\Delta S = \kB \ln n_{\text{res}} > 0
+\label{eq:partition_entropy}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Undetermined residue represents states that contribute to $\ln n_{\text{res}}$ entropy during partition lag. By Theorem~\ref{thm:positive_lag}, $\taulag > 0$, hence undetermined residue exists during every partition. Since $n_{\text{res}} \geq 2$ (at least one state on each side of the boundary is temporarily undetermined), $\Delta S = \kB \ln n_{\text{res}} \geq \kB \ln 2 > 0$. \qed
+\end{proof}
+
+\subsection{Temporal Independence}
+
+\begin{theorem}[Temporal Independence of Partition Entropy]
+\label{thm:temporal_independence}
+Partition entropy production is independent of the temporal direction of the underlying dynamics:
+\begin{equation}
+\Delta S(\Pi, t \to t') = \Delta S(\Pi, t' \to t) = \kB \ln n_{\text{res}}
+\label{eq:temporal_independence}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The entropy $\Delta S = \kB \ln n_{\text{res}}$ depends only on:
+\begin{enumerate}
+\item The categorical structure being partitioned
+\item The number of states in undetermined residue
+\end{enumerate}
+
+Neither of these quantities depends on whether time flows forward ($t \to t'$) or backward ($t' \to t$). The partition creates categorical boundaries regardless of temporal direction. The undetermined residue exists during partition lag regardless of which direction the lag is measured.
+
+Formally, let $\mathcal{T}: t \to -t$ denote time reversal. The partition operation $\Pi$ acts on categorical structure $\mathcal{C}$, which is a configuration space property, not a phase space property. Under time reversal, velocities $\mathbf{v} \to -\mathbf{v}$ but configurations $\mathbf{x} \to \mathbf{x}$ are unchanged. Since $\mathcal{C}$ depends only on configurations:
+\begin{equation}
+\mathcal{T}[\Pi(\mathcal{C})] = \Pi(\mathcal{T}[\mathcal{C}]) = \Pi(\mathcal{C})
+\end{equation}
+
+The partition operation commutes with time reversal. Therefore, partition entropy is time-reversal invariant. \qed
+\end{proof}
+
+\begin{corollary}[Entropy Increases in Both Temporal Directions]
+\label{cor:both_directions}
+Under time-symmetric dynamics, entropy increases regardless of the direction of temporal evolution.
+\end{corollary}
+
+\begin{proof}
+Let $\gamma$ be a trajectory from $A$ to $B$ and $\gamma^R$ be the time-reversed trajectory from $B$ to $A$. Along $\gamma$, partition operations produce entropy $\Delta S_\gamma > 0$. Along $\gamma^R$, partition operations produce entropy $\Delta S_{\gamma^R} > 0$.
+
+Both trajectories increase entropy. The time-reversal symmetry of the underlying dynamics does not imply time-reversal of entropy production, because partition entropy is temporal-direction-independent. \qed
+\end{proof}
+

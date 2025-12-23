@@ -1,0 +1,79 @@
+%==============================================================================
+\section{Topological Irreversibility}
+\label{sec:irreversibility}
+%==============================================================================
+
+\subsection{Partition Boundaries Cannot Be Erased}
+
+\begin{theorem}[Topological Irreversibility]
+\label{thm:topological_irreversibility}
+Partition operations are topologically irreversible: once a categorical boundary is created, it cannot be removed without creating additional boundaries.
+\end{theorem}
+
+\begin{proof}
+Let $\Pi: \mathcal{C} \to \mathcal{C}_1 \sqcup \mathcal{C}_2$ be a partition creating boundary $\partial$ between $\mathcal{C}_1$ and $\mathcal{C}_2$.
+
+Suppose an inverse operation $\Pi^{-1}$ exists that removes $\partial$ and restores $\mathcal{C}$. This operation must:
+\begin{enumerate}
+\item Identify which states belong to $\mathcal{C}_1$ versus $\mathcal{C}_2$ (to know what to merge)
+\item Merge these states into $\mathcal{C}$
+\end{enumerate}
+
+Step (1) requires distinguishing $\mathcal{C}_1$ from $\mathcal{C}_2$, which is itself a partition operation creating a new boundary $\partial'$ (the distinction ``belongs to $\mathcal{C}_1$'' versus ``belongs to $\mathcal{C}_2$'').
+
+Therefore, $\Pi^{-1}$ cannot remove $\partial$ without creating $\partial'$. The net effect is boundary creation, not removal. \qed
+\end{proof}
+
+\begin{corollary}[Monotonic Boundary Accumulation]
+\label{cor:monotonic_boundaries}
+The total number of categorical boundaries increases monotonically under any sequence of physical operations.
+\end{corollary}
+
+\begin{proof}
+Every physical operation that creates distinctions is a partition. By Theorem~\ref{thm:topological_irreversibility}, partitions create boundaries that cannot be removed. Therefore, boundaries accumulate monotonically. \qed
+\end{proof}
+
+\subsection{Entropy as Boundary Count}
+
+\begin{theorem}[Entropy-Boundary Correspondence]
+\label{thm:entropy_boundary}
+Entropy is proportional to the number of categorical boundaries:
+\begin{equation}
+S = \kB \sum_i \ln n_i
+\label{eq:entropy_boundary}
+\end{equation}
+where the sum is over all partition boundaries and $n_i$ is the branching factor at boundary $i$.
+\end{theorem}
+
+\begin{proof}
+Each partition boundary $i$ contributes entropy $\kB \ln n_i$ (Theorem~\ref{thm:partition_entropy}). Total entropy is the sum over all boundaries. \qed
+\end{proof}
+
+\begin{corollary}[Second Law from Boundary Accumulation]
+\label{cor:second_law}
+The Second Law of Thermodynamics follows from monotonic boundary accumulation:
+\begin{equation}
+\frac{dS}{dt} = \kB \sum_{\text{new boundaries}} \ln n_i \geq 0
+\label{eq:second_law}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+New boundaries are created but never destroyed (Corollary~\ref{cor:monotonic_boundaries}). Each new boundary contributes $\kB \ln n_i > 0$. Therefore, $dS/dt \geq 0$. \qed
+\end{proof}
+
+\subsection{Why Time-Reversal Does Not Help}
+
+\begin{theorem}[Time-Reversal Preserves Boundaries]
+\label{thm:time_reversal_boundaries}
+Time-reversal of dynamics does not remove categorical boundaries.
+\end{theorem}
+
+\begin{proof}
+Categorical boundaries are properties of configuration space, not phase space. Time-reversal acts on phase space by negating momenta: $(\mathbf{x}, \mathbf{p}) \to (\mathbf{x}, -\mathbf{p})$.
+
+Configuration-space boundaries depend only on positions $\mathbf{x}$, which are unchanged under time-reversal. Therefore, all boundaries present before time-reversal remain present after time-reversal.
+
+Time-reversed evolution may change which regions of configuration space are occupied, but it cannot erase the boundaries between regions. \qed
+\end{proof}
+

@@ -1,0 +1,190 @@
+%==============================================================================
+% SECTION 8: UNIFIED TRANSPORT COEFFICIENTS
+%==============================================================================
+
+\section{Unified Transport Coefficients}
+\label{sec:transport}
+
+\subsection{The Universal Form}
+
+\begin{theorem}[Universal Transport Coefficient]
+\label{thm:universal_transport}
+All transport coefficients have the form:
+\begin{equation}
+\Xi = \frac{1}{\mathcal{N}} \sum_{i,j} \tau_{p,ij} \cdot g_{ij}
+\label{eq:universal_transport}
+\end{equation}
+where $\tau_{p,ij}$ is the partition lag, $g_{ij}$ is the coupling strength, and $\mathcal{N}$ is a normalisation factor.
+\end{theorem}
+
+\begin{proof}
+Transport occurs through S-transformation across a medium. Each transformation step involves:
+\begin{enumerate}
+\item Partition lag $\tau_{p,ij}$: time to complete the categorical transition
+\item Coupling strength $g_{ij}$: probability of the transition occurring
+\end{enumerate}
+
+The total transport resistance is the sum over all pairs:
+\begin{equation}
+\text{Resistance} \propto \sum_{i,j} \tau_{p,ij} \cdot g_{ij}
+\end{equation}
+
+The transport coefficient (inverse resistance or direct coefficient) is:
+\begin{equation}
+\Xi = \frac{1}{\mathcal{N}} \sum_{i,j} \tau_{p,ij} \cdot g_{ij}
+\end{equation}
+where $\mathcal{N}$ ensures correct units. \qed
+\end{proof}
+
+\subsection{Transport Coefficient Table}
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{System} & \textbf{Coefficient} & \textbf{$\tau_p$} & \textbf{$g$} \\
+\midrule
+Fluid flow & Viscosity $\mu$ & Molecular relaxation & Phase-lock coupling \\
+Current flow & Resistivity $\rho$ & Scattering time & Electron-lattice coupling \\
+Heat conduction & Thermal resistance $1/k$ & Phonon scattering & Phonon coupling \\
+Mass diffusion & Inverse diffusivity $1/D$ & Collision time & Molecular coupling \\
+EM propagation & Impedance $\sqrt{\mu_0/\varepsilon_0}$ & Field relaxation & Vacuum coupling \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Specific Forms}
+
+\begin{definition}[Fluid Viscosity]
+\label{def:fluid_viscosity}
+Fluid viscosity is:
+\begin{equation}
+\mu = \sum_{i,j} \tau_{p,ij}^{(\text{mol})} \cdot g_{ij}^{(\text{mol})}
+\label{eq:fluid_viscosity}
+\end{equation}
+where the sum is over molecular pairs.
+\end{definition}
+
+\begin{definition}[Electrical Resistivity]
+\label{def:electrical_resistivity}
+Electrical resistivity is:
+\begin{equation}
+\rho = \frac{1}{ne^2} \sum_{i,j} \tau_{s,ij} \cdot g_{ij}^{(e-\text{lat})}
+\label{eq:electrical_resistivity}
+\end{equation}
+where the sum is over electron-lattice pairs.
+\end{definition}
+
+\begin{definition}[Thermal Resistance]
+\label{def:thermal_resistance}
+Thermal resistance (inverse conductivity) is:
+\begin{equation}
+\frac{1}{k} = \frac{1}{C_v v_{\text{ph}}} \sum_{i,j} \tau_{ph,ij} \cdot g_{ij}^{(\text{ph})}
+\label{eq:thermal_resistance}
+\end{equation}
+where the sum is over phonon pairs, $C_v$ is heat capacity, and $v_{\text{ph}}$ is phonon velocity.
+\end{definition}
+
+\subsection{Wiedemann-Franz Law}
+
+\begin{theorem}[Wiedemann-Franz Law]
+\label{thm:wiedemann_franz}
+The ratio of thermal to electrical conductivity is:
+\begin{equation}
+\frac{k}{\sigma} = L T
+\label{eq:wiedemann_franz}
+\end{equation}
+where $L = \pi^2 \kB^2/(3e^2) = 2.44 \times 10^{-8}$ W$\Omega$/K$^2$ is the Lorenz number.
+\end{theorem}
+
+\begin{proof}
+In metals, both electrical and thermal conduction are dominated by electrons.
+
+Electrical conductivity:
+\begin{equation}
+\sigma = \frac{ne^2 \tau_s}{m_e}
+\end{equation}
+
+Thermal conductivity (electronic):
+\begin{equation}
+k_e = \frac{1}{3} C_e v_F^2 \tau_s = \frac{1}{3} \frac{\pi^2 n \kB^2 T}{m_e} \tau_s
+\end{equation}
+using $C_e = \pi^2 n \kB^2 T / (2E_F)$ and $v_F^2 = 2E_F/m_e$.
+
+The ratio:
+\begin{equation}
+\frac{k_e}{\sigma} = \frac{\frac{\pi^2 n \kB^2 T}{3m_e} \tau_s}{\frac{ne^2 \tau_s}{m_e}} = \frac{\pi^2 \kB^2 T}{3e^2} = LT
+\end{equation}
+\qed
+\end{proof}
+
+\begin{remark}
+The Wiedemann-Franz law follows because both conductivities share the same partition lag $\tau_s$ and coupling structure $g_{ij}$. When electrons carry both charge and heat, their transport coefficients are proportional.
+
+Deviations from Wiedemann-Franz occur when:
+\begin{itemize}
+\item Phonons contribute to thermal conduction (insulators)
+\item Inelastic scattering violates $\tau_{\text{electrical}} = \tau_{\text{thermal}}$
+\item Strong electron correlations modify coupling structure
+\end{itemize}
+\end{remark}
+
+\subsection{Dimensional Analysis}
+
+\begin{theorem}[Dimensional Consistency]
+\label{thm:dimensional_consistency}
+All transport coefficients satisfy dimensional consistency under the universal form.
+\end{theorem}
+
+\begin{proof}
+The partition lag has dimension [time]. The coupling strength has dimension dependent on the transport mode:
+
+\begin{center}
+\begin{tabular}{lllll}
+\toprule
+\textbf{Coefficient} & \textbf{Dimension} & \textbf{$[\tau_p]$} & \textbf{$[g]$} & \textbf{$[\mathcal{N}]$} \\
+\midrule
+$\mu$ & Pa$\cdot$s & s & Pa & 1 \\
+$\rho$ & $\Omega\cdot$m & s & 1 & A$^2$/m$^3$ \\
+$1/k$ & m$\cdot$K/W & s & 1/(m$^2\cdot$K) & J/(m$^3\cdot$s$\cdot$K) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+In each case:
+\begin{equation}
+[\Xi] = \frac{[\tau_p] \cdot [g]}{[\mathcal{N}]}
+\end{equation}
+giving the correct dimensions. \qed
+\end{proof}
+
+\subsection{Temperature Dependence}
+
+\begin{theorem}[Universal Temperature Scaling]
+\label{thm:temperature_scaling}
+Transport coefficients scale with temperature according to:
+\begin{equation}
+\Xi(T) = \Xi_0 + A T^n
+\label{eq:temperature_scaling}
+\end{equation}
+where $\Xi_0$ is the residual (impurity) contribution, $A$ is a material constant, and $n$ depends on the dominant scattering mechanism.
+\end{theorem}
+
+\begin{proof}
+The partition lag depends on temperature through scattering mechanisms:
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Mechanism} & \textbf{$\tau_p(T)$} & \textbf{$n$} \\
+\midrule
+Impurity/defect & Constant & 0 \\
+Phonon (high $T$) & $\propto 1/T$ & 1 \\
+Phonon (low $T$) & $\propto 1/T^5$ & 5 \\
+Electron-electron & $\propto 1/T^2$ & 2 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Since $\Xi \propto 1/\tau_p$ (for conductivity-type) or $\Xi \propto \tau_p$ (for resistivity-type), the temperature dependence follows. The residual term $\Xi_0$ comes from temperature-independent impurity scattering. \qed
+\end{proof}
+

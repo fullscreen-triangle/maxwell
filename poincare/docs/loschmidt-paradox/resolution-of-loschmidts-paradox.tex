@@ -1,0 +1,101 @@
+\documentclass[12pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{natbib}
+\usepackage{import}
+
+% Geometry
+\geometry{margin=1in}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Custom commands
+\newcommand{\kB}{k_{\mathrm{B}}}
+\newcommand{\dcat}{d_{\mathrm{cat}}}
+\newcommand{\taulag}{\tau_{\mathrm{lag}}}
+\newcommand{\Spart}{S_{\mathrm{part}}}
+
+\title{\textbf{On the Resolution of Loschmidt's Paradox Through Categorical Partition Dynamics: Entropy as Geometric Structure Independent of Temporal Direction}}
+
+\author{
+Kundai Farai Sachikonye\\
+\texttt{kundai.sachikonye@wzw.tum.de}
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Loschmidt's paradox observes that irreversible macroscopic thermodynamics cannot be derived from time-symmetric microscopic dynamics, since reversing all particle velocities would cause entropy to decrease, contradicting the Second Law. We resolve this paradox by demonstrating that entropy arises from categorical partition structure rather than from temporal dynamics. The partition-oscillation-category equivalence establishes that entropy $S = \kB M \ln n$ is a geometric property of categorical space, independent of the direction of time. Partition operations generate entropy through undetermined residue—categorical states that cannot be assigned to either the pre-partition or post-partition configuration—and this entropy production is invariant under velocity reversal.
+
+The resolution proceeds through four theorems. First, the Partition Entropy Theorem establishes that every partition operation produces entropy $\Delta S = \kB \ln n_{\text{res}} > 0$, where $n_{\text{res}}$ is the count of undetermined residue states. Second, the Measurement-Partition Identity establishes that the velocity reversal required by Loschmidt's thought experiment is itself a partition operation: measuring all particle velocities creates categorical distinctions that generate entropy. Third, the Categorical Irreversibility Theorem proves that partition operations are topologically irreversible—composition cannot recover entropy lost to partition boundaries—regardless of the temporal direction of the underlying dynamics. Fourth, the Stosszahlansatz Derivation Theorem shows that Boltzmann's molecular chaos assumption is not an approximation but a necessary consequence of categorical structure: correlations that would permit entropy decrease reside in thermodynamically inaccessible undetermined residue.
+
+The deepest insight emerges from considering non-actualisations: for any actualised state, infinitely many alternative states were not actualised. When a cup falls and breaks, it has not merely changed physical configuration—it has created infinitely many new non-actualisations (not reassembling, not melting, not teleporting). These non-actualisations are categorical facts that cannot be un-created. Time-reversal would require not only reversing the physical trajectory but also erasing these non-actualisations, which is categorically impossible. The asymmetry between actualisation (finite, specific) and non-actualisation (infinite, accumulating) provides the fundamental explanation for irreversibility.
+
+The framework explains why Boltzmann's H-theorem holds despite time-symmetric dynamics. The H-function measures categorical completion—the fraction of phase space that has been partitioned into distinguishable states. Completion is irreversible because partition boundaries, once created, cannot be erased without generating additional entropy. Time-reversal of particle velocities does not un-partition the system; it merely changes the direction of partition accumulation while preserving the monotonic increase of total partition entropy.
+
+A crucial observation completes the resolution: entropy change is only observable for processes that have terminated. An ongoing process has no definite entropy—it remains in the ``reality stream'' with indeterminate outcome. Once a process terminates, it becomes a categorical fact that cannot be reversed. This leads to the deepest insight: categorical completion and geometric partitioning are the same operation. Both select one outcome from many possibilities, create boundaries between actualised and non-actualised states, and generate entropy. The apparent paradox dissolves: irreversibility is not derived from temporal asymmetry but from the geometric structure of categorical space. The arrow of time is the direction of non-actualisation accumulation—the direction in which partition boundaries accumulate. Reactions should be measured not by clock time but by categorical completion rate, as time itself emerges from the ordering of completed categorical states.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+%==============================================================================
+% SECTIONS
+%==============================================================================
+
+\import{sections/}{introduction.tex}
+
+\import{sections/}{partition-entropy.tex}
+
+\import{sections/}{measurement.tex}
+
+\import{sections/}{irreversibility.tex}
+
+\import{sections/}{stosszahlansatz.tex}
+
+\import{sections/}{h-theorem.tex}
+
+\import{sections/}{non-actualisation.tex}
+
+\import{sections/}{discussion.tex}
+
+\import{sections/}{apertures.tex}
+
+\import{sections/}{experimental-predictions.tex}
+
+\import{sections/}{cross-sectional-validation.tex}
+
+\import{sections/}{conclusion.tex}
+
+%==============================================================================
+% Bibliography
+%==============================================================================
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

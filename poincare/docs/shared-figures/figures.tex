@@ -1,0 +1,105 @@
+% Shared Figures for Mathematical Prerequisites
+% These figures validate the triple equivalence (Oscillation ≡ Category ≡ Partition),
+% entropy derivation, and categorical enthalpy.
+%
+% To use in a paper, add: \input{../shared-figures/figures.tex}
+% or copy individual figure environments as needed.
+
+%=============================================================================
+% FIGURE 1: Triple Equivalence - Oscillation ≡ Category ≡ Partition
+%=============================================================================
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{../shared-figures/figures/panel1_triple_equivalence.pdf}
+    \caption{\textbf{Triple Equivalence: Virtual Gas Molecules as Pendulums.}
+    This panel demonstrates that oscillatory dynamics, categorical states, and partition geometry 
+    are three equivalent descriptions of the same physical reality.
+    \textbf{(A)} Virtual gas molecules in a container, where each vibrational mode is represented 
+    as a simple pendulum. The five molecules shown oscillate with different phases and frequencies, 
+    but each follows the same underlying dynamics.
+    \textbf{(B)} Oscillatory perspective: the pendulum traces a sinusoidal trajectory 
+    $\theta(t) = \theta_0 \sin(\omega t)$ with period $T = 2\pi/\omega$. Quantum states 
+    $|0\rangle, |1\rangle, \ldots$ emerge from energy quantization.
+    \textbf{(C)} Categorical perspective: the pendulum's range is divided into $n = 8$ 
+    distinguishable positions $C_1, \ldots, C_8$. Each position $\theta_i$ is a categorical 
+    state that the system occupies at different times.
+    \textbf{(D)} Partition perspective: the oscillation period is represented as a hierarchical 
+    tree with depth $M$ and branching factor $n$. The total number of terminal states (leaves) 
+    is $n^M$.
+    \textbf{(E)} The fundamental equivalence: all three perspectives are mathematically 
+    equivalent, differing only in vocabulary. The equivalence symbol ($\equiv$) indicates 
+    that oscillation, category, and partition descriptions yield identical physical predictions.
+    \textbf{(F)} Parameter correspondence table showing how concepts map across frameworks. 
+    Degrees of freedom ($M$) correspond to modes, dimensions, or tree levels; states per 
+    degree of freedom ($n$) correspond to quantum numbers, categorical levels, or branching 
+    factor. All three yield the same entropy: $S = k_B M \ln n$.}
+    \label{fig:triple_equivalence}
+\end{figure}
+
+%=============================================================================
+% FIGURE 2: Entropy Derivation - S = k_B M ln n
+%=============================================================================
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{../shared-figures/figures/panel2_entropy_derivation.pdf}
+    \caption{\textbf{Entropy Derivation from Three Equivalent Perspectives.}
+    This panel shows how the unified entropy formula $S = k_B M \ln n$ emerges identically 
+    from oscillatory, categorical, and partition frameworks.
+    \textbf{(A)} Oscillatory state counting: for a system with $M = 3$ independent modes, 
+    each with $n = 4$ quantum states, the total number of microstates is 
+    $W_{\text{osc}} = n^M = 4^3 = 64$.
+    \textbf{(B)} Categorical state counting: a categorical space with $M = 2$ dimensions, 
+    each having $n = 4$ levels, contains $|\mathcal{C}| = n^M = 4^2 = 16$ distinguishable 
+    states (shown as circles $C_{i,j}$).
+    \textbf{(C)} Partition path counting: a partition tree with $M = 2$ levels and 
+    branching factor $n = 3$ has $n^M = 3^2 = 9$ unique paths from root to leaves 
+    (one path highlighted in red).
+    \textbf{(D)} Boltzmann's fundamental relation $S = k_B \ln W$ combined with the 
+    microstate count $W = n^M$ yields the unified entropy formula $S = k_B M \ln n$ 
+    through logarithmic expansion.
+    \textbf{(E)} Convergence diagram: all three frameworks (oscillatory, categorical, 
+    partition) independently yield $W = n^M$, which through Boltzmann's relation gives 
+    the same entropy formula.
+    \textbf{(F)} Entropy scaling plot showing how $S/k_B = M \ln n$ varies with 
+    degrees of freedom $M$ and states per DOF $n$. Entropy scales linearly with $M$ 
+    (horizontal direction) and logarithmically with $n$ (vertical direction). 
+    A simple pendulum ($M = 1$, $n = 4$) and a gas molecule ($M = 6$, $n = 3$) 
+    are marked as reference points.}
+    \label{fig:entropy_derivation}
+\end{figure}
+
+%=============================================================================
+% FIGURE 3: Categorical Enthalpy - H = U + Σn_a Φ_a → U + PV
+%=============================================================================
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{../shared-figures/figures/panel3_categorical_enthalpy.pdf}
+    \caption{\textbf{Categorical Enthalpy: From Aperture Selectivity to Classical Thermodynamics.}
+    This panel derives classical enthalpy $H = U + PV$ as the coarse-grained limit of 
+    categorical aperture dynamics.
+    \textbf{(A)} Aperture concept: a membrane with an aperture selectively allows 
+    passage of molecules based on their categorical properties. Small molecules (green) 
+    pass through; large molecules (red) are blocked. The selectivity $s_a = \Omega_{\text{pass}}/\Omega_{\text{total}}$ 
+    ranges from $s = 0$ (impermeable) to $s = 1$ (fully permeable).
+    \textbf{(B)} Categorical potential vs.\ selectivity: the potential 
+    $\Phi_a = -k_B T \ln s_a$ diverges as $s_a \to 0$ (impermeable barrier) and 
+    vanishes as $s_a \to 1$ (no barrier). The curve shows how selective apertures 
+    create entropic barriers.
+    \textbf{(C)} Categorical enthalpy definition: for a system with internal energy $U$ 
+    and multiple apertures on its boundary, the categorical enthalpy is 
+    $\mathcal{H} = U + \sum_a n_a \Phi_a$, where $n_a$ is the number of type-$a$ 
+    apertures and $\Phi_a$ is their categorical potential.
+    \textbf{(D)} Classical limit: as aperture selectivity approaches unity ($s_a \to 1$) 
+    and aperture density increases ($n_a \to \infty$), the discrete sum of aperture 
+    potentials becomes a surface integral, yielding $\sum_a n_a \Phi_a \to \int_{\partial\Omega} P \, dA = PV$.
+    \textbf{(E)} Pressure emergence: pressure is defined as the coarse-grained limit 
+    of aperture potential density, $P = \lim_{s_a \to 1} \rho_a \cdot (-k_B T \ln s_a)$, 
+    where $\rho_a$ is the aperture density per unit area.
+    \textbf{(F)} Enthalpy hierarchy: the categorical enthalpy 
+    $\mathcal{H} = U + \int_{\partial\Omega} \sigma(x) \cdot \phi(x) \, dA$ (fundamental) 
+    reduces to classical enthalpy $H = U + PV$ (coarse-grained) when local selectivity 
+    $\sigma(x) \to 1$ and local potential $\phi(x) \to P$. Classical thermodynamics 
+    emerges as the coarse-grained limit of categorical aperture dynamics.}
+    \label{fig:categorical_enthalpy}
+\end{figure}
+

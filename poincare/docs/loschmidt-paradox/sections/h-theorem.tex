@@ -1,0 +1,81 @@
+%==============================================================================
+\section{The H-Theorem Reinterpreted}
+\label{sec:h_theorem}
+%==============================================================================
+
+\subsection{H as Categorical Incompletion}
+
+\begin{definition}[Categorical Completion]
+\label{def:completion}
+A categorical state $\mathcal{C}$ is \emph{complete} if all partition operations that could distinguish substates have been performed. The \emph{completion fraction} $\phi \in [0, 1]$ measures the fraction of potential partitions that have been actualised.
+\end{definition}
+
+\begin{theorem}[H-Function as Incompletion]
+\label{thm:h_incompletion}
+Boltzmann's H-function measures categorical incompletion:
+\begin{equation}
+H = -\phi \ln \phi - (1-\phi) \ln(1-\phi)
+\label{eq:h_incompletion}
+\end{equation}
+where $\phi$ is the completion fraction. H decreases as $\phi \to 1$.
+\end{theorem}
+
+\begin{proof}
+The H-function $H = \int f \ln f \, d^3v$ measures the ``peakedness'' of the velocity distribution. A highly peaked distribution (far from equilibrium) has large $|H|$. A uniform distribution (equilibrium) has $H \to 0$.
+
+In categorical terms:
+\begin{itemize}
+\item Peaked distribution: few velocity states occupied, many potential partitions not yet actualised, low $\phi$
+\item Uniform distribution: all velocity states equally occupied, all possible partitions actualised, high $\phi$
+\end{itemize}
+
+As the system evolves, collisions actualise partitions, increasing $\phi$ and decreasing $H$. \qed
+\end{proof}
+
+\subsection{Why H Decreases}
+
+\begin{theorem}[Monotonic Completion]
+\label{thm:monotonic_completion}
+Categorical completion increases monotonically:
+\begin{equation}
+\frac{d\phi}{dt} \geq 0
+\label{eq:monotonic_completion}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Completion increases when partitions are actualised. Partitions are actualised by physical interactions (collisions). Physical interactions occur forward in time.
+
+Completion does not decrease because erasing a partition requires a new partition (Theorem~\ref{thm:topological_irreversibility}), which increases completion further. \qed
+\end{proof}
+
+\begin{corollary}[H-Theorem from Completion]
+\label{cor:h_theorem}
+The H-theorem $dH/dt \leq 0$ follows from monotonic completion:
+\begin{equation}
+\frac{dH}{dt} = \frac{\partial H}{\partial \phi} \frac{d\phi}{dt} \leq 0
+\label{eq:h_theorem}
+\end{equation}
+since $\partial H/\partial \phi < 0$ (H decreases with completion) and $d\phi/dt \geq 0$ (completion increases).
+\end{corollary}
+
+\subsection{Time-Reversal and Completion}
+
+\begin{theorem}[Time-Reversal Does Not Reverse Completion]
+\label{thm:completion_irreversible}
+Time-reversal of particle velocities does not decrease categorical completion.
+\end{theorem}
+
+\begin{proof}
+Completion $\phi$ counts actualised partitions. Actualised partitions are categorical boundaries in configuration space. Time-reversal acts on phase space, not configuration space.
+
+After time-reversal:
+\begin{enumerate}
+\item All prior partitions remain actualised (boundaries unchanged)
+\item The measurement required for reversal actualises additional partitions
+\item Therefore, $\phi_{\text{after}} > \phi_{\text{before}}$
+\end{enumerate}
+
+Completion increases under time-reversal, not decreases. \qed
+\end{proof}
+

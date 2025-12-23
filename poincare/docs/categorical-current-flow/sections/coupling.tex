@@ -1,0 +1,346 @@
+%==============================================================================
+% SECTION 6: ELECTRON-LATTICE COUPLING
+%==============================================================================
+
+\section{Electron-Lattice Coupling}
+\label{sec:coupling}
+
+\subsection{Phase-Lock Coupling in Conductors}
+
+\begin{definition}[Electron-Lattice Coupling Strength]
+\label{def:electron_lattice_coupling}
+The coupling strength $g_{ij}$ between electron $i$ and lattice site $j$ quantifies the phase-lock relationship:
+\begin{equation}
+g_{ij} = \left| \langle \psi_e^{(i)} | V_{\text{lattice}}^{(j)} | \psi_e^{(i)} \rangle \right|^2
+\label{eq:coupling_strength}
+\end{equation}
+where $\psi_e^{(i)}$ is the electron wavefunction and $V_{\text{lattice}}^{(j)}$ is the lattice potential at site $j$.
+\end{definition}
+
+\begin{theorem}[Coupling Determines Scattering]
+\label{thm:coupling_scattering}
+The scattering rate is proportional to coupling strength:
+\begin{equation}
+\frac{1}{\tau_{s,ij}} \propto g_{ij}
+\label{eq:coupling_scattering}
+\end{equation}
+Strong coupling implies frequent scattering; weak coupling implies rare scattering.
+\end{theorem}
+
+\begin{proof}
+By Fermi's golden rule, the transition rate from state $i$ to state $f$ is:
+\begin{equation}
+W_{i \to f} = \frac{2\pi}{\hbar} |\langle f | V | i \rangle|^2 \delta(E_f - E_i)
+\end{equation}
+
+The scattering rate is the sum over final states:
+\begin{equation}
+\frac{1}{\tau_{s,ij}} = \sum_f W_{i \to f} \propto |\langle f | V_{\text{lattice}}^{(j)} | i \rangle|^2 = g_{ij}
+\end{equation}
+\qed
+\end{proof}
+
+\subsection{Types of Coupling}
+
+\begin{definition}[Phonon Coupling]
+\label{def:phonon_coupling}
+Electron-phonon coupling $g_{\text{ph}}$ arises from lattice vibrations:
+\begin{equation}
+g_{\text{ph}} = \sum_{\mathbf{q}} |M_{\mathbf{q}}|^2 (n_{\mathbf{q}} + 1)
+\label{eq:phonon_coupling}
+\end{equation}
+where $M_{\mathbf{q}}$ is the electron-phonon matrix element and $n_{\mathbf{q}}$ is phonon occupation.
+\end{definition}
+
+\begin{definition}[Impurity Coupling]
+\label{def:impurity_coupling}
+Electron-impurity coupling $g_{\text{imp}}$ arises from lattice defects:
+\begin{equation}
+g_{\text{imp}} = n_{\text{imp}} |V_{\text{imp}}|^2
+\label{eq:impurity_coupling}
+\end{equation}
+where $n_{\text{imp}}$ is impurity concentration and $V_{\text{imp}}$ is the impurity potential.
+\end{definition}
+
+\begin{theorem}[Matthiessen's Rule from Independent Coupling]
+\label{thm:matthiessen}
+For independent coupling mechanisms, resistivities add:
+\begin{equation}
+\rho = \rho_{\text{phonon}} + \rho_{\text{impurity}} + \rho_{\text{defect}}
+\label{eq:matthiessen}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Independent coupling mechanisms produce independent scattering rates (Theorem~\ref{thm:scattering_rate}):
+\begin{equation}
+\frac{1}{\tau_s} = \frac{1}{\tau_{\text{phonon}}} + \frac{1}{\tau_{\text{impurity}}} + \frac{1}{\tau_{\text{defect}}}
+\end{equation}
+
+Since $\rho = m_e/(ne^2\tau_s)$:
+\begin{equation}
+\rho = \frac{m_e}{ne^2} \left( \frac{1}{\tau_{\text{ph}}} + \frac{1}{\tau_{\text{imp}}} + \frac{1}{\tau_{\text{def}}} \right) = \rho_{\text{ph}} + \rho_{\text{imp}} + \rho_{\text{def}}
+\end{equation}
+\qed
+\end{proof}
+
+\subsection{Coupling Network Structure}
+
+\begin{definition}[Coupling Matrix]
+\label{def:coupling_matrix}
+The coupling matrix $\mathbf{G}$ for a conductor has elements:
+\begin{equation}
+G_{ij} = g_{ij} \quad \text{if } |r_i - r_j| < r_{\text{cutoff}}
+\label{eq:coupling_matrix}
+\end{equation}
+and $G_{ij} = 0$ otherwise. The cutoff $r_{\text{cutoff}}$ is typically the screening length.
+\end{definition}
+
+\begin{theorem}[Total Coupling Strength]
+\label{thm:total_coupling}
+The total coupling strength determining resistivity is:
+\begin{equation}
+G_{\text{total}} = \sum_{i,j} g_{ij} = \text{Tr}(\mathbf{G})
+\label{eq:total_coupling}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Each electron-lattice pair contributes $g_{ij}$ to total scattering. The total scattering rate is:
+\begin{equation}
+\frac{1}{\tau_s} \propto \sum_{i,j} g_{ij} = G_{\text{total}}
+\end{equation}
+
+The trace of the coupling matrix captures this sum. \qed
+\end{proof}
+
+\subsection{Coupling and Resistivity}
+
+\begin{theorem}[Resistivity from Partition Lag and Coupling]
+\label{thm:resistivity_formula}
+The resistivity of a conductor is:
+\begin{equation}
+\rho = \frac{1}{ne^2} \sum_{i,j} \tau_{s,ij} g_{ij}
+\label{eq:resistivity_lag_coupling}
+\end{equation}
+where the sum is over all electron-lattice pairs.
+\end{theorem}
+
+\begin{proof}
+Conductivity is:
+\begin{equation}
+\sigma = \frac{ne^2 \tau_s}{m_e}
+\end{equation}
+
+The effective scattering time is the coupling-weighted average of partition lags:
+\begin{equation}
+\tau_s = \frac{\sum_{i,j} \tau_{s,ij} g_{ij}}{\sum_{i,j} g_{ij}}
+\end{equation}
+
+Substituting and using $\rho = 1/\sigma$:
+\begin{equation}
+\rho = \frac{m_e}{ne^2 \tau_s} = \frac{m_e}{ne^2} \cdot \frac{\sum_{i,j} g_{ij}}{\sum_{i,j} \tau_{s,ij} g_{ij}}
+\end{equation}
+
+For normalised coupling $\sum g_{ij} = m_e$:
+\begin{equation}
+\rho = \frac{1}{ne^2} \sum_{i,j} \tau_{s,ij} g_{ij}
+\end{equation}
+\qed
+\end{proof}
+
+\begin{remark}
+This formula is the current-flow analogue of the viscosity formula for fluids:
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+\textbf{System} & \textbf{Transport Coefficient} \\
+\midrule
+Fluid viscosity & $\mu = \sum_{i,j} \tau_{p,ij} g_{ij}$ \\
+Electrical resistivity & $\rho = \frac{1}{ne^2} \sum_{i,j} \tau_{s,ij} g_{ij}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Both have the form: (partition lag) $\times$ (coupling strength).
+\end{remark}
+
+\subsection{Superconductivity as Coupling Collapse}
+
+\begin{theorem}[Superconducting Transition]
+\label{thm:superconductivity}
+Superconductivity occurs when electron-phonon coupling produces Cooper pairing, eliminating scattering:
+\begin{equation}
+T < T_c \implies g_{\text{scatter}} \to 0 \implies \rho \to 0
+\label{eq:superconductivity}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Below $T_c$, electrons form Cooper pairs through phonon-mediated attractive interaction. The paired state has energy gap $\Delta$:
+\begin{equation}
+\Delta = 2\hbar\omega_D \exp\left(-\frac{1}{N(E_F)V}\right)
+\end{equation}
+
+For scattering to occur, energy $\geq 2\Delta$ must be supplied. At $T < T_c$, thermal energy $\kB T < \Delta$ is insufficient. Scattering coupling $g_{\text{scatter}} \to 0$.
+
+From Equation~\ref{eq:resistivity_lag_coupling}:
+\begin{equation}
+\rho = \frac{1}{ne^2} \sum_{i,j} \tau_{s,ij} g_{ij} \to 0 \quad \text{as } g_{ij} \to 0
+\end{equation}
+\qed
+\end{proof}
+
+\begin{remark}
+Superconductivity demonstrates that resistivity arises entirely from scattering coupling. When coupling vanishes, resistance vanishes. The categorical interpretation: at $T < T_c$, the electron network decouples from the lattice, eliminating partition lag.
+\end{remark}
+
+\subsection{Lattice Scattering as Categorical Apertures}
+
+The coupling framework acquires additional structure when scattering centres are recognised as \emph{apertures}—geometric constraints that selectively allow certain electron states to pass while blocking (scattering) others.
+
+\begin{definition}[Scattering Aperture]
+\label{def:scattering_aperture}
+A lattice scattering centre creates an \emph{aperture} with selection function:
+\begin{equation}
+\sigma_{\text{scatter}}(k) = \begin{cases} 
+1 & \text{if } |k - k_j| > k_{\text{scatter}} \text{ (passes unscattered)} \\ 
+0 & \text{if } |k - k_j| \leq k_{\text{scatter}} \text{ (scatters)}
+\end{cases}
+\end{equation}
+where $k$ is electron wavevector and $k_{\text{scatter}}$ is the scattering cross-section in $k$-space.
+\end{definition}
+
+\begin{theorem}[Resistance as Aperture Barrier]
+\label{thm:resistance_aperture}
+Resistance is the cumulative aperture barrier along the conductor:
+\begin{equation}
+R = \frac{L}{A} \sum_{\text{apertures}} \frac{\Phi_a}{ne^2 v_F}
+\end{equation}
+where $\Phi_a = -\kB T \ln s_a$ is the categorical potential of each scattering aperture.
+\end{theorem}
+
+\begin{proof}
+Each scattering aperture has selectivity $s_a = \Omega_{\text{pass}}/\Omega_{\text{total}}$, where $\Omega_{\text{pass}}$ is the fraction of $k$-states that pass unscattered.
+
+The scattering rate at aperture $a$ is:
+\begin{equation}
+\frac{1}{\tau_a} \propto (1 - s_a) = 1 - e^{-\Phi_a/\kB T}
+\end{equation}
+
+For $\Phi_a \ll \kB T$ (weak scattering):
+\begin{equation}
+\frac{1}{\tau_a} \approx \frac{\Phi_a}{\kB T}
+\end{equation}
+
+The total scattering rate is:
+\begin{equation}
+\frac{1}{\tau_s} = \sum_a \frac{1}{\tau_a} \propto \sum_a \Phi_a
+\end{equation}
+
+Using $\rho = m_e/(ne^2\tau_s)$ and $R = \rho L/A$:
+\begin{equation}
+R \propto \frac{L}{A} \sum_a \Phi_a
+\end{equation}
+\qed
+\end{proof}
+
+\begin{corollary}[Scattering Types as Aperture Selectivities]
+\label{cor:scattering_selectivity}
+Different scattering mechanisms have characteristic selectivities:
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Scattering Type} & \textbf{Selectivity $s$} & \textbf{Resistance Contribution} \\
+\midrule
+Phonon (high $T$) & $\sim 0.99$ & Increases with $T$ \\
+Phonon (low $T$) & $\sim 0.999$ & Decreases as $T^5$ \\
+Impurity & $\sim 0.9$ & Temperature-independent \\
+Grain boundary & $\sim 0.7$ & Large, localised \\
+Surface (thin film) & $\sim 0.8$ & Dominates at nanoscale \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{corollary}
+
+\begin{theorem}[Mean Free Path from Aperture Density]
+\label{thm:mean_free_path_aperture}
+The mean free path is determined by aperture density:
+\begin{equation}
+\lambda = \frac{1}{n_{\text{aperture}} \cdot \sigma_{\text{eff}}}
+\end{equation}
+where $n_{\text{aperture}}$ is the number density of scattering apertures and $\sigma_{\text{eff}} = (1 - s)\pi r_{\text{scatter}}^2$ is the effective cross-section.
+\end{theorem}
+
+\begin{proof}
+An electron travels freely until encountering an aperture that blocks it. The probability of scattering in distance $dx$ is:
+\begin{equation}
+dP = n_{\text{aperture}} \cdot \sigma_{\text{eff}} \cdot dx
+\end{equation}
+
+The survival probability to distance $x$ is $P(x) = e^{-x/\lambda}$, where:
+\begin{equation}
+\lambda = \frac{1}{n_{\text{aperture}} \cdot \sigma_{\text{eff}}}
+\end{equation}
+
+High aperture density or low selectivity (large $\sigma_{\text{eff}}$) gives short mean free path. \qed
+\end{proof}
+
+\begin{remark}[Superconductivity as Aperture Bypass]
+Superconductivity can now be understood as aperture bypass. Cooper pairs have correlated wavevectors $(k, -k)$. The pair wavefunction spans a coherence length $\xi \sim 100$ nm.
+
+At this scale, individual scattering apertures are ``averaged over''—the pair sees the mean aperture potential rather than individual scatterers:
+\begin{equation}
+\Phi_{\text{pair}} = \langle \Phi_a \rangle_{\xi} \approx 0
+\end{equation}
+
+The averaging reduces effective selectivity barriers to zero. No aperture, no scattering, no resistance.
+
+This explains why superconductivity requires:
+\begin{itemize}
+\item Low temperature (preserves pairing)
+\item Clean samples (fewer apertures to average)
+\item Specific materials (sufficient electron-phonon coupling for pairing)
+\end{itemize}
+\end{remark}
+
+\begin{theorem}[Skin Effect as Aperture Frequency Dependence]
+\label{thm:skin_effect_aperture}
+At high frequencies, the skin effect arises from frequency-dependent aperture selectivity:
+\begin{equation}
+s(\omega) = s_0 \cdot \frac{1}{1 + (\omega\tau_s)^2}
+\end{equation}
+where $\tau_s$ is the scattering time.
+\end{theorem}
+
+\begin{proof}
+At high frequency $\omega \gg 1/\tau_s$, electrons cannot respond to field oscillations fast enough to ``find'' the aperture openings. The effective selectivity decreases:
+\begin{equation}
+s_{\text{eff}}(\omega) = s_0 \cdot \frac{1}{1 + (\omega\tau_s)^2}
+\end{equation}
+
+Lower selectivity means higher resistance at high frequency. Current concentrates near the surface where the field is strongest, producing the skin effect:
+\begin{equation}
+\delta = \sqrt{\frac{2\rho}{\omega\mu}} \propto \frac{1}{\sqrt{\omega}}
+\end{equation}
+\qed
+\end{proof}
+
+\begin{remark}[Unified View: Fluids and Currents]
+The aperture framework unifies molecular transport and electronic transport:
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Property} & \textbf{Fluid} & \textbf{Current} \\
+\midrule
+Aperture type & Molecular bond & Lattice scattering centre \\
+Selectivity & Bond geometry & Scattering cross-section \\
+Transport barrier & Viscosity $\mu$ & Resistivity $\rho$ \\
+Aperture cycling & Catalysis & Phonon emission/absorption \\
+Aperture collapse & Phase transition & Superconductivity \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+In both cases, transport is navigation through an aperture network. High selectivity apertures impede transport; low selectivity allows free passage.
+\end{remark}
+

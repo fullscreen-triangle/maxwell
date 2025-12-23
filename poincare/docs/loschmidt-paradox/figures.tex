@@ -1,0 +1,103 @@
+% Figures for Resolution of Loschmidt's Paradox
+% Include this file in the main document or use \input{figures.tex}
+
+%==============================================================================
+% Figure L-1: Mixing-Separation Entropy Cycle
+%==============================================================================
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_mixing_separation.pdf}
+\caption{\textbf{Mixing-Separation Cycle Demonstrates Irreversibility.}
+(A) Initial state: two gases separated by partition, with entropy $S_{initial} = S_A^{(0)} + S_B^{(0)}$.
+(B) Mixed state: partition removed, gases interdiffuse, entropy increases by $\Delta S_{mix}$.
+(C) Re-separated state: partition restored, but each container now contains both gases with residual phase correlations.
+(D) Entropy evolution: the categorical prediction (green) shows $S_{final} > S_{initial}$ despite identical spatial configuration, while the classical reversible prediction (gray) incorrectly predicts return to initial entropy. The difference $\Delta S_{irrev} > 0$ arises from phase-lock network densification that persists after re-separation.}
+\label{fig:mixing_separation}
+\end{figure}
+
+%==============================================================================
+% Figure L-2: Phase-Lock Network Evolution
+%==============================================================================
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_phase_lock_network.pdf}
+\caption{\textbf{Phase-Lock Network Densification and Residual Correlations.}
+(A) Initial separated state: two disconnected network clusters (blue = Gas A, red = Gas B) with $|E|$ internal edges.
+(B) Mixed state: networks merge into single connected component with cross-container edges.
+(C) Re-separated state: partition restored, but residual cross-edges (red dashed) persist---these represent phase correlations created during mixing that cannot be erased.
+(D) Edge count evolution: $|E_{final}| > |E_{initial}|$ demonstrates that mixing creates categorical structure (edges) that remains after re-separation. More edges means more constraints, hence higher entropy.}
+\label{fig:phase_lock_network}
+\end{figure}
+
+%==============================================================================
+% Figure L-3: Non-Actualisation Asymmetry
+%==============================================================================
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_non_actualisation.pdf}
+\caption{\textbf{Non-Actualisation Asymmetry---The Deepest Reason for Irreversibility.}
+(A) The cup example: when a cup falls and breaks, it generates infinitely many non-actualisations (not turning to gold, not becoming sentient, not teleporting, etc.)---categorical facts defined by negation.
+(B) Branching asymmetry: each actualisation (green, finite) creates infinitely many non-actualisations (red), yielding a 1:$\infty$ asymmetry ratio.
+(C) Accumulation over time: non-actualisations grow monotonically and cannot be un-created, while actualisations remain finite.
+(D) Forward/backward asymmetry: forward processes always possible (create non-actualisations), backward processes impossible (would require un-creating non-actualisations). The ratio $P_{forward}/P_{backward} \to \infty$.}
+\label{fig:non_actualisation}
+\end{figure}
+
+%==============================================================================
+% Figure L-4: Aperture Selectivity and Categorical Potential
+%==============================================================================
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_aperture_selectivity.pdf}
+\caption{\textbf{Partition Boundaries as Categorical Apertures.}
+(A) Selection function $\sigma(\omega)$: aperture (partition boundary) allows certain configurations to pass ($\sigma = 1$, green arrows) while blocking others ($\sigma = 0$, red X marks).
+(B) Categorical potential vs selectivity: $\Phi_a = -k_B T \ln s$ where $s = \Omega_{pass}/\Omega_{total}$. High selectivity ($s \to 0$) implies high potential barrier.
+(C) Entropy from selectivity: higher selectivity (lower $s$) produces more entropy, since $\Delta S = k_B \ln(1/s) = \Phi_a/T$.
+(D) Aperture as energy barrier: the categorical potential acts as a barrier that blocked configurations must overcome. Non-actualisations are precisely the configurations blocked by partition apertures.}
+\label{fig:aperture_selectivity}
+\end{figure}
+
+%==============================================================================
+% Figure L-5: Partition Lag Dynamics
+%==============================================================================
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_partition_lag.pdf}
+\caption{\textbf{Partition Lag---The Finite Time of Categorical Determination.}
+(A) Partition lag distribution: different systems exhibit different lag time distributions, with a fundamental minimum $\tau_{min} = \hbar/\Delta E$ set by the uncertainty principle.
+(B) Undetermined residue evolution: during partition lag, categorical states remain in superposition. The determination fraction approaches 1 asymptotically, with residue decreasing exponentially.
+(C) Entropy production rate: entropy is produced continuously during partition lag at rate $dS/dt = k_B \cdot \text{Residue}/\tau_{lag}$. Cumulative entropy $S(t)$ saturates as determination completes.
+(D) Minimum lag scaling: $\tau_{min} \propto 1/\Delta E$ across different energy scales (phonon, vibrational, electronic, core), demonstrating the fundamental quantum limit on partition speed.}
+\label{fig:partition_lag}
+\end{figure}
+
+%==============================================================================
+% Figure L-6: Termination and Irreversibility
+%==============================================================================
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_termination_irreversibility.pdf}
+\caption{\textbf{Termination, Completion, and the Impossibility of Reversal.}
+(A) Reality stream vs terminated state: ongoing processes (blue wave) have indeterminate entropy---they are superpositions of possibilities. Only terminated states (green box) have well-defined entropy as categorical facts.
+(B) Identity of completion and partitioning: categorical completion (selecting one outcome) is identical to geometric partitioning (creating boundaries). Both create the distinction between actualised and non-actualised states.
+(C) Why reversal fails: forward processes create non-actualisations ($A \to B$ plus infinitely many things $B$ is not doing). Backward would require un-creating these---impossible.
+(D) Asymmetry ratio growth: with each categorical completion, the forward/backward probability ratio grows exponentially as $\prod_i \Omega_i$, rapidly diverging from the reversible ratio of 1.}
+\label{fig:termination_irreversibility}
+\end{figure}
+
+%==============================================================================
+% Figure L-7: Cross-Sectional Validation of Irreversibility
+%==============================================================================
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_loschmidt_cross_sectional_validation.pdf}
+\caption{\textbf{Cross-Sectional Validation: Radial Expansion and the Arrow of Time.}
+(A) S-coordinate evolution with radius: configuration entropy $S_k$ and temporal entropy $S_t$ plotted versus radial distance from an expanding point for three systems (Fast, Medium, Slow Expansion). Each radial shell is a cross-sectional measurement---a spherical surface at fixed distance. All systems show monotonic increase: entropy ALWAYS grows outward.
+(B) Non-actualisations dominate: logarithmic plot of actualised (dashed) vs non-actualised (solid) state counts. Non-actualisations ($N_{\text{non-act}} \propto r^2 - \omega(t)r^2/4\pi$) vastly outnumber actualisations at all radii, with ratios from 37:1 (fast expansion) to 392:1 (slow expansion). This asymmetry is the origin of irreversibility.
+(C) Entropy gradient always positive: the derivative $\partial S_t/\partial r > 0$ at ALL radii for ALL systems. Green region indicates positive (irreversible) gradients; no system ever enters the negative (reversible) region. The gradient points outward because non-actualisations accumulate faster than actualisations can explore.
+(D) Irreversibility fraction: bar chart showing 100\% positive gradients for all three expansion regimes. The 50\% line (gray dashed) marks the threshold for reversible processes; 100\% marks complete irreversibility. All systems achieve 100\%, confirming that the arrow of time is universal and independent of expansion rate.
+(E) S-transformation validation: predicted S-coordinates (from $\mathcal{T}_{dr}$) versus calculated values, showing $R^2 > 0.99$ for all systems. The transformation correctly predicts entropy at each radial shell from the previous shell's state.
+(F) Schematic of expanding point: central point (black dot) expands into state space, creating concentric spherical shells (color gradient from green/low entropy to red/high entropy). Arrows show outward expansion direction. The gradient $\nabla S > 0$ always points away from the origin---this is the geometric necessity of irreversibility. Non-actualisations form a ``wake'' around the actualised trajectory, and this wake grows with distance, making reversal impossible.}
+\label{fig:loschmidt_cross_sectional_validation}
+\end{figure}
+

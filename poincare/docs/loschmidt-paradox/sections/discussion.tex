@@ -1,0 +1,147 @@
+%==============================================================================
+\section{Discussion}
+\label{sec:discussion}
+%==============================================================================
+
+\subsection{Comparison with Standard Resolutions}
+
+Several resolutions to Loschmidt's paradox exist in the literature:
+
+\subsubsection{Special Initial Conditions (Boltzmann)}
+Boltzmann argued that entropy-decreasing trajectories exist but are vastly outnumbered by entropy-increasing trajectories \citep{boltzmann1896}. This statistical argument is correct but incomplete: it does not explain why the initial state was low-entropy.
+
+Our resolution is compatible with and extends Boltzmann's: partition structure explains both why entropy typically increases (partition operations produce entropy) and why special correlations are inaccessible (they reside in undetermined residue).
+
+\subsubsection{Cosmological Boundary Conditions (Penrose)}
+Penrose argues that the low entropy of the early universe provides the ultimate explanation for the arrow of time \citep{penrose2004}. The ``Past Hypothesis''—that the universe began in a very special low-entropy state—is taken as a fundamental law.
+
+Our framework provides a deeper explanation: the early universe had low entropy because few partition operations had occurred. The ``specialness'' of the initial state is not mysterious—it is simply categorical incompleteness. Entropy has increased because partitions have accumulated.
+
+\subsubsection{Information-Theoretic (Bennett)}
+Bennett's resolution via Landauer's principle \citep{bennett1982} is closest to ours. Both identify measurement as the key obstacle to entropy reversal. Our partition framework provides the foundation for Landauer's principle: information erasure is a partition operation.
+
+\subsection{Implications for Thermodynamics}
+
+The partition-theoretic resolution has several implications:
+
+\subsubsection{Entropy as Geometry}
+Entropy is a geometric property of categorical space, not a property of time. The Second Law describes the accumulation of categorical structure, not the direction of temporal flow.
+
+\subsubsection{Irreversibility Without Time-Asymmetry}
+Irreversibility does not require time-asymmetric dynamics. Time-symmetric microscopic dynamics are fully compatible with macroscopic irreversibility because irreversibility arises from partition structure, not temporal direction.
+
+\subsubsection{The Arrow of Time}
+The thermodynamic arrow of time is not fundamental. It is a consequence of observing systems from within categorical space, where partition boundaries accumulate. An observer outside categorical space (if such were possible) would see time-symmetric dynamics with no preferred direction.
+
+\subsection{Entropy Is Only Observable in Terminated Processes}
+
+A critical but often overlooked point: entropy change can only be measured for processes that have \emph{terminated}. An ongoing process has no definite entropy—it is still part of the ``reality stream'' and has not yet become a categorical fact.
+
+\begin{theorem}[Entropy Requires Termination]
+\label{thm:entropy_termination}
+The entropy change $\Delta S$ of a process is only defined for processes that have terminated. Ongoing processes have indeterminate entropy.
+\end{theorem}
+
+\begin{proof}
+Consider a process evolving from state $A$ toward state $B$. At any intermediate time $t < t_{\text{final}}$:
+\begin{itemize}
+\item The process has not completed
+\item The final state is not yet determined
+\item Multiple outcomes remain possible
+\item Entropy change $\Delta S$ depends on which outcome actualises
+\end{itemize}
+
+Only when the process terminates at $t = t_{\text{final}}$ does the final state become definite. Only then can $\Delta S = S(B) - S(A)$ be computed.
+
+Before termination, asking ``what is the entropy change?'' is asking about a fact that does not yet exist. \qed
+\end{proof}
+
+\begin{corollary}[Termination Implies Irreversibility]
+\label{cor:termination_irreversibility}
+A terminated process cannot be reversed because termination is categorical completion, and categorical states cannot be un-completed.
+\end{corollary}
+
+\begin{proof}
+When a process terminates:
+\begin{enumerate}
+\item It becomes a completed categorical state $C_i$
+\item By categorical irreversibility (Axiom in categorical completion theory), $C_i$ cannot be un-occupied
+\item ``Reversal'' would require returning to the pre-termination configuration
+\item But the pre-termination configuration was in the reality stream, not yet categorically complete
+\item The only way to reach it is through a NEW process that terminates at a similar spatial configuration
+\item This new termination creates a NEW categorical state $C_j$ with $C_i \prec C_j$
+\end{enumerate}
+
+Therefore, reversal is impossible—one can only create new categorical states that happen to have similar spatial configurations. \qed
+\end{proof}
+
+\subsection{Categorical Completion Is Geometric Partitioning}
+
+The deepest insight connecting our resolution to the broader framework:
+
+\begin{theorem}[Categorical Completion = Partition Operation]
+\label{thm:completion_partition}
+Categorical completion is identical to geometric partitioning. When a process terminates:
+\begin{enumerate}
+\item It selects one outcome from many possibilities (partition)
+\item It creates a boundary between actualised and non-actualised states
+\item It generates undetermined residue (the non-actualisations)
+\item It produces entropy $\Delta S = \kB \ln n_{\text{res}}$
+\end{enumerate}
+
+\textbf{Categorical completion and partition are the same operation viewed from different perspectives.}
+\end{theorem}
+
+\begin{proof}
+Consider a partition operation that divides a set of possibilities $\Omega$ into ``selected'' (actualised) and ``not selected'' (non-actualised):
+\begin{equation}
+\Omega = \Omega_{\text{actual}} \cup \Omega_{\text{non-actual}}, \quad \Omega_{\text{actual}} \cap \Omega_{\text{non-actual}} = \emptyset
+\end{equation}
+
+This is precisely what happens in categorical completion:
+\begin{itemize}
+\item Before termination: All of $\Omega$ is possible (in the reality stream)
+\item At termination: One state $\omega^* \in \Omega$ is selected (actualised)
+\item After termination: $\omega^*$ becomes categorical fact; $\Omega \setminus \{\omega^*\}$ becomes non-actualisations
+\end{itemize}
+
+The partition boundary is the termination event itself. The non-actualised possibilities $\Omega \setminus \{\omega^*\}$ are the undetermined residue generating entropy.
+
+Therefore:
+\begin{equation}
+\text{Categorical completion} \equiv \text{Geometric partition}
+\end{equation}
+
+They are the same operation. \qed
+\end{proof}
+
+\begin{corollary}[Reactions Should Be Measured by Completion Rate]
+\label{cor:completion_rate}
+Chemical and physical reactions should be characterised by their categorical completion rate $\dot{C} = dC/dt$, not by clock time alone.
+\end{corollary}
+
+\begin{proof}
+Time itself emerges from categorical completion—it is the ordering of completed states, not an external parameter. Therefore:
+\begin{itemize}
+\item Clock time $t$ is a derived quantity, emergent from completion dynamics
+\item The fundamental measure is the number of categorical states completed
+\item Reaction ``rate'' in the deepest sense is $\dot{C}$, not $d[\text{Product}]/dt$
+\end{itemize}
+
+Two reactions completing the same number of categorical states have the same fundamental ``progress,'' even if they differ in clock time. \qed
+\end{proof}
+
+\begin{remark}
+This explains why irreversibility appears universal: every physical process is a sequence of categorical completions (partitions). Each completion:
+\begin{enumerate}
+\item Terminates a portion of the reality stream
+\item Creates a geometric boundary (partition)
+\item Generates non-actualisations that cannot be erased
+\item Produces entropy
+\end{enumerate}
+
+Loschmidt's paradox asked: ``Why can't we reverse entropy increase?''
+
+The answer is now complete: \textbf{entropy increase IS categorical completion IS geometric partitioning}. Reversal would require un-partitioning—erasing the boundary between actual and non-actual. But boundaries, once created, are permanent features of categorical geometry. They define the structure of what has happened versus what has not happened. Erasing them would be erasing the distinction between being and non-being.
+\end{remark}
+

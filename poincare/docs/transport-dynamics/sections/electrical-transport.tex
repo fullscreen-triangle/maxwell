@@ -1,0 +1,140 @@
+%==============================================================================
+\section{Electrical Transport}
+\label{sec:electrical}
+%==============================================================================
+
+\subsection{Electron-Lattice Partition Dynamics}
+
+In metallic conductors, conduction electrons form a dense Fermi sea with density $n \sim 10^{28}$ m$^{-3}$ \citep{ashcroft1976}. Under an applied electric field $\mathbf{E}$, electrons acquire a drift velocity superimposed on their thermal motion. Resistance arises from scattering events that randomise the drift momentum.
+
+\begin{definition}[Electron-Lattice Partition]
+\label{def:electron_lattice}
+An electron-lattice partition operation occurs when a conduction electron interacts with a lattice ion, phonon, impurity, or defect. The partition distinguishes pre-scattering and post-scattering electron states, with the scattering time $\tau_s$ serving as the partition lag.
+\end{definition}
+
+For electrical transport, the carriers are electrons with charge $e$ and density $n$. The normalisation factor is $\mathcal{N} = ne^2$, giving:
+
+\begin{theorem}[Electrical Resistivity]
+\label{thm:resistivity}
+The electrical resistivity of a conductor is:
+\begin{equation}
+\rho = \frac{1}{ne^2} \sum_{i,j} \tau_{s,ij} g_{ij}
+\label{eq:resistivity_partition}
+\end{equation}
+where the sum is over electron-scatterer pairs, $\tau_{s,ij}$ is the scattering partition lag, and $g_{ij}$ is the electron-scatterer coupling.
+\end{theorem}
+
+\begin{proof}
+From the universal transport formula~\eqref{eq:universal_transport} with $\Tcoeff = \rho$ and $\mathcal{N} = ne^2$, the result follows directly. The normalisation $ne^2$ arises from the current density $\mathbf{J} = ne\mathbf{v}_d$ and the Drude relation $\mathbf{v}_d = e\mathbf{E}\tau/m$, giving $\rho = m/(ne^2\tau)$ in the single-$\tau$ limit. \qed
+\end{proof}
+
+\subsection{Scattering Mechanisms}
+
+Multiple scattering mechanisms contribute to the total resistivity through Matthiessen's rule \citep{matthiessen1858}:
+\begin{equation}
+\rho_{\text{total}} = \rho_{\text{phonon}} + \rho_{\text{impurity}} + \rho_{\text{defect}} + \rho_{e-e}
+\label{eq:matthiessen}
+\end{equation}
+
+Each contribution has characteristic partition lag:
+
+\textbf{Phonon scattering}: Electrons scatter from lattice vibrations. The partition lag increases with temperature as phonon population grows:
+\begin{equation}
+\tau_{\text{phonon}}(T) = \frac{\tau_0 \Theta_D}{T} \quad (T > \Theta_D)
+\label{eq:tau_phonon_high}
+\end{equation}
+where $\Theta_D$ is the Debye temperature \citep{ziman1960}. This gives $\rho_{\text{phonon}} \propto T$, matching the observed linear temperature dependence in metals above $\Theta_D$ \citep{white1959}.
+
+\textbf{Impurity scattering}: Electrons scatter from substitutional impurities and foreign atoms. The partition lag is temperature-independent for elastic scattering:
+\begin{equation}
+\tau_{\text{impurity}} = \text{const}
+\label{eq:tau_impurity}
+\end{equation}
+This produces the residual resistivity $\rho_0$ observed as $T \to 0$ \citep{nordheim1931}.
+
+\textbf{Electron-electron scattering}: In Fermi liquids, electron-electron scattering is suppressed by Pauli blocking. The available phase space gives:
+\begin{equation}
+\tau_{e-e}(T) \propto T^{-2}
+\label{eq:tau_ee_fermi}
+\end{equation}
+contributing $\rho_{e-e} \propto T^2$ at low temperatures \citep{abrikosov1963}.
+
+\subsection{The Newton's Cradle Mechanism}
+
+Electrical current propagates through conductors not by individual electron drift but by collective displacement, analogous to momentum transfer in a Newton's cradle \citep{drude1900a}.
+
+\begin{proposition}[Velocity Disparity]
+\label{prop:velocity_disparity}
+The drift velocity $v_d \sim 10^{-4}$ m/s is twelve orders of magnitude smaller than the signal velocity $v_s \sim c/\sqrt{\varepsilon_r}$.
+\end{proposition}
+
+\begin{proof}
+For a copper wire with current $I = 1$ A, cross-section $A = 1$ mm$^2$, and electron density $n = 8.5 \times 10^{28}$ m$^{-3}$:
+\begin{equation}
+v_d = \frac{I}{neA} = \frac{1}{8.5 \times 10^{28} \times 1.6 \times 10^{-19} \times 10^{-6}} \approx 7.4 \times 10^{-5} \text{ m/s}
+\end{equation}
+The signal propagates at electromagnetic speed $v_s = c/\sqrt{\varepsilon_r \mu_r} \sim 10^8$ m/s. \qed
+\end{proof}
+
+Current propagation occurs through sequential electron displacement:
+\begin{equation}
+e_1 \to e_2 \to e_3 \to \cdots \to e_N
+\end{equation}
+where each $e_i \to e_{i+1}$ represents a displacement event mediated by Coulomb repulsion, not physical electron transport between sites.
+
+\subsection{Resistance from Partition Accumulation}
+
+The total resistance of a conductor of length $L$ and cross-section $A$ is:
+\begin{equation}
+R = \rho \frac{L}{A} = \frac{L}{Ane^2} \sum_{i,j} \tau_{s,ij} g_{ij}
+\label{eq:resistance_total}
+\end{equation}
+
+This can be interpreted as accumulated partition lag along the conductor:
+\begin{equation}
+R = \frac{1}{Ane^2} \int_0^L \sum_{i,j} \tau_{s,ij}(x) g_{ij}(x) \, dx
+\label{eq:resistance_integral}
+\end{equation}
+
+For a uniform conductor, $\tau_s$ and $g$ are position-independent, recovering $R = \rho L/A$.
+
+\subsection{Ohm's Law}
+
+\begin{theorem}[Ohm's Law]
+\label{thm:ohm}
+For a conductor with resistance $R$ carrying current $I$ under potential difference $V$:
+\begin{equation}
+V = IR
+\label{eq:ohm}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The current density is $J = \sigma E = E/\rho$, where $\sigma = 1/\rho$ is conductivity. For a uniform field $E = V/L$:
+\begin{equation}
+I = JA = \frac{VA}{L\rho} = \frac{V}{R}
+\end{equation}
+Rearranging gives $V = IR$. \qed
+\end{proof}
+
+Ohm's law follows from the linear relation between flux (current) and driving force (electric field), which holds when partition operations are independent and partition lag is flux-independent.
+
+\subsection{Power Dissipation}
+
+The power dissipated in a resistor is:
+\begin{equation}
+P = I^2 R = \frac{V^2}{R} = IV
+\label{eq:joule_heating}
+\end{equation}
+
+From the partition perspective, each scattering event dissipates energy through entropy production:
+\begin{equation}
+\dot{Q} = T \sum_{i,j} \Gamma_{ij} \Delta S_{ij}
+\end{equation}
+
+For current $I$, the scattering rate is $\Gamma = I/(e \cdot N_{\text{scatter}})$ where $N_{\text{scatter}} = L/\lambda$ is the number of scattering events per electron. This yields:
+\begin{equation}
+P = I^2 R
+\end{equation}
+confirming that Joule heating is the macroscopic manifestation of partition entropy production.
+
