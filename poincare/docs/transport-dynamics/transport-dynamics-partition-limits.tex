@@ -90,19 +90,22 @@ The central result is the partition extinction theorem: when carriers become cat
 
 The framework makes quantitative predictions. For electrical transport, the resistivity formula $\rho = (ne^2)^{-1} \sum_{i,j} \taulag_{ij} g_{ij}$ reduces to the Drude result in the single-relaxation-time approximation but generalises to incorporate the full scattering structure. For viscous transport, $\mu = \sum_{i,j} \taulag_{ij} g_{ij}$ reproduces the Chapman-Enskog result for dilute gases \citep{chapman1970} and extends to dense fluids. The critical temperatures emerge from phase-locking conditions without adjustable parameters.
 
-Section~\ref{sec:unified_transport} derives the universal transport formula from partition dynamics. Sections~\ref{sec:electrical}--\ref{sec:thermal} apply the formula to electrical, viscous, diffusive, and thermal transport respectively. Section~\ref{sec:extinction} proves the partition extinction theorem. Section~\ref{sec:forbidden} analyses the dissipationless states---superconductivity, superfluidity, and Bose-Einstein condensation---as manifestations of partition extinction.
+Section~\ref{sec:unified_transport} derives the universal transport formula from partition dynamics. Section~\ref{sec:aperture_transport} connects transport coefficients to categorical enthalpy through aperture dynamics, showing that transport coefficients measure the sum of categorical potentials of apertures encountered by carriers. Sections~\ref{sec:electrical}--\ref{sec:thermal} apply the formula to electrical, viscous, diffusive, and thermal transport respectively. Section~\ref{sec:extinction} proves the partition extinction theorem. Section~\ref{sec:phase_transitions} analyses phase transitions---including melting---as partition extinctions, showing how the Lindemann criterion emerges from the breakdown of site assignment partition. Section~\ref{sec:forbidden} analyses the dissipationless states---superconductivity, superfluidity, and Bose-Einstein condensation---as manifestations of partition extinction. Section~\ref{sec:instruments} presents the categorical instrument suite for experimental validation, including the Virtual Aperture Potentiometer, Partition Lag Spectrometer, Phonon Chromatograph, and other devices that perform measurement through categorical completion rather than physical probing.
 
 %==============================================================================
 % SECTIONS
 %==============================================================================
 
 \import{sections/}{unified-transport-formula.tex}
+\import{sections/}{aperture-transport.tex}
 \import{sections/}{electrical-transport.tex}
 \import{sections/}{viscous-transport.tex}
 \import{sections/}{diffusive-transport.tex}
 \import{sections/}{thermal-transport.tex}
 \import{sections/}{partition-extinction.tex}
+\import{sections/}{phase-transitions.tex}
 \import{sections/}{forbidden-partitions.tex}
+\import{sections/}{categorical-instruments.tex}
 
 %==============================================================================
 % DISCUSSION
@@ -136,6 +139,20 @@ A distinctive prediction of the partition framework is the discontinuous nature 
 This discontinuity arises from the discrete nature of categorical distinction. Carriers are either distinguishable (partition possible) or indistinguishable (partition impossible). There is no partial distinguishability. The phase-locking transition converts distinguishable carriers into a single categorical entity, extinguishing partition operations discontinuously.
 
 Experimental evidence supports this prediction. Superconducting transitions in type-I superconductors are first-order with discontinuous resistivity change \citep{tinkham2004}. The $\lambda$-transition in helium-4 exhibits a discontinuity in specific heat characteristic of a phase transition \citep{buckingham1961}. Bose-Einstein condensation produces a macroscopic occupation of a single quantum state below $T_{\text{BEC}}$ with no partial occupation above.
+
+\subsection{Hierarchy of Partition Types}
+
+The framework reveals multiple independent partition structures in condensed matter:
+
+\begin{enumerate}
+\item \textbf{Site assignment partition}: Maps atoms to lattice sites. Extinct at melting.
+\item \textbf{Particle identity partition}: Distinguishes individual particles. Extinct at BEC/superfluidity.
+\item \textbf{Electron distinguishability}: Distinguishes individual electrons. Extinct at superconductivity (Cooper pairing).
+\end{enumerate}
+
+Each partition extinction produces a phase transition with characteristic changes in transport properties. The melting transition changes heat transport from phonon-dominated to collision-dominated. The superfluid transition eliminates viscous dissipation. The superconducting transition eliminates electrical resistance.
+
+The insight that atoms ``forget'' their equilibrium positions when oscillation amplitude exceeds the lattice spacing---the Lindemann criterion---is the condition for site assignment partition extinction. This provides a unified understanding of why melting temperatures correlate with atomic mass, binding strength, and sound velocity.
 
 \subsection{Relation to Quantum Mechanics}
 
@@ -180,6 +197,10 @@ We have derived transport coefficients from partition dynamics in bounded oscill
 \item \textbf{Thermal transport}: Thermal conductivity $\kappa^{-1} \propto \sum_{i,j} \taulag_{ij} g_{ij}$ emerges from phonon and electron scattering.
 
 \item \textbf{Partition extinction theorem}: When carriers become categorically unified through phase-locking, partition operations become undefined. The partition lag transitions discontinuously from $\taulag > 0$ to $\taulag = 0$ at a critical temperature $T_c$.
+
+\item \textbf{Melting as partition extinction}: The Lindemann melting criterion emerges from the breakdown of site assignment partition. When atomic oscillation amplitude exceeds a critical fraction of the lattice spacing ($\eta_c \approx 0.1$--$0.2$), atoms can no longer be categorically assigned to specific lattice sites. The solid-to-liquid transition is the extinction of site assignment partition.
+
+\item \textbf{Transport mechanism change at melting}: Heat transport changes from phonon-dominated (collective lattice modes) to collision-dominated (individual molecular transport) when site assignment partition is extinguished. This explains the factor of 10--100 reduction in thermal conductivity upon melting.
 
 \item \textbf{Dissipationless states}: Superconductivity ($\rho = 0$), superfluidity ($\mu = 0$), and Bose-Einstein condensation represent the extinction of partition operations between carriers that have become categorically indistinguishable.
 \end{enumerate}

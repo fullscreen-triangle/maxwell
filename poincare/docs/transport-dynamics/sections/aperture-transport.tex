@@ -1,0 +1,293 @@
+%==============================================================================
+\section{Transport as Aperture Dynamics}
+\label{sec:aperture_transport}
+%==============================================================================
+
+The universal transport formula derived in Section~\ref{sec:unified_transport} can be understood through the lens of categorical enthalpy, where boundaries are characterised by apertures---geometric constraints that selectively allow certain configurations to pass. This perspective unifies transport phenomena with thermodynamic potentials and reveals the deep connection between selectivity and dissipation.
+
+\subsection{Apertures in Transport Media}
+
+Every transport process involves carriers passing through selective constraints.
+
+\begin{definition}[Transport Aperture]
+\label{def:transport_aperture}
+A transport aperture is a geometric constraint in the medium that selectively allows carriers to pass based on their configuration. The selectivity is:
+\begin{equation}
+s_a = \frac{\Omega_{\text{pass}}}{\Omega_{\text{total}}}
+\label{eq:selectivity}
+\end{equation}
+where $\Omega_{\text{pass}}$ is the number of carrier configurations that can traverse the aperture and $\Omega_{\text{total}}$ is the total number of carrier configurations.
+\end{definition}
+
+The categorical potential of an aperture, established in \citep{sachikonye2024kelvin}, is:
+\begin{equation}
+\Phi_a(T) = -\kB T \ln s_a
+\label{eq:categorical_potential}
+\end{equation}
+
+This potential measures the barrier to passage: highly selective apertures (small $s_a$) have high potential; non-selective apertures ($s_a = 1$) have zero potential.
+
+\subsection{Aperture Identification in Transport Systems}
+
+Each transport system has characteristic apertures:
+
+\subsubsection{Electrical Transport}
+
+In metallic conductors, electrons encounter scattering apertures formed by:
+\begin{itemize}
+\item \textbf{Lattice vibrations}: Phonons create time-varying apertures as atomic positions fluctuate. Only electrons with momentum matching the instantaneous lattice configuration pass without scattering.
+\item \textbf{Impurities}: Substitutional atoms create fixed apertures with different selectivity than the host lattice.
+\item \textbf{Grain boundaries}: Interfaces between crystalline domains act as apertures with selectivity determined by crystallographic misorientation.
+\end{itemize}
+
+The scattering rate at each aperture is:
+\begin{equation}
+\tau_s^{-1} \propto (1 - s_a) \approx \frac{\Phi_a}{\kB T}
+\label{eq:scatter_rate_aperture}
+\end{equation}
+
+\subsubsection{Phonon Transport}
+
+For phonons, apertures arise from:
+\begin{itemize}
+\item \textbf{Mode matching}: Only phonons whose frequency and wavevector match the local mode structure can propagate. This is the aperture selectivity in phonon space.
+\item \textbf{Umklapp constraints}: Crystal momentum must be conserved modulo reciprocal lattice vectors. Umklapp processes are ``failed'' passages through momentum-space apertures.
+\item \textbf{Interfaces}: At boundaries between dissimilar materials, only phonons with matching dispersion relations can transmit (Kapitza resistance).
+\end{itemize}
+
+The chromatographic picture of thermal transport (Section~\ref{sec:thermal}) is precisely aperture-based: different phonon modes experience different selectivities through the material's aperture structure.
+
+\subsubsection{Viscous Transport}
+
+In fluids, molecular collisions create dynamic apertures:
+\begin{itemize}
+\item \textbf{Collision geometry}: Only molecules approaching with appropriate impact parameters can exchange momentum.
+\item \textbf{Steric constraints}: Molecular shape determines which orientations allow close approach.
+\item \textbf{Velocity matching}: Momentum transfer is most efficient when molecular velocities are commensurate.
+\end{itemize}
+
+\subsubsection{Diffusive Transport}
+
+For atomic diffusion, apertures include:
+\begin{itemize}
+\item \textbf{Vacancy sites}: Atoms can only jump to unoccupied sites---a highly selective aperture.
+\item \textbf{Saddle points}: The transition state between sites is an aperture in configuration space.
+\item \textbf{Grain boundaries}: Diffusion along boundaries is faster because these apertures are less selective than bulk lattice sites.
+\end{itemize}
+
+\subsection{Partition Lag as Aperture Traversal Time}
+
+\begin{theorem}[Lag-Aperture Correspondence]
+\label{thm:lag_aperture}
+The partition lag $\taulag$ between carriers is the time required to traverse the aperture connecting their pre-interaction and post-interaction states:
+\begin{equation}
+\taulag = \frac{d_a}{v_{\text{carrier}}} \cdot \frac{1}{s_a}
+\label{eq:lag_aperture}
+\end{equation}
+where $d_a$ is the aperture thickness, $v_{\text{carrier}}$ is the carrier velocity, and $s_a$ is the selectivity.
+\end{theorem}
+
+\begin{proof}
+A carrier approaching an aperture with selectivity $s_a$ has probability $s_a$ of passing on each attempt. The mean number of attempts before passage is $1/s_a$. Each attempt takes time $d_a/v_{\text{carrier}}$. Therefore:
+\begin{equation}
+\taulag = \frac{1}{s_a} \cdot \frac{d_a}{v_{\text{carrier}}}
+\end{equation}
+
+For a non-selective aperture ($s_a = 1$), passage is immediate: $\taulag = d_a/v_{\text{carrier}}$.
+For a highly selective aperture ($s_a \to 0$), passage takes infinite time: $\taulag \to \infty$. \qed
+\end{proof}
+
+This theorem connects the partition lag directly to aperture selectivity. Resistance to transport arises because carriers must wait for aperture passage.
+
+\subsection{Transport Coefficient from Aperture Potentials}
+
+\begin{theorem}[Transport-Enthalpy Connection]
+\label{thm:transport_enthalpy}
+The transport coefficient is proportional to the sum of categorical potentials of all apertures encountered by carriers:
+\begin{equation}
+\Tcoeff = \frac{1}{\mathcal{N}} \sum_{\text{apertures}} n_a \Phi_a
+\label{eq:transport_enthalpy}
+\end{equation}
+where $n_a$ is the number of apertures of type $a$ and $\Phi_a$ is the categorical potential of each aperture.
+\end{theorem}
+
+\begin{proof}
+From the Lag-Aperture Correspondence (Theorem~\ref{thm:lag_aperture}):
+\begin{equation}
+\taulag_a = \frac{d_a}{v} \cdot \frac{1}{s_a}
+\end{equation}
+
+From the categorical potential definition:
+\begin{equation}
+\Phi_a = -\kB T \ln s_a \quad \Rightarrow \quad s_a = e^{-\Phi_a/\kB T}
+\end{equation}
+
+Therefore:
+\begin{equation}
+\taulag_a = \frac{d_a}{v} \cdot e^{\Phi_a/\kB T}
+\end{equation}
+
+For small potentials ($\Phi_a \ll \kB T$), $e^{\Phi_a/\kB T} \approx 1 + \Phi_a/\kB T$, giving:
+\begin{equation}
+\taulag_a \approx \frac{d_a}{v} \left(1 + \frac{\Phi_a}{\kB T}\right)
+\end{equation}
+
+The transport coefficient from the universal formula is:
+\begin{equation}
+\Tcoeff = \frac{1}{\mathcal{N}} \sum_{i,j} \taulag_{ij} g_{ij} = \frac{1}{\mathcal{N}} \sum_a n_a \taulag_a g_a
+\end{equation}
+
+Substituting and absorbing geometric factors into normalisation:
+\begin{equation}
+\Tcoeff \propto \frac{1}{\mathcal{N}} \sum_a n_a \Phi_a
+\end{equation}
+\qed
+\end{proof}
+
+This remarkable result shows that \textbf{the transport coefficient is essentially the categorical enthalpy of the aperture structure encountered by carriers}. High enthalpy (many selective apertures) means high resistance to transport.
+
+\subsection{Why High Selectivity Means High Resistance}
+
+The connection between selectivity and resistance has a simple physical interpretation:
+
+\begin{enumerate}
+\item \textbf{Selective apertures reject most configurations}: If only 1\% of carrier configurations can pass ($s = 0.01$), the carrier must ``try'' many configurations before finding one that fits.
+
+\item \textbf{Rejected attempts create undetermined residue}: Each failed attempt leaves the carrier in an undetermined state---it is neither ``passed'' nor ``reflected'' but in superposition. This is the partition lag.
+
+\item \textbf{Undetermined residue becomes entropy}: When the partition finally completes, the accumulated undetermined states manifest as entropy production (heat).
+
+\item \textbf{Entropy production is dissipation}: The energy $T\Delta S$ extracted from the driving force appears as thermal motion rather than directed transport.
+\end{enumerate}
+
+This explains why resistivity, viscosity, and inverse thermal conductivity are all positive: they measure the selectivity of the apertures that carriers must traverse, and selectivity is always $\leq 1$.
+
+\subsection{Dissipationless Transport as Zero Selectivity}
+
+\begin{theorem}[Zero Selectivity Theorem]
+\label{thm:zero_selectivity}
+When aperture selectivity equals unity for all apertures ($s_a = 1$ for all $a$), the transport coefficient vanishes:
+\begin{equation}
+s_a = 1 \; \forall a \quad \Rightarrow \quad \Tcoeff = 0
+\label{eq:zero_selectivity}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+When $s_a = 1$:
+\begin{enumerate}
+\item The categorical potential vanishes: $\Phi_a = -\kB T \ln(1) = 0$
+\item The partition lag reduces to bare traversal time: $\taulag = d_a/v$ with no selectivity penalty
+\item No configurations are rejected, so no undetermined residue is created
+\item No entropy is produced during transport
+\end{enumerate}
+
+From Theorem~\ref{thm:transport_enthalpy}:
+\begin{equation}
+\Tcoeff = \frac{1}{\mathcal{N}} \sum_a n_a \Phi_a = \frac{1}{\mathcal{N}} \sum_a n_a \cdot 0 = 0
+\end{equation}
+\qed
+\end{proof}
+
+This theorem provides the aperture interpretation of dissipationless transport: \textbf{superconductivity, superfluidity, and BEC occur when carriers ``fit'' all apertures perfectly}.
+
+\subsection{Phase-Locking Eliminates Selectivity}
+
+How does phase-locking produce $s_a = 1$? The mechanism differs by system:
+
+\subsubsection{Cooper Pairs in Superconductors}
+
+Individual electrons face highly selective apertures---only certain momentum states avoid scattering from the instantaneous lattice configuration. But Cooper pairs are extended objects with coherence length $\xi \sim 10^{-6}$ m encompassing $\sim 10^9$ lattice sites.
+
+\begin{proposition}[Cooper Pair Aperture Averaging]
+\label{prop:cooper_averaging}
+A Cooper pair averages over all lattice configurations within its coherence volume. The effective selectivity becomes:
+\begin{equation}
+s_{\text{pair}} = \langle s_{\text{electron}} \rangle_{\xi^3} \to 1
+\label{eq:pair_averaging}
+\end{equation}
+because the pair wavefunction samples all configurations, not a single one.
+\end{proposition}
+
+The pair ``fits'' the aperture because it IS the aperture---it encompasses and averages over all the configurations that would normally select against individual electrons.
+
+\subsubsection{Bose-Einstein Condensate}
+
+In a BEC, all atoms occupy the same quantum state. There is only one ``configuration'' in the system.
+
+\begin{proposition}[Single Configuration Selectivity]
+\label{prop:single_config}
+When all carriers are in the same state, the selectivity is:
+\begin{equation}
+s = \frac{\Omega_{\text{pass}}}{\Omega_{\text{total}}} = \frac{1}{1} = 1
+\label{eq:single_state}
+\end{equation}
+because the single state is automatically compatible with itself.
+\end{proposition}
+
+\subsubsection{Superfluid Helium}
+
+In superfluid helium-4, atoms below $T_\lambda$ condense into the ground state. The condensate is a single categorical entity that cannot ``collide with itself''---apertures between atoms become meaningless when the atoms are indistinguishable parts of a single wavefunction.
+
+\subsection{Aperture Reconfiguration as Phase Transition}
+
+The categorical enthalpy framework \citep{sachikonye2024kelvin} identifies phase transitions with aperture reconfiguration:
+
+\begin{equation}
+\Delta\mathcal{H} = \Delta U + \sum_a \left[ n_a^{\text{final}} \Phi_a^{\text{final}} - n_a^{\text{initial}} \Phi_a^{\text{initial}} \right]
+\label{eq:enthalpy_change}
+\end{equation}
+
+For the superconducting transition:
+\begin{itemize}
+\item \textbf{Above $T_c$}: Many selective apertures (electron-phonon, electron-impurity). High $\sum \Phi_a$, finite $\rho$.
+\item \textbf{Below $T_c$}: Apertures become non-selective (Cooper pair averaging). $\Phi_a \to 0$ for all $a$, $\rho = 0$.
+\end{itemize}
+
+The condensation energy is exactly the categorical potential released when apertures become non-selective:
+\begin{equation}
+\Delta E_{\text{cond}} = -\sum_a n_a \Phi_a(T_c)
+\label{eq:condensation_energy}
+\end{equation}
+
+This is the BCS gap energy $\sim N(E_F) \Delta^2$, now understood as the total categorical potential of the electron-scattering apertures that are eliminated by Cooper pairing.
+
+\subsection{Unified Picture: Transport, Enthalpy, and Dissipation}
+
+The aperture framework provides a unified picture:
+
+\begin{enumerate}
+\item \textbf{Enthalpy} = Internal energy + Aperture potentials
+\begin{equation}
+\mathcal{H} = U + \sum_a n_a \Phi_a
+\end{equation}
+
+\item \textbf{Transport coefficient} = Aperture potentials per carrier flux
+\begin{equation}
+\Tcoeff = \frac{1}{\mathcal{N}} \sum_a n_a \Phi_a
+\end{equation}
+
+\item \textbf{Dissipation} = Entropy production from selective passage
+\begin{equation}
+\dot{Q} = T\dot{S} = T \sum_a \Gamma_a \kB \ln(1/s_a) = \sum_a \Gamma_a \Phi_a
+\end{equation}
+\end{enumerate}
+
+All three quantities---enthalpy, transport coefficient, dissipation---are controlled by the same underlying structure: the categorical potentials of apertures in the system.
+
+This explains why thermodynamic quantities and transport coefficients are so intimately related. They are not merely correlated; they are manifestations of the same underlying aperture structure.
+
+\subsection{The Classical Limit Revisited}
+
+In the limit of infinitely many non-selective apertures ($n_a \to \infty$, $s_a \to 1$), categorical enthalpy reduces to $\mathcal{H} = U + PV$ (Theorem 12 in \citep{sachikonye2024kelvin}).
+
+The corresponding transport limit is:
+\begin{equation}
+\Tcoeff \to \frac{1}{\mathcal{N}} \cdot \infty \cdot 0 = \text{finite (if limits balance)}
+\end{equation}
+
+Classical transport coefficients emerge when there are infinitely many infinitesimally selective apertures, just as classical pressure emerges as the aggregate of infinitely many aperture interactions.
+
+This reveals that classical transport theory is a coarse-graining of the aperture structure, averaging over discrete selective barriers to produce continuous transport coefficients. The partition framework restores the underlying discreteness, which becomes essential near phase transitions where individual aperture extinctions produce discontinuous changes.
+
+

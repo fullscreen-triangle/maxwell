@@ -1,0 +1,274 @@
+%==============================================================================
+\section{Phase Transitions as Partition Extinction}
+\label{sec:phase_transitions}
+%==============================================================================
+
+\subsection{Two Partition Structures in Condensed Matter}
+
+Condensed matter systems possess two independent categorical partition structures:
+
+\begin{definition}[Particle Identity Partition]
+\label{def:particle_identity}
+The particle identity partition assigns a categorical identity to each particle: Atom$_1$, Atom$_2$, Atom$_3$, etc. This partition distinguishes individual particles from one another.
+\end{definition}
+
+\begin{definition}[Site Assignment Partition]
+\label{def:site_assignment}
+The site assignment partition maps each particle to a spatial location: Atom$_i \to$ Site$_j$. In crystalline solids, this partition assigns atoms to lattice sites.
+\end{definition}
+
+These partitions are logically independent. A system may have:
+\begin{itemize}
+\item Both partitions intact: crystalline solid
+\item Site partition extinct, identity partition intact: liquid
+\item Identity partition extinct: Bose-Einstein condensate, superfluid
+\item Both partitions extinct: singular state (not physically realisable at $T > 0$)
+\end{itemize}
+
+\subsection{Phonon Propagation as Amplitude Transfer}
+
+In a crystalline solid, atoms oscillate about equilibrium lattice positions. Heat propagates through collective lattice vibrations---phonons---rather than through atomic transport \citep{kittel2005}.
+
+\begin{proposition}[Phonon Newton's Cradle]
+\label{prop:phonon_cradle}
+Phonon heat conduction is the thermal analogue of the Newton's cradle mechanism in electrical conduction. Energy transfers through sequential atomic displacement without net atomic transport.
+\end{proposition}
+
+Consider a one-dimensional chain of atoms with equilibrium positions $\{x_n^{(0)}\}$ and displacements $\{u_n\}$. The equation of motion is:
+\begin{equation}
+m\ddot{u}_n = K(u_{n+1} - 2u_n + u_{n-1})
+\label{eq:chain_eom}
+\end{equation}
+where $K$ is the spring constant.
+
+The dispersion relation gives phonon velocity:
+\begin{equation}
+v_s = a\sqrt{K/m}
+\label{eq:sound_velocity}
+\end{equation}
+where $a$ is the lattice spacing.
+
+Energy propagates at velocity $v_s \sim 5000$ m/s in typical solids. Individual atoms oscillate with velocities $v_{\text{atom}} \sim \sqrt{\kB T/m} \sim 500$ m/s at room temperature. The energy propagation is ten times faster than atomic motion---confirming the collective (Newton's cradle) nature of phonon transport.
+
+\subsection{The Amplitude-Spacing Ratio}
+
+Each atom oscillates with amplitude $u$ about its equilibrium position. The ratio of amplitude to lattice spacing determines the categorical sharpness of site assignment:
+
+\begin{equation}
+\eta = \frac{\langle u^2 \rangle^{1/2}}{a}
+\label{eq:lindemann_ratio}
+\end{equation}
+
+For $\eta \ll 1$: atoms remain close to their assigned sites. The site assignment partition is sharp.
+
+For $\eta \sim 1$: atoms approach neighbouring sites. The site assignment becomes ambiguous.
+
+\subsection{Site Assignment Ambiguity}
+
+When the oscillation amplitude $u$ approaches the lattice spacing $a$, a categorical ambiguity arises: to which site does the atom belong?
+
+\begin{proposition}[Partition Ambiguity Condition]
+\label{prop:ambiguity}
+An atom with instantaneous displacement $u$ from Site$_1$ is closer to Site$_2$ when:
+\begin{equation}
+|u| > \frac{a}{2}
+\label{eq:ambiguity_condition}
+\end{equation}
+At this point, the site assignment partition is undefined for that atom.
+\end{proposition}
+
+The mean-square displacement in a harmonic solid is \citep{ashcroft1976}:
+\begin{equation}
+\langle u^2 \rangle = \frac{3\hbar}{2m\omega_D} \coth\left(\frac{\hbar\omega_D}{2\kB T}\right)
+\label{eq:msd_quantum}
+\end{equation}
+where $\omega_D$ is the Debye frequency.
+
+At high temperatures ($\kB T \gg \hbar\omega_D$):
+\begin{equation}
+\langle u^2 \rangle \approx \frac{3\kB T}{m\omega_D^2} = \frac{3\kB T}{K}
+\label{eq:msd_classical}
+\end{equation}
+
+The amplitude grows with temperature until it exceeds the threshold for site assignment.
+
+\subsection{The Lindemann Melting Criterion}
+
+Lindemann proposed in 1910 that melting occurs when the RMS displacement reaches a critical fraction of the lattice spacing \citep{lindemann1910}:
+
+\begin{equation}
+\eta_c = \frac{\langle u^2 \rangle_m^{1/2}}{a} \approx 0.1 - 0.2
+\label{eq:lindemann_criterion}
+\end{equation}
+
+This criterion successfully predicts melting temperatures for a wide range of materials \citep{gilvarry1956}.
+
+\begin{theorem}[Melting as Site Partition Extinction]
+\label{thm:melting_partition}
+The Lindemann criterion is the condition for extinction of the site assignment partition. When $\eta > \eta_c$, atoms cannot be categorically assigned to specific lattice sites.
+\end{theorem}
+
+\begin{proof}
+The site assignment partition requires each atom to be closer to its assigned site than to any other site. For a simple cubic lattice, this requires $|u| < a/2$ for all atoms.
+
+For a Gaussian distribution of displacements with RMS value $\langle u^2 \rangle^{1/2}$, the fraction of atoms with $|u| > a/2$ is:
+\begin{equation}
+f = 1 - \text{erf}\left(\frac{a}{2\sqrt{2}\langle u^2 \rangle^{1/2}}\right)
+\end{equation}
+
+When $\eta = \langle u^2 \rangle^{1/2}/a \approx 0.15$:
+\begin{equation}
+f \approx 1 - \text{erf}(2.4) \approx 0.001
+\end{equation}
+
+Approximately $0.1\%$ of atoms are in partition-ambiguous positions at any instant. This fraction triggers a cooperative transition: once some atoms lose site assignment, the potential wells for neighbouring atoms become shallower, increasing their amplitudes.
+
+The transition is self-reinforcing: site partition extinction for a critical fraction of atoms triggers extinction for all atoms. \qed
+\end{proof}
+
+\subsection{The Melting Temperature}
+
+Setting $\eta = \eta_c$ in Eq.~\eqref{eq:msd_classical}:
+\begin{equation}
+\frac{3\kB T_m}{Ka^2} = \eta_c^2
+\label{eq:melting_temp}
+\end{equation}
+
+Solving for the melting temperature:
+\begin{equation}
+T_m = \frac{\eta_c^2 K a^2}{3\kB} = \frac{\eta_c^2 m \omega_D^2 a^2}{3\kB}
+\label{eq:Tm_formula}
+\end{equation}
+
+Using $\omega_D = v_s/a$ (Debye approximation):
+\begin{equation}
+T_m = \frac{\eta_c^2 m v_s^2}{3\kB}
+\label{eq:Tm_sound}
+\end{equation}
+
+This relates melting temperature to sound velocity and atomic mass---both measurable quantities.
+
+\subsection{The Forgetting of Equilibrium}
+
+The physical picture is that of an atom ``forgetting'' its equilibrium position:
+
+\textbf{Low temperature} ($T \ll T_m$):
+\begin{itemize}
+\item Atom oscillates with small amplitude about equilibrium
+\item Restoring force always points toward home site
+\item Site assignment is unambiguous
+\item Phonon transport dominates heat conduction
+\end{itemize}
+
+\textbf{High temperature} ($T \to T_m$):
+\begin{itemize}
+\item Amplitude approaches lattice spacing
+\item Atom spends time closer to neighbouring sites
+\item Restoring force direction becomes ambiguous
+\item Site assignment partition weakens
+\end{itemize}
+
+\textbf{At melting} ($T = T_m$):
+\begin{itemize}
+\item Amplitude exceeds critical fraction of lattice spacing
+\item Atom can no longer ``remember'' which site is home
+\item Site assignment partition extinct
+\item Solid becomes liquid
+\end{itemize}
+
+\subsection{Transport Mechanism Change at Melting}
+
+The extinction of site assignment partition fundamentally changes the heat transport mechanism:
+
+\textbf{In solid} (site partition intact):
+\begin{equation}
+\kappa_{\text{solid}} = \frac{1}{3} C_v v_s \lambda_{\text{phonon}}
+\label{eq:kappa_solid}
+\end{equation}
+Heat propagates via collective lattice modes (phonons). The mean free path $\lambda_{\text{phonon}}$ is limited by phonon-phonon scattering (Umklapp processes).
+
+\textbf{In liquid} (site partition extinct):
+\begin{equation}
+\kappa_{\text{liquid}} = \frac{1}{3} n \kB v_{\text{mol}} \lambda_{\text{coll}}
+\label{eq:kappa_liquid}
+\end{equation}
+Heat propagates via molecular collisions. The mechanism is identical to viscous transport---individual particles carrying energy between collisions.
+
+The ratio is approximately:
+\begin{equation}
+\frac{\kappa_{\text{solid}}}{\kappa_{\text{liquid}}} \sim \frac{v_s \lambda_{\text{phonon}}}{v_{\text{mol}} \lambda_{\text{coll}}} \sim 10 - 100
+\label{eq:kappa_ratio}
+\end{equation}
+
+Solids typically have thermal conductivity 10--100 times higher than their liquids, reflecting the efficiency of collective phonon transport over individual molecular transport.
+
+\subsection{Hierarchy of Partition Extinctions}
+
+The various phase transitions form a hierarchy of partition extinctions:
+
+\begin{table}[h]
+\centering
+\caption{Phase transitions as partition extinctions}
+\label{tab:phase_hierarchy}
+\begin{tabular}{lccc}
+\toprule
+Transition & Partition Extinct & $T_c$ & Transport Change \\
+\midrule
+Melting & Site assignment & $T_m$ & Phonon $\to$ collision \\
+Vaporisation & Spatial localisation & $T_b$ & Collision $\to$ free flight \\
+BEC/Superfluidity & Particle identity & $T_{\text{BEC}}$ & Dissipative $\to$ lossless \\
+Superconductivity & Electron distinguishability & $T_c$ & Resistive $\to$ lossless \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Each transition corresponds to the extinction of a specific categorical partition:
+
+\textbf{Melting}: Atoms lose assignment to specific lattice sites. They retain individual identity but gain spatial freedom.
+
+\textbf{Vaporisation}: Atoms lose spatial localisation. They can travel macroscopic distances between collisions.
+
+\textbf{BEC/Superfluidity}: Atoms lose individual identity. They become a single categorical entity.
+
+\textbf{Superconductivity}: Electron pairs lose distinguishability. Cooper pairs form a single categorical entity.
+
+\subsection{Why Liquids Can Become Superfluid}
+
+Helium-4 remains liquid to absolute zero (at normal pressure) because its zero-point motion prevents site assignment partition from forming---it never crystallises \citep{wilks1967}.
+
+\begin{proposition}[Helium Anomaly]
+\label{prop:helium}
+Helium-4 atoms have such large zero-point energy that $\eta > \eta_c$ even at $T = 0$:
+\begin{equation}
+\eta_0 = \frac{\langle u^2 \rangle_0^{1/2}}{a} = \frac{1}{a}\sqrt{\frac{3\hbar}{2m\omega_D}} > \eta_c
+\label{eq:helium_eta}
+\end{equation}
+Site assignment is never established; helium remains liquid.
+\end{proposition}
+
+Because helium never forms a solid (no site partition), it can undergo a different transition: extinction of particle identity partition, producing superfluidity at $T_\lambda = 2.17$ K.
+
+The sequence is:
+\begin{itemize}
+\item Normal solids: site partition intact at low $T$, melts at high $T$
+\item Helium: site partition never forms, identity partition extincts at $T_\lambda$
+\end{itemize}
+
+\subsection{Entropy of Melting}
+
+The entropy change at melting is:
+\begin{equation}
+\Delta S_m = \frac{\Delta H_m}{T_m}
+\label{eq:entropy_melting}
+\end{equation}
+
+For most elements, $\Delta S_m \approx R$ (Richard's rule), where $R$ is the gas constant \citep{richard1897}.
+
+In partition terms, the entropy of melting represents the categorical information lost when site assignment becomes undefined:
+\begin{equation}
+\Delta S_m = \kB \ln \Omega_{\text{liquid}} - \kB \ln \Omega_{\text{solid}}
+\label{eq:entropy_partition}
+\end{equation}
+
+The liquid has more accessible configurations because atoms are not constrained to specific sites. This excess configurational entropy is approximately $\kB$ per atom, yielding $\Delta S_m \approx R$ per mole.
+

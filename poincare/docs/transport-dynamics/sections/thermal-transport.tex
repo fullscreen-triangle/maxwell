@@ -133,3 +133,315 @@ The heat flux is proportional to the temperature gradient:
 
 This is the thermal analogue of Ohm's law and Fick's law. All three constitutive relations have the same partition structure: flux proportional to gradient, with transport coefficient determined by partition lag.
 
+\subsection{Phonon Diversity: Sizes, Shapes, and Phases}
+
+The treatment above uses a single phonon mean free path $\lambda$, but this obscures the rich internal structure of phonon transport. Phonons are not a homogeneous population---they vary in ``size'' (energy capacity), ``shape'' (polarization and wavevector), and phase.
+
+\subsubsection{Phonon Spectrum}
+
+A crystal with $N$ atoms per unit cell supports $3N$ phonon branches \citep{ashcroft1976}:
+
+\begin{enumerate}
+\item \textbf{Acoustic branches} (3): Atoms in a unit cell move in phase. Low frequency, $\omega \to 0$ as $\mathbf{k} \to 0$.
+\item \textbf{Optical branches} ($3N-3$): Atoms in a unit cell move out of phase. Finite frequency at $\mathbf{k} = 0$.
+\end{enumerate}
+
+Each branch further divides by polarization:
+\begin{itemize}
+\item \textbf{Longitudinal}: Displacement parallel to propagation (compression waves)
+\item \textbf{Transverse}: Displacement perpendicular to propagation (shear waves)
+\end{itemize}
+
+The phonon ``size''---its energy capacity---is $\hbar\omega(\mathbf{k})$, which varies from zero (long-wavelength acoustic) to $\sim k_B \Theta_D$ (zone boundary).
+
+\subsubsection{Mode-Dependent Transport}
+
+Different phonon modes carry heat with vastly different efficiencies:
+
+\begin{theorem}[Mode-Dependent Thermal Conductivity]
+\label{thm:mode_kappa}
+The total thermal conductivity is a sum over all phonon modes:
+\begin{equation}
+\kappa = \sum_{\lambda} \int \frac{d^3k}{(2\pi)^3} \, c_\lambda(\mathbf{k}) \, v_\lambda(\mathbf{k})^2 \, \tau_\lambda(\mathbf{k})
+\label{eq:mode_kappa}
+\end{equation}
+where $\lambda$ labels branches, $c_\lambda$ is mode heat capacity, $v_\lambda$ is group velocity, and $\tau_\lambda$ is mode lifetime.
+\end{theorem}
+
+The mode lifetime $\tau_\lambda(\mathbf{k})$ varies by orders of magnitude:
+\begin{itemize}
+\item Long-wavelength acoustic phonons: $\tau \sim 10^{-9}$ s (weak scattering)
+\item Zone-boundary phonons: $\tau \sim 10^{-12}$ s (strong Umklapp)
+\item Optical phonons: $\tau \sim 10^{-13}$ s (rapid decay to acoustic modes)
+\end{itemize}
+
+\subsubsection{Heat Transfer Chain: A to B to C}
+
+Consider heat flowing through a chain of molecules A $\to$ B $\to$ C. The vibration energy passed from A to B is \textit{not} the same as that transmitted from B to C:
+
+\begin{proposition}[Non-Uniform Energy Transfer]
+\label{prop:nonuniform}
+Each pair of coupled oscillators has different frequency matching and coupling strength. Energy transfer depends on:
+\begin{enumerate}
+\item Mode overlap: Which frequencies A and B share
+\item Coupling strength: How strongly those modes interact
+\item Phase relationship: Whether A and B are in phase
+\end{enumerate}
+\end{proposition}
+
+The energy in mode $\omega_1$ at site A may transfer to mode $\omega_2$ at site B (mode conversion), then to mode $\omega_3$ at site C. The path through phonon space is tortuous, not direct.
+
+\subsubsection{Phase Incoherence}
+
+At finite temperature, each oscillator vibrates with random phase relative to its neighbours. This phase incoherence is fundamental:
+
+\begin{equation}
+\langle e^{i(\phi_A - \phi_B)} \rangle = 0 \quad (T > 0)
+\label{eq:phase_incoherence}
+\end{equation}
+
+Phase-matched transfer (constructive interference) occurs only transiently. Most transfer events are phase-mismatched, reducing efficiency.
+
+This contrasts sharply with electrical conduction, where the electromagnetic signal imposes global phase coherence. In heat conduction, there is no analogous coordinating field---each oscillator has its own phase.
+
+\subsubsection{Selective Excitation}
+
+Not all modes are equally accessible:
+
+\begin{enumerate}
+\item \textbf{Threshold effects}: Optical phonons require $k_B T > \hbar\omega_{\text{opt}}$ for significant population
+\item \textbf{Symmetry selection}: Some modes couple strongly to certain excitations, others weakly
+\item \textbf{Resonance conditions}: Energy transfer peaks when $\omega_A \approx \omega_B$
+\end{enumerate}
+
+At low temperature, only long-wavelength acoustic phonons are populated. As temperature rises, higher-frequency modes become available, but they also scatter more strongly.
+
+\subsection{Thermal Transport as Chromatography}
+
+\begin{definition}[Thermal Chromatography]
+\label{def:thermal_chrom}
+Heat flow through a material is analogous to chromatography: a mixture of phonon modes (the ``analyte'') propagates through a scattering medium (the ``column''), with different modes experiencing different partition and retention.
+\end{definition}
+
+The analogy is precise:
+
+\begin{table}[h]
+\centering
+\caption{Chromatography-thermal transport correspondence}
+\label{tab:chromatography}
+\begin{tabular}{ll}
+\toprule
+\textbf{Chromatography} & \textbf{Thermal Transport} \\
+\midrule
+Analyte mixture & Phonon population \\
+Different molecular species & Different phonon modes ($\omega$, $\mathbf{k}$, $\lambda$) \\
+Mobile phase & Propagating phonons \\
+Stationary phase & Lattice (scattering centres) \\
+Partition coefficient & Mode-dependent scattering rate $\tau^{-1}(\omega)$ \\
+Retention time & Mode mean free path $\lambda(\omega) = v(\omega)\tau(\omega)$ \\
+Elution profile & Spectral heat flux $q(\omega)$ \\
+Column efficiency & Thermal conductivity $\kappa$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Mode Separation}
+
+Just as chromatography separates molecules by their differential affinity for the stationary phase, thermal transport ``separates'' phonon modes by their differential scattering:
+
+\begin{itemize}
+\item \textbf{Long-wavelength acoustic}: Weak scattering, long mean free path, ``elutes'' quickly (carries heat far)
+\item \textbf{High-frequency acoustic}: Strong Umklapp, short mean free path, ``retained'' (carries heat short distances)
+\item \textbf{Optical}: Very short lifetime, ``stuck'' at injection point (carries almost no heat)
+\end{itemize}
+
+This explains why thermal conductivity depends so sensitively on material structure. The ``column'' (crystal structure, defects, boundaries) determines how each mode is partitioned.
+
+\subsubsection{The Phonon Spectrum as Analyte}
+
+A temperature gradient injects a spectrum of phonons at the hot end. This spectrum is not thermal equilibrium---it contains an excess of phonons at all frequencies:
+
+\begin{equation}
+\Delta n(\omega) = \frac{\partial n_{\text{BE}}}{\partial T} \Delta T = \frac{\hbar\omega}{k_B T^2} \frac{e^{\hbar\omega/k_B T}}{(e^{\hbar\omega/k_B T} - 1)^2} \Delta T
+\label{eq:injected_spectrum}
+\end{equation}
+
+This ``injected'' population propagates through the crystal. Each mode scatters at its own rate. The ``elution profile''---the spectrum of phonons arriving at the cold end---is depleted in high-frequency modes relative to low-frequency modes.
+
+\subsubsection{Why Thermal Conductivity is Harder Than Electrical}
+
+The chromatographic picture explains why thermal transport is fundamentally more complex than electrical:
+
+\begin{enumerate}
+\item \textbf{Single carrier vs. spectrum}: Electrical current involves one carrier type (electrons) with one relaxation time (approximately). Thermal current involves a continuous spectrum of phonon modes, each with its own dynamics.
+
+\item \textbf{Global phase vs. incoherence}: The electromagnetic field coordinates electron motion globally. Phonons have no such coordinator---each mode propagates independently.
+
+\item \textbf{Conserved charge vs. non-conserved phonons}: Electrons are conserved (charge conservation). Phonons are created and destroyed (thermal equilibration). The ``analyte'' changes composition during transit.
+
+\item \textbf{Simple partition vs. mode conversion}: Electrons scatter but remain electrons. Phonons can convert between modes, transferring energy across the spectrum.
+\end{enumerate}
+
+This is why the Wiedemann-Franz law is so remarkable: it says that \textit{for electrons}, thermal and electrical partition are the same. For phonons, no such simplification exists.
+
+\subsubsection{Nanostructure as Column Engineering}
+
+The chromatographic perspective suggests a design principle: engineer the ``column'' to control phonon separation.
+
+\begin{itemize}
+\item \textbf{Nanoparticle inclusions}: Scatter high-frequency phonons (mass mismatch), transmit low-frequency (wavelength larger than particle)
+\item \textbf{Superlattices}: Create phonon bandgaps, block certain frequency ranges
+\item \textbf{Grain boundaries}: Scatter phonons with mean free path $> $ grain size
+\item \textbf{Isotope disorder}: Scatter high-frequency phonons preferentially ($\tau^{-1} \propto \omega^4$)
+\end{itemize}
+
+This is thermoelectric engineering: reduce $\kappa$ while preserving $\sigma$ by scattering phonons that don't carry charge.
+
+\subsection{Partition Structure of Phonon Transport}
+
+From the partition framework, each phonon mode represents a distinct partition channel:
+
+\begin{equation}
+\kappa^{-1} = \sum_{\text{modes}} \frac{\tau_\omega g_\omega}{\mathcal{N}_\omega}
+\label{eq:kappa_partition_modes}
+\end{equation}
+
+where the sum runs over all phonon modes, each with its own partition lag $\tau_\omega$, coupling $g_\omega$, and normalisation $\mathcal{N}_\omega$.
+
+The chromatographic analogy makes clear that thermal transport is \textit{not} a single phenomenon but a superposition of many parallel partition processes, each with its own characteristics. Understanding thermal conductivity requires understanding this entire spectrum of partition channels---which is why it remains one of the most challenging transport properties to predict from first principles.
+
+\subsection{Post-Hoc Phonon Characterisation}
+
+A fundamental feature of phonon transport emerges from the partition framework: phonons can only be characterised \textit{after} the experiment, not before.
+
+\subsubsection{Measurement-Defined Phonons}
+
+\begin{theorem}[Phonon Measurement Identity]
+\label{thm:phonon_measurement}
+A phonon is not a pre-existing entity that is subsequently measured. The phonon population at any point is defined by the act of measurement---the categorical partition that distinguishes phonon states.
+\end{theorem}
+
+This aligns with the Measurement-Partition Identity established in prior work \citep{sachikonye2024loschmidt}. Before measurement, there is no fact about ``which phonons are present.'' The question is undefined because no partition has occurred to distinguish phonon states.
+
+In practice, phonon spectroscopy (Raman, neutron scattering, etc.) creates the partition that defines the phonon population. The result depends on:
+\begin{itemize}
+\item The measurement technique (what partition operation is performed)
+\item The measurement location (where the partition occurs)
+\item The measurement timing (when the partition occurs)
+\end{itemize}
+
+Different measurements yield different phonon characterisations---not because they reveal different aspects of the same underlying reality, but because they perform different partition operations.
+
+\subsubsection{Most Probable Pathways}
+
+Heat does not flow through the ``optimal'' pathway---it flows through the \textit{most probable} pathway:
+
+\begin{definition}[Thermal Path Probability]
+\label{def:path_prob}
+The probability of heat flowing through a particular sequence of phonon modes is:
+\begin{equation}
+P[\text{path}] = \prod_{\text{steps}} p(\omega_{i+1} | \omega_i, T_i)
+\label{eq:path_probability}
+\end{equation}
+where $p(\omega_{i+1} | \omega_i, T_i)$ is the conditional probability of transitioning from mode $\omega_i$ to mode $\omega_{i+1}$ at local temperature $T_i$.
+\end{definition}
+
+The transition probability is determined by:
+\begin{itemize}
+\item Mode overlap (phonon density of states matching)
+\item Coupling strength (anharmonic matrix elements)
+\item Phase space availability (Bose-Einstein statistics)
+\item Energy conservation (within thermal fluctuations)
+\end{itemize}
+
+The actual path taken is sampled from this probability distribution. It is not the path of minimum resistance, nor the path of maximum efficiency, but a typical sample from the ensemble of possible paths.
+
+\subsubsection{Sequential Most-Probable-State Computation}
+
+\begin{theorem}[Discretised Thermal Transport]
+\label{thm:discrete_thermal}
+Thermal transport can be computed as a sequence of most-probable-state determinations:
+\begin{enumerate}
+\item Divide the spatial domain into increments $\Delta x$
+\item At each increment, given the incoming phonon spectrum and local conditions, compute the most probable outgoing spectrum
+\item The heat flux is the energy carried by this most-probable spectrum
+\end{enumerate}
+\end{theorem}
+
+For increment $i$ with incoming spectrum $n_{\text{in}}(\omega)$, the outgoing spectrum maximises the entropy subject to energy conservation:
+
+\begin{equation}
+n_{\text{out}}(\omega) = \argmax_{n} S[n] \quad \text{subject to} \quad \int \hbar\omega \, n(\omega) \, d\omega = Q_i
+\label{eq:max_entropy_spectrum}
+\end{equation}
+
+where $Q_i$ is the heat flux through increment $i$ and $S[n]$ is the entropy of the phonon distribution.
+
+The solution is a Bose-Einstein distribution at the local temperature $T_i$:
+\begin{equation}
+n_{\text{out}}(\omega) = \frac{1}{e^{\hbar\omega/k_B T_i} - 1}
+\label{eq:local_equilibrium}
+\end{equation}
+
+However, this local equilibrium is only achieved if the increment $\Delta x$ exceeds the phonon mean free path $\lambda$. For $\Delta x < \lambda$, non-equilibrium distributions persist.
+
+\subsubsection{The Cascade Picture}
+
+Heat transport through a material is a cascade of partition events:
+
+\begin{equation}
+\text{Hot} \xrightarrow{\tau_1} \text{State}_1 \xrightarrow{\tau_2} \text{State}_2 \xrightarrow{\tau_3} \cdots \xrightarrow{\tau_n} \text{Cold}
+\label{eq:thermal_cascade}
+\end{equation}
+
+Each arrow represents a partition operation with lag $\tau_i$. The state at each step is the most probable state given:
+\begin{enumerate}
+\item The preceding state
+\item The local temperature
+\item The local lattice structure
+\item The scattering mechanisms present
+\end{enumerate}
+
+This cascade picture explains several phenomena:
+
+\textbf{Thermal relaxation}: The system ``forgets'' the initial phonon distribution over a relaxation length $\ell_{\text{relax}} \sim \lambda$. Beyond this distance, only the total energy (temperature) is remembered, not the spectral details.
+
+\textbf{Ballistic-to-diffusive transition}: For $L < \lambda$, phonons traverse the sample without scattering (ballistic). For $L \gg \lambda$, many partition events occur (diffusive). The transition occurs when sample size matches mean free path.
+
+\textbf{Kapitza resistance}: At interfaces, the lattice structure changes abruptly. The most-probable-state on each side may not match, creating thermal resistance even without bulk scattering.
+
+\subsubsection{Connection to Virtual Instruments}
+
+The post-hoc characterisation principle connects directly to virtual instrumentation. Since phonons are defined by measurement:
+
+\begin{proposition}[Virtual Phonon Spectroscopy]
+\label{prop:virtual_phonon}
+Phonon spectra can be determined virtually by computing the most probable categorical state at each measurement point, using hardware oscillations as the partition mechanism.
+\end{proposition}
+
+We do not simulate phonon trajectories---we compute the most probable phonon population given the boundary conditions and local structure. The hardware oscillation (CPU cycles, memory access patterns) performs the categorical partition that defines the result.
+
+This is not an approximation to ``real'' phonon dynamics. It \textit{is} phonon measurement, performed categorically rather than through physical probes.
+
+\subsubsection{Implications for Thermal Conductivity Prediction}
+
+The sequential most-probable-state picture suggests a computational approach:
+
+\begin{enumerate}
+\item Discretise the material into cells of size comparable to phonon mean free path
+\item For each cell, characterise the local lattice structure and scattering mechanisms
+\item Compute the most probable phonon spectrum in each cell given the neighbours
+\item Extract the heat flux from the spectral flow between cells
+\item Sum to obtain total thermal conductivity
+\end{enumerate}
+
+This approach naturally handles:
+\begin{itemize}
+\item Inhomogeneous materials (different cell properties)
+\item Nanostructures (cell size comparable to feature size)
+\item Interfaces (boundary conditions between dissimilar cells)
+\item Non-equilibrium effects (cells not at local equilibrium)
+\end{itemize}
+
+The key insight is that we need not track individual phonon trajectories. We need only find the most probable state at each spatial increment---a much more tractable problem that aligns with the categorical measurement framework.
+

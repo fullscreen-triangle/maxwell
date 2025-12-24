@@ -119,7 +119,7 @@ Rearranging gives $V = IR$. \qed
 
 Ohm's law follows from the linear relation between flux (current) and driving force (electric field), which holds when partition operations are independent and partition lag is flux-independent.
 
-\subsection{Power Dissipation}
+\subsection{Power Dissipation and Joule Heating}
 
 The power dissipated in a resistor is:
 \begin{equation}
@@ -127,14 +127,172 @@ P = I^2 R = \frac{V^2}{R} = IV
 \label{eq:joule_heating}
 \end{equation}
 
-From the partition perspective, each scattering event dissipates energy through entropy production:
+This result, while algebraically simple, obscures a profound question: \textit{why does electrical current produce heat when pressurised water flow does not?}
+
+\subsubsection{The Replacement Mechanism}
+
+In fluid flow, molecules move \textit{with} the bulk motion. Each molecule is tracked continuously by its neighbours through intermolecular forces. There is no ``replacement''---the same molecules that enter a pipe segment exit it (on average). The flow is coercive: molecules are pushed along collectively.
+
+Electrical current operates on a fundamentally different principle. When an electron enters one end of a conductor, charge conservation demands that an electron exits the other end, but these are \textit{not the same electron}. The conductor maintains charge neutrality through rapid replacement:
+
+\begin{definition}[The Replacement Principle]
+\label{def:replacement}
+In electrical conduction, an electron added at one terminal causes an electron to be expelled at the opposite terminal through the Newton's cradle mechanism. The material lattice experiences no net change in electron count; only the boundary conditions change.
+\end{definition}
+
+From the perspective of the lattice atoms, ``nothing happens''---the replacement occurs before any rectification process can detect or respond to it. The individual electron identity is lost in the collective.
+
+\subsubsection{The Currency Analogy}
+
+Consider paper currency in a gold-standard economy. A banknote represents gold held in a vault, but transactions occur without verifying the gold's presence. Gold can move between vaults while the paper economy continues normally. If there is a discrepancy---more or less gold than the notes represent---the note-bearers cannot trace their problems to the gold reserves. The ``friction'' in the paper economy appears as economic instability, not as missing gold.
+
+Conductors operate analogously. The electromagnetic signal (the ``paper economy'') propagates at nearly the speed of light, while the electron dynamics (the ``gold'') evolve on much slower timescales set by lattice vibrations and thermal motion. The material cannot ``verify'' the gold---cannot track which electron is which or confirm that the charge replacement is occurring coherently with the lattice state.
+
+\subsubsection{Phase Mismatch as Heat Origin}
+
+\begin{theorem}[Phase Mismatch Heating]
+\label{thm:phase_mismatch}
+Joule heating arises from the phase mismatch between signal propagation (electromagnetic, $v \sim c$) and material response (lattice vibrations, $v \sim 10^3$ m/s; electron thermal motion, $v_F \sim 10^6$ m/s).
+\end{theorem}
+
+The electromagnetic signal carrying current information propagates at:
 \begin{equation}
-\dot{Q} = T \sum_{i,j} \Gamma_{ij} \Delta S_{ij}
+v_{\text{signal}} = \frac{c}{\sqrt{\varepsilon_r \mu_r}} \sim 10^8 \text{ m/s}
+\label{eq:signal_velocity}
 \end{equation}
 
-For current $I$, the scattering rate is $\Gamma = I/(e \cdot N_{\text{scatter}})$ where $N_{\text{scatter}} = L/\lambda$ is the number of scattering events per electron. This yields:
+The lattice vibrations (phonons) propagate at the sound velocity:
 \begin{equation}
-P = I^2 R
+v_{\text{phonon}} = \sqrt{\frac{K}{M}} \sim 10^3 \text{ m/s}
+\label{eq:phonon_velocity}
 \end{equation}
-confirming that Joule heating is the macroscopic manifestation of partition entropy production.
+
+This five-order-of-magnitude velocity disparity means the electromagnetic ``instruction'' to move charge arrives long before the lattice can respond coherently. The lattice atoms, vibrating thermally, are in random positions when the signal arrives. The electrons, occupying states near the Fermi surface with velocity $v_F \sim 10^6$ m/s, are also incoherent with the signal timing.
+
+\begin{definition}[Electromagnetic-Mechanical Lag]
+\label{def:em_lag}
+The electromagnetic-mechanical lag $\tau_{\text{EM}}$ is the temporal mismatch between signal arrival and material response:
+\begin{equation}
+\tau_{\text{EM}} = \frac{L}{v_{\text{signal}}} - \frac{L}{v_{\text{phonon}}} \approx -\frac{L}{v_{\text{phonon}}}
+\label{eq:em_lag}
+\end{equation}
+where the negative sign indicates the signal arrives before mechanical equilibration.
+\end{definition}
+
+This lag creates categorical indeterminacy: the signal demands a response before the material can coordinate that response. Each electron displacement event occurs against an incoherent background of lattice positions.
+
+\subsubsection{The Verification Gap}
+
+\begin{proposition}[Unverifiable Replacement]
+\label{prop:unverifiable}
+The lattice cannot verify electron replacement events because the replacement timescale $\tau_{\text{replace}} \sim L/v_{\text{signal}}$ is much shorter than the lattice equilibration timescale $\tau_{\text{lattice}} \sim 1/\omega_D$ where $\omega_D$ is the Debye frequency.
+\end{proposition}
+
+For a 1-metre copper wire:
+\begin{align}
+\tau_{\text{replace}} &\sim \frac{1 \text{ m}}{10^8 \text{ m/s}} = 10^{-8} \text{ s} \\
+\tau_{\text{lattice}} &\sim \frac{1}{2\pi \times 7 \times 10^{12} \text{ Hz}} \sim 2 \times 10^{-14} \text{ s}
+\end{align}
+
+Interestingly, $\tau_{\text{lattice}} < \tau_{\text{replace}}$, so the lattice can complete many vibration cycles during a single replacement event along the full wire. However, this comparison is misleading. The relevant timescale is not the global replacement but the \textit{local} replacement at each lattice site:
+
+\begin{equation}
+\tau_{\text{local}} \sim \frac{a}{v_{\text{signal}}} \sim \frac{3 \times 10^{-10}}{10^8} = 3 \times 10^{-18} \text{ s}
+\end{equation}
+
+where $a$ is the lattice spacing. At this timescale, $\tau_{\text{local}} \ll \tau_{\text{lattice}}$: the electromagnetic signal traverses each unit cell in attoseconds, while the lattice vibrates on femtosecond timescales. The lattice cannot track local electron replacement.
+
+\subsubsection{Entropy from Unverifiable Events}
+
+This unverifiability generates entropy. From the Partition Entropy Theorem:
+\begin{equation}
+\Delta S_{\text{replace}} = k_B \ln n_{\text{states}}
+\end{equation}
+
+where $n_{\text{states}}$ is the number of lattice configurations compatible with the replacement event. Since the lattice state is undetermined during replacement:
+
+\begin{equation}
+n_{\text{states}} \sim \exp\left(\frac{\hbar \omega_D}{k_B T}\right)
+\end{equation}
+
+giving entropy production per replacement event proportional to temperature.
+
+The total power dissipation follows:
+\begin{equation}
+P = \frac{I}{e} \times N_{\text{events}} \times T \Delta S = I^2 R
+\end{equation}
+
+where the resistance $R$ encapsulates the phase mismatch through partition lag accumulation.
+
+\subsubsection{Contrast with Fluid Flow}
+
+In fluid flow, there is no replacement---molecules move continuously with the flow. The ``verification'' is immediate: neighbouring molecules maintain continuous contact through van der Waals and other short-range forces. There is no gap between ``signal'' and ``response'' because there is no separate signal; the molecular motion \textit{is} the flow.
+
+This explains why pressurised water does not heat spontaneously. The molecules can track each other's positions continuously. Viscous heating arises only from velocity \textit{gradients}---regions where molecules slip past each other---not from the bulk flow itself. In contrast, electrical current generates heat even in perfectly uniform flow because the phase mismatch between electromagnetic signal and lattice response is intrinsic to the conduction mechanism.
+
+\subsubsection{Why Superconductors Produce No Heat}
+
+The phase mismatch mechanism immediately explains superconductivity. In a superconductor below $T_c$, electrons form Cooper pairs through phonon-mediated attraction \citep{cooper1956,bardeen1957}. These pairs are phase-locked---they maintain a fixed phase relationship with the lattice and with each other.
+
+\begin{theorem}[Superconducting Heat Elimination]
+\label{thm:super_no_heat}
+Cooper pair formation eliminates the verification gap, producing exactly zero Joule heating.
+\end{theorem}
+
+\begin{proof}
+In a normal conductor, the verification gap arises because:
+\begin{enumerate}
+\item Individual electrons are distinguishable
+\item The electromagnetic signal outpaces lattice response
+\item The lattice cannot track which electron is where during replacement
+\end{enumerate}
+
+Cooper pairs eliminate this gap:
+\begin{enumerate}
+\item Paired electrons are categorically unified---indistinguishable
+\item The pair wavefunction extends over the coherence length $\xi \sim 10^{-6}$ m
+\item The pair already ``knows'' about the lattice configuration over this entire length
+\item No local verification is needed because the pair state encompasses the relevant lattice region
+\end{enumerate}
+
+Mathematically: the phase-locking energy $\Delta$ synchronises the electromagnetic signal with the lattice vibrations. The pair wavefunction:
+\begin{equation}
+\Psi_{\text{pair}}(\mathbf{r}_1, \mathbf{r}_2) = \phi_{\text{pair}}(\mathbf{r}_1 - \mathbf{r}_2) \cdot \Psi_{\text{centre}}(\mathbf{R})
+\end{equation}
+where $\mathbf{R} = (\mathbf{r}_1 + \mathbf{r}_2)/2$, extends over a coherence volume $\xi^3 \sim 10^{-18}$ m$^3$. This volume contains $\sim 10^9$ lattice sites. The pair averages over all these sites coherently.
+
+The lattice vibrations that would produce phase mismatch in a normal conductor are already incorporated into the pair state. The pair moves with the lattice, not against it. There is no verification gap because the pair state is the verification.
+
+The entropy production per replacement event becomes:
+\begin{equation}
+\Delta S_{\text{pair}} = k_B \ln 1 = 0
+\end{equation}
+because there is exactly one lattice configuration compatible with the pair state---the configuration already encoded in the pair wavefunction. \qed
+\end{proof}
+
+\subsubsection{The Gold Vault Analogy Completed}
+
+Returning to the currency analogy: superconductivity is what happens when the paper notes and the gold are the same thing.
+
+In a normal conductor, the electromagnetic signal (notes) operates independently of the electron dynamics (gold). The economy runs on trust, and friction (heat) arises from the mismatch between paper transactions and gold movements.
+
+In a superconductor, Cooper pairs are both the signal and the carriers. There is no separate ``paper economy''---every transaction is a direct gold transfer. The note-bearers can always verify because they are holding the gold itself.
+
+This is why superconductors are called ``macroscopic quantum states''---the quantum coherence of the pair wavefunction means the signal IS the matter, not a representation of it.
+
+\subsubsection{Temperature Dependence of Heating}
+
+The phase mismatch picture explains the temperature dependence of resistance:
+
+\begin{enumerate}
+\item At $T > \Theta_D$ (Debye temperature): Lattice vibrations are fully excited. Maximum phase mismatch. $\rho \propto T$.
+
+\item At $T < \Theta_D$: Fewer phonons. Phase mismatch decreases. $\rho \propto T^5$ (Bloch-Grüneisen).
+
+\item At $T \to 0$ (normal metal): Residual impurity scattering maintains phase mismatch. $\rho \to \rho_0 > 0$.
+
+\item At $T < T_c$ (superconductor): Cooper pairs eliminate phase mismatch entirely. $\rho = 0$ exactly.
+\end{enumerate}
+
+The transition at $T_c$ is discontinuous because categorical unification (pairing) is discrete: electrons are either paired or unpaired, unified or distinguishable. There is no ``partial pairing'' that would give intermediate resistance.
 
