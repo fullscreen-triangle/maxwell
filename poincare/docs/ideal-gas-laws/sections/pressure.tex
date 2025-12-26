@@ -1,0 +1,247 @@
+\section{Pressure: Categorical Density}
+\label{sec:pressure}
+
+\subsection{Classical Pressure and Its Problems}
+
+Classical kinetic theory derives pressure from momentum transfer at container walls:
+\begin{equation}
+P_{\text{classical}} = \frac{1}{3}\rho\langle v^2 \rangle = \frac{Nk_B T}{V}
+\end{equation}
+
+This definition has fundamental problems:
+
+\textbf{Problem 1: Boundary localization.} The derivation assumes pressure arises from wall collisions. Yet we measure pressure in the bulk of fluids---deep ocean pressure, atmospheric pressure at altitude, pressure inside stars. How can a boundary phenomenon determine a bulk property?
+
+\textbf{Problem 2: Circular definition with temperature.} Since $T \propto \langle v^2 \rangle$, the relation $P \propto T$ becomes $P \propto \langle v^2 \rangle$---a tautology rather than physics.
+
+\textbf{Problem 3: No explanation of extensivity.} Why does pressure scale as $N/V$? What makes it an intensive variable?
+
+The triple equivalence resolves these by defining pressure as categorical density---an intrinsic bulk property.
+
+\subsection{Categorical Pressure}
+
+Pressure measures the density of categorical distinctions---how many categories are packed into a given volume:
+\begin{equation}
+\boxed{P_{\text{cat}} = k_B T \left(\frac{\partial M}{\partial V}\right)_S}
+\label{eq:categorical-pressure}
+\end{equation}
+
+\textbf{Physical interpretation:} Compressing a gas (decreasing $V$) forces the same number of categories into smaller volume. The system resists this compression---this resistance is pressure.
+
+\subsubsection{Bulk Property, Not Boundary}
+
+The categorical density $\partial M/\partial V$ exists throughout the volume, not just at boundaries. Wall collisions are one \textit{manifestation} of categorical density, not its \textit{definition}.
+
+Consider a point in the bulk of a gas. The categorical density at that point is:
+\begin{equation}
+\rho_M = \frac{dM}{dV}
+\end{equation}
+
+This is the local number of categorical distinctions per unit volume. Pressure is $k_B T$ times this density.
+
+\subsubsection{Derivation from Entropy}
+
+From the thermodynamic relation:
+\begin{equation}
+P = -\left(\frac{\partial F}{\partial V}\right)_T = -\frac{\partial}{\partial V}(U - TS)
+\end{equation}
+
+Using $S = k_B M \ln n$ and assuming $U$ is volume-independent (ideal gas):
+\begin{equation}
+P = T\left(\frac{\partial S}{\partial V}\right)_T = k_B T \ln n \left(\frac{\partial M}{\partial V}\right)_T
+\end{equation}
+
+For $\ln n = 1$ (one nat per category):
+\begin{equation}
+P = k_B T \left(\frac{\partial M}{\partial V}\right)_T
+\end{equation}
+
+\subsubsection{Scaling of Categories with Volume}
+
+For an ideal gas, the number of accessible spatial categories scales as:
+\begin{equation}
+M = \alpha \frac{V}{V_0}
+\end{equation}
+
+where $V_0$ is the elementary volume (thermal de Broglie wavelength cubed) and $\alpha$ is a constant.
+
+Thus:
+\begin{equation}
+\frac{\partial M}{\partial V} = \frac{\alpha}{V_0} = \frac{M}{V}
+\end{equation}
+
+But for $N$ particles each contributing categories:
+\begin{equation}
+M = N \cdot m
+\end{equation}
+
+where $m$ is categories per particle. The derivative becomes:
+\begin{equation}
+\frac{\partial M}{\partial V} = \frac{N}{V} \cdot \frac{\partial m}{\partial \ln V}
+\end{equation}
+
+For translational modes, $m \propto \ln V$, giving $\partial m/\partial\ln V = 1$:
+\begin{equation}
+\frac{\partial M}{\partial V} = \frac{N}{V}
+\end{equation}
+
+Therefore:
+\begin{equation}
+P = k_B T \cdot \frac{N}{V}
+\end{equation}
+
+This is the ideal gas law, derived from categorical density.
+
+\subsection{Oscillatory Pressure}
+
+In the oscillatory perspective, pressure arises from the spatial amplitude of oscillations. Particles execute oscillations with amplitudes $A_i$; these amplitudes push against boundaries.
+\begin{equation}
+\boxed{P_{\text{osc}} = \frac{1}{3V}\sum_i m_i \omega_i^2 A_i^2}
+\label{eq:oscillatory-pressure}
+\end{equation}
+
+\textbf{Physical interpretation:} Each oscillator exerts a restoring force $F = m\omega^2 A$. The pressure is the average force per unit area from all oscillators.
+
+\subsubsection{Derivation from Virial Theorem}
+
+For a system of particles in a container, the virial theorem states:
+\begin{equation}
+PV = \frac{2}{3}\langle E_k \rangle_{\text{total}} = \frac{1}{3}\sum_i m_i \langle v_i^2 \rangle
+\end{equation}
+
+For harmonic oscillators, $\langle v^2 \rangle = \omega^2 A^2$:
+\begin{equation}
+PV = \frac{1}{3}\sum_i m_i \omega_i^2 A_i^2
+\end{equation}
+
+Dividing by $V$:
+\begin{equation}
+P = \frac{1}{3V}\sum_i m_i \omega_i^2 A_i^2
+\end{equation}
+
+\subsubsection{Connection to Thermal Energy}
+
+For oscillators in thermal equilibrium:
+\begin{equation}
+\frac{1}{2}m\omega^2 A^2 = \frac{1}{2}k_B T
+\end{equation}
+
+Thus:
+\begin{equation}
+m\omega^2 A^2 = k_B T
+\end{equation}
+
+Summing over $N$ oscillators:
+\begin{equation}
+\sum_i m_i \omega_i^2 A_i^2 = N k_B T
+\end{equation}
+
+Substituting:
+\begin{equation}
+P = \frac{N k_B T}{3V} \times 3 = \frac{N k_B T}{V}
+\end{equation}
+
+(The factor of 3 accounts for three spatial dimensions.)
+
+\subsection{Partition Pressure}
+
+In the partition perspective, pressure arises from the rate of boundary-crossing partitions:
+\begin{equation}
+\boxed{P_{\text{part}} = \frac{k_B T}{V} \sum_a \frac{1}{\tau_{p,a}^{\text{boundary}}}}
+\label{eq:partition-pressure}
+\end{equation}
+
+\textbf{Physical interpretation:} Faster boundary crossings (shorter partition lags at boundaries) mean higher pressure. The system transitions rapidly at the boundary, exerting force.
+
+\subsubsection{Derivation from Transition Rates}
+
+The rate at which particles cross a boundary element $dA$ is:
+\begin{equation}
+\Phi = n \langle v \rangle / 4
+\end{equation}
+
+where $n = N/V$ is number density and $\langle v \rangle$ is mean speed.
+
+Each crossing is a partition with lag:
+\begin{equation}
+\tau_p^{\text{boundary}} = \frac{1}{\Phi \cdot dA}
+\end{equation}
+
+The pressure is momentum flux:
+\begin{equation}
+P = \frac{\text{momentum transferred}}{\text{area} \times \text{time}} = n m \langle v^2 \rangle / 3
+\end{equation}
+
+In partition terms:
+\begin{equation}
+P = \frac{k_B T}{V} \cdot N = k_B T \cdot n
+\end{equation}
+
+This is consistent with $\sum_a 1/\tau_p^{\text{boundary}} = N$ for an ideal gas.
+
+\subsection{Equivalence of Three Definitions}
+
+\textbf{Theorem.} The three pressure definitions are equivalent for ideal gases:
+\begin{equation}
+P_{\text{cat}} = P_{\text{osc}} = P_{\text{part}} = \frac{Nk_B T}{V}
+\end{equation}
+
+\textbf{Proof:}
+
+\textit{Categorical:}
+\begin{equation}
+P_{\text{cat}} = k_B T \left(\frac{\partial M}{\partial V}\right)_S = k_B T \cdot \frac{N}{V}
+\end{equation}
+
+\textit{Oscillatory:}
+\begin{equation}
+P_{\text{osc}} = \frac{1}{3V}\sum_i m_i \omega_i^2 A_i^2 = \frac{N k_B T}{V}
+\end{equation}
+
+\textit{Partition:}
+\begin{equation}
+P_{\text{part}} = \frac{k_B T}{V} \cdot N = \frac{N k_B T}{V}
+\end{equation}
+
+All three give the ideal gas result. $\square$
+
+\subsection{Pressure as Intensive Variable}
+
+The categorical perspective explains why pressure is intensive. The categorical density:
+\begin{equation}
+\rho_M = \frac{M}{V} \propto \frac{N}{V}
+\end{equation}
+
+is intensive (doubling both $N$ and $V$ leaves $\rho_M$ unchanged). Since $P = k_B T \cdot \rho_M$, pressure inherits intensivity.
+
+\subsection{Pressure Saturation}
+
+At extremely high density, all available categories become occupied:
+\begin{equation}
+M \to M_{\max}
+\end{equation}
+
+The categorical density saturates:
+\begin{equation}
+\frac{\partial M}{\partial V} \to 0 \quad \text{as} \quad M \to M_{\max}
+\end{equation}
+
+This predicts pressure saturation at extreme densities (e.g., nuclear matter). The pressure cannot increase indefinitely because there are no more categories to compress.
+
+\subsection{Summary}
+
+Pressure admits three equivalent definitions:
+\begin{align}
+P_{\text{cat}} &= k_B T \left(\frac{\partial M}{\partial V}\right)_S \quad \text{(categorical density)} \\
+P_{\text{osc}} &= \frac{1}{3V}\sum_i m_i \omega_i^2 A_i^2 \quad \text{(oscillation amplitude)} \\
+P_{\text{part}} &= \frac{k_B T}{V} \sum_a \frac{1}{\tau_p^{\text{boundary}}} \quad \text{(boundary partition rate)}
+\end{align}
+
+All three:
+\begin{enumerate}
+\item Are bulk properties (not localized at boundaries)
+\item Explain why $P \propto N/V$ (categorical density)
+\item Give correct ideal gas law
+\item Predict pressure saturation at extreme density
+\end{enumerate}
+

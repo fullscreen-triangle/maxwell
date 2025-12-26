@@ -1,0 +1,237 @@
+\section{The Ideal Gas Law: Categorical Balance}
+\label{sec:ideal-gas-law}
+
+\subsection{Classical Statement}
+
+The ideal gas law is an empirical relation:
+\begin{equation}
+PV = Nk_B T
+\end{equation}
+
+Classical kinetic theory derives this from momentum transfer at walls, but provides no deep explanation. Why this particular combination of $P$, $V$, $N$, and $T$? What physical principle underlies the relation?
+
+The triple equivalence reveals the ideal gas law as a \textit{categorical balance equation}: a statement about the equilibrium between categorical density in volume and categorical transitions per particle.
+
+\subsection{Categorical Derivation}
+
+\subsubsection{Categorical Balance Condition}
+
+Define:
+\begin{itemize}
+\item $\rho_M^V = M/V$ = categorical density (categories per volume)
+\item $\mu_M^N = M/N$ = categorical intensity (categories per particle)
+\end{itemize}
+
+At equilibrium, these must be self-consistently related. The pressure (categorical density) creates the conditions that determine the categorical intensity.
+
+The balance condition is:
+\begin{equation}
+\frac{M_{\text{boundary}}}{V} = \frac{M_{\text{total}}}{N}
+\label{eq:categorical-balance}
+\end{equation}
+
+This says: the boundary categorical density equals the per-particle categorical intensity.
+
+\subsubsection{From Balance to Ideal Gas Law}
+
+The pressure is (from Section~\ref{sec:pressure}):
+\begin{equation}
+P = k_B T \cdot \frac{M_{\text{boundary}}}{V}
+\end{equation}
+
+Using the balance condition $M_{\text{boundary}}/V = M_{\text{total}}/N$ and assuming $M_{\text{total}} = N$ (one effective category per particle for translational motion):
+\begin{equation}
+P = k_B T \cdot \frac{N}{V}
+\end{equation}
+
+Multiplying both sides by $V$:
+\begin{equation}
+\boxed{PV = Nk_B T}
+\end{equation}
+
+\subsubsection{Physical Interpretation}
+
+The ideal gas law is a statement of categorical equilibrium:
+\begin{itemize}
+\item Left side ($PV$): Total ``categorical pressure'' on the system---the work required to maintain the categorical structure against compression.
+\item Right side ($Nk_B T$): Total ``categorical activity''---the rate at which $N$ particles create categorical distinctions at temperature $T$.
+\end{itemize}
+
+Equilibrium requires these to balance.
+
+\subsection{Oscillatory Derivation}
+
+\subsubsection{Oscillatory Balance}
+
+In the oscillatory picture, each particle oscillates with characteristic frequency $\omega$ and amplitude $A$. The pressure arises from the mean squared oscillation:
+\begin{equation}
+P = \frac{\rho}{3} \langle A^2 \omega^2 \rangle
+\end{equation}
+
+For thermal oscillators, $m\omega^2 A^2 = k_B T$, so:
+\begin{equation}
+\langle A^2 \omega^2 \rangle = \frac{k_B T}{m}
+\end{equation}
+
+The pressure becomes:
+\begin{equation}
+P = \frac{\rho}{3} \cdot \frac{k_B T}{m} = \frac{(Nm/V)}{3} \cdot \frac{k_B T}{m} = \frac{Nk_B T}{3V} \times 3 = \frac{Nk_B T}{V}
+\end{equation}
+
+(The factor of 3 accounts for three spatial dimensions.)
+
+Thus:
+\begin{equation}
+PV = Nk_B T
+\end{equation}
+
+\subsubsection{Oscillatory Interpretation}
+
+The ideal gas law balances:
+\begin{itemize}
+\item Oscillation energy ($\sum_i m_i \omega_i^2 A_i^2$) distributed over volume
+\item Thermal energy ($Nk_B T$) distributed among particles
+\end{itemize}
+
+\subsection{Partition Derivation}
+
+\subsubsection{Partition Balance}
+
+In the partition picture, particles undergo boundary-crossing partitions at rate $1/\tau_p$. The total boundary crossing rate is:
+\begin{equation}
+\text{Rate} = \sum_{\text{particles}} \frac{1}{\tau_p} = \frac{N}{\langle\tau_p\rangle}
+\end{equation}
+
+The pressure is momentum flux:
+\begin{equation}
+P = \frac{k_B T}{V} \times \text{(effective crossings)}
+\end{equation}
+
+For ideal gas, effective crossings $= N$:
+\begin{equation}
+P = \frac{Nk_B T}{V}
+\end{equation}
+
+Thus:
+\begin{equation}
+PV = Nk_B T
+\end{equation}
+
+\subsubsection{Partition Interpretation}
+
+The ideal gas law balances:
+\begin{itemize}
+\item Partition work ($PV$): work done by boundary partition completions
+\item Thermal partitions ($Nk_B T$): total partition activity at temperature $T$
+\end{itemize}
+
+\subsection{Unified Interpretation}
+
+All three derivations reveal the same structure:
+\begin{equation}
+PV = Nk_B T
+\end{equation}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+\textbf{Perspective} & \textbf{Left Side (PV)} & \textbf{Right Side (NkT)} \\
+\hline
+Categorical & Boundary categorical density $\times V$ & Particles $\times$ transition rate \\
+Oscillatory & Oscillation pressure $\times V$ & Particles $\times$ oscillation energy \\
+Partition & Boundary partition work & Particles $\times$ partition activity \\
+\hline
+\end{tabular}
+\end{center}
+
+The ideal gas law is the statement that boundary effects (left side) balance bulk thermal activity (right side).
+
+\subsection{Deviations from Ideality}
+
+\subsubsection{Categorical Deviations}
+
+Real gases deviate from ideality when:
+\begin{enumerate}
+\item \textbf{Category overlap:} At high density, particle categories overlap, reducing effective $M$.
+\item \textbf{Category interaction:} Attractive or repulsive interactions modify category structure.
+\item \textbf{Category saturation:} At extreme density, $M \to M_{\max}$ and new categories cannot form.
+\end{enumerate}
+
+These correspond to van der Waals corrections:
+\begin{equation}
+\left(P + a\frac{N^2}{V^2}\right)(V - Nb) = Nk_B T
+\end{equation}
+
+where:
+\begin{itemize}
+\item $a$ term: Category interaction (attractive potential reduces pressure)
+\item $b$ term: Category overlap (excluded volume reduces available categories)
+\end{itemize}
+
+\subsubsection{Oscillatory Deviations}
+
+Anharmonic oscillations cause deviations:
+\begin{equation}
+\omega = \omega_0 + \alpha A^2 + \ldots
+\end{equation}
+
+The amplitude-frequency coupling modifies the pressure-temperature relation.
+
+\subsubsection{Partition Deviations}
+
+Non-uniform partition lags cause deviations. If $\tau_p$ depends on density or position:
+\begin{equation}
+P \neq \frac{Nk_B T}{V}
+\end{equation}
+
+This occurs near phase transitions where partition lags diverge.
+
+\subsection{Generalized Ideal Gas Laws}
+
+\subsubsection{Relativistic Gas}
+
+At high temperature, velocities approach $c$. The categorical distribution becomes bounded:
+\begin{equation}
+PV = Nk_B T \cdot f\left(\frac{k_B T}{mc^2}\right)
+\end{equation}
+
+where $f(x) < 1$ accounts for relativistic saturation.
+
+\subsubsection{Quantum Gas}
+
+At low temperature, quantum statistics modify the categorical occupation:
+\begin{equation}
+PV = Nk_B T \cdot g_{\pm}\left(\frac{T}{T_F}\right)
+\end{equation}
+
+where $g_+$ is for bosons, $g_-$ for fermions, and $T_F$ is the Fermi temperature.
+
+\subsubsection{Photon Gas}
+
+For photons (massless bosons), the number is not conserved. The ideal gas law becomes:
+\begin{equation}
+PV = \frac{U}{3}
+\end{equation}
+
+where $U = aT^4 V$ is the Stefan-Boltzmann energy.
+
+\subsection{Summary}
+
+The ideal gas law $PV = Nk_B T$ admits three equivalent interpretations:
+
+\begin{align}
+\text{Categorical:} & \quad \frac{M_{\text{boundary}}}{V} = \frac{M_{\text{total}}}{N} \\
+\text{Oscillatory:} & \quad \langle A^2\omega^2 \rangle = \frac{Nk_B T}{\rho V} \\
+\text{Partition:} & \quad \sum \frac{1}{\tau_p^{\text{boundary}}} = \frac{N}{\langle\tau_p\rangle}
+\end{align}
+
+All express the same physical principle: \textbf{boundary categorical structure balances bulk thermal activity.}
+
+Key insights:
+\begin{enumerate}
+\item The ideal gas law is a categorical balance equation
+\item Deviations arise from category overlap, interaction, or saturation
+\item Relativistic and quantum corrections modify the categorical distribution
+\item The law is universal because categorical structure is universal
+\end{enumerate}
+

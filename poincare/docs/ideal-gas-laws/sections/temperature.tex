@@ -1,0 +1,237 @@
+\section{Temperature: Rate of Categorical Actualization}
+\label{sec:temperature}
+
+\subsection{Classical Temperature and Its Problems}
+
+The classical kinetic theory defines temperature through average kinetic energy:
+\begin{equation}
+T_{\text{classical}} = \frac{2}{3k_B}\langle E_k \rangle = \frac{m}{3k_B}\langle v^2 \rangle
+\end{equation}
+
+This definition has fundamental problems:
+
+\textbf{Problem 1: Resolution dependence.} The velocity $v$ depends on the timescale of measurement. At femtosecond resolution, we see quantum fluctuations; at nanosecond resolution, we see thermal motion. Which timescale defines temperature?
+
+\textbf{Problem 2: Quantum zero-point motion.} At $T = 0$, quantum systems retain zero-point energy $E_0 = \hbar\omega/2$. The classical definition gives $T > 0$ even at absolute zero.
+
+\textbf{Problem 3: No physical interpretation.} Why does temperature measure energy per degree of freedom? What is the physical meaning of ``thermal equilibrium''?
+
+The triple equivalence resolves all three problems by defining temperature as the rate of categorical actualization.
+
+\subsection{Categorical Temperature}
+
+From the fundamental identity (Equation~\ref{eq:fundamental}), the rate of categorical actualization is:
+\begin{equation}
+\frac{dM}{dt} = \frac{M}{T_{\text{period}}} = \frac{M\omega}{2\pi}
+\end{equation}
+
+where $M$ is the number of categories traversed per period and $T_{\text{period}} = 2\pi/\omega$ is the oscillation period.
+
+\textbf{Definition.} The categorical temperature is:
+\begin{equation}
+\boxed{T_{\text{cat}} = \frac{\hbar}{k_B} \frac{dM}{dt}}
+\label{eq:categorical-temperature}
+\end{equation}
+
+\textbf{Physical interpretation:} Temperature measures how rapidly the system creates categorical distinctions. A ``hot'' system actualizes categories quickly; a ``cold'' system actualizes them slowly.
+
+\subsubsection{Resolution Independence}
+
+Unlike velocity, the categorical actualization rate $dM/dt$ is discrete and countable. Categories are either actualized or not---there is no ambiguity about measurement resolution.
+
+\subsubsection{Correct Zero-Point Behavior}
+
+At $T = 0$, the system occupies its ground state with no transitions between categories:
+\begin{equation}
+T = 0 \implies \frac{dM}{dt} = 0
+\end{equation}
+
+The system may have zero-point energy ($E_0 = \hbar\omega/2$), but it makes no categorical transitions. Temperature correctly vanishes.
+
+\subsubsection{Physical Meaning}
+
+Temperature is the ``clock rate'' of the system---how fast it explores its categorical structure. Thermal equilibrium occurs when all parts of the system have the same categorical clock rate.
+
+\subsection{Oscillatory Temperature}
+
+In the oscillatory perspective, each mode oscillates with frequency $\omega_i$. The average frequency determines temperature:
+\begin{equation}
+\boxed{T_{\text{osc}} = \frac{\hbar}{k_B} \langle\omega\rangle}
+\label{eq:oscillatory-temperature}
+\end{equation}
+
+where
+\begin{equation}
+\langle\omega\rangle = \frac{1}{N} \sum_{i=1}^{N} \omega_i
+\end{equation}
+
+\textbf{Physical interpretation:} Higher frequency oscillations correspond to higher temperature. A system with modes oscillating at THz frequencies is hotter than one with MHz frequencies.
+
+\subsubsection{Connection to Quantum Mechanics}
+
+For a quantum harmonic oscillator with frequency $\omega$, the energy levels are:
+\begin{equation}
+E_n = \hbar\omega\left(n + \frac{1}{2}\right)
+\end{equation}
+
+The thermal average energy is:
+\begin{equation}
+\langle E \rangle = \hbar\omega\left(\langle n \rangle + \frac{1}{2}\right) = \hbar\omega\left(\frac{1}{e^{\hbar\omega/k_B T} - 1} + \frac{1}{2}\right)
+\end{equation}
+
+At high temperature ($k_B T \gg \hbar\omega$):
+\begin{equation}
+\langle E \rangle \approx k_B T
+\end{equation}
+
+This gives $T = \langle E \rangle/k_B$, which for oscillators with $\langle E \rangle = \hbar\langle\omega\rangle$ yields:
+\begin{equation}
+T = \frac{\hbar\langle\omega\rangle}{k_B}
+\end{equation}
+
+The oscillatory temperature definition is exact in the quantum mechanical limit.
+
+\subsubsection{Spectrum of Temperatures}
+
+A system with a distribution of mode frequencies has a distribution of ``local temperatures.'' The thermodynamic temperature is the average:
+\begin{equation}
+T = \frac{\hbar}{k_B} \int_0^{\omega_{\max}} \omega \cdot g(\omega) \, d\omega
+\end{equation}
+
+where $g(\omega)$ is the density of states.
+
+\subsection{Partition Temperature}
+
+In the partition perspective, each categorical transition requires a partition lag $\tau_p$---the time for the system to ``decide'' which category to actualize. Temperature is the inverse of the average partition lag:
+\begin{equation}
+\boxed{T_{\text{part}} = \frac{\hbar}{k_B} \frac{1}{\langle\tau_p\rangle}}
+\label{eq:partition-temperature}
+\end{equation}
+
+where
+\begin{equation}
+\langle\tau_p\rangle = \frac{1}{N} \sum_{a=1}^{N} \tau_{p,a}
+\end{equation}
+
+\textbf{Physical interpretation:} Short partition lags mean rapid transitions, hence high temperature. Long partition lags mean slow transitions, hence low temperature.
+
+\subsubsection{Connection to Relaxation Time}
+
+In non-equilibrium thermodynamics, systems relax to equilibrium with characteristic time $\tau_{\text{relax}}$. The partition perspective identifies:
+\begin{equation}
+\tau_{\text{relax}} = \langle\tau_p\rangle
+\end{equation}
+
+Thus:
+\begin{equation}
+T \propto \frac{1}{\tau_{\text{relax}}}
+\end{equation}
+
+High temperature systems equilibrate quickly; low temperature systems equilibrate slowly.
+
+\subsubsection{Arrhenius Connection}
+
+The Arrhenius equation for reaction rates is:
+\begin{equation}
+k = A e^{-E_a/k_B T}
+\end{equation}
+
+In partition language, $k = 1/\tau_p$ and $E_a$ is the partition barrier. This gives:
+\begin{equation}
+\tau_p = \frac{1}{A} e^{E_a/k_B T}
+\end{equation}
+
+The partition lag increases exponentially as temperature decreases, explaining why reactions slow at low temperature.
+
+\subsection{Equivalence of Three Definitions}
+
+The three temperature definitions are equivalent:
+\begin{equation}
+T_{\text{cat}} = T_{\text{osc}} = T_{\text{part}}
+\end{equation}
+
+\textbf{Proof:} From the fundamental identity:
+\begin{equation}
+\frac{dM}{dt} = \frac{\omega}{2\pi/M} = \frac{1}{\langle\tau_p\rangle}
+\end{equation}
+
+For $M = 2\pi$ categories per period (one per radian):
+\begin{equation}
+\frac{dM}{dt} = \omega = \frac{1}{\tau_p}
+\end{equation}
+
+Multiplying by $\hbar/k_B$:
+\begin{equation}
+\frac{\hbar}{k_B}\frac{dM}{dt} = \frac{\hbar\omega}{k_B} = \frac{\hbar}{k_B\tau_p}
+\end{equation}
+
+Therefore:
+\begin{equation}
+T_{\text{cat}} = T_{\text{osc}} = T_{\text{part}} \quad \square
+\end{equation}
+
+\subsection{Recovery of Classical Temperature}
+
+For a classical ideal gas with $N$ particles:
+\begin{equation}
+\langle\omega\rangle = \frac{\langle v \rangle}{\lambda_{\text{thermal}}}
+\end{equation}
+
+where $\lambda_{\text{thermal}} = h/\sqrt{2\pi m k_B T}$ is the thermal de Broglie wavelength.
+
+Substituting into the oscillatory temperature:
+\begin{equation}
+T = \frac{\hbar\langle\omega\rangle}{k_B} = \frac{\hbar\langle v\rangle}{k_B \lambda_{\text{thermal}}}
+\end{equation}
+
+Using $\langle v \rangle = \sqrt{8k_B T/\pi m}$ and solving self-consistently:
+\begin{equation}
+T = \frac{m\langle v^2\rangle}{3k_B}
+\end{equation}
+
+This is the classical kinetic temperature, recovered as a limiting case.
+
+\subsection{Temperature Bounds}
+
+\subsubsection{Lower Bound: Absolute Zero}
+
+As $T \to 0$:
+\begin{equation}
+\frac{dM}{dt} \to 0, \quad \langle\omega\rangle \to 0, \quad \langle\tau_p\rangle \to \infty
+\end{equation}
+
+The system ceases categorical transitions. This is the third law of thermodynamics: absolute zero is unattainable because reaching it would require infinite partition lag.
+
+\subsubsection{Upper Bound: Planck Temperature}
+
+The maximum oscillation frequency is the Planck frequency:
+\begin{equation}
+\omega_{\text{Planck}} = \sqrt{\frac{c^5}{\hbar G}} \approx 1.9 \times 10^{43} \text{ rad/s}
+\end{equation}
+
+This gives the maximum temperature:
+\begin{equation}
+T_{\max} = \frac{\hbar\omega_{\text{Planck}}}{k_B} \approx 1.4 \times 10^{32} \text{ K}
+\end{equation}
+
+No physical system can exceed the Planck temperature.
+
+\subsection{Summary}
+
+Temperature admits three equivalent definitions:
+\begin{align}
+T_{\text{cat}} &= \frac{\hbar}{k_B}\frac{dM}{dt} \quad \text{(categorical actualization rate)} \\
+T_{\text{osc}} &= \frac{\hbar}{k_B}\langle\omega\rangle \quad \text{(average oscillation frequency)} \\
+T_{\text{part}} &= \frac{\hbar}{k_B}\frac{1}{\langle\tau_p\rangle} \quad \text{(inverse partition lag)}
+\end{align}
+
+All three:
+\begin{enumerate}
+\item Are resolution-independent (discrete categories, not continuous velocities)
+\item Give correct zero-point behavior ($T = 0$ when $dM/dt = 0$)
+\item Reduce to classical kinetic temperature in appropriate limits
+\item Predict natural temperature bounds (0 to $T_{\text{Planck}}$)
+\end{enumerate}
+
+The equivalence follows from the fundamental identity linking categorical rate, oscillatory frequency, and partition lag.
+

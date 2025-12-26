@@ -1,0 +1,182 @@
+\section{Partition Entropy}
+\label{sec:partition}
+
+\subsection{Partitions as Temporal Segments}
+
+From the triple equivalence, the period of an oscillation divides into partitions---temporal segments corresponding to categorical states. Each partition has a characteristic duration $\tau_i$ and a \textit{selectivity} $s_i$ that measures how precisely it discriminates among states.
+
+The partition perspective derives entropy by summing over these temporal segments, weighted by their selectivities.
+
+\subsection{Selectivity and Discrimination}
+
+Define the \textit{selectivity} of partition $a$ as the fraction of incoming configurations that it accepts:
+\begin{equation}
+s_a = \frac{\text{accepted configurations}}{\text{total configurations}} = \frac{1}{n_a}
+\end{equation}
+
+where $n_a$ is the number of distinguishable states within partition $a$.
+
+\textbf{Physical interpretation:}
+\begin{itemize}
+\item High selectivity ($s_a \to 1$): Partition accepts almost everything; low discrimination; few distinguishable states ($n_a \to 1$).
+\item Low selectivity ($s_a \to 0$): Partition accepts very few configurations; high discrimination; many distinguishable states ($n_a \to \infty$).
+\end{itemize}
+
+A partition's selectivity is the inverse of its categorical depth.
+
+\subsection{Partition Lag and Transition Time}
+
+The \textit{partition lag} $\tau_p$ is the time required for a system to complete a partition---to transition from one categorical state to the next. From the fundamental identity (Equation~\ref{eq:fundamental}):
+\begin{equation}
+\tau_p = \frac{T}{M} = \frac{2\pi}{M\omega}
+\end{equation}
+
+Shorter partition lag means faster categorical transitions, which corresponds to higher temperature:
+\begin{equation}
+T = \frac{\hbar}{k_B}\frac{1}{\langle\tau_p\rangle}
+\end{equation}
+
+\subsection{Derivation of Partition Entropy}
+
+Consider a system with $M$ partitions, each with selectivity $s_a$. The probability that a configuration passes through all partitions is:
+\begin{equation}
+P_{\text{total}} = \prod_{a=1}^{M} s_a
+\end{equation}
+
+The information content (surprisal) of this event is:
+\begin{equation}
+I = -\ln P_{\text{total}} = -\sum_{a=1}^{M} \ln s_a = \sum_{a=1}^{M} \ln\left(\frac{1}{s_a}\right)
+\end{equation}
+
+Entropy is the expected information content, weighted by Boltzmann's constant:
+\begin{equation}
+\boxed{S_{\text{part}} = k_B \sum_{a=1}^{M} \ln\left(\frac{1}{s_a}\right)}
+\label{eq:partition-entropy}
+\end{equation}
+
+This is the partition entropy.
+
+\subsection{Equivalence with Categorical Entropy}
+
+Since $s_a = 1/n_a$, we have:
+\begin{equation}
+\ln\left(\frac{1}{s_a}\right) = \ln n_a
+\end{equation}
+
+The partition entropy becomes:
+\begin{equation}
+S_{\text{part}} = k_B \sum_{a=1}^{M} \ln n_a
+\end{equation}
+
+For uniform selectivity ($n_a = n$ for all $a$):
+\begin{equation}
+S_{\text{part}} = k_B M \ln n = S_{\text{cat}}
+\end{equation}
+
+\textbf{The partition and categorical entropies are equivalent.}
+
+\subsection{The Aperture Interpretation}
+
+A useful physical picture emerges by thinking of partitions as \textit{apertures}---selective passages through which configurations must pass.
+
+\textbf{Definition.} An \textit{aperture} is a partition with selectivity $s_a < 1$.
+
+Each aperture acts as a filter, accepting some configurations and rejecting others. The total ``filtering power'' is:
+\begin{equation}
+\text{Filtering power} = \prod_a \frac{1}{s_a} = \prod_a n_a = n^M
+\end{equation}
+
+Taking logarithms:
+\begin{equation}
+\ln(\text{Filtering power}) = M \ln n = \frac{S}{k_B}
+\end{equation}
+
+Entropy measures the total filtering power of all apertures---how many configurations could be distinguished by the full partition structure.
+
+\subsection{Entropy Production from Partition Lag}
+
+When a system undergoes transitions, each partition completion contributes to entropy. The rate of entropy production is:
+\begin{equation}
+\frac{dS}{dt} = k_B \sum_a \frac{1}{\tau_{p,a}} \ln\left(\frac{1}{s_a}\right)
+\end{equation}
+
+For uniform partitions ($\tau_{p,a} = \tau_p$, $s_a = s$):
+\begin{equation}
+\frac{dS}{dt} = \frac{k_B M}{\tau_p} \ln\left(\frac{1}{s}\right) = k_B \frac{dM}{dt} \ln n
+\end{equation}
+
+This matches the categorical entropy production rate, confirming consistency.
+
+\subsection{Partition Temperature}
+
+From the thermodynamic relation:
+\begin{equation}
+\frac{1}{T} = \left(\frac{\partial S}{\partial U}\right)_V
+\end{equation}
+
+Using $S = k_B \sum_a \ln(1/s_a)$ and noting that energy determines selectivity (higher energy allows more states, thus lower selectivity):
+\begin{equation}
+\frac{\partial \ln(1/s_a)}{\partial U} = \frac{\partial \ln n_a}{\partial U}
+\end{equation}
+
+For a system where each unit of energy $\hbar\omega$ opens one additional state per partition:
+\begin{equation}
+n_a = \frac{U_a}{\hbar\omega_a}
+\end{equation}
+
+Thus:
+\begin{equation}
+\frac{\partial \ln n_a}{\partial U} = \frac{1}{n_a} \cdot \frac{1}{\hbar\omega_a} = \frac{1}{U_a}
+\end{equation}
+
+Summing over all partitions and using equipartition ($U_a = k_B T$):
+\begin{equation}
+\frac{1}{T} = \sum_a \frac{k_B}{U_a} = \frac{M k_B}{U}
+\end{equation}
+
+This gives:
+\begin{equation}
+U = M k_B T
+\end{equation}
+
+which is the expected result for $M$ classical degrees of freedom.
+
+\subsection{Connection to Rate Theory}
+
+The partition perspective connects naturally to chemical kinetics and transition state theory. In a chemical reaction:
+\begin{itemize}
+\item The partition is the transition state
+\item The selectivity is the reaction probability
+\item The partition lag is the reaction time
+\end{itemize}
+
+The reaction rate is:
+\begin{equation}
+k = \frac{1}{\tau_p} \cdot s = \frac{s}{\tau_p}
+\end{equation}
+
+The entropy of activation is:
+\begin{equation}
+\Delta S^\ddagger = k_B \ln\left(\frac{1}{s}\right)
+\end{equation}
+
+This connects equilibrium thermodynamics (entropy) to kinetics (rate constants) through the partition structure.
+
+\subsection{Summary}
+
+The partition perspective yields entropy as:
+\begin{equation}
+S_{\text{part}} = k_B \sum_a \ln\left(\frac{1}{s_a}\right)
+\end{equation}
+
+Key features:
+\begin{enumerate}
+\item Derives from selectivity (discrimination power) of temporal partitions
+\item Selectivity $s_a = 1/n_a$ links to categorical depth
+\item Partition lag $\tau_p$ determines transition rate
+\item Naturally connects to chemical kinetics and transition state theory
+\item Is equivalent to categorical entropy: $S_{\text{part}} = S_{\text{cat}}$
+\end{enumerate}
+
+With all three entropy forms derived and shown equivalent, we now demonstrate that this equivalence extends to enthalpy and all thermodynamic quantities.
+

@@ -1,0 +1,289 @@
+\section{The Velocity Distribution: Discrete and Bounded}
+\label{sec:maxwell-distribution}
+
+\subsection{Classical Maxwell-Boltzmann Distribution}
+
+The classical velocity distribution for an ideal gas is:
+\begin{equation}
+f_{\text{MB}}(v) = 4\pi \left(\frac{m}{2\pi k_B T}\right)^{3/2} v^2 \exp\left(-\frac{mv^2}{2k_B T}\right)
+\end{equation}
+
+This distribution has fundamental pathologies:
+
+\textbf{1. Extends to infinity:} $f(v) > 0$ for all $v$, including $v > c$, violating special relativity.
+
+\textbf{2. Continuous:} Assumes velocities form a continuum, contradicting quantum mechanics.
+
+\textbf{3. No natural cutoff:} High-velocity moments diverge; no ultraviolet regularization.
+
+The triple equivalence resolves all three by revealing the distribution as discrete and bounded.
+
+\subsection{Categorical Distribution}
+
+\subsubsection{Velocity Categories}
+
+Velocities are not continuous; they correspond to discrete categories. Define velocity category $m = 0, 1, 2, \ldots, M_{\max}$, where:
+\begin{equation}
+v_m = m \cdot \Delta v
+\end{equation}
+
+and $\Delta v = c/M_{\max}$ is the velocity quantum.
+
+The maximum category $M_{\max}$ corresponds to $v = c$:
+\begin{equation}
+M_{\max} = \frac{c}{\Delta v}
+\end{equation}
+
+\subsubsection{Categorical Distribution Formula}
+
+The probability of occupying category $m$ is:
+\begin{equation}
+\boxed{f_{\text{cat}}(m) = \frac{e^{-m/M_v}}{\sum_{m=0}^{M_{\max}} e^{-m/M_v}}}
+\label{eq:categorical-distribution}
+\end{equation}
+
+where $M_v = k_B T / \hbar\omega_0$ is the characteristic category scale, with $\omega_0 = \Delta v / \lambda_0$ a reference frequency.
+
+\textbf{Key properties:}
+\begin{enumerate}
+\item \textbf{Discrete:} Only integer $m$ allowed
+\item \textbf{Bounded:} $m \leq M_{\max}$ ensures $v \leq c$
+\item \textbf{Normalized:} $\sum_{m=0}^{M_{\max}} f(m) = 1$
+\end{enumerate}
+
+\subsubsection{Physical Interpretation}
+
+The categorical distribution counts the probability of finding a particle in each velocity category. Lower categories (slower velocities) are exponentially more probable than higher categories (faster velocities).
+
+\subsection{Oscillatory Distribution}
+
+\subsubsection{Velocity as Oscillation Amplitude}
+
+In the oscillatory picture, particle velocity corresponds to the amplitude of translational oscillation modes:
+\begin{equation}
+v = \omega A
+\end{equation}
+
+where $\omega$ is the oscillation frequency and $A$ is the amplitude.
+
+\subsubsection{Oscillatory Distribution Formula}
+
+The distribution over oscillation frequencies is the Bose-Einstein distribution:
+\begin{equation}
+\boxed{f_{\text{osc}}(\omega) = \frac{1}{e^{\hbar\omega/k_B T} - 1}}
+\label{eq:oscillatory-distribution}
+\end{equation}
+
+This is the natural distribution for oscillatory modes in thermal equilibrium.
+
+\textbf{Physical interpretation:} Each frequency mode $\omega$ is occupied according to Bose-Einstein statistics. Higher frequency modes (faster oscillations, higher velocities) are less populated.
+
+\subsubsection{Connection to Velocity Distribution}
+
+For classical particles, $\omega = v/\lambda$ where $\lambda$ is the wavelength. The velocity distribution becomes:
+\begin{equation}
+f(v) = \frac{1}{e^{mv^2/2k_B T} - 1} \times g(v)
+\end{equation}
+
+where $g(v) \propto v^2$ is the density of states in velocity space.
+
+At high temperature ($k_B T \gg mv^2/2$), this reduces to Maxwell-Boltzmann.
+
+\subsection{Partition Distribution}
+
+\subsubsection{Velocity as Transition Rate}
+
+In the partition picture, velocity corresponds to the rate of categorical transitions:
+\begin{equation}
+v \propto \frac{1}{\tau_p}
+\end{equation}
+
+Fast particles have short partition lags; slow particles have long partition lags.
+
+\subsubsection{Partition Distribution Formula}
+
+The distribution over partition lags is:
+\begin{equation}
+\boxed{f_{\text{part}}(\tau_p) = \frac{e^{-\tau_p/\langle\tau_p\rangle}}{\sum e^{-\tau_p/\langle\tau_p\rangle}}}
+\label{eq:partition-distribution}
+\end{equation}
+
+\textbf{Physical interpretation:} Shorter partition lags (faster transitions, higher velocities) have lower probability weight because they require more ``categorical effort.''
+
+\subsubsection{Transformation to Velocity}
+
+Using $v = L/\tau_p$ for characteristic length $L$:
+\begin{equation}
+f(v) = f_{\text{part}}(L/v) \times \left|\frac{d\tau_p}{dv}\right| = f_{\text{part}}(L/v) \times \frac{L}{v^2}
+\end{equation}
+
+The Jacobian factor $L/v^2$ modifies the distribution shape.
+
+\subsection{Continuum Limit: Recovery of Maxwell-Boltzmann}
+
+In the limit $M_{\max} \to \infty$ and $\Delta v \to 0$ (with $M_{\max} \Delta v = c$), the categorical distribution approaches the continuous Maxwell-Boltzmann:
+
+\textbf{Step 1:} Replace sum with integral:
+\begin{equation}
+\sum_{m=0}^{M_{\max}} \to \int_0^{c} \frac{dv}{\Delta v}
+\end{equation}
+
+\textbf{Step 2:} Include density of states (spherical velocity space):
+\begin{equation}
+g(v) = 4\pi v^2
+\end{equation}
+
+\textbf{Step 3:} The discrete exponential becomes:
+\begin{equation}
+e^{-m/M_v} = e^{-v/v_{\text{th}}} \to e^{-mv^2/2k_B T}
+\end{equation}
+
+where the quadratic velocity dependence emerges from the energy-velocity relation $E = mv^2/2$.
+
+\textbf{Result:}
+\begin{equation}
+f(v) \to 4\pi \left(\frac{m}{2\pi k_B T}\right)^{3/2} v^2 e^{-mv^2/2k_B T}
+\end{equation}
+
+This is the Maxwell-Boltzmann distribution.
+
+\subsection{Relativistic Cutoff}
+
+\subsubsection{No Velocities Above $c$}
+
+The categorical distribution has a hard cutoff at $m = M_{\max}$:
+\begin{equation}
+f(m) = 0 \quad \text{for} \quad m > M_{\max}
+\end{equation}
+
+This ensures no particle has $v > c$, automatically incorporating special relativity.
+
+\subsubsection{Relativistic Distribution}
+
+For temperatures approaching relativistic ($k_B T \sim mc^2$), the distribution must use relativistic energy:
+\begin{equation}
+E = \sqrt{p^2 c^2 + m^2 c^4} - mc^2
+\end{equation}
+
+The categorical distribution becomes:
+\begin{equation}
+f(p) = \frac{e^{-\sqrt{p^2c^2 + m^2c^4}/k_B T}}{Z}
+\end{equation}
+
+where $Z$ is the relativistic partition function.
+
+\subsubsection{Comparison: Classical vs. Categorical}
+
+\begin{center}
+\begin{tabular}{lcc}
+\hline
+\textbf{Property} & \textbf{Maxwell-Boltzmann} & \textbf{Categorical} \\
+\hline
+Domain & $v \in [0, \infty)$ & $m \in \{0, 1, \ldots, M_{\max}\}$ \\
+Velocities & Continuous & Discrete \\
+Maximum & None & $v_{\max} = c$ \\
+Relativistic & Violates SR & Built-in \\
+UV divergence & Yes & No \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Experimental Predictions}
+
+\subsubsection{Velocity Quantization}
+
+At ultra-low temperatures, only a few velocity categories are occupied:
+\begin{equation}
+M_{\text{occupied}} \approx \frac{k_B T}{\hbar\omega_0}
+\end{equation}
+
+For $T = 100$ nK and $\omega_0 = 2\pi \times 100$ Hz:
+\begin{equation}
+M_{\text{occupied}} \approx 10
+\end{equation}
+
+Time-of-flight measurements should reveal discrete velocity peaks separated by $\Delta v$.
+
+\subsubsection{High-Temperature Cutoff}
+
+At $T > 10^9$ K, a significant fraction of particles would classically have $v > 0.1c$. The categorical distribution predicts:
+\begin{equation}
+f(v > 0.1c)_{\text{categorical}} < f(v > 0.1c)_{\text{Maxwell}}
+\end{equation}
+
+This is testable in astrophysical plasmas and heavy-ion collisions.
+
+\subsubsection{Discrete Heat Capacity}
+
+The velocity distribution's discrete structure implies discrete heat capacity:
+\begin{equation}
+C_V = k_B \sum_m m^2 f(m) \cdot \frac{\partial f}{\partial T}
+\end{equation}
+
+As temperature increases and new velocity categories activate, $C_V$ should increase in steps.
+
+\subsection{Most Probable, Mean, and RMS Velocities}
+
+\subsubsection{Classical Results}
+
+The Maxwell-Boltzmann distribution gives:
+\begin{align}
+v_{\text{mp}} &= \sqrt{\frac{2k_B T}{m}} \quad \text{(most probable)} \\
+\langle v \rangle &= \sqrt{\frac{8k_B T}{\pi m}} \quad \text{(mean)} \\
+v_{\text{rms}} &= \sqrt{\frac{3k_B T}{m}} \quad \text{(root-mean-square)}
+\end{align}
+
+\subsubsection{Categorical Corrections}
+
+The categorical distribution modifies these at extreme temperatures:
+
+\textbf{Low temperature:} Discrete effects become significant. The most probable velocity jumps between discrete values as temperature changes.
+
+\textbf{High temperature:} Relativistic saturation. As $k_B T \to mc^2$:
+\begin{equation}
+v_{\text{rms}} \to c \quad \text{(saturates, does not exceed)}
+\end{equation}
+
+The classical result $v_{\text{rms}} = \sqrt{3k_B T/m}$ would give $v > c$ for $T > mc^2/3k_B$, but the categorical distribution prevents this.
+
+\subsection{Equivalence of Three Distributions}
+
+All three distributions describe the same physical reality:
+\begin{equation}
+f_{\text{cat}}(m) \equiv f_{\text{osc}}(\omega_m) \equiv f_{\text{part}}(\tau_{p,m})
+\end{equation}
+
+The transformations between them are:
+\begin{align}
+\omega_m &= m \cdot \omega_0 \quad \text{(category to frequency)} \\
+\tau_{p,m} &= 1/(m \cdot \omega_0) \quad \text{(category to lag)} \\
+v_m &= m \cdot \Delta v \quad \text{(category to velocity)}
+\end{align}
+
+\subsection{Summary}
+
+The velocity distribution admits three equivalent formulations:
+\begin{align}
+f_{\text{cat}}(m) &= \frac{e^{-m/M_v}}{Z} \quad \text{(discrete categories)} \\
+f_{\text{osc}}(\omega) &= \frac{1}{e^{\hbar\omega/k_B T} - 1} \quad \text{(Bose-Einstein)} \\
+f_{\text{part}}(\tau_p) &= \frac{e^{-\tau_p/\langle\tau_p\rangle}}{Z'} \quad \text{(partition lag)}
+\end{align}
+
+Key features:
+\begin{enumerate}
+\item \textbf{Discrete:} Velocities come in quantum units
+\item \textbf{Bounded:} Maximum velocity $c$ is built-in
+\item \textbf{Quantum-compatible:} Bose-Einstein statistics emerge naturally
+\item \textbf{Classical limit:} Maxwell-Boltzmann recovered for $T \ll mc^2/k_B$
+\item \textbf{Testable:} Velocity quantization at ultra-cold temperatures
+\end{enumerate}
+
+The continuous, unbounded Maxwell-Boltzmann distribution is an approximation valid when:
+\begin{itemize}
+\item $M_{\text{occupied}} \gg 1$ (many categories active)
+\item $k_B T \ll mc^2$ (non-relativistic)
+\item Measurement resolution $\gg \Delta v$ (cannot resolve discreteness)
+\end{itemize}
+
+Outside these limits, the categorical distribution is required for accurate predictions.
+

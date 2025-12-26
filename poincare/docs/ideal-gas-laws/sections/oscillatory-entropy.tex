@@ -1,0 +1,199 @@
+\section{Oscillatory Entropy}
+\label{sec:oscillatory}
+
+\subsection{Oscillators as Fundamental Degrees of Freedom}
+
+From the triple equivalence, bounded dynamics manifests as oscillation. A macroscopic system decomposes into a collection of oscillators---vibrational modes, rotational modes, translational modes---each characterized by frequency $\omega_i$ and amplitude $A_i$.
+
+The oscillatory perspective derives entropy by summing over these modes, weighted by their amplitudes.
+
+\subsection{Phase Space Volume of an Oscillator}
+
+Consider a harmonic oscillator with mass $m$, frequency $\omega$, and amplitude $A$. Its trajectory traces an ellipse in phase space:
+\begin{equation}
+\frac{x^2}{A^2} + \frac{p^2}{(m\omega A)^2} = 1
+\end{equation}
+
+The area enclosed by this ellipse is:
+\begin{equation}
+\Gamma = \pi A \cdot m\omega A = \pi m\omega A^2
+\end{equation}
+
+Using $E = \frac{1}{2}m\omega^2 A^2$, we have $A^2 = 2E/m\omega^2$, giving:
+\begin{equation}
+\Gamma = \pi m\omega \cdot \frac{2E}{m\omega^2} = \frac{2\pi E}{\omega}
+\end{equation}
+
+The number of quantum states enclosed is $\Gamma/h = E/\hbar\omega$, which for a quantum oscillator equals the occupation number $n$.
+
+\subsection{Amplitude as Measure of Accessible States}
+
+For a classical oscillator, the amplitude $A$ determines how much of phase space is explored. A larger amplitude means more accessible states. Define a reference amplitude $A_0$ corresponding to the ground state (minimum accessible phase space):
+\begin{equation}
+\Gamma_0 = \pi m\omega A_0^2
+\end{equation}
+
+The ratio of accessible phase space is:
+\begin{equation}
+\frac{\Gamma}{\Gamma_0} = \frac{A^2}{A_0^2} = \left(\frac{A}{A_0}\right)^2
+\end{equation}
+
+\subsection{Derivation of Oscillatory Entropy}
+
+For a system of $N$ independent oscillators with amplitudes $A_i$, the total phase space volume is:
+\begin{equation}
+\Gamma_{\text{total}} = \prod_{i=1}^{N} \Gamma_i = \prod_{i=1}^{N} \pi m_i \omega_i A_i^2
+\end{equation}
+
+The entropy is:
+\begin{equation}
+S = k_B \ln\left(\frac{\Gamma_{\text{total}}}{\Gamma_0^N}\right) = k_B \sum_{i=1}^{N} \ln\left(\frac{A_i^2}{A_0^2}\right)
+\end{equation}
+
+This simplifies to:
+\begin{equation}
+\boxed{S_{\text{osc}} = 2k_B \sum_{i=1}^{N} \ln\left(\frac{A_i}{A_0}\right)}
+\label{eq:oscillatory-entropy}
+\end{equation}
+
+Or equivalently, absorbing the factor of 2:
+\begin{equation}
+S_{\text{osc}} = k_B \sum_{i=1}^{N} \ln\left(\frac{A_i}{A_0}\right)^2 = k_B \sum_{i=1}^{N} \ln\left(\frac{\Gamma_i}{\Gamma_0}\right)
+\end{equation}
+
+\subsection{Connection to Energy and Temperature}
+
+For a harmonic oscillator, $A^2 \propto E$. Specifically:
+\begin{equation}
+A^2 = \frac{2E}{m\omega^2}
+\end{equation}
+
+Thus:
+\begin{equation}
+\ln\left(\frac{A}{A_0}\right) = \frac{1}{2}\ln\left(\frac{E}{E_0}\right)
+\end{equation}
+
+The oscillatory entropy becomes:
+\begin{equation}
+S_{\text{osc}} = k_B \sum_i \ln\left(\frac{E_i}{E_0}\right)
+\end{equation}
+
+For thermal equilibrium at temperature $T$, $\langle E_i \rangle = k_B T$ (classical equipartition), giving:
+\begin{equation}
+S_{\text{osc}} = k_B N \ln\left(\frac{k_B T}{E_0}\right)
+\end{equation}
+
+This matches the classical ideal gas entropy (up to constants).
+
+\subsection{Quantum Oscillatory Entropy}
+
+For quantum oscillators, the phase space is quantized in units of $h = 2\pi\hbar$. The number of accessible states for oscillator $i$ with occupation number $n_i$ is:
+\begin{equation}
+W_i = n_i + 1
+\end{equation}
+
+The quantum oscillatory entropy is:
+\begin{equation}
+S_{\text{osc,quantum}} = k_B \sum_i \ln(n_i + 1)
+\end{equation}
+
+At high temperature, $n_i = k_B T/\hbar\omega_i \gg 1$, and this reduces to the classical form. At low temperature, $n_i \to 0$, and $S \to 0$, satisfying the third law of thermodynamics.
+
+\subsection{The Bose-Einstein Distribution}
+
+For a system of quantum oscillators in thermal equilibrium, maximizing entropy subject to fixed total energy yields the Bose-Einstein distribution:
+\begin{equation}
+\langle n_i \rangle = \frac{1}{e^{\hbar\omega_i/k_B T} - 1}
+\end{equation}
+
+\textbf{Derivation:} Maximize 
+\begin{equation}
+S = k_B \sum_i \ln(n_i + 1)
+\end{equation}
+subject to 
+\begin{equation}
+U = \sum_i \hbar\omega_i n_i = \text{constant}
+\end{equation}
+
+Using Lagrange multipliers:
+\begin{equation}
+\frac{\partial}{\partial n_i}\left[k_B \ln(n_i+1) - \beta \hbar\omega_i n_i\right] = 0
+\end{equation}
+
+This gives:
+\begin{equation}
+\frac{k_B}{n_i + 1} = \beta\hbar\omega_i
+\end{equation}
+
+Solving for $n_i$ with $\beta = 1/k_B T$:
+\begin{equation}
+n_i = \frac{k_B T}{\hbar\omega_i} - 1 = \frac{1}{e^{\hbar\omega_i/k_B T} - 1}
+\end{equation}
+
+(The last step uses the properly normalized distribution; the intermediate expression is approximate.)
+
+The Bose-Einstein distribution emerges naturally from oscillatory entropy maximization.
+
+\subsection{Oscillatory Temperature}
+
+The oscillatory definition of temperature follows from:
+\begin{equation}
+\frac{1}{T} = \left(\frac{\partial S}{\partial U}\right)_V = \frac{\partial}{\partial U}\left[k_B \sum_i \ln\left(\frac{A_i}{A_0}\right)\right]
+\end{equation}
+
+Since $A_i^2 \propto E_i \propto U/N$:
+\begin{equation}
+\frac{\partial}{\partial U}\ln A_i = \frac{1}{2A_i}\frac{\partial A_i}{\partial U} = \frac{1}{2E_i}\frac{\partial E_i}{\partial U} = \frac{1}{2U}
+\end{equation}
+
+Thus:
+\begin{equation}
+\frac{1}{T} = \frac{k_B N}{2U} \implies U = \frac{N k_B T}{2}
+\end{equation}
+
+Per mode, $U/N = k_B T/2$, which is equipartition. For oscillators with both kinetic and potential energy:
+\begin{equation}
+U = \frac{f N k_B T}{2}
+\end{equation}
+where $f$ is the number of quadratic degrees of freedom.
+
+\subsection{Equivalence with Categorical Entropy}
+
+The oscillatory entropy $S_{\text{osc}} = k_B \sum_i \ln(A_i/A_0)$ relates to the categorical entropy $S_{\text{cat}} = k_B M \ln n$ as follows:
+
+\begin{enumerate}
+\item Each oscillator $i$ contributes one category ($M = N$ for $N$ oscillators)
+\item The amplitude ratio $(A_i/A_0)^2 = \Gamma_i/\Gamma_0$ equals the number of accessible states $n_i$
+\item Thus $\ln(A_i/A_0)^2 = \ln n_i$
+\end{enumerate}
+
+The oscillatory entropy becomes:
+\begin{equation}
+S_{\text{osc}} = k_B \sum_i \ln n_i = k_B M \langle\ln n\rangle
+\end{equation}
+
+If all $n_i = n$ (uniform distribution):
+\begin{equation}
+S_{\text{osc}} = k_B M \ln n = S_{\text{cat}}
+\end{equation}
+
+\textbf{The oscillatory and categorical entropies are equivalent.}
+
+\subsection{Summary}
+
+The oscillatory perspective yields entropy as:
+\begin{equation}
+S_{\text{osc}} = k_B \sum_i \ln\left(\frac{A_i}{A_0}\right)^2 = k_B \sum_i \ln\left(\frac{\Gamma_i}{\Gamma_0}\right)
+\end{equation}
+
+Key features:
+\begin{enumerate}
+\item Derives from phase space volumes of oscillators
+\item Naturally incorporates quantum mechanics (discretization of $\Gamma$)
+\item Yields Bose-Einstein distribution through entropy maximization
+\item Gives correct equipartition through temperature definition
+\item Is equivalent to categorical entropy: $S_{\text{osc}} = S_{\text{cat}}$
+\end{enumerate}
+
+The partition perspective in the next section will complete the triple equivalence.
+

@@ -1,0 +1,141 @@
+\section{Categorical Entropy}
+\label{sec:categorical}
+
+\subsection{Categories as Distinguishable States}
+
+From the triple equivalence, an oscillating system traverses $M$ distinguishable states per period. Each state is a \textit{category}---a region of phase space that the system occupies at some point during its evolution.
+
+Consider a system with $M$ categories, each capable of holding $n$ microstates. The total number of distinguishable configurations is:
+\begin{equation}
+W = n^M
+\end{equation}
+
+This follows from the independence of categories: each of the $M$ categories can be in any of its $n$ microstates, giving $n \times n \times \cdots \times n = n^M$ total configurations.
+
+\subsection{Derivation of Categorical Entropy}
+
+Following Boltzmann, entropy is proportional to the logarithm of the number of configurations:
+\begin{equation}
+S = k_B \ln W = k_B \ln(n^M)
+\end{equation}
+
+This yields the categorical entropy formula:
+\begin{equation}
+\boxed{S_{\text{cat}} = k_B M \ln n}
+\label{eq:categorical-entropy}
+\end{equation}
+
+\textbf{Interpretation:}
+\begin{itemize}
+\item $M$ = number of categorical distinctions (how many ``questions'' the system answers)
+\item $\ln n$ = information per category (entropy per distinction)
+\item $k_B$ = conversion to thermodynamic units
+\end{itemize}
+
+\subsection{Comparison with Classical Boltzmann Entropy}
+
+The classical Boltzmann entropy is:
+\begin{equation}
+S_{\text{Boltzmann}} = k_B \ln \Omega
+\end{equation}
+where $\Omega$ is the number of microstates.
+
+The categorical formula differs in structure:
+\begin{itemize}
+\item Boltzmann: logarithm of \textit{total} microstates
+\item Categorical: \textit{product} of categories and log-microstates per category
+\end{itemize}
+
+They are equivalent when $\Omega = n^M$:
+\begin{equation}
+S_{\text{Boltzmann}} = k_B \ln(n^M) = k_B M \ln n = S_{\text{cat}}
+\end{equation}
+
+The categorical form is more fundamental because it separates the \textit{number} of distinctions ($M$) from the \textit{depth} of each distinction ($\ln n$). This separation becomes essential when $M$ varies dynamically.
+
+\subsection{The Information-Theoretic Interpretation}
+
+The categorical entropy has direct information-theoretic meaning. Consider $M$ categories, each with $n$ equally probable states. The Shannon entropy of this system is:
+\begin{equation}
+H = -\sum_{i=1}^{n^M} p_i \ln p_i = -n^M \cdot \frac{1}{n^M} \ln\frac{1}{n^M} = \ln(n^M) = M \ln n
+\end{equation}
+
+Thus:
+\begin{equation}
+S_{\text{cat}} = k_B H
+\end{equation}
+
+The categorical entropy is Boltzmann's constant times the Shannon information content.
+
+\subsection{Extensivity and Additivity}
+
+Categorical entropy is extensive. For two independent subsystems with $(M_1, n_1)$ and $(M_2, n_2)$:
+\begin{equation}
+S_{\text{total}} = S_1 + S_2 = k_B M_1 \ln n_1 + k_B M_2 \ln n_2
+\end{equation}
+
+If the subsystems have identical structure ($n_1 = n_2 = n$):
+\begin{equation}
+S_{\text{total}} = k_B (M_1 + M_2) \ln n = k_B M_{\text{total}} \ln n
+\end{equation}
+
+Categories add. This is the microscopic origin of entropy extensivity.
+
+\subsection{Dynamic Categories: Time-Dependent Entropy}
+
+The number of categories $M$ can change over time as the system explores its phase space. The rate of entropy production is:
+\begin{equation}
+\frac{dS}{dt} = k_B \ln n \cdot \frac{dM}{dt}
+\end{equation}
+
+This has a striking interpretation: entropy increases at a rate proportional to the categorical actualization rate $dM/dt$. Fast exploration of categories means rapid entropy increase.
+
+At equilibrium, when all accessible categories have been visited uniformly, $dM/dt \to 0$ (at the coarse level) and entropy production ceases. The system has fully actualized its categorical structure.
+
+\subsection{Categorical Temperature}
+
+From the thermodynamic relation:
+\begin{equation}
+\frac{1}{T} = \left(\frac{\partial S}{\partial U}\right)_V
+\end{equation}
+
+Using $S = k_B M \ln n$ and noting that energy $U$ determines the accessible categories:
+\begin{equation}
+\frac{1}{T} = k_B \ln n \cdot \frac{\partial M}{\partial U}
+\end{equation}
+
+For systems where $M \propto U/\hbar\omega$ (each $\hbar\omega$ of energy opens one category):
+\begin{equation}
+\frac{\partial M}{\partial U} = \frac{1}{\hbar\omega}
+\end{equation}
+
+Thus:
+\begin{equation}
+T = \frac{\hbar\omega}{k_B \ln n}
+\end{equation}
+
+For the natural choice $\ln n = 1$ (one nat of information per category):
+\begin{equation}
+\boxed{T = \frac{\hbar\omega}{k_B}}
+\end{equation}
+
+This is the quantum mechanical result, derived from categorical structure.
+
+\subsection{Summary}
+
+The categorical perspective yields entropy as:
+\begin{equation}
+S_{\text{cat}} = k_B M \ln n
+\end{equation}
+
+Key features:
+\begin{enumerate}
+\item Separates the number of distinctions ($M$) from information per distinction ($\ln n$)
+\item Reduces to Boltzmann entropy when $\Omega = n^M$
+\item Equals Boltzmann's constant times Shannon information
+\item Is extensive through category additivity
+\item Gives correct quantum mechanical temperature
+\end{enumerate}
+
+The categorical form will be shown equivalent to the oscillatory and partition forms in subsequent sections.
+
