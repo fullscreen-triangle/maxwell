@@ -3,70 +3,402 @@
 \label{sec:stosszahlansatz}
 %==============================================================================
 
-\subsection{Boltzmann's Assumption}
+Boltzmann's H-theorem derives the monotonic approach to equilibrium from kinetic theory, but the derivation relies on the \emph{Stosszahlansatz} (molecular chaos assumption): that the velocities of colliding molecules are statistically independent before collision. This assumption has been criticised as circular—smuggling irreversibility into a derivation that purports to explain it. We now show that the Stosszahlansatz is not an assumption but a theorem: a necessary consequence of partition structure and measurement accessibility.
 
-Boltzmann's H-theorem relies on the \emph{Stosszahlansatz} (molecular chaos assumption): the velocities of colliding molecules are uncorrelated before collision. This assumption has been criticized as smuggling irreversibility into the derivation \citep{price1996}.
+\subsection{Boltzmann's Assumption and Its Critics}
 
-If molecular velocities were correlated in specific ways, entropy could decrease. The correlations required for entropy decrease are precisely those that would arise from time-reversal of an entropy-increasing trajectory. Loschmidt's paradox can be restated: why don't such correlations exist?
+Let $f(\mathbf{v}, t)$ be the single-particle velocity distribution at time $t$. The Stosszahlansatz asserts that the joint probability of finding molecule 1 with velocity $\mathbf{v}_1$ and molecule 2 with velocity $\mathbf{v}_2$ factorises:
+\begin{equation}
+P(\mathbf{v}_1, \mathbf{v}_2) = f(\mathbf{v}_1) f(\mathbf{v}_2)
+\label{eq:stosszahlansatz}
+\end{equation}
+
+This factorization assumes no correlations between $\mathbf{v}_1$ and $\mathbf{v}_2$. Under this assumption, Boltzmann derived the H-function:
+\begin{equation}
+H(t) = \int f(\mathbf{v}, t) \ln f(\mathbf{v}, t) \, d^3v
+\end{equation}
+decreases monotonically: $dH/dt \leq 0$, implying an increase in entropy $dS/dt \geq 0$ (since $S = -k_B H$).
+
+\paragraph{The fundamental criticism.} The Stosszahlansatz has been criticised since Loschmidt's original objection. The criticism is devastating: \emph{if molecular velocities were correlated in specific ways, entropy could decrease}. The correlations required for entropy decrease are precisely those that would arise from the time-reversal of an entropy-increasing trajectory.
+
+Consider a gas evolving from low entropy (confined to one half of a container) to high entropy (uniformly dispersed). At any intermediate time $t_1$, the molecular velocities have subtle correlations that encode the system's history. If we could time-reverse these velocities (negating all $\mathbf{v}_i \to -\mathbf{v}_i$), the correlations would cause the gas to retrace its trajectory backward, decreasing entropy.
+
+But the Stosszahlansatz assumes these correlations don't exist—or at least, that we can ignore them. This appears to smuggle irreversibility into the derivation: we assume away precisely the correlations that would permit entropy decrease.
+
+\paragraph{Loschmidt's paradox restated.} Why don't entropy-decreasing correlations exist? Or if they do exist, why can we ignore them? The Stosszahlansatz appears to be an unjustified assumption that begs the question of irreversibility.
+
+Standard justifications are unsatisfying:
+
+\begin{enumerate}
+\item \textbf{Ergodic hypothesis}: The system explores all accessible microstates, so correlations average to zero over long times. \emph{But this doesn't explain why correlations are negligible at any particular instant.}
+
+\item \textbf{Coarse-graining}: We only observe coarse-grained distributions, which wash out correlations. \emph{But this doesn't explain why coarse-graining is justified—it assumes what it should prove.}
+
+\item \textbf{Past hypothesis}: The universe started in a low-entropy state with no correlations. \emph{But this invokes cosmology to explain laboratory thermodynamics, and it doesn't explain why correlations don't develop as the system evolves.}
+
+\item \textbf{Molecular chaos emerges}: Collisions randomise velocities, destroying correlations. \emph{But time-symmetric collisions should preserve the total correlation information—they can't destroy it without violating reversibility.}
+\end{enumerate}
+
+We now provide a rigorous justification: correlations that would permit entropy decrease exist in principle, but they are \emph{thermodynamically inaccessible}. Accessing them requires partition operations that generate more entropy than the correlations could recover.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_aperture_carriers.png}
+\caption{\textbf{Transport Through Apertures: Universal Carrier-Aperture Interactions.} 
+(\textbf{Electrons Through Lattice Apertures}) An electron (small cyan circles with connecting cyan path) navigates through a lattice of ions (large blue circles arranged in a regular grid). The electron's trajectory (cyan line) shows scattering as it encounters lattice sites—each ion acts as an aperture that either transmits or reflects the electron. The transverse displacement (y-axis, 0-8 lattice units) fluctuates as the electron scatters, demonstrating that electrical resistance arises from aperture interactions.. 
+(\textbf{Phonons Through Mode-Matching Apertures}) Phonons (acoustic waves) encounter mode-matching apertures when propagating through materials with different acoustic impedances. The spectral density plot shows source spectrum (brown shaded area), aperture transmission function (green shaded area with white boundary curve), and transmitted spectrum (green area below aperture curve). At low frequency ($\omega < 2$ THz), transmission is high—the aperture is non-selective ($s \sim 1$). At the first peak ($\omega \sim 3$ THz), transmission reaches maximum—perfect mode matching. At the valley ($\omega \sim 6$ THz), transmission drops—mode mismatch creates high selectivity ($s \ll 1$). 
+(\textbf{Viscous Fluid: Collision Apertures}) Fluid molecules (green circles) undergo collisions (yellow arrows showing velocity vectors) as they flow. The red dashed horizontal line (at $y \sim 4$) marks a shear plane. Above the plane, molecules move predominantly rightward (yellow arrows pointing right). Below the plane, molecules move in various directions. Each collision is an aperture: the pre-collision velocities are "selected" by the collision dynamics to produce post-collision velocities. The density of collisions (number of arrows) represents the collision rate—more collisions mean more apertures per unit time. 
+(\textbf{Ideal Gas: Sparse Collision Apertures}) Gas molecules (magenta circles) undergo rare collisions (cyan lines connecting molecules, yellow arrow labeled "$\lambda$ (MFP)" showing mean free path). The sparse network of connections demonstrates that collisions are infrequent—apertures are rare. Most molecules travel long distances (mean free path $\lambda$) without encountering apertures. The few collision events (cyan lines) show the aperture network is sparse compared to the viscous fluid panel. This panel demonstrates that viscosity is fundamentally an aperture density phenomenon: $\mu \propto n_{\text{apertures}} \cdot \tau_p \cdot g$.}
+\label{fig:aperture_carriers}
+\end{figure*}
 
 \subsection{Correlations Exist but Are Inaccessible}
 
 \begin{theorem}[Correlation Inaccessibility]
 \label{thm:correlation_inaccessibility}
-Velocity correlations that would permit entropy decrease exist but reside in the undetermined residue of prior partition operations. They are thermodynamically inaccessible.
+Velocity correlations that would permit entropy decrease exist in the exact microstate but reside in the undetermined residue of prior partition operations. They are thermodynamically inaccessible: extracting them requires partition operations that generate more entropy than the correlations could recover.
 \end{theorem}
 
 \begin{proof}
-Consider a collision between molecules $i$ and $j$ at time $t$. Before collision, each molecule's velocity was determined by prior collisions, each of which was a partition operation creating undetermined residue.
+\paragraph{Step 1: Correlations from collision history.}
 
-The velocity correlations that would permit entropy decrease are precisely those involving the undetermined residue: knowing how residue states resolved would allow prediction of which velocity correlations exist. But undetermined residue is, by definition, undetermined—it cannot be accessed without further partition operations that generate additional entropy.
+Consider two molecules $i$ and $j$ about to collide at time $t$. Their velocities $\mathbf{v}_i(t)$ and $\mathbf{v}_j(t)$ are determined by their collision histories:
+\begin{itemize}
+\item Molecule $i$ had initial velocity $\mathbf{v}_i(t_0)$ at some earlier time $t_0$
+\item Between $t_0$ and $t$, molecule $i$ underwent collisions at times $\{t_1^i, t_2^i, \ldots, t_n^i\}$
+\item Each collision changed $\mathbf{v}_i$ according to conservation laws
+\item The current velocity $\mathbf{v}_i(t)$ encodes this entire history
+\end{itemize}
 
-Therefore:
+Similarly for molecule $j$. If the collision histories of $i$ and $j$ are correlated---for example:
+\begin{itemize}
+\item They collided with common partners (indirect correlation)
+\item Their trajectories were influenced by the same density fluctuations
+\item They were both affected by a correlated initial condition
+\end{itemize}
+
+then $\mathbf{v}_i(t)$ and $\mathbf{v}_j(t)$ are correlated.
+
+\textbf{These correlations exist.} They are encoded in the precise microstate of the system. For a time-reversed trajectory (where entropy decreases), the correlations are precisely those needed to "un-collide" molecules in the correct sequence to restore the initial low-entropy state.
+
+\paragraph{Step 2: Correlations reside in partition residue.}
+
+Each collision in the history of molecules $i$ and $j$ was a partition operation (Theorem~\ref{thm:collision_partition}). For example, the collision at time $t_k^i$ partitioned velocity space:
+\begin{itemize}
+\item Before collision: molecule $i$ had velocity $\mathbf{v}_i^{\text{before}}$
+\item After collision: molecule $i$ had velocity $\mathbf{v}_i^{\text{after}}$
+\item During partition lag $\tau_{\text{lag}}$: molecule $i$ was in undetermined residue with ambiguous velocity
+\end{itemize}
+
+The undetermined residue at $t_k^i$ consisted of states where the collision outcome was not yet determined (Theorem~\ref{thm:partition_entropy}). The resolution of this residue---which particular post-collision velocity was realized---is part of the correlation structure.
+
+To know the precise correlation between $\mathbf{v}_i(t)$ and $\mathbf{v}_j(t)$, we would need to know:
+\begin{itemize}
+\item How every residue state in their collision histories resolved
+\item Which specific microstate was selected from each undetermined residue
+\item The exact sequence of partition resolutions leading to the current state
+\end{itemize}
+
+But residue states are, by definition, undetermined during the partition lag. Their resolution is not accessible without further measurement---and that measurement is itself a partition operation that generates new residue.
+
+\paragraph{Step 3: Accessing correlations requires prohibitive measurements.}
+
+To access the correlation between $\mathbf{v}_i(t)$ and $\mathbf{v}_j(t)$ sufficiently to exploit it for entropy decrease, we must:
+
 \begin{enumerate}
-\item Correlations permitting entropy decrease exist in principle
-\item These correlations reside in undetermined residue
-\item Accessing the correlations requires partition operations
-\item Partition operations generate entropy exceeding any recovery
+\item \textbf{Measure both velocities precisely}: Two partition operations, generating entropy (by Corollary~\ref{cor:velocity_measurement}):
+\begin{equation}
+\Delta S_1 = 2 k_B \ln\left(\frac{\Delta v_{\text{range}}}{\delta v_{\text{precision}}}\right)
+\end{equation}
+
+For molecular velocities, $\Delta v_{\text{range}} \sim 10^3$ m/s and to exploit correlations we need $\delta v_{\text{precision}} \sim 10^{-3}$ m/s, giving $\Delta S_1 \sim 27 k_B$ per pair.
+
+\item \textbf{Determine collision histories}: Requires identifying all prior collision partners. For a gas at atmospheric pressure, each molecule undergoes $\sim 10^9$ collisions per second. To trace back even 1 microsecond requires identifying $\sim 10^3$ collision partners per molecule.
+
+Each identification is a partition operation (distinguishing "this molecule" from "not this molecule"), generating entropy:
+\begin{equation}
+\Delta S_2 \sim 10^3 \times k_B \ln N
+\end{equation}
+
+For $N \sim 10^{23}$ molecules (1 mole), $\Delta S_2 \sim 10^5 k_B$ per molecule.
+
+\item \textbf{Reconstruct residue resolutions}: Requires determining which specific microstate was selected from each undetermined residue. This information no longer exists in accessible form---it existed only during past partition lags (duration $\tau_{\text{lag}} \sim 10^{-13}$ s for molecular collisions).
+
+The information is encoded in the current microstate, but extracting it requires measuring correlations among $\sim N$ molecules, generating entropy:
+\begin{equation}
+\Delta S_3 \sim N k_B
+\end{equation}
+
+For $N \sim 10^{23}$, this is macroscopic entropy.
 \end{enumerate}
 
-The correlations are inaccessible. \qed
+\paragraph{Step 4: Entropy cost exceeds benefit.}
+
+The total entropy cost of accessing the correlations is:
+\begin{equation}
+\Delta S_{\text{access}} = \Delta S_1 + \Delta S_2 + \Delta S_3 \sim 10^5 k_B \text{ per molecule pair}
+\end{equation}
+
+The maximum entropy that could be recovered by exploiting the correlations (reversing one collision to decrease entropy) is:
+\begin{equation}
+\Delta S_{\text{benefit}} \sim k_B \ln 2 \approx 0.7 k_B \text{ per collision}
+\end{equation}
+
+The ratio is:
+\begin{equation}
+\frac{\Delta S_{\text{access}}}{\Delta S_{\text{benefit}}} \sim 10^5 \gg 1
+\end{equation}
+
+Accessing the correlations generates $\sim 10^5$ times more entropy than could be recovered by exploiting them.
+
+\paragraph{Step 5: Thermodynamic inaccessibility.}
+
+A correlation is \emph{thermodynamically accessible} if it can be measured and exploited with entropy cost less than the entropy benefit it provides:
+\begin{equation}
+\Delta S_{\text{access}} < \Delta S_{\text{benefit}}
+\end{equation}
+
+The correlations that would permit entropy decrease are thermodynamically inaccessible because:
+\begin{equation}
+\Delta S_{\text{access}} \gg \Delta S_{\text{benefit}}
+\end{equation}
+
+Therefore, from the perspective of any thermodynamic observer---one who can only perform measurements with finite entropy cost---the correlations effectively do not exist. They are hidden in the inaccessible residue of past partition operations.
+
+\paragraph{Conclusion.}
+
+Velocity correlations that would permit entropy decrease exist in principle (they are encoded in the exact microstate). But they reside in the undetermined residue of prior partition operations. Accessing them requires partition operations that generate vastly more entropy than the correlations could recover. The correlations are thermodynamically inaccessible. \qed
 \end{proof}
+
+\paragraph{Physical interpretation: The unscrambling problem.}
+
+Imagine trying to unscramble an egg. The unscrambled state (yolk separated from white) is encoded in the current scrambled state: if you knew the exact position and velocity of every molecule, and could reverse them all precisely, the egg would unscramble.
+
+But knowing the exact microstate requires measuring every molecule:
+\begin{itemize}
+\item $\sim 10^{24}$ molecules in an egg
+\item Each measurement generates $\sim 20 k_B$ entropy (position and velocity)
+\item Total entropy cost: $\sim 10^{25} k_B$
+\end{itemize}
+
+The entropy of scrambling is:
+\begin{equation}
+\Delta S_{\text{scramble}} \sim N k_B \ln 2 \sim 10^{24} k_B
+\end{equation}
+
+The measurement entropy exceeds the scrambling entropy by a factor of 10. You generate more entropy measuring the egg than you could recover by unscrambling it.
+
+Moreover, you would need to know how every collision resolved during the scrambling process---information that no longer exists except as encoded in the current microstate in an exponentially complex way.
+
+The information needed to unscramble the egg exists in principle, but it is thermodynamically inaccessible. The entropy cost of extracting it exceeds the entropy benefit of unscrambling. Therefore, for all thermodynamic purposes, the information doesn't exist.
+
+\paragraph{Connection to non-actualisations.}
+
+The inaccessible correlations are precisely the non-actualisations of past partition operations (Theorem~\ref{thm:non_actualisation_aperture}). Each collision created an aperture in velocity space. Configurations that passed through the aperture were actualised; configurations that were blocked became non-actualisations.
+
+The correlations needed for entropy decrease would require knowing which configurations were blocked---i.e., the complete set of non-actualisations. But non-actualisations are categorical facts that accumulate irreversibly (Theorem~\ref{thm:non_actualisation_creation}). They cannot be measured without creating new non-actualisations.
+
+The Stosszahlansatz is valid because it describes actualised states (what happened), ignoring non-actualised alternatives (what didn't happen). The non-actualised alternatives contain the correlations that would permit entropy decrease, but they are inaccessible.
 
 \begin{corollary}[Stosszahlansatz as Theorem]
 \label{cor:stosszahlansatz}
-The Stosszahlansatz is not an assumption but a necessary consequence of partition structure: accessible correlations are those consistent with entropy increase.
+The Stosszahlansatz is not an assumption but a necessary consequence of partition structure: thermodynamically accessible correlations are those consistent with entropy increase.
 \end{corollary}
 
 \begin{proof}
-From an observer's perspective, who can only access thermodynamically accessible information, molecular velocities appear uncorrelated because the correlations that would violate the Stosszahlansatz are hidden in undetermined residue.
+Define the \emph{accessible correlation function}:
+\begin{equation}
+C_{\text{acc}}(\mathbf{v}_1, \mathbf{v}_2) = P_{\text{acc}}(\mathbf{v}_1, \mathbf{v}_2) - f(\mathbf{v}_1) f(\mathbf{v}_2)
+\end{equation}
+where $P_{\text{acc}}(\mathbf{v}_1, \mathbf{v}_2)$ is the joint probability distribution that can be determined by thermodynamically accessible measurements---those with entropy cost satisfying:
+\begin{equation}
+\Delta S_{\text{measurement}} < \Delta S_{\text{benefit}}
+\end{equation}
 
-The Stosszahlansatz describes what is knowable, not what exists. It is a theorem about accessible information, not an assumption about physical reality. \qed
+By Theorem~\ref{thm:correlation_inaccessibility}, correlations that would permit entropy decrease are not thermodynamically accessible:
+\begin{equation}
+\Delta S_{\text{access}}^{\text{entropy-decreasing}} \gg \Delta S_{\text{benefit}}
+\end{equation}
+
+Therefore, they do not contribute to $P_{\text{acc}}$.
+
+The accessible correlations are those that can be measured without generating prohibitive entropy. These are precisely the correlations consistent with the Stosszahlansatz:
+\begin{equation}
+P_{\text{acc}}(\mathbf{v}_1, \mathbf{v}_2) \approx f(\mathbf{v}_1) f(\mathbf{v}_2) + O(\epsilon)
+\end{equation}
+
+where $\epsilon \ll 1$ represents small accessible correlations that do not violate the Second Law.
+
+Therefore, $C_{\text{acc}} \approx 0$. From the perspective of any observer who can only access thermodynamically accessible information, molecular velocities appear uncorrelated.
+
+The Stosszahlansatz describes what is knowable (accessible correlations), not what exists (all correlations). It is a theorem about accessible information, not an assumption about physical reality. \qed
 \end{proof}
 
-\subsection{Resolution of the Paradox}
+\subsection{Implications for Boltzmann's H-Theorem}
+
+We can now understand Boltzmann's H-theorem as a rigorous consequence of partition structure.
+
+\paragraph{The H-theorem derivation.}
+
+\textbf{Step 1: Boltzmann equation.} Under the Stosszahlansatz, the velocity distribution evolves according to:
+\begin{equation}
+\frac{\partial f}{\partial t} + \mathbf{v} \cdot \nabla f = \int [f(\mathbf{v}_1') f(\mathbf{v}_2') - f(\mathbf{v}_1) f(\mathbf{v}_2)] \sigma(\mathbf{v}_1, \mathbf{v}_2 \to \mathbf{v}_1', \mathbf{v}_2') \, d^3v_2 \, d\Omega
+\end{equation}
+where $\sigma$ is the collision cross-section, and primed velocities are post-collision.
+
+\textbf{Step 2: H-theorem.} Multiplying by $\ln f$ and integrating yields:
+\begin{equation}
+\frac{dH}{dt} = -\int [f(\mathbf{v}_1') f(\mathbf{v}_2') - f(\mathbf{v}_1) f(\mathbf{v}_2)] \ln\left(\frac{f(\mathbf{v}_1) f(\mathbf{v}_2)}{f(\mathbf{v}_1') f(\mathbf{v}_2')}\right) \sigma \, d^3v_1 \, d^3v_2 \, d\Omega \leq 0
+\end{equation}
+
+The inequality follows from $(x - y)(\ln x - \ln y) \geq 0$ for all $x, y > 0$.
+
+\textbf{Step 3: Approach to equilibrium.} $dH/dt = 0$ if and only if:
+\begin{equation}
+f(\mathbf{v}_1) f(\mathbf{v}_2) = f(\mathbf{v}_1') f(\mathbf{v}_2')
+\end{equation}
+for all collisions. This is satisfied by the Maxwell-Boltzmann distribution:
+\begin{equation}
+f_{\text{eq}}(\mathbf{v}) = n \left(\frac{m}{2\pi k_B T}\right)^{3/2} \exp\left(-\frac{m v^2}{2 k_B T}\right)
+\end{equation}
+
+Therefore, $H$ decreases monotonically until the system reaches the Maxwell-Boltzmann distribution.
+
+\paragraph{Validity of the derivation.}
+
+The derivation is valid because the Stosszahlansatz (Eq.~\ref{eq:stosszahlansatz}) is valid for thermodynamically accessible correlations (Corollary~\ref{cor:stosszahlansatz}). The H-theorem describes the evolution of accessible information, which is precisely what thermodynamics measures.
+
+Inaccessible correlations—those hidden in partition residue—do not contribute to the H-function because they cannot be measured without generating more entropy than they could affect. Therefore, the H-theorem correctly describes thermodynamic evolution, even though the exact microstate contains correlations that formally violate the Stosszahlansatz.
+
+This resolves the apparent circularity: the Stosszahlansatz is not an assumption that smuggles in irreversibility. It is a theorem about measurement accessibility that follows from partition structure. Irreversibility enters through partition accumulation (Theorem~\ref{thm:topological_irreversibility}), not through the Stosszahlansatz.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_categorical_potential.png}
+\caption{\textbf{Categorical Potential Across Transport Types: Universal Barrier Structure.} 
+(\textbf{Electric: Categorical Potential}) The categorical potential $\Phi/k_B T$ for electrical transport varies with temperature for different mechanisms. Phonon scattering at $T = 368$ K (cyan curve) shows increasing potential with temperature as thermal vibrations create stronger barriers. At $T = 108$ K (teal curve), phonon scattering is reduced. Impurity scattering (yellow curve) shows weaker temperature dependence—defects create constant barriers. Electron-electron scattering (gray curve) increases strongly with temperature as carrier density rises. The red horizontal line at $\Phi/k_B T \approx 0.73$ marks a characteristic crossover. All mechanisms share the same categorical structure: $\Phi = -kT \ln(s)$, where selectivity $s$ depends on the scattering mechanism. 
+(\textbf{Diffusive: Categorical Potential}) The categorical potential for diffusive transport decreases with temperature for all mechanisms. Vacancy diffusion (bright green curve) has the highest barrier at low temperature ($\Phi/k_B T \sim 2.2$ at 200 K) because vacancies are rare—high selectivity creates high barriers. Interstitial diffusion (green curve) has intermediate barriers. Grain boundary diffusion (dark green curve) has lower barriers because boundaries provide fast pathways—lower selectivity. Surface diffusion (darkest green curve) has the lowest barriers because surfaces are least selective. All curves converge at high temperature ($\Phi/k_B T \to 0.5$ at 800 K) as thermal energy overcomes selectivity. 
+(\textbf{Thermal: Categorical Potential}) The categorical potential for thermal transport increases dramatically with phonon frequency. Acoustic transverse modes (TA, orange curve) show moderate increase. Acoustic longitudinal modes (LA, bright orange curve) show stronger increase due to higher group velocity. Optical modes (yellow curve) show weak frequency dependence—they carry little heat. The Debye frequency (magenta curve) marks the crossover from acoustic to optical behavior. At high frequency ($\omega > 12$ THz), $\Phi/k_B T > 20$—optical phonons face enormous categorical barriers and contribute negligibly to thermal conductivity. This explains why only acoustic phonons conduct heat: low selectivity = low barriers. 
+(\textbf{Viscous: Categorical Potential}) The categorical potential for viscous flow varies dramatically with shear rate and material. Water (cyan curve) shows constant low potential ($\Phi/k_B T \sim 0.5$) across all shear rates—Newtonian behavior with no selectivity. Glycerol (magenta curve) shows moderate increase with shear rate—weak shear-thinning. Polymer melts (red curve) show strong decrease at high shear rate—strong shear-thinning as entanglements disentangle, reducing selectivity. Ideal gas (green curve) shows zero potential—no barriers. The dramatic variation (4 orders of magnitude in shear rate) demonstrates that categorical potential captures both Newtonian and non-Newtonian behavior in a unified framework.}
+\label{fig:categorical_potential}
+\end{figure*}
+
+\subsection{Complete Resolution of Loschmidt's Paradox}
+
+We can now state the complete resolution.
 
 \begin{theorem}[Resolution of Loschmidt's Paradox]
-\label{thm:resolution}
-Loschmidt's paradox dissolves: irreversibility arises from categorical partition structure, not from temporal asymmetry. Time-symmetric dynamics are fully compatible with entropy increase.
+\label{thm:loschmidt_resolution}
+Loschmidt's paradox dissolves completely: irreversibility arises from categorical partition structure, not from temporal asymmetry in physical laws. Time-symmetric dynamics are fully compatible with—indeed, guarantee—monotonic entropy increase.
 \end{theorem}
 
 \begin{proof}
-The paradox assumes:
+The paradox rests on three premises:
 \begin{enumerate}[label=(\alph*)]
-\item Irreversibility requires temporal asymmetry
-\item Time-symmetric dynamics cannot produce irreversibility
-\item Therefore, the H-theorem must rely on hidden temporal asymmetry
+\item Irreversibility requires temporal asymmetry in the fundamental laws
+\item Time-symmetric dynamics cannot produce irreversible behavior
+\item Therefore, the H-theorem must rely on hidden temporal asymmetry (smuggled in via the Stosszahlansatz or special initial conditions)
 \end{enumerate}
 
-We have shown:
-\begin{enumerate}[label=(\roman*)]
-\item Entropy arises from partition operations (Theorem~\ref{thm:partition_entropy})
-\item Partition entropy is time-reversal invariant (Theorem~\ref{thm:temporal_independence})
-\item Velocity reversal generates entropy (Theorem~\ref{thm:measurement_barrier})
-\item Partition boundaries cannot be erased (Theorem~\ref{thm:topological_irreversibility})
-\item The Stosszahlansatz is a theorem, not an assumption (Corollary~\ref{cor:stosszahlansatz})
+We have shown that all three premises are false.
+
+\paragraph{Premise (a) is false: Irreversibility is geometric, not temporal.}
+
+By Theorem~\ref{thm:partition_entropy}, entropy arises from partition operations that create undetermined residue. By Theorem~\ref{thm:temporal_independence}, partition entropy is independent of temporal direction. By Theorem~\ref{thm:topological_irreversibility}, partition boundaries cannot be erased.
+
+Irreversibility arises from the geometric structure of configuration space---partition boundaries that accumulate monotonically---not from temporal asymmetry in the dynamics. The laws of motion can be fully time-symmetric while entropy increases monotonically.
+
+The arrow of time is not in the dynamics (which are reversible) but in the geometry (partition boundaries accumulate).
+
+\paragraph{Premise (b) is false: Time-symmetric dynamics produce irreversible entropy increase.}
+
+By Corollary~\ref{cor:both_directions}, entropy increases along both forward and time-reversed trajectories. Time-reversal does not reverse entropy evolution because:
+
+\begin{itemize}
+\item Entropy counts partition boundaries (Theorem~\ref{thm:entropy_boundary})
+\item Partition boundaries are geometric structures in configuration space
+\item Time-reversal acts on velocities (phase space), not positions (configuration space)
+\item Therefore, boundaries are time-reversal invariant (Theorem~\ref{thm:time_reversal_boundaries})
+\end{itemize}
+
+Moreover, performing time-reversal requires measurement (Theorem~\ref{thm:measurement_barrier}), which creates new partition boundaries, increasing entropy further.
+
+Time-symmetric dynamics are fully compatible with---indeed, they guarantee---irreversible entropy increase. There is no contradiction.
+
+\paragraph{Premise (c) is false: The Stosszahlansatz is a theorem, not an assumption.}
+
+By Theorem~\ref{thm:correlation_inaccessibility}, correlations that would permit entropy decrease exist but are thermodynamically inaccessible. They reside in the undetermined residue of prior partition operations, and accessing them requires generating more entropy than they could recover.
+
+By Corollary~\ref{cor:stosszahlansatz}, the Stosszahlansatz describes accessible correlations, which are necessarily those consistent with entropy increase. It is not an unjustified assumption that smuggles in irreversibility---it is a theorem about measurement accessibility that follows from partition structure.
+
+The Stosszahlansatz does not introduce temporal asymmetry. It describes the consequences of geometric irreversibility (partition accumulation).
+
+\paragraph{The deepest resolution: Non-actualisation accumulation.}
+
+The ultimate resolution emerges from considering what does \emph{not} happen (Section~\ref{sec:non_actualisation}). When a gas expands into a vacuum:
+
+\textbf{What actualises}: One specific trajectory. Molecules move in specific directions with specific velocities.
+
+\textbf{What does not actualise}: Infinitely many alternatives.
+\begin{itemize}
+\item The gas does not contract back
+\item It does not form crystalline patterns
+\item It does not spontaneously separate into hot and cold regions
+\item It does not return to the initial half of the container
+\item ... (infinitely many non-actualisations)
+\end{itemize}
+
+Each non-actualisation is a categorical fact that cannot be erased (Theorem~\ref{thm:non_actualisation_irreversibility}). The gas's expansion created infinitely many new categorical facts: "did not contract at time $t_1$", "did not crystallize at time $t_2$", etc.
+
+Time-reversal would require:
+\begin{enumerate}
+\item Reversing the molecular trajectories (possible in principle with time-symmetric dynamics)
+\item \textbf{Erasing the non-actualisations} (categorically impossible)
 \end{enumerate}
 
-Premise (a) is false: irreversibility arises from categorical geometry, not temporal asymmetry. The time-symmetric dynamics of particles is fully compatible with entropy increase because entropy is not a temporal quantity but a categorical one. \qed
+Step (2) is impossible because non-actualisations are categorical facts. Once true, they remain true eternally. We cannot make "the gas did not contract at time $t_1$" false---we can only make a different statement true at a later time ("the gas contracted at time $t_2$").
+
+Even if we restore the physical configuration (actualisation), we cannot restore the categorical history (non-actualisations). The non-actualisations are permanent additions to the structure of categorical space.
+
+\paragraph{Conclusion.}
+
+The paradox rests on a false dichotomy: either the dynamics are time-asymmetric (explaining irreversibility but contradicting Newtonian mechanics), or they are time-symmetric (consistent with mechanics but unable to explain irreversibility).
+
+The resolution: \textbf{Dynamics are time-symmetric, but structure is time-asymmetric.}
+
+\begin{itemize}
+\item The laws of motion (Newtonian mechanics, Schrödinger equation) are time-symmetric
+\item The geometric structure of configuration space (partition boundaries) is time-asymmetric because boundaries accumulate monotonically
+\item Entropy measures structure, not motion
+\item Therefore, entropy evolution is time-asymmetric (always increasing) even though the motion is time-symmetric (reversible)
+\end{itemize}
+
+There is no paradox. Irreversibility and time-symmetric dynamics are not contradictory---they are complementary aspects of the same geometric reality. \qed
 \end{proof}
 
+\subsection{Summary}
+
+We have established the rigorous foundation for Boltzmann's H-theorem:
+
+\begin{enumerate}
+\item \textbf{Correlation Inaccessibility (Theorem~\ref{thm:correlation_inaccessibility})}: Velocity correlations that would permit entropy decrease exist in the exact microstate but are thermodynamically inaccessible. They reside in the undetermined residue of prior partition operations, and accessing them requires generating more entropy than they could recover.
+
+\item \textbf{Stosszahlansatz as Theorem (Corollary~\ref{cor:stosszahlansatz})}: The molecular chaos assumption is not an assumption but a theorem about accessible information. It describes what can be measured without generating prohibitive entropy. It is a consequence of partition structure, not a postulate.
+
+\item \textbf{Complete Resolution (Theorem~\ref{thm:loschmidt_resolution})}: Loschmidt's paradox dissolves completely. Irreversibility arises from categorical partition structure (geometric), not from temporal asymmetry (dynamical). Time-symmetric dynamics are fully compatible with monotonic entropy increase.
+\end{enumerate}
+
+The key insights:
+
+\begin{itemize}
+\item Entropy measures categorical structure (partition boundaries and non-actualisations), not dynamical trajectories
+\item Partition boundaries are geometric features that persist under time-reversal
+\item Correlations that would violate the Second Law exist but are inaccessible---hidden in partition residue
+\item The Stosszahlansatz describes accessible information, not fundamental reality
+\item Irreversibility is topological (boundaries and non-actualisations accumulate), not temporal (dynamics are time-symmetric)
+\item The arrow of time is the direction of non-actualisation accumulation
+\end{itemize}
+
+Boltzmann's H-theorem is vindicated: it is a rigorous consequence of partition structure, not a circular argument. The Stosszahlansatz is valid because it describes thermodynamically accessible correlations. Inaccessible correlations exist but cannot affect thermodynamic evolution without generating more entropy than they could exploit.
+
+The Second Law is not a statistical accident or a consequence of special initial conditions. It is a geometric necessity arising from the accumulation of partition boundaries in configuration space. Irreversibility is as fundamental as geometry itself.

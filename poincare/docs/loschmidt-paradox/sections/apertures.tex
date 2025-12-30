@@ -1,126 +1,529 @@
 %==============================================================================
-\subsection{Partition Boundaries as Categorical Apertures}
-\label{subsec:apertures}
+\section{Partition Boundaries as Categorical Apertures}
+\label{sec:apertures}
 %==============================================================================
 
-The partition framework acquires additional structure when partition boundaries are recognised as \emph{apertures}—geometric constraints that selectively allow certain configurations to pass while blocking others.
+The partition framework acquires additional structure when partition boundaries are recognised as \emph{apertures}—geometric constraints that selectively allow certain configurations to pass while blocking others. This perspective provides a unified geometric language for understanding diverse physical processes: chemical reactions, phase transitions, catalysis, and molecular recognition.
+
+\subsection{Apertures as Selection Functions}
 
 \begin{definition}[Categorical Aperture]
 \label{def:aperture}
-An \emph{aperture} $a$ is a partition boundary with a selection function:
+An \emph{aperture} $\mathcal{A}$ is a partition boundary equipped with a selection function:
 \begin{equation}
-\sigma_a(\omega) = \begin{cases}
-1 & \text{if } \text{config}(\omega) \in \text{shape}(a) \\
+\sigma_{\mathcal{A}}(\omega) = 
+\begin{cases}
+1 & \text{if } \text{config}(\omega) \in \text{shape}(\mathcal{A}) \\
 0 & \text{otherwise}
 \end{cases}
 \end{equation}
-where $\text{config}(\omega)$ is the configuration of state $\omega$ and $\text{shape}(a)$ is the set of configurations compatible with passage through aperture $a$.
+where $\text{config}(\omega)$ is the configuration of state $\omega$ and $\text{shape}(\mathcal{A})$ is the set of configurations compatible with passage through aperture $\mathcal{A}$.
 \end{definition}
+
+\paragraph{Physical interpretation.} An aperture is a geometric constraint in configuration space. Examples:
+
+\begin{itemize}
+\item \textbf{Spatial aperture}: A physical opening (doorway, pore, slit). Only configurations where the object fits through the opening can pass: $\text{shape}(\mathcal{A}) = \{\omega : \text{size}(\omega) < \text{size}(\mathcal{A})\}$.
+
+\item \textbf{Energy aperture}: An activation barrier. Only configurations with sufficient energy can pass: $\text{shape}(\mathcal{A}) = \{\omega : E(\omega) > E_{\text{barrier}}\}$.
+
+\item \textbf{Geometric aperture}: A steric constraint in molecular binding. Only configurations where the molecule's shape matches the binding site can pass: $\text{shape}(\mathcal{A}) = \{\omega : \text{shape}(\omega) \cong \text{shape}(\text{site})\}$.
+
+\item \textbf{Topological aperture}: A constraint on winding number or knot type. Only configurations with the correct topology can pass: $\text{shape}(\mathcal{A}) = \{\omega : \text{topology}(\omega) = \text{topology}_0\}$.
+\end{itemize}
+
+The selection function $\sigma_{\mathcal{A}}(\omega)$ is binary: a configuration either passes (1) or is blocked (0). There is no intermediate state. This reflects the categorical nature of partition boundaries.
+
+\subsection{Aperture Potential and Selectivity}
 
 \begin{theorem}[Aperture Potential]
 \label{thm:aperture_potential}
 Each aperture carries a categorical potential:
 \begin{equation}
-\Phi_a = -\kB T \ln\left(\frac{\Omega_{\text{pass}}}{\Omega_{\text{total}}}\right) = -\kB T \ln s
+\Phi_{\mathcal{A}} = -k_B T \ln\left(\frac{\Omega_{\text{pass}}}{\Omega_{\text{total}}}\right) = -k_B T \ln s
 \end{equation}
 where $s = \Omega_{\text{pass}}/\Omega_{\text{total}}$ is the \emph{selectivity} of the aperture—the fraction of configurations that can pass.
 \end{theorem}
 
 \begin{proof}
-The aperture restricts the accessible configuration space from $\Omega_{\text{total}}$ to $\Omega_{\text{pass}}$. By the Boltzmann relation, this restriction corresponds to an entropy reduction:
+\paragraph{Step 1: The aperture restricts configuration space.}
+
+Before the aperture, the system has access to $\Omega_{\text{total}}$ configurations. After passing through the aperture, only $\Omega_{\text{pass}}$ configurations are accessible, where:
 \begin{equation}
-\Delta S = \kB \ln \Omega_{\text{pass}} - \kB \ln \Omega_{\text{total}} = \kB \ln s
+\Omega_{\text{pass}} = |\{\omega : \sigma_{\mathcal{A}}(\omega) = 1\}|
 \end{equation}
 
-Since $s \leq 1$, we have $\ln s \leq 0$, so $\Delta S \leq 0$. The energy required to enforce this restriction is:
+The aperture has restricted the configuration space by a factor:
 \begin{equation}
-\Phi_a = -T \Delta S = -\kB T \ln s
+s = \frac{\Omega_{\text{pass}}}{\Omega_{\text{total}}}
 \end{equation}
+
+\paragraph{Step 2: Restriction corresponds to entropy reduction.}
+
+By the Boltzmann relation $S = k_B \ln \Omega$, the entropy change is:
+\begin{equation}
+\Delta S = k_B \ln \Omega_{\text{pass}} - k_B \ln \Omega_{\text{total}} = k_B \ln s
+\end{equation}
+
+Since $s \leq 1$ (aperture can only restrict, not expand, configuration space), we have $\ln s \leq 0$, so $\Delta S \leq 0$. The aperture reduces entropy.
+
+\paragraph{Step 3: Entropy reduction requires energy.}
+
+By the Second Law, entropy reduction in the system requires an increase in entropy elsewhere (typically in a reservoir). The minimum energy required to enforce the aperture constraint is:
+\begin{equation}
+\Phi_{\mathcal{A}} = -T \Delta S = -k_B T \ln s
+\end{equation}
+
+This is the \emph{aperture potential}: the thermodynamic cost of maintaining the aperture.
+
+\paragraph{Step 4: Aperture potential is geometric.}
+
+The potential $\Phi_{\mathcal{A}}$ depends only on the geometry of the aperture (via $s$), not on the dynamics of the system. It is a property of the partition boundary itself, not of the trajectory through it.
+
+This makes aperture potential a geometric quantity, analogous to gravitational potential (which depends on position, not velocity). \qed
 \end{proof}
 
 \begin{corollary}[Selectivity Extremes]
 \label{cor:selectivity}
 The aperture potential has limiting cases:
 \begin{enumerate}
-\item $s = 1$ (no selectivity, all configurations pass): $\Phi_a = 0$
-\item $s \to 0$ (high selectivity, almost nothing passes): $\Phi_a \to +\infty$
-\item $0 < s < 1$ (partial selectivity): $0 < \Phi_a < \infty$
+\item \textbf{No selectivity} ($s = 1$, all configurations pass): 
+\begin{equation}
+\Phi_{\mathcal{A}} = -k_B T \ln 1 = 0
+\end{equation}
+The aperture imposes no constraint. It is equivalent to no aperture at all.
+
+\item \textbf{Perfect selectivity} ($s \to 0$, almost nothing passes): 
+\begin{equation}
+\Phi_{\mathcal{A}} = -k_B T \ln s \to +\infty
+\end{equation}
+The aperture is an impenetrable barrier. Infinite energy is required to enforce it.
+
+\item \textbf{Partial selectivity} ($0 < s < 1$, some configurations pass): 
+\begin{equation}
+0 < \Phi_{\mathcal{A}} < \infty
+\end{equation}
+The aperture is a finite barrier. This is the typical case for physical processes.
 \end{enumerate}
 \end{corollary}
+
+\paragraph{Example: Activation barrier.} Consider a chemical reaction with activation energy $E_a$. The aperture is the transition state. The selectivity is:
+\begin{equation}
+s = \frac{\text{configurations with } E > E_a}{\text{all configurations}} = e^{-E_a / k_B T}
+\end{equation}
+
+The aperture potential is:
+\begin{equation}
+\Phi_{\mathcal{A}} = -k_B T \ln(e^{-E_a / k_B T}) = E_a
+\end{equation}
+
+The aperture potential equals the activation energy. This shows that activation barriers are aperture potentials.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_aperture_selectivity.png}
+\caption{\textbf{Partition Boundaries as Categorical Apertures: Selectivity Creates Entropy.} 
+(\textbf{A}) Selection function $\sigma(\omega)$: An aperture (green vertical bar labeled "Aperture (partition boundary)") acts as a selection function. Incoming configurations (arrows from left) are either passed ($\sigma(\omega) = 1$, green arrows) or blocked ($\sigma(\omega) = 0$, red arrows with X). The aperture divides configuration space into allowed (pass) and forbidden (block) regions. This binary selection is the fundamental partition operation. 
+(\textbf{B}) Aperture potential $\Phi = -kT \ln(s)$: The categorical potential (blue curve) decreases from high values at low selectivity ($s \to 0$: high barrier, red point labeled "High selectivity $s \to \infty$") to zero at perfect transmission ($s = 1$: no barrier, green point labeled "No selectivity $\Phi = 0$"). The shaded region shows the accessible range. Selectivity $s = \Omega_{\text{pass}}/\Omega_{\text{total}}$ measures the fraction of configurations that pass. The logarithmic relationship $\Phi \propto -\ln(s)$ means that highly selective apertures ($s \ll 1$) create large categorical barriers. 
+(\textbf{C}) Entropy from selectivity: Higher selectivity creates more entropy. The entropy production $\Delta S/k_B = \ln(1/s) = -\ln(s)$ (colored bars) increases from weak selectivity ($s = 0.9$, green, $\Delta S \sim 0.1 k_B$) to very strong selectivity ($s = 0.01$, red, $\Delta S \sim 4.6 k_B$). The formula $\Delta S = k_B \ln(1/s) = \Phi/T$ shows that entropy production equals the categorical potential divided by temperature. Selectivity creates non-actualisations—the blocked configurations become "didn't happen" facts. 
+(\textbf{D}) Aperture as energy barrier: A particle (blue circle labeled "Particle") approaching an aperture encounters an energy barrier (red curve). The barrier height is $\Phi = -kT \ln(s)$ (vertical arrow). Configurations that pass (green arrow labeled "Pass (prob. $s$)") have probability $s$. Configurations that are blocked (red shaded region labeled "Block (prob. $1-s$)") have probability $1-s$. The text box states: "Aperture = Categorical Barrier. Blocked states $\to$ Non-actualisations." This connects the categorical framework to standard reaction coordinate theory—apertures are categorical barriers that create entropy by blocking configurations.}
+\label{fig:aperture_selectivity}
+\end{figure*}
+
+\subsection{Non-Actualisations as Aperture-Blocked States}
 
 \begin{theorem}[Non-Actualisations as Aperture-Blocked States]
 \label{thm:non_actualisation_aperture}
 Non-actualisations are precisely the configurations blocked by partition apertures:
 \begin{equation}
-\mathcal{N}(\mathcal{A}) = \{ \omega : \sigma_a(\omega) = 0 \text{ for the aperture } a \text{ that produced } \mathcal{A} \}
+\mathcal{N}(\mathcal{A}) = \{ \omega : \sigma_{\mathcal{A}}(\omega) = 0 \text{ for the aperture } \mathcal{A} \text{ that produced actualisation } \mathcal{A} \}
 \end{equation}
 \end{theorem}
 
 \begin{proof}
-When a partition operation occurs with aperture $a$:
+\paragraph{Step 1: Partition operation with aperture.}
+
+When a partition operation occurs via aperture $\mathcal{A}$:
 \begin{itemize}
-\item Configurations with $\sigma_a(\omega) = 1$ can pass—these become candidates for actualisation
-\item Configurations with $\sigma_a(\omega) = 0$ are blocked—these become non-actualisations
+\item Configurations with $\sigma_{\mathcal{A}}(\omega) = 1$ can pass through the aperture. These become candidates for actualisation.
+\item Configurations with $\sigma_{\mathcal{A}}(\omega) = 0$ are blocked by the aperture. These cannot be actualised.
 \end{itemize}
 
-The actualisation $\mathcal{A}$ is selected from the passing configurations. All blocked configurations become non-actualisations. Since $|\{\omega : \sigma_a(\omega) = 0\}| = \Omega_{\text{total}} - \Omega_{\text{pass}} = (1 - s)\Omega_{\text{total}}$, the number of non-actualisations is typically vast when $s \ll 1$ (high selectivity).
+\paragraph{Step 2: Selection from passing configurations.}
+
+Among the passing configurations, one specific configuration $\omega_0$ is actualised. This becomes the actualisation $\mathcal{A}$.
+
+All other passing configurations $\{\omega : \sigma_{\mathcal{A}}(\omega) = 1, \omega \neq \omega_0\}$ are non-actualised (they could have passed but didn't).
+
+All blocked configurations $\{\omega : \sigma_{\mathcal{A}}(\omega) = 0\}$ are non-actualised (they couldn't pass).
+
+\paragraph{Step 3: Non-actualisation set.}
+
+The total non-actualisation set is:
+\begin{equation}
+\mathcal{N}(\mathcal{A}) = \{\omega : \omega \neq \omega_0\} = \underbrace{\{\omega : \sigma_{\mathcal{A}}(\omega) = 1, \omega \neq \omega_0\}}_{\text{passed but not selected}} \cup \underbrace{\{\omega : \sigma_{\mathcal{A}}(\omega) = 0\}}_{\text{blocked by aperture}}
+\end{equation}
+
+The blocked configurations constitute the majority. If selectivity is $s \ll 1$, then:
+\begin{equation}
+|\{\omega : \sigma_{\mathcal{A}}(\omega) = 0\}| = (1 - s) \Omega_{\text{total}} \approx \Omega_{\text{total}}
+\end{equation}
+
+Almost all non-actualisations are aperture-blocked states.
+
+\paragraph{Conclusion.}
+
+Non-actualisations are configurations excluded by the aperture. The aperture determines what cannot happen. This is the geometric origin of non-actualisation. \qed
 \end{proof}
 
 \begin{remark}[Connection to Entropy]
-The partition entropy $\Delta S = \kB \ln n_{\text{res}}$ can now be expressed in aperture terms:
+The partition entropy $\Delta S = k_B \ln n_{\text{res}}$ (Theorem~\ref{thm:partition_entropy}) can now be expressed in aperture terms:
 \begin{equation}
-\Delta S = \kB \ln\left(\frac{1}{s}\right) = \frac{\Phi_a}{T}
+\Delta S = k_B \ln\left(\frac{\Omega_{\text{total}}}{\Omega_{\text{pass}}}\right) = k_B \ln\left(\frac{1}{s}\right) = \frac{\Phi_{\mathcal{A}}}{T}
 \end{equation}
 
-Higher selectivity (smaller $s$) produces more entropy. This makes physical sense: a highly selective partition creates more non-actualisations, hence more categorical facts, hence more entropy.
+Higher selectivity (smaller $s$) produces:
+\begin{itemize}
+\item Larger aperture potential $\Phi_{\mathcal{A}}$ (more energy required to enforce the constraint)
+\item More non-actualisations $|\mathcal{N}| \approx (1-s) \Omega_{\text{total}}$ (more configurations blocked)
+\item More entropy $\Delta S = k_B \ln(1/s)$ (more categorical facts created)
+\end{itemize}
+
+This makes physical sense: a highly selective aperture (narrow opening, high barrier) creates more non-actualisations, hence more categorical facts, hence more entropy.
+
+The aperture potential $\Phi_{\mathcal{A}}$ is the thermodynamic cost of creating these non-actualisations.
 \end{remark}
+
+\subsection{Catalysis as Aperture Cycling}
+
+Catalysis provides a striking application of the aperture framework.
 
 \begin{theorem}[Catalysis as Aperture Cycling]
 \label{thm:catalysis_aperture}
-A catalyst operates by creating and then destroying apertures, with net aperture change zero:
+A catalyst operates by creating and then destroying apertures, with net aperture change of zero:
 \begin{equation}
-\Delta\Phi_{\text{catalyst}} = \Phi_{\text{created}} - \Phi_{\text{destroyed}} = 0
+\Delta \Phi_{\text{catalyst}} = \Phi_{\text{created}} - \Phi_{\text{destroyed}} = 0
 \end{equation}
 \end{theorem}
 
 \begin{proof}
-A catalyst:
-\begin{enumerate}
-\item Binds the substrate, creating an active site aperture with potential $\Phi_{\text{active}}$
-\item Facilitates the reaction within the aperture
-\item Releases the product, destroying the aperture
-\end{enumerate}
+\paragraph{Step 1: The catalyst creates the active site aperture.}
 
-The aperture created equals the aperture destroyed: $\Phi_{\text{created}} = \Phi_{\text{destroyed}} = \Phi_{\text{active}}$. Therefore:
+A catalyst (enzyme, heterogeneous catalyst, etc.) binds to the substrate, creating an active site. The active site is an aperture: it selectively admits configurations in which the substrate is correctly oriented for reaction.
+
+The selectivity of the active site is:
 \begin{equation}
-\Delta\Phi_{\text{catalyst}} = \Phi_{\text{active}} - \Phi_{\text{active}} = 0
+s_{\text{active}} = \frac{\text{reactive configurations}}{\text{all substrate configurations}} \ll 1
 \end{equation}
 
-This explains why catalysts are not consumed: they create and destroy apertures in a balanced cycle.
+The aperture potential is:
+\begin{equation}
+\Phi_{\text{active}} = -k_B T \ln s_{\text{active}} > 0
+\end{equation}
+
+This is the energy cost of creating the active site (binding energy).
+
+\paragraph{Step 2: The reaction occurs within the aperture.}
+
+Within the active site aperture, the substrate is constrained to reactive configurations. The reaction proceeds with reduced activation energy:
+\begin{equation}
+E_a^{\text{catalyzed}} < E_a^{\text{uncatalyzed}}
+\end{equation}
+
+This is because the aperture has pre-selected configurations near the transition state, reducing the additional energy needed to reach it.
+
+\paragraph{Step 3: The catalyst releases the product and destroys the aperture.}
+
+After the reaction, the product is released. The active site aperture is destroyed. The catalyst returns to its original state.
+
+The destroyed aperture has the same potential as the created aperture: 
+\begin{equation}
+\Phi_{\text{destroyed}} = \Phi_{\text{active}}
+\end{equation}
+
+\paragraph{Step 4: Net aperture change is zero.}
+
+The cycle is:
+\begin{equation}
+\text{Catalyst} \xrightarrow{\text{bind}} \text{Catalyst} \cdot \text{Substrate} \xrightarrow{\text{react}} \text{Catalyst} \cdot \text{Product} \xrightarrow{\text{release}} \text{Catalyst}
+\end{equation}
+
+Aperture created: $\Phi_{\text{active}}$ (during binding).
+Aperture destroyed: $\Phi_{\text{active}}$ (during release).
+
+Net change:
+\begin{equation}
+\Delta \Phi_{\text{catalyst}} = \Phi_{\text{active}} - \Phi_{\text{active}} = 0
+\end{equation}
+
+The catalyst creates and destroys apertures in a balanced cycle. This is why catalysts are not consumed. \qed
 \end{proof}
 
-\begin{corollary}[Catalysis Does Not Affect Entropy Production]
-\label{cor:catalysis_entropy}
-A catalyst changes the \emph{path} through aperture space but not the \emph{total entropy production}:
+\begin{corollary}[Catalysis Does Not Affect Equilibrium]
+\label{cor:catalysis_equilibrium}
+A catalyst does not change the equilibrium constant:
 \begin{equation}
-\Delta S_{\text{catalysed}} = \Delta S_{\text{uncatalysed}}
+K_{\text{eq}}^{\text{catalyzed}} = K_{\text{eq}}^{\text{uncatalyzed}}
 \end{equation}
 \end{corollary}
 
 \begin{proof}
-Entropy is produced by the reaction itself (the partition from reactants to products), not by the catalyst. The catalyst provides a different sequence of apertures—a lower-barrier pathway—but the initial and final states are identical. Since entropy is a state function, $\Delta S$ depends only on these endpoints.
+The equilibrium constant depends on the free energy difference between reactants and products:
+\begin{equation}
+K_{\text{eq}} = e^{-\Delta G / k_B T}
+\end{equation}
+
+The catalyst changes the pathway (creates intermediate apertures) but not the endpoints. Since $\Delta G$ depends only on initial and final states (it is a state function), the catalyst does not change $\Delta G$, hence does not change $K_{\text{eq}}$. \qed
+\end{proof}
+
+\begin{corollary}[Catalysis Does Not Affect Total Entropy Production]
+\label{cor:catalysis_entropy}
+A catalyst changes the \emph{path} through aperture space but not the \emph{total entropy production}:
+\begin{equation}
+\Delta S_{\text{catalyzed}} = \Delta S_{\text{uncatalyzed}}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Entropy is produced by the reaction itself (the transition from reactants to products), not by the catalyst. The catalyst provides a different sequence of apertures—a lower-barrier pathway—but the initial and final states are identical.
+
+Since entropy is a state function:
+\begin{equation}
+\Delta S = S_{\text{products}} - S_{\text{reactants}}
+\end{equation}
+
+This depends only on the endpoints, not on the pathway. Therefore:
+\begin{equation}
+\Delta S_{\text{catalyzed}} = \Delta S_{\text{uncatalyzed}}
+\end{equation}
+
+The catalyst affects the \emph{rate} of entropy production (by lowering barriers) but not the \emph{total} entropy production. \qed
+\end{proof}
+
+\paragraph{Physical interpretation: Catalysis as aperture engineering.}
+
+A catalyst is a device that:
+\begin{enumerate}
+\item Creates a temporary aperture (active site) with high selectivity
+\item Guides the system through this aperture (facilitates reaction)
+\item Destroys the aperture (releases product)
+\item Returns to its original state (ready for another cycle)
+\end{enumerate}
+
+The catalyst does not change thermodynamics (equilibrium, total entropy). It changes kinetics (reaction rate) by providing a lower-barrier pathway through aperture space.
+
+This is analogous to a mountain pass: the pass (aperture) provides a lower-energy route over the mountain (activation barrier), but it doesn't change the altitude difference between the starting and ending points (free energy difference).
+
+\subsection{Aperture Accumulation and Irreversibility}
+
+\begin{theorem}[Aperture Accumulation]
+\label{thm:aperture_accumulation}
+Apertures accumulate monotonically in configuration space:
+\begin{equation}
+\frac{dN_{\text{apertures}}}{dt} \geq 0
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Each partition operation creates an aperture (the partition boundary). By Corollary~\ref{cor:monotonic_boundaries}, partition boundaries accumulate monotonically.
+
+Apertures are partition boundaries (equipped with selection functions). Therefore, apertures also accumulate monotonically. \qed
+\end{proof}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_transport_coefficients.png}
+\caption{\textbf{Transport Coefficients Emerge from Partition Lag and Coupling.} 
+(\textbf{A}) Viscosity from partition lag $\times$ coupling: Viscosity $\mu$ (blue curve) emerges from the product of partition lag $\tau_p$ (red dashed line, nearly zero) and inter-particle coupling $g$ (green dotted curve, scaled). The formula $\mu = \sum_{i,j} \tau_{p,ij} \cdot g_{ij}$ shows that viscosity is not a fundamental property—it is a consequence of categorical determination time ($\tau_p$) and interaction strength ($g$). Both $\tau_p$ and $g$ are nearly constant over the temperature range 260–400 K, explaining why viscosity is approximately temperature-independent for many fluids. 
+(\textbf{B}) Thermal conductivity from $g/\tau_p$ ratio: Thermal conductivity $\kappa$ (bar chart) varies over 5 orders of magnitude from air ($\kappa \sim 1$, cyan) to metals ($\kappa \sim 10^4$, gray). The formula $\kappa \propto g/\tau_p$ shows that high conductivity requires strong coupling ($g \gg 1$) and fast partition ($\tau_p \ll 1$). Metals have both: strong electron coupling and rapid categorical determination. The intermediate cases (water, oil, glycerol) show that $\kappa$ is determined by the balance between coupling strength and partition speed. 
+(\textbf{C}) Diffusivity from Stokes-Einstein relation: Diffusivity $D$ (blue line with labeled points) decreases with particle radius $r$ according to $D = k_B T/(6\pi\mu r)$. Small molecules (H$_2$O, glucose) diffuse rapidly ($D \sim 1$ nm$^2$/ns). Large molecules (proteins) diffuse slowly ($D \sim 0.1$ nm$^2$/ns). The Stokes-Einstein relation emerges from partition dynamics: larger particles require more categorical determinations per unit displacement, reducing $D$. 
+(\textbf{D}) Unified transport coefficients: All three transport coefficients—viscosity $\mu$, thermal conductivity $\kappa$, and diffusivity $D$—derive from partition lag $\tau_p$ and coupling $g$. The relationships are: $\mu \sim \tau_p \cdot g$ (blue box), $\kappa \sim g/\tau_p$ (orange box), and $D \sim k_B T/(6\pi\mu r)$ (green box). The box labeled "All from partition lag and coupling!" emphasizes that these are not independent material properties—they are different manifestations of the same underlying partition structure. This unification resolves the apparent diversity of transport phenomena into a single categorical framework.}
+\label{fig:transport_coefficients}
+\end{figure*}
+
+\begin{theorem}[Apertures Cannot Be Erased]
+\label{thm:aperture_irreversibility}
+Once an aperture is created, the categorical fact "this aperture existed" cannot be erased.
+\end{theorem}
+
+\begin{proof}
+An aperture determines which configurations passed and which were blocked. This determination creates categorical facts:
+\begin{itemize}
+\item "Configuration $\omega_1$ passed through aperture $\mathcal{A}$ at time $t$" (actualisation)
+\item "Configuration $\omega_2$ was blocked by aperture $\mathcal{A}$ at time $t$" (non-actualisation)
+\end{itemize}
+
+These are categorical facts. Once true, they remain true eternally (in the sense that "it was true at time $t$" remains true forever).
+
+Even if the physical aperture is removed (e.g., a door is opened, a catalyst is deactivated), the categorical facts remain. The aperture existed, and its existence determined what passed and what didn't.
+
+By Theorem~\ref{thm:non_actualisation_irreversibility}, categorical facts cannot be erased. Therefore, apertures cannot be erased. \qed
 \end{proof}
 
 \begin{remark}[Irreversibility Through Aperture Creation]
-This aperture framework deepens the resolution of Loschmidt's paradox. Every physical process creates apertures:
+This aperture framework provides the deepest geometric picture of irreversibility. Every physical process creates apertures:
+
 \begin{itemize}
-\item Chemical bonds are apertures (geometric constraints on molecular approach)
-\item Phase transitions destroy or create apertures (lattice structure)
-\item Collisions are transient apertures (scattering cross-sections)
+\item \textbf{Chemical bonds} are apertures: geometric constraints on molecular approach. Only configurations where atoms are correctly aligned can form bonds. All other configurations are blocked.
+
+\item \textbf{Phase transitions} create or destroy apertures: 
+\begin{itemize}
+\item Crystallization creates apertures (lattice constraints block non-periodic configurations)
+\item Melting destroys apertures (lattice constraints are removed)
 \end{itemize}
 
-These apertures generate non-actualisations. Reversal would require un-creating the apertures and their associated non-actualisations. But apertures, once created, have determined what passed and what did not. This determination is categorical and cannot be erased.
+\item \textbf{Collisions} are transient apertures: scattering cross-sections determine which trajectories lead to collision and which do not. The collision creates an aperture in velocity space.
+
+\item \textbf{Measurements} are apertures: the measurement apparatus selectively responds to certain states (those compatible with the measurement outcome) and blocks others.
+
+\item \textbf{Biological processes} are aperture sequences:
+\begin{itemize}
+\item Enzyme catalysis: substrate binding creates active site aperture
+\item DNA replication: base-pairing creates apertures (only complementary bases pass)
+\item Protein folding: hydrophobic effect creates apertures (only certain conformations are stable)
+\end{itemize}
+\end{itemize}
+
+Each aperture generates non-actualisations (blocked configurations). These non-actualisations are categorical facts that cannot be erased.
+
+Reversal would require:
+\begin{enumerate}
+\item Un-creating the apertures (removing the geometric constraints)
+\item Erasing the non-actualisations (making the categorical facts false)
+\end{enumerate}
+
+Step (1) is possible in principle (though practically difficult). Step (2) is categorically impossible.
 
 The impossibility of reversal is not merely thermodynamic (statistically improbable) but geometric (categorically impossible). Apertures are partition boundaries, and partition boundaries are permanent features of categorical space.
 \end{remark}
 
+\subsection{Aperture Networks and Complexity}
+
+Complex systems can be understood as networks of apertures.
+
+\begin{definition}[Aperture Network]
+\label{def:aperture_network}
+An \emph{aperture network} is a directed graph $G = (V, E)$ where:
+\begin{itemize}
+\item Vertices $V$ are states (configurations)
+\item Edges $E$ are apertures (allowed transitions)
+\end{itemize}
+
+Each edge $e: v_i \to v_j$ has:
+\begin{itemize}
+\item Selectivity $s_e$ (fraction of configurations that can make the transition)
+\item Aperture potential $\Phi_e = -k_B T \ln s_e$
+\end{itemize}
+\end{definition}
+
+\paragraph{Example: Protein folding.} The folding pathway is an aperture network:
+\begin{itemize}
+\item Vertices: conformational states (unfolded, intermediate, folded)
+\item Edges: allowed conformational transitions (apertures determined by steric constraints, hydrophobic effect, etc.)
+\end{itemize}
+
+The folding funnel is a region of aperture space with high selectivity toward the native state. The funnel guides the protein through a sequence of apertures, each narrowing the configuration space until the native state is reached.
+
+\begin{theorem}[Entropy Production in Aperture Networks]
+\label{thm:aperture_network_entropy}
+The total entropy production along a path through an aperture network is:
+\begin{equation}
+\Delta S = k_B \sum_{e \in \text{path}} \ln\left(\frac{1}{s_e}\right) = \frac{1}{T} \sum_{e \in \text{path}} \Phi_e
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Each aperture $e$ restricts configuration space by factor $s_e$, producing entropy:
+\begin{equation}
+\Delta S_e = k_B \ln\left(\frac{1}{s_e}\right) = \frac{\Phi_e}{T}
+\end{equation}
+
+Along a path through multiple apertures, the total entropy is the sum:
+\begin{equation}
+\Delta S = \sum_{e \in \text{path}} \Delta S_e = k_B \sum_{e \in \text{path}} \ln\left(\frac{1}{s_e}\right)
+\end{equation}
+
+Using $\Phi_e = -k_B T \ln s_e$:
+\begin{equation}
+\Delta S = \frac{1}{T} \sum_{e \in \text{path}} \Phi_e
+\end{equation}
+
+The entropy production is the sum of aperture potentials along the path. \qed
+\end{proof}
+
+\begin{corollary}[Minimum Entropy Path]
+\label{cor:minimum_entropy_path}
+The path through an aperture network that minimizes entropy production is:
+\begin{equation}
+\text{path}_{\text{min}} = \arg\min_{\text{paths}} \sum_{e \in \text{path}} \Phi_e
+\end{equation}
+\end{corollary}
+
+This is analogous to finding the shortest path in a weighted graph, where edge weights are aperture potentials.
+
+\paragraph{Biological significance.} Evolution optimizes aperture networks:
+\begin{itemize}
+\item Enzymes evolve to create active site apertures with optimal selectivity (high enough to ensure specificity, low enough to allow reasonable throughput)
+\item Metabolic pathways evolve to minimize total aperture potential (minimize entropy production)
+\item Protein folding pathways evolve to follow minimum-entropy routes through conformational space
+\end{itemize}
+
+This provides a thermodynamic principle for understanding biological optimization: \textbf{minimize the sum of aperture potentials}.
+
+\subsection{Aperture Duality: Constraints and Opportunities}
+
+Apertures exhibit a fundamental duality:
+
+\begin{theorem}[Aperture Duality]
+\label{thm:aperture_duality}
+Every aperture is simultaneously:
+\begin{enumerate}
+\item A \textbf{constraint}: blocks $(1-s)\Omega_{\text{total}}$ configurations
+\item An \textbf{opportunity}: allows $s\Omega_{\text{total}}$ configurations to pass
+\end{enumerate}
+\end{theorem}
+
+\paragraph{Physical interpretation.} Consider a chemical reaction:
+\begin{itemize}
+\item \textbf{As constraint}: The activation barrier blocks most molecular collisions. Only collisions with $E > E_a$ can react. This is a constraint that prevents reaction.
+
+\item \textbf{As opportunity}: The activation barrier creates a pathway to products. Molecules that pass through the barrier (transition state) reach the product state. This is an opportunity that enables reaction.
+\end{itemize}
+
+The same aperture (transition state) is both obstacle and pathway. This duality is fundamental to understanding chemical kinetics, catalysis, and biological function.
+
+\paragraph{Catalysis exploits duality.} A catalyst:
+\begin{itemize}
+\item Reduces the constraint (lowers $E_a$, increases $s$)
+\item Enhances the opportunity (more molecules can pass)
+\end{itemize}
+
+But it does so by creating a new aperture (active site) with different geometry. The catalyst trades one aperture (high barrier, low selectivity) for another (lower barrier, higher selectivity).
+
+\subsection{Summary}
+
+The aperture framework provides a geometric language for understanding physical processes:
+
+\begin{enumerate}
+\item \textbf{Apertures as Selection Functions (Definition~\ref{def:aperture})}: Partition boundaries are apertures that selectively allow certain configurations to pass while blocking others.
+
+\item \textbf{Aperture Potential (Theorem~\ref{thm:aperture_potential})}: Each aperture has a thermodynamic cost $\Phi_{\mathcal{A}} = -k_B T \ln s$, where $s$ is the selectivity.
+
+\item \textbf{Non-Actualisations as Blocked States (Theorem~\ref{thm:non_actualisation_aperture})}: Non-actualisations are configurations blocked by apertures. Entropy counts blocked configurations.
+
+\item \textbf{Catalysis as Aperture Cycling (Theorem~\ref{thm:catalysis_aperture})}: Catalysts create and destroy apertures in a balanced cycle, changing kinetics but not thermodynamics.
+
+\item \textbf{Aperture Accumulation (Theorem~\ref{thm:aperture_accumulation})}: Apertures accumulate monotonically, creating irreversibility.
+
+\item \textbf{Aperture Irreversibility (Theorem~\ref{thm:aperture_irreversibility})}: Once created, the categorical fact "this aperture existed" cannot be erased.
+
+\item \textbf{Aperture Networks (Definition~\ref{def:aperture_network})}: Complex systems are networks of apertures. Entropy production is the sum of aperture potentials along a path.
+
+\item \textbf{Aperture Duality (Theorem~\ref{thm:aperture_duality})}: Every aperture is simultaneously a constraint (blocks configurations) and an opportunity (allows passage).
+\end{enumerate}
+
+The key insight: \textbf{Physical processes are trajectories through aperture space}. Each aperture restricts configuration space, creating non-actualisations. These non-actualisations accumulate irreversibly, generating entropy.
+
+Irreversibility is not a property of dynamics (which are time-symmetric) but of geometry (apertures create permanent categorical facts). The arrow of time is the direction of aperture accumulation.
+
+This completes the geometric foundation of thermodynamics. The Second Law is a theorem about aperture accumulation in configuration space.

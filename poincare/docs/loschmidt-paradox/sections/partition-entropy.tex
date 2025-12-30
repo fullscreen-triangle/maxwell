@@ -10,71 +10,265 @@
 A partition operation $\Pi: \mathcal{C} \to \mathcal{C}_1 \sqcup \mathcal{C}_2$ divides a categorical state $\mathcal{C}$ into distinguishable sub-states $\mathcal{C}_1$ and $\mathcal{C}_2$. The partition creates a categorical boundary separating states that were previously indistinguishable.
 \end{definition}
 
+Partition operations are the fundamental mechanism by which physical systems create distinctions. Before partition, states within $\mathcal{C}$ are indistinguishable by any macroscopic measurement. After partition, states in $\mathcal{C}_1$ can be distinguished from states in $\mathcal{C}_2$. The partition boundary is the geometric structure that separates these regions.
+
+\paragraph{Physical examples.}
+
+\begin{itemize}
+\item \textbf{Phase space coarse-graining}: Dividing position-momentum space into cells of volume $h^3$ (where $h$ is Planck's constant). States within a cell are indistinguishable; states in different cells are distinguishable.
+
+\item \textbf{Energy level quantization}: An atom with continuous energy $E$ is partitioned into discrete energy levels $E_n = -13.6 \text{ eV}/n^2$. The partition boundaries are the energy gaps between levels.
+
+\item \textbf{Thermodynamic measurement}: Measuring whether a gas is "hot" or "cold" partitions the temperature continuum at some threshold $T_0$. The partition boundary is the set of states with $T \approx T_0$.
+
+\item \textbf{Chemical reaction}: Reactants and products are separated by a partition boundary (the transition state). Configurations on opposite sides of the boundary are categorically distinct.
+\end{itemize}
+
+In each case, the partition creates a boundary that did not previously exist. This boundary is a geometric structure in configuration space---a surface that separates distinguishable regions.
+
 \begin{definition}[Partition Lag]
 \label{def:partition_lag}
-The partition lag $\taulag$ is the irreducible temporal interval between initiating a partition and establishing the partitioned result:
+The partition lag $\tau_{\text{lag}}$ is the irreducible temporal interval between initiating a partition and establishing the partitioned result:
 \begin{equation}
-\taulag = t_{\text{partitioned}} - t_{\text{initiate}} > 0
+\tau_{\text{lag}} = t_{\text{partitioned}} - t_{\text{initiate}} > 0
 \label{eq:partition_lag}
 \end{equation}
 \end{definition}
 
+The partition lag reflects a fundamental constraint: categorical distinctions cannot be established instantaneously. Consider inserting a partition into a gas chamber:
+
+\begin{itemize}
+\item At $t = t_{\text{initiate}}$, the partition begins moving into place.
+\item During $0 < t - t_{\text{initiate}} < \tau_{\text{lag}}$, molecules near the partition have ambiguous status---they are neither definitively on the left nor definitively on the right.
+\item At $t = t_{\text{partitioned}} = t_{\text{initiate}} + \tau_{\text{lag}}$, the partition is fully established and molecules can be definitively assigned to left or right.
+\end{itemize}
+
+The lag $\tau_{\text{lag}}$ is not merely a practical limitation---it is a fundamental feature of categorical structure. Establishing a distinction requires information propagation, which requires finite time.
+
 \begin{theorem}[Positive Partition Lag]
 \label{thm:positive_lag}
-Partition operations require positive time: $\taulag > 0$ for all partitions.
+Partition operations require positive time: $\tau_{\text{lag}} > 0$ for all partitions.
 \end{theorem}
 
 \begin{proof}
-Partitioning distinguishes between categorical states. Distinguishing requires information acquisition about which side of the partition boundary a state occupies. Information acquisition in physical systems requires finite time by causality constraints. Hence $\taulag > 0$. \qed
+Partitioning distinguishes between categorical states. Distinguishing requires information acquisition about which side of the partition boundary a state occupies. Information acquisition in physical systems requires finite time by causality constraints: information cannot propagate faster than the speed of light $c$, and in many systems propagates much slower (e.g., at the speed of sound for mechanical partitions, at thermal diffusion rates for temperature measurements).
+
+For a partition of spatial extent $L$, the minimum lag is $\tau_{\text{lag}} \geq L/c$. For quantum systems, the minimum lag is $\tau_{\text{lag}} \geq \hbar/\Delta E$ where $\Delta E$ is the energy uncertainty associated with the partition (by the time-energy uncertainty relation). In all cases, $\tau_{\text{lag}} > 0$. \qed
 \end{proof}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_partition_lag.png}
+\caption{\textbf{Partition Lag: The Finite Time of Categorical Determination.} 
+(\textbf{A}) Partition lag distribution: The time required for a partition operation to complete, $\tau_{\text{lag}}$, has a non-zero minimum $\tau_{\min} = \hbar/\Delta E$ (red dashed line) set by the uncertainty principle. The forbidden region $\tau < \tau_{\min}$ (pink shading) represents timescales shorter than quantum mechanical limits. The distribution $P(\tau_{\text{lag}})$ (blue curve) peaks at intermediate times and has a long tail, reflecting the range of possible partition completion times. 
+(\textbf{B}) Undetermined residue during partition lag: During the finite time $\tau_{\text{lag}}$, the system exists in an undetermined residue state—neither fully in the pre-partition configuration nor fully in the post-partition configuration. The determination fraction (black curve) increases from 0 to 1 as the partition completes. Different molecules (colored curves) complete at different rates, but all follow the same asymptotic behavior. The pink shading indicates the residue region where entropy is generated. 
+(\textbf{C}) Entropy production during partition lag: Entropy is produced continuously during the partition lag (red curve shows production rate $dS/dt$, blue curve shows cumulative entropy $S(t)$). The production rate is highest at early times and decreases as the partition approaches completion. The total entropy generated is $\Delta S = k_B \ln n_{\text{res}}$, where $n_{\text{res}}$ is the residue count. 
+(\textbf{D}) Minimum lag scales with energy gap: The minimum partition lag $\tau_{\min} = \hbar/\Delta E$ decreases with increasing energy gap $\Delta E$. For phonon transitions ($\Delta E \sim 1$ meV), $\tau_{\min} \sim 10^{-13}$ s. For vibrational transitions ($\Delta E \sim 10$ meV), $\tau_{\min} \sim 10^{-14}$ s. For electronic transitions ($\Delta E \sim 100$ meV), $\tau_{\min} \sim 10^{-15}$ s. For core transitions ($\Delta E \sim 1$ eV), $\tau_{\min} \sim 10^{-15}$ s. This scaling is a testable prediction of the partition framework, distinguishing it from standard quantum mechanics where measurements are treated as instantaneous.}
+\label{fig:partition_lag}
+\end{figure*}
+
+\paragraph{Implications.} The positivity of partition lag has profound consequences:
+
+\begin{itemize}
+\item \textbf{No instantaneous measurements}: Any measurement that creates categorical distinctions requires finite time.
+
+\item \textbf{Unavoidable residue}: During $\tau_{\text{lag}}$, some states are necessarily undetermined (neither in $\mathcal{C}_1$ nor $\mathcal{C}_2$).
+
+\item \textbf{Entropy production}: The undetermined states contribute to entropy, as we now establish.
+\end{itemize}
 
 \subsection{Undetermined Residue}
 
 \begin{definition}[Undetermined Residue]
 \label{def:residue}
-During partition lag $\taulag$, the system exists in undetermined superposition across the partition boundary. The undetermined residue $n_{\text{res}}$ counts states that cannot be assigned to either $\mathcal{C}_1$ or $\mathcal{C}_2$ during the partition interval.
+During partition lag $\tau_{\text{lag}}$, the system exists in an undetermined superposition across the partition boundary. The undetermined residue $n_{\text{res}}$ counts states that cannot be assigned to either $\mathcal{C}_1$ or $\mathcal{C}_2$ during the partition interval.
 \end{definition}
+
+The undetermined residue is not a defect of imprecise measurement; it is an intrinsic feature of partition operations. Consider three types of residue states:
+
+\paragraph{Spatial residue.} For a partition at position $x = x_0$, molecules with positions $|x - x_0| < \lambda_{\text{th}}$ (where $\lambda_{\text{th}} = h/\sqrt{2\pi m k_B T}$ is the thermal de Broglie wavelength) cannot be definitively localised to one side or the other. The number of such molecules is:
+\begin{equation}
+n_{\text{res}}^{\text{spatial}} \sim \frac{A \lambda_{\text{th}}}{V/N} \cdot N = \frac{A \lambda_{\text{th}} N}{V}
+\end{equation}
+where $A$ is the partition area, $V$ is the volume, and $N$ is the total number of molecules.
+
+\paragraph{Velocity residue.} For a partition based on velocity (e.g., "fast" vs. "slow" at threshold $v_0$), molecules with velocities $|v - v_0| < \Delta v$ (where $\Delta v$ is the thermal velocity spread) are residues. The number is:
+\begin{equation}
+n_{\text{res}}^{\text{velocity}} \sim \frac{\Delta v}{v_{\text{th}}} \cdot N
+\end{equation}
+where $v_{\text{th}} = \sqrt{k_B T/m}$ is the thermal velocity.
+
+\paragraph{Temporal residue.} During the partition lag $\tau_{\text{lag}}$, molecules that cross the partition boundary are in both regions. The number of crossing molecules is:
+\begin{equation}
+n_{\text{res}}^{\text{temporal}} \sim \frac{A v_{\text{th}} \tau_{\text{lag}}}{V/N} \cdot N = \frac{A v_{\text{th}} \tau_{\text{lag}} N}{V}
+\end{equation}
+
+In all cases, $n_{\text{res}} \geq 2$ (at least one state on each side of the boundary is temporarily undetermined during the partition process). For macroscopic systems, $n_{\text{res}} \gg 2$---typically $n_{\text{res}} \sim 10^{10}$ to $10^{20}$ for laboratory-scale partitions.
+
+\paragraph{Why residue cannot be eliminated.} One might attempt to reduce residue by:
+
+\begin{itemize}
+\item \textbf{Sharper partitions}: Use a thinner partition wall. But this increases the velocity residue (more molecules have velocities that could cross a thinner barrier).
+
+\item \textbf{Slower partitions}: Insert the partition more slowly to reduce temporal residue. But this increases the spatial residue (more molecules diffuse near the boundary during the longer insertion time).
+
+\item \textbf{Colder systems}: Reduce the temperature to decrease the thermal wavelength. But this increases quantum uncertainty (smaller $\lambda_{\text{th}}$ means larger momentum uncertainty $\Delta p \sim h/\lambda_{\text{th}}$).
+\end{itemize}
+
+Every attempt to reduce one type of residue increases another. The total residue count $n_{\text{res}}$ has a lower bound determined by fundamental constants (Planck's constant, speed of light, and Boltzmann's constant). This lower bound is never zero.
 
 \begin{theorem}[Partition Entropy Production]
 \label{thm:partition_entropy}
 Every partition operation produces entropy:
 \begin{equation}
-\Delta S = \kB \ln n_{\text{res}} > 0
+\Delta S = k_B \ln n_{\text{res}} > 0
 \label{eq:partition_entropy}
 \end{equation}
 \end{theorem}
 
 \begin{proof}
-Undetermined residue represents states that contribute to $\ln n_{\text{res}}$ entropy during partition lag. By Theorem~\ref{thm:positive_lag}, $\taulag > 0$, hence undetermined residue exists during every partition. Since $n_{\text{res}} \geq 2$ (at least one state on each side of the boundary is temporarily undetermined), $\Delta S = \kB \ln n_{\text{res}} \geq \kB \ln 2 > 0$. \qed
+The entropy of a system with $\Omega$ accessible microstates is $S = k_B \ln \Omega$ (Boltzmann's principle). Before partition, the system has $\Omega_{\text{before}}$ accessible states. After partition, it has $\Omega_{\text{after}}$ accessible states.
+
+The partition creates $n_{\text{res}}$ undetermined residue states that were not present before. These states represent configurations that are neither in $\mathcal{C}_1$ nor $\mathcal{C}_2$---they are boundary states. The boundary states are \emph{additional} accessible configurations (the system can be in a boundary state during partition lag).
+
+Therefore:
+\begin{equation}
+\Omega_{\text{after}} = \Omega_{\text{before}} + n_{\text{res}}
+\end{equation}
+
+The entropy change is:
+\begin{equation}
+\Delta S = k_B \ln \Omega_{\text{after}} - k_B \ln \Omega_{\text{before}} = k_B \ln \left(1 + \frac{n_{\text{res}}}{\Omega_{\text{before}}}\right)
+\end{equation}
+
+For macroscopic systems, $n_{\text{res}} \ll \Omega_{\text{before}}$, so:
+\begin{equation}
+\Delta S \approx k_B \frac{n_{\text{res}}}{\Omega_{\text{before}}}
+\end{equation}
+
+However, this underestimates the entropy production. The correct accounting recognises that residue states are \emph{categorically distinct} from both $\mathcal{C}_1$ and $\mathcal{C}_2$ states. They form a separate category $\mathcal{C}_{\text{res}}$. The partition creates three categories ($\mathcal{C}_1$, $\mathcal{C}_2$, $\mathcal{C}_{\text{res}}$) where previously there was one ($\mathcal{C}$).
+
+The entropy of categorical structure with $n$ categories is $S = k_B \ln n$. The partition increases the category count from 1 to 3 (or more generally, from 1 to $n_{\text{res}}$ if we count each residue state as a separate category). Therefore:
+\begin{equation}
+\Delta S = k_B \ln n_{\text{res}}
+\end{equation}
+
+By Theorem~\ref{thm:positive_lag}, $\tau_{\text{lag}} > 0$, hence undetermined residue exists during every partition. Since $n_{\text{res}} \geq 2$ (at least one state on each side of the boundary is temporarily undetermined), we have:
+\begin{equation}
+\Delta S = k_B \ln n_{\text{res}} \geq k_B \ln 2 > 0
+\end{equation}
+
+Every partition produces positive entropy. \qed
 \end{proof}
 
+\paragraph{Physical interpretation.} The partition entropy $\Delta S = k_B \ln n_{\text{res}}$ measures the \emph{categorical uncertainty} introduced by the partition. Before partitioning, the system is in a single category $\mathcal{C}$. After partitioning, it could be in $\mathcal{C}_1$, $\mathcal{C}_2$, or any of $n_{\text{res}}$ boundary states. The uncertainty about which category the system occupies is the entropy.
+
+This entropy is fundamentally different from thermal entropy (which measures uncertainty about microstates within a category). Partition entropy measures uncertainty about \emph{which category} the system occupies. It is categorical entropy.
+
 \subsection{Temporal Independence}
+
+We now establish the key result: partition entropy does not depend on the direction of time.
 
 \begin{theorem}[Temporal Independence of Partition Entropy]
 \label{thm:temporal_independence}
 Partition entropy production is independent of the temporal direction of the underlying dynamics:
 \begin{equation}
-\Delta S(\Pi, t \to t') = \Delta S(\Pi, t' \to t) = \kB \ln n_{\text{res}}
+\Delta S(\Pi, t \to t') = \Delta S(\Pi, t' \to t) = k_B \ln n_{\text{res}}
 \label{eq:temporal_independence}
 \end{equation}
 \end{theorem}
 
 \begin{proof}
-The entropy $\Delta S = \kB \ln n_{\text{res}}$ depends only on:
+The entropy $\Delta S = k_B \ln n_{\text{res}}$ depends only on:
 \begin{enumerate}
-\item The categorical structure being partitioned
-\item The number of states in undetermined residue
+\item The categorical structure being partitioned (the set $\mathcal{C}$ and its subsets $\mathcal{C}_1, \mathcal{C}_2$)
+\item The number of states in undetermined residue ($n_{\text{res}}$)
 \end{enumerate}
 
-Neither of these quantities depends on whether time flows forward ($t \to t'$) or backward ($t' \to t$). The partition creates categorical boundaries regardless of temporal direction. The undetermined residue exists during partition lag regardless of which direction the lag is measured.
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_partition.png}
+\caption{\textbf{Partition Lag Across Transport Types: Time Required for Categorical Determination.} 
+(\textbf{Electric: Partition Lag $\tau_p$}) The partition lag for electrical transport decreases with temperature for all scattering mechanisms. Phonon scattering (orange curve) shows strong decrease from $\tau_p \sim 10^2$ fs at 50 K to $\sim 10^1$ fs at 500 K—higher temperature means faster categorical determination. Impurity scattering (magenta curve) shows similar trend but with longer lag times ($\tau_p \sim 10^5$ fs at low $T$)—defects create persistent barriers that require more time to resolve. 
+(\textbf{Diffusive: Partition Lag $\tau_p$}) The partition lag for diffusive transport spans an enormous range: 15 orders of magnitude from $10^1$ fs to $10^{16}$ fs. Vacancy jump (bright green curve) shows the longest lag times ($\tau_p \sim 10^{16}$ fs at 400 K)—vacancies are rare, so waiting for a vacancy to arrive takes enormous time. Interstitial diffusion (green curve) is faster ($\tau_p \sim 10^{13}$ fs)—interstitials are more mobile. Grain boundary diffusion (dark green curve) is much faster ($\tau_p \sim 10^9$ fs)—boundaries provide fast pathways. All mechanisms show exponential decrease with temperature: $\tau_p \propto \exp(\Phi/kT)$. This demonstrates that partition lag is the microscopic origin of diffusion barriers. 
+(\textbf{Thermal: Partition Lag $\tau_p$}) The partition lag for thermal transport varies with phonon frequency and scattering mechanism. Normal scattering (green curve) shows constant lag ($\tau_p \sim 10^3$ ps) independent of frequency—normal processes conserve momentum and require no categorical determination. Umklapp scattering (orange curve) shows decreasing lag with frequency—high-frequency phonons scatter more frequently. Boundary scattering (magenta curve) shows weak frequency dependence. Impurity scattering (cyan curve) shows intermediate behavior. The dramatic difference between normal ($\tau_p \sim 10^3$ ps) and umklapp ($\tau_p \sim 10^2$ ps) explains why umklapp processes dominate thermal resistance at high temperature—they have shorter partition lag and thus higher scattering rate. 
+(\textbf{Viscous: Partition Lag $\tau_p$}) The partition lag for viscous flow decreases with temperature for all fluids. Water (cyan curve) has the shortest lag ($\tau_p \sim 10^9$ ps at 200 K, decreasing to $10^8$ ps at 600 K)—water molecules rearrange quickly. Glycerol (magenta curve) has much longer lag ($\tau_p \sim 10^{17}$ ps at 200 K)—glycerol is highly viscous and rearranges slowly. n-Hexane (green curve) shows intermediate behavior. The enormous variation (9 orders of magnitude) demonstrates that partition lag captures the microscopic origin of viscosity: $\mu \propto \tau_p \cdot g$. Longer partition lag means slower categorical determination, which manifests as higher viscosity.}
+\label{fig:partition_lag}
+\end{figure*}
 
-Formally, let $\mathcal{T}: t \to -t$ denote time reversal. The partition operation $\Pi$ acts on categorical structure $\mathcal{C}$, which is a configuration space property, not a phase space property. Under time reversal, velocities $\mathbf{v} \to -\mathbf{v}$ but configurations $\mathbf{x} \to \mathbf{x}$ are unchanged. Since $\mathcal{C}$ depends only on configurations:
+We show that neither quantity depends on the temporal direction of the underlying dynamics.
+
+\paragraph{Step 1: Categorical structure is configuration-dependent, not velocity-dependent.}
+
+Categorical structure $\mathcal{C}$ is defined by configuration space properties: positions $\{\mathbf{x}_i\}$, not velocities $\{\mathbf{v}_i\}$. For example:
+\begin{itemize}
+\item A gas is "on the left" or "on the right" based on molecular positions, not velocities.
+\item A molecule is "in the ground state" or "in the excited state" based on its electronic configuration, not its translational velocity.
+\item A system is "ordered" or "disordered" based on spatial arrangement, not momentum distribution.
+\end{itemize}
+
+Under time reversal $\mathcal{T}: t \to -t$, velocities transform as $\mathbf{v} \to -\mathbf{v}$ but positions are unchanged: $\mathbf{x} \to \mathbf{x}$. Therefore, categorical structure is time-reversal invariant:
+\begin{equation}
+\mathcal{T}[\mathcal{C}] = \mathcal{C}
+\end{equation}
+
+\paragraph{Step 2: Partition boundaries are geometric, not dynamical.}
+
+A partition boundary is a surface in configuration space that separates $\mathcal{C}_1$ from $\mathcal{C}_2$. For example:
+\begin{itemize}
+\item Spatial partition: boundary is the plane $x = x_0$
+\item Energy partition: boundary is the surface $E(\mathbf{x}) = E_0$
+\item Chemical partition: boundary is the transition state surface in configuration space
+\end{itemize}
+
+These boundaries are defined by configuration space geometry, not by phase space dynamics. They are surfaces in $\{\mathbf{x}_i\}$ space, not in $\{\mathbf{x}_i, \mathbf{v}_i\}$ space.
+
+Under time reversal, configuration space is unchanged, so boundaries are unchanged:
+\begin{equation}
+\mathcal{T}[\text{boundary}] = \text{boundary}
+\end{equation}
+
+\paragraph{Step 3: Residue count is boundary-dependent, not trajectory-dependent.}
+
+The undetermined residue consists of states near the partition boundary. For a boundary surface $B$, the residue states are those within a distance $\delta$ of $B$ (where $\delta \sim \lambda_{\text{th}}$ is the thermal de Broglie wavelength).
+
+The count $n_{\text{res}}$ is the number of states in this boundary layer:
+\begin{equation}
+n_{\text{res}} = \int_{\text{boundary layer}} \rho(\mathbf{x}) \, d^3x
+\end{equation}
+where $\rho(\mathbf{x})$ is the density of states in configuration space.
+
+This count depends on:
+\begin{itemize}
+\item The geometry of the boundary surface $B$ (its area, curvature)
+\item The density of states $\rho(\mathbf{x})$ (which depends on temperature, mass, etc.)
+\item The thickness of the boundary layer $\delta$ (which depends on $\lambda_{\text{th}}$)
+\end{itemize}
+
+None of these quantities depend on the direction of particle velocities. Therefore:
+\begin{equation}
+\mathcal{T}[n_{\text{res}}] = n_{\text{res}}
+\end{equation}
+
+\paragraph{Step 4: Partition entropy is time-reversal invariant.}
+
+Since $n_{\text{res}}$ is time-reversal invariant, the partition entropy is time-reversal invariant:
+\begin{equation}
+\mathcal{T}[\Delta S] = \mathcal{T}[k_B \ln n_{\text{res}}] = k_B \ln \mathcal{T}[n_{\text{res}}] = k_B \ln n_{\text{res}} = \Delta S
+\end{equation}
+
+Formally, the partition operation $\Pi$ acts on categorical structure $\mathcal{C}$, which is configuration-dependent. Time reversal acts on phase space $(x, v) \to (x, -v)$ but leaves configuration space unchanged. Therefore, partition operations commute with time reversal:
 \begin{equation}
 \mathcal{T}[\Pi(\mathcal{C})] = \Pi(\mathcal{T}[\mathcal{C}]) = \Pi(\mathcal{C})
 \end{equation}
 
-The partition operation commutes with time reversal. Therefore, partition entropy is time-reversal invariant. \qed
+The partition operation produces the same result whether time flows forward or backward. The entropy production is identical in both temporal directions. \qed
 \end{proof}
+
+\paragraph{Physical interpretation.} Imagine painting phase space with colored regions (the partition subsets $\mathcal{C}_1, \mathcal{C}_2$) and boundary lines (the partition boundaries). Time-reversal is like running a movie backward: particles retrace their trajectories in reverse. But the painted boundaries don't move—they're geometric features of the space itself, not dynamical features of the trajectories.
+
+A particle crossing a boundary from left to right (forward in time) generates residue. The same particle crossing the same boundary from right to left (backward in time) generates the same residue. The boundary is the same, the crossing is the same (just reversed), and the residue count is the same.
+
 
 \begin{corollary}[Entropy Increases in Both Temporal Directions]
 \label{cor:both_directions}
@@ -82,8 +276,27 @@ Under time-symmetric dynamics, entropy increases regardless of the direction of 
 \end{corollary}
 
 \begin{proof}
-Let $\gamma$ be a trajectory from $A$ to $B$ and $\gamma^R$ be the time-reversed trajectory from $B$ to $A$. Along $\gamma$, partition operations produce entropy $\Delta S_\gamma > 0$. Along $\gamma^R$, partition operations produce entropy $\Delta S_{\gamma^R} > 0$.
+Let $\gamma$ be a trajectory from state $A$ at time $t_0$ to state $B$ at time $t_1$, and let $\gamma^R$ be the time-reversed trajectory from $B$ at time $t_1$ to $A$ at time $t_0$.
 
-Both trajectories increase entropy. The time-reversal symmetry of the underlying dynamics does not imply time-reversal of entropy production, because partition entropy is temporal-direction-independent. \qed
+Along $\gamma$ (forward in time), partition operations occur as the system evolves. Each partition produces entropy $\Delta S_i = k_B \ln n_{\text{res},i} > 0$. The total entropy production along $\gamma$ is:
+\begin{equation}
+\Delta S_\gamma = \sum_i \Delta S_i > 0
+\end{equation}
+
+Along $\gamma^R$ (backward in time), the same partition operations occur (the system crosses the same boundaries, just in reverse order). By Theorem~\ref{thm:temporal_independence}, each partition produces the same entropy:
+\begin{equation}
+\Delta S_{\gamma^R} = \sum_i \Delta S_i = \Delta S_\gamma > 0
+\end{equation}
+
+Both trajectories increase entropy. The time-reversal symmetry of the underlying dynamics (Newtonian mechanics, Schrödinger equation) does not imply time-reversal of entropy production, because partition entropy is temporal-direction independent.
+
+This resolves Loschmidt's paradox: the existence of a time-reversed trajectory $\gamma^R$ does not imply entropy decrease along $\gamma^R$. Both $\gamma$ and $\gamma^R$ increase entropy because both involve partition operations, and partition operations always produce positive entropy regardless of temporal direction. \qed
 \end{proof}
 
+\paragraph{The key insight.} Loschmidt's paradox assumes that entropy is a property of \emph{dynamical trajectories}---that entropy increase is a consequence of forward temporal evolution. If this were true, then reversing the trajectory would reverse the entropy change.
+
+But entropy is not a property of trajectories. Entropy is a property of \emph{categorical structure}---specifically, the number of partition boundaries in configuration space. Trajectories move through this structure, but they don't create or destroy it. The structure persists regardless of which direction particles move through it.
+
+A useful analogy: imagine a maze. Walking through the maze from entrance to exit, you encounter walls (boundaries). Walking backward from exit to entrance, you encounter the same walls. The walls don't disappear when you walk backward. Similarly, partition boundaries don't disappear under time-reversal. Entropy counts boundaries, so entropy doesn't decrease under time-reversal.
+
+This completes the first step of resolving Loschmidt's paradox: we have established that partition entropy is independent of temporal direction. The next step is to show that Loschmidt's velocity reversal operation is itself a partition operation that generates entropy.

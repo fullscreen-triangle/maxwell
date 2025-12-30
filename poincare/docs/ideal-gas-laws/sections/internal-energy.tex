@@ -1,195 +1,289 @@
 \section{Internal Energy: Active Category Counting}
-\label{sec:internal-energy}
+\label{sec:internal_energy}
 
 \subsection{Classical Internal Energy and Equipartition}
 
-Classical statistical mechanics assigns energy $k_B T/2$ to each quadratic degree of freedom:
+Classical statistical mechanics assigns energy $k_B T/2$ to each quadratic degree of freedom through the equipartition theorem:
 \begin{equation}
 U_{\text{classical}} = \frac{f}{2} N k_B T
 \end{equation}
 
-where $f$ is the number of degrees of freedom.
+where $f$ is the number of degrees of freedom per particle, and $N$ is the number of particles.
 
-For a monatomic ideal gas with three translational degrees:
+For a monatomic ideal gas with three translational degrees of freedom:
 \begin{equation}
 U = \frac{3}{2} N k_B T
 \end{equation}
 
-\textbf{The equipartition mystery:} Why $k_B T/2$ per mode? Why does this fail at low temperature? Why does it fail for some degrees of freedom (frozen rotations, vibrations)?
+\textbf{Unresolved questions in classical theory:}
+\begin{itemize}
+\item \textbf{Why $k_B T/2$ per mode?} What physical principle determines this specific energy allocation?
+\item \textbf{Why does equipartition fail at low temperatures?} Rotational and vibrational modes ``freeze out'' below characteristic temperatures.
+\item \textbf{Why do some degrees of freedom remain inactive?} Not all modes participate equally in energy storage.
+\item \textbf{What is the mechanism of mode activation?} How does temperature determine which modes are energetically accessible?
+\end{itemize}
 
-The triple equivalence answers: energy is stored in \textit{active categories}, and categories activate discretely.
+The triple equivalence framework answers these questions: energy is stored in \textit{active categories}, and categories activate discretely when their characteristic energy scale becomes comparable to $k_B T$.
 
 \subsection{Categorical Internal Energy}
 
-Internal energy counts the number of active categorical modes, each storing $k_B T$ of energy:
+Internal energy counts the number of active categorical modes, each storing energy $k_B T$:
+
+\begin{definition}
+The \textit{categorical internal energy} is:
 \begin{equation}
 \boxed{U_{\text{cat}} = k_B T \cdot M_{\text{active}}}
-\label{eq:categorical-energy}
+\label{eq:categorical_energy}
 \end{equation}
+where $M_{\text{active}}$ is the number of categories with non-zero thermal occupation.
+\end{definition}
 
-where $M_{\text{active}}$ is the number of categories with non-zero occupation.
-
-\textbf{Physical interpretation:} Energy is not distributed continuously; it is stored in discrete categorical ``slots.'' Each active slot holds $k_B T$.
+\textbf{Physical interpretation:} Energy is not distributed continuously; it is stored in discrete categorical ``slots.'' Each active slot holds approximately $k_B T$ of thermal energy. The total energy is the product of the energy scale ($k_B T$) and the number of active slots ($M_{\text{active}}$).
 
 \subsubsection{Why $k_B T$ per Category?}
 
-From the thermodynamic identity:
+The energy per category emerges from the fundamental thermodynamic relation:
+\begin{equation}
+dU = T \, dS - P \, dV + \mu \, dN
+\end{equation}
+
+At constant volume and particle number:
 \begin{equation}
 dU = T \, dS
 \end{equation}
 
-Using $S = k_B M \ln n$:
+Using the categorical entropy $S = k_B M \ln n$:
 \begin{equation}
 dU = T \cdot k_B \ln n \, dM
 \end{equation}
 
-For $\ln n = 1$:
+For the natural choice $\ln n = 1$ (one unit of information per category):
 \begin{equation}
 dU = k_B T \, dM
 \end{equation}
 
 Integrating:
 \begin{equation}
-U = k_B T \cdot M
+U = k_B T \cdot M + U_0
 \end{equation}
 
-Each category contributes $k_B T$ to the energy.
+where $U_0$ is the zero-point energy. Each additional category contributes $k_B T$ to the thermal energy.
+
+\textbf{Physical reason:} A category represents one distinguishable state. The thermal energy required to maintain distinguishability against entropic mixing is $k_B T$ per category—this is the characteristic energy scale of thermal fluctuations.
 
 \subsubsection{Active vs. Total Categories}
 
-Not all categories are active. A category is active if it participates in thermal fluctuations:
+Not all categories are thermally active. A category is active if its characteristic energy scale is comparable to or less than $k_B T$:
+
+\begin{definition}
+A category $i$ is \textit{active} if:
 \begin{equation}
-M_{\text{active}} = \sum_i \theta(k_B T - \hbar\omega_i)
+\hbar\omega_i \lesssim k_B T
+\end{equation}
+where $\omega_i$ is the characteristic frequency of that category.
+\end{definition}
+
+The number of active categories is:
+\begin{equation}
+M_{\text{active}} = \sum_i \Theta(k_B T - \hbar\omega_i)
 \end{equation}
 
-where $\theta$ is the Heaviside step function. Categories with $\hbar\omega_i > k_B T$ are ``frozen out'' and do not contribute.
+where $\Theta$ is the Heaviside step function (or a smoothed version accounting for thermal broadening).
 
-This explains why rotational and vibrational modes freeze at low temperature: their characteristic energies $\hbar\omega$ exceed $k_B T$, so they are categorically inactive.
+\textbf{Physical interpretation:} Categories with $\hbar\omega_i > k_B T$ are ``frozen out''---they require more energy than thermal fluctuations can provide; thus, they remain in their ground state and do not contribute to thermal energy.
 
-\subsubsection{Recovery of Equipartition}
+This explains the temperature-dependent activation of degrees of freedom:
+\begin{itemize}
+\item \textbf{Translational modes}: Always active (very low $\hbar\omega$)
+\item \textbf{Rotational modes}: Activate at $T \sim \hbar^2/(2Ik_B)$ where $I$ is the moment of inertia
+\item \textbf{Vibrational modes}: Activate at $T \sim \hbar\omega_{\text{vib}}/k_B$ where $\omega_{\text{vib}}$ is the vibrational frequency
+\item \textbf{Electronic modes}: Activate only at very high $T$ (eV energy scales)
+\end{itemize}
 
-For a classical system where all modes are active:
+\subsubsection{Recovery of Classical Equipartition}
+
+For a classical system where all modes are active ($k_B T \gg \hbar\omega_i$ for all $i$), each quadratic degree of freedom corresponds to one category. For $f$ degrees of freedom per particle and $N$ particles:
 \begin{equation}
 M_{\text{active}} = \frac{f \cdot N}{2}
 \end{equation}
 
-(The factor of 2 accounts for each mode having both kinetic and potential contributions, but each quadratic term contributes independently.)
+The factor of 2 arises because each physical degree of freedom (e.g., position $x$) has both kinetic ($p_x^2/2m$) and potential ($kx^2/2$) contributions; however, in categorical counting, each quadratic term contributes independently.
 
 Thus:
 \begin{equation}
 U = k_B T \cdot \frac{f N}{2} = \frac{f N k_B T}{2}
 \end{equation}
 
-This is classical equipartition.
+This is the classical equipartition result. The categorical framework provides the underlying mechanism: energy is stored in categories, and equipartition is the high-temperature limit in which all categories are active.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_internal_energy.png}
+\caption{\textbf{Internal Energy: Triple Equivalence Perspectives on Thermodynamic Energy.} 
+\textbf{(A) Categorical energy versus temperature:} Reduced internal energy $U/(Nk_BT)$ versus temperature (10$^{-1}$ to 10$^4$ K). Black dashed line: classical equipartition ($U = 3Nk_BT/2$, giving $U/(Nk_BT) = 1.5$). Green solid line: categorical prediction $U = M_{\text{active}}k_BT/2$. Step-like increases at $T \sim 100$ K (orange annotation: ``Rotation activates'') and $T \sim 1000$ K (red annotation: ``Vibration activates''). At low temperature ($T < 10$ K), $U/(Nk_BT) \approx 1.5$ (translational modes only). At high temperature ($T > 1000$ K), $U/(Nk_BT) \approx 3.5$ (translation + rotation + vibration).
+\textbf{(B) Oscillatory energy (quantum):} Absolute internal energy $U$ (joules) versus temperature (0-10000 K), logarithmic vertical scale (10$^1$ to 10$^5$ J). Blue solid line: oscillatory prediction $U = \sum_i \hbar\omega_i(n_i + 1/2)$. Purple dashed line: zero-point energy $U_0 = N\hbar\omega/2 \approx 300$ J (constant). Black dotted line: classical limit $U = Nk_BT$ (linear). At low temperature, zero-point energy dominates. At high temperature, classical limit is approached.
+\textbf{(C) Partition energy (aperture contributions):} Reduced energy $\sum_a \Phi_a N_a/(Nk_BT)$ versus temperature (10$^1$ to 10$^4$ K). Stacked area chart: green (translational contribution, constant $\approx 1.5$), orange (rotational contribution, activates at $\sim$100 K, adds $\approx 1.0$), red (vibrational contribution, activates at $\sim$1000 K, adds $\approx 1.0$). Total energy at high temperature: $\approx 3.5 \times Nk_BT$, matching panel A.
+\textbf{(D) Heat capacity (mode activation):} Heat capacity $C_V/(Nk_B)$ versus temperature (10$^0$ to 10$^4$ K). Gray dashed line: classical value (3/2). Green solid line: categorical prediction. Purple dotted line: Einstein model. Gray annotation at $T \sim 1$ K: ``Quantum freeze-out'' where $C_V/(Nk_B) \approx 1.5$. Green annotation at $T \sim 100$ K: ``Classical plateau'' where $C_V/(Nk_B) \approx 2.5$ (translation + rotation). Green annotation at $T \sim 1000$ K: ``Vibrational activation'' where $C_V/(Nk_B) \to 3.5$. Discrete steps in heat capacity correspond to sequential activation of categorical modes, in contrast to continuous classical prediction.}
+\label{fig:internal_energy}
+\end{figure}
 
 \subsection{Oscillatory Internal Energy}
 
 In the oscillatory perspective, energy is the sum over all oscillator modes:
+
+\begin{definition}
+The \textit{oscillatory internal energy} is:
 \begin{equation}
-\boxed{U_{\text{osc}} = \sum_i \hbar\omega_i \left(n_i + \frac{1}{2}\right)}
-\label{eq:oscillatory-energy}
+\boxed{U_{\text{osc}} = \sum_{i=1}^{N_{\text{modes}}} \hbar\omega_i \left(n_i + \frac{1}{2}\right)}
+\label{eq:oscillatory_energy}
 \end{equation}
+where $n_i$ is the occupation number of mode $i$ and $\omega_i$ is its frequency.
+\end{definition}
 
-where $n_i$ is the occupation number of mode $i$.
-
-\textbf{Physical interpretation:} Each mode is a quantum harmonic oscillator. The energy includes both the excitation energy $\hbar\omega_i n_i$ and the zero-point energy $\hbar\omega_i/2$.
+\textbf{Physical interpretation:} Each mode is a quantum harmonic oscillator. The energy includes both the thermal excitation energy $\hbar\omega_i n_i$ and the zero-point energy $\hbar\omega_i/2$. The zero-point energy persists even at $T = 0$, while the excitation energy vanishes.
 
 \subsubsection{Thermal Occupation}
 
-For thermal equilibrium at temperature $T$, the Bose-Einstein distribution gives:
+For a system in thermal equilibrium at temperature $T$, the average occupation number follows the Bose-Einstein distribution:
 \begin{equation}
 \langle n_i \rangle = \frac{1}{e^{\hbar\omega_i/k_B T} - 1}
 \end{equation}
 
-At high temperature ($k_B T \gg \hbar\omega_i$):
+\textbf{High-temperature limit} ($k_B T \gg \hbar\omega_i$): Expanding the exponential:
+\begin{equation}
+e^{\hbar\omega_i/k_B T} \approx 1 + \frac{\hbar\omega_i}{k_B T} + \cdots
+\end{equation}
+
+Thus:
 \begin{equation}
 \langle n_i \rangle \approx \frac{k_B T}{\hbar\omega_i}
 \end{equation}
 
-The energy per mode becomes:
+The thermal energy per mode becomes:
 \begin{equation}
-\langle E_i \rangle = \hbar\omega_i \left(\frac{k_B T}{\hbar\omega_i} + \frac{1}{2}\right) \approx k_B T
+\langle E_i \rangle = \hbar\omega_i \left(\frac{k_B T}{\hbar\omega_i} + \frac{1}{2}\right) = k_B T + \frac{\hbar\omega_i}{2}
 \end{equation}
 
-(ignoring the sub-dominant zero-point term).
-
-Summing over $N$ modes:
+Ignoring the subdominant zero-point term:
 \begin{equation}
-U = N k_B T
+\langle E_i \rangle \approx k_B T
 \end{equation}
 
-For a monatomic gas with 3 translational modes per particle, but counting only kinetic energy:
+Summing over $M$ active modes:
+\begin{equation}
+U \approx M k_B T
+\end{equation}
+
+For a monatomic gas with 3 translational degrees of freedom per particle, counting only kinetic energy contributions:
 \begin{equation}
 U = \frac{3}{2} N k_B T
 \end{equation}
 
 \subsubsection{Low-Temperature Behavior}
 
-At low temperature ($k_B T \ll \hbar\omega_i$):
+\textbf{Low-temperature limit} ($k_B T \ll \hbar\omega_i$):
 \begin{equation}
 \langle n_i \rangle \approx e^{-\hbar\omega_i/k_B T} \to 0
 \end{equation}
 
-The mode is frozen out. Only the zero-point energy remains:
+The mode is exponentially suppressed (frozen out). Only the zero-point energy remains:
 \begin{equation}
 \langle E_i \rangle \to \frac{\hbar\omega_i}{2}
 \end{equation}
 
-This correctly captures quantum behavior at low temperature.
+This correctly captures quantum freeze-out: modes with $\hbar\omega_i > k_B T$ do not contribute to thermal energy, only to ground-state energy.
+
+\subsubsection{Crossover Temperature}
+
+The crossover between active and frozen regimes occurs at:
+\begin{equation}
+T_{\text{crossover}} \sim \frac{\hbar\omega_i}{k_B}
+\end{equation}
+
+For $T \ll T_{\text{crossover}}$: mode frozen, $\langle n_i \rangle \approx 0$
+
+For $T \gg T_{\text{crossover}}$: mode active, $\langle n_i \rangle \approx k_B T/\hbar\omega_i$
 
 \subsection{Partition Internal Energy}
 
 In the partition perspective, energy is stored in the categorical potentials of occupied apertures:
+
+\begin{definition}
+The \textit{partition internal energy} is:
 \begin{equation}
-\boxed{U_{\text{part}} = \sum_a \Phi_a \cdot N_a}
-\label{eq:partition-energy}
+\boxed{U_{\text{part}} = \sum_{a=1}^{M} \Phi_a \cdot N_a}
+\label{eq:partition_energy}
 \end{equation}
-
 where $\Phi_a = k_B T \ln n_a$ is the potential of aperture $a$ and $N_a$ is its occupancy.
+\end{definition}
 
-\textbf{Physical interpretation:} Each aperture stores energy proportional to its categorical depth. Deep apertures (high $n_a$) store more energy.
+\textbf{Physical interpretation:} Each aperture stores energy proportional to its categorical depth $\ln n_a$. Deep apertures (high $n_a$, many accessible states) store more energy than shallow apertures (low $n_a$, few accessible states).
 
-\subsubsection{Connection to Categorical and Oscillatory}
+\subsubsection{Connection to Categorical and Oscillatory Formulations}
 
-For uniform apertures with $n_a = n$ and total occupancy $\sum_a N_a = N$:
+For uniform apertures with $n_a = n$ for all $a$ and total occupancy $\sum_a N_a = N$:
 \begin{equation}
 U_{\text{part}} = k_B T \ln n \cdot N
 \end{equation}
 
-For $\ln n = 1$:
+For the natural choice $\ln n = 1$:
 \begin{equation}
 U_{\text{part}} = N k_B T
 \end{equation}
 
-Comparing with oscillatory energy at high $T$:
+Comparing with oscillatory energy at high $T$ (ignoring zero-point):
 \begin{equation}
-U_{\text{osc}} \approx \sum_i k_B T = N k_B T
+U_{\text{osc}} \approx \sum_{i=1}^{N} k_B T = N k_B T
 \end{equation}
 
 And categorical energy:
 \begin{equation}
-U_{\text{cat}} = k_B T \cdot M = k_B T \cdot N = N k_B T
+U_{\text{cat}} = k_B T \cdot M_{\text{active}} = k_B T \cdot N = N k_B T
 \end{equation}
 
-All three agree.
+All three formulations agree in the classical high-temperature limit.
 
 \subsection{Equivalence of Three Definitions}
 
-\textbf{Theorem.} For thermal systems in appropriate limits, the three energy definitions are equivalent:
+\begin{theorem}[Internal Energy Equivalence]
+\label{thm:energy_equivalence}
+For thermal systems in the classical limit, the three energy definitions are equivalent:
 \begin{equation}
-U_{\text{cat}} = U_{\text{osc}} = U_{\text{part}}
+U_{\text{cat}} = U_{\text{osc}} = U_{\text{part}} = M_{\text{active}} k_B T
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+At high temperature ($k_B T \gg \hbar\omega_i$ for all active modes), each active mode contributes $k_B T$:
+
+\textit{Categorical:} $M_{\text{active}}$ modes $\times$ $k_B T$ per mode = $M_{\text{active}} k_B T$
+
+\textit{Oscillatory:} 
+\begin{equation}
+\sum_i \hbar\omega_i n_i \approx \sum_i \hbar\omega_i \cdot \frac{k_B T}{\hbar\omega_i} = \sum_i k_B T = M_{\text{active}} k_B T
 \end{equation}
 
-\textbf{Proof:}
+\textit{Partition:} 
+\begin{equation}
+\sum_a \Phi_a N_a = k_B T \ln n \cdot M_{\text{active}} \approx M_{\text{active}} k_B T
+\end{equation}
+(for $\ln n = 1$)
 
-At high temperature, each active mode contributes $k_B T$:
-\begin{itemize}
-\item Categorical: $M_{\text{active}}$ modes $\times$ $k_B T$ = $M k_B T$
-\item Oscillatory: $\sum_i \hbar\omega_i n_i \approx \sum_i k_B T = M k_B T$
-\item Partition: $\sum_a \Phi_a N_a = k_B T \ln n \cdot M \approx M k_B T$
-\end{itemize}
+All three reduce to $M_{\text{active}} k_B T$ in the classical limit.
+\end{proof}
 
-All three reduce to $M k_B T$ when all modes are active and in classical limit. $\square$
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_thermodynamics.png}
+\caption{\textbf{Real Thermodynamics from Hardware Timing.} 
+\textbf{(A)} Temperature evolution over 3 seconds, defined as timing jitter variance. Initial spike to $T \approx 0.09$ (arbitrary units) during system initialization, followed by equilibration to steady-state $T \approx 0.08$. Temperature is a categorical observable extracted from hardware oscillation statistics, not a simulation parameter. 
+\textbf{(B)} Pressure-count relationship showing exponential decay from $P \approx 13000$ (rate units) at low molecule count to $P \approx 0$ at high count ($N \sim 1000$). Color gradient (purple $\to$ yellow) indicates temporal evolution. Pressure is measured as the rate of partition operations per unit time. 
+\textbf{(C)} Maxwell-Boltzmann distribution fit to measured S-entropy coordinate $S_e$. Blue histogram shows measured probability density; red dashed curve shows theoretical MB distribution. Excellent agreement validates that hardware timing statistics obey thermodynamic distributions without simulation. 
+\textbf{(D)} Entropy growth during system evolution, increasing from $S \approx 0$ to $S \approx 2.3$ as molecule count grows from 0 to 1000. Entropy is computed directly from configuration space sampling via $S = k_B \ln \Omega$. 
+\textbf{(E)} Pressure-internal energy (P-U) diagram showing thermodynamic trajectory from start (green circle, high pressure $P \approx 13000$, low energy $U \approx 0$) to end (red square, low pressure $P \approx 0$, moderate energy $U \approx 120$). Trajectory follows expected adiabatic expansion path. 
+\textbf{(F)} Heat capacity $C_v = dU/dT$ versus temperature. Scatter points show measured values with large fluctuations due to finite sampling. Red dashed line indicates mean $\langle C_v \rangle \approx 0$ (units: dU/dT). Fluctuations arise from discrete partition events in the categorical measurement process.}
+\label{fig:thermodynamics}
+\end{figure*}
 
 \subsection{Heat Capacity}
 
@@ -205,34 +299,48 @@ From $U = k_B T \cdot M_{\text{active}}$:
 C_V = k_B M_{\text{active}} + k_B T \frac{\partial M_{\text{active}}}{\partial T}
 \end{equation}
 
-At high $T$, all modes active, $\partial M_{\text{active}}/\partial T = 0$:
+\textbf{High-temperature regime:} All modes are active, $\partial M_{\text{active}}/\partial T = 0$:
 \begin{equation}
-C_V = k_B M = \frac{f N k_B}{2}
+C_V = k_B M_{\text{active}} = \frac{f N k_B}{2}
 \end{equation}
 
-At low $T$, as modes freeze out, $C_V$ decreases in steps as each mode's activation threshold $\hbar\omega_i = k_B T$ is crossed.
+This is the classical Dulong-Petit law for solids ($C_V = 3Nk_B$) or the ideal gas result.
+
+\textbf{Low-temperature regime:} As modes freeze out, $\partial M_{\text{active}}/\partial T < 0$ and $C_V$ decrease. The heat capacity exhibits steps as each mode's activation threshold $\hbar\omega_i \sim k_B T$ is crossed.
 
 \subsubsection{Oscillatory Heat Capacity (Einstein Model)}
 
-For a single frequency $\omega$:
+For a collection of oscillators with a single frequency $\omega$:
+\begin{equation}
+U = N \hbar\omega \left(\frac{1}{e^{\hbar\omega/k_B T} - 1} + \frac{1}{2}\right)
+\end{equation}
+
+Taking the derivative:
 \begin{equation}
 C_V = N k_B \left(\frac{\hbar\omega}{k_B T}\right)^2 \frac{e^{\hbar\omega/k_B T}}{(e^{\hbar\omega/k_B T} - 1)^2}
 \end{equation}
 
 This is the Einstein heat capacity formula:
 \begin{itemize}
-\item At high $T$: $C_V \to N k_B$ (classical limit)
-\item At low $T$: $C_V \to 0$ exponentially (quantum freeze-out)
+\item \textbf{High $T$}: $C_V \to N k_B$ (classical limit, full activation)
+\item \textbf{Low $T$}: $C_V \propto e^{-\hbar\omega/k_B T} \to 0$ (exponential freeze-out)
 \end{itemize}
 
 \subsubsection{Discrete Steps in Heat Capacity}
 
 The categorical perspective predicts discrete steps in $C_V(T)$ as modes activate:
 \begin{equation}
-C_V(T) = k_B \sum_i \theta(k_B T - \hbar\omega_i)
+C_V(T) = k_B \sum_i \Theta(k_B T - \hbar\omega_i) + k_B T \sum_i \delta(k_B T - \hbar\omega_i)
 \end{equation}
 
-This is observable in molecular gases where rotational and vibrational modes have distinct activation temperatures.
+where $\delta$ is the Dirac delta function (or a smoothed version representing the activation region).
+
+This stepwise behaviour is observable in:
+\begin{itemize}
+\item \textbf{Molecular gases}: Rotational modes activate around $T \sim 10$ K, vibrational modes around $T \sim 1000$ K
+\item \textbf{Quantum solids}: Phonon modes activate progressively according to the Debye spectrum
+\item \textbf{Magnetic systems}: Spin degrees of freedom activate at characteristic temperatures
+\end{itemize}
 
 \subsection{Summary}
 
@@ -245,9 +353,11 @@ U_{\text{part}} &= \sum_a \Phi_a N_a \quad \text{(aperture potential)}
 
 All three:
 \begin{enumerate}
-\item Explain equipartition ($k_B T$ per active mode)
-\item Explain quantum freeze-out (modes with $\hbar\omega > k_B T$ inactive)
-\item Give correct classical limit ($U = fNk_B T/2$)
-\item Predict discrete heat capacity steps
+\item \textbf{Explain equipartition}: Each active mode stores $k_B T$ of thermal energy
+\item \textbf{Explain quantum freeze-out}: Modes with $\hbar\omega > k_B T$ are categorically inactive
+\item \textbf{Classical correspondence}: Reduce to $U = fNk_B T/2$ when all modes are active
+\item \textbf{Predict discrete heat capacity}: $C_V(T)$ exhibits steps as modes activate
+\item \textbf{Distinguish thermal from zero-point energy}: Only thermal energy scales with $M_{\text{active}}$
 \end{enumerate}
 
+The categorical framework resolves the equipartition mystery: the $k_B T/2$ per quadratic degree of freedom is the energy required to maintain one categorical distinction against thermal fluctuations. Equipartition is not a fundamental postulate---it is the high-temperature limit of discrete categorical activation.

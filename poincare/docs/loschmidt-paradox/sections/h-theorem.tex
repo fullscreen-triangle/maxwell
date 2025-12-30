@@ -3,36 +3,197 @@
 \label{sec:h_theorem}
 %==============================================================================
 
+Boltzmann's H-theorem is the cornerstone of kinetic theory; yet, its foundations have been debated for over a century. We now provide a complete reinterpretation: the H-theorem is neither a statistical theorem about probable microstates nor a dynamical theorem requiring time-asymmetric assumptions. It is a \emph{geometric theorem about the accumulation of partition boundaries in configuration space}.
+
 \subsection{H as Categorical Incompletion}
+
+Boltzmann's H-theorem states that the H-function is:
+\begin{equation}
+H(t) = \int f(\mathbf{v}, t) \ln f(\mathbf{v}, t) \, d^3v
+\end{equation}
+decreases monotonically toward equilibrium, where $f(\mathbf{v}, t)$ is the single-particle velocity distribution function. At equilibrium, $f$ becomes the Maxwell-Boltzmann distribution and $H$ reaches its minimum value.
+
+The standard interpretation views $H$ as measuring the "distance" from equilibrium or the "information content" of the distribution. We now provide a deeper geometric interpretation.
 
 \begin{definition}[Categorical Completion]
 \label{def:completion}
-A categorical state $\mathcal{C}$ is \emph{complete} if all partition operations that could distinguish substates have been performed. The \emph{completion fraction} $\phi \in [0, 1]$ measures the fraction of potential partitions that have been actualised.
+A categorical state $\mathcal{C}$ is \emph{complete} if all partition operations that could distinguish substates have been performed. The \emph{completion fraction} $\phi \in [0, 1]$ measures the fraction of potential partitions that have been actualised:
+\begin{equation}
+\phi = \frac{N_{\text{actualised}}}{N_{\text{potential}}}
+\end{equation}
+where:
+\begin{itemize}
+\item $N_{\text{actualised}}$ is the number of partition boundaries that have been created
+\item $N_{\text{potential}}$ is the maximum number of partition boundaries that could be created given the system's constraints (energy, volume, particle number)
+\end{itemize}
 \end{definition}
+
+\paragraph{Physical interpretation: Velocity space partitioning.}
+
+Consider the velocity space divided into cells of volume $\delta v^3$. Each cell represents a distinguishable velocity state. For a gas with $N$ molecules and an accessible velocity range $\Delta v$ in each dimension:
+\begin{equation}
+N_{\text{potential}} \sim \left(\frac{\Delta v}{\delta v}\right)^{3N}
+\end{equation}
+
+This is the number of ways to distinguish molecular velocities at resolution $\delta v$.
+
+\textbf{Far from equilibrium}: Molecules are concentrated in a few cells. Example: all molecules are moving rightward after the removal of a partition. Only a small fraction of possible velocity distinctions are actualised:
+\begin{equation}
+N_{\text{actualised}} \ll N_{\text{potential}} \quad \Rightarrow \quad \phi \ll 1
+\end{equation}
+
+\textbf{At equilibrium}: Molecules are distributed uniformly across all accessible cells (Maxwell-Boltzmann distribution). All possible velocity distinctions consistent with energy conservation are actualised:
+\begin{equation}
+N_{\text{actualised}} \approx N_{\text{potential}} \quad \Rightarrow \quad \phi \approx 1
+\end{equation}
+
+The completion fraction $\phi$ measures how far the partitioning process has progressed.
 
 \begin{theorem}[H-Function as Incompletion]
 \label{thm:h_incompletion}
-Boltzmann's H-function measures categorical incompletion:
+Boltzmann's H-function measures categorical incompleteness. Specifically:
 \begin{equation}
-H = -\phi \ln \phi - (1-\phi) \ln(1-\phi)
+H(\phi) = H_{\min} + (H_{\max} - H_{\min})(1 - \phi)
 \label{eq:h_incompletion}
 \end{equation}
-where $\phi$ is the completion fraction. H decreases as $\phi \to 1$.
+where $H_{\min}$ is the equilibrium value (minimum) and $H_{\max}$ is the maximum possible value. Equivalently, the completion fraction is:
+\begin{equation}
+\phi = \frac{H_{\max} - H}{H_{\max} - H_{\min}}
+\end{equation}
 \end{theorem}
 
 \begin{proof}
-The H-function $H = \int f \ln f \, d^3v$ measures the ``peakedness'' of the velocity distribution. A highly peaked distribution (far from equilibrium) has large $|H|$. A uniform distribution (equilibrium) has $H \to 0$.
+\paragraph{Step 1: H measures distribution concentration.}
 
-In categorical terms:
+The H-function $H = \int f \ln f \, d^3v$ measures the "concentration" or "peakedness" of the velocity distribution. To see this, consider the relation to Shannon entropy:
+\begin{equation}
+S_{\text{Shannon}} = -k_B \int f \ln f \, d^3v = -k_B H
+\end{equation}
+
+Shannon entropy is maximized when $f$ is uniform (all velocity states equally probable). Therefore, $H$ is minimized when $f$ is uniform.
+
+For a discrete distribution over $n$ cells with probabilities $\{p_i\}$:
+\begin{equation}
+H = \sum_{i=1}^n p_i \ln p_i
+\end{equation}
+
+\textbf{Peaked distribution} (few cells occupied):
 \begin{itemize}
-\item Peaked distribution: few velocity states occupied, many potential partitions not yet actualised, low $\phi$
-\item Uniform distribution: all velocity states equally occupied, all possible partitions actualised, high $\phi$
+\item If $n_{\text{occ}} \ll n$ cells are occupied with $p_i \approx 1/n_{\text{occ}}$ in occupied cells
+\item Then $H \approx \ln(1/n_{\text{occ}}) = -\ln n_{\text{occ}}$
+\item Large negative value: $|H|$ is large
 \end{itemize}
 
-As the system evolves, collisions actualise partitions, increasing $\phi$ and decreasing $H$. \qed
+\textbf{Uniform distribution} (all cells equally occupied):
+\begin{itemize}
+\item All $n$ cells have $p_i = 1/n$
+\item Then $H = \ln(1/n) = -\ln n$
+\item Minimum value: $H = H_{\min}$
+\end{itemize}
+
+\paragraph{Step 2: Peaked distribution means few partitions actualised.}
+
+A peaked distribution means molecules occupy few velocity states. The number of actualised partitions is proportional to the number of occupied cells:
+\begin{equation}
+N_{\text{actualised}} \propto n_{\text{occ}}
+\end{equation}
+
+The number of potential partitions is proportional to the total number of accessible cells:
+\begin{equation}
+N_{\text{potential}} \propto n_{\text{total}}
+\end{equation}
+
+Therefore, the completion fraction is:
+\begin{equation}
+\phi \sim \frac{n_{\text{occ}}}{n_{\text{total}}}
+\end{equation}
+
+\paragraph{Step 3: Relation between H and $\phi$.}
+
+For a distribution with $n_{\text{occ}}$ occupied cells out of $n_{\text{total}}$ total cells:
+\begin{equation}
+H \approx -\ln n_{\text{occ}} = -\ln(\phi \cdot n_{\text{total}}) = -\ln n_{\text{total}} - \ln \phi
+\end{equation}
+
+At equilibrium ($\phi = 1$, all cells occupied):
+\begin{equation}
+H_{\min} = -\ln n_{\text{total}}
+\end{equation}
+
+At maximum non-equilibrium ($\phi \to 0$, minimal cells occupied):
+\begin{equation}
+H_{\max} \to -\ln(1) = 0
+\end{equation}
+
+Therefore:
+\begin{equation}
+H = H_{\min} + (H_{\max} - H_{\min})(1 - \phi)
+\end{equation}
+
+Solving for $\phi$:
+\begin{equation}
+\phi = \frac{H_{\max} - H}{H_{\max} - H_{\min}}
+\end{equation}
+
+\paragraph{Step 4: H is minimized when $\phi = 1$.}
+
+Taking the derivative:
+\begin{equation}
+\frac{\partial H}{\partial \phi} = -(H_{\max} - H_{\min}) < 0
+\end{equation}
+
+Therefore, $H$ decreases monotonically as $\phi$ increases. $H$ is minimized when $\phi = 1$ (complete actualisation of all partitions).
+
+\paragraph{Conclusion.}
+
+The H-function measures categorical incompletion. High $|H|$ means few partitions actualised (low $\phi$, far from equilibrium). Low $|H|$ means many partitions actualised (high $\phi$, near equilibrium). The approach to equilibrium is the process of actualising all potential partitions. \qed
 \end{proof}
 
-\subsection{Why H Decreases}
+\paragraph{Example: Free expansion revisited.}
+
+Consider a gas initially confined to the left half of a container at $t = 0$. The partition is removed.
+
+\textbf{Initial state} ($t = 0$):
+\begin{itemize}
+\item Position: All molecules in left half ($x < L/2$)
+\item Velocity: Peaked distribution (molecules preferentially moving to the right)
+\item Actualised partitions: Only left-half position states are occupied
+\item Completion: $\phi_0 \sim 0.5$ (only half of the position space is occupied)
+\item H-function: $H_0 > H_{\min}$ (peaked distribution)
+\end{itemize}
+
+\textbf{Intermediate state} ($0 < t < t_{\text{eq}}$):
+\begin{itemize}
+\item Position: Molecules spreading throughout container
+\item Velocity: Distribution becoming more uniform
+\item Actualised partitions: More position-velocity combinations are occupied
+\item Completion: $0.5 < \phi(t) < 1$ (increasing)
+\item H-function: $H(t)$ decreasing toward $H_{\min}$
+\end{itemize}
+
+\textbf{Equilibrium state} ($t \to \infty$):
+\begin{itemize}
+\item Position: Uniform throughout container
+\item Velocity: Maxwell-Boltzmann distribution
+\item Actualised partitions: All accessible position-velocity states occupied
+\item Completion: $\phi_{\text{eq}} = 1$ (all potential partitions actualised)
+\item H-function: $H_{\text{eq}} = H_{\min}$ (minimum value)
+\end{itemize}
+
+The evolution $H_0 \to H_{\text{eq}}$ corresponds to completion $\phi_0 \to 1$. The H-theorem describes the monotonic actualisation of partition boundaries.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_mixing_separation.png}
+\caption{\textbf{Mixing-Separation Cycle Demonstrates Categorical Irreversibility.} 
+(\textbf{A}) Initial state: Separated gases: Two gases (Gas A, blue circles; Gas B, red circles) are separated by a partition (gray vertical line). The initial entropy is $S_{\text{initial}} = S_A^{(0)} + S_B^{(0)}$ (equation in box at top)—the sum of individual gas entropies. Each gas occupies its own region ($S_A^{(0)}$ on left, $S_B^{(0)}$ on right). There are no correlations between gases—they are statistically independent. This is the reference state for measuring irreversibility. 
+(\textbf{B}) Mixed state: Partition removed: The partition is removed and gases mix (blue and red circles intermixed throughout space). The text "Phase-lock network connected" indicates that mixing creates correlations—particles from A and B now interact. The mixed entropy is $S_{\text{mixed}} = S_{\text{initial}} + \Delta S_{\text{mix}}$ (green box)—entropy increases by the mixing contribution $\Delta S_{\text{mix}} > 0$. This increase is not merely spatial redistribution—it represents the creation of new categorical distinctions (A-B correlations) that did not exist initially. 
+(\textbf{C}) Re-separated: Partition restored: The partition is restored (gray vertical line), returning gases to their original spatial configuration. However, the text "Residual phase correlations persist!" (red italic text) indicates that the system is not identical to the initial state. The final entropy is $S_{\text{final}} = S_{\text{initial}} + \Delta S_{\text{residual}}$ (box at bottom)—there is a residual entropy increase $\Delta S_{\text{residual}} > 0$ even though the spatial configuration is identical to panel A. This residual entropy represents categorical memory—the phase-lock network created during mixing cannot be fully erased. 
+(\textbf{D}) Entropy evolution: Irreversibility demonstrated: The entropy trajectory (green line with circles) shows six stages: Initial ($S = 1.0$, normalized), Mixing starts ($S = 1.0$), Fully mixed ($S \sim 1.8$, peak), Re-sep starts ($S \sim 1.8$), Re-sep complete ($S \sim 1.5$), and Final state ($S \sim 1.5$). The categorical prediction (green line) shows irreversible increase: $S_{\text{final}} > S_{\text{initial}}$ despite identical spatial configuration. The classical prediction (gray dashed line) shows reversible decrease—returning to $S = 1.0$ at final state. The red arrow labeled "$\Delta S_{\text{irrev}} > 0$" marks the irreversible entropy production. The pink box states: "Entropy increases despite identical spatial config!" This is the resolution of Loschmidt's paradox: spatial reversibility does not imply categorical reversibility. Phase-lock networks created during mixing persist as categorical structure, preventing full entropy decrease.}
+\label{fig:mixing_separation}
+\end{figure*}
+
+\subsection{Why H Decreases: Monotonic Completion}
 
 \begin{theorem}[Monotonic Completion]
 \label{thm:monotonic_completion}
@@ -41,41 +202,630 @@ Categorical completion increases monotonically:
 \frac{d\phi}{dt} \geq 0
 \label{eq:monotonic_completion}
 \end{equation}
+with equality only when the system is in equilibrium ($\phi = 1$).
 \end{theorem}
 
 \begin{proof}
-Completion increases when partitions are actualised. Partitions are actualised by physical interactions (collisions). Physical interactions occur forward in time.
+\paragraph{Step 1: Completion increases through partition actualisation.}
 
-Completion does not decrease because erasing a partition requires a new partition (Theorem~\ref{thm:topological_irreversibility}), which increases completion further. \qed
+Completion $\phi$ increases when new partitions are actualised. A partition is actualised when a physical process creates a categorical distinction that did not previously exist.
+
+In kinetic theory, partitions are actualised by molecular collisions. Each collision:
+\begin{itemize}
+\item Takes two molecules with velocities $(\mathbf{v}_1, \mathbf{v}_2)$ (pre-collision)
+\item Produces velocities $(\mathbf{v}_1', \mathbf{v}_2')$ (post-collision)
+\item Creates a partition boundary between "pre-collision" and "post-collision" velocity states
+\end{itemize}
+
+By Theorem~\ref{thm:collision_partition}, each collision is a partition operation that actualises a boundary in velocity space.
+
+\paragraph{Step 2: Collision rate is strictly positive.}
+
+For a gas with number density $n$, collision cross-section $\sigma$, and mean relative velocity $\bar{v}_{\text{rel}}$, the collision rate per unit volume is:
+\begin{equation}
+\frac{dN_{\text{collisions}}}{dt \cdot V} = n^2 \sigma \bar{v}_{\text{rel}} > 0
+\end{equation}
+
+For the entire system with volume $V$ and $N$ molecules:
+\begin{equation}
+\frac{dN_{\text{collisions}}}{dt} = \frac{N(N-1)}{2V} \sigma \bar{v}_{\text{rel}} > 0
+\end{equation}
+
+This is strictly positive for any $T > 0$ (molecules have thermal motion).
+
+\paragraph{Step 3: Each collision actualises at least one partition.}
+
+Each collision creates a partition boundary between the pre-collision configuration $(\mathbf{v}_1, \mathbf{v}_2)$ and the post-collision configuration $(\mathbf{v}_1', \mathbf{v}_2')$.
+
+If this boundary did not previously exist (the particular velocity combination $(\mathbf{v}_1', \mathbf{v}_2')$ was not previously occupied), then $N_{\text{actualised}}$ increases by at least 1.
+
+If the boundary already existed (the velocity combination was already occupied), then the collision reinforces the existing partition but doesn't increase $N_{\text{actualised}}$. This occurs when $\phi \approx 1$ (near equilibrium).
+
+Therefore:
+\begin{equation}
+\frac{dN_{\text{actualised}}}{dt} \geq 0
+\end{equation}
+
+with equality only when all potential partitions are already actualised ($\phi = 1$).
+
+\paragraph{Step 4: Completion increases monotonically.}
+
+Since $\phi = N_{\text{actualised}} / N_{\text{potential}}$ and $N_{\text{potential}}$ is constant (fixed by system constraints), we have:
+\begin{equation}
+\frac{d\phi}{dt} = \frac{1}{N_{\text{potential}}} \frac{dN_{\text{actualised}}}{dt} \geq 0
+\end{equation}
+
+\paragraph{Step 5: Completion cannot decrease.}
+
+Could completion decrease? This would require erasing actualised partitions---removing categorical boundaries that have been created.
+
+By Theorem~\ref{thm:topological_irreversibility}, partition boundaries cannot be erased without creating additional boundaries. Any attempt to "un-actualise" a partition requires:
+
+\begin{enumerate}
+\item \textbf{Identifying which states to merge}: This is a partition operation (distinguishing "states to merge" from "states to keep separate"), creating new boundaries.
+
+\item \textbf{Performing the merge}: This creates undetermined residue during the partition lag (Theorem~\ref{thm:partition_entropy}), adding new boundaries when the residue resolves.
+
+\item \textbf{Verifying the merge}: This requires measurement (another partition operation), creating additional boundaries.
+\end{enumerate}
+
+The net effect is to increase $N_{\text{actualised}}$, not decrease it. Each attempt to erase a partition creates more partitions than it removes.
+
+Therefore:
+\begin{equation}
+\frac{d\phi}{dt} \geq 0
+\end{equation}
+
+Completion increases monotonically. \qed
 \end{proof}
 
-\begin{corollary}[H-Theorem from Completion]
+\paragraph{Physical interpretation: The branching tree analogy.}
+
+Imagine a tree growing branches. Each branch point is a partition---a place where one path divides into two. As the tree grows:
+\begin{itemize}
+\item Branch points accumulate (new branches form)
+\item Branch points never disappear (existing branches remain)
+\item The tree becomes progressively more complex
+\item Eventually, the tree reaches maximum branching (all possible branches have formed)
+\end{itemize}
+
+Similarly, categorical space is like a growing tree:
+\begin{itemize}
+\item Each partition is a branch point
+\item Partitions accumulate through physical processes (collisions)
+\item Partitions never disappear (boundaries cannot be erased)
+\item Categorical space becomes progressively more finely divided
+\item Eventually, the system reaches maximum partitioning (equilibrium)
+\end{itemize}
+
+The completion fraction $\phi$ measures how fully branched the tree is:
+\begin{itemize}
+\item $\phi \ll 1$: Few branches (far from equilibrium)
+\item $0 < \phi < 1$: Partial branching (approaching equilibrium)
+\item $\phi = 1$: Fully branched (equilibrium)
+\end{itemize}
+
+The tree can only grow, never shrink. This is the geometric origin of irreversibility.
+
+\begin{corollary}[H-Theorem from Monotonic Completion]
 \label{cor:h_theorem}
 The H-theorem $dH/dt \leq 0$ follows from monotonic completion:
 \begin{equation}
 \frac{dH}{dt} = \frac{\partial H}{\partial \phi} \frac{d\phi}{dt} \leq 0
 \label{eq:h_theorem}
 \end{equation}
-since $\partial H/\partial \phi < 0$ (H decreases with completion) and $d\phi/dt \geq 0$ (completion increases).
+since $\partial H/\partial \phi < 0$ (Theorem~\ref{thm:h_incompletion}) and $d\phi/dt \geq 0$ (Theorem~\ref{thm:monotonic_completion}).
 \end{corollary}
+
+\begin{proof}
+By Theorem~\ref{thm:h_incompletion}, $H$ is a function of the completion fraction $\phi$:
+\begin{equation}
+H = H(\phi) = H_{\min} + (H_{\max} - H_{\min})(1 - \phi)
+\end{equation}
+
+By the chain rule:
+\begin{equation}
+\frac{dH}{dt} = \frac{\partial H}{\partial \phi} \frac{d\phi}{dt}
+\end{equation}
+
+Computing the derivative:
+\begin{equation}
+\frac{\partial H}{\partial \phi} = -(H_{\max} - H_{\min}) < 0
+\end{equation}
+
+This is negative because $H_{\max} > H_{\min}$ (peaked distributions have higher $|H|$ than uniform distributions).
+
+By Theorem~\ref{thm:monotonic_completion}:
+\begin{equation}
+\frac{d\phi}{dt} \geq 0
+\end{equation}
+
+Therefore:
+\begin{equation}
+\frac{dH}{dt} = \underbrace{\frac{\partial H}{\partial \phi}}_{< 0} \underbrace{\frac{d\phi}{dt}}_{\geq 0} \leq 0
+\end{equation}
+
+The H-function decreases monotonically. This is Boltzmann's H-theorem. \qed
+\end{proof}
+
+\paragraph{Significance: A parameter-free derivation.}
+
+This derivation of the H-theorem does not invoke:
+
+\begin{itemize}
+\item \textbf{The Stosszahlansatz} (molecular chaos assumption)---though we have shown it is valid for accessible correlations (Corollary~\ref{cor:stosszahlansatz})
+
+\item \textbf{Special initial conditions} (past hypothesis, low-entropy Big Bang)
+
+\item \textbf{Coarse-graining} or subjective ignorance about microstates
+
+\item \textbf{Probabilistic reasoning} about likely vs. unlikely microstates
+
+\item \textbf{Ergodic hypothesis} or long-time averaging
+
+\item \textbf{Weak coupling} or dilute gas approximations
+\end{itemize}
+
+Instead, the H-theorem follows from a single geometric fact: \textbf{partition boundaries accumulate monotonically} (Theorem~\ref{thm:topological_irreversibility}). This is a topological property of configuration space, not a statistical or dynamical property.
+
+The H-theorem is a theorem of categorical geometry, not of statistical mechanics.
 
 \subsection{Time-Reversal and Completion}
 
+We now address the final piece of Loschmidt's paradox: what happens to completion under time-reversal?
+
 \begin{theorem}[Time-Reversal Does Not Reverse Completion]
 \label{thm:completion_irreversible}
-Time-reversal of particle velocities does not decrease categorical completion.
+Time-reversal of particle velocities does not decrease categorical completion. In fact:
+\begin{equation}
+\phi_{\text{after reversal}} > \phi_{\text{before reversal}}
+\end{equation}
 \end{theorem}
 
 \begin{proof}
-Completion $\phi$ counts actualised partitions. Actualised partitions are categorical boundaries in configuration space. Time-reversal acts on phase space, not configuration space.
+\paragraph{Step 1: Completion counts actualised partitions in configuration space.}
+
+The completion fraction is:
+\begin{equation}
+\phi = \frac{N_{\text{actualised}}}{N_{\text{potential}}}
+\end{equation}
+
+where $N_{\text{actualised}}$ is the number of partition boundaries that have been created in configuration space.
+
+\paragraph{Step 2: Partition boundaries are configuration-space structures.}
+
+Partition boundaries are surfaces in configuration space (position space $\{\mathbf{x}_i\}$), not in phase space (position-momentum space $\{\mathbf{x}_i, \mathbf{p}_i\}$). Examples:
+
+\begin{itemize}
+\item \textbf{Spatial partition}: Boundary at $x = x_0$ separating left from right
+\begin{equation}
+\text{Boundary: } \{\mathbf{x}: x_1 = x_0\}
+\end{equation}
+This depends only on position, not velocity.
+
+\item \textbf{Energy partition}: Boundary at $E(\mathbf{x}_1, \ldots, \mathbf{x}_N) = E_0$
+\begin{equation}
+\text{Boundary: } \left\{\mathbf{x}: \sum_i U(\mathbf{x}_i) = E_0\right\}
+\end{equation}
+This depends on configuration, not momenta.
+
+\item \textbf{Collision partition}: Boundary between pre-collision and post-collision configurations
+\begin{equation}
+\text{Boundary: } \{|\mathbf{x}_i - \mathbf{x}_j| = \sigma\}
+\end{equation}
+where $\sigma$ is the collision diameter. This depends on positions, not velocities.
+\end{itemize}
+
+All partition boundaries are geometric structures that depend only on positions $\{\mathbf{x}_i\}$, not on velocities or momenta $\{\mathbf{v}_i\}$ or $\{\mathbf{p}_i\}$.
+
+\paragraph{Step 3: Time-reversal acts on phase space, not configuration space.}
+
+Time-reversal is the transformation:
+\begin{equation}
+\mathcal{T}: (\mathbf{x}, \mathbf{p}, t) \to (\mathbf{x}, -\mathbf{p}, -t)
+\end{equation}
+
+Positions are unchanged: $\mathbf{x} \to \mathbf{x}$.
+
+Only momenta are reversed: $\mathbf{p} \to -\mathbf{p}$ (equivalently, $\mathbf{v} \to -\mathbf{v}$).
+
+Since partition boundaries depend only on positions (configuration space), they are unchanged under time-reversal:
+\begin{equation}
+\mathcal{T}[\text{boundary at } f(\mathbf{x}) = 0] = \text{boundary at } f(\mathbf{x}) = 0
+\end{equation}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/panel_phase_lock_network.png}
+\caption{\textbf{Phase-Lock Network Densification Creates Categorical Memory.} 
+(\textbf{A}) Initial: Separated networks: Two phase-lock networks (blue circles on left, red circles on right) are separated by a partition. Each network has internal connections (gray edges within each group). The total edge count is $|E| = 30$ edges (box at bottom). The networks are disconnected—there are two separate components. This represents the initial state before mixing, where Gas A particles are phase-locked to other A particles, and Gas B particles are phase-locked to other B particles, but there are no A-B phase locks. 
+(\textbf{B}) Mixed: Connected network: After removing the partition, the networks merge into a single connected component (blue and red circles intermixed with gray edges connecting all particles). The edge count increases to $|E| = 44$ edges (green box)—14 new edges are created during mixing. These new edges represent A-B phase locks: correlations between particles that were previously independent. The network is now fully connected—every particle is phase-locked to the global network. This densification is the categorical signature of mixing. 
+(\textbf{C}) Re-separated: Residual edges persist: After restoring the partition, the spatial configuration returns to the initial state (blue circles on left, red circles on right). However, 5 residual cross-edges persist (red dashed lines connecting blue and red circles across the partition). The total edge count returns to $|E| = 30$ edges (box at bottom), but the network structure is different: "5 residual cross-edges (red dashed)" remain. These residual edges represent categorical memory—phase-lock correlations created during mixing that cannot be erased by spatial separation. The network "remembers" that it was once mixed. 
+(\textbf{D}) Edge count evolution: A bar chart shows edge count at three stages: Initial (blue bar, $|E| = 30$), Mixed (green bar, $|E| = 44$), and Re-separated (orange bar, $|E| = 30$). The green bar is taller, indicating network densification during mixing. The inequality $|E_{\text{final}}| \not< |E_{\text{initial}}|$ (red text above green bar) emphasizes that the final network is not simpler than the initial network—it has the same edge count but different structure. The text at bottom states: "More edges $\to$ more constraints $\to$ higher entropy. Residual edges = categorical memory of mixing." This resolves the paradox: entropy increases not because of spatial disorder, but because of network densification. The residual edges are the physical manifestation of irreversibility—they are categorical facts that cannot be un-created.}
+\label{fig:phase_lock_network}
+\end{figure*}
+
+\textbf{All actualised partitions remain actualised after time-reversal.}
+
+Therefore:
+\begin{equation}
+N_{\text{actualised}}^{\text{after } \mathcal{T}} \geq N_{\text{actualised}}^{\text{before } \mathcal{T}}
+\end{equation}
+
+\paragraph{Step 4: Performing time-reversal requires measurement.}
+
+To perform Loschmidt's velocity reversal, we must:
+
+\begin{enumerate}
+\item \textbf{Measure all particle velocities} $\{\mathbf{v}_i\}$ with precision $\delta v$
+\item \textbf{Negate them}: $\mathbf{v}_i \to -\mathbf{v}_i$
+\item \textbf{Prepare the reversed state} (set all velocities to $-\mathbf{v}_i$)
+\item \textbf{Allow the system to evolve} backward
+\end{enumerate}
+
+Step (1) is a partition operation (Theorem~\ref{thm:measurement_partition}). Measuring velocity $\mathbf{v}_i$ to precision $\delta v$ creates a partition boundary in velocity space:
+\begin{equation}
+\text{Boundary: } \{|\mathbf{v} - \mathbf{v}_i| = \delta v\}
+\end{equation}
+
+This distinguishes "measured as $\mathbf{v}_i \pm \delta v$" from "measured as something else."
+
+For $N$ particles in 3D, this creates $3N$ new partition boundaries (one per velocity component per particle). By Corollary~\ref{cor:velocity_measurement}, the entropy generated is:
+\begin{equation}
+\Delta S_{\text{measurement}} = 3N k_B \ln\left(\frac{\Delta v}{\delta v}\right)
+\end{equation}
+
+where $\Delta v$ is the velocity range and $\delta v$ is the measurement precision.
+
+Therefore:
+\begin{equation}
+N_{\text{actualised}}^{\text{after measurement}} = N_{\text{actualised}}^{\text{before}} + 3N
+\end{equation}
+
+The completion fraction increases:
+\begin{equation}
+\phi_{\text{after measurement}} = \frac{N_{\text{actualised}}^{\text{before}} + 3N}{N_{\text{potential}}} > \phi_{\text{before}}
+\end{equation}
+
+\paragraph{Step 5: Backward evolution actualises additional partitions.}
+
+After velocity reversal, the system evolves backward through its previous trajectory. As it evolves, molecules undergo collisions---the same collisions as before, just in reverse temporal order.
+
+Each collision is a partition operation (Theorem~\ref{thm:collision_partition}) that actualises a boundary between pre-collision and post-collision states. Even though these are the "same" collisions as before (in reverse), they create new categorical distinctions:
+
+\textbf{Forward collision at time $t$}:
+\begin{itemize}
+\item Creates boundary between "state before $t$" and "state after $t$"
+\item Actualises partition: "collision occurred at $t$"
+\item Adds to $N_{\text{actualised}}$
+\end{itemize}
+
+\textbf{Backward collision at time $T - t$} (after reversal at time $T$):
+\begin{itemize}
+\item Creates boundary between "state before $T-t$" and "state after $T-t$"
+\item Actualises partition: "collision occurred at $T-t$"
+\item Adds to $N_{\text{actualised}}$
+\end{itemize}
+
+These are \emph{different} boundaries:
+\begin{itemize}
+\item They occur at different times ($t$ vs. $T-t$)
+\item They distinguish different categorical states
+\item They create different non-actualisations (Section~\ref{sec:non_actualisation})
+\end{itemize}
+
+Both boundaries are actualised. Both contribute to $N_{\text{actualised}}$. The backward collision does not erase the forward collision---it adds a new collision to the categorical history.
+
+Therefore, backward evolution continues to increase $\phi$:
+\begin{equation}
+\frac{d\phi}{dt} \geq 0 \quad \text{(even during backward evolution)}
+\end{equation}
+
+\paragraph{Step 6: Total completion after reversal.}
+
+After the complete time-reversal process:
+\begin{equation}
+N_{\text{actualised}}^{\text{final}} = N_{\text{actualised}}^{\text{initial}} + \underbrace{3N}_{\text{measurement}} + \underbrace{N_{\text{collisions}}}_{\text{backward evolution}}
+\end{equation}
+
+where $N_{\text{collisions}}$ is the number of collisions during the backward trajectory.
+
+Therefore:
+\begin{equation}
+\phi_{\text{final}} = \frac{N_{\text{actualised}}^{\text{initial}} + 3N + N_{\text{collisions}}}{N_{\text{potential}}} > \phi_{\text{initial}}
+\end{equation}
+
+Completion increases under time-reversal, not decreases.
+
+\paragraph{Conclusion.}
 
 After time-reversal:
 \begin{enumerate}
-\item All prior partitions remain actualised (boundaries unchanged)
-\item The measurement required for reversal actualises additional partitions
+\item All prior partitions remain actualised (boundaries are configuration-space structures, unchanged by velocity reversal)
+\item The measurement required for reversal actualises additional partitions ($3N$ velocity measurements)
+\item Backward evolution actualises further partitions (collisions during backward trajectory)
 \item Therefore, $\phi_{\text{after}} > \phi_{\text{before}}$
 \end{enumerate}
 
-Completion increases under time-reversal, not decreases. \qed
+Time-reversal does not reverse the approach to equilibrium. It accelerates it. \qed
 \end{proof}
 
+\paragraph{Physical interpretation: The movie analogy.}
+
+Imagine recording a movie of a gas expanding from left to right. The movie shows:
+\begin{itemize}
+\item Frame 1: Gas confined to left half
+\item Frames 2-100: Gas expanding rightward
+\item Frame 100: Gas uniformly distributed
+\end{itemize}
+
+Each frame is a categorical state. Each transition between frames actualises a partition (molecules move from one configuration to another).
+
+Now play the movie backward:
+\begin{itemize}
+\item Frame 100: Gas uniformly distributed (same as forward)
+\item Frames 99-1: Gas contracting leftward
+\item Frame 1: Gas confined to left half (same as forward)
+\end{itemize}
+
+The backward movie shows the same configurations as the forward movie, but in reverse order. However:
+
+\textbf{The backward movie is not the same as the forward movie---it's a new movie.}
+
+Each frame in the backward movie is a new categorical state, distinct from the corresponding frame in the forward movie:
+\begin{itemize}
+\item Forward frame 50: "Gas expanding at time $t = 50$"
+\item Backward frame 50: "Gas contracting at time $t = 150$" (if reversal occurred at $t = 100$)
+\end{itemize}
+
+These are different categorical facts. Both are actualised. Both contribute to $N_{\text{actualised}}$.
+
+The backward movie has the same number of frames as the forward movie. It has the same number of transitions. It actualises the same number of partitions. Therefore:
+\begin{equation}
+\phi_{\text{backward movie}} = \phi_{\text{forward movie}} + \phi_{\text{reversal process}}
+\end{equation}
+
+Total completion increases. Time-reversal doesn't erase history---it creates new history.
+
+\paragraph{Connection to non-actualisations.}
+
+The reason time-reversal cannot decrease completion is deeply connected to non-actualisation accumulation (Section~\ref{sec:non_actualisation}).
+
+During forward evolution from $t = 0$ to $t = T$:
+\begin{itemize}
+\item Actualisations: Specific molecular trajectories
+\item Non-actualisations: All other possible trajectories (infinitely many)
+\end{itemize}
+
+At time $T$, we perform velocity reversal. During backward evolution from $t = T$ to $t = 2T$:
+\begin{itemize}
+\item Actualisations: Time-reversed trajectories
+\item Non-actualisations: All other possible trajectories (infinitely many more)
+\end{itemize}
+
+The non-actualisations from forward evolution are not erased by backward evolution. They are categorical facts that persist eternally:
+\begin{itemize}
+\item "At time $t = 50$, the gas did not contract" (true forever)
+\item "At time $t = 150$, the gas did not expand" (true forever, after reversal)
+\end{itemize}
+
+Both sets of non-actualisations accumulate. The total non-actualisation set grows:
+\begin{equation}
+|\mathcal{N}(t = 2T)| > |\mathcal{N}(t = T)| > |\mathcal{N}(t = 0)|
+\end{equation}
+
+By Theorem~\ref{thm:non_actualisation_residue}, entropy counts non-actualisations:
+\begin{equation}
+S \propto \ln |\mathcal{N}|
+\end{equation}
+
+Therefore, entropy increases even during backward evolution:
+\begin{equation}
+S(2T) > S(T) > S(0)
+\end{equation}
+
+Time-reversal cannot decrease entropy because it cannot erase non-actualisations.
+
+\subsection{Implications for H During Time-Reversal}
+
+\begin{corollary}[H Decreases During Backward Evolution]
+\label{cor:h_backward}
+The H-function decreases during both forward and backward evolution:
+\begin{equation}
+\frac{dH}{dt} \leq 0 \quad \text{(forward and backward)}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+By Corollary~\ref{cor:h_theorem}:
+\begin{equation}
+\frac{dH}{dt} = \frac{\partial H}{\partial \phi} \frac{d\phi}{dt}
+\end{equation}
+
+By Theorem~\ref{thm:h_incompletion}, $\partial H / \partial \phi < 0$ (H decreases as completion increases).
+
+By Theorem~\ref{thm:completion_irreversible}, $d\phi/dt \geq 0$ even during backward evolution (completion increases regardless of temporal direction).
+
+Therefore:
+\begin{equation}
+\frac{dH}{dt} = \underbrace{\frac{\partial H}{\partial \phi}}_{< 0} \underbrace{\frac{d\phi}{dt}}_{\geq 0} \leq 0
+\end{equation}
+
+The H-function decreases during both forward and backward evolution. \qed
+\end{proof}
+
+\paragraph{Resolution of Loschmidt's objection.}
+
+Loschmidt argued: "If we reverse all velocities at time $T$, the system should retrace its trajectory backward, causing $H$ to increase (reversing its previous decrease)."
+
+Our resolution: \textbf{The system does retrace its spatial trajectory, but $H$ continues to decrease because $H$ measures completion, not spatial configuration.}
+
+During backward evolution:
+\begin{itemize}
+\item \textbf{Spatial configuration}: Retraces forward trajectory (molecules return to original positions)
+\item \textbf{Velocity distribution}: Becomes more uniform (approaches Maxwell-Boltzmann)
+\item \textbf{Completion}: Increases (more partitions actualised)
+\item \textbf{H-function}: Decreases (measures completion, not position)
+\end{itemize}
+
+The apparent paradox arises from conflating two different quantities:
+\begin{enumerate}
+\item \textbf{Spatial entropy}: Measures spread in position space. This does decrease during backward evolution (gas contracts).
+\item \textbf{Categorical entropy}: Measures partition boundaries in configuration space. This increases during backward evolution (more boundaries actualised).
+\end{enumerate}
+
+Boltzmann's $H$ measures categorical entropy, not spatial entropy. Therefore, $H$ decreases even as the gas contracts spatially.
+
+\subsection{Equilibrium as Complete Actualisation}
+
+\begin{definition}[Thermodynamic Equilibrium (Categorical)]
+\label{def:equilibrium_categorical}
+A system is in thermodynamic equilibrium when $\phi = 1$: all potential partitions consistent with the system's constraints have been actualised.
+\end{definition}
+
+At equilibrium:
+
+\begin{itemize}
+\item \textbf{Velocity distribution}: Maxwell-Boltzmann (uniform in velocity space)
+\begin{equation}
+f_{\text{eq}}(\mathbf{v}) = n \left(\frac{m}{2\pi k_B T}\right)^{3/2} \exp\left(-\frac{m v^2}{2 k_B T}\right)
+\end{equation}
+
+\item \textbf{Velocity states}: All velocity states (consistent with energy $E$) are equally occupied
+
+\item \textbf{Actualised partitions}: All possible velocity distinctions have been actualised
+\begin{equation}
+N_{\text{actualised}} = N_{\text{potential}}
+\end{equation}
+
+\item \textbf{Completion}: Maximum
+\begin{equation}
+\phi_{\text{eq}} = 1
+\end{equation}
+
+\item \textbf{H-function}: Minimum
+\begin{equation}
+H_{\text{eq}} = H_{\min} = -\ln \Omega_{\text{accessible}}
+\end{equation}
+
+\item \textbf{Entropy}: Maximum (for given constraints)
+\begin{equation}
+S_{\text{eq}} = k_B \ln \Omega_{\text{accessible}} = -k_B H_{\text{eq}}
+\end{equation}
+\end{itemize}
+
+\paragraph{Why equilibrium is stable.}
+
+Once $\phi = 1$, no further increase is possible (by definition). The system has reached maximum completion. All categorical distinctions that could be made have been made.
+
+Fluctuations away from equilibrium temporarily decrease $\phi$ (by concentrating molecules in fewer velocity states), but these fluctuations are immediately reversed by collisions that re-actualise the missing partitions:
+
+\begin{itemize}
+\item \textbf{Fluctuation}: Molecules spontaneously concentrate in a few velocity states
+\item \textbf{Effect}: $\phi$ decreases slightly below 1
+\item \textbf{Response}: Collisions redistribute molecules across all velocity states
+\item \textbf{Result}: $\phi$ returns to 1
+\end{itemize}
+
+The relaxation time is:
+\begin{equation}
+\tau_{\text{relax}} \sim \frac{1}{n \sigma \bar{v}} \sim 10^{-9} \text{ s (for air at STP)}
+\end{equation}
+
+Fluctuations are rapidly suppressed. Equilibrium is stable because it is the state of maximum categorical completion---the state where configuration space is most finely partitioned.
+
+\paragraph{Why equilibrium is unique.}
+
+For given constraints (energy $E$, volume $V$, particle number $N$), there is a unique maximum value of $\phi$. This corresponds to the unique equilibrium distribution.
+
+\textbf{Proof by contradiction}: Suppose there were two distinct equilibrium states with $\phi_1 = \phi_2 = 1$. Then both states have all potential partitions actualised. But if all partitions are actualised, the states are maximally distinguished---they cannot be distinct. Contradiction.
+
+Therefore, equilibrium is unique.
+
+Different macrostates (different velocity distributions) correspond to different values of $\phi < 1$. Only one macrostate has $\phi = 1$: the equilibrium state.
+
+The Second Law ($d\phi/dt \geq 0$) implies that all macrostates evolve toward the unique equilibrium state. This explains why equilibrium is a global attractor: it's the unique state of maximum completion.
+
+\paragraph{Equilibrium fluctuations.}
+
+At equilibrium, $\phi = 1$ on average, but fluctuations cause temporary deviations:
+\begin{equation}
+\phi(t) = 1 - \delta\phi(t)
+\end{equation}
+
+where $\delta\phi(t)$ is a small fluctuation.
+
+The probability of a fluctuation of size $\delta\phi$ is:
+\begin{equation}
+P(\delta\phi) \propto \exp\left(-\frac{\Delta E(\delta\phi)}{k_B T}\right)
+\end{equation}
+
+where $\Delta E(\delta\phi)$ is the energy cost of the fluctuation.
+
+For small fluctuations:
+\begin{equation}
+\Delta E(\delta\phi) \approx \frac{1}{2} N k_B T (\delta\phi)^2
+\end{equation}
+
+Therefore:
+\begin{equation}
+P(\delta\phi) \propto \exp\left(-\frac{N (\delta\phi)^2}{2}\right)
+\end{equation}
+
+Fluctuations are Gaussian with width:
+\begin{equation}
+\langle (\delta\phi)^2 \rangle \sim \frac{1}{N}
+\end{equation}
+
+For macroscopic systems ($N \sim 10^{23}$), fluctuations are negligible:
+\begin{equation}
+\frac{\delta\phi}{\phi} \sim \frac{1}{\sqrt{N}} \sim 10^{-12}
+\end{equation}
+
+Equilibrium is extremely stable for large systems.
+
+\subsection{Summary}
+
+We have provided a complete reinterpretation of Boltzmann's H-theorem in terms of categorical completion:
+
+\begin{enumerate}
+\item \textbf{H as Incompletion (Theorem~\ref{thm:h_incompletion})}: The H-function measures categorical incompletion. High $|H|$ means few partitions actualised (far from equilibrium, $\phi \ll 1$). Low $|H|$ means many partitions actualised (near equilibrium, $\phi \approx 1$).
+
+\item \textbf{Monotonic Completion (Theorem~\ref{thm:monotonic_completion})}: Completion increases monotonically ($d\phi/dt \geq 0$) because partition boundaries accumulate through collisions and cannot be erased.
+
+\item \textbf{H-Theorem from Completion (Corollary~\ref{cor:h_theorem})}: The H-theorem ($dH/dt \leq 0$) follows from monotonic completion via the chain rule: $dH/dt = (\partial H/\partial \phi)(d\phi/dt) \leq 0$.
+
+\item \textbf{Time-Reversal Preserves Irreversibility (Theorem~\ref{thm:completion_irreversible})}: Time-reversal does not decrease completion because:
+\begin{itemize}
+\item Partition boundaries are configuration-space structures (unchanged by velocity reversal)
+\item The reversal process itself actualises new partitions (measurement)
+\item Backward evolution actualises additional partitions (collisions)
+\end{itemize}
+
+\item \textbf{H Decreases in Both Directions (Corollary~\ref{cor:h_backward})}: The H-function decreases during both forward and backward evolution because completion increases regardless of temporal direction.
+
+\item \textbf{Equilibrium as Complete Actualisation (Definition~\ref{def:equilibrium_categorical})}: Equilibrium is the unique state with $\phi = 1$ (all potential partitions actualised). It is stable (fluctuations are suppressed) and unique (only one state has maximum completion).
+\end{enumerate}
+
+The key insights:
+
+\begin{itemize}
+\item The approach to equilibrium is the process of actualising all potential partition boundaries
+\item Equilibrium is the state of complete actualisation ($\phi = 1$)
+\item The H-theorem is a consequence of topological irreversibility (boundaries cannot be erased)
+\item Time-reversal cannot reverse the approach to equilibrium because it cannot erase actualised partitions
+\item Irreversibility is geometric (partition accumulation), not dynamical (time-asymmetric laws)
+\item The arrow of time is the direction of partition accumulation
+\end{itemize}
+
+This completes the reinterpretation of the H-theorem. Boltzmann's result is not a statistical theorem about probable vs. improbable microstates, nor a dynamical theorem about time-asymmetric evolution. It is a \textbf{geometric theorem about the accumulation of partition boundaries in configuration space}.
+
+The H-theorem is a theorem of categorical geometry. Its validity is independent of:
+\begin{itemize}
+\item The temporal direction of the underlying dynamics (time-symmetric or time-asymmetric)
+\item The statistical properties of the initial state (special or generic)
+\item The observer's knowledge or ignorance (objective, not subjective)
+\item The system size or thermodynamic limit (holds for finite systems)
+\end{itemize}
+
+The Second Law is not a statistical accident, a consequence of special initial conditions, or a manifestation of subjective ignorance. It is a geometric necessity arising from the topological structure of configuration space. Irreversibility is as fundamental as geometry itself.
