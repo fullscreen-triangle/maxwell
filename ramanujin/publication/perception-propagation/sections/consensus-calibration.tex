@@ -1,0 +1,107 @@
+In multi-agent systems, truth emerges as equilibrium across observer networks rather than correspondence to objective reality. Consensus calibration provides stable equilibria that function as "truth" despite potential disconnection from external facts.
+
+\begin{definition}[Multi-Agent System]
+\label{def:multi-agent}
+A multi-agent system is a collection $\mathcal{A} = \{A_1, A_2, \ldots, A_n\}$ of bounded systems, each with transformation function $f_i: \mathcal{U}_i \to H_i$ and potential field $\Pfield_i: \Cspace_i \to \mathbb{R}$.
+\end{definition}
+
+\begin{definition}[Consensus State]
+\label{def:consensus-state}
+A consensus state is an output $O$ such that:
+\begin{equation}
+f_i(I_i) = O \quad \text{for all } i \in \{1, 2, \ldots, n\}
+\end{equation}
+where agents $\{A_1, \ldots, A_n\}$ may have different inputs $\{I_1, \ldots, I_n\}$ but produce the same output $O$.
+\end{definition}
+
+\begin{theorem}[Consensus Calibration]
+\label{thm:consensus-calibration}
+In multi-agent systems, truth emerges as equilibrium where potential fields align: $\Pfield_i(O) \approx \Pfield_j(O)$ for all pairs $(i,j)$. This creates stable equilibria that function as "truth" even when disconnected from objective reality.
+\end{theorem}
+
+\begin{proof}
+Consider agents $\{A_1, A_2, \ldots, A_n\}$ with individual potential fields $\{\Pfield_1, \Pfield_2, \ldots, \Pfield_n\}$.
+
+When agents interact, their potential fields influence each other. A consensus state $O$ emerges when:
+\begin{equation}
+\Pfield_i(O) \approx \Pfield_j(O) \quad \text{for all } (i,j)
+\end{equation}
+
+This alignment creates a stable equilibrium: if any agent deviates from $O$, the gradient from other agents' fields pulls it back toward $O$.
+
+The consensus $O$ functions as "truth" because:
+\begin{itemize}
+\item It is stable (equilibrium point)
+\item It is shared (all agents agree)
+\item It enables coordination (agents can predict each other's states)
+\end{itemize}
+
+However, $O$ need not correspond to objective reality. By the Path Independence Theorem, multiple inputs (including false ones) can produce the same output $O$. Therefore, consensus can be "wrong" about objective facts while still functioning as truth for the agent network. $\square$
+\end{proof}
+
+\begin{example}[The Zoo Consensus]
+\label{ex:zoo-consensus}
+In the zoo scenario (Example \ref{ex:zoo-scenario}), agents $A_1$ and $A_2$ both produce output $O$ = "initiate flight response" from different inputs $I_1$ and $I_2$. This creates a consensus state.
+
+Agent $A_3$, observing the consensus (others running), calibrates to the same output $O$ without requiring direct access to $I_1$ or $I_2$. The consensus functions as truth for $A_3$—it provides sufficient information to produce appropriate action.
+
+Even if an invisible electric fence makes the consensus "wrong" about objective danger, the consensus still functions as truth: all three agents coordinate successfully, and the consensus provides stable equilibrium.
+\end{example}
+
+\begin{definition}[Truth as Equilibrium]
+\label{def:truth-equilibrium}
+Truth in multi-agent systems is defined as consensus equilibrium: a state $O$ where $\Pfield_i(O) \approx \Pfield_j(O)$ for all agent pairs, creating stability and enabling coordination.
+\end{definition}
+
+\begin{proposition}[Truth Without Correspondence]
+\label{prop:truth-without-correspondence}
+Consensus truth does not require correspondence to objective reality. A state $O$ can function as truth (stable equilibrium, shared agreement, enables coordination) even when it does not accurately represent external facts.
+\end{proposition}
+
+\begin{proof}
+By the Path Independence Theorem, multiple inputs including false ones can produce the same output $O$. By the Consensus Calibration Theorem, consensus emerges from field alignment, not from objective correspondence.
+
+Therefore, consensus $O$ can be:
+\begin{itemize}
+\item Stable (equilibrium point)
+\item Shared (all agents agree)
+\item Functional (enables coordination)
+\item False (does not correspond to objective reality)
+\end{itemize}
+
+The invisible electric fence example demonstrates this: consensus that "danger exists" is false about objective facts (fence prevents danger) but true as consensus (all agents agree, enables coordination). $\square$
+\end{proof}
+
+\begin{theorem}[Calibration Mechanism]
+\label{thm:calibration-mechanism}
+Agents calibrate to consensus by adjusting their potential fields $\Pfield_i$ to align with observed outputs from other agents. The calibration process minimizes field differences:
+\begin{equation}
+\min_{\Pfield_i} \sum_{j \neq i} |\Pfield_i(O_j) - \Pfield_j(O_j)|
+\end{equation}
+where $O_j$ are outputs observed from agent $A_j$.
+\end{theorem}
+
+\begin{proof}
+When agent $A_i$ observes output $O_j$ from agent $A_j$, it infers that $\Pfield_j(O_j)$ is low (attractor state). To calibrate, $A_i$ adjusts $\Pfield_i$ such that $\Pfield_i(O_j)$ also becomes low, aligning with $\Pfield_j$.
+
+The calibration minimizes field differences, creating alignment. Over time, this process converges to consensus equilibrium where all fields align. $\square$
+\end{proof}
+
+\begin{corollary}[Social Truth]
+\label{cor:social-truth}
+Truth in social systems is consensus calibration. Street signs, currency values, social norms, and shared knowledge are crystallized consensus—stable equilibria across agent networks that function as truth regardless of objective accuracy.
+\end{corollary}
+
+\begin{proof}
+Social artifacts (signs, money, norms) represent consensus states where multiple agents' potential fields align. These states are:
+\begin{itemize}
+\item Stable (equilibrium points)
+\item Shared (all agents agree)
+\item Functional (enable coordination)
+\end{itemize}
+
+By Proposition \ref{prop:truth-without-correspondence}, they function as truth even without objective correspondence. Therefore, social truth is consensus calibration. $\square$
+\end{proof}
+
+Consensus calibration provides the mathematical mechanism by which truth emerges in multi-agent systems. Truth is not correspondence to reality but equilibrium across observer networks—stable, shared, functional, but potentially disconnected from objective facts.
+

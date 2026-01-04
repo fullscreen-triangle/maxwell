@@ -1,0 +1,105 @@
+\section{Potential Fields Over Categorical Space}
+
+Potential fields over categorical space provide the mathematical structure that determines output states in bounded systems. States are determined by position in the potential field, not by input geometry.
+
+\begin{definition}[Potential Field]
+\label{def:potential-field}
+A potential field over categorical space is a function $\Pfield: \Cspace \to \mathbb{R}$ that assigns a potential value to each categorical state $C_i \in \Cspace$. The potential field determines gradients that guide state transitions.
+\end{definition}
+
+\begin{definition}[Potential Field Gradient]
+\label{def:potential-gradient}
+The gradient of potential field $\Pfield$ at categorical state $C_i$ is:
+\begin{equation}
+\nabla \Pfield(C_i) = \left(\frac{\partial \Pfield}{\partial C_1}, \frac{\partial \Pfield}{\partial C_2}, \ldots\right)
+\end{equation}
+where partial derivatives are taken with respect to categorical dimensions.
+\end{definition}
+
+\begin{theorem}[State Determination by Potential Field]
+\label{thm:state-determination}
+For a bounded system $\mathcal{S}$, output state $s = f(I)$ is determined by the potential field position $\Pfield(\text{Category}(s))$ and its gradient $\nabla \Pfield(\text{Category}(s))$, not by input $I$ directly.
+\end{theorem}
+
+\begin{proof}
+By the Sufficiency Principle (Theorem \ref{thm:sufficiency-principle}), output states are determined by whether they produce appropriate gradients for subsequent transitions.
+
+The gradient $\nabla \Pfield(\text{Category}(s))$ determines:
+\begin{itemize}
+\item Direction of subsequent state transitions
+\item Stability of current state
+\item Accessibility of neighboring states
+\end{itemize}
+
+Therefore, state $s$ is determined by $\Pfield(\text{Category}(s))$ and $\nabla \Pfield(\text{Category}(s))$, not by input $I$. Multiple inputs $I_1, I_2, \ldots$ can produce the same categorical state $\text{Category}(s)$, and thus the same potential field position. $\square$
+\end{proof}
+
+\begin{definition}[Potential Field Attractor]
+\label{def:attractor}
+A potential field attractor is a categorical state $C^*$ where $\Pfield(C^*)$ is a local minimum, and $\nabla \Pfield(C^*) = 0$. States near $C^*$ are drawn toward it by the gradient.
+\end{definition}
+
+\begin{proposition}[Convergence to Attractors]
+\label{prop:convergence}
+Multiple input paths converge to the same attractor $C^*$ if they activate gradients pointing toward $C^*$. The convergence is path-independent: different inputs produce the same final state if they reach the same attractor.
+\end{proposition}
+
+\begin{proof}
+Consider inputs $I_1, I_2$ producing outputs $s_1 = f(I_1)$, $s_2 = f(I_2)$ with categorical states $C_1 = \text{Category}(s_1)$, $C_2 = \text{Category}(s_2)$.
+
+If both $C_1$ and $C_2$ are in the basin of attraction for $C^*$, then:
+\begin{align}
+\nabla \Pfield(C_1) &\to C^* \\
+\nabla \Pfield(C_2) &\to C^*
+\end{align}
+
+Both paths converge to $C^*$ regardless of starting points $C_1, C_2$. Therefore, convergence is path-independent. $\square$
+\end{proof}
+
+\begin{definition}[Field Dynamics]
+\label{def:field-dynamics}
+Potential field dynamics describe how $\Pfield$ evolves over time:
+\begin{equation}
+\frac{d\Pfield}{dt} = \mathcal{F}(\Pfield, \text{inputs}, \text{system state})
+\end{equation}
+where $\mathcal{F}$ captures how external inputs and internal state modify the potential field.
+\end{definition}
+
+\begin{theorem}[Field Shaping]
+\label{thm:field-shaping}
+Potential fields are shaped by:
+\begin{enumerate}
+\item Historical completions (past categorical states modify field structure)
+\item External inputs (sensory data when available)
+\item System constraints (bounded capacity, energy limits)
+\item Multi-agent interactions (consensus calibration, to be discussed)
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The potential field $\Pfield$ is not static but evolves based on:
+
+\textbf{Historical completions:} Each completed categorical state $C_i$ modifies the field structure, creating gradients that favor or disfavor future completions based on past success.
+
+\textbf{External inputs:} When available, sensory inputs provide constraints that shape the field, creating attractors aligned with external reality.
+
+\textbf{System constraints:} Bounded capacity (Axiom \ref{ax:bounded-space}) limits field complexity. Energy constraints favor low-potential states.
+
+\textbf{Multi-agent interactions:} When multiple agents share categorical space, their individual fields interact, creating consensus attractors (to be formalized in Section \ref{sec:consensus}).
+
+Therefore, $\Pfield$ is dynamically shaped by these factors. $\square$
+\end{proof}
+
+\begin{corollary}[Intuition as Potential Field]
+\label{cor:intuition}
+The phenomenological experience of "intuition" or "what feels right" corresponds to following gradients in the potential field $\Pfield$. States with low potential (attractors) feel "right," while states requiring climbing potential barriers feel "wrong."
+\end{corollary}
+
+\begin{proof}
+By Theorem \ref{thm:state-determination}, state transitions follow potential field gradients. Low-potential states are energetically favorable and naturally reached. High-potential states require energy input and feel effortful.
+
+The phenomenological "feeling" of rightness corresponds to low potential (easy transitions), while wrongness corresponds to high potential (difficult transitions). Therefore, intuition is the experience of potential field gradients. $\square$
+\end{proof}
+
+Potential fields over categorical space provide the mathematical mechanism by which bounded systems determine output states. The field structure enables path independence: multiple inputs converge to the same field positions, producing identical outputs despite different input geometries.
+

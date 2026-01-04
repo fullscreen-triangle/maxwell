@@ -1,0 +1,15 @@
+{
+  "shape": [
+    1452,
+    5
+  ],
+  "dtype": "float64",
+  "description": "O\u2082 state signatures [n_states, 5]",
+  "columns": [
+    "frequency",
+    "amplitude",
+    "phase",
+    "damping",
+    "symmetry"
+  ]
+}

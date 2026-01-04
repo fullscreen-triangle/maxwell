@@ -1,0 +1,95 @@
+\section{Categorical States and Completion}
+
+Categorical completion provides the mathematical structure for understanding how bounded systems process information through discrete state assignments in an ordered sequence.
+
+\begin{definition}[Categorical Sequence]
+\label{def:categorical-sequence}
+A categorical sequence is an ordered set $\mathcal{C} = \{C_1, C_2, C_3, \ldots\}$ where each $C_i$ is a categorical state. The ordering relation $\prec$ satisfies:
+\begin{itemize}
+\item Transitivity: If $C_i \prec C_j$ and $C_j \prec C_k$, then $C_i \prec C_k$
+\item Irreflexivity: $C_i \nprec C_i$ for all $i$
+\item Totality: For any distinct $C_i, C_j$, either $C_i \prec C_j$ or $C_j \prec C_i$
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Categorical Completion]
+\label{def:categorical-completion}
+A categorical state $C_i$ is \textit{completed} when a physical event occupies that categorical position in the sequence $\mathcal{C}$. Completion is irreversible: once $C_i$ is completed, it cannot be re-occupied.
+\end{definition}
+
+\begin{theorem}[Categorical Irreversibility]
+\label{thm:categorical-irreversibility}
+Once a categorical state $C_i$ is completed, it cannot be re-occupied. If a system attempts to "re-think" or "re-process" a completed state, it must occupy a new categorical position $C_j$ with $C_i \prec C_j$.
+\end{theorem}
+
+\begin{proof}
+Assume $C_i$ is completed at time $t_1$. By Definition \ref{def:categorical-completion}, this means a physical event occupied position $C_i$ in the sequence $\mathcal{C}$.
+
+At time $t_2 > t_1$, if the system attempts to process "the same" information, it must:
+\begin{enumerate}
+\item Access the completed state $C_i$ (which is now in the past of the sequence)
+\item Create a new processing event (which must occupy a new position in $\mathcal{C}$)
+\end{enumerate}
+
+Since the new processing event occurs at $t_2 > t_1$, and categorical ordering reflects temporal ordering, the new event must occupy $C_j$ with $C_i \prec C_j$.
+
+Therefore, "re-thinking" $C_i$ actually creates a new categorical state $C_j$ that refers to $C_i$ but is distinct from it. $\square$
+\end{proof}
+
+\begin{corollary}[Temporal Direction from Categorical Ordering]
+\label{cor:temporal-direction}
+Categorical irreversibility creates temporal direction. The ordering $C_i \prec C_j$ provides an arrow of time: systems move forward through categorical space, never backward.
+\end{corollary}
+
+\begin{proof}
+By Theorem \ref{thm:categorical-irreversibility}, completed states cannot be re-occupied. Therefore, the system must always move to new categorical positions. The ordering $\prec$ ensures this movement is unidirectional: if $C_i \prec C_j$, then $C_j \nprec C_i$ (irreflexivity and transitivity).
+
+Therefore, categorical completion creates an inherent temporal direction. $\square$
+\end{proof}
+
+\begin{definition}[Categorical Completion Rate]
+\label{def:completion-rate}
+The categorical completion rate $\dot{C} = dC/dt$ is the number of categorical states completed per unit physical time. This rate determines the perceived temporal flow for bounded observers.
+\end{definition}
+
+\begin{theorem}[Time as Completion Rate]
+\label{thm:time-completion-rate}
+For a bounded observer system, perceived temporal duration $\Delta t_{\text{perceived}}$ is proportional to the number of categorical completions:
+\begin{equation}
+\Delta t_{\text{perceived}} \propto \int_{t_1}^{t_2} \dot{C}(\tau) \, d\tau = C(t_2) - C(t_1)
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Physical time $t$ progresses continuously. However, bounded observers process reality through discrete categorical assignments (Axiom \ref{ax:categorical-completion}).
+
+Each categorical completion requires computational resources. With finite capacity (Axiom \ref{ax:bounded-space}), the completion rate is bounded: $\dot{C} \leq \dot{C}_{\text{max}} < \infty$.
+
+Perceived temporal duration corresponds to the number of categorical assignments completed, not to physical time directly. Therefore:
+\begin{equation}
+\Delta t_{\text{perceived}} = \alpha \cdot (C(t_2) - C(t_1))
+\end{equation}
+where $\alpha$ is a proportionality constant relating categorical completions to temporal experience. $\square$
+\end{proof}
+
+\begin{proposition}[Categorical State Space]
+\label{prop:categorical-space}
+The categorical state space $\Cspace$ has cardinality $|\Cspace| = \Nmax$, where $\Nmax$ is the maximum categorical complexity from Theorem \ref{thm:recursive-enumeration}.
+\end{proposition}
+
+\begin{proof}
+By Theorem \ref{thm:recursive-enumeration}, the maximum number of categorical distinctions is $\Nmax \approx (10^{84}) \uparrow\uparrow (10^{80})$. Each distinction corresponds to a categorical state position in $\mathcal{C}$.
+
+Therefore, $|\Cspace| = \Nmax$. $\square$
+\end{proof}
+
+\begin{definition}[Categorical Equivalence]
+\label{def:categorical-equivalence}
+Two physical configurations are \textit{categorically equivalent} if they occupy the same categorical state $C_i$ despite being physically distinct. Formally, configurations $\omega_1$ and $\omega_2$ are equivalent if:
+\begin{equation}
+\text{Category}(\omega_1) = \text{Category}(\omega_2) = C_i
+\end{equation}
+\end{definition}
+
+Categorical equivalence is central to path independence: multiple physically distinct inputs can produce the same categorical output, enabling the many-to-one mapping structure that characterizes bounded information systems.
+

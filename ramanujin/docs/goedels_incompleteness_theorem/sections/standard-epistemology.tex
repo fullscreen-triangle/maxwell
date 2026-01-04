@@ -1,0 +1,201 @@
+\section{Tier 1: Known Unknowns and Standard Epistemology}
+
+\subsection{The Foundation of Classical Inquiry}
+
+The first tier of ignorance consists of questions we can formulate but cannot currently answer—the traditional domain of epistemology and scientific inquiry. This tier has been well-studied throughout the history of philosophy and represents the "normal" operation of knowledge acquisition.
+
+\begin{definition}[Known Unknowns]\label{def:known-unknowns}
+For a formal system $F$ or cognitive agent $A$, the set of known unknowns is:
+\begin{equation}
+\mathcal{K}_1 = \{q \in \mathcal{Q} : \text{Formulable}_F(q) \land \neg\text{Known}_F(\text{answer}(q))\}
+\end{equation}
+where $\mathcal{Q}$ is the space of well-formed questions in $F$'s language, and $\text{Formulable}_F(q)$ indicates $q$ can be expressed using $F$'s syntax and semantics.
+\end{definition}
+
+\begin{example}[Classical Known Unknowns]
+Standard examples include:
+\begin{itemize}
+\item \textbf{Mathematical:} "What is the $10^{100}$-th digit of $\pi$?" (Formulable, computationally difficult)
+\item \textbf{Physical:} "What is the exact position of electron $e$ at time $t$?" (Formulable, quantum-limited)
+\item \textbf{Historical:} "What did Caesar have for breakfast on March 14, 44 BCE?" (Formulable, information-lost)
+\item \textbf{Empirical:} "How many stars are in the observable universe?" (Formulable, observationally limited)
+\end{itemize}
+\end{example}
+
+The crucial property of Tier 1 is that we can:
+\begin{enumerate}
+\item Recognize that we don't know the answer
+\item Formulate the question precisely
+\item Specify what would constitute an answer
+\item Imagine methods that could potentially provide answers
+\end{enumerate}
+
+\subsection{Epistemological Frameworks for Tier 1}
+
+Classical epistemology has developed sophisticated frameworks for addressing known unknowns:
+
+\begin{principle}[Justified True Belief]\label{prin:jtb}
+Traditional epistemology defines knowledge as justified true belief \cite{plato-theaetetus}:
+\begin{equation}
+K(p) \equiv \text{Belief}(p) \land \text{True}(p) \land \text{Justified}(p)
+\end{equation}
+\end{principle}
+
+While Gettier problems \cite{gettier1963} complicate this definition, the framework remains useful for Tier 1 questions where:
+- Questions are well-formed
+- Truth conditions are specifiable
+- Justification methods are available
+
+\begin{principle}[Bayesian Epistemology]
+For Tier 1 unknowns, Bayesian updating provides formal mechanisms \cite{jaynes2003}:
+\begin{equation}
+P(H|E) = \frac{P(E|H)P(H)}{P(E)}
+\end{equation}
+where $H$ is a hypothesis about an unknown and $E$ is evidence.
+\end{principle}
+
+\subsection{The Scientific Method for Tier 1}
+
+The scientific method is specifically designed for Tier 1 questions:
+
+\begin{enumerate}
+\item \textbf{Formulate Question:} State unknown as precise query
+\item \textbf{Develop Hypothesis:} Propose potential answer
+\item \textbf{Design Experiment:} Create method to test hypothesis  
+\item \textbf{Collect Data:} Observe evidence
+\item \textbf{Analyze Results:} Compare evidence to predictions
+\item \textbf{Draw Conclusions:} Accept, reject, or modify hypothesis
+\end{enumerate}
+
+\begin{theorem}[Tier 1 Accessibility]\label{thm:tier1-accessible}
+For any known unknown $q \in \mathcal{K}_1$, there exists in principle a method $M$ such that applying $M$ with sufficient resources would provide answer $a$ to $q$.
+\end{theorem}
+
+\begin{proof}
+Known unknowns are by definition formulable within the system. Formulability implies:
+\begin{itemize}
+\item The question uses concepts defined in the system
+\item Answer conditions are specifiable
+\item Verification methods can be described
+\end{itemize}
+
+Even if current resources are insufficient (computational limits, observational constraints, information loss), the \textit{type} of method required is knowable. For example:
+\begin{itemize}
+\item $\pi$'s $10^{100}$-th digit: Run computation long enough
+\item Electron position: Improve measurement precision (quantum limits known)
+\item Caesar's breakfast: Time travel or complete historical records (physically impossible but conceptually clear)
+\end{itemize}
+
+The impossibility is practical, not structural. Therefore, Tier 1 unknowns are in-principle accessible. \qed
+\end{proof}
+
+\subsection{Computational Limits in Tier 1}
+
+\begin{definition}[Computational Complexity Classes]
+Tier 1 questions partition by computational difficulty:
+\begin{align}
+\text{P} &: \text{Solvable in polynomial time} \\
+\text{NP} &: \text{Verifiable in polynomial time} \\
+\text{PSPACE} &: \text{Solvable with polynomial space} \\
+\text{EXPTIME} &: \text{Solvable in exponential time}
+\end{align}
+\end{definition}
+
+These complexity classes describe practical limits on Tier 1 resolution but do not create structural inaccessibility. A question in EXPTIME is still:
+- Formulable
+- Answerable in principle
+- Verifiable if solved
+
+The difficulty is resource-quantitative, not knowledge-qualitative.
+
+\subsection{Information-Theoretic Limits in Tier 1}
+
+\begin{principle}[Shannon Information Limits]
+For Tier 1 unknowns involving physical measurement:
+\begin{equation}
+I_{max} = -\sum_i p_i \log_2 p_i
+\end{equation}
+Maximum extractable information bounded by channel capacity \cite{shannon1948}.
+\end{principle}
+
+\begin{principle}[Heisenberg Uncertainty]
+For conjugate observables in Tier 1 quantum questions:
+\begin{equation}
+\Delta x \cdot \Delta p \geq \frac{\hbar}{2}
+\end{equation}
+Fundamental measurement limits \cite{heisenberg1927}.
+\end{principle}
+
+These limits constrain answer precision but do not prevent question formulation or conceptual understanding. We know what we don't know and why we don't know it.
+
+\subsection{Historical Progress on Tier 1}
+
+Scientific history demonstrates systematic Tier 1 resolution:
+
+\begin{example}[Resolved Known Unknowns]
+Questions that moved from $\mathcal{K}_1$ to known:
+\begin{itemize}
+\item \textbf{Planetary Motion:} Unknown to ancient Greeks, resolved by Newton
+\item \textbf{Chemical Composition:} Unknown before spectroscopy, resolved by Bunsen/Kirchhoff
+\item \textbf{Atomic Structure:} Unknown before quantum mechanics, resolved by Bohr/Schrödinger
+\item \textbf{DNA Structure:} Unknown before X-ray crystallography, resolved by Watson/Crick
+\end{itemize}
+\end{example}
+
+The pattern is consistent: Tier 1 unknowns yield to improved methods. This validates the in-principle accessibility of known unknowns.
+
+\subsection{The Boundary with Tier 2}
+
+Not all questions remain in Tier 1. Some migrate to Tier 2 when we discover they are structurally unprovable:
+
+\begin{example}[Tier 1 to Tier 2 Migration]
+\begin{itemize}
+\item \textbf{Continuum Hypothesis:} Seemed like Tier 1 question, proven independent of ZFC by Cohen \cite{cohen1963}
+\item \textbf{Halting Problem:} Seemed solvable, proven undecidable by Turing \cite{turing1936}
+\item \textbf{Gödel Sentences:} Constructible but unprovable within system
+\end{itemize}
+\end{example}
+
+\begin{definition}[Tier 1-2 Boundary]
+The boundary occurs when we prove structural impossibility rather than practical difficulty:
+\begin{equation}
+q \in \mathcal{K}_1 \to \mathcal{K}_2 \iff \exists \text{ proof that } q \text{ is undecidable/unprovable in } F
+\end{equation}
+\end{definition}
+
+This migration reveals that some questions are not merely difficult but formally intractable—leading to Tier 2.
+
+\subsection{Why Tier 1 is Insufficient}
+
+Classical epistemology operating solely at Tier 1 faces fundamental limitations:
+
+\begin{theorem}[Tier 1 Incompleteness]\label{thm:tier1-incomplete}
+No epistemological framework restricted to Tier 1 can address the complete space of inquiry.
+\end{theorem}
+
+\begin{proof}
+Tier 1 frameworks assume:
+\begin{enumerate}
+\item All meaningful questions are formulable
+\item Answers exist within the system
+\item Methods for resolution can be specified
+\end{enumerate}
+
+However, Gödel's theorems \cite{godel1931} establish that for any consistent formal system $F$ rich enough to express arithmetic:
+\begin{equation}
+\exists s \in \text{Sent}(F) : \text{True}(s) \land \neg\text{Provable}_F(s)
+\end{equation}
+
+Such statements $s$ are formulable (Tier 1 requirement satisfied) but structurally unprovable (violating Tier 1 resolution assumption). Therefore, Tier 1 frameworks are necessarily incomplete, requiring Tier 2 analysis. \qed
+\end{proof}
+
+\subsection{Tier 1 Summary}
+
+Known unknowns represent the domain of traditional epistemology:
+- Questions we can ask
+- Answers we know we lack
+- Methods we can (in principle) specify
+- Progress we can systematically make
+
+This tier is necessary but insufficient. Its incompleteness necessitates Tier 2, which we examine next.
+

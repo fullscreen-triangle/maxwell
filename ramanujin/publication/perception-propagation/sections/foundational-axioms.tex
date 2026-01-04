@@ -1,0 +1,69 @@
+\section{Foundational Axioms}
+
+We establish the mathematical foundations through four axioms that define bounded information systems operating within unbounded reality spaces.
+
+\begin{axiom}[Bounded Space]
+\label{ax:bounded-space}
+For any observer system $\mathcal{S}$, there exists a finite bounded space $H$ such that all computational operations and state representations are constrained to $H$. Formally, for any state $s$ accessible to $\mathcal{S}$, we have $s \in H$ where $|H| < \infty$.
+\end{axiom}
+
+\begin{axiom}[Partition Depth]
+\label{ax:partition-depth}
+Any bounded system $\mathcal{S}$ must partition reality into observer-environment distinction. This partition creates a boundary $\partial H$ separating internal states $H$ from external reality $\mathcal{U}$, where $\mathcal{U}$ is unbounded ($|\mathcal{U}| = \infty$ or $|\mathcal{U}| \gg |H|$).
+\end{axiom}
+
+\begin{axiom}[Categorical Completion]
+\label{ax:categorical-completion}
+States in bounded systems are categorical completions—discrete assignments to ordered positions in a categorical sequence $\mathcal{C} = \{C_1, C_2, C_3, \ldots\}$ where $C_i \prec C_j$ indicates $C_i$ was completed before $C_j$. Once a categorical state $C_i$ is completed, it cannot be re-occupied (categorical irreversibility).
+\end{axiom}
+
+\begin{axiom}[Oscillatory Substrate]
+\label{ax:oscillatory-substrate}
+Information processing occurs through oscillatory dynamics—phase-locked configurations that can be completed by multiple categorically equivalent but physically distinct arrangements. Phase-lock degeneracy means that $\sim 10^6$ different weak force configurations can produce identical oscillatory signatures.
+\end{axiom}
+
+These axioms establish the mathematical constraints under which bounded systems operate. Axiom \ref{ax:bounded-space} ensures finite capacity, Axiom \ref{ax:partition-depth} establishes the observer-environment distinction, Axiom \ref{ax:categorical-completion} provides temporal structure through categorical ordering, and Axiom \ref{ax:oscillatory-substrate} enables the path independence that will be central to our framework.
+
+\begin{definition}[Bounded Information System]
+A bounded information system is a tuple $\mathcal{S} = (H, \mathcal{U}, f, \Cspace, \prec)$ where:
+\begin{itemize}
+\item $H$ is a finite bounded space (Axiom \ref{ax:bounded-space})
+\item $\mathcal{U}$ is an unbounded input space with $\partial H$ as partition boundary (Axiom \ref{ax:partition-depth})
+\item $f: \mathcal{U} \to H$ is a transformation function mapping inputs to outputs
+\item $\Cspace = \{C_1, C_2, \ldots\}$ is a categorical sequence (Axiom \ref{ax:categorical-completion})
+\item $\prec$ is an ordering relation on $\Cspace$ (Axiom \ref{ax:categorical-completion})
+\end{itemize}
+\end{definition}
+
+\begin{proposition}[Necessity of Boundedness]
+\label{prop:necessity-boundedness}
+Any system that processes information must be bounded. If $|H| = \infty$, then the system cannot be physically realized or computationally implemented.
+\end{proposition}
+
+\begin{proof}
+Assume $|H| = \infty$. Then either:
+\begin{enumerate}
+\item The system requires infinite storage, which violates physical finiteness
+\item The system requires infinite computation time per operation, which violates temporal finiteness
+\item The system cannot be specified finitely, which violates constructibility
+\end{enumerate}
+All three cases contradict the definition of a realizable system. Therefore, $|H| < \infty$ necessarily. $\square$
+\end{proof}
+
+\begin{proposition}[Partition Necessity]
+\label{prop:partition-necessity}
+The observer-environment partition is geometrically necessary. Without $\partial H$, there is no distinction between system and environment, hence no information processing can occur.
+\end{proposition}
+
+\begin{proof}
+Information processing requires:
+\begin{enumerate}
+\item A system that processes (internal to $H$)
+\item Information to process (external from $\mathcal{U}$)
+\item A mechanism to transfer information across boundary $\partial H$
+\end{enumerate}
+If $\partial H$ does not exist, then $H = \mathcal{U}$, meaning the system and environment are identical. In this case, there is no information to process (no distinction between system state and environment state), and no processing can occur. Therefore, $\partial H$ is necessary. $\square$
+\end{proof}
+
+These foundational axioms and propositions establish the mathematical framework within which all subsequent results will be derived. The bounded-unbounded mismatch ($|H| < \infty$ but $|\mathcal{U}| = \infty$) creates the fundamental problem that sufficiency-based processing solves.
+

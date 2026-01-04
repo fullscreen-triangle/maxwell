@@ -1,0 +1,113 @@
+\section{The Three-Tier Ignorance Hierarchy and Gödelian Residue}
+
+The three-tier structure formalizes the limits of bounded systems, culminating in the Gödelian residue $\mathcal{G}$—information that is structurally inaccessible to finite observers.
+
+\begin{definition}[Three-Tier Ignorance Hierarchy]
+\label{def:three-tier}
+For any bounded system $\mathcal{S}$ with bounded space $H$ and unbounded reality $\mathcal{U}$, we define three tiers:
+
+\textbf{Tier 1: Known Unknowns}
+\begin{equation}
+\mathcal{K}_1 = \{q : q \text{ is formulable in } \mathcal{S} \land \text{answer}(q) \text{ unknown}\}
+\end{equation}
+Questions that can be formulated but cannot currently be answered. Addressable through standard epistemology.
+
+\textbf{Tier 2: Unprovable Truths}
+\begin{equation}
+\mathcal{K}_2 = \{s : s \in \text{Sent}(\mathcal{S}) \land \text{True}(s) \land \neg\text{Provable}_{\mathcal{S}}(s)\}
+\end{equation}
+Statements identifiable as true but unprovable within the system. This is Gödel's traditional incompleteness.
+
+\textbf{Tier 3: Unknowable Unknowables}
+\begin{equation}
+\mathcal{K}_3 = \mathcal{U}_{\text{total}} - \left(\mathcal{K}_1 \cup \mathcal{K}_2 \cup \bigcup_{i=1}^n \mathcal{K}_{\text{known},i}\right)
+\end{equation}
+The Gödelian residue $\mathcal{G} = \mathcal{K}_3$—information that cannot be formulated, accessed, or even recognized as missing within bounded cognitive structures.
+\end{definition}
+
+\begin{theorem}[Gödelian Residue Persistence]
+\label{thm:residue-persistence}
+For any finite observer system with bounded computational capacity, $|\mathcal{K}_3| > 0$ necessarily. The Gödelian residue $\mathcal{G}$ cannot be eliminated through increased computational power, better epistemology, or extended formal systems.
+\end{theorem}
+
+\begin{proof}
+Assume $|\mathcal{K}_3| = 0$, meaning all information is accessible (either in $\mathcal{K}_1$ or $\mathcal{K}_2$).
+
+If all information is accessible, then:
+\begin{enumerate}
+\item The system has complete knowledge of $\mathcal{U}$ (unbounded reality)
+\item The system can formulate all possible questions
+\item The system can prove or identify all true statements
+\end{enumerate}
+
+But by Axiom \ref{ax:bounded-space}, $|H| < \infty$ while $|\mathcal{U}| = \infty$. Complete knowledge would require $|H| \geq |\mathcal{U}|$, which is impossible.
+
+Furthermore, by Corollary \ref{cor:x-positive}, the inaccessible information $x$ in the $\infty - x$ structure satisfies $x > 0$ necessarily. This $x$ corresponds to $\mathcal{K}_3$.
+
+Therefore, $|\mathcal{K}_3| > 0$ necessarily. $\square$
+\end{proof}
+
+\begin{proposition}[Tier Relationships]
+\label{prop:tier-relationships}
+The three tiers are nested: $\mathcal{K}_1 \subset \mathcal{K}_2 \subset \mathcal{K}_3$ in terms of accessibility. Tier 1 is most accessible (formulable), Tier 2 is partially accessible (identifiable but unprovable), Tier 3 is inaccessible (cannot be formulated).
+\end{proposition}
+
+\begin{proof}
+\textbf{Tier 1 $\subset$ Tier 2:} Questions in $\mathcal{K}_1$ can be formulated, meaning they are identifiable. If they are also true but unprovable, they belong to $\mathcal{K}_2$. Therefore, $\mathcal{K}_1 \subseteq \mathcal{K}_2$.
+
+\textbf{Tier 2 $\subset$ Tier 3:} Statements in $\mathcal{K}_2$ are identifiable (we know they exist and are true) but unprovable. However, $\mathcal{K}_3$ contains information that cannot even be identified or formulated. Since $\mathcal{K}_2$ contains identifiable information, it is a subset of the total unknown space, which includes $\mathcal{K}_3$.
+
+More precisely, $\mathcal{K}_1$, $\mathcal{K}_2$, and $\mathcal{K}_3$ partition the total unknown space $\mathcal{U}_{\text{total}} - \mathcal{K}_{\text{known}}$, with increasing inaccessibility. $\square$
+\end{proof}
+
+\begin{theorem}[Gödelian Residue as Structural Necessity]
+\label{thm:residue-necessity}
+The Gödelian residue $\mathcal{G} = \mathcal{K}_3$ is not a limitation but a structural necessity arising from the relationship between finite observers and infinite reality.
+\end{theorem}
+
+\begin{proof}
+By Theorem \ref{thm:residue-persistence}, $|\mathcal{K}_3| > 0$ necessarily.
+
+The residue arises from:
+\begin{enumerate}
+\item \textbf{Bounded capacity:} $|H| < \infty$ (Axiom \ref{ax:bounded-space})
+\item \textbf{Unbounded reality:} $|\mathcal{U}| = \infty$ (Axiom \ref{ax:partition-depth})
+\item \textbf{Observer bias:} Each observer must choose a starting point and path (Corollary \ref{cor:x-positive})
+\item \textbf{Incompatible structures:} Different observers with different goals impose incompatible categorical structures
+\end{enumerate}
+
+These factors create necessary inaccessibility. The residue is not eliminable because it is built into the architecture of bounded systems operating in unbounded spaces.
+
+Therefore, $\mathcal{G}$ is a structural necessity, not an eliminable limitation. $\square$
+\end{proof}
+
+\begin{corollary}[Residue in Observation Boundary]
+\label{cor:residue-boundary}
+The Gödelian residue $\mathcal{G}$ corresponds to the inaccessible information $x$ in the observation boundary structure $\infty - x$ (Theorem \ref{thm:infinity-minus-x}).
+\end{corollary}
+
+\begin{proof}
+By Theorem \ref{thm:infinity-minus-x}, from any observer's perspective, total categorical complexity appears as $\infty - x$ where $x$ is inaccessible information.
+
+By Definition \ref{def:three-tier}, $\mathcal{K}_3$ is information that cannot be formulated, accessed, or recognized as missing.
+
+Therefore, $x = |\mathcal{K}_3| = |\mathcal{G}|$—the Gödelian residue is the inaccessible portion of the observation boundary. $\square$
+\end{proof}
+
+\begin{proposition}[Residue Conservation]
+\label{prop:residue-conservation}
+In a closed system, the Gödelian residue $\mathcal{G}$ cannot be eliminated, only redistributed among observers. Total residue is conserved: $\sum_{i=1}^n |\mathcal{G}_i| \geq |\mathcal{G}_{\text{total}}|$ for $n$ observers.
+\end{proposition}
+
+\begin{proof}
+By Proposition \ref{prop:conservation}, categorical information is conserved in closed systems. The residue $\mathcal{G}$ represents inaccessible categorical information.
+
+If residue could be eliminated, then all information would be accessible, contradicting Theorem \ref{thm:residue-persistence}.
+
+However, residue can be redistributed: information inaccessible to observer $O_i$ might be accessible to observer $O_j$ (different goals, different paths). But the total residue across all observers cannot be less than the structural minimum required by bounded-unbounded mismatch.
+
+Therefore, residue is conserved. $\square$
+\end{proof}
+
+The three-tier structure and Gödelian residue formalize the fundamental limits of bounded information systems. The residue is not a bug but a feature—the necessary condition for observation to exist, enabling bounded systems to operate despite irreducible incompleteness.
+

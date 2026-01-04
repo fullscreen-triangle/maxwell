@@ -1,0 +1,34 @@
+{
+  "timestamp": "2025-10-26T23:04:32.893074",
+  "domain": "molecular",
+  "num_items": 3,
+  "coordinates": {
+    "Vanillin": {
+      "S1": 1.0415957898723016e-10,
+      "S2": 0.54,
+      "S3": 13.379363242215645,
+      "domain": "molecular",
+      "metadata": {
+        "molecule": "Vanillin"
+      }
+    },
+    "Ethyl Vanillin": {
+      "S1": 1.3998805303602409e-11,
+      "S2": 0.5280914285714285,
+      "S3": 11.872214611209001,
+      "domain": "molecular",
+      "metadata": {
+        "molecule": "Ethyl Vanillin"
+      }
+    },
+    "Indole": {
+      "S1": 3.672642655175096e-52,
+      "S2": 4.267741935483871,
+      "S3": -12.93142000635518,
+      "domain": "molecular",
+      "metadata": {
+        "molecule": "Indole"
+      }
+    }
+  }
+}
