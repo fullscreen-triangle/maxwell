@@ -93,6 +93,17 @@ k = 3 \left\lceil \log_3 \frac{\sqrt{3}}{0.01} \right\rceil = 3 \left\lceil \log
 A 15-trit string (2.5 trytes) specifies S-coordinates to 1\% precision.
 \end{example}
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/figure_2_hierarchical_partition.png}
+  \caption{\textbf{The 3$^k$ Hierarchical Partition of S-Space Converges to Continuous Points as k→∞, Establishing Ternary Expansion as Bridge Between Discrete Computation and Continuous Dynamics.}
+  \textbf{(Top Left)} First refinement level k=1: 3$^1$=3 cells. Three purple spheres positioned along Sk axis at coordinates (0, 1/3, 2/3), representing three cells created by initial ternary split. Trit addresses: "0" (left sphere, Sk∈[0,1/3]), "1" (middle sphere, Sk∈[1/3,2/3]), "2" (right sphere, Sk∈[2/3,1]). Each cell occupies volume 1/3 of unit cube. First trit selects which third of Sk axis to refine.
+  \textbf{(Top Right)} Second refinement level k=2: 3$^2$=9 cells. Nine spheres (purple to cyan gradient) positioned in 3×3 grid on Sk-St plane. Each k=1 cell subdivided into three cells along St axis. Trit addresses: "00" (purple, Sk∈[0,1/3], St∈[0,1/3]), "01" (Sk∈[0,1/3], St∈[1/3,2/3]), "02" (Sk∈[0,1/3], St∈[2/3,1]), continuing through "22" (cyan, Sk∈[2/3,1], St∈[2/3,1]). Each cell occupies volume 1/9. Second trit selects which third of St axis to refine within chosen Sk slice.
+  \textbf{(Bottom Left)} Third refinement level k=3: 3$^3$=27 cells. Twenty-seven spheres (purple to yellow gradient) filling 3D volume in 3×3×3 grid. Each k=2 cell subdivided into three cells along Se axis. Color coding indicates coordinate values: purple (low Sk, St, Se), cyan (intermediate), green (mid-range), yellow (high). Annotated addresses visible: "00" (purple sphere, origin corner), "11" (green sphere, center), "12" (green-yellow sphere), "21" (yellow-green sphere), "22" (yellow sphere, opposite corner). Each cell occupies volume 1/27. Third trit selects which third of Se axis to refine within chosen Sk-St slice. Complete 3D space coverage achieved: all 27 cells tile [0,1]$^3$ without gaps or overlaps.
+  \textbf{(Bottom Right)} Convergence to continuous point as k→∞. Log-linear plot showing distance from cell center to target point S=(0.7, 0.5, 0.3) versus trit depth k. Blue circles: measured distances at k=1,2,3,4,5,6,7,8,9,10. Red dashed line: theoretical bound $\sqrt{3} \cdot 3^{-k/3}$ (diagonal of rectangular cell). Distance decreases exponentially: k=1 (distance ≈0.6), k=3 (≈0.2), k=6 (≈0.07), k=9 (≈0.02), k=10 (≈0.015). Convergence rate O(3$^{-k/3}$) confirms each additional trit reduces uncertainty by factor of 3$^{1/3}$≈1.44 per dimension. After k=9 trits (three 3-trit coordinates), distance <0.02, sufficient precision for most applications. Infinite ternary string converges to unique point: $\lim_{k \to \infty}$ cell$_k$ = S. Theorem 5.2 establishes bijection between infinite trit sequences and points in [0,1]$^3$, resolving discrete-continuous duality.}
+  \label{fig:hierarchical_partition}
+\end{figure}
+
 \subsection{Cantor Set Connection}
 
 \begin{definition}[Ternary Cantor Set]
@@ -169,3 +180,40 @@ Given only the local structure of a ternary-addressed region, it is impossible t
 This scale ambiguity is the mathematical basis for the ``scale ambiguity theorem'' in categorical computing: local and global problems have identical structure, differing only in the number of prefix trits.
 \end{remark}
 
+\subsection{Uniqueness and Boundary Representations}
+
+\begin{theorem}[Unique Ternary Expansion]\label{thm:unique-expansion}
+Every $\Scoord \in [0,1]^3$ has a unique infinite ternary expansion:
+\begin{equation}
+\Scoord = (S_k, S_t, S_e) = \left(\sum_{i=1}^\infty \frac{t_{3i}}{3^i}, \sum_{i=1}^\infty \frac{t_{3i+1}}{3^i}, \sum_{i=1}^\infty \frac{t_{3i+2}}{3^i}\right)
+\end{equation}
+except for boundary points with two representations:
+\begin{equation}
+S = 0.t_1t_2\ldots t_k222\ldots = 0.t_1t_2\ldots(t_k+1)000\ldots
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+\textbf{Existence:} For any $\Scoord \in [0,1]^3$, Theorem~\ref{thm:address-from-coords} constructs a ternary expansion by iterative refinement. The sequence of cells $C_k$ nests with $\bigcap_{k=0}^\infty C_k = \{\Scoord\}$.
+
+\textbf{Uniqueness (generic case):} Suppose $\Scoord$ has two distinct ternary expansions $\mathbf{t} = (t_1, t_2, \ldots)$ and $\mathbf{t}' = (t'_1, t'_2, \ldots)$ with $\mathbf{t} \neq \mathbf{t}'$.
+
+Let $j$ be the first position where $t_j \neq t'_j$. Then $\phi_j(\mathbf{t})$ and $\phi_j(\mathbf{t}')$ are distinct cells at level $j$, which are disjoint. But $\Scoord \in \phi_j(\mathbf{t})$ and $\Scoord \in \phi_j(\mathbf{t}')$, contradiction.
+
+\textbf{Boundary exception:} Consider a point on a cell boundary, e.g., $S_k = 1/3$. This can be represented as:
+\begin{align}
+S_k &= 0.1000\ldots = \frac{1}{3} \\
+S_k &= 0.0222\ldots = \frac{0}{3} + \frac{2}{9} + \frac{2}{27} + \cdots = \frac{2/9}{1-1/3} = \frac{1}{3}
+\end{align}
+
+These are the only non-unique representations, occurring precisely when a coordinate equals $m/3^n$ for integers $m, n$.
+\qed
+\end{proof}
+
+\begin{corollary}[Almost-Everywhere Uniqueness]
+The set of points in $[0,1]^3$ with non-unique ternary expansions has Lebesgue measure zero.
+\end{corollary}
+
+\begin{proof}
+Boundary points form a countable union of lower-dimensional manifolds (planes, lines, points), each with measure zero in $\mathbb{R}^3$. \qed
+\end{proof}

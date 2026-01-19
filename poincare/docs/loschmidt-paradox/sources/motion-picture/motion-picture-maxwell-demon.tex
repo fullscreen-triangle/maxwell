@@ -1,0 +1,69 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{booktabs}
+
+\title{Temporally Irreversible Video Representation via Categorical Entropy Coordinates: Motion Picture Maxwell Demons}
+
+\author{
+Kundai Sachikonye \\
+\small \textit{Department of Computer Vision \& Information Theory} \\
+\small \texttt{[author contact]}
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\input{abstract.tex}
+\end{abstract}
+
+\section{Introduction}
+\input{introduction.tex}
+
+\section{Theoretical Framework}
+
+\subsection{Temporal S-Entropy Coordinates}
+\input{st-stellas-entropy-coordinates.tex}
+
+\subsection{Gas Molecular Dynamics for Temporal Evolution}
+\input{gas-molecular-dynamics.tex}
+
+\subsection{Frame Motion and Entropy Trajectories}
+\input{frame-motion.tex}
+
+\section{Implementation and Validation}
+\input{results.tex}
+
+\section{Discussion}
+\input{discussion.tex}
+
+\section{Conclusion}
+
+We have presented a novel video representation framework based on categorical entropy coordinates that enforces thermodynamic irreversibility in temporal playback. The Motion Picture Maxwell Demon architecture demonstrates that video sequences can be organized in entropy space rather than chronological time, enabling fundamentally new playback behaviors where scrubbing backward in playback position still results in forward temporal evolution.
+
+This work establishes several key results:
+\begin{enumerate}
+\item Temporal entropy production provides a monotonic coordinate system for frame indexing
+\item Dual-membrane temporal structure enables multiple valid forward-evolving paths through the same video sequence
+\item Temporal Maxwell demons can enforce irreversibility while maintaining visual continuity
+\item The framework is compatible with existing video formats through entropy-based transcoding
+\end{enumerate}
+
+The implications extend beyond video playback to fundamental questions about temporal representation in information systems, suggesting that entropy-based coordinates may be more natural for representing irreversible processes than chronological time coordinates.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
+

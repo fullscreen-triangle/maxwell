@@ -1,0 +1,197 @@
+\section{Microscopy from High-Depth Categorical Partitioning}
+\label{sec:microscopy}
+
+\subsection{Magnification as Partition Depth Ratio}
+
+Everyday vision operates at partition depth $n_{\text{macro}} \sim 10^3$ (corresponding to $\sim 2 \times 10^6$ pixels for 2$n^2$ scaling). Microscopy extends to higher depths $n_{\text{micro}} \gg n_{\text{macro}}$, enabling finer spatial discrimination.
+
+\begin{definition}[Magnification]
+\label{def:magnification}
+The \textbf{magnification} $\mathcal{M}$ of a microscope is the ratio of apparent angular size of the image to the actual angular size of the object at standard viewing distance.
+\end{definition}
+
+\begin{theorem}[Microscopy Depth Theorem]
+\label{thm:microscopy_depth}
+Magnification corresponds to the ratio of microscopic to macroscopic partition depths:
+\begin{equation}
+\mathcal{M} = \frac{n_{\text{micro}}}{n_{\text{macro}}}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+From the Image Resolution Theorem, minimum resolvable feature size scales as $\delta x \sim 1/n$.
+
+At macroscopic depth $n_{\text{macro}}$, resolution is:
+\begin{equation}
+\delta x_{\text{macro}} \sim \frac{1}{n_{\text{macro}}}
+\end{equation}
+
+At microscopic depth $n_{\text{micro}}$, resolution is:
+\begin{equation}
+\delta x_{\text{micro}} \sim \frac{1}{n_{\text{micro}}}
+\end{equation}
+
+Magnification is the ratio of resolved feature sizes:
+\begin{equation}
+\mathcal{M} = \frac{\delta x_{\text{macro}}}{\delta x_{\text{micro}}} = \frac{n_{\text{micro}}}{n_{\text{macro}}}
+\end{equation}
+
+A microscope with $\mathcal{M} = 1000\times$ increases partition depth by a factor of 1000.
+\end{proof}
+
+\subsection{Resolution Limit from Partition Geometry}
+
+The resolution of any imaging system is bounded by the partition depth achievable with available oscillatory frequencies.
+
+\begin{theorem}[Partition-Geometric Resolution Limit]
+\label{thm:resolution_limit}
+The minimum resolvable feature size for imaging with characteristic wavelength $\lambda$ is:
+\begin{equation}
+\delta x_{\min} = \frac{\lambda}{2n}
+\end{equation}
+where $n$ is the achievable partition depth at that wavelength.
+\end{theorem}
+
+\begin{proof}
+From partition geometry, spatial resolution is determined by the number of distinguishable angular categories $\sim n^2$ for two-dimensional projection.
+
+The characteristic spatial scale is set by the wavelength $\lambda$ of the oscillatory mode used for detection. The finest partition achievable subdivides $\lambda$ into $\sim n$ distinguishable regions.
+
+For a detector with angular aperture corresponding to partition depth $n$, the angular resolution is $\Delta \theta \sim 1/n$ radians. At distance $R$, this corresponds to spatial resolution:
+\begin{equation}
+\delta x = R \Delta \theta \sim \frac{R}{n}
+\end{equation}
+
+For near-field detection where $R \sim \lambda$:
+\begin{equation}
+\delta x_{\min} \sim \frac{\lambda}{n}
+\end{equation}
+
+The factor of 2 arises from two-dimensional projection: $\delta x_{\min} = \lambda/(2n)$.
+\end{proof}
+
+\begin{corollary}[Abbe Diffraction Limit from Partition Theory]
+\label{cor:abbe_limit}
+For maximum achievable partition depth $n_{\max}$ in conventional optics, the resolution limit is:
+\begin{equation}
+\delta x_{\min} = \frac{\lambda}{2 n_{\max}} \approx \frac{\lambda}{2}
+\end{equation}
+when $n_{\max} \sim 1$, reproducing the Abbe diffraction limit without invoking wave optics.
+\end{corollary}
+
+\begin{remark}
+This remarkable result shows that the diffraction limit is not fundamentally a wave phenomenon but a categorical partition constraint: the minimum resolvable feature is set by the categorical depth achievable with oscillatory modes of wavelength $\lambda$. Wave optics emerges as the effective description of oscillatory-categorical dynamics.
+\end{remark}
+
+\subsection{Super-Resolution through Multi-Modal Partition Combination}
+
+Combining partition coordinates from multiple modalities enables super-resolution beyond single-modality limits.
+
+\begin{theorem}[Multi-Modal Resolution Enhancement]
+\label{thm:multimodal_resolution}
+Combining $K$ imaging modalities with individual partition depths $\{n_k\}_{k=1}^K$ achieves effective partition depth:
+\begin{equation}
+n_{\text{eff}} = \sqrt{\sum_{k=1}^K n_k^2}
+\end{equation}
+yielding resolution enhancement $\mathcal{M}_{\text{super}} = n_{\text{eff}}/n_{\text{single}}$.
+\end{theorem}
+
+\begin{proof}
+Each modality $k$ provides partition coordinates up to depth $n_k$, giving $\sim n_k^2$ spatial categories in two dimensions.
+
+Independent modalities provide orthogonal partition information. The combined categorical space has dimensionality:
+\begin{equation}
+\dim(\mathcal{C}_{\text{total}}) = \sum_{k=1}^K \dim(\mathcal{C}_k) = \sum_{k=1}^K 2n_k^2
+\end{equation}
+
+In terms of effective partition depth $n_{\text{eff}}$ satisfying $2n_{\text{eff}}^2 = \sum_k 2n_k^2$:
+\begin{equation}
+n_{\text{eff}} = \sqrt{\sum_{k=1}^K n_k^2}
+\end{equation}
+
+For $K$ identical modalities with $n_k = n$: $n_{\text{eff}} = n\sqrt{K}$, giving resolution improvement $\sqrt{K}$ over single-modality imaging.
+\end{proof}
+
+This explains structured illumination microscopy (SIM), STORM, PALM, and other super-resolution techniques: they effectively combine multiple partition coordinate measurements to exceed single-measurement depth limits.
+
+\subsection{Wavelength-Dependent Partition Depth}
+
+Different oscillatory frequencies (wavelengths) enable different partition depths.
+
+\begin{theorem}[Short-Wavelength Resolution Enhancement]
+\label{thm:wavelength_resolution}
+For a fixed detector architecture, shorter wavelengths enable higher partition depth:
+\begin{equation}
+n(\lambda) \propto \lambda^{-1}
+\end{equation}
+giving resolution scaling $\delta x_{\min}(\lambda) \propto \lambda$.
+\end{theorem}
+
+\begin{example}[Electron Microscopy]
+Electrons with kinetic energy $E_{\text{kin}} = 100$ keV have de Broglie wavelength:
+\begin{equation}
+\lambda_e = \frac{h}{\sqrt{2m_e E_{\text{kin}}}} \approx 3.7 \text{ pm}
+\end{equation}
+
+Compared to visible light $\lambda_{\text{vis}} \approx 500$ nm, this is $\sim 10^5 \times$ shorter, potentially enabling partition depth $n_{\text{EM}} \sim 10^5 n_{\text{optical}}$ and resolution $\delta x_{\min} \sim 0.1$ nm (atomic scale).
+
+Practical electron microscopes achieve resolution $\sim 0.5$–1 Å, consistent with partition depths $n \sim 10^4$–$10^5$.
+\end{example}
+
+\begin{example}[X-Ray Microscopy]
+X-rays with energy $E_{\gamma} = 10$ keV have wavelength:
+\begin{equation}
+\lambda_X = \frac{hc}{E_{\gamma}} \approx 0.12 \text{ nm}
+\end{equation}
+
+This enables resolution $\delta x_{\min} \sim 10$–100 nm, filling the gap between optical ($\sim \mu$m) and electron microscopy ($\sim$ nm). X-ray microscopy is particularly valuable for biological samples where electron beam damage is prohibitive.
+\end{example}
+
+\subsection{Computational Image Generation from Partition Signatures}
+
+A profound consequence: if molecular partition signatures are known, images can be computed without physical measurement.
+
+\begin{theorem}[Computational Image Generation]
+\label{thm:computational_imaging}
+Given:
+\begin{enumerate}
+    \item Partition signatures $\{\Sigma_j\}$ of all molecular species in sample
+    \item Spatial distribution $\rho_j(\mathbf{r})$ of each species
+    \item Oscillatory properties $(A_j, \omega_j, \phi_j)$ of each molecular oscillator
+    \item Illumination wavelength $\lambda$ and detector partition depth $n$
+\end{enumerate}
+The microscope image can be computed as:
+\begin{equation}
+\mathcal{I}_{\text{computed}}(\mathbf{r}) = \left|\sum_j \int \rho_j(\mathbf{r}') \mathcal{T}(\mathbf{r} - \mathbf{r}'; \lambda, n, \omega_j, A_j) d\mathbf{r}'\right|^2
+\end{equation}
+where $\mathcal{T}$ is the transfer function encoding light-matter interaction and detector resolution.
+\end{theorem}
+
+\begin{proof}
+Each molecular species $j$ with partition signature $\Sigma_j$ has characteristic oscillatory response to illumination wavelength $\lambda$. The partition signature determines scattering cross-section $\sigma_j(\lambda)$ and phase response $\phi_j(\lambda)$ through the categorical morphism relating molecular structure to optical properties.
+
+The detector with partition depth $n$ applies point spread function:
+\begin{equation}
+\text{PSF}(\mathbf{r}; n) \sim \frac{1}{\delta x_{\min}^2} \exp\left(-\frac{|\mathbf{r}|^2}{2\delta x_{\min}^2}\right)
+\end{equation}
+where $\delta x_{\min} = \lambda/(2n)$ from the resolution limit theorem.
+
+The oscillatory phase $\phi_j(\tau) = \omega_j \tau + \phi_{j,0}$ modulates the scattering amplitude. Averaging over exposure time $\Delta t$ and convolving with PSF yields the computed image.
+
+This is the image that would be recorded by a microscope with the specified parameters—computed entirely from molecular partition signatures without physical measurement.
+\end{proof}
+
+\begin{corollary}[Microscopy Without a Microscope]
+\label{cor:microscopy_without_microscope}
+For a sample with known molecular composition and spatial distribution, all possible microscope images (at all wavelengths, magnifications, and modalities) can be computed from partition signatures alone.
+\end{corollary}
+
+This enables:
+\begin{itemize}
+    \item Virtual tissue sections without physical sectioning
+    \item Retrospective re-imaging of archived samples
+    \item Rare sample preservation (compute all future images from one characterization)
+    \item Phase-dependent depth profiling (compute images at different oscillatory phases)
+    \item Validation of virtual imaging (compare computed to measured images)
+\end{itemize}
+

@@ -1,0 +1,184 @@
+Frame motion in entropy space fundamentally differs from chronological playback. We establish the mathematical framework for entropy-driven frame traversal and dual-membrane path selection.
+
+\subsubsection{Entropy-Driven Playback Position}
+
+Traditional video defines playback position $p \in [0, 1]$ mapping to chronological frame:
+
+\begin{equation}
+\text{Traditional: } p \xrightarrow{\phi} t = p \cdot T \xrightarrow{} I_t
+\end{equation}
+
+We instead map playback position to entropy space:
+
+\begin{equation}
+\text{Entropic: } p \xrightarrow{\Psi} S_{\text{cum}} = p \cdot S_{\text{max}} \xrightarrow{\Phi^{-1}} \{I_{\text{front}}, I_{\text{back}}\}
+\end{equation}
+
+where $S_{\text{max}} = S_{\text{cum}}(T)$ is the final cumulative entropy.
+
+\subsubsection{Forward Scrubbing Dynamics}
+
+When playback position increases ($\Delta p > 0$):
+
+\begin{algorithm}[H]
+\caption{Forward Scrubbing in Entropy Space}
+\begin{algorithmic}[1]
+\STATE \textbf{Input:} Current position $p_{\text{curr}}$, target $p_{\text{next}}$ where $p_{\text{next}} > p_{\text{curr}}$
+\STATE \textbf{Output:} Next frame $I_{\text{next}}$
+\STATE Compute target entropy: $S_{\text{target}} = p_{\text{next}} \cdot S_{\text{max}}$
+\STATE Find frame with entropy closest to target:
+\begin{equation}
+I_{\text{next}} = \arg\min_{I_k} |S_{\text{cum}}(I_k) - S_{\text{target}}|
+\end{equation}
+\STATE \textbf{Constraint:} $S_{\text{cum}}(I_{\text{next}}) > S_{\text{cum}}(I_{\text{curr}})$
+\STATE Use front face (standard chronological path)
+\RETURN $I_{\text{next}}$
+\end{algorithmic}
+\end{algorithm}
+
+This is straightforward: higher position → higher entropy → later chronological frame.
+
+\subsubsection{Backward Scrubbing: The Revolutionary Mechanism}
+
+When playback position decreases ($\Delta p < 0$), we \textit{cannot} decrease entropy. Instead:
+
+\begin{algorithm}[H]
+\caption{Backward Scrubbing with Entropy Conservation}
+\begin{algorithmic}[1]
+\STATE \textbf{Input:} Current position $p_{\text{curr}}$, target $p_{\text{next}}$ where $p_{\text{next}} < p_{\text{curr}}$
+\STATE \textbf{Output:} Next frame $I_{\text{next}}$
+\STATE Compute nominal target: $S_{\text{nominal}} = p_{\text{next}} \cdot S_{\text{max}}$
+\STATE \textbf{Problem:} $S_{\text{nominal}} < S_{\text{cum}}(I_{\text{curr}})$ (violates monotonicity!)
+\STATE \textbf{Solution:} Switch to back face (alternative forward path)
+\STATE Find back face frame with entropy increase:
+\begin{equation}
+I_{\text{next}} = \arg\min_{I_k \in \text{BackFace}} \left\{|S_{\text{cum}}(I_k) - S_{\text{curr}}| : S_{\text{cum}}(I_k) > S_{\text{cum}}(I_{\text{curr}})\right\}
+\end{equation}
+\STATE Navigate along back face entropy trajectory
+\RETURN $I_{\text{next}}$ (from back face, still forward-evolving!)
+\end{algorithmic}
+\end{algorithm}
+
+\textbf{Key insight}: The back face provides an \textit{alternative entropy path} through the video. When chronological reverse is requested, we instead traverse a different forward path that:
+\begin{enumerate}
+\item Maintains $S_{\text{cum}}$ increase (thermodynamic consistency)
+\item Provides visual content "near" the nominal target (perceptual continuity)
+\item Represents valid physical evolution (not time reversal)
+\end{enumerate}
+
+\subsubsection{Dual-Membrane Path Selection}
+
+The dual-membrane structure provides two conjugate paths:
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+% (Would include actual TikZ diagram in full document)
+\end{tikzpicture}
+\caption{Dual-membrane entropy paths. Front face (blue) follows chronological time. Back face (red) provides alternative forward evolution accessed during backward scrubbing.}
+\end{figure}
+
+Mathematically, at each entropy level $S$, we have:
+
+\begin{equation}
+\Phi^{-1}(S) = \{I_{\text{front}}(S), I_{\text{back}}(S)\}
+\end{equation}
+
+where:
+\begin{align}
+I_{\text{front}}(S) &: \text{Chronologically forward frame} \\
+I_{\text{back}}(S) &: \text{Entropy-conjugate frame (also forward!)}
+\end{align}
+
+\subsubsection{Conjugate Transform for Back Face Generation}
+
+Given front face frame $I_{\text{front}}^t$, we generate back face $I_{\text{back}}^t$ via:
+
+\begin{equation}
+I_{\text{back}}^t = \mathcal{T}_{\text{conjugate}}[I_{\text{front}}^t]
+\end{equation}
+
+where $\mathcal{T}_{\text{conjugate}}$ is a learned transformation satisfying:
+
+\begin{enumerate}
+\item \textbf{Entropy preservation}: $S_{\text{cum}}(I_{\text{back}}^t) = S_{\text{cum}}(I_{\text{front}}^t)$
+\item \textbf{Visual similarity}: $\text{SSIM}(I_{\text{front}}^t, I_{\text{back}}^t) > \tau_{\text{sim}}$
+\item \textbf{Forward evolution}: $I_{\text{back}}^t$ represents plausible forward evolution from $I_{\text{back}}^{t-1}$
+\item \textbf{Invertibility}: $\mathcal{T}_{\text{conjugate}}^2 = \mathbb{I}$ (switching twice returns to original)
+\end{enumerate}
+
+One implementation uses \textbf{phase conjugation} in frequency domain:
+
+\begin{equation}
+\mathcal{F}[I_{\text{back}}] = \mathcal{F}[I_{\text{front}}]^* \cdot \exp(i\phi_{\text{entropy}})
+\end{equation}
+
+where $^*$ denotes complex conjugation and $\phi_{\text{entropy}}$ is an entropy-preserving phase shift.
+
+\subsubsection{Temporal Maxwell Demon for Transition Validation}
+
+Each frame transition is validated by a Temporal Maxwell Demon $\mathcal{D}_{\text{temp}}$:
+
+\begin{algorithm}[H]
+\caption{Temporal Maxwell Demon Validation}
+\begin{algorithmic}[1]
+\STATE \textbf{Input:} Proposed transition $I_{\text{curr}} \to I_{\text{next}}$
+\STATE \textbf{Output:} Accept/Reject + Corrected frame if rejected
+\STATE Query molecular demons: $\{\mathcal{D}_i\}$ for local entropy
+\STATE Compute: $\Delta S = S_{\text{cum}}(I_{\text{next}}) - S_{\text{cum}}(I_{\text{curr}})$
+\IF{$\Delta S \leq 0$}
+    \STATE \textbf{Reject}: Entropy decrease violates second law
+    \STATE Find alternative: $I_{\text{corrected}} = \text{FindEntropyIncreasing}(I_{\text{curr}})$
+    \RETURN Reject, $I_{\text{corrected}}$
+\ELSIF{$\Delta S$ too large (discontinuity)}
+    \STATE \textbf{Interpolate}: Generate intermediate frames
+    \RETURN Accept (with interpolation)
+\ELSE
+    \STATE \textbf{Accept}: Valid entropy-increasing transition
+    \RETURN Accept, $I_{\text{next}}$
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Smooth Transitions via Entropy Geodesics}
+
+To ensure visual continuity during face switching, we interpolate along entropy geodesics:
+
+\begin{equation}
+I(\lambda) = (1-\lambda) I_{\text{curr}} + \lambda I_{\text{next}} + \Delta I_{\text{geodesic}}(\lambda)
+\end{equation}
+
+where $\Delta I_{\text{geodesic}}$ is computed from the Riemannian metric on entropy space:
+
+\begin{equation}
+\Delta I_{\text{geodesic}}(\lambda) = \int_0^\lambda \sqrt{g_{ij} \frac{dS^i}{d\lambda'} \frac{dS^j}{d\lambda'}} \, d\lambda'
+\end{equation}
+
+This ensures that transitions follow natural paths in entropy space, minimizing perceptual discontinuity.
+
+\subsubsection{Playback Speed and Entropy Velocity}
+
+Playback speed $v_{\text{play}}$ maps to \textit{entropy velocity}:
+
+\begin{equation}
+v_{\text{entropy}} = v_{\text{play}} \cdot \frac{dS_{\text{cum}}}{dt}
+\end{equation}
+
+Fast-forward corresponds to high entropy velocity, while slow-motion reduces it. Crucially, \textit{negative playback speed} does not reverse entropy—it switches to back face traversal with positive entropy velocity.
+
+\subsubsection{Theoretical Guarantees}
+
+\begin{theorem}[Entropy Monotonicity Under Arbitrary Scrubbing]
+For any scrubbing trajectory $p(t)$, the resulting entropy sequence satisfies:
+\begin{equation}
+S_{\text{cum}}(t_2) > S_{\text{cum}}(t_1) \quad \forall t_2 > t_1
+\end{equation}
+regardless of whether $p(t_2) \gtrless p(t_1)$.
+\end{theorem}
+
+\begin{proof}
+By construction, all frame transitions satisfy $\Delta S > 0$. When $p$ decreases, the system switches to back face, which by design maintains entropy increase. Since entropy increase holds for both faces, it holds for arbitrary scrubbing.
+\end{proof}
+
+This theorem establishes that our system achieves true temporal irreversibility: no scrubbing sequence can decrease cumulative entropy, eliminating time-reversed playback entirely.
+

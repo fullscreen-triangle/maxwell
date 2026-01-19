@@ -1,0 +1,147 @@
+We model temporal video evolution as a gas of information molecules undergoing Brownian motion with collective behavior, providing physical intuition for entropy-based frame organization.
+
+\subsubsection{Information Molecule Representation}
+
+Each moving feature in the video (tracked point, edge, texture element) corresponds to an \textit{information molecule} $m_i$ with state:
+
+\begin{equation}
+\mathbf{x}_i(t) = (\mathbf{r}_i(t), \mathbf{v}_i(t), E_i(t), S_i(t))
+\end{equation}
+
+where:
+\begin{itemize}
+\item $\mathbf{r}_i(t) \in \mathbb{R}^2$: Spatial position (pixel coordinates)
+\item $\mathbf{v}_i(t) \in \mathbb{R}^2$: Velocity (from optical flow)
+\item $E_i(t) \in \mathbb{R}^+$: Local energy (pixel intensity variance)
+\item $S_i(t) \in \mathbb{R}^+$: Local entropy contribution
+\end{itemize}
+
+\subsubsection{Molecular Dynamics Equations}
+
+Information molecules evolve according to Langevin dynamics:
+
+\begin{equation}
+m_i \frac{d\mathbf{v}_i}{dt} = -\nabla_i V(\{\mathbf{r}_j\}) - \gamma_i \mathbf{v}_i + \sqrt{2\gamma_i k_B T_{\text{eff}}} \, \boldsymbol{\eta}_i(t)
+\label{eq:langevin}
+\end{equation}
+
+where:
+\begin{itemize}
+\item $V(\{\mathbf{r}_j\})$: Interaction potential between molecules
+\item $\gamma_i$: Friction coefficient (information dissipation)
+\item $T_{\text{eff}}$: Effective temperature (temporal fluctuation intensity)
+\item $\boldsymbol{\eta}_i(t)$: White noise satisfying $\langle \eta_i(t) \eta_j(t') \rangle = \delta_{ij}\delta(t-t')$
+\end{itemize}
+
+\subsubsection{Lennard-Jones Potential for Pixel Interactions}
+
+Molecules interact via a modified Lennard-Jones potential capturing attraction (feature tracking) and repulsion (occlusion):
+
+\begin{equation}
+V_{ij}(r) = 4\epsilon_{ij}\left[\left(\frac{\sigma_{ij}}{r}\right)^{12} - \left(\frac{\sigma_{ij}}{r}\right)^6\right]
+\end{equation}
+
+where $r = \|\mathbf{r}_i - \mathbf{r}_j\|$, and:
+\begin{align}
+\epsilon_{ij} &= w_{\text{color}} \cdot \exp\left(-\frac{\|I_i - I_j\|^2}{2\sigma_{\text{color}}^2}\right) \\
+\sigma_{ij} &= \max(\sigma_{\min}, d_{\text{feature}}(i,j))
+\end{align}
+
+Similar pixels attract ($\epsilon_{ij}$ large), while dissimilar pixels weakly interact.
+
+\subsubsection{Statistical Mechanics of Molecular Ensemble}
+
+The ensemble of $N$ molecules has partition function:
+
+\begin{equation}
+Z = \int \prod_{i=1}^N d\mathbf{r}_i d\mathbf{v}_i \exp\left(-\frac{E_{\text{total}}}{k_B T_{\text{eff}}}\right)
+\end{equation}
+
+where total energy:
+
+\begin{equation}
+E_{\text{total}} = \sum_{i=1}^N \left[\frac{1}{2}m_i v_i^2 + \sum_{j>i} V_{ij}(r_{ij})\right]
+\end{equation}
+
+The \textbf{key result} is that ensemble entropy:
+
+\begin{equation}
+S_{\text{ensemble}}(t) = k_B \log Z(t)
+\end{equation}
+
+is monotonically increasing due to irreversible mixing and energy dissipation.
+
+\subsubsection{Collective Behavior and Phase Transitions}
+
+The molecular gas exhibits phase transitions corresponding to different video dynamics:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Phase} & \textbf{Molecular State} & \textbf{Video Interpretation} \\
+\midrule
+Gas & Low density, high $T_{\text{eff}}$ & Rapid motion, low correlation \\
+Liquid & Medium density, medium $T_{\text{eff}}$ & Smooth flow, partial tracking \\
+Crystal & High density, low $T_{\text{eff}}$ & Static scene, perfect tracking \\
+\bottomrule
+\end{tabular}
+\caption{Molecular phases and video dynamics}
+\end{table}
+
+Phase transitions occur at critical entropy production rates:
+
+\begin{equation}
+\dot{S}_{\text{critical}} = k_B N \left(\frac{\partial \log Z}{\partial T_{\text{eff}}}\right)_{T_c}
+\end{equation}
+
+\subsubsection{Molecular Demon Observers}
+
+Each molecule $m_i$ hosts a \textit{molecular demon} $\mathcal{D}_i$ that:
+\begin{enumerate}
+\item Observes local molecular velocities $\{\mathbf{v}_j : \|\mathbf{r}_j - \mathbf{r}_i\| < R_{\text{obs}}\}$
+\item Computes local entropy production: $\dot{S}_i(t)$
+\item Validates that $\dot{S}_i(t) > 0$ (local irreversibility)
+\item Reports violations to global \textit{Temporal Maxwell Demon}
+\end{enumerate}
+
+The hierarchical demon network ensures global entropy monotonicity through local enforcement.
+
+\subsubsection{Temporal Correlation Functions}
+
+Molecular velocities exhibit temporal correlations:
+
+\begin{equation}
+C_{vv}(\tau) = \langle \mathbf{v}_i(t) \cdot \mathbf{v}_i(t+\tau) \rangle_t
+\end{equation}
+
+For diffusive motion (irreversible):
+
+\begin{equation}
+C_{vv}(\tau) = \langle v^2 \rangle \exp\left(-\frac{\tau}{\tau_{\text{relax}}}\right)
+\end{equation}
+
+where $\tau_{\text{relax}} = m/\gamma$ is the velocity relaxation time. The exponential decay ensures that molecular "memory" of past velocities decays irreversibly, preventing true time reversal.
+
+\subsubsection{Entropy Production from Molecular Dynamics}
+
+The total entropy production rate from molecular dynamics:
+
+\begin{equation}
+\dot{S}_{\text{molecular}} = \sum_{i=1}^N \frac{\gamma_i v_i^2}{T_{\text{eff}}} + \sum_{i<j} \frac{|\nabla V_{ij}|^2}{D_{ij} T_{\text{eff}}}
+\end{equation}
+
+where $D_{ij}$ is the mutual diffusion coefficient. Both terms are strictly positive, guaranteeing $\dot{S}_{\text{molecular}} > 0$.
+
+\subsubsection{Connection to Frame-Level Entropy}
+
+The molecular entropy production directly contributes to frame-level $S_{\text{cum}}$:
+
+\begin{equation}
+\frac{dS_{\text{cum}}}{dt} \geq \dot{S}_{\text{molecular}} + \dot{S}_{\text{noise}} + \dot{S}_{\text{compression}}
+\end{equation}
+
+This inequality (second law) ensures that video-level entropy increases faster than molecular-level contributions, accounting for additional irreversible processes (sensor noise, encoding artifacts).
+
+The gas molecular dynamics framework provides microscopic justification for macroscopic entropy monotonicity, establishing that video entropy increase is not merely definitional but arises from fundamental physics of image formation and temporal evolution.
+

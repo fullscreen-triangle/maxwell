@@ -1,0 +1,112 @@
+\section{Videos as Temporal Sequences of Categorical States}
+\label{sec:videos}
+
+\subsection{Categorical Completion Order and Time's Arrow}
+
+From the established framework, temporal order emerges from categorical completion order: the sequence in which categorical states become determinate. This provides the thermodynamic arrow of time.
+
+\begin{definition}[Video]
+\label{def:video}
+A \textbf{video} is a temporally ordered sequence of images $\{\mathcal{I}_t\}_{t \in \mathcal{T}}$ indexed by completion order parameter $t$:
+\begin{equation}
+\mathcal{V} = \{\mathcal{I}_t\}_{t=0}^{T_{\text{frames}}}
+\end{equation}
+where each $\mathcal{I}_t$ is an image (spatial partition with categorical assignments) and $T_{\text{frames}}$ is the total number of frames.
+\end{definition}
+
+\begin{theorem}[Frame Entropy Generation]
+\label{thm:frame_entropy}
+Each frame transition $\mathcal{I}_t \to \mathcal{I}_{t+1}$ generates partition entropy:
+\begin{equation}
+\Delta S_{\text{frame}} = \kB M \ln n
+\end{equation}
+where $M$ is the dimensional depth of the partition operation and $n$ is the branching factor.
+\end{theorem}
+
+\begin{proof}
+From the established partition lag mechanism, each partition operation creates categorical boundaries with undetermined residue, generating entropy $\Delta S = \kB \ln n$ per dimension. For a two-dimensional image with temporal dimension, $M = 3$, giving:
+\begin{equation}
+\Delta S_{\text{frame}} = \kB \cdot 3 \cdot \ln n
+\end{equation}
+
+Alternatively, each pixel can change state between frames. If $N_{\text{changed}}$ pixels undergo transitions among $n$ possible states, the entropy increase is:
+\begin{equation}
+\Delta S_{\text{frame}} \approx N_{\text{changed}} \cdot \kB \ln n
+\end{equation}
+For full frame updates, $N_{\text{changed}} = N_{\text{pixel}}$.
+\end{proof}
+
+\subsection{Thermodynamic Irreversibility of Video Playback}
+
+A remarkable consequence: video playback direction is thermodynamically determined.
+
+\begin{theorem}[Video Playback Irreversibility]
+\label{thm:video_irreversibility}
+Forward video playback ($t \to t+1$) and reverse playback ($t \to t-1$) are thermodynamically distinguishable: both accumulate entropy in the forward temporal direction.
+\end{theorem}
+
+\begin{proof}
+Forward playback: Observer's categorical completion order $\tau$ aligns with video frame order $t$. Each frame transition $\mathcal{I}_t \to \mathcal{I}_{t+1}$ is experienced as categorical completion, generating entropy $\Delta S_{\tau} = +\kB M \ln n > 0$ in the observer's time.
+
+Reverse playback: Observer's completion order $\tau$ still increases (biological systems cannot reverse their categorical completion order). Displaying frames in order $\mathcal{I}_T, \mathcal{I}_{T-1}, \ldots, \mathcal{I}_0$ constitutes new categorical completions at each step, generating $\Delta S_{\tau} = +\kB M \ln n > 0$ in observer time.
+
+Both forward and reverse playback increase observer entropy, but the forward direction corresponds to the original categorical completion order encoded in the video, while reverse playback creates a secondary completion order.
+
+Therefore, playback direction is physically distinguishable through entropy comparison: forward playback preserves the original entropy trajectory, while reverse playback superimposes additional entropy.
+\end{proof}
+
+This provides the foundation for the \textbf{motion picture Maxwell demon}: a video format encoding thermodynamic irreversibility such that temporal scrubbing in either direction reveals the forward progression of entropy. The dual-membrane structure of each pixel encodes both the forward face (amplitude, kinetic information) and the back face (phase, categorical information), making the entropy trajectory observable regardless of playback direction.
+
+\subsection{Frame Rate and Partition Lag}
+
+The frame rate of a video is bounded by partition lag—the minimum time required to complete a partition operation.
+
+\begin{theorem}[Maximum Frame Rate]
+\label{thm:max_frame_rate}
+The maximum achievable frame rate is bounded by the inverse partition lag:
+\begin{equation}
+f_{\text{max}} = \frac{1}{\tau_{\text{lag}}}
+\end{equation}
+where $\tau_{\text{lag}}$ is the partition lag for completing a full frame's categorical state assignments.
+\end{theorem}
+
+\begin{proof}
+From the partition lag mechanism, each partition operation requires minimum time $\tau_{\text{lag}}$ for the undetermined residue to resolve into determinate categorical boundaries.
+
+A video frame requires partitioning the two-dimensional spatial field into $N_{\text{pixel}}$ categories. If partition operations can be performed in parallel across pixels, the lag is set by the detector's response time. If operations are sequential, total lag is $N_{\text{pixel}} \cdot \tau_{\text{lag}}$.
+
+In either case, frames cannot be generated faster than the partition lag permits:
+\begin{equation}
+\Delta t_{\text{frame}} \geq \tau_{\text{lag}} \quad \Rightarrow \quad f_{\text{max}} = \frac{1}{\tau_{\text{lag}}}
+\end{equation}
+\end{proof}
+
+\begin{remark}
+For human vision, the partition lag $\tau_{\text{lag}} \sim 10$–100 ms (corresponding to critical flicker frequency $\sim 50$ Hz). For electronic cameras, $\tau_{\text{lag}} \sim 1$ ms to 1 $\mu$s (giving $f_{\text{max}} \sim 1$ kHz to 1 MHz). High-speed cameras approach $f_{\text{max}} \sim 10^6$ fps by reducing partition depth (fewer pixels, lower resolution).
+\end{remark}
+
+\subsection{Temporal Super-Resolution through Spectral Multiplexing}
+
+An extension of standard video capture enables temporal super-resolution by combining multiple wavelengths in rapid sequence.
+
+\begin{theorem}[Spectral Temporal Gap Filling]
+\label{thm:spectral_gap_filling}
+Alternating illumination wavelengths $\{\lambda_k\}_{k=1}^K$ with period $\Delta t$ enables effective temporal resolution:
+\begin{equation}
+\Delta t_{\text{eff}} = \frac{\Delta t}{K}
+\end{equation}
+when different detector types sample at different points in the illumination cycle.
+\end{theorem}
+
+\begin{proof}
+Standard video uses shutter-based frame capture: illuminate → capture → dark period → repeat. Temporal resolution is limited by shutter speed and detector readout.
+
+Spectral multiplexing replaces the shutter with wavelength cycling: $\lambda_1 \to \lambda_2 \to \cdots \to \lambda_K \to \lambda_1$. Each wavelength is captured by a detector tuned to that spectral range. The $K$ detectors sample at phase-shifted times during the cycle.
+
+Combining the $K$ data streams reconstructs temporal evolution at $K\times$ higher frequency than single-wavelength capture. The temporal "gaps" in one detector's sampling are filled by other detectors responding to different wavelengths.
+
+Effective temporal resolution: $\Delta t_{\text{eff}} = \Delta t / K$.
+\end{proof}
+
+This enables "zoomable video"—video that remains sharp when slowed down arbitrarily because temporal gaps are filled by spectral diversity. It also achieves 100\% photon efficiency (no dark periods) and intrinsic multi-modality (simultaneous capture across wavelengths).
+

@@ -1,0 +1,178 @@
+\part{Imaging from Categorical Partitions}
+\label{part:imaging}
+
+\section{Images as Necessary Categorical Structures}
+\label{sec:images}
+
+\subsection{The Observation Problem for Extended Fields}
+
+Consider an oscillatory field $\Psi(\mathbf{r}, t)$ defined over spatial domain $\mathcal{D} \subset \mathbb{R}^3$ and time interval $\mathcal{T} \subset \mathbb{R}$. An observer attempting to characterize this field faces a fundamental constraint: continuous fields contain infinite information (uncountable degrees of freedom), while any physical detector possesses finite categorical capacity.
+
+\begin{axiom}[Finite Categorical Capacity]
+\label{ax:finite_capacity}
+Any physical detection apparatus can distinguish at most finitely many categorical states $\mathcal{N}_{\text{cat}} < \infty$ during finite observation time.
+\end{axiom}
+
+This constraint is not technological but thermodynamic: distinguishing $\mathcal{N}$ states requires entropy capacity $S \geq \kB \ln \mathcal{N}$, and bounded systems possess bounded entropy capacity.
+
+\begin{definition}[Spatial Partition]
+\label{def:spatial_partition}
+A \textbf{spatial partition} of domain $\mathcal{D}$ is a finite collection $\{\mathcal{P}_i\}_{i=1}^{N_{\text{pixel}}}$ of disjoint subsets satisfying:
+\begin{enumerate}
+    \item $\bigcup_{i=1}^{N_{\text{pixel}}} \mathcal{P}_i = \mathcal{D}$ (completeness)
+    \item $\mathcal{P}_i \cap \mathcal{P}_j = \emptyset$ for $i \neq j$ (mutual exclusion)
+    \item Each $\mathcal{P}_i$ is measurable with $\text{Vol}(\mathcal{P}_i) > 0$ (finite resolution)
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Image]
+\label{def:image}
+An \textbf{image} $\mathcal{I}$ is a spatial partition $\{\mathcal{P}_i\}$ together with an assignment of categorical state $\sigma_i \in \Sigma$ to each partition element:
+\begin{equation}
+\mathcal{I} = \{(\mathcal{P}_i, \sigma_i)\}_{i=1}^{N_{\text{pixel}}}
+\end{equation}
+where $\Sigma$ is the space of distinguishable detector states and $N_{\text{pixel}}$ is the number of \textbf{pixels} (partition elements).
+\end{definition}
+
+\begin{theorem}[Image Necessity]
+\label{thm:image_necessity}
+Any finite-capacity observation of a spatially extended oscillatory field necessarily produces an image.
+\end{theorem}
+
+\begin{proof}
+Let $\Psi(\mathbf{r}, t)$ be the oscillatory field and $\mathcal{D}$ the observation domain with $\text{Vol}(\mathcal{D}) = V < \infty$. By Axiom~\ref{ax:finite_capacity}, the detector distinguishes at most $\mathcal{N}_{\text{cat}}$ states. 
+
+The continuous field has uncountably many degrees of freedom, requiring infinite information to specify completely. The detector's finite categorical capacity imposes discretization: points $\mathbf{r}, \mathbf{r}' \in \mathcal{D}$ producing indistinguishable detector responses must be grouped into the same category.
+
+This grouping defines an equivalence relation $\mathbf{r} \sim \mathbf{r}'$ iff the detector cannot distinguish fields differing only at $\mathbf{r}$ versus $\mathbf{r}'$. The quotient $\mathcal{D}/\sim$ partitions space into equivalence classes—exactly the pixels $\mathcal{P}_i$ of Definition~\ref{def:spatial_partition}.
+
+Each pixel $\mathcal{P}_i$ is assigned the categorical detector state $\sigma_i$ produced by field values within that region, yielding an image $\mathcal{I} = \{(\mathcal{P}_i, \sigma_i)\}$ by Definition~\ref{def:image}.
+
+Therefore, finite-capacity observation of extended fields necessarily produces images. There is no alternative: continuous representation requires infinite capacity.
+\end{proof}
+
+\subsection{Image Resolution and Partition Depth}
+
+The resolution of an image—the fineness of spatial discrimination—is determined by the partition depth of the detector's categorical structure.
+
+\begin{theorem}[Image Resolution Theorem]
+\label{thm:image_resolution}
+For a detector with partition depth $n$ observing a two-dimensional field, the maximum number of spatially distinguishable pixels scales as:
+\begin{equation}
+N_{\text{pixel}}^{\text{max}}(n) = 2n^2
+\end{equation}
+The minimum resolvable spatial feature size is:
+\begin{equation}
+\delta x_{\text{min}} = \sqrt{\frac{A}{2n^2}}
+\end{equation}
+where $A$ is the total observed area.
+\end{theorem}
+
+\begin{proof}
+A two-dimensional spatial field requires partitioning in two spatial dimensions. Each dimension is subject to categorical depth $n$, giving complexity coordinate $l \in \{0, 1, \ldots, n-1\}$ and orientation coordinate $m \in \{-l, \ldots, +l\}$ from partition geometry.
+
+The total number of distinguishable spatial categories at depth $n$ is:
+\begin{equation}
+N_{\text{cat}}(n) = 2\sum_{l=0}^{n-1}(2l+1) = 2n^2
+\end{equation}
+where the factor of 2 accounts for chirality $s \in \{\pm 1/2\}$.
+
+Each categorical state can be assigned to a spatial region, giving maximum pixel count $N_{\text{pixel}}^{\text{max}} = 2n^2$.
+
+For uniform partitioning of area $A$ into $N_{\text{pixel}}$ pixels, each pixel has area $A/N_{\text{pixel}}$, giving linear dimension:
+\begin{equation}
+\delta x_{\text{min}} = \sqrt{\frac{A}{N_{\text{pixel}}^{\text{max}}}} = \sqrt{\frac{A}{2n^2}}
+\end{equation}
+This is the minimum resolvable feature size—the resolution limit.
+\end{proof}
+
+\begin{corollary}[Resolution-Depth Scaling]
+\label{cor:resolution_scaling}
+Image resolution improves as $n^{-1}$: doubling partition depth halves the minimum resolvable feature size.
+\end{corollary}
+
+\subsection{Image Information Capacity}
+
+The information content of an image is bounded by the categorical capacity of pixels and spectral channels.
+
+\begin{theorem}[Image Information Bound]
+\label{thm:image_information}
+An image with $N_{\text{pixel}}$ pixels and $N_{\lambda}$ distinguishable spectral categories per pixel has maximum information content:
+\begin{equation}
+I_{\text{max}} = \kB \ln\left(N_{\lambda}^{N_{\text{pixel}}}\right) = N_{\text{pixel}} \cdot \kB \ln N_{\lambda}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Each pixel can occupy one of $N_{\lambda}$ spectral states (corresponding to different oscillatory frequency categories). The total number of distinguishable image configurations is:
+\begin{equation}
+\mathcal{N}_{\text{config}} = N_{\lambda}^{N_{\text{pixel}}}
+\end{equation}
+(product over independent pixel choices).
+
+The maximum information extractable from distinguishing all configurations is:
+\begin{equation}
+I_{\text{max}} = \kB \ln \mathcal{N}_{\text{config}} = N_{\text{pixel}} \cdot \kB \ln N_{\lambda}
+\end{equation}
+This is the \textbf{image information capacity}, achieved when all pixels are statistically independent and all spectral categories are equally probable.
+\end{proof}
+
+\subsection{Spectral Partitioning and Color}
+
+The oscillatory field contains temporal frequency components corresponding to different oscillation rates. These frequencies map to partition coordinates.
+
+\begin{definition}[Spectral Partition]
+\label{def:spectral_partition}
+A \textbf{spectral partition} divides the frequency domain into discrete categorical intervals $\{\Lambda_k\}_{k=1}^{N_{\lambda}}$ such that:
+\begin{enumerate}
+    \item $\bigcup_{k=1}^{N_{\lambda}} \Lambda_k$ covers the observable frequency range
+    \item $\Lambda_i \cap \Lambda_j = \emptyset$ for $i \neq j$
+    \item Each $\Lambda_k$ corresponds to partition coordinates $(l_k, m_k)$ of the oscillatory mode
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[Trichromacy from Minimal Angular Coordinates]
+\label{thm:trichromacy}
+The human visual system's three color receptors (S, M, L cones) correspond to a minimal partition signature with angular momentum coordinates:
+\begin{equation}
+\text{S-cone: } (l=0, m=0), \quad \text{M-cone: } (l=1, m=-1), \quad \text{L-cone: } (l=1, m=+1)
+\end{equation}
+giving $N_{\lambda} = 3$ spectral categories for $l \in \{0, 1\}$.
+\end{theorem}
+
+\begin{proof}
+Minimal spectral discrimination requires distinguishing at least two frequency ranges, corresponding to $l \in \{0, 1\}$ (ground and first excited angular states).
+
+For $l=0$: only $m=0$ is allowed, giving 1 state.
+For $l=1$: $m \in \{-1, 0, +1\}$ are allowed, giving 3 states.
+
+Selecting one from $l=0$ and two from $l=1$ (to maximize spectral coverage while minimizing detector complexity) yields 3 spectral channels—exactly trichromatic vision.
+
+The $l=0$ receptor corresponds to short wavelengths (high energy, blue), while $l=1$ with $m=-1$ and $m=+1$ correspond to medium and long wavelengths (green, red), respectively.
+\end{proof}
+
+\begin{corollary}[Hyperspectral Imaging]
+\label{cor:hyperspectral}
+Hyperspectral imaging with $N_{\lambda} \gg 3$ spectral channels requires higher angular momentum coordinates $l_{\text{max}} \gg 1$, with:
+\begin{equation}
+N_{\lambda} \approx \sum_{l=0}^{l_{\text{max}}} (2l+1) = (l_{\text{max}}+1)^2
+\end{equation}
+\end{corollary}
+
+\subsection{Dynamic Range and Amplitude Partitioning}
+
+In addition to spectral (frequency) partitioning, images partition amplitude—the strength of the oscillatory field at each spatial location.
+
+\begin{theorem}[Dynamic Range Theorem]
+\label{thm:dynamic_range}
+The dynamic range—ratio of maximum to minimum distinguishable intensities—is bounded by amplitude partition depth $n_A$:
+\begin{equation}
+\text{DR}_{\max} = 2^{n_A}
+\end{equation}
+In decibels: $\text{DR}_{\text{dB}} = 20 \log_{10}(2^{n_A}) \approx 6.02 \cdot n_A$ dB.
+\end{theorem}
+
+\begin{remark}
+Standard digital cameras use $n_A = 8$ bits per channel, giving DR $\approx 48$ dB. High-dynamic-range (HDR) imaging uses $n_A = 12$ or 16 bits, extending to 72–96 dB. These values are not arbitrary but represent practical realizations of partition depth constraints.
+\end{remark}
+
