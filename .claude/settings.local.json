@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc:*)",
+      "Bash(pdflatex:*)",
+      "Bash(tree:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(python:*)"
+    ]
+  }
+}
