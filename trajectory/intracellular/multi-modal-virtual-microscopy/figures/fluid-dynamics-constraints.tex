@@ -1,0 +1,148 @@
+\section{Fluid Dynamics Constraints}
+
+\subsection{Continuous Flow from Discrete Transitions}
+
+Cellular fluids exhibit continuous behavior despite discrete molecular composition. This section derives fluid dynamics from partition-based state transformations.
+
+\subsection{Velocity Field Emergence}
+
+\begin{theorem}[Velocity Field from S-Entropy Flow]
+\label{thm:velocity_field}
+Fluid velocity field $\mathbf{v}(\mathbf{r},t)$ emerges from S-entropy coordinate time derivatives:
+\begin{equation}
+\mathbf{v} = \lambda_{\text{cat}} \left(\frac{\partial\Scoord}{\partial t}\right)
+\end{equation}
+where $\lambda_{\text{cat}}$ is categorical-to-spatial conversion factor.
+\end{theorem}
+
+\begin{proof}
+S-entropy coordinates $\Scoord = (\Sk,\St,\Se)$ characterize fluid state at position $\mathbf{r}$. Time evolution $\partial\Scoord/\partial t$ represents categorical state change rate. Spatial displacement follows from categorical distance: $\Delta\mathbf{r} = \lambda_{\text{cat}} \Delta\dcat$. Combining: $\mathbf{v} = \Delta\mathbf{r}/\Delta t = \lambda_{\text{cat}} \partial\Scoord/\partial t$.
+\end{proof}
+
+\subsection{Continuity Equation}
+
+\begin{theorem}[Mass Conservation]
+Fluid density $\rho(\mathbf{r},t)$ and velocity $\mathbf{v}(\mathbf{r},t)$ satisfy continuity equation
+\begin{equation}
+\frac{\partial\rho}{\partial t} + \nabla \cdot (\rho\mathbf{v}) = 0
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Consider volume element $dV$. Mass conservation requires $d(\rho dV)/dt = -\int_{S} \rho\mathbf{v} \cdot d\mathbf{S}$ where integral is over surface $S$ bounding $dV$. Applying divergence theorem and taking $dV \to 0$ limit yields continuity equation.
+\end{proof}
+
+\subsection{Momentum Equation from Partition Lag}
+
+\begin{theorem}[Navier-Stokes from Partition Transitions]
+\label{thm:navier_stokes}
+Fluid satisfies momentum equation
+\begin{equation}
+\rho\left(\frac{\partial\mathbf{v}}{\partial t} + \mathbf{v} \cdot \nabla\mathbf{v}\right) = -\nabla P + \mu \nabla^2 \mathbf{v} + \mathbf{f}
+\end{equation}
+where viscosity is $\mu = \sum_{ij} \taulag_{ij} g_{ij}$.
+\end{theorem}
+
+\begin{proof}
+Start with partition-based momentum transfer. Particle in state $i$ transitions to state $j$ with rate $\Gamma_{ij} = g_{ij}/\taulag_{ij}$. Momentum change is $\Delta\mathbf{p}_{ij} = m(\mathbf{v}_j - \mathbf{v}_i)$. Total momentum transfer rate per volume is
+\begin{equation}
+\frac{d(\rho\mathbf{v})}{dt} = \sum_{ij} n_i \Gamma_{ij} \Delta\mathbf{p}_{ij}
+\end{equation}
+
+For smooth velocity field, expand: $\mathbf{v}_j - \mathbf{v}_i \approx (\mathbf{r}_j - \mathbf{r}_i) \cdot \nabla\mathbf{v} + \tfrac{1}{2}(\mathbf{r}_j - \mathbf{r}_i)(\mathbf{r}_j - \mathbf{r}_i) : \nabla\nabla\mathbf{v}$. First term gives advection $\mathbf{v} \cdot \nabla\mathbf{v}$. Second term gives viscous diffusion $\mu\nabla^2\mathbf{v}$ with viscosity coefficient
+\begin{equation}
+\mu = \rho \sum_{ij} \taulag_{ij} g_{ij} (\mathbf{r}_j - \mathbf{r}_i)^2/(6V)
+\end{equation}
+
+Pressure gradient $-\nabla P$ arises from thermodynamic equation (Theorem \ref{thm:equation_of_state}). External force $\mathbf{f}$ accounts for body forces.
+\end{proof}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_coupling_networks.pdf}
+    \caption{\textbf{Phase-Lock Networks: The Molecular Basis of Viscosity.}
+    Fluid molecules are coupled pendulums, their oscillatory phases locked through intermolecular forces. These phase-locks form networks that encode viscosity as accumulated memory. (A) Network structure visualisation: nodes = molecules, edges = phase-lock couplings. Node colour indicates degree (number of connections); edge thickness indicates coupling strength. Dense networks (liquids) have high viscosity; sparse networks (gases) have low viscosity. (B) Coupling strength vs distance: Van der Waals ($g \sim r^{-6}$), dipole-dipole ($g \sim r^{-3}$), and hydrogen bonds (short-range exponential) show distinct decay profiles. Strong, short-range couplings create rigid networks; weak, long-range couplings create flexible networks. (C) Network density and phase: gas ($\rho_G < 0.2$, sparse network), liquid ($0.2 < \rho_G < 0.6$, percolating network), solid ($\rho_G > 0.6$, dense lattice). Phase transitions correspond to network percolation thresholds. (D) Transport as network navigation: molecular transport (highlighted path) proceeds through the phase-lock network, breaking and reforming connections. The viscosity $\mu = \sum \tau_p \cdot g$ is the total memory cost of all phase-lock reconfigurations along the path.}
+    \label{fig:coupling_networks}
+    \end{figure}
+
+\subsection{Reynolds Number from Partition Parameters}
+
+\begin{definition}[Partition-Based Reynolds Number]
+Dimensionless Reynolds number is
+\begin{equation}
+\text{Re} = \frac{\rho v L}{\mu} = \frac{\rho v L}{\sum_{ij} \taulag_{ij} g_{ij}}
+\end{equation}
+where $v$ is characteristic velocity and $L$ is characteristic length.
+\end{definition}
+
+\begin{corollary}
+Cellular flows have low Reynolds number. For cytoplasm with $\rho \sim 10^3$ kg/m$^3$, $v \sim 10^{-6}$ m/s, $L \sim 10^{-6}$ m, $\mu \sim 10^{-3}$ Pa·s:
+\begin{equation}
+\text{Re} = \frac{10^3 \times 10^{-6} \times 10^{-6}}{10^{-3}} = 10^{-6} \ll 1
+\end{equation}
+This justifies neglecting inertial terms in cellular fluid dynamics.
+\end{corollary}
+
+\subsection{Stokes Flow Limit}
+
+For $\text{Re} \ll 1$, Navier-Stokes equation reduces to Stokes equation.
+
+\begin{corollary}[Stokes Flow]
+In low Reynolds number limit, momentum equation becomes
+\begin{equation}
+\mu\nabla^2\mathbf{v} = \nabla P - \mathbf{f}
+\end{equation}
+\end{corollary}
+
+\subsection{Dimensional Reduction via S-Sliding}
+
+\begin{theorem}[Cross-Section Reduction]
+\label{thm:cross_section}
+Three-dimensional fluid flow reduces to two-dimensional cross-section state plus one-dimensional S-coordinate evolution along streamlines.
+\end{theorem}
+
+\begin{proof}
+Flow field decomposes as $\mathbf{v}(\mathbf{r},t) = v_s(s,t)\hat{\mathbf{s}} + \mathbf{v}_{\perp}(\mathbf{r}_{\perp},s,t)$ where $s$ is streamline coordinate and $\mathbf{r}_{\perp}$ is cross-section coordinate. For phase-locked flow, cross-section states form categorical chain with morphism $f: \Scoord(s) \to \Scoord(s+ds)$. Composition property $f_{s_2}^{s_1} \circ f_{s_3}^{s_2} = f_{s_3}^{s_1}$ implies cross-section at position $s$ is determined by initial cross-section at $s_0$ and transformation $f_s^{s_0}$.
+
+With $N_{\perp} \sim 10^2$ cross-section degrees of freedom and one streamline coordinate, total is $\sim 10^2$ parameters instead of $\sim 10^{11}$ atomic positions.
+\end{proof}
+
+\subsection{Viscosity Temperature Dependence}
+
+\begin{theorem}[Arrhenius Viscosity]
+Viscosity temperature dependence follows from partition lag:
+\begin{equation}
+\mu(T) = \mu_0 \exp\left(\frac{E_a}{\kB T}\right)
+\end{equation}
+where $E_a$ is activation energy.
+\end{theorem}
+
+\begin{proof}
+From partition lag definition, $\taulag \sim \tau_0 \exp(\dcat/\lambda_T)$ where $\lambda_T = \kB T/(\hbar\omega_0)$. For fixed categorical distance $\dcat$:
+\begin{equation}
+\taulag \sim \exp\left(\frac{\dcat\hbar\omega_0}{\kB T}\right)
+\end{equation}
+Since $\mu \propto \sum \taulag_{ij} g_{ij}$ and $g_{ij}$ has weak temperature dependence, viscosity follows Arrhenius form with $E_a = \dcat\hbar\omega_0$.
+\end{proof}
+
+\subsection{Application to Cytoplasmic Streaming}
+
+Cellular cytoplasm exhibits streaming motion driven by motor proteins.
+
+\begin{example}[Cytoplasmic Viscosity]
+Measured cytoplasmic viscosity is $\mu_{\text{cyto}} \sim 10^{-3}$ Pa·s at $T = 310$ K. From Theorem \ref{thm:viscosity}, with $\taulag \sim 10^{-12}$ s and $g \sim 10^{-21}$ J:
+\begin{equation}
+\mu = \sum_{ij} \taulag_{ij} g_{ij} \sim N_{\text{pairs}} \times 10^{-12} \times 10^{-21} \sim 10^{-3}\text{ Pa·s}
+\end{equation}
+requires $N_{\text{pairs}} \sim 10^{30}$, consistent with $\sim 10^{11}$ molecules each participating in $\sim 10^{19}$ pairwise interactions.
+\end{example}
+
+\subsection{Constraint Application}
+
+Fluid dynamics provides constraint on cellular structures: predicted viscosity from partition parameters must match measured viscosity. Combined with other modalities, this eliminates structures with inconsistent mechanical properties.
+
+\begin{theorem}[Fluid Dynamics Exclusion]
+Structure $S$ with predicted viscosity $\mu_{\text{pred}}(S)$ differing from measured $\mu_{\text{meas}}$ by more than uncertainty $\delta\mu$ is excluded.
+\end{theorem}
+
+For typical precision $\delta\mu/\mu \sim 10\%$, fluid dynamics constraint contributes exclusion factor $\epsilon_{\text{fluid}} \sim 10^{-1}$. While not as strong as spectral or vibrational constraints, it provides independent mechanical validation.

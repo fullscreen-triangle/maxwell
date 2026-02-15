@@ -1,0 +1,24 @@
+{
+  "experiment": "37_capacitor_architecture",
+  "parameters": {
+    "cell_radius_um": 5.0,
+    "membrane_thickness_nm": 5.0,
+    "epsilon_r": 80,
+    "sigma_membrane_C_m2": -0.01,
+    "sigma_O2_C_m2": -1e-06
+  },
+  "results": {
+    "capacitance_pF": 0.04450505816781445,
+    "voltage_mV": -70.58956403885252,
+    "stored_energy_aJ": 110.8818279022827,
+    "membrane_charge_nC": -0.0031415926535897937,
+    "O2_charge_nC": -3.141592653589793e-07,
+    "electric_field_V_m": -14117912.8077705
+  },
+  "validation": {
+    "capacitance_in_range": false,
+    "field_sufficient": true,
+    "three_layer_structure": true
+  },
+  "timestamp": "2026-02-15T00:36:37.018796"
+}

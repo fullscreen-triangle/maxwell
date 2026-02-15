@@ -1,0 +1,157 @@
+{
+  "experiment_36": {
+    "experiment": "36_oxygen_categorical_microscopy",
+    "parameters": {
+      "cell_radius_um": 5.0,
+      "O2_concentration_uM": 250.0,
+      "total_O2_molecules": 78827795,
+      "simulated_molecules": 50000,
+      "num_steps": 200,
+      "timestep_ns": 1.0
+    },
+    "results": {
+      "final_state_counts": {
+        "absorption": 0,
+        "ground": 50000,
+        "emission": 0
+      },
+      "spatial_resolution_nm": 1049.7155228390118,
+      "temporal_resolution_fs": 10.0,
+      "image_resolution": 50,
+      "array_size": 50000
+    },
+    "validation": {
+      "array_size_sufficient": false,
+      "spatial_resolution_nm_achieved": false,
+      "self_observation_enabled": true
+    },
+    "timestamp": "2026-02-15T00:36:35.572114"
+  },
+  "experiment_37": {
+    "experiment": "37_capacitor_architecture",
+    "parameters": {
+      "cell_radius_um": 5.0,
+      "membrane_thickness_nm": 5.0,
+      "epsilon_r": 80,
+      "sigma_membrane_C_m2": -0.01,
+      "sigma_O2_C_m2": -1e-06
+    },
+    "results": {
+      "capacitance_pF": 0.04450505816781445,
+      "voltage_mV": -70.58956403885252,
+      "stored_energy_aJ": 110.8818279022827,
+      "membrane_charge_nC": -0.0031415926535897937,
+      "O2_charge_nC": -3.141592653589793e-07,
+      "electric_field_V_m": -14117912.8077705
+    },
+    "validation": {
+      "capacitance_in_range": false,
+      "field_sufficient": true,
+      "three_layer_structure": true
+    },
+    "timestamp": "2026-02-15T00:36:37.018796"
+  },
+  "experiment_38": {
+    "experiment": "38_virtual_light_characterization",
+    "parameters": {
+      "O2_frequency_Hz": 100000000000000.0,
+      "emission_lifetime_ns": 1.0,
+      "total_molecules": 1000000000,
+      "emitting_molecules": 10000000
+    },
+    "results": {
+      "wavelength_um": 3.0,
+      "photon_energy_meV": 413.60799001248444,
+      "linewidth_Hz": 159154943.09189534,
+      "total_emission_rate": 9999999999999998.0,
+      "intensity_W_m2": 2109121.305853796,
+      "coherence_fraction": 0.01,
+      "coherence_time_ns": 6.283185307179586
+    },
+    "validation": {
+      "wavelength_mid_IR": true,
+      "detectable_intensity": true,
+      "partial_coherence": true
+    },
+    "timestamp": "2026-02-15T00:36:44.515515"
+  },
+  "experiment_39": {
+    "experiment": "39_three_layer_capacitor_dna",
+    "parameters": {
+      "genome_bp": 3000000000,
+      "nucleus_radius_um": 5.0,
+      "cell_radius_um": 10.0
+    },
+    "results": {
+      "DNA_charge_nC": -0.9611999999999999,
+      "field_at_nucleus_surface_V_m": 345647519999.99994,
+      "field_at_cell_edge_V_m": 86411879999.99998,
+      "thermal_threshold_V_m": 100000.0,
+      "field_dominates_thermal": true
+    },
+    "c_value_analysis": {
+      "E. coli": -0.00147384,
+      "Yeast": -0.0038447999999999998,
+      "C. elegans": -0.03204,
+      "Drosophila": -0.044856,
+      "Human": -0.9611999999999999,
+      "Wheat": -5.4468
+    },
+    "validation": {
+      "DNA_charge_correct": true,
+      "field_sufficient": true,
+      "sequence_independent": true
+    },
+    "timestamp": "2026-02-15T00:36:46.081677"
+  },
+  "experiment_40": {
+    "experiment": "40_transient_chambers",
+    "parameters": {
+      "membrane_area_um2": 314.1592653589793,
+      "num_lipids_simulated": 10000,
+      "simulation_time_us": 0.5000000000000001,
+      "diffusion_coefficient_m2_s": 1e-12
+    },
+    "results": {
+      "chambers_detected": 0,
+      "mean_chamber_size_nm": 15.0,
+      "chamber_frequency_per_s": 1000.0,
+      "reaction_rate_enhancement": 1000.0
+    },
+    "validation": {
+      "chamber_size_in_range": true,
+      "chambers_form": true,
+      "enhancement_significant": true
+    },
+    "timestamp": "2026-02-15T00:36:49.542008"
+  },
+  "experiment_41": {
+    "experiment": "41_protein_atoms_measurement",
+    "parameters": {
+      "protein": "1LYZ (lysozyme)",
+      "num_atoms": 1102,
+      "num_steps": 200
+    },
+    "results": {
+      "final_state_counts": {
+        "ground": 288,
+        "natural": 550,
+        "excited": 264
+      },
+      "final_state_fractions": {
+        "ground": 0.2613430127041742,
+        "natural": 0.49909255898366606,
+        "excited": 0.2395644283121597
+      },
+      "absorption_intensity": 0.2613430127041742,
+      "emission_intensity": 0.2395644283121597,
+      "virtual_beam_ratio": 0.9166666663159144
+    },
+    "validation": {
+      "array_size_sufficient": true,
+      "state_distribution_reasonable": true,
+      "self_selecting": true
+    },
+    "timestamp": "2026-02-15T00:36:52.339786"
+  }
+}

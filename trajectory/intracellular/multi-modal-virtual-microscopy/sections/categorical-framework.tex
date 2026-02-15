@@ -1,0 +1,204 @@
+\section{Categorical Framework}
+
+\subsection{Phase Space Partitioning}
+
+Consider system with Hamiltonian $H(\mathbf{q},\mathbf{p})$ where $\mathbf{q} = (q_1,\ldots,q_N)$ are generalized coordinates and $\mathbf{p} = (p_1,\ldots,p_N)$ are conjugate momenta. Phase space $\Gamma = \{(\mathbf{q},\mathbf{p})\}$ has dimension $2N$.
+
+From Axiom 1, finite energy $E < \infty$ restricts accessible phase space to energy shell $\Gamma_E = \{(\mathbf{q},\mathbf{p}) \,|\, H(\mathbf{q},\mathbf{p}) = E\}$ with dimension $2N-1$ and finite measure $\mu(\Gamma_E) < \infty$.
+
+From Axiom 2, observer with resolution $\delta$ partitions $\Gamma_E$ into cells of linear size $\delta$. Number of distinguishable cells is
+\begin{equation}
+\mathcal{N}_{\text{cells}} = \frac{\mu(\Gamma_E)}{\delta^{2N-1}}
+\end{equation}
+
+For cellular system with $N \sim 10^{11}$ atoms, $E \sim 1$ eV per atom, and resolution $\delta \sim \hbar$ (quantum limit):
+\begin{equation}
+\mathcal{N}_{\text{cells}} \sim \frac{(EV)^N}{\hbar^{2N-1}} \sim 10^{10^{13}}
+\end{equation}
+
+This enormous number necessitates coordinate reduction.
+
+\subsection{Partition Coordinates}
+
+Spherical geometry provides natural coordinate system.
+
+\begin{definition}[Partition Coordinates]
+For system with bounded spherical phase space, partition coordinates comprise:
+\begin{align}
+n &\in \{1,2,3,\ldots\} && \text{(depth)} \\
+\ell &\in \{0,1,\ldots,n-1\} && \text{(complexity)} \\
+m &\in \{-\ell,-\ell+1,\ldots,+\ell\} && \text{(orientation)} \\
+s &\in \{-\tfrac{1}{2},+\tfrac{1}{2}\} && \text{(chirality)}
+\end{align}
+\end{definition}
+
+\begin{theorem}[Capacity Relation]
+\label{thm:capacity}
+Number of distinct states with partition depth $n$ is $C(n) = 2n^2$.
+\end{theorem}
+
+\begin{proof}
+Count states systematically. For depth $n$, complexity ranges $\ell = 0,1,\ldots,n-1$. For each $\ell$, orientation ranges $m = -\ell,\ldots,+\ell$, giving $2\ell+1$ states. Chirality doubles count. Total:
+\begin{equation}
+C(n) = 2\sum_{\ell=0}^{n-1}(2\ell+1) = 2\sum_{\ell=0}^{n-1}(2\ell+1) = 2\left[2\frac{(n-1)n}{2} + n\right] = 2n^2
+\end{equation}
+\end{proof}
+
+\subsection{Energy Quantization}
+
+Partition depth relates to energy through oscillatory frequency.
+
+\begin{theorem}[Frequency-Depth Relation]
+\label{thm:frequency_depth}
+Oscillator with frequency $\omega$ and partition depth $n$ has energy $E_n = n^2 \hbar \omega$.
+\end{theorem}
+
+\begin{proof}
+Partition depth counts distinguishable states in $[0,2\pi]$ phase interval. With $n$ partitions, phase resolution is $\Delta\phi = 2\pi/n$. By Heisenberg uncertainty, $\Delta E \Delta t \geq \hbar/2$ where $\Delta t = 1/(2\omega)$ is quarter period. This gives
+\begin{equation}
+\Delta E \geq \frac{\hbar\omega}{1} = \hbar\omega
+\end{equation}
+Energy increases with depth as $E_n = n^2 \hbar\omega$ from capacity relation: states scale as $n^2$, energy per state scales as $\hbar\omega$.
+\end{proof}
+
+\begin{corollary}
+Chemical bond energy $E_{\text{bond}} \sim 1$ eV at optical frequency $\omega \sim 10^{15}$ rad/s requires partition depth $n \sim 3$.
+\end{corollary}
+
+\begin{proof}
+From $E_n = n^2 \hbar\omega$ with $E = 1$ eV $ = 1.6 \times 10^{-19}$ J:
+\begin{equation}
+n = \sqrt{\frac{E}{\hbar\omega}} = \sqrt{\frac{1.6 \times 10^{-19}}{1.05 \times 10^{-34} \times 10^{15}}} \approx 3.9
+\end{equation}
+\end{proof}
+
+\subsection{S-Entropy Coordinate Mapping}
+
+Partition coordinates $(n,\ell,m,s)$ map to three-dimensional S-entropy space.
+
+\begin{definition}[S-Entropy Mapping]
+\label{def:s_mapping}
+S-entropy coordinates $(\Sk,\St,\Se) \in [0,1]^3$ are defined by:
+\begin{align}
+\Sk &= 1 - \frac{\log_2 C(n)}{\log_2 C_{\max}} = 1 - \frac{2\log_2 n}{\log_2 C_{\max}} \\
+\St &= \frac{m + \ell}{\ell_{\max} + \ell} \\
+\Se &= \frac{\ell}{n-1}
+\end{align}
+where $C_{\max}$ is maximum capacity and $\ell_{\max}$ is maximum complexity in system.
+\end{definition}
+
+\begin{lemma}
+S-entropy coordinates satisfy $0 \leq \Sk, \St, \Se \leq 1$.
+\end{lemma}
+
+\begin{proof}
+For $\Sk$: Since $1 \leq n \leq n_{\max}$, we have $0 \leq \log_2 n \leq \log_2 n_{\max}$, giving $0 \leq 2\log_2 n/\log_2 C_{\max} \leq 1$ and thus $0 \leq \Sk \leq 1$.
+
+For $\St$: Since $-\ell \leq m \leq +\ell$, numerator ranges $0 \leq m+\ell \leq 2\ell$. Denominator satisfies $\ell_{\max} + \ell \geq 2\ell$. Thus $0 \leq \St \leq 1$.
+
+For $\Se$: Since $0 \leq \ell \leq n-1$, ratio $\ell/(n-1) \in [0,1]$ directly.
+\end{proof}
+
+\subsection{Categorical Distance}
+
+Distance between states quantifies distinguishability.
+
+\begin{definition}[Categorical Distance]
+For states $\Sigma_1 = (n_1,\ell_1,m_1,s_1)$ and $\Sigma_2 = (n_2,\ell_2,m_2,s_2)$, categorical distance is
+\begin{equation}
+\dcat(\Sigma_1,\Sigma_2) = |n_1 - n_2| + |\ell_1 - \ell_2| + |m_1 - m_2| + |s_1 - s_2|
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Metric Properties]
+Categorical distance $\dcat$ is a metric on partition coordinate space.
+\end{theorem}
+
+\begin{proof}
+Verify metric axioms. \textbf{Non-negativity:} $\dcat(\Sigma_1,\Sigma_2) \geq 0$ from absolute values. \textbf{Identity:} $\dcat(\Sigma,\Sigma) = 0$ trivially. \textbf{Symmetry:} $\dcat(\Sigma_1,\Sigma_2) = \dcat(\Sigma_2,\Sigma_1)$ from absolute value symmetry. \textbf{Triangle inequality:} For any $\Sigma_3$:
+\begin{align}
+\dcat(\Sigma_1,\Sigma_2) &= |n_1-n_2| + \cdots \nonumber \\
+&\leq |n_1-n_3| + |n_3-n_2| + \cdots \nonumber \\
+&= \dcat(\Sigma_1,\Sigma_3) + \dcat(\Sigma_3,\Sigma_2)
+\end{align}
+\end{proof}
+
+\subsection{Phase-Lock Networks}
+
+Oscillators with similar frequencies form phase-locked networks.
+
+\begin{definition}[Phase-Lock Coupling]
+Two oscillators with frequencies $\omega_1, \omega_2$ and partition depths $n_1, n_2$ couple with strength
+\begin{equation}
+g_{12} = g_0 \exp\left(-\frac{|\omega_1 - \omega_2|}{\Delta\omega}\right) \exp\left(-\frac{\dcat(\Sigma_1,\Sigma_2)}{\lambda_{\text{cat}}}\right)
+\end{equation}
+where $\Delta\omega$ is frequency bandwidth and $\lambda_{\text{cat}}$ is categorical coherence length.
+\end{definition}
+
+\begin{theorem}[Network Coherence]
+Phase-locked network of $N$ oscillators with maximum categorical distance $\dcat^{\max}$ maintains coherence when
+\begin{equation}
+\frac{\dcat^{\max}}{\lambda_{\text{cat}}} < \ln N
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Total coupling strength is $G_{\text{total}} = \sum_{i<j} g_{ij}$. For coherence, this must exceed thermal energy: $G_{\text{total}} > \kB T$. With $N(N-1)/2$ pairs and average coupling $\langle g \rangle = g_0 \exp(-\dcat^{\max}/\lambda_{\text{cat}})$:
+\begin{equation}
+G_{\text{total}} \sim \frac{N^2}{2} g_0 \exp\left(-\frac{\dcat^{\max}}{\lambda_{\text{cat}}}\right)
+\end{equation}
+Coherence requires $G_{\text{total}}/\kB T > 1$, giving condition $\dcat^{\max}/\lambda_{\text{cat}} < \ln N + \text{const}$.
+\end{proof}
+
+\subsection{Partition Lag}
+
+Transitions between partition states require finite time.
+
+\begin{definition}[Partition Lag]
+Transition from state $\Sigma_i$ to state $\Sigma_j$ requires time
+\begin{equation}
+\taulagij = \tau_0 \exp\left(\frac{\dcat(\Sigma_i,\Sigma_j)}{\lambda_T}\right)
+\end{equation}
+where $\tau_0$ is fundamental oscillation period and $\lambda_T$ is thermal coherence length.
+\end{definition}
+
+\begin{lemma}
+For thermal system at temperature $T$, thermal coherence length is
+\begin{equation}
+\lambda_T = \frac{\kB T}{\hbar \omega_0}
+\end{equation}
+where $\omega_0$ is characteristic frequency.
+\end{lemma}
+
+\begin{proof}
+Thermal energy $\kB T$ enables access to states within energy range $\Delta E \sim \kB T$. From frequency-depth relation, $\Delta E = \Delta n^2 \hbar\omega_0$, giving $\Delta n \sim \sqrt{\kB T/(\hbar\omega_0)}$. Since categorical distance scales linearly with partition depth difference, $\lambda_T \sim \Delta n \sim (\kB T/\hbar\omega_0)^{1/2}$. Precise coefficient analysis gives $\lambda_T = \kB T/(\hbar\omega_0)$.
+\end{proof}
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/panel_partition_lag.png}
+    \caption{\textbf{Molecular Partition Lag: The Timescale of Categorical Completion.}
+    Partition lag $\tau_p$ is the time required for a categorical state to complete its transition through an aperture. It is the fundamental timescale of fluid dynamics. (A) Partition lag distributions: gases have fast, narrow distributions (free flight between collisions); liquids have intermediate distributions (cage rattling); viscous fluids have slow, broad distributions (extended phase-lock reconfiguration). The distribution shape encodes fluid rheology. (B) Temperature dependence: $\langle\tau_p\rangle \propto \sqrt{m/(k_B T)}$ for gases (kinetic theory); $\langle\tau_p\rangle \propto \exp(E_a/k_B T)$ for liquids (Arrhenius activation). This explains the opposite temperature dependence of viscosity in gases (increases) vs liquids (decreases). (C) Collision vs uncertainty limits: $\tau_p = \max(\tau_{\text{coll}}, \hbar/\Delta E)$. In gases, collisions limit completion; in quantum systems, uncertainty limits completion. (D) Pressure dependence: $\tau_p \propto P^{-1/2}$ at fixed temperature---higher pressure increases collision frequency, reducing partition lag. This explains pressure-viscosity coupling in gases.}
+    \label{fig:partition_lag_fluid}
+    \end{figure}
+
+    
+\subsection{Information Catalysis}
+
+Intermediate states reduce categorical distance.
+
+\begin{theorem}[Catalytic Distance Reduction]
+\label{thm:catalysis}
+Direct categorical distance $\dcat(\Sigma_1,\Sigma_2)$ reduces to effective distance
+\begin{equation}
+\dcat^{\text{eff}}(\Sigma_1,\Sigma_2) = \min_{\{\Sigma_k\}} \sum_{k=1}^{K} \dcat(\Sigma_k,\Sigma_{k+1})
+\end{equation}
+where minimum is over all intermediate sequences $\Sigma_1 \to \Sigma_2 \to \cdots \to \Sigma_K \to \Sigma_2$.
+\end{theorem}
+
+\begin{proof}
+Morphism composition in category theory allows chaining of transitions. Each intermediate state provides alternative pathway. Effective distance is geodesic in network graph where nodes are partition states and edges have weights $\dcat(\Sigma_i,\Sigma_j)$. Standard graph algorithms (Dijkstra, Floyd-Warshall) compute shortest path.
+\end{proof}
+
+This completes categorical framework establishing partition coordinates, S-entropy mapping, categorical distance metric, phase-lock networks, partition lag, and information catalysis as foundational mathematical structures for cellular state determination.

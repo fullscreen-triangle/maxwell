@@ -1,0 +1,29 @@
+{
+  "experiment": "41_protein_atoms_measurement",
+  "parameters": {
+    "protein": "1LYZ (lysozyme)",
+    "num_atoms": 1102,
+    "num_steps": 200
+  },
+  "results": {
+    "final_state_counts": {
+      "ground": 288,
+      "natural": 550,
+      "excited": 264
+    },
+    "final_state_fractions": {
+      "ground": 0.2613430127041742,
+      "natural": 0.49909255898366606,
+      "excited": 0.2395644283121597
+    },
+    "absorption_intensity": 0.2613430127041742,
+    "emission_intensity": 0.2395644283121597,
+    "virtual_beam_ratio": 0.9166666663159144
+  },
+  "validation": {
+    "array_size_sufficient": true,
+    "state_distribution_reasonable": true,
+    "self_selecting": true
+  },
+  "timestamp": "2026-02-15T00:36:52.339786"
+}

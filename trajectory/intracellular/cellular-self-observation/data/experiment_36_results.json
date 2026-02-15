@@ -1,0 +1,28 @@
+{
+  "experiment": "36_oxygen_categorical_microscopy",
+  "parameters": {
+    "cell_radius_um": 5.0,
+    "O2_concentration_uM": 250.0,
+    "total_O2_molecules": 78827795,
+    "simulated_molecules": 50000,
+    "num_steps": 200,
+    "timestep_ns": 1.0
+  },
+  "results": {
+    "final_state_counts": {
+      "absorption": 0,
+      "ground": 50000,
+      "emission": 0
+    },
+    "spatial_resolution_nm": 1049.7155228390118,
+    "temporal_resolution_fs": 10.0,
+    "image_resolution": 50,
+    "array_size": 50000
+  },
+  "validation": {
+    "array_size_sufficient": false,
+    "spatial_resolution_nm_achieved": false,
+    "self_observation_enabled": true
+  },
+  "timestamp": "2026-02-15T00:36:35.572114"
+}

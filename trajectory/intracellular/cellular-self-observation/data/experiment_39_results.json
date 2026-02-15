@@ -1,0 +1,29 @@
+{
+  "experiment": "39_three_layer_capacitor_dna",
+  "parameters": {
+    "genome_bp": 3000000000,
+    "nucleus_radius_um": 5.0,
+    "cell_radius_um": 10.0
+  },
+  "results": {
+    "DNA_charge_nC": -0.9611999999999999,
+    "field_at_nucleus_surface_V_m": 345647519999.99994,
+    "field_at_cell_edge_V_m": 86411879999.99998,
+    "thermal_threshold_V_m": 100000.0,
+    "field_dominates_thermal": true
+  },
+  "c_value_analysis": {
+    "E. coli": -0.00147384,
+    "Yeast": -0.0038447999999999998,
+    "C. elegans": -0.03204,
+    "Drosophila": -0.044856,
+    "Human": -0.9611999999999999,
+    "Wheat": -5.4468
+  },
+  "validation": {
+    "DNA_charge_correct": true,
+    "field_sufficient": true,
+    "sequence_independent": true
+  },
+  "timestamp": "2026-02-15T00:36:46.081677"
+}

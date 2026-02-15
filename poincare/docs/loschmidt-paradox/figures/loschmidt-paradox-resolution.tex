@@ -14,6 +14,20 @@
 \usepackage{titlesec}
 \usepackage{authblk}
 \usepackage{physics}
+\usepackage{braket}
+\usepackage{mathrsfs}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage{geometry}
+\usepackage{pifont}
+\usepackage{algorithm}
+\usepackage{caption}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathreplacing}
 
 % Font and typography
 \usepackage[utf8]{inputenc}
@@ -30,10 +44,23 @@
 \usepackage{todonotes}               % TODO notes (\todo{Fix this})
 \usepackage{pdfpages}                % Include external PDF pages
 \usepackage{appendix}                % Better appendix formatting
-\usepackage{textcomp}                % Additional text symbols
-\usepackage{gensymb}                 % Generic symbols (°, µ, etc.)
+
 
 \usepackage[capitalize,noabbrev]{cleveref}  % Smart cross-references
+
+\captionsetup{
+  font=footnotesize,           % Smaller text for long captions
+  labelfont={bf,footnotesize}, % Bold label, same size
+  justification=justified,     % Full justification
+  singlelinecheck=false,       % Always justify
+  labelsep=period,             % "Figure 1." style
+  skip=8pt,                    % Space between image and caption
+  position=bottom              % Caption below figure (default)
+}
+\usepackage[section]{placeins}
+% Optional: Different sizes for figures vs tables
+\captionsetup[figure]{font=footnotesize}
+\captionsetup[table]{font=small}
 
 % Configure cleveref names
 \crefname{figure}{Figure}{Figures}
@@ -362,12 +389,12 @@ $$
 
 \textbf{Conclusion:} Even if kinetic entropy could be perfectly reversed, total entropy does not decrease because categorical entropy remains irreversible. This provides a partial resolution of Loschmidt's paradox, but leaves open the question of \textit{why} categorical entropy is irreversible. We address this in the next section.
 
-\begin{figure}[htbp]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{triple_equivalence_panel.png}
 \caption{\textbf{Triple equivalence: three perspectives on thermodynamic state.} (\textbf{A}) Geometric perspective: partition structure $\mathcal{P}$ divides phase space $\Omega$ into cells. Coarse partition (left, 4 large cells in blue/green/yellow/red) has low resolution; fine partition (right, 16 small cells) has high resolution. Finer partitions $\to$ more information $\to$ lower entropy. (\textbf{B}) Informational perspective: knowledge entropy $S_k$ (vertical axis) versus partition resolution (horizontal axis). Blue curve shows entropy decreasing as resolution increases. Three regimes marked: macroscopic (red region, high entropy), mesoscopic (yellow region, intermediate), microscopic (green region, low entropy, full knowledge). (\textbf{C}) Temporal perspective: time evolution operator $\hat{T}$ acts on initial partition $\mathcal{P}_0$ (left, simple 2-cell structure in blue/green) to produce evolved partition $\mathcal{P}_t$ (right, complex 8-cell structure in multiple colors). Partition refinement over time $=$ entropy increase. Arrow labeled ``$\hat{T}(t)$'' indicates temporal evolution. (\textbf{D}) Central equivalence: three arrows connecting ``Geometric $\mathcal{P}$'' (top), ``Informational $S_k$'' (bottom left), and ``Temporal $\tau$'' (bottom right) form triangle. Each arrow is bidirectional with equality symbol, establishing: Partition structure $\Leftrightarrow$ Information content $\Leftrightarrow$ Time scale. Boxed equation at center: $S = k_B \ln \Omega(\mathcal{P}, t)$.}
 \label{fig:triple_equivalence}
-\end{figure}
+\end{figure*}
 
 \subsection{Relation to Information-Theoretic Entropy}
 
@@ -434,12 +461,12 @@ Each subset $S_i$ represents a category—a collection of microstates treated as
 
 Every partition creates distinctions. The number of distinctions is $\ln n$ (in nats) or $\log_2 n$ (in bits), where $n$ is the number of categories. This contributes $k_B \ln n$ per degree of freedom to categorical entropy.
 
-\begin{figure}[htbp]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{panel_categorical_temporal.png}
 \caption{\textbf{Categorical temporal emergence: time as the unfolding of partition structure.} (\textbf{A}) Partition hierarchy and temporal ordering: hierarchical tree structure with root node (dark teal, top) branching into three children (red, level 1), then nine grandchildren (blue, level 2), then 27 leaves (green, level 3). Each level corresponds to a temporal stage. Partition depth $=$ elapsed time. (\textbf{B}) Completion fraction versus time: blue curve shows fraction of categories completed (vertical axis, 0 to 1) increasing sigmoidally with time (horizontal axis). Red dashed line at 0.95 marks practical completion threshold. Blue shaded area represents completed categories. System asymptotically approaches full completion. (\textbf{C}) Time emergence from categorical structure: flowchart showing progression from ``Undefined superposition'' (top, gray box) $\to$ ``Categorical branching'' (middle, blue box with tree icon) $\to$ ``Temporal sequence'' (bottom, green box with clock icon). Arrows labeled ``Partition operator $\hat{P}$'' and ``Emergence of $t$'' connect stages. Boxed equation: $t \propto \sum_{i} \tau_{\text{partition},i}$, indicating time is sum of partition delays. (\textbf{D}) Entropy accumulation: entropy $S(t)$ (vertical axis) versus time (horizontal axis) shows three regimes: (1) rapid initial increase (red curve, $t < 2$), (2) linear growth (orange, $2 < t < 8$), (3) saturation (yellow, $t > 8$). Colored shaded regions indicate accumulated entropy. System reaches maximum entropy at long times.}
 \label{fig:categorical_temporal}
-\end{figure}
+\end{figure*}
 
 \subsection{Partition Lag: The Temporal Gap}
 
@@ -503,12 +530,12 @@ The residue $\mathcal{R}$ represents information that is fundamentally inaccessi
 
 Therefore, $\mathcal{R}$ is permanently lost information.
 
-\begin{figure}[htbp]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{topology_categories_panel.png}
 \caption{\textbf{Topology of categorical spaces: partial order, $S$-space structure, and completion dynamics.} (\textbf{A}) Partial order (completion precedence): directed acyclic graph showing temporal ordering of category completion. Nodes (teal circles) connected by edges represent precedence relations: upper nodes must complete before lower nodes. (\textbf{B}) Tri-dimensional $S$-space: three orthogonal axes $S_t$ (temporal entropy, red), $S_k$ (knowledge entropy, green), and $S_e$ (environmental entropy, blue) span the categorical state space. Yellow dot indicates sample state. (\textbf{C}) $3^k$ branching structure: hierarchical tree with root node $C$ (dark teal) branching into three children (blue, green, red), each further branching into three grandchildren, creating $3^k$ leaves at depth $k$. (\textbf{D}) Scale ambiguity: identical structure at different levels. Two triangular subgraphs (teal nodes) at level $n$ and level $n+1$ are related by scale transformation $\Psi_n$ (red dots with arrows), demonstrating self-similarity. (\textbf{E}) Completion trajectory $\gamma(t)$ expanding: fraction completed $|\gamma(t)|/|C|$ (green curve with shaded area) increases from 0 to asymptotic limit (red dashed line labeled ``Complete'') following sigmoidal growth. (\textbf{F}) Asymptotic slowing $\dot{C}(t) \to 0$: completion rate $\dot{C}(t)$ (red curve) decreases exponentially from $\sim 0.30$ at $t = 0$ to near zero by $t = 10$. Completion time $T$ (black dotted) diverges as system approaches full completion. Red shaded area represents integrated completion.}
 \label{fig:categorical_topology}
-\end{figure}
+\end{figure*}
 
 \subsection{Entropy Generation from Partition Lag}
 
@@ -642,12 +669,12 @@ This process has an intrinsic direction: $t_{\text{end}} > t_{\text{start}}$ alw
 
 \textbf{Implication:} Even if kinetic entropy could somehow be reversed (violating the usual statistical arguments), categorical entropy would remain irreversible because partition lag has an intrinsic temporal direction. The arrow of time is built into the structure of partition operations.
 
-\begin{figure}[htbp]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{partition_lag_panel.png}
 \caption{\textbf{Partition lag: comprehensive framework connecting geometry, information, and thermodynamics.} (\textbf{A}) Geometric partition lag: phase space (gray background) divided by partition boundaries (black lines) into cells (colored regions). Trajectory (blue curve with arrow) crosses boundaries with time delay $\tau_{\text{cross}}$ (red double arrow). Partition lag $=$ accumulated boundary crossing delays. (\textbf{B}) Information-theoretic interpretation: knowledge entropy $S_k$ (vertical axis) versus partition resolution (horizontal axis). Observer knowledge (blue shaded region) lags behind true microstate (red dashed line). Gap between curves $=$ information lag $=$ entropy. Three regimes: coarse partition (high entropy, left), intermediate (middle), fine partition (low entropy, right). (\textbf{C}) Temporal accumulation: partition lag $\tau_{\text{total}}$ (vertical axis) versus number of partition operations (horizontal axis) shows linear accumulation (blue line): $\tau_{\text{total}} = n \cdot \tau_{\text{single}}$. Orange shaded area represents accumulated lag. (\textbf{D}) Thermodynamic connection: temperature $T$ (left vertical axis, red curve) and entropy $S$ (right vertical axis, blue curve) both increase with partition lag $\tau$ (horizontal axis). Boxed equations: $T \propto \tau_{\text{partition}}$ and $S = k_B \ln \Omega(\tau)$. (\textbf{E}) Experimental validation: measured temperature (vertical axis) versus calculated partition lag (horizontal axis) for three systems (red/blue/green dots). Linear fit (black dashed line) confirms $T = \alpha \tau$ with $R^2 > 0.95$. (\textbf{F}) Universal scaling: normalized temperature $T/T_c$ (vertical axis) versus normalized lag $\tau/\tau_c$ (horizontal axis) for multiple systems (colored curves) collapse onto single master curve (black), demonstrating universality of partition lag framework.}
 \label{fig:partition_lag_panel}
-\end{figure}
+\end{figure*}
 
 \subsection{Quantitative Estimate of Partition Lag Entropy}
 
@@ -754,12 +781,12 @@ The information content of an actualisation is determined by the number of non-a
 
 To say ``the system is in state $\mathbf{x}$'' is equivalent to saying ``the system is not in state $\mathbf{y}$'' for all $\mathbf{y} \neq \mathbf{x}$. The more non-actualisations are excluded, the more information is conveyed by specifying the actualisation.
 
-\begin{figure}[htbp]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{panel_non_actualisation.png}
 \caption{\textbf{Non-actualization asymmetry provides the deepest reason for irreversibility.} (\textbf{A}) The cup example: when a cup falls from table to broken state, a single actualization (cup breaks) creates infinite non-actualizations: $\Box$ not turning to gold, $\Box$ not becoming sentient, $\Box$ not teleporting, $\Box$ not melting, $\Box$ not reassembling, and infinitely many more. Each actualization generates $\infty$ resolved non-possibilities. (\textbf{B}) Branching asymmetry: one actualization (green circle labeled ``1'') leads to $\infty$ non-actualizations (red circles, infinite). The asymmetry ratio is $1:\infty$, indicated by purple double arrow. (\textbf{C}) Accumulation: non-actualizations grow without bound. Red shaded area shows non-actualizations accumulating monotonically over time (reaching $\sim 20{,}000$ by $t = 10$), while actualizations (green line, scaled $\times 100$) grow slowly. Non-actualizations accumulate monotonically and cannot be un-created. (\textbf{D}) Irreversibility: forward/backward asymmetry ratio $\to \infty$. \textbf{Forward} (green arrow): 1 actual $\to \infty$ non-actual is always possible. \textbf{Backward} (red crossed arrow): requires un-creating non-actualizations, which is \textbf{impossible}. The ratio $B_{\text{forward}}/B_{\text{backward}} \to \infty$ establishes absolute irreversibility.}
 \label{fig:non_actualization}
-\end{figure}
+\end{figure*}
 
 \begin{theorem}[Information Content of Actualisation]
 The information content of an actualisation $\mathbf{x}$ is:
@@ -883,7 +910,7 @@ $$
 
 Therefore, categorical entropy increases monotonically because non-actualisations accumulate irreversibly.
 
-\begin{figure*}[htbp]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{entropy_emergence_panel.png}
 \caption{\textbf{Entropy Emergence from Categorical Completion.} 
@@ -944,7 +971,7 @@ $$
 
 This matches the kinetic entropy increase from the Sackur-Tetrode equation, showing that categorical and kinetic entropy are closely related for this process.
 
-\begin{figure}[htbp]
+\begin{figure*}[!htbp]
     \centering
     \includegraphics[width=\textwidth]{panel3_categorical_enthalpy.png}
     \caption{Classical thermodynamic enthalpy $H = U + PV$ emerges as coarse-grained limit 
@@ -981,7 +1008,7 @@ This matches the kinetic entropy increase from the Sackur-Tetrode equation, show
     \textbf{classical thermodynamics emerges as the coarse-grained limit of categorical 
     aperture dynamics} (gray italic text).}
     \label{fig:categorical_enthalpy}
-\end{figure}
+\end{figure*}
 
 \subsection{Summary}
 
@@ -1106,7 +1133,7 @@ To enumerate $\mathcal{N}$, we must list all non-actualisations. But each non-ac
 
 The enumeration never terminates. We cannot construct a complete list of non-actualisations because the list is self-generating.
 
-\begin{figure*}[t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{asymmetric_branching_panel.png}
 \caption{\textbf{Actualization creates asymmetric branching and irreversible information growth.} (\textbf{A}) Actualization resolves non-possibilities: from a decision point (gold circle), multiple futures are possible (green ``Stay'', red ``Fall'', orange ``Fly'', brown ``Pushed'', purple ``Sentient''). Actualization selects one path (green arrow), eliminating others (red dashed arrows). The set of resolved possibilities $|\text{Can}|$ is finite, but unresolved non-possibilities $|\text{Cannot}| = \infty$. (\textbf{B}) Branching ratio: backward paths (returning to origin) scale as $\mathcal{O}(1)$, while forward paths (exploring new states) scale as $\infty + \mathcal{O}(n)$. The ratio $\text{forward}/\text{backward} \to \infty$ establishes categorical irreversibility. (\textbf{C}) Category self-division: a category $C_0$ (gold) traverses through intermediate states (purple dots) to reach $C_0'$ (pink). The final state satisfies $C_0/C_0 = C_0' \neq C_0$—the category has divided itself. The residue records non-actualizations. (\textbf{D}) Information: broken cup $>$ intact cup. An intact cup (green box, $I = I_0$) has low information. A broken cup (red squares labeled ``X gold'', ``X sentient'', ``X fly'', ``X $\ldots \infty$'') has high information $I = I_0 + |\text{didn't}|$ because it records all the things that \textit{didn't} happen. Determined facts $>$ undetermined possibilities. (\textbf{E}) Entropy accumulation: categorical information (vertical axis) grows over cosmic time (horizontal axis). Actualized events (green bars) represent observable entropy; non-actualized events (red bars) represent hidden entropy from resolved non-possibilities. Total entropy $S = |\text{resolved non-actualizations}|$ increases monotonically. (\textbf{F}) Why reversal is impossible: to reverse, one must (1) return $C' \to C$, (2) un-resolve ``didn't gold'', (3) un-resolve ``didn't fly'', (4) un-resolve $\infty$ more events. ``Did not happen'' cannot become ``undetermined non-possibility''—determined facts are irreducible.}
@@ -1221,7 +1248,7 @@ To say ``$X$ did not occur'' is to assert a fact about the universe. This fact i
 
 This creates an irreducible circularity: to enumerate non-actualisations, we must know what actualized, but to know what actualized, we must enumerate non-actualisations. The circle cannot be broken.
 
-\begin{figure*}[t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{panel_loschmidt_cross_sectional_validation.png}
 \caption{\textbf{Cross-sectional validation of Loschmidt's paradox resolution through radial $S$-coordinate analysis.} (\textbf{A}) $S$-coordinates at radial cross-sections: temporal entropy $S_t$ (solid lines) and knowledge entropy $S_k$ (dashed lines) versus normalized radius for three expansion rates: fast (red/pink), medium (blue/cyan), slow (green/light green). Each radius corresponds to a spherical shell (cross-section). All entropies increase with radius, indicating outward entropy flow. (\textbf{B}) Non-actualizations accumulate outward: actualized states (solid lines, fast/medium/slow in red/blue/green) grow slowly, while non-actualized states (dashed lines) grow exponentially (log scale, $10^{-3}$ to $10^1$). Non-actualizations $\gg$ actualizations at all radii—this asymmetry $=$ irreversibility. (\textbf{C}) $S$-gradient always points outward: $\partial S_t/\partial r$ (vertical axis) versus normalized radius for three expansion rates (red/blue/green curves). All gradients are positive (green shaded region labeled ``Irreversible (positive)''), confirming entropy increases outward $=$ irreversibility. (\textbf{D}) Irreversibility metric (fraction of positive gradients): all three expansion rates show 100.0\% positive gradients (red/blue/green bars reaching 1.0). Reversible threshold at 50\% (magenta dashed line) and fully irreversible at 100\% (green dashed line). All cases are fully irreversible. (\textbf{E}) Transformation validation: predicted $S_t$ from transformation operator $T_{S_t}$ (vertical axis) versus calculated $S_t$ from irreversibility metric (horizontal axis) for three expansion rates (red/blue/green dots). Perfect agreement: $R^2 = 0.9971$ (fast), $0.9973$ (medium), $0.9974$ (slow). Black dashed line shows ideal $1:1$ correspondence. (\textbf{F}) Expanding point creates non-actualization gradient: polar plot showing concentric shells (red to yellow, high to low entropy) radiating from central black dot. Blue arrows indicate outward entropy gradient. Spherical shells $=$ radial cross-sections. Yellow box: ``$\nabla S > 0$ always (irreversibility).''}
@@ -1318,7 +1345,7 @@ Therefore, Loschmidt's reversal cannot be performed. \qed
 
 \textbf{Remark:} This is not a statement about practical limitations. It is a statement about logical impossibility. Even an omniscient observer with infinite computational power cannot enumerate $\mathcal{N}(t)$ because $\mathcal{N}(t)$ is not a well-defined set in standard set theory (due to self-reference, as shown in Section \ref{sec:self_reference}).
 
-\begin{figure*}[t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{panel_termination_irreversibility.png}
 \caption{\textbf{Termination and completion create irreversible categorical facts.} (\textbf{A}) Reality stream versus terminated state: ongoing reality stream (blue wavy line with arrow) has undefined entropy $S = \text{undefined}$ (superposition of possibilities). Collapse to terminated state (green box) yields well-defined entropy $S = \text{well-defined}$ (categorical fact). Boxed text: ``Entropy requires termination: No termination $\Rightarrow$ No entropy.'' (\textbf{B}) Identity: completion $=$ partitioning $=$ entropy creation. Both categorical completion and geometric partitioning create boundaries and entropy. Formula: $P_{\text{forward}}/P_{\text{backward}} = \prod_{i=1}^{N} \Omega_i \to \infty$. (\textbf{C}) Why reversal fails: cannot un-create categorical facts. \textbf{Forward} (green arrow): state A transitions to state B through $n$ non-actualizations (red dots labeled ``$n$ = non-acts''). \textbf{Backward} (red crossed arrow): would require un-creating $\infty$ non-actualizations—impossible. Boxed text: ``Reversal is not about energy or velocity reversal. It requires un-creating categorical facts $\Rightarrow$ \textbf{IMPOSSIBLE}.'' (\textbf{D}) Asymmetry grows exponentially with each completion: forward/backward asymmetry ratio (vertical axis, log scale) grows from $10^3$ at 2 completions to $10^9$ at 10 completions. Red dots connected by line show exponential growth. Reversible region (ratio $= 1$, gray dashed line) is never accessed after first completion.}
@@ -1478,7 +1505,7 @@ Therefore, the demon cannot decrease total entropy. \qed
 
 \textbf{Remark:} Our framework provides a deeper reason for the demon's failure: the demon must enumerate non-actualisations (which molecules did not have which velocities) to perform the sorting. By Theorem 5.2, this enumeration is impossible. Therefore, the demon cannot even begin the sorting process.
 
-\begin{figure*}[t]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{paradox_resolutions.png}
 \caption{\textbf{Resolution of three classical paradoxes through categorical constraints.} (\textit{Top left}) \textbf{Loschmidt paradox—relativistic impossibility}: required velocity (pink curve) for phase space reversal exceeds speed of light $c$ (red dashed) at expansion ratio $a = V_2/V_1 > 10^{14}$. Critical velocities for H$_2$ (purple dotted) and N$_2$ (green dotted) mark molecular-specific thresholds. Green shaded region: physically possible; red shaded region: impossible ($v > c$). (\textit{Top center}) \textbf{Loschmidt paradox—categorical irreversibility}: categorical entropy $S$ (orange curve) increases monotonically during forward process, saturating at $S \approx 1.0$. Attempted reversal (green dashed) including measurement creates additional entropy (orange shaded region). Measurement entropy cost (yellow dotted) prevents return to $S = 0$. (\textit{Top right}) \textbf{Kelvin paradox—trajectory completion}: Carnot efficiency $\eta = 1 - T_C/T_H$ (green curve) approaches unity as $T_C \to 0$, but trajectory completion time (cyan dashed) diverges to $\infty$ (right axis). Red shaded region: thermodynamically forbidden. (\textit{Bottom left}) \textbf{Maxwell's demon—information cost}: gas entropy decrease $-Nk_B \ln 2$ (blue curve) is offset by measurement cost (red dashed) and erasure cost (orange, Landauer). Net entropy change $\geq 0$ (green curve, shaded). (\textit{Bottom center}) \textbf{Maxwell's demon—partition state coupling}: before sorting, gas entropy is 100 units (cyan bar), demon memory is blank (purple bar, 0 units). After sorting, gas entropy decreases to 70 units, but demon memory increases to 30 units. Total entropy remains 100 units. (\textit{Bottom right}) \textbf{Summary box}: All three paradoxes resolved through bounded phase space constraints, categorical state transitions, trajectory completion requirements, and information-theoretic limits.}

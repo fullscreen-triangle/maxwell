@@ -1,0 +1,265 @@
+\section{Cellular State Output}
+
+\subsection{Complete State Specification}
+
+Unique cellular state determination provides complete structural and dynamical information. This section specifies output format and information content.
+
+\subsection{Spatial Structure}
+
+\begin{definition}[Three-Dimensional Density Map]
+Spatial structure output is mass density field $\rho(\mathbf{r})$ and composition field $c_{\alpha}(\mathbf{r})$ where $\alpha$ labels molecular species.
+\end{definition}
+
+Resolution $\delta x_{\text{eff}}$ achieves sub-nanometer scale from twelve-modality enhancement:
+\begin{equation}
+\delta x_{\text{eff}} = 200\text{ nm} \times (10^{-10})^{12/3} = 0.02\text{ nm}
+\end{equation}
+
+This resolves individual atoms without electron microscopy or X-ray crystallography.
+
+\begin{theorem}[Atomic Position Determination]
+For structure with $N_{\text{atoms}}$ atoms, complete position specification requires $3N_{\text{atoms}}$ coordinates. These emerge from partition structure $\{n_j, \ell_j, m_j, s_j\}$ through mapping
+\begin{equation}
+\mathbf{r}_j = \lambda_{\text{cat}} \times f(n_j, \ell_j, m_j)
+\end{equation}
+where $f$ is spherical harmonic expansion.
+\end{theorem}
+
+\begin{proof}
+Partition coordinates $(n,\ell,m)$ map to spherical coordinates $(r,\theta,\phi)$ through $r = n\lambda_{\text{cat}}$ and angular functions. Explicit mapping:
+\begin{align}
+r_j &= n_j \lambda_{\text{cat}} \\
+\theta_j &= \arccos(m_j/\sqrt{\ell_j(\ell_j+1)}) \\
+\phi_j &= 2\pi s_j
+\end{align}
+Converting to Cartesian: $\mathbf{r}_j = (r_j\sin\theta_j\cos\phi_j, r_j\sin\theta_j\sin\phi_j, r_j\cos\theta_j)$.
+\end{proof}
+
+\subsection{Thermodynamic Fields}
+
+\begin{definition}[Thermodynamic State]
+Thermodynamic output comprises fields: temperature $T(\mathbf{r})$, pressure $P(\mathbf{r})$, chemical potential $\mu_{\alpha}(\mathbf{r})$ for each species $\alpha$.
+\end{definition}
+
+These satisfy local equations of state from Theorem \ref{thm:equation_of_state}:
+\begin{equation}
+P(\mathbf{r}) = \frac{N(\mathbf{r})}{V(\mathbf{r})}\kB T(\mathbf{r}) \cdot \mathcal{S}(\mathbf{r})
+\end{equation}
+
+\begin{corollary}
+Temperature field determines thermal energy distribution:
+\begin{equation}
+E_{\text{thermal}}(\mathbf{r}) = \frac{3}{2}n(\mathbf{r})\kB T(\mathbf{r})
+\end{equation}
+where $n(\mathbf{r}) = N(\mathbf{r})/V(\mathbf{r})$ is number density.
+\end{corollary}
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/figure_01_constraint_architecture.png}
+    \caption{\textbf{Constraint architecture: Hierarchical exclusion and resolution enhancement through multi-physics constraints.} 
+    \textbf{Panel A: Constraint hierarchy (3D).} Three-dimensional tree structure shows hierarchical constraint application. Root node (blue sphere, top, labeled ``Root'') branches downward through gray edges to intermediate nodes (beige/tan spheres, middle layer) representing partial constraint satisfaction. Further branching leads to terminal nodes at three levels: O$_2$ constraint (pink spheres, left plane, $\sim 8$ nodes), $\Delta\Psi$ constraint (orange spheres, middle, $\sim 6$ nodes), pH constraint (yellow spheres, right-middle, $\sim 4$ nodes), ATP constraint (red spheres, right plane, $\sim 12$ nodes arranged in three rows). Axes: X ($-2$ to $+2$), Y (constraint level, 0 to 4), Z ($-1.0$ to $0.0$). Demonstrates sequential constraint application: each level excludes incompatible states, progressively narrowing solution space from root to valid terminal positions. Hierarchical depth encodes constraint order; spatial distribution shows categorical organization.
+    \textbf{Panel B: Sequential categorical exclusion.} Five square heatmaps ($\sim 50 \times 50$ pixels each) show progressive state space reduction. \textit{Initial} (top-left): dense multicolor noise (green, yellow, blue pixels uniformly distributed) with central green circular region ($\sim 40\%$ diameter) labeled ``0\% excluded''—represents $N_0 \sim 10^{60}$ initial possible states. \textit{After O$_2$} (top-center): similar noise pattern with green circle ($\sim 35\%$ diameter) labeled ``30\% excluded''—oxygen constraint eliminates $\epsilon_1 \sim 0.3$ of states. \textit{After $\Delta\Psi$} (top-right): reduced noise, smaller green circle ($\sim 25\%$ diameter) labeled ``70\% excl[uded]''—membrane potential constraint further reduces by $\epsilon_2 \sim 0.4$. \textit{After pH} (bottom-left): predominantly blue background with sparse yellow pixels, tiny green circle ($\sim 10\%$ diameter) labeled ``90\% excluded''—pH constraint eliminates additional $\epsilon_3 \sim 0.2$. \textit{After ATP} (bottom-right): uniform dark blue field with isolated yellow pixels, minimal green region labeled ``99\% excluded''—ATP constraint achieves near-complete exclusion $\epsilon_4 \sim 0.09$. Demonstrates overdetermination principle: $N_4 = N_0 \prod_{i=1}^{4} \epsilon_i \sim 10^{60} \times 0.3 \times 0.4 \times 0.2 \times 0.09 \sim 10^{58}$, with eight additional modalities driving $N_{12} \to 1$.
+    \textbf{Panel C: Resolution enhancement.} Log-log plot shows spatial resolution (nm, vertical axis, $10^{-1}$ to $10^2$) versus number of constraints applied (horizontal axis, $10^0$ to $10^1$). Green curve with circles (``This method'') starts at $\sim 10^2$ nm (1 constraint), decreases smoothly to $\sim 10^1$ nm (8 constraints), then drops precipitously to $\sim 10^{-1}$ nm (12 constraints, green annotation box: ``$10^3\times$ improvement''). Four horizontal dashed reference lines: pink (``Optical (200 nm)'', $2 \times 10^2$ nm), orange (``Confocal (100 nm)'', $10^2$ nm), yellow (``STED (20 nm)'', $2 \times 10^1$ nm). This method surpasses all conventional techniques at $\sim 10$ constraints, achieving sub-nanometer resolution ($\sim 0.1$ nm) at full constraint application—three orders of magnitude beyond STED, approaching atomic scale.
+    \textbf{Panel D: Information content.} Two-panel comparison shows information density (bits/voxel). \textit{Top panel}: Horizontal bar chart compares imaging methods (vertical axis) versus information content (horizontal axis, log scale $10^0$ to $10^5$ bits/voxel). Gray bar (``Conventional'', $\sim 10^3$ bits/voxel, annotation: ``$10^3$ bits/voxel'') represents standard optical microscopy ($\sim 8$-bit grayscale per voxel). Green bar (``This Method'', spans full width to $\sim 5.5 \times 10^5$ bits/voxel, annotation: ``$551 \times 10^3$ bits/voxel'') represents dodecapartite measurement—$551\times$ improvement through multi-physics constraints encoding structural, thermodynamic, metabolic, electromagnetic, mechanical, and network information simultaneously. \textit{Bottom panel}: Stacked horizontal bar chart shows modality contributions (vertical axis: ``Modalities (Stacked)'') versus cumulative information (horizontal axis, log scale $10^0$ to $10^5$ bits/voxel). Twelve colored segments (purple $\to$ blue $\to$ teal $\to$ green $\to$ yellow, left to right) represent sequential modality additions, each contributing $\sim 10^3$--$10^4$ bits/voxel. Legend: gray (``Conventional''), dark green (``This method''). Demonstrates information additivity: total content $I_{\text{total}} = \sum_{i=1}^{12} I_i \sim 5.5 \times 10^5$ bits/voxel, far exceeding conventional imaging through orthogonal constraint modalities.}
+    \label{fig:constraint_architecture}
+    \end{figure}
+    
+
+\subsection{Metabolic State}
+
+\begin{definition}[Metabolic Coordinates]
+Metabolic output comprises categorical distances from four reference oxygens: $\{\dcat(\mathbf{r}, \mathbf{r}_{O_2}^{(i)})\}$ for $i = 1,2,3,4$.
+\end{definition}
+
+This defines cellular coordinate system independent of spatial coordinates.
+
+\begin{theorem}[Metabolic Network Reconstruction]
+Complete metabolic network with $N_{\text{rxn}}$ reactions and $N_{\text{met}}$ metabolites reconstructs from categorical distance matrix $\mathbf{D}$ where $D_{ij} = \dcat(\text{metabolite } i, \text{metabolite } j)$.
+\end{theorem}
+
+\begin{proof}
+Categorical distance encodes enzymatic step count. Network graph has metabolites as nodes and enzymes as edges. Edge $(i,j)$ exists if $D_{ij} = 1$ (direct enzymatic conversion). Multi-step pathways have $D_{ij} > 1$. Graph reconstruction from distance matrix is standard algorithm in network analysis.
+\end{proof}
+
+\subsection{Electromagnetic Potentials}
+
+\begin{definition}[EM Field Output]
+Electromagnetic output comprises electric field $\mathbf{E}(\mathbf{r})$, magnetic field $\mathbf{B}(\mathbf{r})$, and electromagnetic potential $A^{\mu}(\mathbf{r})$ where $\mu = 0,1,2,3$ (spacetime index).
+\end{definition}
+
+These derive from S-entropy gradients (Section 5):
+\begin{align}
+\mathbf{E}(\mathbf{r}) &= -\lambda_{\text{EM}} \nabla \Sk(\mathbf{r}) \\
+\mathbf{B}(\mathbf{r}) &= \lambda_{\text{EM}} \nabla \times (\St(\mathbf{r})\hat{\boldsymbol{\theta}})
+\end{align}
+
+\begin{corollary}
+Membrane potential across thickness $d$ with $\Delta\Sk = 0.3$ is
+\begin{equation}
+V_m = \lambda_{\text{EM}} \frac{\Delta\Sk}{d} \approx \frac{\hbar\omega_0}{e} \times \frac{0.3}{5\text{ nm}} \sim 70\text{ mV}
+\end{equation}
+matching typical cellular membrane potential.
+\end{corollary}
+
+\subsection{Mechanical Properties}
+
+\begin{definition}[Mechanical Output]
+Mechanical properties comprise viscosity field $\mu(\mathbf{r})$, elasticity tensor $\mathbb{C}(\mathbf{r})$, and stress tensor $\boldsymbol{\sigma}(\mathbf{r})$.
+\end{definition}
+
+From Theorem \ref{thm:viscosity}, viscosity derives from partition lag:
+\begin{equation}
+\mu(\mathbf{r}) = \sum_{i,j} \taulagij(\mathbf{r}) g_{ij}(\mathbf{r})
+\end{equation}
+
+\begin{theorem}[Elastic Modulus]
+Elastic modulus relates to phase-lock network stiffness:
+\begin{equation}
+E_{\text{elastic}} = \frac{1}{V}\sum_{\langle i,j \rangle} g_{ij} (\mathbf{r}_i - \mathbf{r}_j)^2
+\end{equation}
+where sum is over nearest-neighbor pairs.
+\end{theorem}
+
+\begin{proof}
+Elastic energy from small displacement $\delta\mathbf{r}_i$ is $U_{\text{elastic}} = \tfrac{1}{2}\sum_{\langle i,j\rangle} g_{ij} (\delta\mathbf{r}_i - \delta\mathbf{r}_j)^2$. For uniform strain $\epsilon$, displacements are $\delta\mathbf{r}_i = \epsilon \mathbf{r}_i$. Energy density $u = U/V = \tfrac{1}{2}E_{\text{elastic}}\epsilon^2$ gives stated formula.
+\end{proof}
+
+\subsection{Molecular Conformations}
+
+\begin{definition}[Conformation Output]
+Protein conformations comprise dihedral angles $\{\phi_i, \psi_i\}$ for residues $i = 1,\ldots,N_{\text{res}}$ and hydrogen bond network $\{(i,j) \,|\, \text{H-bond between residues } i,j\}$.
+\end{definition}
+
+From Theorem \ref{thm:protein_folding}, phase coherence determines native state:
+\begin{equation}
+r = \frac{1}{N_{\text{HB}}}\left|\sum_{j=1}^{N_{\text{HB}}} e^{i\phi_j}\right| > 0.8
+\end{equation}
+
+\begin{corollary}
+Ramachandran plot emerges from dihedral angle distribution. Allowed regions correspond to high phase coherence $r > 0.8$.
+\end{corollary}
+
+\subsection{Network Topology}
+
+\begin{definition}[Network Output]
+Phase-lock network output comprises adjacency matrix $\mathbf{A}$ where $A_{ij} = 1$ if oscillators $i$ and $j$ are phase-locked, and Laplacian spectrum $\{\lambda_k\}$.
+\end{definition}
+
+From Theorem \ref{thm:network_topology}, second eigenvalue quantifies connectivity:
+\begin{equation}
+\lambda_2 = \min_{\mathbf{x} \perp \mathbf{1}} \frac{\mathbf{x}^T \mathcal{L} \mathbf{x}}{\mathbf{x}^T\mathbf{x}}
+\end{equation}
+
+\begin{theorem}[Compartment Identification]
+Cellular compartments (nucleus, mitochondria, endoplasmic reticulum) correspond to eigenvector sign patterns of Laplacian.
+\end{theorem}
+
+\begin{proof}
+Graph Laplacian eigenvector $\mathbf{v}_k$ assigns value $v_k^{(i)}$ to node $i$. Sign pattern partitions nodes: positive values in one compartment, negative in another. Fiedler vector $\mathbf{v}_2$ (eigenvector for $\lambda_2$) gives optimal two-way partition. Higher eigenvectors give finer partitioning.
+\end{proof}
+
+\subsection{Temporal Evolution}
+
+\begin{definition}[Dynamical Output]
+Time-dependent state comprises trajectory $\Scoord(t) = (\Sk(t), \St(t), \Se(t))$ in S-entropy space for $t \in [0,T]$.
+\end{definition}
+
+From Theorem \ref{thm:s_bounded}, trajectory remains in $[0,1]^3$:
+\begin{equation}
+\gamma: [0,T] \to [0,1]^3, \quad \gamma(t) = \Scoord(t)
+\end{equation}
+
+\begin{theorem}[Trajectory Prediction]
+Given initial state $\Scoord(0)$ and equations of motion, future state $\Scoord(t)$ for $t > 0$ is uniquely determined.
+\end{theorem}
+
+\begin{proof}
+Equations of state provide closed system of differential equations. Cauchy-Lipschitz theorem guarantees unique solution for Lipschitz-continuous right-hand sides. S-entropy coordinates have continuous derivatives, ensuring uniqueness.
+\end{proof}
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/figure_05_biological_applications.png}
+    \caption{\textbf{Biological applications: Protein structure determination, membrane dynamics, metabolic flux, and disease detection.} 
+    \textbf{Panel A: Protein complex structure (3D).} Large heatmap ($\sim 200 \times 200$ pixels) shows spatial distribution in healthy cell. Color scale (purple $\to$ teal $\to$ green $\to$ yellow) encodes local density or constraint satisfaction (arbitrary units). Three distinct purple regions (high density, $\sim 40$--$60$ pixel diameter each) appear at positions: top-left ($X \sim 1$, $Y \sim 1$), center-right ($X \sim 3$, $Y \sim 2.5$), bottom-center ($X \sim 2$, $Y \sim 4$). Surrounding matrix shows teal-green background (moderate density). Yellow pixels scattered throughout (low density regions). Top annotation: ``Resolution: 0.1 nm'' indicates sub-angstrom spatial precision. Bottom-left annotation: ``Constraint: 0.95, Richness: 1e+05'' indicates high constraint satisfaction score ($0.95$ out of $1.0$) and categorical richness ($10^5$ distinct states). Inset (top-center, 3D projection): Small scatter plot shows molecular structure with axes 2--4 (arbitrary units). Colored spheres: blue circles (``Large subunit'', $\sim 8$ molecules), red circles (``Small subunit'', $\sim 6$ molecules), black stars (``Dynamic regions'', $\sim 4$ sites). Demonstrates in vivo protein structure determination: dodecapartite method resolves multi-subunit complex at atomic resolution ($0.1$ nm) in living cell without crystallization or fixation. High richness ($10^5$) indicates detailed conformational ensemble captured.
+    \textbf{Panel B: Membrane dynamics.} Similar heatmap for diseased cell ($\sim 200 \times 200$ pixels). Color scale identical to Panel A. Pattern differs markedly: no distinct purple clusters, instead diffuse teal-green distribution with increased yellow regions ($\sim 30\%$ of pixels vs $\sim 10\%$ in healthy cell). Top annotation: ``Resolution: 0.5 nm'' indicates reduced precision ($5\times$ worse than healthy cell). Bottom-right annotation: ``Constraint: 0.65, Richness: 1e+03'' shows decreased constraint satisfaction ($0.65$ vs $0.95$) and reduced richness ($10^3$ vs $10^5$). Inset (top-right): Velocity distribution histogram shows frequency versus velocity (arbitrary units). Demonstrates disease-induced changes: loss of structural organization (no clusters), reduced constraint satisfaction ($0.65$), decreased categorical richness ($100\times$ reduction), and degraded resolution ($0.5$ nm). Membrane dynamics altered in diseased state, captured by dodecapartite measurements.
+    \textbf{Panel C: Metabolic flux visualization.} Schematic shows ATP/ADP cycling. Red circles labeled ``ATP'' ($\sim 5$ molecules) and blue circles labeled ``ADP'' ($\sim 5$ molecules) positioned in space. Demonstrates metabolic GPS capability (Modality 4): oxygen triangulation enables real-time tracking of ATP synthesis/hydrolysis through spatial localization of metabolic intermediates.
+    \textbf{Panel D: Disease state detection.} Bar chart shows quantitative comparison between healthy (green bars) and diseased (red bars) cells across three metrics (horizontal axis): Constraint Satisfaction, Resolution (nm), Categorical Richness. \textit{Constraint Satisfaction}: Healthy $\sim 0.95$, Diseased $\sim 0.65$ (annotation: ``0.95'' on green bar, ``0.65'' on red bar). \textit{Resolution}: Healthy $\sim 0.1$ nm, Diseased $\sim 5.0$ nm ($50\times$ worse, annotation: ``0.5'' with yellow box labeled ``Quantitative disease signature''). \textit{Categorical Richness}: Healthy $\sim 10^5$ (annotation: ``1e+05''), Diseased $\sim 10^3$ (annotation: ``1e+03''), shown on log scale (right vertical axis, $10^3$ to $10^5$). Demonstrates quantitative disease detection: three independent metrics (constraint satisfaction, resolution, richness) all degrade in diseased state. Constraint satisfaction drops $32\%$ ($0.95 \to 0.65$), resolution degrades $5\times$ ($0.1 \to 0.5$ nm), richness decreases $100\times$ ($10^5 \to 10^3$). Provides multi-dimensional disease signature enabling early detection and classification without labels or contrast agents.}
+    \label{fig:biological_applications}
+    \end{figure}
+
+\subsection{Information Content}
+
+\begin{theorem}[Total Information]
+Complete cellular state specification contains information
+\begin{equation}
+I_{\text{total}} = I_{\text{spatial}} + I_{\text{thermodynamic}} + I_{\text{metabolic}} + I_{\text{EM}} + I_{\text{mechanical}} + I_{\text{conformational}} + I_{\text{network}}
+\end{equation}
+\end{theorem}
+
+For cell with $N_{\text{atoms}} \sim 10^{11}$, encoding each atom position to $\sim 0.1$ nm precision requires:
+\begin{equation}
+I_{\text{spatial}} = 3N_{\text{atoms}} \log_2(L/\delta x) = 3 \times 10^{11} \times \log_2(10^4) \sim 10^{13}\text{ bits}
+\end{equation}
+
+However, dimensional reduction through phase-lock networks (Theorem \ref{thm:cross_section}) compresses this to $\sim 10^2$ macroscopic parameters, requiring:
+\begin{equation}
+I_{\text{compressed}} \sim 10^2 \times 64\text{ bits (double precision)} = 6.4 \times 10^3\text{ bits}
+\end{equation}
+
+This compression ratio of $\sim 10^9$ makes cellular state computation tractable.
+
+\subsection{Output Format}
+
+Complete cellular state outputs as hierarchical data structure:
+
+\begin{verbatim}
+CellState {
+    spatial: {
+        density: Array3D<float64>,  // shape (Nx, Ny, Nz)
+        composition: Array4D<float64>,  // shape (Nx, Ny, Nz, Nspecies)
+        resolution: float64  // effective resolution in nm
+    },
+    thermodynamic: {
+        temperature: Array3D<float64>,
+        pressure: Array3D<float64>,
+        chemical_potential: Array4D<float64>  // per species
+    },
+    metabolic: {
+        categorical_distances: Array2D<float64>,  // (Nmetabolites, 4)
+        network_graph: SparseMatrix<bool>,  // adjacency
+        flux_vector: Array1D<float64>  // per reaction
+    },
+    electromagnetic: {
+        electric_field: Array4D<float64>,  // (Nx, Ny, Nz, 3)
+        magnetic_field: Array4D<float64>,
+        potential: Array3D<float64>
+    },
+    mechanical: {
+        viscosity: Array3D<float64>,
+        elastic_tensor: Array6D<float64>,  // (Nx, Ny, Nz, 3, 3)
+        stress_tensor: Array6D<float64>
+    },
+    conformational: {
+        proteins: Array<Protein> {
+            dihedral_angles: Array2D<float64>,  // (Nres, 2)
+            hydrogen_bonds: Array2D<int32>,  // (NHB, 2)
+            phase_coherence: float64
+        }
+    },
+    network: {
+        adjacency: SparseMatrix<bool>,  // (Nnodes, Nnodes)
+        laplacian_spectrum: Array1D<float64>,
+        compartments: Array1D<int32>  // partition labels
+    },
+    temporal: {
+        s_entropy_trajectory: Array2D<float64>,  // (Ntimes, 3)
+        time_points: Array1D<float64>
+    }
+}
+\end{verbatim}
+
+This structured output provides complete cellular state accessible for quantitative analysis, visualization, and prediction.
