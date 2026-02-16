@@ -5,7 +5,8 @@
       "Bash(pdflatex:*)",
       "Bash(tree:*)",
       "WebFetch(domain:github.com)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(set PYTHONPATH=src:*)"
     ]
   }
 }
