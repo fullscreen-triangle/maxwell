@@ -1,0 +1,218 @@
+[
+  {
+    "claim": "Universal Transport Formula",
+    "predicted": 1.7058117785497536e-08,
+    "measured": 1.669972324020365e-08,
+    "error_percent": 2.1461106878170986,
+    "units": "Ω·m",
+    "timestamp": "2026-02-21T05:23:08.014109",
+    "metadata": {
+      "electrical": {
+        "Xi_predicted": 1.7058117785497536e-08,
+        "Xi_measured": 1.669972324020365e-08,
+        "tau_p": 2.5e-14,
+        "mean_coupling": 0.5001314374452211,
+        "error_percent": 2.1461106878170986
+      },
+      "viscosity": {
+        "Xi_predicted": 2.7759369425470198e-05,
+        "Xi_measured": 1.81e-05,
+        "tau_p": 1.36e-10,
+        "mean_coupling": 0.5001314374452211,
+        "error_percent": 53.366681908675126
+      },
+      "thermal": {
+        "Xi_predicted": 0.019931227247487603,
+        "Xi_measured": 0.026,
+        "tau_p": 1.36e-10,
+        "error_percent": 23.341433663509218
+      }
+    }
+  },
+  {
+    "claim": "Partition Extinction Discontinuity",
+    "predicted": 9.25,
+    "measured": 9.25,
+    "error_percent": 0.0,
+    "units": "K",
+    "timestamp": "2026-02-21T05:23:08.018151",
+    "metadata": {
+      "discontinuity_verified": true
+    }
+  },
+  {
+    "claim": "BCS Gap - Al",
+    "predicted": 1.764,
+    "measured": 1.8106991356963282,
+    "error_percent": 2.647343293442643,
+    "units": "Δ/(k_B T_c)",
+    "timestamp": "2026-02-21T05:23:08.018151",
+    "metadata": {
+      "T_c": 1.2
+    }
+  },
+  {
+    "claim": "BCS Gap - Sn",
+    "predicted": 1.764,
+    "measured": 1.841971541519935,
+    "error_percent": 4.420155414962297,
+    "units": "Δ/(k_B T_c)",
+    "timestamp": "2026-02-21T05:23:08.019164",
+    "metadata": {
+      "T_c": 3.72
+    }
+  },
+  {
+    "claim": "BCS Gap - Pb",
+    "predicted": 1.764,
+    "measured": 2.176454752539486,
+    "error_percent": 23.381788692714622,
+    "units": "Δ/(k_B T_c)",
+    "timestamp": "2026-02-21T05:23:08.019164",
+    "metadata": {
+      "T_c": 7.2
+    }
+  },
+  {
+    "claim": "BCS Gap - Nb",
+    "predicted": 1.764,
+    "measured": 1.9448955842212314,
+    "error_percent": 10.254851713221736,
+    "units": "Δ/(k_B T_c)",
+    "timestamp": "2026-02-21T05:23:08.019164",
+    "metadata": {
+      "T_c": 9.25
+    }
+  },
+  {
+    "claim": "Superfluid Helium-4 T_lambda",
+    "predicted": 2.1946237385706393,
+    "measured": 2.172,
+    "error_percent": 1.0416085898084322,
+    "units": "K",
+    "timestamp": "2026-02-21T05:23:08.020241",
+    "metadata": {}
+  },
+  {
+    "claim": "BEC Temperature - Rb87",
+    "predicted": 98.01771549045891,
+    "measured": 170.0,
+    "error_percent": 42.34252029973005,
+    "units": "nK",
+    "timestamp": "2026-02-21T05:23:08.020241",
+    "metadata": {}
+  },
+  {
+    "claim": "BEC Temperature - Na23",
+    "predicted": 716.5138468830098,
+    "measured": 2000.0,
+    "error_percent": 64.17430765584952,
+    "units": "nK",
+    "timestamp": "2026-02-21T05:23:08.020241",
+    "metadata": {}
+  },
+  {
+    "claim": "Lindemann - Na",
+    "predicted": 0.12380548422954651,
+    "measured": 0.11,
+    "error_percent": 12.550440208678648,
+    "units": "dimensionless",
+    "timestamp": "2026-02-21T05:23:08.020241",
+    "metadata": {}
+  },
+  {
+    "claim": "Lindemann - Cu",
+    "predicted": 0.07773020292465162,
+    "measured": 0.09,
+    "error_percent": 13.6331078614982,
+    "units": "dimensionless",
+    "timestamp": "2026-02-21T05:23:08.020241",
+    "metadata": {}
+  },
+  {
+    "claim": "Lindemann - Au",
+    "predicted": 0.08085738815563501,
+    "measured": 0.1,
+    "error_percent": 19.142611844365,
+    "units": "dimensionless",
+    "timestamp": "2026-02-21T05:23:08.020241",
+    "metadata": {}
+  },
+  {
+    "claim": "Lindemann - Al",
+    "predicted": 0.07085840512153387,
+    "measured": 0.1,
+    "error_percent": 29.141594878466137,
+    "units": "dimensionless",
+    "timestamp": "2026-02-21T05:23:08.020241",
+    "metadata": {}
+  },
+  {
+    "claim": "Lindemann - Pb",
+    "predicted": 0.06849971912547012,
+    "measured": 0.11,
+    "error_percent": 37.727528067754434,
+    "units": "dimensionless",
+    "timestamp": "2026-02-21T05:23:08.020241",
+    "metadata": {}
+  },
+  {
+    "claim": "Second Law (Partition)",
+    "predicted": 9.56992961692908e-21,
+    "measured": 9.569929616929144e-21,
+    "error_percent": 0.0,
+    "units": "J/K",
+    "timestamp": "2026-02-21T05:23:08.045902",
+    "metadata": {
+      "always_positive": true,
+      "monotonic": true
+    }
+  },
+  {
+    "claim": "Irreversibility",
+    "predicted": 0.0,
+    "measured": 6,
+    "error_percent": 100.0,
+    "units": "returns",
+    "timestamp": "2026-02-21T05:23:08.075009",
+    "metadata": {
+      "verified": false
+    }
+  },
+  {
+    "claim": "Wiedemann-Franz - Ag",
+    "predicted": 2.443004509073667e-08,
+    "measured": 2.31e-08,
+    "error_percent": 5.444300597058638,
+    "units": "W·Ω/K²",
+    "timestamp": "2026-02-21T05:23:08.075009",
+    "metadata": {}
+  },
+  {
+    "claim": "Wiedemann-Franz - Au",
+    "predicted": 2.443004509073667e-08,
+    "measured": 2.35e-08,
+    "error_percent": 3.806972468869177,
+    "units": "W·Ω/K²",
+    "timestamp": "2026-02-21T05:23:08.075009",
+    "metadata": {}
+  },
+  {
+    "claim": "Wiedemann-Franz - Cu",
+    "predicted": 2.443004509073667e-08,
+    "measured": 2.23e-08,
+    "error_percent": 8.71895685343755,
+    "units": "W·Ω/K²",
+    "timestamp": "2026-02-21T05:23:08.075009",
+    "metadata": {}
+  },
+  {
+    "claim": "Wiedemann-Franz - Al",
+    "predicted": 2.443004509073667e-08,
+    "measured": 2.1e-08,
+    "error_percent": 14.040273270053305,
+    "units": "W·Ω/K²",
+    "timestamp": "2026-02-21T05:23:08.075009",
+    "metadata": {}
+  }
+]
