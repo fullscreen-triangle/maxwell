@@ -7,19 +7,7 @@ The key insight is that modern computing hardware contains multiple oscillatory 
 
 We develop three coordinate mapping functions $\phi_k$, $\phi_t$, and $\phi_e$ that transform timing measurements into the knowledge, temporal, and evolution entropy coordinates respectively. These mappings are deterministic, ensuring that identical physical states produce identical categorical states, while also being bounded to guarantee that all measurements map to valid points in $\Sspace = [0,1]^3$. We establish a fundamental result called the \textbf{spectrometer-state identity}, which proves that the measurement apparatus and the measured state are encoded by the same point in S-entropy space---a property with profound implications for the nature of observation in this computational framework.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/instrument_suite_panel.png}
-\caption{\textbf{Exotic Instrument Suite: Element Identification Through Measurement.} 
-\textbf{Shell Resonator:} Resonance frequency decreases exponentially with shell number $n$, following $f_n \propto 1/n^2$ (analogous to hydrogen energy levels). Shell $n = 1$ shows strongest resonance ($\approx 1.0$ GHz), decaying to $\approx 0.05$ GHz by $n = 7$. This instrument measures the principal quantum number analog in categorical space. 
-\textbf{Angular Analyzer (Subshell Capacity):} Pie chart shows relative populations of subshells $s$, $p$, $d$, $f$ (red, teal, blue, cyan sectors). The $f$-subshell dominates ($\approx 50\%$), followed by $d$ ($\approx 30\%$), $p$ ($\approx 15\%$), and $s$ ($\approx 5\%$). Capacity follows $2\ell + 1$ rule: $s$ (2 states), $p$ (6 states), $d$ (10 states), $f$ (14 states). This instrument measures the azimuthal quantum number $\ell$ analog. 
-\textbf{Chirality Discriminator (Spin State):} Circle diagram with vertical axis showing spin-up ($+1/2$, red arrow) and spin-down ($-1/2$, cyan arrow) states. Binary discrimination implements magnetic quantum number $m_s \in \{-1/2, +1/2\}$ analog. This instrument measures the spin quantum number. 
-\textbf{Spectral Analyzer (H Balmer Series):} Emission lines at characteristic wavelengths: $410$ nm (violet, $n = 6 \to 2$), $434$ nm (blue, $n = 5 \to 2$), $486$ nm (cyan, $n = 4 \to 2$), $656$ nm (red, $n = 3 \to 2$). Line heights represent transition intensities. This instrument identifies categorical states by their spectral signatures, analogous to atomic spectroscopy. 
-\textbf{Ionization Probe (Period 2):} Ionization energy IE increases monotonically across period 2 elements: Li ($\approx 5.4$ eV), Be ($\approx 9.3$ eV), B ($\approx 8.3$ eV), C ($\approx 11.3$ eV), N ($\approx 14.5$ eV), O ($\approx 13.6$ eV), F ($\approx 17.4$ eV), Ne ($\approx 21.6$ eV, yellow bar). The trend reflects increasing nuclear charge $Z$ and decreasing atomic radius. This instrument measures the energy required to complete a categorical state. 
-\textbf{Atomic Radius Gauge:} Colored circles show decreasing atomic radius across period 2: Li (purple, largest) $\to$ Ne (orange, smallest). Radius decreases due to increasing effective nuclear charge $Z_{\text{eff}}$ pulling electrons closer. This instrument measures the spatial extent of categorical states. 
-\textbf{Measurement Workflow (Bottom):} Six-stage pipeline implements partition coordinate measurement: (1) Shell Resonator measures $n$, (2) Angular Analyzer measures $\ell$, (3) Orientation Mapper measures $m_\ell$, (4) Chirality Discriminator measures $m_s$, (5) Exclusion Detector enforces Pauli principle, (6) Energy Profiler applies Aufbau ordering. Each instrument measures one coordinate, collectively determining the element (categorical state identity). The workflow demonstrates that measurement IS computation: identifying the element requires measuring all partition coordinates, and the measurement process itself constitutes the identification.}
-\label{fig:exotic_instrument_suite}
-\end{figure}
+
 
 \subsection{Oscillator Sources}
 
@@ -266,18 +254,6 @@ Identity morphisms, by definition, do not change their domain: $\text{id}_{\Scoo
 Physically, this property arises because the spectrometer and the state are the same entity: measuring a state with its corresponding spectrometer is equivalent to the state "observing itself," which cannot produce perturbation.
 \end{proof}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/categorical_memory_panel.png}
-\caption{\textbf{Categorical Memory (S-RAM): Precision-by-Difference Addressing.} 
-\textbf{(A) S-Entropy Space:} Navigation path (red line with arrow) through $\Sspace = [0,1]^3$ showing trajectory from initial state to completion point (red star). Colored points represent visited categorical states, with color indicating temporal order (purple = early, yellow = late). The path demonstrates continuous navigation through the tri-dimensional S-entropy manifold ($S_k$, $S_t$, $S_e$ axes). 
-\textbf{(B) Precision-by-Difference Trajectory:} Memory addressing via precision-by-difference $\Delta P = T_{\text{ref}} - t_{\text{local}}$ (blue curve). Shaded regions indicate positive/negative $\Delta P$, corresponding to fast/slow memory tiers. Bit flips ($b = 0 \to b = 1$, orange dashed lines) occur when $\Delta P$ crosses zero, triggering promotion/demotion between tiers. History IS the address: the trajectory itself determines memory location, not explicit addressing (Section~\ref{sec:categorical_memory}). 
-\textbf{(C) $3^k$ Hierarchy:} Recursive tri-dimensional decomposition creates $3^d$ nodes at depth $d$ (root at $d = 0$ shown in purple, first level in blue, second level in green, leaf nodes in yellow). Each node decomposes into knowledge ($S_k$), temporal ($S_t$), and evolution ($S_e$) sub-nodes, generating exponential branching with base 3 (Theorem~\ref{thm:3k_branching_formal}). 
-\textbf{(D) Memory Tiers:} Hierarchical memory structure with exponentially increasing capacity (red curve, right axis) and linearly increasing item counts (blue bars, left axis). L1 Cache ($\sim 10^0$ items), L2 Cache ($\sim 10^1$ items), RAM ($\sim 10^3$ items), SSD ($\sim 10^5$ items), Archive ($\sim 10^8$ items). Tier assignment determined by access frequency (Maxwell demon controller, panel F). 
-\textbf{(E) Cache Performance:} Hit rate vs. access count showing asymptotic approach to 100\% target (dashed line). Performance saturates at $\approx 99\%$ after 30--40 accesses as frequently-used states stabilize in fast tiers. The precision-by-difference addressing achieves near-perfect caching without explicit cache management. 
-\textbf{(F) Memory Controller as Maxwell Demon:} Fast tier (blue, left) contains frequently-accessed states (green filled circles); slow tier (red, right) contains rarely-accessed states (white circles). Maxwell demon (orange oval) promotes hot states and demotes cold states based on $\Delta P$ trajectory, implementing thermodynamically-inspired memory management without explicit LRU tracking.}
-\label{fig:categorical_memory}
-\end{figure}
 
 \begin{remark}[Contrast with Quantum Measurement]
 \label{rem:quantum_contrast}

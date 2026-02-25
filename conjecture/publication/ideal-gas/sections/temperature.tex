@@ -18,6 +18,13 @@ While successful for many applications, this definition faces conceptual challen
 
 The triple equivalence framework resolves these challenges by defining temperature as the rate of categorical actualisation—a discrete, dynamical quantity with clear physical meaning.
 
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/ideal_gas_panel_2_temperature.png}
+\caption{\textbf{Temperature as Categorical Rate: $T = \hbar (dM/dt)/k_B$.} Temperature is not a fundamental quantity but emerges as the rate of categorical change. \textbf{Panel A ($T = \hbar (dM/dt)/k_B$):} Log-log plot of temperature $T$ versus categorical rate $dM/dt$, showing linear relationship with slope $\hbar/k_B$. Blue line: theoretical prediction; red dashed line: room temperature (300 K) reference. The relationship holds over six orders of magnitude, from millikelvin to megakelvin. \textbf{Panel B (Fundamental Identity):} Linear relationship between temperature $T$ and frequency $\nu = \omega/2\pi$, confirming $T = h\nu/k_B$ (the quantum of thermal energy). Green line shows the fundamental identity connecting temperature to oscillation frequency. \textbf{Panel C ($\hbar\omega = k_B T$):} Equivalent frequency $\nu$ versus temperature $T$, demonstrating that each temperature corresponds to a characteristic frequency through $\hbar\omega = k_B T$. This connects thermal and quantum descriptions. \textbf{Panel D (Temperature Surface):} 3D surface showing temperature $T(M, \omega)$ as a function of degrees of freedom $M$ and angular frequency $\omega$. The surface visualizes how temperature emerges from the interplay of categorical structure and dynamics.}
+\label{fig:ideal_gas_panel_2}
+\end{figure*}
+
 \subsection{Categorical Temperature}
 
 From the fundamental identity (Equation~\ref{eq:fundamental}), the rate of categorical actualisation is:
@@ -113,16 +120,7 @@ T = \frac{\hbar\langle\omega\rangle}{k_B}
 
 The oscillatory temperature definition is exact in the quantum mechanical limit and reduces to the equipartition result classically.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/panel_thermal_vibrational.png}
-\caption{\textbf{Thermal transport vibrational dynamics showing atomic-scale heat flow mechanisms.} 
-\textbf{(Top left)} Vibrational field under heat flow conditions showing vector field of atomic displacements. Hot region (right, red arrows) has large-amplitude vibrations. Cold region (left, white/yellow arrows) has small-amplitude vibrations. Arrow color indicates temperature (red = hot, yellow = warm, white = cold). Arrow direction shows instantaneous displacement direction. Heat flows from hot to cold (right to left) through phonon propagation. Coherent wave patterns visible in intermediate region show phonon transport. Random patterns in hot region show increased disorder at high temperature.
-\textbf{(Top right)} Vibration amplitude vs. temperature showing classical and quantum regimes. Classical prediction (yellow line) gives $u_{\text{RMS}} \propto \sqrt{T}$ at all temperatures. Quantum prediction (white line) shows deviation at low temperature: $u_{\text{RMS}}$ saturates at zero-point motion as $T \to 0$. Crossover occurs at Debye temperature $\Theta_D \sim 350$ K (yellow dotted line). Above $\Theta_D$, classical mechanics is valid. Below $\Theta_D$, quantum effects are essential. At room temperature ($T \sim 300$ K), most materials are in crossover regime.
-\textbf{(Bottom left)} Phonon dispersion surface showing 3D frequency landscape $\omega(\mathbf{k})$ in momentum space. Surface height (color: blue = low frequency, yellow/red = high frequency) represents phonon frequency. Acoustic branches start at $\omega = 0$ at zone center ($\mathbf{k} = 0$). Optical branches (not shown) start at finite frequency. Group velocity $\mathbf{v}_g = \nabla_{\mathbf{k}}\omega$ is perpendicular to surface, pointing in direction of steepest ascent. Flat regions (low gradient) have low group velocity and contribute little to thermal transport. Steep regions (high gradient) have high group velocity and dominate thermal transport.
-\textbf{(Bottom right)} Interatomic force network showing spring-like connections between atoms. Atoms (magenta spheres) are connected by bonds (colored lines: blue = weak force, yellow = moderate force, orange = strong force). Bond color indicates force magnitude. Network topology determines phonon dispersion and thermal conductivity. Regular network (crystalline) supports long-range phonon propagation. Disordered network (amorphous) scatters phonons strongly, reducing conductivity. Force constants determine phonon frequencies: strong forces give high frequencies (optical modes), weak forces give low frequencies (acoustic modes).}
-\label{fig:thermal_vibrational}
-\end{figure}
+
 
 \subsubsection{Spectral Temperature Distribution}
 
@@ -225,16 +223,12 @@ T_{\text{cat}} = T_{\text{osc}} = T_{\text{part}}
 \end{equation}
 \end{proof}
 
-\begin{figure}[htbp]
+\begin{figure*}[!htbp]
 \centering
-\includegraphics[width=\textwidth]{figures/fig_temperature_perspectives.png}
-\caption{\textbf{Temperature: Triple Equivalence Perspectives.} 
-\textbf{(A) Categorical actualization rate:} Categorical transition rate $dM/dt$ (transitions/s, logarithmic scale 10$^9$ to 10$^{23}$) versus temperature $T$ (kelvin, logarithmic scale 10$^{-3}$ to 10$^{13}$). Green solid line: categorical prediction (linear on log-log plot). Four colored background regions: purple (quantum regime, $T < 1$ K), light green (classical regime, 1 K $< T < 10^7$ K), light orange (relativistic regime, $T > 10^7$ K). Temperature measures the rate at which categories are actualized: $T = (\hbar/k_B) \cdot dM/dt$.
-\textbf{(B) Oscillatory frequency:} Angular frequency $\omega$ (rad/s, logarithmic scale 10$^8$ to 10$^{48}$) versus temperature $T$ (kelvin, logarithmic scale 10$^{-3}$ to 10$^{13}$). Blue solid line: categorical prediction. Gray dashed line: classical (no bound, linear). Purple dotted horizontal line at $\omega_{\text{Planck}} = 1.85 \times 10^{43}$ rad/s: maximum frequency (Planck frequency). At low temperature, frequency scales linearly with $T$. At high temperature ($T \gtrsim 10^{13}$ K), frequency saturates at Planck frequency (categorical bound). Classical prediction continues linearly (unphysical).
-\textbf{(C) Partition lag:} Average partition duration $\langle\tau_p\rangle$ (seconds, logarithmic scale 10$^{-23}$ to 10$^{-9}$) versus temperature $T$ (kelvin, logarithmic scale 10$^{-3}$ to 10$^{13}$). Red solid line: partition lag decreases with temperature (inverse relationship). Text annotation at top left: ``Long lag (cold)'' indicates cold systems have long partition durations (slow categorical transitions). At $T = 10^{-3}$ K, $\langle\tau_p\rangle \sim 10^{-9}$ s. At $T = 10^{13}$ K, $\langle\tau_p\rangle \sim 10^{-23}$ s (approaching Planck time).
-\textbf{(D) Equivalence test:} Ratio to classical temperature (dimensionless) versus temperature $T$ (kelvin, logarithmic scale 10$^0$ to 10$^{10}$). Three overlapping traces: green circles (categorical), blue squares (oscillatory), red triangles (partition). All three traces overlap at ratio = 1.000 across entire temperature range, confirming triple equivalence. Vertical axis range: 0.900-1.100, showing deviations $<$0.1\% across 10 orders of magnitude in temperature.}
-\label{fig:temperature_perspectives}
-\end{figure}
+\includegraphics[width=0.95\textwidth]{figures/panel3_temperature_v2.png}
+\caption{\textbf{Temperature as Categorical Rate: $T = \hbar \dot{M}/k_B$.} Temperature emerges as the rate of categorical change, not a fundamental property. \textbf{Panel A (Molecular Density):} 3D scatter plot showing virtual gas molecules distributed in S-space, with color coding indicating local density variations. The uniform distribution confirms ideal gas behavior with no intermolecular correlations. \textbf{Panel B (Temperature by Coordinate):} Bar chart showing temperature contributions from each S-coordinate $(S_k, S_t, S_e)$, with dashed line indicating mean temperature. Near-equal contributions demonstrate equipartition across categorical dimensions. \textbf{Panel C ($T = \hbar \dot{M}/k_B$):} Log-log plot of temperature versus categorical rate $\dot{M}$, showing linear relationship with slope determined by $\hbar/k_B$. Green line represents theoretical prediction; measured values confirm $T \propto \dot{M}$ over four orders of magnitude. \textbf{Panel D (Equipartition):} Cumulative energy versus mode number (black line) with per-mode contributions (red bars). Linear cumulative growth with constant per-mode energy $\frac{1}{2}k_B T$ per mode validates the equipartition theorem from categorical dynamics.}
+\label{fig:temperature}
+\end{figure*}
 
 \subsection{Recovery of Classical Temperature}
 

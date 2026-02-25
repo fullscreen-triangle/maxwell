@@ -18,17 +18,6 @@ While remarkably successful for describing gases under normal conditions, this d
 
 The triple equivalence framework resolves all three challenges by revealing the velocity distribution as fundamentally discrete and bounded.
 
-\begin{figure*}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/panel_maxwell_equations.png}
-\caption{\textbf{Maxwell's Equations Derived from Categorical S-Dynamics.} 
-(\textbf{A}) Gauss's law: The electric field $\mathbf{E} = -\nabla \Phi_S$ emerges from the S-gradient around a positive charge (red). Blue arrows show field lines radiating outward from the charge. Dashed circles represent equipotential surfaces where $\Phi_S = \text{const}$. The field strength decreases as $1/r^2$ with distance from the charge. 
-(\textbf{B}) Ampère's law: The magnetic field $\mathbf{B} = \nabla \times \mathbf{A}_S$ emerges from the S-curl around a current-carrying wire (gray circle with current into page, marked $\otimes$). Green arrows show magnetic field lines forming concentric circles around the wire. The field strength decreases as $1/r$ with distance from the wire. 
-(\textbf{C}) Coupled E-B oscillation: Electromagnetic wave propagation showing electric field (blue) and magnetic field (green) oscillating perpendicular to each other with a 90° phase shift. The fields are perpendicular to the propagation direction, forming a transverse wave. The wavelength and amplitude are indicated. 
-(\textbf{D}) Speed of light from S-dynamics: The wave equation $\nabla^2 \mathbf{E} = \mu_0 \varepsilon_0 \partial^2 \mathbf{E}/\partial t^2$ emerges from S-transformation dynamics. The speed of light is $c = 1/\sqrt{\mu_0 \varepsilon_0} = 299{,}792{,}458$ m/s, determined by the vacuum partition-coupling structure. The S-transformation rate equals the wave velocity, establishing that electromagnetic waves are propagating S-transformations in the vacuum field.}
-\label{fig:maxwell_equations}
-\end{figure*}
-
 \subsection{Categorical Distribution}
 
 \subsubsection{Velocity Categories}
@@ -139,16 +128,12 @@ f(v) \approx 4\pi v^2 \left(\frac{m}{h}\right)^3 \frac{2k_B T}{mv^2} \propto v^2
 
 This recovers the Maxwell-Boltzmann form in the classical limit.
 
-\begin{figure}[htbp]
+\begin{figure*}[!htbp]
 \centering
-\includegraphics[width=\textwidth]{figures/fig_velocity_distributions.png}
-\caption{\textbf{Velocity Distribution: Discrete and Bounded.} 
-\textbf{(A) Room temperature ($T = 300$ K):} Probability density $f(v)$ versus velocity $v$ (m/s, range 0-1400). Black solid curve: classical Maxwell-Boltzmann distribution (continuous, smooth bell curve with peak at $v \approx 200$ m/s). Green bars: categorical distribution (discrete histogram with $\sim$30 categories). Inset shows high-velocity tail (500-700 m/s): classical tail extends smoothly, categorical shows discrete steps with decreasing probability. Categorical distribution is intrinsically discrete and bounded, approximating Maxwell-Boltzmann at low velocity but showing discrete structure at high velocity.
-\textbf{(B) Ultra-cold ($T = 1$ mK):} Probability $f(m)$ versus category index $m$ (range 0-14). Green bars show discrete categorical distribution with strong peak at $m = 0$ (probability $\approx 0.27$) and exponential decay for $m > 0$. Text annotation: ``$\Delta v = 215.06$ mm/s'' indicates velocity spacing between categories. At ultra-cold temperature, only a few categories are thermally accessible ($M_{\text{occupied}} \approx 10$), making discrete structure directly observable. This predicts velocity quantization in ultra-cold atomic gases.
-\textbf{(C) Relativistic ($T = 10^9$ K):} Probability density (logarithmic scale, 10$^{-6}$ to 10$^0$) versus $v/c$ (fraction of speed of light, range 0.0-1.2). Black dashed line: classical Maxwell-Boltzmann (unphysical, extends beyond $c$). Green solid line: categorical distribution (bounded at $v = c$). Pink shaded region ($v > c$): forbidden zone. Classical distribution assigns non-zero probability to $v > c$ (violates special relativity). Categorical distribution goes to zero at $v = c$ (automatically enforces relativistic bound). Red dotted vertical line at $v/c = 1.0$ marks light speed barrier.
-\textbf{(D) Oscillatory distribution:} Occupation number $\langle n \rangle$ (logarithmic scale, 10$^{-10}$ to 10$^4$) versus frequency $\omega$ (rad/s, logarithmic scale 10$^{10}$ to 10$^{15}$). Green circles connected by lines: categorical oscillatory distribution. Text annotation: ``Perfect agreement'' and ``Categorical Bose-Einstein.'' Distribution follows Bose-Einstein form $\langle n \rangle = 1/(e^{\hbar\omega/(k_BT)} - 1)$, showing exponential decay from $\langle n \rangle \sim 10^4$ at low frequency to $\langle n \rangle \sim 10^{-10}$ at high frequency. Categorical framework naturally yields quantum Bose-Einstein statistics for oscillatory modes.}
-\label{fig:velocity_distributions}
-\end{figure}
+\includegraphics[width=0.95\textwidth]{figures/panel6_maxwell_boltzmann_v2.png}
+\caption{\textbf{Maxwell-Boltzmann Distribution from Categorical Counting.} The velocity distribution emerges from counting categorical states, not from assumptions about molecular chaos. \textbf{Panel A (3D Velocity Distribution):} Three-dimensional scatter plot of molecular velocities $(v_x, v_y, v_z)$ from hardware gas simulation, showing spherically symmetric distribution centered at origin. Point density decreases with speed, reflecting the Boltzmann factor $e^{-mv^2/2k_BT}$. \textbf{Panel B (Maxwell-Boltzmann):} Speed distribution $P(v)$ showing characteristic Maxwell-Boltzmann form with most probable speed $v_p = 422$ m/s (red dashed), mean speed $\bar{v} = 476$ m/s (blue dashed), and RMS speed $v_{\text{rms}} = 517$ m/s (orange dashed). Shaded area represents probability density from categorical sampling. \textbf{Panel C (Categorical Discretization):} Histogram of speeds from discrete categorical states, demonstrating that the continuous Maxwell-Boltzmann distribution emerges in the limit of fine categorical resolution. Green bars show measured distribution from $10^4$ samples. \textbf{Panel D (Cutoff at $v = c$):} Comparison of classical (red) and categorical (blue) distributions near relativistic speeds. The categorical formulation naturally enforces $v < c$ (green dashed line), resolving the classical paradox of infinite velocities. Shaded pink region ($v > c$) is strictly forbidden in categorical theory.}
+\label{fig:maxwell_boltzmann}
+\end{figure*}
 
 \subsection{Partition Distribution}
 
@@ -261,17 +246,6 @@ where $Z_{\text{rel}}$ is the relativistic partition function.
 
 As $v \to c$, the energy diverges, exponentially suppressing high-velocity categories even before the hard cutoff is reached.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/fig_speed_of_light_derivation.png}
-\caption{\textbf{Derivation of the Speed of Light from Categorical Structure.} 
-\textbf{(A) Original container ($V = V_0$):} Three-dimensional box with dimensions [0, 1]$^3$ containing $\sim$40 blue spheres (molecules) distributed throughout volume. Axes: $x$, $y$, $z$ (all range 0.0-1.0). Text annotation: ``$v \sim 100$ m/s'' indicates typical molecular velocity in original container.
-\textbf{(B) Scaled container ($V = 2.0^3 V_0$):} Three-dimensional box with dimensions [0, 2]$^3$ containing same $\sim$40 blue spheres. Axes: $x$, $y$, $z$ (all range 0.0-2.0). Text annotation: ``$v \sim 200$ m/s required!'' indicates velocity must scale with container size to maintain same categorical structure. Doubling linear dimension requires doubling velocity.
-\textbf{(C) Velocity scaling with container size:} Required velocity (m/s, logarithmic scale 10$^2$ to 10$^{10}$) versus scale factor $k$ (container size / original size, logarithmic scale 10$^0$ to 10$^8$). Green solid line: required velocity $v = k \cdot v_0$ (linear on log-log plot). Purple dashed horizontal line: speed of light $c \approx 3 \times 10^8$ m/s. Pink shaded region above $c$: forbidden zone ($v > c$, impossible). Black star at intersection: critical scale $k = c/v_0 = 6 \times 10^5$. Beyond this scale, categorical structure cannot be maintained because required velocity exceeds $c$.
-\textbf{(D) The speed of light as categorical limit:} Actual transition rate (rad/s, logarithmic scale 10$^0$ to 10$^{48}$) versus attempted transition rate (rad/s, logarithmic scale 10$^0$ to 10$^{48}$). Green solid line: categorical (bounded) prediction showing saturation. Gray dashed line: unlimited prediction (linear, unphysical). Pink shaded region at top: forbidden zone labeled ``FORBIDDEN (impossible).'' Purple dotted horizontal line at $\omega_{\text{Planck}} = 1.85 \times 10^{43}$ rad/s marks maximum categorical transition rate. Text box (key insight): ``$\Delta x \leq c$ $\to$ Maximum categorical transition rate exists. $\omega_{\max} = \omega_{\text{Planck}}$, $v_{\max} = c$.'' The speed of light emerges as the maximum velocity at which categorical transitions can occur, corresponding to the Planck frequency.}
-\label{fig:speed_of_light}
-\end{figure}
-
 \subsubsection{Comparison: Classical vs. Categorical}
 
 \begin{table}[h]
@@ -382,17 +356,6 @@ The transformations between them are:
 \tau_{p,m} &= \frac{\Delta x}{v_m} = \frac{\Delta x}{m\Delta v} \quad \text{(category to lag)} \\
 v_m &= m \cdot \Delta v \quad \text{(category to velocity)}
 \end{align}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/panel_thermal_properties.png}
-\caption{\textbf{Thermal transport material properties showing temperature dependence of thermal parameters.} 
-\textbf{(Top left)} Thermal conductivity vs. temperature for different materials. Diamond (cyan) has highest conductivity $\kappa \sim 2000$ W/(m$\cdot$K) at room temperature due to light atoms, strong covalent bonds, and high Debye temperature. Copper (orange) has $\kappa \sim 400$ W/(m$\cdot$K) from electron transport. Aluminum (green) has $\kappa \sim 200$ W/(m$\cdot$K). Silicon (yellow) has $\kappa \sim 150$ W/(m$\cdot$K) from phonon transport. Glass (magenta) has low $\kappa \sim 1$ W/(m$\cdot$K) due to disordered structure. All materials show decreasing conductivity with increasing temperature (except glass) as phonon-phonon scattering increases.
-\textbf{(Top right)} Thermal diffusivity $\alpha = \kappa/(\rho c_p)$ showing rate of temperature equilibration. Copper (yellow/orange) has highest diffusivity $\alpha \sim 140$ mm$^2$/s, equilibrating quickly. Aluminum (orange/red) has $\alpha \sim 100$ mm$^2$/s. Iron (purple) has $\alpha \sim 20$ mm$^2$/s. Silicon (magenta) has $\alpha \sim 60$ mm$^2$/s. SiO$_2$ (black) and H$_2$O (black) have low diffusivity $\alpha \sim 0.1$ mm$^2$/s, equilibrating slowly. Diffusivity determines transient thermal response: high $\alpha$ means fast equilibration, low $\alpha$ means slow equilibration.
-\textbf{(Bottom left)} Thermal effusivity $e = \sqrt{\kappa\rho c_p}$ showing thermal inertia for contact heating. Copper (yellow) has highest effusivity $e \sim 35$ kW$\cdot$s$^{1/2}$/(m$^2\cdot$K), feeling cold to touch. Aluminum (salmon) has $e \sim 25$ kW$\cdot$s$^{1/2}$/(m$^2\cdot$K). Iron (magenta) has $e \sim 15$ kW$\cdot$s$^{1/2}$/(m$^2\cdot$K). Silicon (purple) has $e \sim 10$ kW$\cdot$s$^{1/2}$/(m$^2\cdot$K). SiO$_2$ (blue) and H$_2$O (gray) have low effusivity $e \sim 1$ kW$\cdot$s$^{1/2}$/(m$^2\cdot$K), feeling warm to touch. Effusivity determines initial heat flux during contact: high $e$ extracts heat quickly, low $e$ extracts heat slowly.
-\textbf{(Bottom right)} Thermal inertia $I = \rho c_p$ showing volumetric heat capacity. Copper (lime) has $I \sim 4$ MJ/(m$^3\cdot$K). Aluminum (cyan) has $I \sim 3$ MJ/(m$^3\cdot$K). Iron (yellow) has $I \sim 2.5$ MJ/(m$^3\cdot$K). Silicon (cyan) has $I \sim 2$ MJ/(m$^3\cdot$K). H$_2$O (yellow/purple) has $I \sim 4$ MJ/(m$^3\cdot$K) despite low conductivity, providing excellent thermal storage. Thermal inertia determines temperature change for given heat input: high $I$ means small temperature change, low $I$ means large temperature change.}
-\label{fig:thermal_properties}
-\end{figure}
 
 \subsection{Summary}
 

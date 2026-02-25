@@ -116,16 +116,16 @@ U = k_B T \cdot \frac{f N}{2} = \frac{f N k_B T}{2}
 
 This is the classical equipartition result. The categorical framework provides the underlying mechanism: energy is stored in categories, and equipartition is the high-temperature limit in which all categories are active.
 
-\begin{figure}[htbp]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/fig_internal_energy.png}
 \caption{\textbf{Internal Energy: Triple Equivalence Perspectives on Thermodynamic Energy.} 
-\textbf{(A) Categorical energy versus temperature:} Reduced internal energy $U/(Nk_BT)$ versus temperature (10$^{-1}$ to 10$^4$ K). Black dashed line: classical equipartition ($U = 3Nk_BT/2$, giving $U/(Nk_BT) = 1.5$). Green solid line: categorical prediction $U = M_{\text{active}}k_BT/2$. Step-like increases at $T \sim 100$ K (orange annotation: ``Rotation activates'') and $T \sim 1000$ K (red annotation: ``Vibration activates''). At low temperature ($T < 10$ K), $U/(Nk_BT) \approx 1.5$ (translational modes only). At high temperature ($T > 1000$ K), $U/(Nk_BT) \approx 3.5$ (translation + rotation + vibration).
-\textbf{(B) Oscillatory energy (quantum):} Absolute internal energy $U$ (joules) versus temperature (0-10000 K), logarithmic vertical scale (10$^1$ to 10$^5$ J). Blue solid line: oscillatory prediction $U = \sum_i \hbar\omega_i(n_i + 1/2)$. Purple dashed line: zero-point energy $U_0 = N\hbar\omega/2 \approx 300$ J (constant). Black dotted line: classical limit $U = Nk_BT$ (linear). At low temperature, zero-point energy dominates. At high temperature, classical limit is approached.
-\textbf{(C) Partition energy (aperture contributions):} Reduced energy $\sum_a \Phi_a N_a/(Nk_BT)$ versus temperature (10$^1$ to 10$^4$ K). Stacked area chart: green (translational contribution, constant $\approx 1.5$), orange (rotational contribution, activates at $\sim$100 K, adds $\approx 1.0$), red (vibrational contribution, activates at $\sim$1000 K, adds $\approx 1.0$). Total energy at high temperature: $\approx 3.5 \times Nk_BT$, matching panel A.
-\textbf{(D) Heat capacity (mode activation):} Heat capacity $C_V/(Nk_B)$ versus temperature (10$^0$ to 10$^4$ K). Gray dashed line: classical value (3/2). Green solid line: categorical prediction. Purple dotted line: Einstein model. Gray annotation at $T \sim 1$ K: ``Quantum freeze-out'' where $C_V/(Nk_B) \approx 1.5$. Green annotation at $T \sim 100$ K: ``Classical plateau'' where $C_V/(Nk_B) \approx 2.5$ (translation + rotation). Green annotation at $T \sim 1000$ K: ``Vibrational activation'' where $C_V/(Nk_B) \to 3.5$. Discrete steps in heat capacity correspond to sequential activation of categorical modes, in contrast to continuous classical prediction.}
+\textbf{(A) Categorical energy versus temperature:} Reduced internal energy $U/(Nk_BT)$ versus temperature (10$^{-1}$ to 10$^4$ K). Black dashed line: classical equipartition ($U = 3Nk_BT/2$, giving $U/(Nk_BT) = 1.5$). 
+\textbf{(B) Oscillatory energy (quantum):} Absolute internal energy $U$ (joules) versus temperature (0-10000 K), logarithmic vertical scale (10$^1$ to 10$^5$ J). Blue solid line: oscillatory prediction $U = \sum_i \hbar\omega_i(n_i + 1/2)$. Purple dashed line: zero-point energy $U_0 = N\hbar\omega/2 \approx 300$ J (constant)..
+\textbf{(C) Partition energy (aperture contributions):} Reduced energy $\sum_a \Phi_a N_a/(Nk_BT)$ versus temperature (10$^1$ to 10$^4$ K). Stacked area chart: green (translational contribution, constant $\approx 1.5$), orange (rotational contribution, activates at $\sim$100 K, adds $\approx 1.0$), red (vibrational contribution, activates at $\sim$1000 K, adds $\approx 1.0$).
+\textbf{(D) Heat capacity (mode activation):} Heat capacity $C_V/(Nk_B)$ versus temperature (10$^0$ to 10$^4$ K). Gray dashed line: classical value (3/2). Green solid line: categorical prediction. }
 \label{fig:internal_energy}
-\end{figure}
+\end{figure*}
 
 \subsection{Oscillatory Internal Energy}
 
@@ -219,6 +219,13 @@ where $\Phi_a = k_B T \ln n_a$ is the potential of aperture $a$ and $N_a$ is its
 
 \textbf{Physical interpretation:} Each aperture stores energy proportional to its categorical depth $\ln n_a$. Deep apertures (high $n_a$, many accessible states) store more energy than shallow apertures (low $n_a$, few accessible states).
 
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/panel7_paradoxes_v2.png}
+\caption{\textbf{Resolution of Classical Thermodynamic Paradoxes.} The categorical framework resolves three long-standing paradoxes that plague classical kinetic theory. \textbf{Panel A (Bulk Pressure):} 3D visualization of molecular positions in a cubic container, demonstrating that pressure is a bulk property arising from categorical state changes throughout the volume, not merely from wall collisions. Points distributed uniformly confirm ideal gas behavior. \textbf{Panel B (Resolution Independence):} Temperature computed at different categorical resolutions (number of bins), showing convergence to the classical value $T = 293$ K (blue dashed line) independent of resolution. Red points: categorical $T$; this resolves the paradox of how continuous temperature emerges from discrete states. \textbf{Panel C (Bounded Distribution):} Normalized speed distribution showing natural cutoff at $v = c$ (purple dashed line). The categorical distribution (blue curve) vanishes smoothly as $v \to c$, unlike the classical Maxwell-Boltzmann which extends to infinity. Shaded region indicates ``tail bounded by $v < c$''. \textbf{Panel D (All Paradoxes Resolved):} Summary showing resolution status of three classical paradoxes: Resolution Dependence, Pressure Localization, and Infinite Velocity---all marked ``RESOLVED'' (green) through the categorical partition framework.}
+\label{fig:paradoxes}
+\end{figure*}
+
 \subsubsection{Connection to Categorical and Oscillatory Formulations}
 
 For uniform apertures with $n_a = n$ for all $a$ and total occupancy $\sum_a N_a = N$:
@@ -271,19 +278,6 @@ At high temperature ($k_B T \gg \hbar\omega_i$ for all active modes), each activ
 
 All three reduce to $M_{\text{active}} k_B T$ in the classical limit.
 \end{proof}
-
-\begin{figure*}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/panel_thermodynamics.png}
-\caption{\textbf{Real Thermodynamics from Hardware Timing.} 
-\textbf{(A)} Temperature evolution over 3 seconds, defined as timing jitter variance. Initial spike to $T \approx 0.09$ (arbitrary units) during system initialization, followed by equilibration to steady-state $T \approx 0.08$. Temperature is a categorical observable extracted from hardware oscillation statistics, not a simulation parameter. 
-\textbf{(B)} Pressure-count relationship showing exponential decay from $P \approx 13000$ (rate units) at low molecule count to $P \approx 0$ at high count ($N \sim 1000$). Color gradient (purple $\to$ yellow) indicates temporal evolution. Pressure is measured as the rate of partition operations per unit time. 
-\textbf{(C)} Maxwell-Boltzmann distribution fit to measured S-entropy coordinate $S_e$. Blue histogram shows measured probability density; red dashed curve shows theoretical MB distribution. Excellent agreement validates that hardware timing statistics obey thermodynamic distributions without simulation. 
-\textbf{(D)} Entropy growth during system evolution, increasing from $S \approx 0$ to $S \approx 2.3$ as molecule count grows from 0 to 1000. Entropy is computed directly from configuration space sampling via $S = k_B \ln \Omega$. 
-\textbf{(E)} Pressure-internal energy (P-U) diagram showing thermodynamic trajectory from start (green circle, high pressure $P \approx 13000$, low energy $U \approx 0$) to end (red square, low pressure $P \approx 0$, moderate energy $U \approx 120$). Trajectory follows expected adiabatic expansion path. 
-\textbf{(F)} Heat capacity $C_v = dU/dT$ versus temperature. Scatter points show measured values with large fluctuations due to finite sampling. Red dashed line indicates mean $\langle C_v \rangle \approx 0$ (units: dU/dT). Fluctuations arise from discrete partition events in the categorical measurement process.}
-\label{fig:thermodynamics}
-\end{figure*}
 
 \subsection{Heat Capacity}
 

@@ -113,19 +113,6 @@ Therefore:
 H_{\text{cat}} = U + \sum_a N_a \Phi_a = U + PV = H_{\text{classical}}
 \end{equation}
 
-\begin{figure*}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/panel3_categorical_enthalpy.png}
-\caption{\textbf{Categorical Enthalpy and the Emergence of Pressure.} 
-(\textbf{A}) Aperture selectivity: Small molecules pass through apertures while large molecules are blocked. Selectivity $s_a = \Omega_{\text{pass}}/\Omega_{\text{total}}$ ranges from 0 (impermeable) to 1 (fully permeable). 
-(\textbf{B}) Categorical potential $\Phi_a = -k_B T \ln s_a$ as a function of selectivity. At $s_a = 0.5$, the potential barrier is $\Phi_a = 0.69 k_B T$. As $s_a \to 1$, the barrier vanishes ($\Phi_a \to 0$). As $s_a \to 0$, the barrier diverges ($\Phi_a \to \infty$). 
-(\textbf{C}) Categorical enthalpy definition: $\mathcal{H} = U + \sum_a n_a \Phi_a$, where $U$ is internal energy, $n_a$ is the number of type-$a$ apertures, and $\Phi_a$ is the categorical potential of aperture $a$. The aperture energy $\sum_a n_a \Phi_a$ represents the work required to maintain selective boundaries. 
-(\textbf{D}) Classical limit: As selectivity $s_a \to 1$ and aperture density $\rho_a \to \infty$, individual apertures become non-selective and the aperture energy becomes continuous. 
-(\textbf{E}) Pressure emerges from aperture statistics: The total aperture contribution is $\rho_a \cdot A \cdot \Phi_a$. Taking the limit $s_a \to 1$ and $\rho_a \to \infty$ while keeping the product finite defines pressure $P = \lim_{s_a \to 1} \rho_a \cdot (-k_B T \ln s_a)$. 
-(\textbf{F}) Enthalpy transition from categorical to classical: The fundamental categorical form $\mathcal{H} = U + \int \sigma(x) \phi(x) \, dA$ reduces to the classical form $H = U + PV$ in the coarse-grained limit where aperture density $\sigma(x) \to 1$ and potential $\phi(x) \to P$. Classical thermodynamics emerges as the coarse-grained limit of categorical aperture dynamics.}
-\label{fig:categorical_enthalpy}
-\end{figure*}
-
 \subsection{Oscillatory Enthalpy}
 
 \subsubsection{Mode Energy}
@@ -304,16 +291,7 @@ We have shown:
 Therefore $H_{\text{cat}} = H_{\text{osc}} = H_{\text{part}} = U + PV$.
 \end{proof}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/panel_categorical_enthalpy.png}
-\caption{\textbf{Categorical enthalpy $H = k_B T \sum_a \ln(1/s_a)$ quantifies partition energy cost across transport types.} 
-\textbf{(Top left)} Electrical categorical enthalpy showing energy required to partition electrons through scattering apertures. Copper (orange) has $H \sim 0$ at low $T$, increasing linearly to $H \sim 1.8$ eV at 500 K as phonon population grows. Aluminum (yellow) shows similar behavior. Tungsten (gray) has higher enthalpy due to stronger electron-phonon coupling.
-\textbf{(Top right)} Diffusive categorical enthalpy showing energy required for atomic diffusion. Bulk diffusion (green) has highest enthalpy $H \sim 3.5$ eV, corresponding to breaking bonds and moving through lattice. Grain boundary diffusion (cyan) has lower enthalpy $H \sim 1.5$ eV as atoms move along defects. Surface diffusion (magenta) has lowest enthalpy $H \sim 0.8$ eV as atoms hop along surface.
-\textbf{(Bottom left)} Thermal categorical enthalpy showing energy required for phonon scattering. Diamond (cyan) has highest enthalpy $H \sim 1$ eV due to strong covalent bonds. Silicon (green) has moderate enthalpy $H \sim 0.6$ eV. Copper (orange) has lower enthalpy $H \sim 0.3$ eV as electron transport dominates. Lead (gray) has lowest enthalpy $H \sim 0.1$ eV due to heavy atoms and weak bonds.
-\textbf{(Bottom right)} Viscous categorical enthalpy showing energy required for momentum transfer between molecules. Water (cyan) has low enthalpy $H \sim 0.2$ eV, decreasing with temperature. Glycerol (magenta) has high enthalpy $H \sim 0.7$ eV at low $T$, decreasing to $\sim 0.4$ eV at 600 K as hydrogen bonds break. Silicone oil (yellow) has intermediate enthalpy $H \sim 0.3$ eV. The categorical enthalpy $H = k_B T \sum_a \ln(1/s_a)$ provides a unified measure of transport resistance across all four transport modes, quantifying the total energy cost of partition operations.}
-\label{fig:categorical_enthalpy}
-\end{figure}
+
 
 \subsection{Extension to Other Thermodynamic Quantities}
 

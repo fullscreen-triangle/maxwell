@@ -62,18 +62,15 @@ In Poincaré Computing, the vector field $\mathbf{F}$ is defined everywhere on $
 Therefore, there is no halting mechanism in Poincaré Computing. The system never stops.
 \end{proof}
 
-\begin{figure}[htbp]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_ensemble_sliding_window.png}
 \caption{\textbf{Virtual Gas Ensemble: One Molecule Becomes All Through S-Entropy Sliding Windows.} 
-\textbf{Window $t_1$: Observing $\alpha$:} Left diagram shows observation window (blue circle $\alpha$) isolated from $\beta$ and $\gamma$ (dashed lines). S-entropy coordinates $\mathbf{S} = [1.00, 1.00, 0.91]$. Right radar chart shows full hexagonal profile for molecule $\alpha$---all six hardware dimensions active. During this window, only $\alpha$ exists observationally. 
-\textbf{Window $t_2$: $\alpha + \beta$:} Left diagram shows window expanded to include both $\alpha$ (blue) and $\beta$ (magenta), with $\gamma$ still excluded. S-entropy coordinates $\mathbf{S} = [1.00, 1.00, 0.20]$. Right radar chart shows molecule $\beta$ with triangular profile (three dominant dimensions). The observation window has slid through S-entropy space, and the measured molecule is now $\beta$. 
-\textbf{Window $t_3$: $\beta + \gamma$:} Left diagram shows window shifted to include $\beta$ and $\gamma$ (orange), excluding $\alpha$. S-entropy coordinates $\mathbf{S} = [1.00, 1.00, 0.94]$. Right radar chart shows molecule $\gamma$ with pentagonal profile (five active dimensions). The window continues sliding, and $\gamma$ is now observed. 
-\textbf{Window $t_4$: Cycle Complete:} Left diagram shows window returned to original configuration (all three molecules visible). S-entropy coordinates $\mathbf{S} = [1.00, 1.00, 0.91]$ (same as $t_1$). Right radar chart shows all three molecules overlaid (blue $\alpha$, magenta $\beta$, orange $\gamma$), demonstrating that the ``three molecules'' are the same categorical state observed at different S-coordinates. 
-\textbf{Key Insight (Bottom Text):} ``Each molecule exists only during measurement. As the observation window slides through S-entropy space, the measured molecule (shown with full radar chart) assumes the identity of each molecule in sequence. The `three molecules' are the same categorical state observed at different S-coordinates.'' This demonstrates the fiber bundle structure (Theorem~\ref{thm:fiber_bundle_formal}): multiple categorical states project to the same observable, and sliding the observation window through the fiber reveals different categorical identities. 
-\textbf{Interactions Legend:} Van der Waals (gray lines), Dipole-Dipole (orange lines), Vibrational (purple lines). Interaction types change as the window slides, reflecting different categorical relationships at different S-coordinates.}
+\textbf{Window $t_1$: Observing $\alpha$:} Left diagram shows observation window (blue circle $\alpha$) isolated from $\beta$ and $\gamma$ (dashed lines). S-entropy coordinates $\mathbf{S} = [1.00, 1.00, 0.91]$. 
+\textbf{Window $t_3$: $\beta + \gamma$:} Left diagram shows window shifted to include $\beta$ and $\gamma$ (orange), excluding $\alpha$. S-entropy coordinates $\mathbf{S} = [1.00, 1.00, 0.94]$. 
+\textbf{Window $t_4$: Cycle Complete:} Left diagram shows window returned to original configuration (all three molecules visible).}
 \label{fig:sliding_window_observation}
-\end{figure}
+\end{figure*}
 
 \begin{remark}[Solution Recognition vs. Halting]
 \label{rem:solution_vs_halting}
@@ -281,18 +278,18 @@ A Poincaré Computing system improves its problem-solving capability over time w
 This is an immediate consequence of Theorem~\ref{thm:complexity_reduction}: as time progresses, exploration memory grows (Proposition~\ref{prop:memory_monotonicity}), and conditional complexity decreases. The system becomes progressively better at solving problem $P$ simply by existing and exploring, without any external intervention.
 \end{proof}
 
-\begin{figure}[htbp]
+\begin{figure*}[!htbp]
 \centering
-\includegraphics[width=\textwidth]{figures/exhaustive_computing_panel.png}
+\includegraphics[width=0.9\textwidth]{figures/exhaustive_computing_panel.png}
 \caption{\textbf{Experimental validation of exhaustive computing properties in Poincaré Computing systems.} 
 \textbf{(A)} Non-halting exploration: Memory density (fraction of phase space explored) asymptotically approaches unity but never reaches full exploration, demonstrating that the system continues indefinitely without a halting condition. 
 \textbf{(B)} Capability monotonicity: Computational capability (measured as the number of distinct solution trajectories discovered) increases monotonically with time, establishing that the system can only improve through existence and never loses previously acquired capability. 
 \textbf{(C)} Related problem acceleration: Acceleration factor (ratio of solution time for related problems to baseline problem) decreases as problem similarity increases (measured by distance $\delta$ in S-entropy space), confirming that prior exploration reduces complexity for nearby problems through conditional complexity reduction. 
 \textbf{(D)} Progressive refinement: Complexity (measured in Poincaré units) decreases systematically across a sequence of related problems, with the "After" condition (following prior exploration) showing consistently lower complexity than the "Before" condition (no prior exploration), demonstrating irreversible capability accumulation. 
 \textbf{(E)} Productive idleness: The number of distinct paths to a target solution increases continuously even during idle periods (no new problems introduced), establishing that exploration continues productively in the absence of external input and builds robustness through path redundancy. 
-\textbf{(F)} Memory by existence: Trajectory visualization in a 2D projection of S-entropy space, with points colored by visit order, demonstrates that memory emerges from the exploration history without explicit storage---earlier visits (purple) cluster in certain regions while later visits (yellow) explore complementary regions, with the complete trajectory encoding the system's computational history.}
+\textbf{(F)} Memory by existence: Trajectory visualization in a 2D projection of S-entropy space, with points colored by visit order, demonstrates that memory emerges from the exploration history without explicit storage.}
 \label{fig:exhaustive_validation}
-\end{figure}
+\end{figure*}
 
 \begin{remark}[Contrast with Traditional Systems]
 \label{rem:traditional_contrast}

@@ -379,18 +379,18 @@ Taking the infimum over all solution chains gives $\Pi(P) \geq \log_3(1/\epsilon
 Theorem~\ref{thm:complexity_bounds} establishes that Poincaré complexity scales logarithmically with $1/\epsilon$, or equivalently, exponentially with the required precision. This is consistent with the recurrence time bound in Corollary~\ref{cor:resolution_time}, which showed that expected recurrence time scales as $O(1/\epsilon)$. The exponential scaling reflects the hierarchical structure of $\Sspace$: each additional level of precision requires exploring exponentially more cells.
 \end{remark}
 
-\begin{figure}[htbp]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/complexity_panel.png}
 \caption{\textbf{Complexity Theory Validation.} 
-\textbf{(A) Poincaré Complexity:} Poincaré complexity $\Pi(P)$ (measured in Poincarés, the natural unit of categorical complexity) scales sub-linearly with problem size $n$. For $n = 10$: $\Pi(P) \approx 8$; $n = 20$: $\Pi(P) \approx 15$; $n = 50$: $\Pi(P) \approx 38$; $n = 100$: $\Pi(P) \approx 72$. Growth is approximately $\Pi(P) \sim \sqrt{n}$ due to manifold dimensionality reduction (Theorem~\ref{thm:poincare_complexity}), contrasting with Turing complexity $K(P) \sim n \log n$. 
-\textbf{(B) Categorical Completion Rate:} Completion rate $p_C(t) = d|\gamma(t)|/dt$ (completions per unit time) fluctuates around mean $\langle p_C \rangle = 5.0$ (dashed line). Green shaded region shows variation envelope. Rate is bounded (Theorem~\ref{thm:completion_rate_bounds}) and non-negative (Proposition~\ref{prop:nonnegative_rate_formal}), confirming irreversible categorical dynamics. 
-\textbf{(C) $S_0$ Unknowability (No Perfect Inference):} Distribution of inference error $|S_0^{\text{inferred}} - S_0^{\text{true}}|$ for initial S-entropy state. Perfect inference (vertical dashed line at zero) is never achieved; errors are distributed over $[0.02, 0.20]$ with mode at $\approx 0.05$. This confirms $S_0$ unknowability (Theorem~\ref{thm:s0_unknowability}): initial state cannot be perfectly inferred from trajectory observations due to information loss in categorical completion. 
-\textbf{(D) Asymptotic Return (Never Zero):} Distance to initial state $\|\gamma(t) - \Scoord_0\|$ (orange curve, log scale) decreases exponentially but never reaches zero (horizontal dashed line). Asymptotic approach confirms categorical irreversibility: exact return is unreachable (Theorem~\ref{thm:asymptotic_solution}). The $\epsilon$-boundary is the solution (Corollary~\ref{cor:epsilon_boundary}). 
-\textbf{(E) Solution Chain Closure:} Polar plot of trajectory distance to initial state vs. angular position (proxy for categorical completion order). Trajectory starts at $0°$ (green marker), explores to maximum distance at $\approx 90°$, and returns near start at $\approx 315°$ (yellow marker), stopping at penultimate state (red marker) one step from closure. The trajectory forms a near-closed loop, confirming Poincaré recurrence with categorical irreversibility preventing exact closure. 
-\textbf{(F) Turing-Poincaré Incommensurability:} Scatter plot of Turing complexity (Kolmogorov complexity $K(P)$, vertical axis) vs. Poincaré complexity ($\Pi(P)$, horizontal axis) for 30 problems. Low correlation ($\rho = 0.31$) demonstrates incommensurability: problems with similar Turing complexity have vastly different Poincaré complexity and vice versa. The two complexity measures capture orthogonal aspects of computational difficulty (Theorem~\ref{thm:complexity_incommensurability}).}
+\textbf{(A) Poincaré Complexity:} Poincaré complexity $\Pi(P)$ (measured in Poincarés, the natural unit of categorical complexity) scales sub-linearly with problem size $n$. For $n = 10$: $\Pi(P) \approx 8$; $n = 20$: $\Pi(P) \approx 15$; $n = 50$: $\Pi(P) \approx 38$; $n = 100$: $\Pi(P) \approx 72$. 
+\textbf{(B) Categorical Completion Rate:} Completion rate $p_C(t) = d|\gamma(t)|/dt$ (completions per unit time) fluctuates around mean $\langle p_C \rangle = 5.0$ (dashed line). 
+\textbf{(C) $S_0$ Unknowability (No Perfect Inference):} Distribution of inference error $|S_0^{\text{inferred}} - S_0^{\text{true}}|$ for initial S-entropy state. Perfect inference (vertical dashed line at zero) is never achieved; errors are distributed over $[0.02, 0.20]$ with mode at $\approx 0.05$. 
+\textbf{(D) Asymptotic Return (Never Zero):} Distance to initial state $\|\gamma(t) - \Scoord_0\|$ (orange curve, log scale) decreases exponentially but never reaches zero (horizontal dashed line). 
+\textbf{(E) Solution Chain Closure:} Polar plot of trajectory distance to initial state vs. angular position (proxy for categorical completion order). Trajectory starts at $0°$ (green marker), explores to maximum distance at $\approx 90°$, and returns near start at $\approx 315°$ (yellow marker), stopping at penultimate state (red marker) one step from closure. 
+\textbf{(F) Turing-Poincaré Incommensurability:} Scatter plot of Turing complexity (Kolmogorov complexity $K(P)$, vertical axis) vs. Poincaré complexity ($\Pi(P)$, horizontal axis) for 30 problems. (Theorem~\ref{thm:complexity_incommensurability}).}
 \label{fig:complexity_validation}
-\end{figure}
+\end{figure*}
 
 \begin{proposition}[Complexity Additivity]
 \label{prop:complexity_additivity}

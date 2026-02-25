@@ -47,18 +47,18 @@ V(q_k, q_t, q_e) = \frac{1}{2}\omega_k^2 (q_k - q_t)^2 + \frac{1}{2}\omega_t^2 (
 where $U_{\text{nl}}$ is a nonlinear coupling potential. The S-entropy coordinates are related to the oscillator phases via $\Sk = (q_k \mod 1)$, and the equations of motion $\ddot{q}_i = -\partial V/\partial q_i$ reduce to~\eqref{eq:dsk_dt}--\eqref{eq:dse_dt} in the overdamped limit. This connection to classical mechanics provides physical intuition for the categorical dynamics and justifies the use of Hamiltonian methods in their analysis \citep{goldstein2002classical}.
 \end{remark}
 
-\begin{figure}[htbp]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_navigation.png}
 \caption{\textbf{Categorical Navigation: Spatial Distance Irrelevance.} 
 \textbf{(A) Location Accessibility:} Bar chart shows categorical accessibility (normalized to $[0, 1]$) for six locations: Local ($1.0$), Jupiter Core ($1.0$), Sun Center ($1.0$), Deep Space ($1.0$), Earth Mantle ($1.0$), Moon ($1.0$). All locations show identical accessibility despite vastly different physical distances. This demonstrates spatial distance irrelevance (Theorem~\ref{thm:distance_irrelevance}): categorical navigation does not depend on physical separation. 
-\textbf{(B) Physical vs Categorical Distance:} Grouped bar chart compares physical distance (red, $\log_{10}$ km scale) vs. categorical distance (blue, S-distance units) for six locations. Physical distances vary dramatically: Local ($\approx 0$ km), Jupiter Core ($\approx 10^8$ km), Sun Center ($\approx 10^8$ km), Deep Space ($\approx 10^{14}$ km), Earth Mantle ($\approx 10^3$ km), Moon ($\approx 10^5$ km). Categorical distances are uniformly small ($< 1$ S-unit) and show no correlation with physical distance. The decoupling confirms that categorical space is not embedded in physical space. 
-\textbf{(C) Equal Measurement Time:} Bar chart shows measurement time (ms) for six locations: Local ($\approx 1.0$ ms), Jupiter Core ($\approx 0.6$ ms), Sun Center ($\approx 0.8$ ms), Deep Space ($\approx 0.4$ ms), Earth Mantle ($\approx 0.4$ ms), Moon ($\approx 0.4$ ms). Mean measurement time $0.670$ ms (red dashed line) is independent of location. All measurements complete in $< 1$ ms regardless of physical distance, confirming that categorical access time is constant. 
-\textbf{(D) Tackle Reach Comparison:} Polar plot shows reachability in categorical space. Full tackle region (blue circle, radius $\approx 1.0$) encompasses all locations (colored dots: red at $180°$, green at $135°$, orange at $90°$, purple at $45°$, blue at center). Limited tackle region (magenta circle, radius $\approx 0.4$) encompasses only nearby locations. All six locations fall within full tackle radius, demonstrating that categorical navigation can reach any location with equal facility. 
-\textbf{(E) Reachability Map:} Scatter plot in $(S_k, S_e)$ plane shows six locations as colored circles with black outlines. All locations cluster in reachable region (green background, $S_k, S_e \in [0, 1]$). Red circle at origin marks unreachable region (physical impossibility). The clustering demonstrates that physically disparate locations are categorically proximate. 
-\textbf{(F) Sequential Access (All Instant):} Flowchart shows six locations accessed sequentially: Local ($0.96$ ms), Jupiter Core ($0.60$ ms), Sun Center ($0.82$ ms), Deep Space ($0.83$ ms), Earth Mantle ($0.39$ ms), Moon ($0.42$ ms). All accesses complete in $< 1$ ms (green checkmarks), demonstrating that sequential categorical navigation is effectively instantaneous regardless of physical distance. The access times are dominated by measurement overhead, not travel time.}
+\textbf{(B) Physical vs Categorical Distance:} Grouped bar chart compares physical distance (red, $\log_{10}$ km scale) vs. categorical distance (blue, S-distance units) for six locations. 
+\textbf{(C) Equal Measurement Time:} Bar chart shows measurement time (ms) for six locations: Local ($\approx 1.0$ ms), Jupiter Core ($\approx 0.6$ ms), Sun Center ($\approx 0.8$ ms), Deep Space ($\approx 0.4$ ms), Earth Mantle ($\approx 0.4$ ms), Moon ($\approx 0.4$ ms). Mean measurement time $0.670$ ms (red dashed line) is independent of location. 
+\textbf{(D) Tackle Reach Comparison:} Polar plot shows reachability in categorical space. Full tackle region (blue circle, radius $\approx 1.0$) encompasses all locations (colored dots: red at $180°$, green at $135°$, orange at $90°$, purple at $45°$, blue at center). 
+\textbf{(E) Reachability Map:} Scatter plot in $(S_k, S_e)$ plane shows six locations as colored circles with black outlines. All locations cluster in reachable region (green background, $S_k, S_e \in [0, 1]$). 
+\textbf{(F) Sequential Access (All Instant):} Flowchart shows six locations accessed sequentially: Local ($0.96$ ms), Jupiter Core ($0.60$ ms), Sun Center ($0.82$ ms), Deep Space ($0.83$ ms), Earth Mantle ($0.39$ ms), Moon ($0.42$ ms). }
 \label{fig:categorical_navigation}
-\end{figure}
+\end{figure*}
 
 \subsection{Vector Field Formulation}
 
@@ -236,18 +236,18 @@ This establishes positive density of coincidence times.
 If the frequencies are irrationally related (e.g., $\omega_k/\omega_t \notin \mathbb{Q}$), then exact harmonic coincidences occur with zero density. However, \textit{approximate} coincidences—times when the phases are nearly commensurate—still occur with positive density as per Diophantine approximation theory. For computational purposes, approximate coincidences within a tolerance $\delta$ are sufficient to trigger constraint satisfaction events, and the density of such approximate coincidences can be controlled through the choice of frequencies.
 \end{remark}
 
-\begin{figure}[htbp]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/panel_harmonic.png}
 \caption{\textbf{Harmonic Coincidence Interactions.} 
-\textbf{(A) Frequency Spectrum:} Histogram of $\log_{10}(\text{Frequency} + 1)$ shows narrow distribution centered at $13.0$--$13.1$ (peak $\approx 32$ counts), with long tail extending to $13.6$. The logarithmic scale reveals power-law distribution of oscillator frequencies, characteristic of $1/f$ noise in hardware systems. 
-\textbf{(B) Harmonic Network:} Circular graph shows 24 molecules (colored nodes) arranged on circle perimeter. Gray lines connect molecules with harmonic relationships (frequency ratios $f_i/f_j \approx n/m$ for small integers $n, m$). Dense connectivity in upper-right quadrant indicates cluster of harmonically-related molecules. Network topology determines solution trajectories (Theorem~\ref{thm:harmonic_solution_paths}): solutions emerge from harmonic coincidences. 
+\textbf{(A) Frequency Spectrum:} Histogram of $\log_{10}(\text{Frequency} + 1)$ shows narrow distribution centered at $13.0$--$13.1$ (peak $\approx 32$ counts), with long tail extending to $13.6$. 
+\textbf{(B) Harmonic Network:} Circular graph shows 24 molecules (colored nodes) arranged on circle perimeter. Gray lines connect molecules with harmonic relationships (frequency ratios $f_i/f_j \approx n/m$ for small integers $n, m$).  
 \textbf{(C) Strength Distribution:} Histogram of interaction strength shows bimodal distribution: primary peak at $0.1$ ($\approx 1200$ counts), secondary peak at $0.5$ ($\approx 2000$ counts). Low-strength interactions ($< 0.2$) dominate numerically but high-strength interactions ($\approx 0.5$) provide critical coupling for solution convergence. The gap at $0.2$--$0.4$ suggests quantization of interaction strengths. 
-\textbf{(D) Harmonic Order Distribution:} Histogram of harmonic order $n + m$ (where $f_i/f_j \approx n/m$) shows exponential decay: order $2.5$ dominates ($\approx 2100$ counts), decreasing to $\approx 250$ counts by order $20$. Low-order harmonics ($n + m < 5$) are most common, corresponding to simple frequency ratios ($2:1$, $3:2$, $4:3$). High-order harmonics ($n + m > 15$) are rare but enable fine-tuned resonances. 
-\textbf{(E) Phase-Amplitude Distribution:} Polar plot shows interaction phase (angle) vs. amplitude (radius). Most interactions cluster near $0°$ and $180°$ (in-phase and anti-phase), with amplitudes $0.2$--$0.8$. Sparse population at $90°$ and $270°$ (quadrature phase) indicates phase locking. The distribution confirms that harmonic interactions are predominantly real-valued (phase $\approx 0°$ or $180°$), not complex. 
-\textbf{(F) Frequency Ratio Matrix:} Heatmap shows pairwise frequency ratios $f_i/f_j$ for 20 molecules (rows and columns). Diagonal is identity ($f_i/f_i = 1$, white). Off-diagonal shows ratios ranging from $0.5$ (red, $f_i = f_j/2$) to $4.0$ (blue, $f_i = 4f_j$). Horizontal banding indicates molecules with similar frequencies (rows $0$--$5$: ratios $\approx 1$--$2$, orange). Vertical banding indicates molecules serving as harmonic references (columns $10$--$15$: ratios $\approx 2$--$3$, orange-yellow). The matrix structure reveals harmonic clusters: groups of molecules with commensurate frequencies that interact strongly.}
+\textbf{(D) Harmonic Order Distribution:} Histogram of harmonic order $n + m$ (where $f_i/f_j \approx n/m$) shows exponential decay: order $2.5$ dominates ($\approx 2100$ counts), decreasing to $\approx 250$ counts by order $20$.  
+\textbf{(E) Phase-Amplitude Distribution:} Polar plot shows interaction phase (angle) vs. amplitude (radius). Most interactions cluster near $0°$ and $180°$ (in-phase and anti-phase), with amplitudes $0.2$--$0.8$. 
+\textbf{(F) Frequency Ratio Matrix:} Heatmap shows pairwise frequency ratios $f_i/f_j$ for 20 molecules (rows and columns). Diagonal is identity ($f_i/f_i = 1$, white). Off-diagonal shows ratios ranging from $0.5$ (red, $f_i = f_j/2$) to $4.0$ (blue, $f_i = 4f_j$). }
 \label{fig:harmonic_coincidence}
-\end{figure}
+\end{figure*}
 
 \subsection{Fixed Points and Periodic Orbits}
 

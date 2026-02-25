@@ -35,17 +35,7 @@ A $k$-trit string $(t_1 t_2 \cdots t_k)$ addresses exactly one cell in the $3^k$
 
 The $3^k$ hierarchy—3 values for 1 trit, 27 for 3 trits, and 729 for 6 trits—matches the three-dimensional structure of the triple equivalence framework.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/panel_ternary_computation_1.png}
-\caption{\textbf{Ternary Representation for Gas Dynamics: S-Entropy Compression.} 
-\textbf{Top Left - Full phase space (200 molecules):} Three-dimensional scatter plot showing 200 molecules in unit cube [0, 1]$^3$. Colored spheres (purple to yellow gradient): molecular positions. Each molecule has 18 dimensions (3 position + 3 velocity coordinates $\times$ 1 molecule = 6D, but showing 200 molecules gives 1200D total phase space). Visualization shows 3D projection of high-dimensional phase space.
-\textbf{Top Center - S-entropy compression:} Three-dimensional scatter plot showing same 200 molecules compressed to 3D S-entropy coordinates. Axes: $S_k$ (knowledge, range 0.0-2.0), $S_t$ (time, range 0-2), $S_e$ (evolution, range 1.5-5.0). Colored spheres (purple to yellow): each point represents one molecule's compressed state. Text annotation: ``Each point = 1 molecule, 18 dims $\to$ 3 dims.'' Compression achieves $>$6-fold dimensional reduction (18D $\to$ 3D) while preserving thermodynamic information.
-\textbf{Top Right - Ternary addresses ($3^k$ hierarchy):} Heat map showing ternary address encoding. Horizontal axis: trit position/depth (0-10). Vertical axis: molecule index (0-50). Color coding: blue (trit value 0, oscillatory perspective), yellow (trit value 1, categorical perspective), red (trit value 2, partition perspective). Each row is one molecule's 12-trit address. Balanced color distribution indicates equal usage of all three perspectives.
-\textbf{Middle Left - Sliding window spectrometer:} Three traces showing mean S-coordinates versus window position (0-30): yellow ($S_k$, knowledge), cyan ($S_t$, time), red ($S_e$, evolution). Vertical axis: mean S-coordinate (1.0-3.0). All three traces fluctuate around means ($S_k \approx 1.5$, $S_t \approx 2.0$, $S_e \approx 1.8$) with correlated variations. Window slides through ensemble capturing local S-entropy statistics—this is the spectrometer measuring categorical structure.
-\textbf{Middle Center - $3^k$ ternary address tree:} Three-dimensional tree structure showing hierarchical phase space organization. Axes: Oscillatory (0), Categorical (1), Partition (2) (all range 0.00-1.75). Red and blue spheres: occupied cells at different depths ($k = 3$ gives 27 cells, $k = 4$ gives 81 cells). Tree branches show natural $3^k$ discretization of phase space.}
-\label{fig:ternary_representation_1}
-\end{figure}
+
 
 \subsection{The Triple Equivalence as Ternary Logic}
 
@@ -195,18 +185,12 @@ Triple equivalence & Not represented & Natural encoding \\
 
 \textbf{Radix economy:} The radix economy $r \cdot \ln r$ measures efficiency. For binary: $2 \ln 2 \approx 1.39$. For ternary: $3 \ln 3 \approx 3.30$. Ternary is less efficient per digit but more efficient per unit of information due to higher capacity.
 
-\begin{figure}[htbp]
+\begin{figure*}[!htbp]
 \centering
-\includegraphics[width=\textwidth]{figures/panel_ternary_computation_2.png}
-\caption{\textbf{Ternary Computation as Gas Dynamics: Oscillator = Processor.} 
-\textbf{(Top Left)} Ternary computation trajectories in S-entropy space. Each colored line represents one molecule's trajectory through $(S_k, S_t, S_e)$ coordinates. Yellow sphere: starting configuration (near origin). Trajectories explore bounded phase space $[0, 0.3]^3$. Axes: $S_k$ (knowledge), $S_t$ (categorical), $S_e$ (evolution).
-\textbf{(Top Center)} Ensemble equilibration showing computation converging to thermalization. Three traces show mean S-coordinates versus computation step: blue ($S_k$, categorical), orange ($S_t$, oscillatory), green ($S_e$, partition). All three converge to equilibrium values ($\sim$0.25) after $\sim$40 steps, demonstrating equivalence of computational and thermodynamic equilibration. Horizontal axis: computation step (0-140). Vertical axis: mean S-coordinate (0-0.30).
-\textbf{(Top Right)} Ternary operations in S-space. Three colored arrows show primitive operations: blue (Op 0: Oscillate, refine $S_k$), green (Op 1: Categorize, refine $S_t$), red (Op 2: Partition, refine $S_e$). Operations act directly on three-dimensional structure. Axes: $S_k$, $S_t$, $S_e$ in range [0, 1.0].
-\textbf{(Bottom Left)} Thermodynamics from ternary computation. Two traces versus computation step: red (temperature $T$ in kelvin, left axis, range 180-280 K), blue (pressure $P$ in bar, right axis, range 0.50-0.75 bar). Both quantities computed directly from ternary trajectory statistics. Temperature and pressure equilibrate after $\sim$40 steps. Horizontal axis: computation step (0-140).
-\textbf{(Bottom Center)} Trit state evolution for single molecule (12-trit register). Heat map shows trit values over time: blue (trit 0, oscillatory), white (trit 1, categorical), red (trit 2, partition). Horizontal axis: computation step (0-100). Vertical axis: trit position in 12-trit register (0-10). Pattern shows balanced exploration of all three perspectives.
-\textbf{(Bottom Right)} Computation = Gas Dynamics identity. Text box summarizes correspondence: ternary operations map to thermodynamic processes, computational state maps to gas state (12-trit register $\leftrightarrow$ molecular microstate), computation complete maps to equilibrium (Poincaré recurrence $\leftrightarrow$ Maxwell distribution), and fundamental identity that oscillator equals processor.}
-\label{fig:ternary_computation}
-\end{figure}
+\includegraphics[width=0.95\textwidth]{figures/panel_ternary_computation_1.png}
+\caption{\textbf{Ternary Representation for Gas Dynamics: S-Entropy Compression.} Gas dynamics can be represented using ternary (base-3) encoding in S-entropy coordinates, achieving exponential compression of phase space. \textbf{Panel A (Full Phase Space):} 3D scatter plot of 200 virtual gas molecules in categorical S-space $(S_k, S_t, S_e)$, where coordinates are bounded $\in [0,1]^3$. Each point represents a complete molecular state derived from hardware oscillator timing. \textbf{Panel B (S-Entropy Compression):} Compressed representation where each point encodes one molecule's complete state. The mapping from 6D phase space $(x, y, z, v_x, v_y, v_z)$ to 3D S-space achieves $2:1$ dimensional compression while preserving thermodynamic information. \textbf{Panel C (Ternary Addresses):} Heatmap of ternary address encoding showing $3^n$ hierarchical structure. Each row represents one molecule's address; columns show trit positions (depth). Color coding: 0 = Oscillatory (blue), 1 = Categorical (purple), 2 = Partition (orange). \textbf{Panel D (Sliding Window Spectrometer):} Time evolution of S-coordinates as the measurement window slides through the ensemble. The three coordinates $(S_k, S_t, S_e)$ evolve semi-independently, with shaded region indicating the current window position. This demonstrates real-time S-entropy sampling.}
+\label{fig:ternary_computation_1}
+\end{figure*}
 
 \subsection{Implications for Gas Laws}
 

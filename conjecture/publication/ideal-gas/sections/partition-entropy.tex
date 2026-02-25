@@ -27,16 +27,7 @@ where $n_a$ is the number of distinguishable states within partition $a$.
 
 A partition's selectivity is the inverse of its categorical depth: $s_a = 1/n_a$. High categorical depth (many distinguishable states) corresponds to low selectivity (high discrimination).
 
-\begin{figure*}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/panel_partition.png}
-\caption{\textbf{Partition Lag Across Transport Types: Time Required for Categorical Determination.} 
-(\textbf{Electric: Partition Lag $\tau_p$}) The partition lag for electrical transport decreases with temperature for all scattering mechanisms. Phonon scattering (orange curve) shows strong decrease from $\tau_p \sim 10^2$ fs at 50 K to $\sim 10^1$ fs at 500 K—higher temperature means faster categorical determination. Impurity scattering (magenta curve) shows similar trend but with longer lag times ($\tau_p \sim 10^5$ fs at low $T$)—defects create persistent barriers that require more time to resolve. 
-(\textbf{Diffusive: Partition Lag $\tau_p$}) The partition lag for diffusive transport spans an enormous range: 15 orders of magnitude from $10^1$ fs to $10^{16}$ fs. Vacancy jump (bright green curve) shows the longest lag times ($\tau_p \sim 10^{16}$ fs at 400 K)—vacancies are rare, so waiting for a vacancy to arrive takes enormous time. Interstitial diffusion (green curve) is faster ($\tau_p \sim 10^{13}$ fs)—interstitials are more mobile. Grain boundary diffusion (dark green curve) is much faster ($\tau_p \sim 10^9$ fs)—boundaries provide fast pathways. All mechanisms show exponential decrease with temperature: $\tau_p \propto \exp(\Phi/kT)$. This demonstrates that partition lag is the microscopic origin of diffusion barriers. 
-(\textbf{Thermal: Partition Lag $\tau_p$}) The partition lag for thermal transport varies with phonon frequency and scattering mechanism. Normal scattering (green curve) shows constant lag ($\tau_p \sim 10^3$ ps) independent of frequency—normal processes conserve momentum and require no categorical determination. Umklapp scattering (orange curve) shows decreasing lag with frequency—high-frequency phonons scatter more frequently. Boundary scattering (magenta curve) shows weak frequency dependence. Impurity scattering (cyan curve) shows intermediate behavior. The dramatic difference between normal ($\tau_p \sim 10^3$ ps) and umklapp ($\tau_p \sim 10^2$ ps) explains why umklapp processes dominate thermal resistance at high temperature—they have shorter partition lag and thus higher scattering rate. 
-(\textbf{Viscous: Partition Lag $\tau_p$}) The partition lag for viscous flow decreases with temperature for all fluids. Water (cyan curve) has the shortest lag ($\tau_p \sim 10^9$ ps at 200 K, decreasing to $10^8$ ps at 600 K)—water molecules rearrange quickly. Glycerol (magenta curve) has much longer lag ($\tau_p \sim 10^{17}$ ps at 200 K)—glycerol is highly viscous and rearranges slowly. n-Hexane (green curve) shows intermediate behavior. The enormous variation (9 orders of magnitude) demonstrates that partition lag captures the microscopic origin of viscosity: $\mu \propto \tau_p \cdot g$. Longer partition lag means slower categorical determination, which manifests as higher viscosity.}
-\label{fig:partition_lag}
-\end{figure*}
+
 
 \subsection{Partition Lag and Transition Time}
 
@@ -180,17 +171,7 @@ This exactly matches the categorical entropy production rate (Section~\ref{sec:c
 
 \textbf{Physical interpretation:} Entropy increases at a rate proportional to how fast the system completes partitions (traverses categorical states). Rapid partition completion means rapid entropy production.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/panel_partition_lag.png}
-\caption{\textbf{Partition lag $\tau_p$ across all four transport types showing universal temperature dependence.} 
-\textbf{(Top left)} Electrical partition lag showing scattering mechanism contributions. Phonon scattering (orange) dominates at high temperature with $\tau_p \sim 10^2$ fs at 500 K, decreasing from $\sim 10^3$ fs at low $T$ as phonon population increases ($\propto T$). Impurity scattering (magenta) is temperature-independent at $\tau_p \sim 10^4$ fs, providing residual scattering even at $T \to 0$. Electron-electron scattering (green) shows weak temperature dependence with $\tau_p \sim 10^4$ fs. All mechanisms contribute to total resistivity through $\rho = \mathcal{N}^{-1}\sum_{ij}\tau_{p,ij}g_{ij}$.
-\textbf{(Top right)} Diffusive partition lag showing atomic jump mechanisms. Vacancy diffusion (bright green) has longest partition lag $\tau_p \sim 10^{15}$ fs ($\sim 1$ s) at 400 K, decreasing exponentially with temperature as thermal activation enables atomic jumps: $\tau_p \propto \exp(E_a/k_B T)$. Interstitial diffusion (medium green) has shorter lag $\tau_p \sim 10^{13}$ fs ($\sim 10$ ms) due to lower activation barrier. Grain boundary diffusion (dark green) has intermediate lag $\tau_p \sim 10^7$ fs ($\sim 10$ ns) as atoms diffuse along defects with reduced barriers. The enormous range of partition lags (10$^2$--10$^{15}$ fs) reflects the wide range of diffusion timescales from fast interstitial motion to slow vacancy migration.
-\textbf{(Bottom left)} Thermal partition lag showing phonon scattering vs. frequency. Normal scattering (cyan) has constant partition lag $\tau_p \sim 10^3$ ps across all frequencies, as normal processes conserve crystal momentum and don't limit thermal transport. Umklapp scattering (orange) shows strong frequency dependence: $\tau_p \sim 10^1$ ps at low frequency ($\omega \sim 1$ THz), decreasing to $\sim 10^0$ ps at high frequency ($\omega \sim 14$ THz) as umklapp phase space increases. Boundary scattering (green) is frequency-independent at $\tau_p \sim 10^3$ ps. Impurity scattering (magenta) shows weak frequency dependence with $\tau_p \sim 10^2$ ps. The frequency-dependent partition lag determines thermal conductivity spectrum $\kappa(\omega)$.
-\textbf{(Bottom right)} Viscous partition lag showing molecular collision times. Water (cyan) has shortest partition lag $\tau_p \sim 10^0$ ps at 600 K, increasing to $\sim 10^2$ ps at 200 K as molecular collision rate decreases with temperature. Glycerol (magenta) has much longer lag $\tau_p \sim 10^{17}$ ps ($\sim 10^5$ s) at 200 K due to strong hydrogen bonding, decreasing exponentially to $\sim 10^9$ ps ($\sim 1$ s) at 600 K as bonds break. n-Hexane (green) has intermediate lag $\tau_p \sim 10^2$ ps. 
-\textbf{Universal structure:} All four transport types show partition lag decreasing with temperature (or frequency), following Arrhenius-like behavior $\tau_p \propto \exp(E_a/k_B T)$ where activation energy $E_a$ represents the energy barrier for partition operations. The universal formula $\text{Transport coefficient} \propto \sum_{ij}\tau_{p,ij}g_{ij}$ applies across all modes, with only the carrier type and coupling structure differing. This demonstrates the deep unity of transport phenomena: all arise from the same categorical partition dynamics, differing only in timescales and interaction strengths.}
-\label{fig:partition_lag_comparison}
-\end{figure}
+
 
 \subsection{Partition Temperature}
 

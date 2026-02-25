@@ -31,20 +31,6 @@ n = \frac{\Gamma}{h} = \frac{2\pi E}{\omega \cdot 2\pi\hbar} = \frac{E}{\hbar\om
 
 For a quantum harmonic oscillator with energy $E = (n + 1/2)\hbar\omega$, this gives $n$ as the occupation number, confirming the correspondence between classical phase space volume and quantum state counting.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/fig_pendulum_triple_equivalence.png}
-\caption{\textbf{Pendulum Demonstrates Triple Equivalence: Oscillation = Category = Partition.} 
-\textbf{Top Left - Oscillatory View:} Simple pendulum (black pivot point, black bob, gray reference positions, blue arrow showing current position). Equation: $\theta(t) = \theta_{\max}\cos(\omega t)$. Continuous periodic motion in angle coordinate.
-\textbf{Top Center - Continuous Periodic Motion:} Two traces versus time (0-12 in units of $t/T$): blue solid line ($\theta(t)$, angle), cyan dashed line ($\dot{\theta}(t)$, angular velocity). One complete period $T$ spans from $t = 0$ to $t = T$ (black arrow). Sinusoidal oscillation with phase shift between position and velocity.
-\textbf{Top Right - Phase Space (Ellipse):} Phase portrait showing $\dot{\theta}$ versus $\theta$ (both axes range $-0.4$ to $0.4$). Blue ellipse: phase space trajectory. Two red dots: current state showing position on ellipse. Closed trajectory indicates periodic motion with no dissipation.
-\textbf{Middle Center - Discrete State Structure:} Bar chart showing time in category versus category index (C$_1$ to C$_8$). Green bars with heights ranging 0.15 to 0.8. Peak at categories C$_3$ and C$_4$ (height $\approx 0.8$) corresponds to slow motion near turning points. Minimum at C$_1$ and C$_8$ (height $\approx 0.15$) corresponds to fast motion through equilibrium. Black arrows labeled ``Traversal'' indicate sequential category progression.
-\textbf{Bottom Left - Categorical View:} Eight green spheres (C$_1$ through C$_8$) arranged in arc, connected by gray lines to black pivot point above. Text: ``$M = 8$ categories. Each $C_i$ is a distinguishable state.'' Pendulum motion discretized into eight categorical regions.
-\textbf{Bottom Right - Partition View:} Eight pink/red rectangles (P$_1$ through P$_8$) arranged horizontally along time axis (0 to $T$). Color gradient from light pink (short duration) to dark red (long duration). Black arrow labeled $t$ points right. Equation: $T = \sum_{i=1}^M \tau_i$. Text: ``Each partition = one category transition.'' Average partition duration: $\langle\tau_p\rangle = T/M$.
-\textbf{Bottom - Triple Equivalence Statement:} Yellow box with black border: ``TRIPLE EQUIVALENCE: Oscillation = Category Traversal = Period Partition.'' Below: ``Fundamental Identity: $dM/dt = \omega/(2\pi/M) = 1/\langle\tau_p\rangle$.'' This identity connects categorical rate (left), oscillation frequency (center), and partition rate (right), proving all three perspectives measure the same dynamics.}
-\label{fig:pendulum_triple_equivalence}
-\end{figure}
-
 \subsection{Amplitude as Measure of Accessible States}
 
 For a classical oscillator, the amplitude $A$ determines the extent of phase space exploration. A larger amplitude means more accessible states. Define a reference amplitude $A_0$ corresponding to the ground state (minimum accessible phase space):
@@ -244,19 +230,6 @@ S_{\text{osc}} = k_B \sum_{i=1}^{M} \ln n_i = k_B M \langle \ln n \rangle
 where $\langle \ln n \rangle = (1/M)\sum_i \ln n_i$ is the geometric mean of the state counts.
 
 \textbf{The oscillatory and categorical entropies are mathematically equivalent.} The oscillatory form explicitly demonstrates the contribution of each mode, while the categorical form emphasises the total dimensionality. They are two representations of the same underlying structure.
-
-\begin{figure*}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/panel2_entropy_derivation.png}
-\caption{\textbf{Three Derivations of the Entropy Formula $S = k_B M \ln n$.} 
-(\textbf{A}) Oscillatory derivation: For $M = 3$ oscillator modes with $n = 4$ quantum states each, the total number of microstates is $W_{\text{osc}} = 4^3 = 64$. 
-(\textbf{B}) Categorical derivation: For $M = 2$ categorical dimensions with $n = 4$ distinguishable states each, the total number of configurations is $|C| = 4 \times 4 = 16$. 
-(\textbf{C}) Partition derivation: A tree with $M = 2$ levels and branching factor $n = 3$ has $3^2 = 9$ terminal paths (leaves). One path is highlighted in red. 
-(\textbf{D}) Boltzmann's fundamental relation $S = k_B \ln W$ combined with $W = n^M$ yields $S = k_B M \ln n$. 
-(\textbf{E}) All three perspectives—oscillators, categorical states, and partition paths—yield the same formula $W = n^M$ and thus $S = k_B M \ln n$. 
-(\textbf{F}) Entropy scaling as a function of degrees of freedom $M$ and states per degree of freedom $n$. The contour plot shows $S/k_B$ in the $(M, n)$ plane. The pendulum example (red point) has $M = 1$ mode and $n = 4$ states, giving $S = k_B \ln 4$. The entropy increases linearly with $M$ (horizontal direction) and logarithmically with $n$ (vertical direction).}
-\label{fig:entropy_derivation}
-\end{figure*}
 
 \subsection{Summary}
 

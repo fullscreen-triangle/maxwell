@@ -66,18 +66,12 @@ Poincaré Computing violates each of the four conditions of Axiom~\ref{ax:algori
 \end{enumerate}
 \end{theorem}
 
-\begin{figure}[htbp]
+\begin{figure*}[!htbp]
 \centering
-\includegraphics[width=\textwidth]{figures/unified_category_panel.png}
-\caption{\textbf{The Unified Category: Point $\equiv$ Nothing $\equiv$ Singularity.} 
-\textbf{(A) Dimensional Equivalence: All Three Are 0D:} Three circles (teal, purple, orange) representing Point, Nothing, and Singularity, connected by equivalence symbols ($\equiv$). All three are zero-dimensional objects with no internal structure. This demonstrates dimensional equivalence: Point (geometric object with zero extent), Nothing (absence of content), and Singularity (cosmological boundary) are the same 0D entity viewed through different lenses.
-\textbf{(B) Categorical Equivalence: No Internal Structure:} Three boxes labeled Point, Nothing, and Singularity, each containing empty set symbol $\varnothing$. Caption: ``Zero Internal Distinctions''. The third box shows ``Expansion'' arrow, indicating that singularity can expand into universe. This demonstrates categorical equivalence: all three objects have empty internal category (no distinguishable parts), making them categorically identical.
-\textbf{(C) Topological Equivalence: Circling Point = Circling Nothing:} Two circles (blue outlines) with centers marked by filled circle (left, ``Around Point'') and empty circle (right, ``Around Nothing''). Caption: ``Both Create Same Topology''. Equivalence symbol ($=$) connects them. This demonstrates topological equivalence: a loop encircling a point creates the same topology (fundamental group $\pi_1 = \mathbb{Z}$) as a loop encircling nothing. The distinction between point and nothing is topologically meaningless.
-\textbf{(D) Category Filling Toward Singularity:} Four nested rectangles (pink shaded) decreasing in size from top to bottom, with vertical red line connecting centers. Bottom rectangle contains orange circle. Caption: ``Categories Filling''. Arrow labeled ``Completion'' points downward. This demonstrates category filling: as categorical completion proceeds, the space of incomplete states shrinks, asymptotically approaching singularity (the unique complete state). The funnel shape represents convergence toward categorical closure.
-\textbf{(E) Cyclic Recurrence from Categorical Necessity:} Polar plot shows cyclic trajectory (red curve) passing through five colored circles (green, yellow, orange) at angles $90°$, $0°$, $270°$, $180°$, $45°$. The trajectory forms a closed loop, demonstrating Poincaré recurrence: categorical dynamics are cyclic, returning arbitrarily close to initial state. This validates the recurrence theorem (Theorem~\ref{thm:poincare_recurrence_formal}): categorical trajectories exhibit periodic behavior.
-\textbf{(F) The Eternal Cosmic Cycle: Big Bang $\leftrightarrow$ Singularity:} Figure-eight diagram (red curve) with three labeled points: Singularity (left, orange circle), Big Bang (center crossing), Heat Death (right, green circle). Caption: ``Eternal Cycle''.}
-\label{fig:unified_category}
-\end{figure}
+\includegraphics[width=0.95\textwidth]{figures/panel_poincare_computing_gas_laws.png}
+\caption{\textbf{Poincar\'{e} Computing as Gas Law Derivation.} Gas laws emerge from Poincar\'{e} recurrence in bounded computational phase space: trajectories explore the space ergodically, yielding thermodynamic properties. \textbf{Panel A (Computation = Trajectory):} 3D scatter plot of computational states in phase space, colored by time (green = start, red = end). The uniform space-filling demonstrates ergodic exploration, ensuring all microstates are sampled. \textbf{Panel B (Computational Velocity = Maxwell Distribution):} The distribution of step sizes (computational velocities) follows the Maxwell-Boltzmann form. Vertical lines mark characteristic speeds: most probable $v_p$, mean $\bar{v}$, and RMS $v_{\text{rms}}$. This emerges from trajectory statistics, not assumed. \textbf{Panel C ($T = (\text{trajectory spread})^2$):} Temperature is derived from trajectory spread $\sigma$, with $T \propto \sigma^2$. Scatter plot shows measured temperature versus spread for multiple runs; the linear fit (dashed) confirms the relationship. \textbf{Panel D (S increases then saturates):} Entropy $S = \ln\Omega$ increases monotonically during computation and saturates at equilibrium $S_{\text{max}}$. This derives the Second Law from trajectory dynamics: entropy cannot decrease because trajectories cannot ``un-explore'' phase space.}
+\label{fig:poincare_computing}
+\end{figure*}
 
 \begin{proof}
 We establish each violation explicitly.
@@ -264,19 +258,6 @@ By construction, every trajectory $\gamma' \in \mathcal{A}(P')$ satisfies $\pi_{
 Since this construction works for any $\Scoord_0' \in \Sspace$, and $\Sspace$ is uncountable (it is a subset of $\mathbb{R}^3$), the equivalence class $[P]_{\sim_A}$ contains uncountably many distinct problems (one for each choice of $\Scoord_0'$).
 \end{proof}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/categorical_computer_panel.png}
-\caption{\textbf{Categorical Computer: Navigation-Based Computation.} 
-\textbf{(A) Problem Translation Pipeline:} Problems are translated through four stages: entity extraction (identifying categorical states), relation mapping (establishing partial order $\prec$), constraint compilation (encoding as completion operators $\mu$), and S-entropy manifold embedding (mapping to $\Sspace = [0,1]^3$). This pipeline implements forward translator $\mathcal{T}_{\text{in}}: \mathcal{P} \to \Sspace$ (Definition~\ref{def:categorical_compiler}). 
-\textbf{(B) Navigation Strategies:} Comparison of convergence rates (blue bars, left axis) and operation counts (orange bars, right axis) for four navigation strategies. Categorical completion achieves comparable convergence rates ($\approx 0.8$--$1.0$) to classical methods but with dramatically reduced operation counts ($\approx 20$--$40$ vs. $100$--$140$ for gradient descent), demonstrating navigation efficiency over sequential execution. 
-\textbf{(C) Complexity Scaling:} Algorithmic complexity vs. problem size $n$ for classical algorithms (orange/red: $O(n^2)$, $O(n \log n)$, $O(n)$) and categorical navigation (green: $O(1)$ constant complexity). Classical complexity grows polynomially or linearithmically; categorical complexity remains constant due to manifold navigation rather than sequential search (Theorem~\ref{thm:complexity_independence}). 
-\textbf{(D) Task Speedup:} Speedup factors relative to classical baselines for four computational tasks. MatMul ($32 \times 32$ matrix multiplication) achieves $3.24\times$ speedup, Sort ($n = 10^4$ elements) achieves $13.49\times$ speedup (exceeding break-even threshold), while Dot Product and Search show sub-unity speedup ($0.55\times$, $0.08\times$) due to overhead dominating for simple tasks. 
-\textbf{(E) Energy Efficiency:} Energy efficiency gain (operations per joule) for increasing problem sizes. MatMul $4 \times 4$ achieves $128\times$ gain, scaling to $65536\times$ for $32 \times 32$ matrices. Exponential scaling demonstrates energy advantage of navigation over sequential execution, consistent with thermodynamic efficiency of categorical dynamics (Section~\ref{sec:virtual_instrument}). 
-\textbf{(F) Problem Type Success Rates:} Convergence success rates for five problem classes. Pattern matching achieves 100\% success (deterministic categorical structure), biological sequence analysis achieves 92\%, optimization 95\%, search 90\%, and constraint satisfaction 88\%. Target threshold (dashed line) is 90\%; four of five classes meet or exceed target, validating broad applicability.}
-\label{fig:categorical_computer_performance}
-\end{figure}
-
 \begin{remark}[Implications for Problem Encoding]
 \label{rem:encoding_implications}
 Theorem~\ref{thm:reformulation_abundance} has profound implications for problem encoding. In traditional computation, there is typically a "natural" encoding of a problem (e.g., the adjacency matrix for a graph problem, the clause list for a SAT problem), and different encodings are considered variations on the same problem. In Poincaré Computing, there is no unique natural encoding: every problem has uncountably many equally valid reformulations, distinguished only by their geometric positions in $\Sspace$. The choice of reformulation affects the trajectory geometry and recurrence time but not the answer.
@@ -382,6 +363,13 @@ Trajectory completeness and Turing completeness are incomparable notions:
 A system can be trajectory-complete without being Turing complete (Poincaré Computing), and a system can be Turing complete without being trajectory-complete (Turing machines cannot produce continuous recurrent trajectories). The two criteria apply to different computational paradigms and are not directly comparable.
 \end{remark}
 
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/panel_categorical_computing_gas_laws.png}
+\caption{\textbf{Categorical Computing as Gas Law Derivation.} Categorical operations (discrete state transitions) map to molecular dynamics, with gas laws emerging from operation statistics. \textbf{Panel A (Categorical Operations = Molecular Trajectories):} 3D visualization of categorical state space as a $3^3 = 27$ cell grid, with trajectories (colored lines) showing transitions between cells. Each trajectory represents one computational thread; the grid represents discrete molecular states. \textbf{Panel B (Operation Types = Energy Modes):} Bar chart showing equal distribution of three operation types: Oscillatory (phase), Categorical (transition), Partition (rearrangement). Equal counts demonstrate equipartition---each mode carries equal energy on average, as required by the equipartition theorem. \textbf{Panel C (T-S Relationship):} Scatter plot of derived entropy versus derived temperature from categorical operations, showing the thermodynamic identity $S = ncT$ emerges from computation. The linear fit (red dashed) confirms the relationship is derived, not assumed. \textbf{Panel D (State Occupancy = Boltzmann Distribution):} Histogram of categorical state occupancy versus energy level, showing exponential Boltzmann distribution $P(E) \propto e^{-E/k_BT}$. Red dashed curve: theoretical Boltzmann fit. The distribution emerges from operation statistics.}
+\label{fig:categorical_computing}
+\end{figure*}
+
 \subsection{Categorical Distinction and Incomparability}
 
 We conclude by formally establishing that Poincaré Computing and Turing computation are incomparable frameworks.
@@ -419,19 +407,6 @@ For example:
 
 Neither framework subsumes the other; they are complementary approaches to computation.
 \end{proof}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{figures/processor_benchmark_performance.png}
-\caption{\textbf{Processor Benchmark: Categorical vs Classical Performance---$O(1)$ Categorical Completion vs $O(n)$, $O(n^2)$, $O(n^3)$ Classical.} 
-\textbf{(A) Speedup by Task (Categorical/Classical):} Bar chart shows speedup factor (categorical time / classical time, log scale) for 14 tasks. Red bars (classical slower, speedup $< 1$): dot product $n = 10$ ($\approx 0.05$), dot product $n = 100$ ($\approx 0.1$), dot product $n = 1000$ ($\approx 0.5$), dot product $n = 10000$ ($\approx 0.8$), matrix multiply $4 \times 4$ ($\approx 0.1$), matrix multiply $8 \times 8$ ($\approx 0.8$), search $n = 1000$ ($\approx 0.03$), search $n = 10000$ ($\approx 0.01$), search $n = 100000$ ($\approx 0.003$).
-\textbf{(B) Operation Reduction:} Grouped bar chart shows operation count (log scale) for four task types. Classical ops (red bars): Dot Product ($\approx 10^8$), Matrix Mul ($\approx 10^{13}$), Sorting ($\approx 10^{12}$), Search ($\approx 10^1$). Categorical steps (green bars): all tasks $\approx 10^0$ (single step). Reduction factors: Dot Product ($10^8\times$), Matrix Mul ($10^{13}\times$), Sorting ($10^{12}\times$), Search ($10^1\times$). Matrix multiplication achieves greatest reduction ($10^{13}\times$), confirming that categorical completion collapses polynomial-time operations to constant time.
-\textbf{(C) Dot Product Scaling:} Time (ms, log scale) vs. input size (log scale) for dot product. Classical (red circles, solid line): grows linearly from $\approx 0.01$ ms at $n = 10$ to $\approx 1000$ ms at $n = 10^4$ (slope $\approx 1$, confirming $O(n)$ complexity). Categorical (green squares, solid line): remains flat at $\approx 0.5$ ms for all $n$ (confirming $O(1)$ complexity). Lines cross at $n \approx 10^3$, defining crossover point. For $n < 10^3$, classical is faster (overhead dominates); for $n > 10^3$, categorical is faster.
-\textbf{(D) Matrix Multiply Scaling:} Time (ms, log scale) vs. input size (log scale) for matrix multiplication. Classical (red circles, solid line): grows cubically from $\approx 0.05$ ms at $n = 10^2$ to $\approx 5000$ ms at $n = 10^3$ (slope $\approx 3$, confirming $O(n^3)$ complexity). Categorical (green squares, solid line): grows sub-linearly from $\approx 0.5$ ms at $n = 10^2$ to $\approx 100$ ms at $n = 10^3$ (slope $\approx 0.3$, confirming $O(1)$ categorical completion with measurement overhead). Lines cross at $n \approx 200$, defining crossover.
-\textbf{(F) Result Accuracy:} Pie chart shows match rate for categorical results vs. classical ground truth. Match (green): 100\%. Mismatch (white): 0\%. Perfect accuracy confirms that categorical computation produces identical results to classical algorithms, validating correctness.
-\textbf{(G) Performance Profile: Best vs Worst Cases:} Horizontal bar chart shows speedup factor (log scale) for best and worst cases. BEST cases (green bars): sort $n = 10000$ ($\approx 10\times$), sort $n = 1000$ ($\approx 8\times$), matrix multiply $32 \times 32$ ($\approx 5\times$). WORST cases (red bars): search $n = 100000$ ($\approx 0.003\times$), search $n = 10000$ ($\approx 0.01\times$), search $n = 1000$ ($\approx 0.03\times$).}
-\label{fig:processor_benchmark_performance}
-\end{figure}
 
 \begin{remark}[Paradigm Plurality]
 \label{rem:paradigm_plurality}

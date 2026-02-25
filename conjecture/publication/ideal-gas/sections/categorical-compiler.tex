@@ -310,18 +310,18 @@ The \textbf{categorical compiler runtime} executes the following concurrent loop
 This loop never terminates—it continuously processes problems.
 \end{definition}
 
-\begin{figure}[htbp]
+\begin{figure*}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/categorical_compiler_panel.png}
 \caption{\textbf{Categorical Compiler Validation.} 
-\textbf{(A) Bidirectional Translation:} The compiler operates through three concurrent phases---forward translation ($\mathcal{T}_{\text{in}}: \mathcal{P} \to \Sspace$), categorical dynamics ($\gamma(t)$ evolution), and backward translation ($\mathcal{T}_{\text{out}}: \Sspace \to \mathcal{R}$)---without sequential compile-then-execute separation (Theorem~\ref{thm:bidirectional}). 
+\textbf{(A) Bidirectional Translation:} The compiler operates through three concurrent phases---forward translation ($\mathcal{T}_{\text{in}}: \mathcal{P} \to \Sspace$), categorical dynamics ($\gamma(t)$ evolution), and backward translation .
 \textbf{(B) Convergence Detection:} Observable $r(t) = \mathcal{T}_{\text{out}}(\gamma(t))$ converges to stable value (dashed line) after trajectory exploration. Convergence detector $\mathcal{D}(t)$ identifies when $\|r(t) - r(t-\Delta t)\| < \delta$ for $k$ consecutive intervals (green shaded region), triggering result emission without halting dynamics (Definition~\ref{def:convergence_detection}). 
-\textbf{(C) Asymptotic Solutions (Never Exact Return):} Final distance to initial state $\|\gamma(T) - \Scoord_0\|$ is always positive across 20 independent runs. Exact return (vertical line at zero) is impossible due to categorical irreversibility (Axiom~\ref{axiom:irreversibility_formal}). All solutions satisfy $\|\gamma(T) - \Scoord_0\| > 0$, confirming Theorem~\ref{thm:asymptotic_solution}. 
-\textbf{(D) $\epsilon$-Boundary Recognition:} Solution recognition occurs at progressively smaller $\epsilon$ thresholds (Test 1: $\epsilon = 0.1$, Test 2: $\epsilon = 0.15$, Test 3: $\epsilon = 0.2$) with final distances approaching but never reaching zero (dashed lines show targets). The $\epsilon$-boundary IS the solution (Corollary~\ref{cor:epsilon_boundary}), not an approximation. 
-\textbf{(E) Penultimate State (One Step From Closure):} Trajectory approaches initial state along completion order, reaching minimum distance at penultimate state (yellow marker) one categorical step from would-be closure (red marker at distance $\approx 0$). The final step cannot be taken due to irreversibility, confirming Theorem~\ref{thm:penultimate}. 
-\textbf{(F) Non-Terminating Runtime:} System remains active (normalized activity = 1.0) throughout computation. Convergence detection (orange dashed line) emits result but does not halt dynamics. Runtime continues after convergence (green region), accumulating capability for future problems (Theorem~\ref{thm:non_terminating_runtime}).}
+\textbf{(C) Asymptotic Solutions (Never Exact Return):} Final distance to initial state $\|\gamma(T) - \Scoord_0\|$ is always positive across 20 independent runs. 
+\textbf{(D) $\epsilon$-Boundary Recognition:} Solution recognition occurs at progressively smaller $\epsilon$ thresholds (Test 1: $\epsilon = 0.1$, Test 2: $\epsilon = 0.15$, Test 3: $\epsilon = 0.2$) with final distances approaching but never reaching zero (dashed lines show targets).  
+\textbf{(E) Penultimate State (One Step From Closure):} Trajectory approaches initial state along completion order, reaching minimum distance at penultimate state (yellow marker) one categorical step from would-be closure (red marker at distance $\approx 0$). 
+\textbf{(F) Non-Terminating Runtime:} System remains active (normalized activity = 1.0) throughout computation. Convergence detection (orange dashed line) emits result but does not halt dynamics. }
 \label{fig:categorical_compiler_validation}
-\end{figure}
+\end{figure*}
 
 \begin{theorem}[Non-Terminating Runtime]
 \label{thm:non_terminating_runtime}
