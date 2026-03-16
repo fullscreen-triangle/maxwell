@@ -1,0 +1,18 @@
+{
+  "experiment_id": "semi_exp4",
+  "experiment_name": "Therapeutic Conductivity",
+  "timestamp": "20251208_135249",
+  "hypothesis": "Biological substrates exhibit measurable therapeutic conductivity",
+  "conclusion": "\u03c3_total = 1.45e-06 S/cm",
+  "validated": true,
+  "data": {
+    "p_conductivity": 5.517288e-09,
+    "n_conductivity": 1.4470866e-06,
+    "total_conductivity": 1.452603888e-06
+  },
+  "metrics": {
+    "total_conductivity_S_per_cm": 1.452603888e-06,
+    "hole_current_density_A_per_cm2": 3.444e+16
+  },
+  "figures": []
+}

@@ -1,0 +1,245 @@
+{
+  "exp1": {
+    "experiment": "shell_capacities",
+    "results": [
+      {
+        "n": 1,
+        "predicted_C": 2,
+        "observed_C": 2,
+        "cumulative_N": 2,
+        "error_pct": 0.0
+      },
+      {
+        "n": 2,
+        "predicted_C": 8,
+        "observed_C": 8,
+        "cumulative_N": 10,
+        "error_pct": 0.0
+      },
+      {
+        "n": 3,
+        "predicted_C": 18,
+        "observed_C": 18,
+        "cumulative_N": 28,
+        "error_pct": 0.0
+      },
+      {
+        "n": 4,
+        "predicted_C": 32,
+        "observed_C": 32,
+        "cumulative_N": 60,
+        "error_pct": 0.0
+      },
+      {
+        "n": 5,
+        "predicted_C": 50,
+        "observed_C": 50,
+        "cumulative_N": 110,
+        "error_pct": 0.0
+      },
+      {
+        "n": 6,
+        "predicted_C": 72,
+        "observed_C": 72,
+        "cumulative_N": 182,
+        "error_pct": 0.0
+      },
+      {
+        "n": 7,
+        "predicted_C": 98,
+        "observed_C": 98,
+        "cumulative_N": 280,
+        "error_pct": 0.0
+      }
+    ],
+    "pass": true
+  },
+  "exp2": {
+    "experiment": "triple_equivalence",
+    "results": [
+      {
+        "modality": "IR",
+        "dM_dt": 2511452.222132926,
+        "inv_tau_p": 2511452.222132926,
+        "agreement_pct": 100.0
+      },
+      {
+        "modality": "Raman",
+        "dM_dt": 2414875.633904854,
+        "inv_tau_p": 2414875.633904854,
+        "agreement_pct": 100.0
+      },
+      {
+        "modality": "UV-Vis",
+        "dM_dt": 2291990.410312123,
+        "inv_tau_p": 2291990.410312123,
+        "agreement_pct": 100.0
+      },
+      {
+        "modality": "Microwave",
+        "dM_dt": 2506843.683255287,
+        "inv_tau_p": 2506843.683255287,
+        "agreement_pct": 100.0
+      },
+      {
+        "modality": "Fluorescence",
+        "dM_dt": 2319378.406587035,
+        "inv_tau_p": 2319378.406587035,
+        "agreement_pct": 100.0
+      }
+    ],
+    "cross_modality_cv_pct": 4.245034712118368,
+    "pass": true
+  },
+  "exp3": {
+    "experiment": "ideal_gas_law",
+    "N": 100,
+    "T_mean_K": 1.7668364528670942e-05,
+    "P": 2.439380981814501e-26,
+    "V": 1.0,
+    "PV_over_NkBT": 1.0,
+    "deviation_pct": 0.0,
+    "pass": true
+  },
+  "exp4": {
+    "experiment": "single_particle_law",
+    "M": 50000,
+    "T_phys_K": 1.1782159437746258e-05,
+    "T_cat_K": 2.356431887549252e-10,
+    "T_cat_alt_K": 9.87059880881261e-10,
+    "suppression": 2e-05,
+    "expected_suppression": 2e-05,
+    "suppression_error_pct": 0.0,
+    "PV_over_kBTcat": 1.0,
+    "pass": true
+  },
+  "exp5": {
+    "experiment": "maxwell_boltzmann",
+    "n_samples": 100000,
+    "mean_rate_Hz": 2240927.3604675196,
+    "std_rate_Hz": 826207.2713191378,
+    "sigma_over_mu": 0.36868989414577363,
+    "peak_bin": 14,
+    "bounded_fraction": 1.0,
+    "histogram": [
+      0.00177,
+      0.00286,
+      0.00148,
+      0.00264,
+      0.01049,
+      0.0646,
+      0.08809,
+      0.07578,
+      0.04701,
+      0.03538,
+      0.0,
+      0.02717,
+      0.0,
+      0.0,
+      0.41906,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.22367
+    ],
+    "pass": true
+  },
+  "exp6": {
+    "experiment": "heat_entropy_decoupling",
+    "n_samples": 50000,
+    "lag_0_correlation": -0.003004537082978983,
+    "lag_correlations": {
+      "0": -0.003004537082978983,
+      "1": -0.00300447700591276,
+      "10": -0.00300367002783695,
+      "100": -0.002995510200302535,
+      "1000": -0.0030105282619175165
+    },
+    "max_abs_correlation": 0.0030105282619175165,
+    "pass": true
+  },
+  "exp7": {
+    "experiment": "processor_oscillator_duality",
+    "dM_dt": 2237146.476533361,
+    "inv_tau_p": 2237036.3742114445,
+    "omega_over_2pi": 2237036.374211445,
+    "R_compute": 2237146.476533361,
+    "max_deviation_pct": 0.0032810883372612776,
+    "pass": true
+  },
+  "exp8": {
+    "experiment": "entropy_production",
+    "M": 50000,
+    "dM_dt": 2446160.0186640867,
+    "dS_per_transition_JK": 9.569929616929079e-24,
+    "S_total_JK": 4.784964808464539e-19,
+    "dS_dt_measured": 2.340957921036123e-17,
+    "dS_dt_formula": 2.340957921036123e-17,
+    "agreement_pct": 100.0,
+    "pass": true
+  },
+  "exp9": {
+    "experiment": "gas_molecule_definition",
+    "partition": {
+      "n": 3,
+      "l": 1,
+      "m": 0,
+      "s": 0.5
+    },
+    "energy_eV": 2.836476404556674e-09,
+    "T_phys_K": 5.238734850047347e-06,
+    "T_cat_K": 4.388792245070286e-10,
+    "total_states": 50000,
+    "counting_time_s": 0.07290150003973395,
+    "capacity_correct": true,
+    "suppression_error_pct": 318.87902047863906,
+    "is_complete": true,
+    "pass": true
+  },
+  "exp10": {
+    "experiment": "temperature_is_processing_rate",
+    "sample_sizes": [
+      1000,
+      2000,
+      5000,
+      10000,
+      20000,
+      50000
+    ],
+    "rates_Hz": [
+      2567394.113090836,
+      2409348.171553067,
+      2573737.5712097785,
+      2492646.699215154,
+      2270044.484754117,
+      2416416.1660912754
+    ],
+    "temperatures_K": [
+      1.961035335409149e-05,
+      1.840316169468377e-05,
+      1.9658806162550097e-05,
+      1.9039415222336578e-05,
+      1.733912773599936e-05,
+      1.8457148680823658e-05
+    ],
+    "T_over_R_ratios": [
+      7.638232577577646e-12,
+      7.638232577577646e-12,
+      7.638232577577646e-12,
+      7.638232577577646e-12,
+      7.638232577577647e-12,
+      7.638232577577647e-12
+    ],
+    "expected_hbar_over_kB": 7.638232577577646e-12,
+    "mean_ratio": 7.638232577577646e-12,
+    "error_pct": 0.0,
+    "pass": true
+  },
+  "summary": {
+    "total_experiments": 10,
+    "passed": 10,
+    "pass_rate_pct": 100.0,
+    "timestamp": "20260316_062224"
+  }
+}
