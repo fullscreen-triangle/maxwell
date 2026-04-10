@@ -1,11 +1,10 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { PRESETS } from '@/lib/presets';
 
-// Dynamic import to avoid SSR issues with Three.js
 const GasSimulation = dynamic(() => import('@/engine/GasSimulation'), { ssr: false });
 
 function Slider({ label, value, min, max, step, onChange, unit }) {
