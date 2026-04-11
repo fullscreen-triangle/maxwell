@@ -1,140 +1,173 @@
-import Layout from "@/components/Layout";
 import Head from "next/head";
-import Image from "next/image";
-import profile from "../../public/images/profile/developer-pic-2.jpg";
-import { useInView, useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useRef } from "react";
-import Skills from "@/components/Skills";
-import Experience from "@/components/Experience";
-import Education from "@/components/Education";
-import AnimatedText from "@/components/AnimatedText";
+import Link from "next/link";
+import Layout from "@/components/Layout";
 import TransitionEffect from "@/components/TransitionEffect";
+import { motion } from "framer-motion";
 
-function AnimatedNumberFramerMotion({ value }) {
-  const ref = useRef(null);
-  const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, { duration: 3000 });
-  const isInView = useInView(ref, { once: true });
-  useEffect(() => {
-    if (isInView) {
-      motionValue.set(value);
-    }
-  }, [motionValue, value, isInView]);
-
-  useEffect(
-    () =>
-      springValue.on("change", (latest) => {
-        if (ref.current && latest.toFixed(0) <= value) {
-          ref.current.textContent = latest.toFixed(0);
-        }
-      }),
-    [springValue, value]
+function PaperCard({ title, subtitle, description, href }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      viewport={{ once: true }}
+      className="bg-gray-900/40 border border-gray-800 rounded-xl p-6 hover:border-primaryDark/30 transition-colors"
+    >
+      <p className="text-primaryDark text-xs font-mono uppercase tracking-wider mb-2">{subtitle}</p>
+      <h3 className="text-light text-lg font-bold mb-3">{title}</h3>
+      <p className="text-gray-400 text-sm leading-relaxed mb-4">{description}</p>
+      {href && (
+        <Link href={href} className="text-primaryDark text-sm font-mono hover:underline">
+          Read more →
+        </Link>
+      )}
+    </motion.div>
   );
-
-  return <span ref={ref} />;
 }
 
-export default function About() {
+export default function AboutPage() {
   return (
     <>
       <Head>
-        <title>Minimal Portfolio Built with Nextjs | About Page</title>
-        <meta name="description" content="Learn more about CodeBucks, a Next.js developer with a passion for 
-        creating innovative solutions. Discover tips for building a developer portfolio and insights on 
-        full-stack development, front-end development, and back-end development." />
+        <title>About — Maupertuis</title>
+        <meta name="description" content="The research behind Maupertuis: spectral-native gas and fluid dynamics from bounded phase space geometry." />
       </Head>
       <TransitionEffect />
-      <main
-        className={`flex  w-full flex-col items-center justify-center dark:text-light`}
-      >
-        <Layout className="pt-16">
-          <AnimatedText
-            text="Passion Fuels Purpose!"
-            className="mb-16 !text-8xl !leading-tight lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8"
-          />
 
-          <div className="grid w-full grid-cols-8 gap-16 sm:gap-8">
-            <div className="col-span-3 flex flex-col items-start justify-start xl:col-span-4 md:order-2 
-            md:col-span-8">
-              <h2 className="mb-4 text-lg font-bold uppercase text-dark/75 dark:text-light/75">
-                BIOGRAPHY
-              </h2>
-              <p className="font-medium ">
-                Hi, I&apos;m <strong>CodeBucks</strong>, a web developer and
-                UI/UX designer with a passion for creating beautiful,
-                functional, and user-centered digital experiences. With 4 years
-                of experience in the field. I am always looking for new and
-                innovative ways to bring my clients&apos; visions to life.
-              </p>
-              <p className="my-4 font-medium">
-                I believe that design is about more than just making things look
-                pretty – it&apos;s about solving problems and creating
-                intuitive, enjoyable experiences for users.
-              </p>
-              <p className="font-medium">
-                Whether I&apos;m working on a website, mobile app, or other
-                digital product, I bring my commitment to design excellence and
-                user-centered thinking to every project I work on. I look
-                forward to the opportunity to bring my skills and passion to
-                your next project.
+      <main className="bg-dark text-light min-h-screen">
+        <Layout className="!pt-8">
+          <div className="max-w-4xl mx-auto">
+
+            {/* Header */}
+            <div className="mb-16">
+              <p className="text-primaryDark text-sm font-mono tracking-widest uppercase mb-3">About</p>
+              <h1 className="text-4xl font-bold mb-6">The Research Behind Maupertuis</h1>
+              <p className="text-gray-400 text-lg max-w-2xl">
+                Maupertuis is named after the Principle of Least Action. The tool implements
+                a theoretical framework where all dynamics is partition depth minimization —
+                the categorical analogue of least action in bounded phase space.
               </p>
             </div>
-            <div className="relative col-span-3 h-max rounded-2xl border-2 border-solid border-dark 
-            bg-light p-8 dark:border-light dark:bg-dark
-            xl:col-span-4 md:col-span-8 md:order-1
-            ">
-              <div
-                className="absolute  top-0 -right-3 -z-10 h-[103%] w-[102%]  rounded-[2rem] rounded-br-3xl 
-                bg-dark
-        dark:bg-light  "
-              />
-              <Image
-                className="h-auto w-full rounded-2xl"
-                src={profile}
-                alt="Codebucks"
-                sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
-                priority
-              />
-            </div>
-            <div className="col-span-2 flex flex-col items-end justify-between xl:col-span-8 xl:flex-row 
-            xl:items-center md:order-3">
-              <div className="flex flex-col items-end justify-center xl:items-center">
-                <span className="inline-block text-7xl font-bold md:text-6xl sm:text-5xl xs:text-4xl">
-                  <AnimatedNumberFramerMotion value={40} />+
-                </span>
-                <h2 className="mb-4 text-xl font-medium capitalize text-dark/75 dark:text-light/75 
-                xl:text-center md:text-lg sm:text-base xs:text-sm">
-                  satisfied clients
-                </h2>
-              </div>
 
-              <div className="flex flex-col items-end justify-center xl:items-center">
-                <span className="inline-block text-7xl font-bold md:text-6xl sm:text-5xl xs:text-4xl">
-                  <AnimatedNumberFramerMotion value={50} />+
-                </span>
-                <h2 className="mb-4 text-xl font-medium capitalize text-dark/75 dark:text-light/75 
-                xl:text-center md:text-lg sm:text-base xs:text-sm">
-                  projects completed
-                </h2>
-              </div>
+            {/* Core Idea */}
+            <motion.section
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="mb-16 bg-gray-900/30 border border-gray-800 rounded-2xl p-8"
+            >
+              <h2 className="text-2xl font-bold mb-4">The Core Idea</h2>
+              <p className="text-gray-300 leading-relaxed mb-4">
+                Every processor is an oscillator. Every oscillator has a spectrum. Every spectrum
+                encodes a molecular identity. Spectral interference computes dynamics. Derived light
+                enables observation. The ray march IS measurement.
+              </p>
+              <p className="text-gray-300 leading-relaxed mb-4">
+                This chain of identities eliminates the representation bottleneck that has defined
+                computational fluid dynamics since its inception. There is no mesh, no numerical
+                integration of equations of motion, no pre-stored molecular data, and no assumed light.
+                Everything is derived from a single axiom: the Bounded Phase Space Law.
+              </p>
+              <p className="text-gray-400 text-sm">
+                The framework is validated with zero adjustable parameters against experimental data
+                spanning ideal gas laws, Maxwell-Boltzmann distributions, viscosity predictions for
+                12 pure liquids, Poiseuille flow, and gas-to-liquid phase transitions.
+              </p>
+            </motion.section>
 
-              <div className="flex flex-col items-end justify-center xl:items-center">
-                <span className="inline-block text-7xl font-bold md:text-6xl sm:text-5xl xs:text-4xl">
-                  <AnimatedNumberFramerMotion value={4} />+
-                </span>
-                <h2 className="mb-4 text-xl font-medium capitalize text-dark/75 dark:text-light/75 
-                xl:text-center md:text-lg sm:text-base xs:text-sm">
-                  Years of experience
-                </h2>
+            {/* Papers */}
+            <section className="mb-16">
+              <h2 className="text-2xl font-bold mb-8">Foundational Papers</h2>
+              <div className="grid grid-cols-2 gap-6 lg:grid-cols-1">
+                <PaperCard
+                  subtitle="Gas Dynamics"
+                  title="Spectral-Native Gas Dynamics"
+                  description="Real-time kinetic gas behaviour from hardware oscillation interference with ray-marched observation. Ideal gas law, Maxwell-Boltzmann, equipartition, adiabatic processes."
+                  href="/gas"
+                />
+                <PaperCard
+                  subtitle="Fluid Dynamics"
+                  title="Spectral-Native Fluid Dynamics"
+                  description="Real-time viscous flow from partition network interference with ray-marched observation. Viscosity μ = τ_c × g, Navier-Stokes from Kirchhoff, phase transitions."
+                  href="/fluids"
+                />
+                <PaperCard
+                  subtitle="Foundation"
+                  title="On the Thermodynamic Consequences of Bounded Phase Space"
+                  description="Proves that gas thermodynamics is computationally equivalent to trajectory completion in bounded S-entropy space. Temperature IS processing rate. Entropy IS complexity."
+                />
+                <PaperCard
+                  subtitle="Foundation"
+                  title="The Gas Particle from First Principles"
+                  description="Derives the complete structure of a gas particle from the Bounded Phase Space Law alone: partition coordinates, shell capacity C(n) = 2n², five dynamical theorems."
+                />
+                <PaperCard
+                  subtitle="Spectral Matching"
+                  title="Universal Spectral Matching"
+                  description="Proves all comparison reduces to computer vision through oscillatory representation and GPU-parallel interference. Five-pass shader pipeline."
+                />
+                <PaperCard
+                  subtitle="Mass Transfer"
+                  title="Partition Operations in Fluid Flux Mechanisms"
+                  description="Derives viscosity, light, and chromatographic retention from a single partition lag parameter τ_c. Validates across 12 liquids, 15 pharmaceuticals, and 20 UV-Vis spectra."
+                />
+                <PaperCard
+                  subtitle="Ray Tracing"
+                  title="Multi-Modal Ray-Tracing as Cellular Computation"
+                  description="A single ray march simultaneously computes optical, chromatographic, and circuit observations. Eight oscillator classes. Triple Observation Identity."
+                />
+                <PaperCard
+                  subtitle="Harmonic Networks"
+                  title="Harmonic Molecular Resonator"
+                  description="Light circulates in closed loops within molecules without walls. Virtual resonant cavities from categorical coupling. Self-clocking, self-validating networks."
+                />
               </div>
-            </div>
+            </section>
+
+            {/* How to Use */}
+            <section className="mb-16">
+              <h2 className="text-2xl font-bold mb-6">How to Use the Simulator</h2>
+              <div className="space-y-6">
+                <div className="flex gap-4 items-start">
+                  <div className="w-8 h-8 rounded-full bg-primaryDark/20 border border-primaryDark/40 flex items-center justify-center text-primaryDark font-bold text-sm shrink-0">1</div>
+                  <div>
+                    <h3 className="text-light font-bold mb-1">Choose a mode</h3>
+                    <p className="text-gray-400 text-sm">Gas (sparse network, kinetic theory) or Fluid (dense network, Navier-Stokes). The mode toggle is in the toolbar.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 items-start">
+                  <div className="w-8 h-8 rounded-full bg-primaryDark/20 border border-primaryDark/40 flex items-center justify-center text-primaryDark font-bold text-sm shrink-0">2</div>
+                  <div>
+                    <h3 className="text-light font-bold mb-1">Select a preset or adjust parameters</h3>
+                    <p className="text-gray-400 text-sm">Presets configure realistic conditions (Water at 20°C, Ideal Gas at 300K, etc.). Or use the sliders: temperature, volume, particles, network density.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 items-start">
+                  <div className="w-8 h-8 rounded-full bg-primaryDark/20 border border-primaryDark/40 flex items-center justify-center text-primaryDark font-bold text-sm shrink-0">3</div>
+                  <div>
+                    <h3 className="text-light font-bold mb-1">Observe</h3>
+                    <p className="text-gray-400 text-sm">The volumetric ray march renders the gas/fluid in real time. Drag to orbit the camera. The side panel shows live thermodynamic readouts (T, P, U, μ).</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 items-start">
+                  <div className="w-8 h-8 rounded-full bg-primaryDark/20 border border-primaryDark/40 flex items-center justify-center text-primaryDark font-bold text-sm shrink-0">4</div>
+                  <div>
+                    <h3 className="text-light font-bold mb-1">Experiment</h3>
+                    <p className="text-gray-400 text-sm">Raise temperature → watch emission brighten. Compress volume → watch density increase. Push network density past 0.7 → watch the phase transition from gas to liquid.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Author */}
+            <section className="mb-16 text-center">
+              <p className="text-gray-500 text-sm">
+                Developed by Kundai Farai Sachikonye · AIMe Registry for Artificial Intelligence
+              </p>
+            </section>
+
           </div>
-
-          <Skills />
-          <Experience />
-          <Education />
         </Layout>
       </main>
     </>
