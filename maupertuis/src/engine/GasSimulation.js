@@ -1,358 +1,282 @@
-import { useRef, useMemo, useCallback } from 'react';
-import { useFrame, useThree, createPortal } from '@react-three/fiber';
 import * as THREE from 'three';
+import { useMemo, useRef, useState } from 'react';
+import { createPortal, useFrame, extend } from '@react-three/fiber';
+import { useFBO } from '@react-three/drei';
+import { perlinNoise3D, simplexNoise3D, curlNoise } from './shaders/noiseLib.glsl';
 
 // ═══════════════════════════════════════════════════════════
-// Standalone volumetric ray march — no FBO complexity.
-// Renders a fullscreen fragment shader that procedurally
-// generates the gas/fluid volume from uniforms alone.
-// The "particles" are implicit: noise-seeded density fields
-// modulated by S-entropy parameters.
+// SimulationMaterial — runs in FBO, advects particle positions
+// via curl noise (divergence-free) modulated by physics.
+// Each pixel = 1 particle. RGBA = (x, y, z, life).
+//
+// Temperature → noise frequency (uCurlFreq)
+// Network density → number of curl octaves (gas: 1, liquid: 4)
+// Volume → bounding sphere radius
 // ═══════════════════════════════════════════════════════════
 
-const vertexShader = /* glsl */ `
-varying vec2 vUv;
-void main() {
-  vUv = uv;
-  gl_Position = vec4(position.xy, 0.0, 1.0);
-}
-`;
-
-const fragmentShader = /* glsl */ `
-precision highp float;
-
-uniform float uTime;
-uniform vec2 uResolution;
-uniform float uTemperature;
-uniform float uVolume;
-uniform float uParticleCount;
-uniform float uNetworkDensity;
-uniform vec3 uCameraPos;
-uniform vec3 uCameraTarget;
-
-#define PI 3.14159265359
-#define MAX_STEPS 80
-#define MARCH_SIZE 0.0125
-#define ABSORPTION 1.2
-#define SCATTER_G 0.3
-
-// ─── Hash / Noise ─────────────────────────────────────────
-float hash(vec3 p) {
-  p = fract(p * vec3(443.897, 441.423, 437.195));
-  p += dot(p, p.yzx + 19.19);
-  return fract((p.x + p.y) * p.z);
-}
-
-float noise3D(vec3 p) {
-  vec3 i = floor(p);
-  vec3 f = fract(p);
-  f = f * f * (3.0 - 2.0 * f);
-  float a = hash(i);
-  float b = hash(i + vec3(1,0,0));
-  float c = hash(i + vec3(0,1,0));
-  float d = hash(i + vec3(1,1,0));
-  float e = hash(i + vec3(0,0,1));
-  float f1 = hash(i + vec3(1,0,1));
-  float g = hash(i + vec3(0,1,1));
-  float h1 = hash(i + vec3(1,1,1));
-  return mix(mix(mix(a,b,f.x), mix(c,d,f.x), f.y),
-             mix(mix(e,f1,f.x), mix(g,h1,f.x), f.y), f.z);
-}
-
-float fbm(vec3 p, int octaves) {
-  float val = 0.0;
-  float amp = 0.5;
-  float freq = 1.0;
-  for (int i = 0; i < 6; i++) {
-    if (i >= octaves) break;
-    val += amp * noise3D(p * freq);
-    freq *= 2.03;
-    amp *= 0.48;
-  }
-  return val;
-}
-
-// ─── Particle density field ───────────────────────────────
-// Generates N "particles" as noise-seeded blobs in [0, vol]^3
-float particleDensity(vec3 pos, float time) {
-  float vol = uVolume;
-  // Normalize position to [0,1]
-  vec3 np = pos / vol;
-  if (any(lessThan(np, vec3(-0.05))) || any(greaterThan(np, vec3(1.05)))) return 0.0;
-
-  float density = 0.0;
-
-  // Thermal motion: higher T = faster movement
-  float thermalSpeed = sqrt(uTemperature / 300.0) * 0.3;
-
-  // Macro-scale density from FBM (represents statistical particle distribution)
-  vec3 moving = np * 4.0 + vec3(time * thermalSpeed * 0.7, time * thermalSpeed * 0.5, time * thermalSpeed * 0.3);
-  float macro = fbm(moving, 5);
-
-  // Individual particle blobs (discrete lumps modulated by count)
-  float blobScale = 3.0 + uParticleCount * 0.02;
-  vec3 blobPos = np * blobScale + vec3(time * thermalSpeed);
-  float blobs = 0.0;
-  for (int i = 0; i < 8; i++) {
-    vec3 offset = vec3(
-      hash(vec3(float(i) * 13.7, 0.0, 0.0)),
-      hash(vec3(0.0, float(i) * 17.3, 0.0)),
-      hash(vec3(0.0, 0.0, float(i) * 23.1))
-    ) * 2.0 - 1.0;
-    vec3 center = vec3(0.5) + offset * 0.35;
-    // Animate: orbit + thermal jitter
-    center += 0.15 * vec3(
-      sin(time * thermalSpeed * (1.0 + float(i) * 0.3) + float(i)),
-      cos(time * thermalSpeed * (0.8 + float(i) * 0.2) + float(i) * 2.0),
-      sin(time * thermalSpeed * (0.6 + float(i) * 0.4) + float(i) * 3.0)
-    );
-    float d = length(np - center);
-    float r = 0.06 + uNetworkDensity * 0.08; // wider blobs in liquid
-    blobs += exp(-d * d / (2.0 * r * r));
-  }
-
-  // Network density controls how connected the medium is
-  // Gas: isolated blobs. Liquid: smooth connected field
-  float connection = smoothstep(0.0, 1.0, uNetworkDensity);
-  density = mix(blobs * 0.5, macro * 2.0 + blobs * 0.3, connection);
-
-  // Scale by particle count (more particles = denser)
-  density *= (uParticleCount / 200.0);
-
-  return max(density, 0.0);
-}
-
-// ─── Velocity field (curl-noise style) ────────────────────
-vec3 velocityField(vec3 pos, float time) {
-  float thermalSpeed = sqrt(uTemperature / 300.0) * 0.5;
-  vec3 np = pos / uVolume;
-  float eps = 0.01;
-  // Curl of noise = divergence-free velocity field
-  float nx = noise3D((np + vec3(eps,0,0)) * 3.0 + time * thermalSpeed * 0.4);
-  float ny = noise3D((np + vec3(0,eps,0)) * 3.0 + time * thermalSpeed * 0.4);
-  float nz = noise3D((np + vec3(0,0,eps)) * 3.0 + time * thermalSpeed * 0.4);
-  float n0 = noise3D(np * 3.0 + time * thermalSpeed * 0.4);
-  return vec3(ny - n0, nz - n0, nx - n0) * thermalSpeed;
-}
-
-// ─── Henyey-Greenstein ────────────────────────────────────
-float HG(float g, float cosTheta) {
-  float gg = g * g;
-  return (1.0 / (4.0 * PI)) * ((1.0 - gg) / pow(1.0 + gg - 2.0 * g * cosTheta, 1.5));
-}
-
-// ─── Cosine palette ───────────────────────────────────────
-vec3 palette(float t, vec3 a, vec3 b, vec3 c, vec3 d) {
-  return a + b * cos(6.28318 * (c * t + d));
-}
-
-// ─── Camera ───────────────────────────────────────────────
-mat3 lookAt(vec3 eye, vec3 target) {
-  vec3 f = normalize(target - eye);
-  vec3 r = normalize(cross(vec3(0,1,0), f));
-  vec3 u = cross(f, r);
-  return mat3(r, u, f);
-}
-
-// ─── Main ─────────────────────────────────────────────────
-void main() {
-  vec2 uv = (gl_FragCoord.xy - 0.5 * uResolution) / min(uResolution.x, uResolution.y);
-
-  // Camera
-  mat3 cam = lookAt(uCameraPos, uCameraTarget);
-  vec3 rd = cam * normalize(vec3(uv, 1.2));
-  vec3 ro = uCameraPos;
-
-  // Sun
-  vec3 sunDir = normalize(vec3(0.6, 0.8, 0.4));
-  vec3 sunCol = vec3(1.0, 0.92, 0.8) * 2.0;
-
-  // Ray march
-  vec3 color = vec3(0.0);
-  float transmittance = 1.0;
-  float totalPhase = 0.0;
-
-  // Stochastic offset (anti-banding)
-  float t0 = hash(vec3(gl_FragCoord.xy, uTime * 17.31)) * MARCH_SIZE;
-
-  for (int i = 0; i < MAX_STEPS; i++) {
-    float t = t0 + float(i) * MARCH_SIZE;
-    vec3 pos = ro + rd * t;
-
-    // Volume bounds check
-    if (any(lessThan(pos, vec3(-0.1))) || any(greaterThan(pos, vec3(uVolume + 0.1)))) {
-      if (t > 3.0) break;
-      continue;
+class SimulationMaterial extends THREE.ShaderMaterial {
+  constructor() {
+    // Initial sphere distribution
+    const size = 256;
+    const data = new Float32Array(size * size * 4);
+    const v = new THREE.Vector3();
+    for (let i = 0; i < size * size; i++) {
+      do {
+        v.set(Math.random() * 2 - 1, Math.random() * 2 - 1, Math.random() * 2 - 1);
+      } while (v.length() > 1);
+      v.normalize().multiplyScalar(0.6 + Math.random() * 0.4);
+      data[i * 4 + 0] = v.x;
+      data[i * 4 + 1] = v.y;
+      data[i * 4 + 2] = v.z;
+      data[i * 4 + 3] = Math.random();
     }
+    const tex = new THREE.DataTexture(data, size, size, THREE.RGBAFormat, THREE.FloatType);
+    tex.needsUpdate = true;
 
-    float density = particleDensity(pos, uTime);
-    if (density < 0.01) continue;
+    super({
+      vertexShader: /* glsl */ `
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: /* glsl */ `
+        uniform sampler2D positions;
+        uniform float uTime;
+        uniform float uCurlFreq;
+        uniform float uNetworkDensity;
+        uniform float uVolume;
+        uniform float uTemperature;
+        varying vec2 vUv;
 
-    // ── Partition state from position ──
-    vec3 np = pos / uVolume;
-    float Sk = fbm(np * 2.0 + uTime * 0.1, 3); // knowledge entropy
-    float nLevel = floor(Sk * 4.99) + 1.0;
+        ${simplexNoise3D}
+        ${perlinNoise3D}
+        ${curlNoise}
 
-    // ── ABSORPTION (Beer-Lambert) ──
-    float mu_abs = ABSORPTION * density * 0.15 * (nLevel / 5.0);
-    float stepTrans = exp(-mu_abs * MARCH_SIZE);
-    float absorbed = (1.0 - stepTrans);
+        void main() {
+          float t = uTime * 0.015 * (uTemperature / 300.0);
+          vec3 base = texture2D(positions, vUv).rgb;
+          vec3 pos = base;
+          vec3 curlPos = base;
 
-    // ── EMISSION (thermal glow) ──
-    float tempFactor = uTemperature / 300.0;
-    vec3 emitColor = palette(
-      nLevel / 5.0 * tempFactor,
-      vec3(0.1, 0.12, 0.2),
-      vec3(0.4, 0.25, 0.15),
-      vec3(1.0, 0.8, 0.6),
-      vec3(0.0, 0.1, 0.2)
-    );
-    // Hotter = brighter emission
-    vec3 emission = emitColor * absorbed * tempFactor * 0.8;
+          // Single curl
+          pos = curl(pos * uCurlFreq + t);
 
-    // ── SCATTERING ──
-    float cosTheta = dot(rd, sunDir);
-    float scatterStrength;
-    if (uNetworkDensity < 0.3) {
-      // Gas: Rayleigh
-      scatterStrength = 0.04 * pow(nLevel / 5.0, 4.0);
-    } else {
-      // Liquid: Mie (broader, brighter)
-      scatterStrength = 0.15 * pow(nLevel / 5.0, 2.0);
-    }
-    float phase = HG(SCATTER_G, cosTheta);
-    vec3 scatterLight = sunCol * scatterStrength * phase * density * MARCH_SIZE;
+          // Multi-octave (more octaves in liquid phase)
+          curlPos = curl(curlPos * uCurlFreq + t);
+          curlPos += curl(curlPos * uCurlFreq * 2.0) * 0.5 * uNetworkDensity;
+          curlPos += curl(curlPos * uCurlFreq * 4.0) * 0.25 * uNetworkDensity;
+          curlPos += curl(curlPos * uCurlFreq * 8.0) * 0.125 * uNetworkDensity;
+          curlPos += curl(pos * uCurlFreq * 16.0) * 0.0625 * uNetworkDensity;
 
-    // ── REFRACTION (liquid mode) ──
-    if (uNetworkDensity > 0.3) {
-      // Density gradient bends ray
-      float eps = MARCH_SIZE;
-      float dR = particleDensity(pos + vec3(eps,0,0), uTime) - particleDensity(pos - vec3(eps,0,0), uTime);
-      float dU = particleDensity(pos + vec3(0,eps,0), uTime) - particleDensity(pos - vec3(0,eps,0), uTime);
-      float dF = particleDensity(pos + vec3(0,0,eps), uTime) - particleDensity(pos - vec3(0,0,eps), uTime);
-      vec3 gradDensity = vec3(dR, dU, dF) / (2.0 * eps);
-      rd = normalize(rd + gradDensity * 0.0004 * uNetworkDensity);
-    }
+          // Mix single vs multi based on Perlin
+          vec3 finalPos = mix(pos, curlPos, cnoise(pos + t));
 
-    // ── VELOCITY VISUALIZATION ──
-    vec3 vel = velocityField(pos, uTime);
-    float velMag = length(vel);
-    vec3 velColor = palette(
-      velMag * 2.0,
-      vec3(0.02, 0.05, 0.15),
-      vec3(0.15, 0.2, 0.3),
-      vec3(0.8, 0.6, 0.4),
-      vec3(0.25, 0.15, 0.05)
-    );
+          // Confine to volume (gentle pull toward origin if outside)
+          float r = length(finalPos);
+          float maxR = uVolume * 1.5;
+          if (r > maxR) {
+            finalPos *= maxR / r;
+          }
 
-    // ── ACCUMULATE ──
-    color += transmittance * (emission + scatterLight + velColor * density * 0.02 * MARCH_SIZE);
-    transmittance *= stepTrans;
-
-    // Phase accumulation
-    float omega = 6.28318 * nLevel;
-    totalPhase += omega * MARCH_SIZE;
-
-    if (transmittance < 0.005) break;
-  }
-
-  // ── Background gradient ──
-  vec3 bg = mix(
-    vec3(0.01, 0.015, 0.04),
-    vec3(0.03, 0.04, 0.08),
-    uv.y + 0.5
-  );
-  color += transmittance * bg;
-
-  // ── Container wireframe ──
-  float vol = uVolume;
-  for (int i = 0; i < MAX_STEPS; i++) {
-    float t = float(i) * MARCH_SIZE;
-    vec3 p = ro + rd * t;
-    vec3 np = p;
-    // Edge glow at container boundaries
-    float edgeX = min(abs(np.x), abs(np.x - vol));
-    float edgeY = min(abs(np.y), abs(np.y - vol));
-    float edgeZ = min(abs(np.z), abs(np.z - vol));
-    float edge = min(edgeX, min(edgeY, edgeZ));
-    // Only show edge where 2 of 3 coords are near boundary
-    float near1 = step(edgeX, 0.008) + step(edgeY, 0.008) + step(edgeZ, 0.008);
-    if (near1 >= 2.0 && edge < 0.008) {
-      float glow = smoothstep(0.008, 0.0, edge) * 0.25;
-      color += vec3(0.15, 0.3, 0.4) * glow;
-      break;
-    }
-    if (t > 3.0) break;
-  }
-
-  // ── Post-processing ──
-  // Vignette
-  vec2 vigUv = gl_FragCoord.xy / uResolution - 0.5;
-  color *= 1.0 - 0.4 * dot(vigUv, vigUv);
-
-  // Tonemap (ACES-ish)
-  color = color * (2.51 * color + 0.03) / (color * (2.43 * color + 0.59) + 0.14);
-
-  // Gamma
-  color = pow(clamp(color, 0.0, 1.0), vec3(1.0 / 2.2));
-
-  gl_FragColor = vec4(color, 1.0);
-}
-`;
-
-export default function GasSimulation({ params, onReadouts }) {
-  const meshRef = useRef();
-  const { size } = useThree();
-
-  const material = useMemo(() => {
-    return new THREE.ShaderMaterial({
-      vertexShader,
-      fragmentShader,
+          gl_FragColor = vec4(finalPos, 1.0);
+        }
+      `,
       uniforms: {
+        positions: { value: tex },
         uTime: { value: 0 },
-        uResolution: { value: new THREE.Vector2(size.width, size.height) },
-        uTemperature: { value: 300 },
-        uVolume: { value: 0.8 },
-        uParticleCount: { value: 200 },
+        uCurlFreq: { value: 0.25 },
         uNetworkDensity: { value: 0.0 },
-        uCameraPos: { value: new THREE.Vector3(0.4, 0.5, 1.8) },
-        uCameraTarget: { value: new THREE.Vector3(0.4, 0.35, 0.0) },
+        uVolume: { value: 1.0 },
+        uTemperature: { value: 300.0 },
       },
-      depthTest: false,
+    });
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+// Render material — circular DOF points colored by physics
+// Color encodes: temperature (warm/cool), network density (saturation)
+// Size scales with thermal jitter
+// ═══════════════════════════════════════════════════════════
+
+class DofPointsMaterial extends THREE.ShaderMaterial {
+  constructor() {
+    super({
+      vertexShader: /* glsl */ `
+        uniform sampler2D positions;
+        uniform float uTime;
+        uniform float uFocus;
+        uniform float uFov;
+        uniform float uBlur;
+        uniform float uTemperature;
+        varying float vDistance;
+        varying float vRadius;
+        void main() {
+          vec3 pos = texture2D(positions, position.xy).xyz;
+          vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
+          gl_Position = projectionMatrix * mvPosition;
+          vDistance = abs(uFocus - -mvPosition.z);
+          vRadius = length(pos);
+          gl_PointSize = (step(1.0 - (1.0 / uFov), position.x)) * vDistance * uBlur * 2.0;
+        }
+      `,
+      fragmentShader: /* glsl */ `
+        uniform float uOpacity;
+        uniform float uTemperature;
+        uniform float uNetworkDensity;
+        varying float vDistance;
+        varying float vRadius;
+
+        vec3 palette(float t, vec3 a, vec3 b, vec3 c, vec3 d) {
+          return a + b * cos(6.28318 * (c * t + d));
+        }
+
+        void main() {
+          vec2 cxy = 2.0 * gl_PointCoord - 1.0;
+          float r2 = dot(cxy, cxy);
+          if (r2 > 1.0) discard;
+
+          // Cool blue (cold gas) → warm red (hot gas)
+          float tempFactor = clamp(uTemperature / 1000.0, 0.0, 1.0);
+          vec3 coldColor = vec3(0.5, 0.85, 1.0);   // light cyan
+          vec3 hotColor  = vec3(1.0, 0.6, 0.4);    // warm coral
+          vec3 baseColor = mix(coldColor, hotColor, tempFactor);
+
+          // Liquid: tint toward primaryDark (cyan)
+          vec3 liquidTint = vec3(0.34, 0.9, 0.85);
+          baseColor = mix(baseColor, liquidTint, uNetworkDensity * 0.4);
+
+          // Soft circular falloff
+          float alpha = (1.0 - sqrt(r2)) * (1.04 - clamp(vDistance * 1.5, 0.0, 1.0));
+
+          // Boost center brightness (additive sparkle)
+          baseColor += vec3(0.3) * pow(1.0 - sqrt(r2), 4.0);
+
+          gl_FragColor = vec4(baseColor, alpha * uOpacity);
+        }
+      `,
+      uniforms: {
+        positions: { value: null },
+        uTime: { value: 0 },
+        uFocus: { value: 5.1 },
+        uFov: { value: 50 },
+        uBlur: { value: 30 },
+        uOpacity: { value: 0.9 },
+        uTemperature: { value: 300 },
+        uNetworkDensity: { value: 0.0 },
+      },
+      transparent: true,
+      blending: THREE.AdditiveBlending,
       depthWrite: false,
     });
-  }, []);
+  }
+}
 
-  // Update resolution on resize
-  useMemo(() => {
-    material.uniforms.uResolution.value.set(size.width, size.height);
-  }, [size, material]);
+extend({ SimulationMaterial, DofPointsMaterial });
+
+// ═══════════════════════════════════════════════════════════
+// Main Particles component
+// ═══════════════════════════════════════════════════════════
+
+export default function GasSimulation({ params, onReadouts }) {
+  const simRef = useRef();
+  const renderRef = useRef();
+  const SIZE = 256;
+
+  const [scene] = useState(() => new THREE.Scene());
+  const [camera] = useState(() =>
+    new THREE.OrthographicCamera(-1, 1, 1, -1, 1 / Math.pow(2, 53), 1)
+  );
+
+  const target = useFBO(SIZE, SIZE, {
+    minFilter: THREE.NearestFilter,
+    magFilter: THREE.NearestFilter,
+    format: THREE.RGBAFormat,
+    type: THREE.FloatType,
+  });
+
+  // Quad for FBO render
+  const quadPositions = useMemo(
+    () => new Float32Array([-1, -1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0]),
+    []
+  );
+  const quadUvs = useMemo(
+    () => new Float32Array([0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0]),
+    []
+  );
+
+  // Particle UVs (each particle's address into the position texture)
+  const particles = useMemo(() => {
+    const length = SIZE * SIZE;
+    const arr = new Float32Array(length * 3);
+    for (let i = 0; i < length; i++) {
+      arr[i * 3 + 0] = (i % SIZE) / SIZE;
+      arr[i * 3 + 1] = i / SIZE / SIZE;
+      arr[i * 3 + 2] = 0;
+    }
+    return arr;
+  }, []);
 
   const readoutTimer = useRef(0);
   const frameCount = useRef(0);
 
   useFrame((state, delta) => {
-    material.uniforms.uTime.value = state.clock.elapsedTime;
-    material.uniforms.uTemperature.value = params.temperature || 300;
-    material.uniforms.uVolume.value = params.volume || 0.8;
-    material.uniforms.uParticleCount.value = params.particles || 200;
-    material.uniforms.uNetworkDensity.value = params.networkDensity || 0.0;
-    material.uniforms.uCameraPos.value.copy(state.camera.position);
+    // Render simulation into FBO
+    state.gl.setRenderTarget(target);
+    state.gl.clear();
+    state.gl.render(scene, camera);
+    state.gl.setRenderTarget(null);
 
-    // Camera target from orbit controls
-    const target = new THREE.Vector3(0.4, 0.35, 0.4);
-    material.uniforms.uCameraTarget.value.copy(target);
+    // Update render material
+    if (renderRef.current) {
+      renderRef.current.uniforms.positions.value = target.texture;
+      renderRef.current.uniforms.uTime.value = state.clock.elapsedTime;
+      renderRef.current.uniforms.uTemperature.value = params.temperature || 300;
+      renderRef.current.uniforms.uNetworkDensity.value = params.networkDensity || 0;
+
+      // DOF parameters from physics
+      const focus = 5.1;
+      const fov = 50;
+      const aperture = params.networkDensity > 0.3 ? 2.5 : 1.8; // tighter focus for liquid
+      const targetBlur = (5.6 - aperture) * 9;
+      renderRef.current.uniforms.uFocus.value = THREE.MathUtils.lerp(
+        renderRef.current.uniforms.uFocus.value, focus, 0.1
+      );
+      renderRef.current.uniforms.uFov.value = THREE.MathUtils.lerp(
+        renderRef.current.uniforms.uFov.value, fov, 0.1
+      );
+      renderRef.current.uniforms.uBlur.value = THREE.MathUtils.lerp(
+        renderRef.current.uniforms.uBlur.value, targetBlur, 0.1
+      );
+    }
+
+    // Update simulation material
+    if (simRef.current) {
+      const speed = (params.temperature || 300) / 300; // hotter = faster
+      simRef.current.uniforms.uTime.value = state.clock.elapsedTime * 100 * speed;
+      simRef.current.uniforms.uTemperature.value = params.temperature || 300;
+      simRef.current.uniforms.uNetworkDensity.value = params.networkDensity || 0;
+      simRef.current.uniforms.uVolume.value = params.volume || 1.0;
+
+      // Curl frequency from network density: gas = low (open swirls), liquid = high (tight eddies)
+      const targetCurl = 0.15 + (params.networkDensity || 0) * 0.3;
+      simRef.current.uniforms.uCurlFreq.value = THREE.MathUtils.lerp(
+        simRef.current.uniforms.uCurlFreq.value, targetCurl, 0.05
+      );
+    }
 
     frameCount.current++;
 
-    // Diagnostics readback
+    // Diagnostics
     readoutTimer.current += delta;
     if (onReadouts && readoutTimer.current > 0.2) {
       readoutTimer.current = 0;
       const kB = 1.380649e-23;
       const N = params.particles || 200;
       const T = params.temperature || 300;
-      const V_m3 = (params.volume || 0.8) * 1e-24;
+      const V_m3 = (params.volume || 1.0) * 1e-24;
       const P = N * kB * T / V_m3;
       const U = 1.5 * N * kB * T;
       const nd = params.networkDensity || 0.0;
@@ -374,8 +298,41 @@ export default function GasSimulation({ params, onReadouts }) {
   });
 
   return (
-    <mesh ref={meshRef} frustumCulled={false} material={material}>
-      <planeGeometry args={[2, 2]} />
-    </mesh>
+    <>
+      {/* Simulation pass into FBO */}
+      {createPortal(
+        <mesh>
+          <simulationMaterial ref={simRef} />
+          <bufferGeometry>
+            <bufferAttribute
+              attach="attributes-position"
+              count={quadPositions.length / 3}
+              array={quadPositions}
+              itemSize={3}
+            />
+            <bufferAttribute
+              attach="attributes-uv"
+              count={quadUvs.length / 2}
+              array={quadUvs}
+              itemSize={2}
+            />
+          </bufferGeometry>
+        </mesh>,
+        scene
+      )}
+
+      {/* Render the points */}
+      <points>
+        <dofPointsMaterial ref={renderRef} />
+        <bufferGeometry>
+          <bufferAttribute
+            attach="attributes-position"
+            count={particles.length / 3}
+            array={particles}
+            itemSize={3}
+          />
+        </bufferGeometry>
+      </points>
+    </>
   );
 }

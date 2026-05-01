@@ -1,0 +1,32 @@
+{
+  "name": "water-shader",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "shader",
+    "water"
+  ],
+  "main": "src/index.js",
+  "dependencies": {
+    "@react-three/drei": "10.0.4",
+    "@react-three/fiber": "9.1.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-scripts": "5.0.1",
+    "three": "0.174.0",
+    "three-stdlib": "2.35.14"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

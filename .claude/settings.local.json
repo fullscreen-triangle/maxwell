@@ -8,7 +8,9 @@
       "Bash(python:*)",
       "Bash(set PYTHONPATH=src:*)",
       "Bash(bibtex:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(npm install *)",
+      "Bash(npx next *)"
     ]
   }
 }

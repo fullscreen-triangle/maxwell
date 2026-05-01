@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, CameraShake } from '@react-three/drei';
+import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { PRESETS } from '@/lib/presets';
@@ -130,19 +131,34 @@ export default function SimulatePage() {
           {/* ── Canvas ── */}
           <div className="flex-1 relative">
             <Canvas
-              camera={{ position: [0.5, 0.5, 2.0], fov: 50 }}
-              gl={{ antialias: false, alpha: false, powerPreference: 'high-performance' }}
-              dpr={0.75}
+              camera={{ position: [0, 0, 5], fov: 50 }}
+              gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}
+              dpr={[1, 1.5]}
               frameloop={playing ? 'always' : 'demand'}
             >
               <color attach="background" args={['#0a0a0f']} />
               <GasSimulation params={params} onReadouts={setReadouts} />
+              <CameraShake
+                yawFrequency={1}
+                maxYaw={0.02}
+                pitchFrequency={1}
+                maxPitch={0.02}
+                rollFrequency={0.4}
+                maxRoll={0.1}
+                intensity={0.15}
+              />
+              <EffectComposer>
+                <Bloom luminanceThreshold={0.2} luminanceSmoothing={0.6} intensity={0.8} />
+                <Vignette offset={0.3} darkness={0.65} />
+              </EffectComposer>
               <OrbitControls
-                target={[0.4, 0.4, 0.4]}
+                target={[0, 0, 0]}
                 enableDamping
                 dampingFactor={0.05}
-                minDistance={0.5}
-                maxDistance={5}
+                minDistance={2}
+                maxDistance={10}
+                autoRotate
+                autoRotateSpeed={0.4}
               />
             </Canvas>
           </div>
