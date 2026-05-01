@@ -30,3 +30,7 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# r3f reference snippets and examples (not part of build)
+/snippets
+/src/components/examples
