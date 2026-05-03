@@ -34,3 +34,8 @@ yarn-error.log*
 # r3f reference snippets and examples (not part of build)
 /snippets
 /src/components/examples
+
+# Override parent .gitignore's `lib/` rule (Python convention)
+# Our src/lib contains JS source code that MUST be committed
+!src/lib/
+!src/lib/**
