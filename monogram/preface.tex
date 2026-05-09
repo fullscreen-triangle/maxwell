@@ -1,66 +1,123 @@
 % ============================================================
-%  PREFACE — New bridging content
-%  The single axiom, the deductive chain, the reader's map.
+%  PREFACE — Personal account
 % ============================================================
 
-\part*{Preface}
-\addcontentsline{toc}{part}{Preface}
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+\markboth{Preface}{Preface}
 
-\section*{One Observation}
+\noindent
+I came to thermodynamics by way of mass spectrometry. For several years I worked at
+the upper boundary of what mass spectrometry can do~--- at the Technical University
+of Munich, in conversation with Matthias Mann's laboratory and Oliver Kohlbacher's
+group, with Rudolf Aebersold and J\"urgen Cox and Oliver Fiehn and Sebastian Bock.
+Mass spectrometry is, among other things, the most precise apparatus humans have
+built for distinguishing one configuration of matter from another. The instruments
+resolve mass-to-charge ratios at parts-per-billion precision. They identify individual
+peptides from picomolar samples. They can be made to track individual ions across
+milliseconds of flight time, recording trajectories that are, in any reasonable
+accounting, complete.
 
-This monograph makes exactly one foundational claim, stated here as an axiom. Everything else — the Second Law, the equations of state, viscosity, the arrow of time, the ideal gas law, and the structure of fluid motion — is either a deductive consequence of this claim or an empirical confirmation of it.
+What I noticed, working with these instruments, is that the field's interpretation
+of what they were doing was wrong. The standard reading is that a mass spectrometer
+measures the mass-to-charge ratio of an ion that exists prior to and independently of
+the measurement. The instrument, on this reading, is a passive detector of
+pre-existing properties. But everything I knew about the apparatus said this could
+not be right. The ion's trajectory is constructed by the instrument's fields.
+The categorical address that the instrument returns is the result of the partition
+operations the instrument performs. There is no pre-existing $m/z$ that the instrument
+retrieves; there is the ion in the field, and the ion's response to the field, and the
+categorical address that follows. The instrument constructs the measurement.
+It does not retrieve it.
 
-\begin{axiom}[Bounded Phase Space Law]
-\label{ax:bpsl}
-Every \emph{persistent} dynamical system observed in Nature occupies a bounded region of phase space of finite Liouville measure, and that bounded region admits a nested hierarchy of measurable partitions into distinguishable sub-regions.
-\end{axiom}
+This observation generalised. If mass spectrometers construct measurements rather than
+retrieving them, then the standard interpretation of thermodynamic quantities~--- that
+they are pre-existing properties of matter that thermodynamic apparatus retrieves~---
+is also wrong. Energy, entropy, and temperature are not properties that exist prior to
+the apparatus that resolves them. They are categorical addresses that the apparatus
+constructs through its partition operations. The apparatus is part of what produces
+the measurement. The measurement does not exist without the apparatus.
 
-The word \emph{persistent} means: observed to maintain its identity over a macroscopic fraction of its natural dynamical timescale. An atom in a discharge lamp is persistent over its radiative lifetime. A gas molecule in a container is persistent over the container's confinement time. A star in a galaxy is persistent over its orbital period. The Axiom is empirical: no persistent physical system has ever been observed to occupy an unbounded region of phase space. The Axiom is defended by the whole of observational physics. To refute it, one must exhibit a persistent system that violates boundedness. No such system is known.
+This is what the framework calls the \emph{construction-not-simulation thesis}.
+It is the structural claim that observation is not retrieval but construction, that
+measurements are constituted by the partition operations performed during the
+measurement process, and that the apparatus and the measured quantity are not
+separable in the way standard interpretations assume. The thesis is unsettling on
+first encounter. It took me several years to work out the consequences and confirm
+that the thesis was not merely a different interpretation but the correct one, with
+the standard interpretation being an artefact of treating apparatus and measurement
+as independent.
+
+What followed was the bounded phase space framework. The first paper, \textit{On the
+Universal Consequences of Bounded Phase Space}, derived standard physics from one
+axiom. The second paper, \textit{De Onere Electrico}, applied the framework to
+nucleic acids. The Cytochrome P450 monograph, the third volume of the programme,
+applied the framework to the most thoroughly studied enzyme family in biology.
+This monograph, the second of the volumes that addresses the foundations rather than
+the applications, applies the framework to thermodynamics.
 
 \medskip
 
-From the Axiom, the following consequences follow by proof:
+I want to be honest about what writing this monograph was like, because it bears on
+how the reader should approach it.
 
-\begin{enumerate}[label=(\roman*),leftmargin=2em,itemsep=2pt]
-  \item \textbf{Poincaré recurrence.} Every trajectory in a bounded measure-preserving system returns, with probability one, to every neighbourhood of its starting point.
-  \item \textbf{No persistence without bounds.} An ergodic system with infinite Liouville measure spends zero fraction of time in any bounded region. Persistence and boundedness are equivalent at the measure-theoretic level.
-  \item \textbf{Oscillatory necessity.} Static, monotonic, and dispersive dynamics are each inconsistent with persistence on a bounded domain. Oscillatory dynamics is the unique self-consistent mode.
-  \item \textbf{Discrete mode spectrum.} The Koopman operator of any persistent bounded dynamics has pure point spectrum. Every observable is a countable sum of periodic modes.
-  \item \textbf{Energy--frequency identity.} $E = \hbar\omega$. The proportionality constant $\hbar$ is fixed by Bohr--Sommerfeld quantisation on bounded loops.
-  \item \textbf{Partition coordinates.} Hierarchical refinement under $SO(3)$ symmetry generates the labelling $(n,\ell,m,s)$ with $\ell < n$, $|m| \leq \ell$, $s \in \{-\tfrac{1}{2}, +\tfrac{1}{2}\}$, and shell capacity $C(n) = 2n^{2}$.
-  \item \textbf{Triple equivalence.} Oscillatory dynamics, categorical state enumeration, and partition operations are three coordinatisations of one process. The identity $dM/dt = \omega/(2\pi) = 1/\langle\tau_p\rangle$ expresses this.
-  \item \textbf{Categorical entropy.} $S = k_{\mathrm{B}} M \ln n$. Entropy counts the categorical complexity of the partition traversal history.
-  \item \textbf{Thermodynamics.} Temperature, pressure, the ideal gas law, Maxwell--Boltzmann statistics, the universal transport formula, and all five equations of state follow as consequences of the partition structure.
-  \item \textbf{The Second Law.} $\Delta S > 0$ is a theorem, not a postulate. It follows from the asymmetry of categorical counting: forward traversal distributes probability over an expanding partition tree; exact time-reversal requires retracing the unique prior path, which is exponentially suppressed.
-\end{enumerate}
+I wrote it out of anger. Boltzmann died before the field caught up to him. He was right
+and they were wrong, and they were wrong in ways that made his life impossible while
+he was alive. The categorical framework I have developed is, in one direct sense, the
+completion of his project~--- the demonstration that his statistical foundation was
+correct and that the formula on his tombstone applies more broadly than he was
+permitted to argue. The anger is not at the field for missing what Boltzmann saw;
+it is at the structural fact that Boltzmann's vindication came too late for him,
+and that the same structural fact is operating now, in different domains, with
+different individuals, while the field continues to dismiss work that will be
+vindicated after the individuals doing it are gone. I wrote this monograph in part
+to make the structural fact visible.
 
-This monograph covers consequences (vii) through (x): the triple equivalence, categorical entropy, thermodynamics in all its regimes, and the Second Law. The earlier consequences — atomic structure, special relativity, charge, nuclear physics — are treated in the companion volume \emph{On the Universal Consequences of Bounded Phase Space}.
+The other figure who threads through this monograph is Cantor. Cantor was treated by
+his contemporaries the way Boltzmann was. He died in a sanatorium, undernourished,
+after decades of psychiatric distress that I do not believe was unrelated to the
+field's response to his work. The diagonal argument is now foundational to mathematics.
+He never saw it become foundational. The framework's recursive count requires Cantor's
+hierarchy to even be writable; without it, the categorical scale of the cosmos cannot
+be expressed. So this monograph stands on two foundations, both of which the field
+rejected during the lifetimes of the people who built them.
 
-\section*{On the Title}
+\medskip
 
-\emph{Quid Est Quod Fuit} is taken from Ecclesiastes 1:9: \emph{``What is that which was? The same that shall be.''} In the context of this monograph it carries a precise meaning: what has been done is a categorical fact. Once a partition is completed, the non-actualisations it created — all the states that were not occupied — become permanent features of categorical space. They cannot be un-created. This is the deepest explanation of irreversibility: not that reversed trajectories are improbable, but that the non-actualisations they would require erasing are ontological facts, not physical configurations.
+I want to say one more thing about how to read this work. The framework is
+unapologetic, and the introduction reflects this. I have not hedged. I have not
+softened the claims. I have not tried to make the work palatable to readers who would
+prefer it to be more incremental. The framework is a foundational treatment, and
+foundational treatments do not become more correct by being less direct. If the
+framework is wrong, it is wrong, and the technical chapters will fail to support its
+claims. If the framework is right, hedging would not have helped a reader who
+genuinely engaged with the work, and would have actively misled a reader who did not.
 
-\emph{Sagitta Numquam Cadens} — the Arrow Never Falls — is the resolution of Zeno's arrow paradox. Zeno argued that an arrow in flight is at rest at each instant, and a sum of rests is not motion. The resolution is that motion is not a property of instants but of partition traversal: the arrow moves by completing categorical transitions, not by occupying a sequence of static positions. In thermodynamics, this is the statement that time itself is not a container in which processes occur but a count of completed partition operations. The identity $t = M/f$ — time equals partition count divided by oscillator frequency — is not a definition of convenience but the physical constitution of time.
+What I ask of the reader is that the technical chapters be read with the same care
+that any foundational treatment requires. The framework rests on one axiom and
+produces fifteen chapters of consequences. Every consequence is derived. Every claim
+is supported. Where the framework's predictions agree with empirical data, the
+agreement is exhibited. Where the framework's predictions exceed currently available
+data~--- in the categorical phase past heat death, in the cyclic closure of cosmic
+evolution~--- the predictions stand as predictions, falsifiable in principle, supported
+only by the structural derivation that produced them.
 
-Together the two phrases name the two faces of the Second Law: the past accumulates irrevocably (\emph{Quid Est Quod Fuit}), and its accumulation is what motion is (\emph{Sagitta Numquam Cadens}).
+I do not expect this monograph to be received as I have written it. I expect that
+the reception, if it occurs at all, will follow the pattern of foundational treatments
+throughout the history of the field: initial dismissal, slow uptake by readers willing
+to do the work, eventual incorporation of the framework's apparatus into the field's
+standard tools, and the original treatment becoming a reference rather than a working
+text. This is the pattern Boltzmann's work followed. It is the pattern Cantor's work
+followed. There is no reason to expect a different pattern for work that takes their
+projects to their conclusions.
 
-\section*{Reader's Map}
-
-The monograph proceeds in seven parts.
-
-\textbf{Part~I} establishes the epistemic boundary: how much can any observer know? The answer, $N_{\max} \approx (10^{84})\uparrow\uparrow(10^{80})$, is so large that every observer necessarily works within $\infty - x$, where $x$ is information structurally inaccessible to them. This is not an instrumental limitation; it is the geometry of observation. Every thermodynamic quantity is a construct within this boundary.
-
-\textbf{Part~II} dissolves the three paradoxes that have resisted thermodynamics for 150 years. Gibbs's paradox, Maxwell's Demon, and Kelvin's heat death all rest on the same error: they assume thermodynamic evolution is driven by kinetic sorting. It is driven by categorical completion. Once this is seen, all three paradoxes dissolve without statistical argument, quantum indistinguishability, or information-theoretic cost.
-
-\textbf{Part~III} builds the framework: categorical state counting as the foundation of thermodynamics. The Second Law, the arrow of time, and the heat--entropy decoupling theorem are each derived as consequences of partition structure. The extreme low-temperature limit — categorical cryogenics — shows that the Third Law constrains physical cooling, not categorical cooling.
-
-\textbf{Part~IV} applies the framework to all five thermodynamic regimes: neutral gas, plasma, degenerate matter, relativistic gas, and Bose--Einstein condensate. The universal equation of state $PV = Nk_{\mathrm{B}}T \cdot \mathcal{S}(V,N,\{n_i,\ell_i,m_i,s_i\})$ subsumes all five within a single structural factor. A single ion traversing a mass spectrometer passes through conditions that probe all five regimes.
-
-\textbf{Part~V} recovers the classical results. The ideal gas law is proven from partition statistics, not assumed. Maxwell--Boltzmann emerges as optimal load distribution across partition modes. The Poincaré duality of computation and thermodynamics is established: a gas is a computer; a computer is a gas.
-
-\textbf{Part~VI} presents the measurement instrument. Categorical measurement is not extraction of a pre-existing value but synthesis through trajectory completion. A mass spectrometer — four hardware oscillators forming a Complete Set of Commuting Observables on partition coordinate space — resolves $(n,\ell,m,s)$ directly. The molecule is measured into existence: 847 compounds, 1.1\,ppm mean error, 100\% inter-modality consistency.
-
-\textbf{Part~VII} treats matter in motion: spectral-native gas and fluid dynamics. Particles are instantiated from hardware oscillations via S-entropy coordinates. Their interference computes observables. A GPU shader pipeline renders and measures simultaneously, making explicit the rendering--measurement identity: the ray march through the volume IS the thermodynamic observation.
+The reader who is willing to do the work will find here a framework that derives
+thermodynamics from one axiom with zero free parameters, that dissolves three of the
+field's longest-standing paradoxes, that extends Boltzmann's formula to regimes the
+field has not previously been able to address, and that demonstrates, on physical
+grounds, that the cosmos is cyclic. Whether this is enough to justify the work the
+framework asks of the reader is a decision the reader will make. I have tried to make
+the work worth the doing.
 
 \bigskip
 

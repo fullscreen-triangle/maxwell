@@ -1,0 +1,595 @@
+% ============================================================
+%  INTRODUCTION — On Counting from the End
+%  Extended philosophical introduction to the monograph.
+%  Covers the conceptual architecture, historical motivations,
+%  the three classical paradoxes, Loschmidt's objection,
+%  Zeno's arrow, the measurement instrument, and the dedication.
+% ============================================================
+
+\chapter*{Introduction: On Counting from the End}
+\addcontentsline{toc}{chapter}{Introduction}
+\markboth{Introduction}{Introduction}
+
+\begin{flushright}
+\textit{``The most incomprehensible thing about the universe\\
+is that it is comprehensible.''\\[0.3em]
+--- Albert Einstein}
+\end{flushright}
+
+\bigskip
+
+\noindent
+Suppose you learned with certainty that the world would end in exactly one billion years.
+Not by violence or collapse but by exhaustion: the last oscillator settling, the last
+partition completing, the last categorical transition terminating in the silence of
+total equilibrium. What would this knowledge change?
+
+In physics, it would change everything. Every thermodynamic process
+becomes a countdown rather than a progression. Entropy does not merely
+\emph{increase}~--- it approaches a terminus. The question ``how much
+order remains?'' becomes ``how many transitions remain before the count reaches zero?''
+This is not a rhetorical reframing. It is a technical one. And it leads,
+as this monograph demonstrates, to a complete and deductive reconstruction of
+thermodynamics from a single structural axiom.
+
+The insight at the centre of that reconstruction is this: \emph{thermodynamic quantities
+are not properties extracted from matter but counts performed by an observer
+navigating a bounded categorical space}. Temperature, pressure, entropy, viscosity~---
+each is a ratio, a rate, a partition count. The Second Law is not a statistical
+tendency but a theorem about categorical accumulation. The ideal gas law is not an
+approximation but an exact consequence of partition geometry. Maxwell--Boltzmann
+statistics are not a distribution assumed but an optimal load-assignment derived.
+All of this follows, without further assumptions, from the fact that persistent
+systems occupy bounded regions of phase space~--- a fact confirmed without exception
+by every observation ever made.
+
+This introduction traces the conceptual path to that conclusion. It is not a summary
+of the monograph's contents; those are mapped in the Preface and introduced at the
+opening of each Part. It is, rather, an account of the intellectual pressures that
+made the reconstruction necessary and the conceptual moves that made it possible.
+
+
+%------------------------------------------------------------
+\section*{What Boltzmann Got Right, and What He Left Unfinished}
+%------------------------------------------------------------
+
+Ludwig Boltzmann did not lose the argument. He won it posthumously, completely, and
+without revision. The atomic hypothesis, for which he was derided in his lifetime,
+is now the foundation of all chemistry, condensed matter physics, and materials
+science. The H-theorem and its probabilistic interpretation of the Second Law are
+standard curriculum. The formula $S = k_{\mathrm{B}} \ln W$ is engraved on his
+tombstone in Vienna, and every physics student learns it within the first year of
+study. By any measure, Boltzmann's programme was vindicated.
+
+And yet something was left unfinished. Boltzmann's formula assigns entropy to a
+macrostate by counting the microstates compatible with it. This is correct.
+But the formula contains a concealed assumption: that $W$ counts configurations
+of particles, not something more abstract. Boltzmann imagined $W$ as a count of
+kinetic arrangements~--- positions and momenta distributed across phase space cells.
+The insight he did not quite reach is that $W$ counts \emph{categorical states}: the
+number of distinguishable, non-equivalent partitions of the system's history, not
+merely of its current configuration.
+
+The difference is not cosmetic. Kinetic configurations are reversible in principle:
+given enough time (Poincaré recurrence) or enough precision (Loschmidt reversal),
+any kinetic arrangement can be restored. Categorical states are not reversible
+in the same sense: once a partition is completed, the non-actualisations it creates
+are permanent features of categorical space. They cannot be un-created by any
+physical operation, however precise.
+
+This is the gap Boltzmann left, and this monograph fills it.
+
+
+%------------------------------------------------------------
+\section*{The Pendulum and Its Three Languages}
+%------------------------------------------------------------
+
+Consider a pendulum swinging in a sealed chamber. Three different observers might
+describe what they see:
+
+A \emph{dynamicist} says: the pendulum executes periodic motion with angular
+frequency $\omega$ determined by its length and local gravity.
+The phase-space trajectory is a closed loop of finite Liouville measure.
+By Poincaré's theorem, every trajectory in a bounded measure-preserving system
+returns to every neighbourhood of its starting point.
+
+A \emph{categorical observer} says: the pendulum completes distinguishable transitions
+between states. Each swing is a partition operation: left-of-centre, crossing,
+right-of-centre. The number of completed partitions $M$ grows monotonically.
+The rate is $dM/dt = \omega/(2\pi)$.
+
+A \emph{thermodynamicist} says: the pendulum's entropy is $S = k_{\mathrm{B}} M \ln n$,
+where $n$ is the number of distinguishable sub-regions in the current partition level.
+Temperature is the inverse of the log-derivative of entropy with respect to energy.
+The mean partition-crossing time $\langle\tau_p\rangle$ determines the transport coefficients.
+
+These are not three descriptions of three different things. They are three
+coordinatisations of one process. The identity
+\[
+  \frac{dM}{dt} = \frac{\omega}{2\pi} = \frac{1}{\langle\tau_p\rangle}
+\]
+is the mathematical statement that the dynamical, categorical, and partition
+languages are equivalent~--- three dialects of a single grammar, each emphasising
+a different aspect of the same underlying structure.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.92\textwidth]{panel1_triple_equivalence_v2}
+  \caption{The triple equivalence: oscillatory dynamics, categorical state enumeration,
+    and partition arithmetic are three coordinatisations of one process.
+    Left: phase-space loop of a bounded oscillator. Centre: categorical count $M$
+    growing step-wise at rate $dM/dt = \omega/(2\pi)$. Right: entropy $S = k_{\mathrm{B}} M \ln n$
+    accumulating along the partition hierarchy.}
+  \label{fig:intro:triple}
+\end{figure}
+
+This triple equivalence~--- called throughout this monograph the
+\emph{fundamental identity}~--- is not assumed. It is derived from the
+Bounded Phase Space Law. That derivation occupies Chapters~\ref{ch:counting}
+and \ref{ch:thermodynamics}. Everything else in the monograph is a consequence of it.
+
+
+%------------------------------------------------------------
+\section*{Cantor's Lesson for Physicists}
+%------------------------------------------------------------
+
+Georg Cantor showed, in 1874, that infinite sets are not all the same size.
+The set of rational numbers, though dense, is countable. The set of real numbers
+is not. Between any two points on the real line, there are uncountably many points
+that no list can enumerate.
+
+Physicists absorbed the formal result without absorbing its physical meaning.
+The physical meaning is this: an observer in a continuous phase space confronts
+not merely ignorance but \emph{structural inaccessibility}. There are regions of
+state space that cannot be reached by any sequence of finitely many partition
+operations, regardless of measurement precision. This is not an instrumental
+limitation. It is the geometry of observation.
+
+The Bounded Phase Space Law is the physical counterpart of Cantor's theorem.
+It says: persistent systems live in bounded, measurable, partitionable regions.
+Within those regions, the hierarchy of partitions is finite at every level but
+unbounded in depth. An observer who refines partitions without limit approaches
+a Cantor-like structure: uncountably many distinctions in principle, finitely many
+in any completed observation.
+
+The maximum number of categorical distinctions available to any observer in the
+observable universe is
+\[
+  N_{\max} \approx (10^{84})\uparrow\uparrow(10^{80})
+\]
+where $\uparrow\uparrow$ is Knuth's up-arrow for tetration. This number is so large
+that even writing it in decimal is impossible within the universe's remaining
+thermal lifetime. Every observer, without exception, works within $\infty - x$,
+where $x$ is the information structurally inaccessible to them. Every thermodynamic
+quantity~--- temperature, entropy, pressure~--- is a construct within this boundary,
+not a property that exists independently of it.
+
+
+%------------------------------------------------------------
+\section*{The Three Classical Paradoxes}
+%------------------------------------------------------------
+
+Thermodynamics has been haunted since its founding by three paradoxes that no
+consensus resolution has dissolved. They are presented here in order of increasing
+depth.
+
+\textbf{Gibbs's paradox} asks: why does mixing two samples of identical gas produce
+no entropy increase, while mixing two distinguishable gases does? If entropy measures
+disorder, and two identical gases differ from two distinguishable ones only by the
+label we attach, how can removing a label change a physical quantity?
+
+The categorical resolution is immediate. Entropy does not measure disorder.
+It counts the number of distinguishable partition traversals. Two samples of identical
+gas present one accessible partition under any observation; two distinguishable gases
+present two. The difference is not in the gases but in the partition structure available
+to the observer. When the label is removed, the partition collapses; no new partition
+traversal is possible; no entropy is produced.
+
+\textbf{Maxwell's Demon} asks: can a sufficiently observant being, by sorting fast from
+slow molecules, reduce a gas's entropy without doing work, thereby violating the
+Second Law?
+
+The categorical resolution is equally direct. The Demon's sorting operation is a
+partition operation. Every partition generates entropy proportional to the log of the
+residue count: $\Delta S = k_{\mathrm{B}} \ln n_{\text{res}} > 0$. The Demon cannot
+perform a costless partition because no partition is costless. The entropy generated
+by the sorting exceeds the entropy apparently reduced in the gas. The Second Law holds
+not because erasure costs Landauer energy but because partition \emph{creation} is
+the source of entropy~--- a deeper and more general result.
+
+\textbf{Kelvin's heat death} asks: if entropy increases until all gradients are
+eliminated, what becomes of the universe? Does it die in featureless equilibrium?
+
+The categorical resolution reframes the question. The terminal state is not emptiness
+but \emph{maximal categorical richness}: the state in which every possible partition
+has been completed, every distinguishable sub-region has been visited, every
+categorical address has been occupied. This is not death but fulfilment. The approach
+to equilibrium is the approach to categorical completion. Counting from the end:
+the question is not ``how many transitions have occurred?'' but ``how many remain?''
+The answer, which decreases monotonically, defines a clock that runs toward zero.
+Time, in this account, is not a container in which processes occur but a count of
+remaining partition operations~--- a quantity that diminishes as the universe completes
+its categorical census.
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.92\textwidth]{panel_8_irreversibility}
+  \caption{Categorical irreversibility. Velocity reversal restores physical
+    configurations but does not erase categorical non-actualisations.
+    Entropy increases through the ``reversal'' operation because each
+    partition created by the measurement adds new boundary states.
+    This is the experimental signature of constitutive asymmetry.}
+  \label{fig:intro:irreversibility}
+\end{figure}
+
+%------------------------------------------------------------
+\section*{Loschmidt's Objection and Constitutive Asymmetry}
+%------------------------------------------------------------
+
+In 1876, Josef Loschmidt raised what remains the sharpest objection to the Second Law.
+Boltzmann had proved the H-theorem: the function $H = \int f(\mathbf{v}) \ln f(\mathbf{v})\, d^3v$
+decreases monotonically toward equilibrium, implying entropy increases. Loschmidt's
+observation was brief and devastating: Newtonian mechanics is time-symmetric.
+For every entropy-increasing trajectory from state $A$ to state $B$, there exists
+a time-reversed trajectory from $B$ to $A$ that decreases entropy. Boltzmann's theorem,
+whatever its merits, cannot be derived from time-symmetric laws. Irreversibility
+cannot be extracted from reversibility.
+
+Boltzmann's answer was probabilistic: entropy-decreasing trajectories, while
+dynamically valid, are so overwhelmingly outnumbered by entropy-increasing ones that
+observing a decrease is effectively impossible. This answer is correct as far as it
+goes. But it does not go far enough. ``Overwhelmingly improbable'' is not the same as
+``impossible.'' The statistical account makes the Second Law a very strong tendency
+rather than a theorem. And a very strong tendency admits exceptions, however rare.
+
+The framework in this monograph provides a different and stronger answer.
+The distinction is between \emph{physical reversibility} and \emph{categorical reversibility}.
+
+Physical reversibility means: restore the positions and momenta of every particle
+to their values at an earlier time. This is, in principle, achievable. Given perfect
+knowledge of current states and perfect control over forces, one can time-reverse any
+classical trajectory.
+
+Categorical reversibility would mean: erase the categorical facts created by all
+partition operations since the earlier time. This is not achievable~--- not because
+of practical limitations but because of the logical structure of categorical facts.
+
+When a partition is completed, it creates two kinds of record. First, an
+\emph{actualisation}: the fact that one specific outcome occurred.
+Second, and decisively, an infinitude of \emph{non-actualisations}: the facts that
+every other possible outcome did \emph{not} occur. If a cup breaks in pattern $P_0$,
+the non-actualisations include: the cup did not break in pattern $P_1$, did not remain
+intact, did not melt, did not reassemble~--- infinitely many negative facts, each
+a permanent feature of categorical space.
+
+Time-reversal can restore the cup (create a new actualisation: cup reassembled at $t_2$).
+It cannot erase the non-actualisations created when the cup broke at $t_1$.
+After reassembly, the categorical history reads: \emph{cup broke at $t_1$; cup did not
+reassemble at $t_1$; cup reassembled at $t_2$; cup did not re-break at $t_2$}.
+The history has grown, not contracted. Net entropy has increased.
+
+This is not a statistical claim. It is a logical one. The ratio of actualisations to
+non-actualisations is always $1 : \infty$~--- one thing happens, infinitely many things
+do not. Non-actualisations accumulate at every transition because each transition adds
+finitely many actualisations and infinitely many non-actualisations. No physical
+operation can reduce this accumulated count. The number of partition boundaries cannot
+decrease under any operation, because removing a boundary requires identifying it
+(creating a new partition) and merging its sides (creating new residue states).
+Boundary count increases monotonically: $\Delta N_{\text{boundaries}} \geq 0$.
+
+This is constitutive asymmetry: the Second Law follows not from the statistical
+predominance of high-entropy states but from the logical impossibility of
+erasing categorical facts. Physical reversal and categorical reversal are distinct
+operations. Every resolution of Loschmidt's paradox that appeals to probability
+is leaving this distinction unspoken. Once it is spoken, the paradox dissolves.
+Not improbability: categorical impossibility.
+
+The formal content~--- partition entropy, the measurement--partition identity,
+the non-actualisation accumulation theorem, and the Topological Irreversibility
+theorem ($\mathcal{T}[\partial] = \partial$: time-reversal is invariant on partition
+boundaries)~--- is developed in Chapters~\ref{ch:demon} and \ref{ch:thermodynamics}.
+
+
+%------------------------------------------------------------
+\section*{Sagitta Numquam Cadens: The Arrow That Never Falls}
+%------------------------------------------------------------
+
+Zeno of Elea posed, in the fifth century BCE, a paradox about motion that has not
+been fully resolved in 2500 years of philosophy and mathematics.
+
+An arrow in flight, Zeno argued, occupies a definite position at each instant.
+At each instant it is at rest~--- identical, in that moment, to an arrow resting
+on a table. Motion is a property of time, not of instants. A sum of instants in which
+the arrow is at rest cannot add up to motion. Therefore motion is impossible.
+Yet arrows undeniably fly.
+
+The standard mathematical resolution, available since Weierstrass, is that motion is
+the limit of the ratio $\Delta x / \Delta t$ as $\Delta t \to 0$, and limits are
+well-defined in the real numbers even when numerator and denominator both vanish.
+The derivative $dx/dt$ is not a ratio of zeros but the number that the ratio
+approaches. This dissolves the paradox formally.
+
+But formally is not fully. A deeper question remains: what, physically, is motion?
+If an arrow is genuinely at rest at each instant~--- and it is, because ``at rest
+at an instant'' means ``having a definite position at that instant,'' which is always
+true~--- then what is the difference between a flying arrow and a resting one?
+
+The categorical framework provides the answer. Motion is not a property of instants.
+It is a property of \emph{partition traversals}. The flying arrow differs from the
+resting arrow not at any instant but across instants: the flying arrow completes
+categorical transitions between distinct partition regions, while the resting arrow
+does not. To be at rest is to fail to complete partition transitions. To be in motion
+is to complete them.
+
+Time, in this account, is not a container of instants but a count of completed
+partition operations: $t = M/f$, where $M$ is the number of completed partitions
+and $f = \omega/(2\pi)$ is the oscillator frequency. The arrow does not fly
+``through time''~--- it \emph{constitutes} time by completing transitions.
+Each partition crossing adds one unit to $M$; the resulting ratio $M/f$ is what
+clocks measure.
+
+This has a consequence for Zeno. His paradox assumes that motion must be defined
+at each instant separately, and then summed. The categorical framework denies this.
+Motion is not instantaneous: it is the completion of a transition, which is an
+event extended across at least one partition interval. An arrow ``at an instant''
+is a truncated description that strips away the very structure~--- the partition
+crossing~--- that constitutes motion. Of course such a description cannot recover
+motion. It was designed not to.
+
+\emph{Sagitta Numquam Cadens}~--- the Arrow Never Falls~--- is the resolution.
+The arrow never falls because falling would be the terminal partition operation,
+the last categorical transition, the completion from which no further completion
+follows. But the partition structure forbids termination while categories remain
+to be distinguished. The arrow is sustained by the very act of counting its
+transitions. It flies as long as there are partitions to cross. It falls only
+when the count is complete~--- and the count, as we have seen, is not complete
+until $N_{\max}$ is reached.
+
+In thermodynamic terms: the ``falling'' of the arrow is the approach to equilibrium.
+At equilibrium, partition traversal ceases; $dM/dt = 0$; time, in the categorical
+sense, stops. The universe reaches its maximum entropy not because all energy
+is dissipated but because all categorical transitions are completed. The arrow
+falls when the census is finished. Until then, it flies~--- and its flight
+\emph{is} time.
+
+
+%------------------------------------------------------------
+\section*{The Heat Death, Counted From the End}
+%------------------------------------------------------------
+
+Classical thermodynamics treats the heat death as a boundary at infinity:
+entropy increases without bound, and the limit is featureless equilibrium.
+The question ``how long until heat death?'' is answered with ``longer than any
+finite time'' or, in cosmological models that include recollapse, ``not at all.''
+
+The categorical framework inverts the perspective. The heat death is not a
+boundary at infinity but a finite endpoint: the state in which $N_{\max}$ categorical
+transitions have been completed. From this endpoint, one may count backward.
+The current state of the universe is defined not by how many transitions have
+occurred~--- that number is vast and imprecise~--- but by how many remain.
+
+This is counting from the end, and it changes what the heat death means.
+It is not a featureless void into which everything dissolves. It is the state of
+maximal categorical richness: every partition completed, every distinction made,
+every non-actualisation accumulated. The universe at equilibrium is not empty
+of content; it is maximally full of categorical content~--- a complete record
+of every transition that ever occurred.
+
+The philosophical responses to the heat death~--- Helmholtz's despair, Mainländer's
+welcome, Russell's aristocratic resignation~--- all assume that the terminal state
+is one of loss: the loss of structure, gradient, activity. The categorical account
+reverses this. The terminal state is one of completion, not loss. The universe
+accumulates, rather than dissipates, in the direction of its heat death.
+
+There is a sense in which the universe is a machine for generating categorical facts.
+It began in a state of low entropy~--- few partitions completed, few non-actualisations
+accumulated, few categorical facts established. It ends in a state of high entropy~---
+all partitions completed, all non-actualisations accumulated, all categorical facts
+established. The arrow of time is the arrow of categorical fact accumulation.
+The direction of increasing entropy is the direction from sparse categorical record
+to complete categorical record.
+
+In this light, the Second Law is not a law of decay but a law of construction.
+The universe is building something: a categorical record of everything that could
+happen and did not, together with the unique thread of what actually did.
+That record, once complete, is permanent~--- not because the universe persists
+to preserve it, but because categorical facts, once created, cannot be erased.
+
+
+%------------------------------------------------------------
+\section*{On Time Itself}
+%------------------------------------------------------------
+
+The identity $t = M/f$ is not a definition of convenience. It is the claim that
+time is constituted by partition operations, not that partition operations
+occur in time.
+
+This inverts the usual picture. In Newtonian mechanics, time is absolute and flows
+independently of any process. In special relativity, time is relative but still
+a parameter through which processes are described. In both pictures, a universe
+containing no processes would still have time. In the categorical picture, a universe
+containing no partition operations has no time. Time is process all the way down.
+
+The implications are significant. The question ``what was there before the Big Bang?''
+presupposes a time in which the Big Bang occurred. If time is constituted by partition
+operations, then ``before the first partition'' is categorically incoherent:
+there is no time before time begins. This is not a new observation; some form of
+it appears in Augustine, Aquinas, and Hawking. The categorical framework makes it
+precise: the Big Bang is not an event in a pre-existing time but the \emph{first}
+partition operation, the one that constitutes the beginning of the categorical record.
+
+Similarly, the question ``what happens after the heat death?'' is categorically
+incoherent. The heat death is the last partition. After the last partition, no
+further categorical transitions occur; $M$ does not increase; $t = M/f$ does not
+increase. There is no ``after'' the heat death in which to place further events.
+This is not emptiness or void. It is the logical structure of completed counting:
+after the last item, there is no ``next item.'' There is simply completion.
+
+The universe, from the categorical standpoint, is a finite counting operation
+of extraordinary complexity. It begins with the first partition, proceeds through
+$N_{\max}$ transitions, and terminates in categorical completion. From within
+this count, we call its progress ``time.'' From outside~--- but there is no outside.
+The count \emph{is} the universe. And the universe \emph{is} the count.
+
+
+%------------------------------------------------------------
+\section*{The Instrument Is the Theory}
+%------------------------------------------------------------
+
+This monograph includes, in Part~VI, a detailed account of a physical instrument:
+the mass spectrometer, reconceived as a categorical measurement device.
+The inclusion might seem puzzling. Why, in a monograph on the conceptual foundations
+of thermodynamics, does an instrument appear?
+
+The answer: because the categorical framework is not merely a reinterpretation
+of existing thermodynamics. It makes specific, falsifiable, instrument-level claims.
+And the mass spectrometer is the instrument that most directly instantiates
+the framework's core commitments.
+
+In standard accounts, a mass spectrometer is a device that measures masses
+of molecules by separating ions according to their mass-to-charge ratio.
+It \emph{discovers} masses that pre-exist in the molecule. The measurement
+\emph{extracts} a property.
+
+The categorical account is different. A mass spectrometer consists of four
+hardware oscillators~--- an electric quadrupole, a magnetic sector, an ion trap,
+and a time-of-flight analyser~--- each of which partitions the incoming ion beam
+along one of the partition coordinates $(n, \ell, m, s)$. Together, these four
+oscillators form a Complete Set of Commuting Observables on partition coordinate space.
+They do not extract a pre-existing property. They \emph{synthesise} the partition
+coordinates through trajectory completion.
+
+This is the measurement--partition identity made operational. Measurement is not
+the revelation of what was already there. It is the completion of a trajectory
+through categorical space, assigning the ion to a definite location in partition
+coordinate space by the act of making it traverse the instrument. The molecule
+is \emph{measured into existence} in the sense that its partition coordinates
+do not pre-exist the measurement~--- they are constituted by it.
+
+The experimental record: 847 chemical compounds analysed, $1.1$\,ppm mean error
+in molecular formula assignment, $100\%$ consistency between independent modalities
+(mass, infrared absorption, NMR chemical shift).
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.88\textwidth]{10_categorical_synthesizer}
+  \caption{The categorical synthesiser: the four hardware oscillators of a
+    mass spectrometer~--- electric quadrupole, magnetic sector, Paul trap,
+    and time-of-flight analyser~--- form a complete set of commuting observables
+    on partition coordinate space $(n,\ell,m,s)$. The ion is synthesised
+    through trajectory completion; its partition coordinates are constituted,
+    not retrieved.}
+  \label{fig:intro:synthesizer}
+\end{figure} These results are not merely
+consistent with the categorical framework. They are its predictions. The instrument
+is not testing a theory. The instrument \emph{is} the theory, rendered in hardware.
+
+This is why the instrument appears in a monograph on foundations. The gap between
+theory and experiment is, in this case, zero: the measurement apparatus directly
+instantiates the categorical structure that the theory describes.
+
+
+%------------------------------------------------------------
+\section*{What This Monograph Is}
+%------------------------------------------------------------
+
+This monograph is not a textbook. It does not review the literature on thermodynamic
+foundations and adjudicate between existing positions. It makes a specific, positive
+claim and develops its consequences fully.
+
+The claim: thermodynamics is a consequence of the Bounded Phase Space Law~---
+the axiom that every persistent dynamical system occupies a bounded region of phase
+space of finite Liouville measure admitting a nested hierarchy of measurable partitions.
+From this axiom, without further assumptions, follow: Poincaré recurrence, oscillatory
+dynamics, discrete mode spectra, the energy--frequency identity, partition coordinates,
+the triple equivalence, categorical entropy, the Second Law, equations of state,
+transport coefficients, and the structure of fluid motion. The monograph develops
+these consequences in order, from abstract (the observation boundary) to concrete
+(spectral-native gas and fluid dynamics).
+
+This monograph is also not a philosophical treatise. It uses philosophical language
+where precision requires it, but every claim is either a definition, an axiom,
+a proved theorem, or an empirically verified prediction. Philosophical claims that
+resist formalisation are made explicit as such and quarantined from the deductive chain.
+The system is designed to be falsifiable at each step: a single well-confirmed violation
+of the Bounded Phase Space Law would refute the entire programme.
+
+There are two extensions to Boltzmann's formula that this monograph establishes:
+
+\begin{enumerate}[label=(\roman*),leftmargin=2em,itemsep=4pt]
+  \item $W$ counts categorical states~--- distinct, non-equivalent partition traversal
+    histories~--- not merely kinetic configurations. This extension is necessary to
+    make the formula time-asymmetric: categorical states accumulate under forward
+    evolution and cannot be reduced by physical reversal.
+
+  \item The partition structure is observer-relative. Two observers with different
+    measurement capabilities inhabit different partition hierarchies and assign different
+    entropies to the same physical system. This is not subjectivity but
+    \emph{epistemic geometry}: entropy is a function of both the system and the
+    partition available to the observer. The $N_{\max}$ bound makes this relational
+    character precise.
+\end{enumerate}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.88\textwidth]{fig_regime_map}
+  \caption{Map of the five thermodynamic regimes in the $(T, n)$ plane. Each regime
+    is a distinct limit of the universal partition structural factor
+    $\mathcal{S}(V,N,\{n_i,\ell_i,m_i,s_i\})$ that appears in the universal equation
+    of state $PV = Nk_{\mathrm{B}}T \cdot \mathcal{S}$. A single ion traversing a
+    mass spectrometer passes through all five regimes in sequence.}
+  \label{fig:intro:regimemap}
+\end{figure}
+
+Together, these two extensions transform Boltzmann's formula from a counting device
+into a structural theorem. Entropy is not a number attached to a state. It is a
+relational quantity that measures how much of a partition hierarchy a system has
+traversed, relative to a specified observer. This is what ``thermodynamics as
+categorical theory'' means in full.
+
+The monograph covers consequences (vii) through (x) of the Bounded Phase Space Law,
+as enumerated in the Preface. The earlier consequences~--- atomic structure,
+special relativity, charge quantisation, nuclear shell structure~--- are treated
+in the companion volume. This monograph is self-contained: no knowledge of the
+companion volume is assumed, and all notation is introduced at first use.
+
+Readers who are primarily interested in the experimental predictions may read
+Part~IV (equations of state), Part~V (classical limits and gas computation),
+Part~VI (the mass spectrometer), and Part~VII (spectral-native dynamics) independently
+of Parts~I--III. The derivations in Parts~I--III are the logical foundation
+for the results in Parts~IV--VII, but the results themselves are stated as theorems
+with clear hypotheses, so that their content is accessible without having followed
+every proof.
+
+
+%------------------------------------------------------------
+\section*{On Giants}
+%------------------------------------------------------------
+
+Every argument in this monograph is built on work that precedes it.
+Two figures stand at the foundation more than any others.
+
+\textbf{Ludwig Boltzmann} (1844--1906) established that thermodynamic entropy is
+a count~--- that $S = k_{\mathrm{B}} \ln W$ is not merely a useful formula
+but an identification of entropy with something categorical (the count of microstates)
+rather than merely dynamical (a trajectory property). His H-theorem, despite Loschmidt's
+objection, contained the seed of a deeper result: that irreversibility is structural,
+not probabilistic. He did not live to complete the argument. This monograph completes it.
+
+\textbf{Georg Cantor} (1845--1918) established that infinity admits a hierarchy~---
+that not all infinite sets are the same size, and that the structure of infinite sets
+has precise mathematical content. The categorical framework inherits from Cantor
+the insight that counting is not trivial, that the structure of the thing being counted
+determines what can be said about it, and that the uncountable is not merely
+``very large'' but categorically inaccessible. Thermodynamics is, at its root,
+a science of counting, and it was Cantor who established what counting means.
+
+This monograph is dedicated to both of them: to Boltzmann for insisting that
+entropy is a count and accepting the consequences wherever they led,
+and to Cantor for establishing that the structure of counting is itself
+a subject worthy of the deepest investigation.
+
+\bigskip
+\noindent\textit{Kundai Farai Sachikonye}\\
+\textit{Technical University of Munich, May 2026}

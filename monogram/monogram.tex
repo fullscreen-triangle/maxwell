@@ -80,6 +80,46 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{listings}
+\usepackage{bbm}     % \mathbbm{1} indicator function (state counting paper)
+
+% ============================================================
+% Listings configuration
+% WGSL (WebGPU Shading Language) used in Parts VI and VII
+% ============================================================
+\lstdefinelanguage{wgsl}{
+  keywords={fn,let,var,if,else,for,while,loop,break,continue,return,
+            struct,const,override,type,alias,enable,requires,
+            true,false,null,discard,
+            @vertex,@fragment,@compute,@binding,@group,@location,
+            @builtin,@workgroup_size,@size,@align,
+            array,atomic,bool,f16,f32,f64,i32,u32,
+            vec2,vec3,vec4,mat2x2,mat3x3,mat4x4,
+            textureSample,textureStore,textureLoad,
+            workgroupBarrier,storageBarrier},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+}
+\lstdefinestyle{wgsl}{
+  language=wgsl,
+  basicstyle=\small\ttfamily,
+  keywordstyle=\bfseries\color{blue!70!black},
+  commentstyle=\itshape\color{green!50!black},
+  stringstyle=\color{red!70!black},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=5,
+  numbersep=6pt,
+  frame=single,
+  rulecolor=\color{gray!40},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=2,
+  showstringspaces=false,
+  xleftmargin=1.5em,
+  framexleftmargin=1.5em,
+}
 
 % ============================================================
 % Bibliography
@@ -127,6 +167,7 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{axiom}[theorem]{Axiom}
 \newtheorem{prediction}[theorem]{Prediction}
+\newtheorem{principle}[theorem]{Principle}
 
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
@@ -249,6 +290,17 @@
   {c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/gas-computation/}%
   {c:/Users/kunda/Documents/physics/maxwell/maupertuis/docs/publications/gas-dynamics/}%
   {c:/Users/kunda/Documents/physics/maxwell/maupertuis/docs/publications/flux-phenomena/}%
+  % figures/ subdirectories for direct access in introduction and frontmatter
+  {c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/figures/}%
+  {c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/single-particle/figures/}%
+  {c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/gas-computation/figures/}%
+  {c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/partition-extinction/figures/}%
+  {c:/Users/kunda/Documents/physics/maxwell/trajectory/mass-spec/ion-observatory/figures/}%
+  {c:/Users/kunda/Documents/physics/maxwell/trajectory/mass-spec/state-counting/figures/}%
+  {c:/Users/kunda/Documents/physics/maxwell/poincare/docs/shared-figures/figures/}%
+  {c:/Users/kunda/Documents/physics/maxwell/docs/foundation/observation-boundary/figures/}%
+  {c:/Users/kunda/Documents/physics/maxwell/docs/foundation/gibbs-paradox/figures/}%
+  {c:/Users/kunda/Documents/physics/maxwell/poincare/docs/kelvin-paradox/figures/}%
 }
 
 % ============================================================
@@ -391,11 +443,20 @@
   \vspace{2cm}
 \end{titlepage}
 
+% ---- Abstract ----
+\input{abstract}
+
 % ---- Table of contents ----
 \tableofcontents
 
+% ---- Foreword ----
+\input{foreword}
+
 % ---- Preface ----
 \input{preface}
+
+% ---- Introduction ----
+\input{introduction}
 
 % ============================================================
 \mainmatter
