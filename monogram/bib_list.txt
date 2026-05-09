@@ -1,0 +1,10 @@
+c:/Users/kunda/Documents/physics/maxwell/docs/foundation/observation-boundary/references.bib
+c:/Users/kunda/Documents/physics/maxwell/docs/foundation/gibbs-paradox/references.bib
+c:/Users/kunda/Documents/physics/maxwell/poincare/publication/maxwell-demon/references.bib
+c:/Users/kunda/Documents/physics/maxwell/poincare/docs/kelvin-paradox/references.bib
+c:/Users/kunda/Documents/physics/maxwell/poincare/docs/equations-of-state/references.bib
+c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/references.bib
+c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/single-particle/references.bib
+c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/gas-computation/references.bib
+c:/Users/kunda/Documents/physics/maxwell/maupertuis/docs/publications/gas-dynamics/references.bib
+c:/Users/kunda/Documents/physics/maxwell/maupertuis/docs/publications/flux-phenomena/references.bib

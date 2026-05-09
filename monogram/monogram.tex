@@ -1,0 +1,575 @@
+% ============================================================
+%  Quid Est Quod Fuit — Sagitta Numquam Cadens
+%  A Categorical Theory of Thermodynamics
+%  Master document
+% ============================================================
+
+\documentclass[12pt,a4paper,twoside,openright]{book}
+
+% ============================================================
+% Encoding and fonts
+% ============================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% ============================================================
+% Mathematics
+% ============================================================
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{mathtools}
+\usepackage{bm}
+
+% ============================================================
+% Graphics and floats
+% ============================================================
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% ============================================================
+% Tables
+% ============================================================
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{makecell}
+
+% ============================================================
+% Colour and units  (siunitx before physics to resolve \qty)
+% ============================================================
+\usepackage{xcolor}
+\usepackage{siunitx}
+
+% ============================================================
+% Physics notation
+% ============================================================
+\usepackage{physics}
+
+% ============================================================
+% Lists  (shortlabels enables old-style (i),(a),(1) labels)
+% ============================================================
+\usepackage[shortlabels]{enumitem}
+
+% ============================================================
+% Page geometry
+% ============================================================
+\usepackage[top=2.5cm,bottom=2.5cm,left=3.2cm,right=2.5cm,
+            twoside,headheight=14pt]{geometry}
+
+% ============================================================
+% Headers/footers
+% ============================================================
+\usepackage{fancyhdr}
+
+% ============================================================
+% TikZ and PGFPlots
+% ============================================================
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,positioning,calc,decorations.pathmorphing}
+
+% ============================================================
+% Algorithms and code
+% ============================================================
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings}
+
+% ============================================================
+% Bibliography
+% ============================================================
+\usepackage[numbers,sort&compress]{natbib}
+\bibliographystyle{plainnat}
+
+% ============================================================
+% Hyperlinks  (load late; cleveref must follow hyperref)
+% ============================================================
+\usepackage[unicode,bookmarks=true,bookmarksnumbered=true,
+            colorlinks=true,
+            linkcolor={blue!60!black},
+            citecolor={green!50!black},
+            urlcolor={blue!70!black}]{hyperref}
+\usepackage{cleveref}
+
+% ============================================================
+% RevTeX compatibility  (no-op definitions for revtex commands
+% and environments that survive body extraction)
+% ============================================================
+\newenvironment{widetext}{}{}
+\providecommand{\email}[1]{}          % \email{addr} in revtex bodies
+\providecommand{\affiliation}[1]{}    % \affiliation{...}
+\providecommand{\pacs}[1]{}           % PACS numbers
+\providecommand{\preprint}[1]{}       % preprint identifiers
+\providecommand{\keywords}[1]{}       % keywords
+
+% acknowledgments environment (revtex: p03_maxwell_demon, p08_ion_thermodynamic_regimes)
+\newenvironment{acknowledgments}{%
+  \section*{Acknowledgments}%
+}{}
+
+% ============================================================
+% Theorem environments
+% Numbered within chapter; all share a single counter
+% ============================================================
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{prediction}[theorem]{Prediction}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{observation}[theorem]{Observation}
+
+% ============================================================
+% Custom commands  (union of all 15 source papers)
+% ============================================================
+
+% --- Boltzmann constant (two case variants used across papers) ---
+\newcommand{\kB}{k_{\mathrm{B}}}
+\newcommand{\kb}{k_{\mathrm{B}}}       % cryogenics / observatory (lowercase)
+
+% --- S-entropy coordinates ---
+\newcommand{\Sk}{S_k}
+\newcommand{\St}{S_t}
+\newcommand{\Se}{S_e}
+\newcommand{\Sspace}{\mathcal{S}}
+\newcommand{\Scoord}{\mathbf{S}}
+\newcommand{\Scat}{S_{\mathrm{cat}}}
+\newcommand{\Sphys}{S_{\mathrm{phys}}}
+\newcommand{\Sent}{\mathcal{S}}         % cryogenics alias
+\newcommand{\Sentropy}{\mathcal{S}}     % kelvin alias
+\newcommand{\sentcoord}{(S_k,S_t,S_e)} % cryogenics tuple
+
+% --- Partition coordinates ---
+\newcommand{\partcoord}{(n,\ell,m,s)}  % cryogenics tuple
+
+% --- Counting, boundaries, max/min ---
+\newcommand{\Nstate}{N_{\mathrm{state}}}
+\newcommand{\Nmax}{N_{\text{max}}}
+
+% --- Number fields ---
+\providecommand{\R}{\mathbb{R}}
+\providecommand{\N}{\mathbb{N}}
+\providecommand{\Z}{\mathbb{Z}}
+\providecommand{\C}{\mathbb{C}}
+
+% --- Categorical, partition, and Hilbert spaces ---
+\newcommand{\phaselockgraph}{\mathcal{G}}
+\newcommand{\catspace}{\mathcal{C}}    % maxwell-demon notation
+\newcommand{\Cat}{\mathcal{C}}         % gas-papers notation
+\newcommand{\Partition}{\mathcal{P}}   % main partition space
+\newcommand{\Part}{\mathcal{P}}        % cryogenics alias
+\newcommand{\Phys}{\mathcal{P}}        % cryogenics physics space
+\newcommand{\Enh}{\mathcal{E}}         % enhancement space (cryogenics)
+\newcommand{\Cost}{\mathcal{E}}        % single-particle cost (same symbol)
+\newcommand{\hilbert}{\mathcal{H}}     % lowercase form (gas papers)
+\newcommand{\Hilbert}{\mathcal{H}}     % uppercase form (cryogenics, observatory)
+
+% --- Categorical / physical operators and temperatures ---
+\newcommand{\Ocat}{\hat{O}_{\mathrm{cat}}}
+\newcommand{\Ophys}{\hat{O}_{\mathrm{phys}}}
+\newcommand{\Teff}{T_{\mathrm{eff}}}
+\newcommand{\Tphys}{T_{\mathrm{phys}}}
+
+% --- Partition depths ---
+\newcommand{\Depth}{\mathcal{M}}
+\newcommand{\Mcat}{M_{\mathrm{cat}}}
+\newcommand{\Mphys}{M_{\mathrm{phys}}}
+\newcommand{\Mfree}{M_{\mathrm{free}}}
+\newcommand{\Mbound}{M_{\mathrm{bound}}}
+\newcommand{\Mmax}{M_{\mathrm{max}}}
+\newcommand{\Mmin}{M_{\mathrm{min}}}
+
+% --- Distances ---
+\newcommand{\dcat}{d_{\mathrm{cat}}}
+\newcommand{\dphys}{d_{\mathrm{phys}}}
+\newcommand{\dS}{d_{\mathrm{S}}}
+
+% --- Phase-space objects ---
+\newcommand{\trajectory}{\gamma}
+\newcommand{\phasespace}{\Gamma}
+
+% --- Timescales ---
+\newcommand{\taup}{\tau_p}
+\newcommand{\tauc}{\tau_c}
+
+% --- Planck-scale quantities (cryogenics paper) ---
+\newcommand{\tp}{t_{\mathrm{P}}}
+\newcommand{\lp}{\ell_{\mathrm{P}}}
+\newcommand{\Ep}{E_{\mathrm{P}}}
+\newcommand{\Tp}{T_{\mathrm{P}}}
+\newcommand{\nuP}{\nu_{\mathrm{P}}}
+\newcommand{\omegaP}{\omega_{\mathrm{P}}}
+
+% --- Extrema ---
+\newcommand{\pmax}{p_{\text{max}}}
+\newcommand{\vmax}{v_{\text{max}}}
+
+% --- Complexity ---
+\newcommand{\BigO}{\mathcal{O}}
+
+% --- Chemical and thermodynamic abbreviations ---
+\newcommand{\vdW}{\text{vdW}}
+\newcommand{\accessible}{\text{Acc}}
+\newcommand{\residue}{\text{res}}
+
+% --- Dimensionless numbers (ion-thermodynamic-regimes) ---
+\newcommand{\We}{\mathrm{We}}
+\newcommand{\Rey}{\mathrm{Re}}
+\newcommand{\Oh}{\mathrm{Oh}}
+\newcommand{\Ca}{\mathrm{Ca}}
+\newcommand{\Bo}{\mathrm{Bo}}
+
+% ============================================================
+% Figure search paths  (allows \includegraphics{figures/foo.png} to
+% resolve correctly for all 15 source papers)
+% ============================================================
+\graphicspath{%
+  {c:/Users/kunda/Documents/physics/maxwell/docs/foundation/observation-boundary/}%
+  {c:/Users/kunda/Documents/physics/maxwell/docs/foundation/gibbs-paradox/}%
+  {c:/Users/kunda/Documents/physics/maxwell/poincare/publication/maxwell-demon/}%
+  {c:/Users/kunda/Documents/physics/maxwell/poincare/docs/kelvin-paradox/}%
+  {c:/Users/kunda/Documents/physics/maxwell/thermodynamics/sources/}%
+  {c:/Users/kunda/Documents/physics/maxwell/poincare/docs/equations-of-state/}%
+  {c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/}%
+  {c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/single-particle/}%
+  {c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/gas-computation/}%
+  {c:/Users/kunda/Documents/physics/maxwell/maupertuis/docs/publications/gas-dynamics/}%
+  {c:/Users/kunda/Documents/physics/maxwell/maupertuis/docs/publications/flux-phenomena/}%
+}
+
+% ============================================================
+% Unicode character mappings for pdflatex
+% Covers math symbols that appear as raw Unicode in source files
+% ============================================================
+\DeclareUnicodeCharacter{2260}{\ensuremath{\neq}}       % ≠
+\DeclareUnicodeCharacter{2192}{\ensuremath{\rightarrow}} % →
+\DeclareUnicodeCharacter{2190}{\ensuremath{\leftarrow}}  % ←
+\DeclareUnicodeCharacter{2194}{\ensuremath{\leftrightarrow}} % ↔
+\DeclareUnicodeCharacter{2191}{\ensuremath{\uparrow}}    % ↑
+\DeclareUnicodeCharacter{2193}{\ensuremath{\downarrow}}  % ↓
+\DeclareUnicodeCharacter{2264}{\ensuremath{\leq}}        % ≤
+\DeclareUnicodeCharacter{2265}{\ensuremath{\geq}}        % ≥
+\DeclareUnicodeCharacter{223C}{\ensuremath{\sim}}        % ∼
+\DeclareUnicodeCharacter{2248}{\ensuremath{\approx}}     % ≈
+\DeclareUnicodeCharacter{221E}{\ensuremath{\infty}}      % ∞
+\DeclareUnicodeCharacter{2202}{\ensuremath{\partial}}    % ∂
+\DeclareUnicodeCharacter{2207}{\ensuremath{\nabla}}      % ∇
+\DeclareUnicodeCharacter{2211}{\ensuremath{\sum}}        % ∑
+\DeclareUnicodeCharacter{220F}{\ensuremath{\prod}}       % ∏
+\DeclareUnicodeCharacter{222B}{\ensuremath{\int}}        % ∫
+\DeclareUnicodeCharacter{2208}{\ensuremath{\in}}         % ∈
+\DeclareUnicodeCharacter{2209}{\ensuremath{\notin}}      % ∉
+\DeclareUnicodeCharacter{2282}{\ensuremath{\subset}}     % ⊂
+\DeclareUnicodeCharacter{2283}{\ensuremath{\supset}}     % ⊃
+\DeclareUnicodeCharacter{2229}{\ensuremath{\cap}}        % ∩
+\DeclareUnicodeCharacter{222A}{\ensuremath{\cup}}        % ∪
+\DeclareUnicodeCharacter{2200}{\ensuremath{\forall}}     % ∀
+\DeclareUnicodeCharacter{2203}{\ensuremath{\exists}}     % ∃
+\DeclareUnicodeCharacter{2297}{\ensuremath{\otimes}}     % ⊗
+\DeclareUnicodeCharacter{2295}{\ensuremath{\oplus}}      % ⊕
+\DeclareUnicodeCharacter{00D7}{\ensuremath{\times}}      % ×
+\DeclareUnicodeCharacter{00B7}{\ensuremath{\cdot}}       % ·
+\DeclareUnicodeCharacter{210F}{\ensuremath{\hbar}}       % ℏ
+\DeclareUnicodeCharacter{03B1}{\ensuremath{\alpha}}      % α
+\DeclareUnicodeCharacter{03B2}{\ensuremath{\beta}}       % β
+\DeclareUnicodeCharacter{03B3}{\ensuremath{\gamma}}      % γ
+\DeclareUnicodeCharacter{03B4}{\ensuremath{\delta}}      % δ
+\DeclareUnicodeCharacter{03B5}{\ensuremath{\varepsilon}} % ε
+\DeclareUnicodeCharacter{03B6}{\ensuremath{\zeta}}       % ζ
+\DeclareUnicodeCharacter{03B7}{\ensuremath{\eta}}        % η
+\DeclareUnicodeCharacter{03B8}{\ensuremath{\theta}}      % θ
+\DeclareUnicodeCharacter{03BA}{\ensuremath{\kappa}}      % κ
+\DeclareUnicodeCharacter{03BB}{\ensuremath{\lambda}}     % λ
+\DeclareUnicodeCharacter{03BC}{\ensuremath{\mu}}         % μ
+\DeclareUnicodeCharacter{03BD}{\ensuremath{\nu}}         % ν
+\DeclareUnicodeCharacter{03BE}{\ensuremath{\xi}}         % ξ
+\DeclareUnicodeCharacter{03C0}{\ensuremath{\pi}}         % π
+\DeclareUnicodeCharacter{03C1}{\ensuremath{\rho}}        % ρ
+\DeclareUnicodeCharacter{03C3}{\ensuremath{\sigma}}      % σ
+\DeclareUnicodeCharacter{03C4}{\ensuremath{\tau}}        % τ
+\DeclareUnicodeCharacter{03C6}{\ensuremath{\varphi}}     % φ
+\DeclareUnicodeCharacter{03C7}{\ensuremath{\chi}}        % χ
+\DeclareUnicodeCharacter{03C8}{\ensuremath{\psi}}        % ψ
+\DeclareUnicodeCharacter{03C9}{\ensuremath{\omega}}      % ω
+\DeclareUnicodeCharacter{0393}{\ensuremath{\Gamma}}      % Γ
+\DeclareUnicodeCharacter{0394}{\ensuremath{\Delta}}      % Δ
+\DeclareUnicodeCharacter{039B}{\ensuremath{\Lambda}}     % Λ
+\DeclareUnicodeCharacter{03A3}{\ensuremath{\Sigma}}      % Σ
+\DeclareUnicodeCharacter{03A9}{\ensuremath{\Omega}}      % Ω
+\DeclareUnicodeCharacter{2013}{--}                       % en-dash
+\DeclareUnicodeCharacter{2014}{---}                      % em-dash
+\DeclareUnicodeCharacter{2019}{'}                        % right single quote
+% Subscript digits (chemical formulas: H₂O, CO₂ etc.)
+\DeclareUnicodeCharacter{2080}{\textsubscript{0}}
+\DeclareUnicodeCharacter{2081}{\textsubscript{1}}
+\DeclareUnicodeCharacter{2082}{\textsubscript{2}}
+\DeclareUnicodeCharacter{2083}{\textsubscript{3}}
+\DeclareUnicodeCharacter{2084}{\textsubscript{4}}
+\DeclareUnicodeCharacter{2085}{\textsubscript{5}}
+\DeclareUnicodeCharacter{2086}{\textsubscript{6}}
+\DeclareUnicodeCharacter{2087}{\textsubscript{7}}
+\DeclareUnicodeCharacter{2088}{\textsubscript{8}}
+\DeclareUnicodeCharacter{2089}{\textsubscript{9}}
+% Superscript digits
+\DeclareUnicodeCharacter{00B2}{\textsuperscript{2}}      % ²
+\DeclareUnicodeCharacter{00B3}{\textsuperscript{3}}      % ³
+\DeclareUnicodeCharacter{00B9}{\textsuperscript{1}}      % ¹
+% Other common symbols
+\DeclareUnicodeCharacter{00B0}{\ensuremath{{}^{\circ}}}  % °
+\DeclareUnicodeCharacter{00B1}{\ensuremath{\pm}}         % ±
+\DeclareUnicodeCharacter{00BD}{\ensuremath{\tfrac{1}{2}}} % ½
+\DeclareUnicodeCharacter{2032}{\ensuremath{^{\prime}}}   % ′ prime
+\DeclareUnicodeCharacter{2033}{\ensuremath{^{\prime\prime}}} % ″ double prime
+\DeclareUnicodeCharacter{2212}{\ensuremath{-}}           % − minus sign
+\DeclareUnicodeCharacter{00A0}{~}                        % non-breaking space
+
+% ============================================================
+% Page style
+% ============================================================
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\nouppercase{\rightmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% plain style for chapter-opening pages
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% ============================================================
+% Document metadata
+% ============================================================
+\title{%
+  \textit{Quid Est Quod Fuit}\\
+  \textit{Sagitta Numquam Cadens}\\[0.8em]
+  \large A Categorical Theory of Thermodynamics}
+\author{Kundai Farai Sachikonye}
+\date{Technical University of Munich, 2026}
+
+% ============================================================
+\begin{document}
+% ============================================================
+
+\frontmatter
+
+% ---- Title page ----
+\begin{titlepage}
+  \centering
+  \vspace*{3.5cm}
+  \rule{\textwidth}{0.4pt}\\[1.2em]
+  {\LARGE\itshape Quid Est Quod Fuit\\[0.5em]
+   Sagitta Numquam Cadens\par}
+  \vspace{0.8em}
+  {\normalsize\itshape
+    \textup{(}What is that which was\ ---\ The Arrow Never Falls\textup{)}\par}
+  \vspace{1.2em}
+  \rule{\textwidth}{0.4pt}\\[2.5em]
+  {\Large\scshape A Categorical Theory of Thermodynamics\par}
+  \vfill
+  {\large Kundai Farai Sachikonye\par}
+  \vspace{0.6em}
+  {\normalsize Technical University of Munich\par}
+  {\normalsize 2026\par}
+  \vspace{2cm}
+\end{titlepage}
+
+% ---- Table of contents ----
+\tableofcontents
+
+% ---- Preface ----
+\input{preface}
+
+% ============================================================
+\mainmatter
+% ============================================================
+
+% ============================================================
+\part{The Observation Boundary}
+\label{part:observation}
+% ============================================================
+
+\noindent
+Every physical measurement takes place within a structured epistemic boundary.
+Before thermodynamic quantities can be assigned meaning, the maximum categorical
+complexity accessible to any observer must be established.
+Chapter~\ref{ch:obs} derives this boundary from the Bounded Phase Space Law
+and shows that every thermodynamic quantity is an observable constructed within
+it, not a pre-existing property of matter.
+
+\chapter{Properties of the Observation Boundary}
+\label{ch:obs}
+\input{sections/p01_observation_boundary}
+
+% ============================================================
+\part{Dissolution of the Classical Paradoxes}
+\label{part:paradoxes}
+% ============================================================
+
+\noindent
+Three paradoxes have resisted thermodynamics for 150~years.
+All three dissolve through the same conceptual move: replacing kinetic sorting
+with categorical completion as the driver of thermodynamic evolution.
+Gibbs's paradox, Maxwell's Demon, and Kelvin's heat death are addressed
+in order of increasing scope~--- from mixing, to measurement, to the fate
+of the universe.
+
+\chapter{Categorical Resolution of the Gibbs Paradox}
+\label{ch:gibbs}
+\input{sections/p02_gibbs_paradox}
+
+\chapter{Defeating Maxwell's Demon}
+\label{ch:demon}
+\input{sections/p03_maxwell_demon}
+
+\chapter{Kelvin's Heat Death as Categorical Phase Transition}
+\label{ch:kelvin}
+\input{sections/p04_kelvin_paradox}
+
+% ============================================================
+\part{The Categorical Thermodynamic Framework}
+\label{part:framework}
+% ============================================================
+
+\noindent
+With the paradoxes cleared, the framework is built from first principles.
+State counting, the Second Law, and behaviour at extreme low temperatures
+are each derived as consequences of partition structure, not assumed as postulates.
+The Third Law, in its usual form, constrains physical cooling; categorical
+cooling operates in a commuting sector and is not constrained by it.
+
+\chapter{Categorical State Counting and the Fundamental Identity}
+\label{ch:counting}
+\input{sections/p05_categorical_state_counting}
+
+\chapter{Categorical Thermodynamics and the Second Law as Theorem}
+\label{ch:thermodynamics}
+\input{sections/p06_categorical_thermodynamics}
+
+\chapter{Categorical Cryogenics: Beyond the Third Law}
+\label{ch:cryogenics}
+\input{sections/p07_categorical_cryogenics}
+
+% ============================================================
+\part{Equations of State: All Regimes}
+\label{part:eos}
+% ============================================================
+
+\noindent
+The categorical framework unifies all five canonical thermodynamic regimes~---
+ideal gas, plasma, degenerate matter, relativistic gas, and Bose--Einstein
+condensate~--- under a single structural factor $\mathcal{S}(V,N,\{n_i,\ell_i,m_i,s_i\})$.
+These are not five separate theories.
+They are five limiting expressions of one underlying partition geometry.
+A single ion traversing a mass spectrometer demonstrates all five regimes
+in sequence; the instrument provides the experimental thread for both chapters.
+
+\chapter{All Five Thermodynamic Regimes in a Single Ion}
+\label{ch:regimes}
+\input{sections/p08_ion_thermodynamic_regimes}
+
+\chapter{Partition-Based Equations of State}
+\label{ch:eos}
+\input{sections/p09_equations_of_state}
+
+% ============================================================
+\part{Classical Thermodynamics as a Special Case}
+\label{part:classical}
+% ============================================================
+
+\noindent
+Classical kinetic theory emerges from the categorical framework as the
+specialisation to sparse partition networks in thermal equilibrium.
+The ideal gas law, Maxwell--Boltzmann statistics, and equipartition
+are derived from partition statistics rather than assumed from kinetic
+postulates.
+The final chapter of this part establishes the Poincar\'e duality:
+computation and thermodynamics are two descriptions of the same
+partition traversal process.
+
+\chapter{The Ideal Gas Law from Partition Statistics}
+\label{ch:idealgas}
+\input{sections/p10_ideal_gas}
+
+\chapter{Single-Particle Gas Laws and Partition Depth}
+\label{ch:singleparticle}
+\input{sections/p11_single_particle}
+
+\chapter{Gas Computing: The Poincar\'e Duality}
+\label{ch:gascomputing}
+\input{sections/p12_gas_computing}
+
+% ============================================================
+\part{The Measurement Instrument}
+\label{part:instrument}
+% ============================================================
+
+\noindent
+Categorical measurement is not extraction of a pre-existing property.
+It is synthesis through trajectory completion.
+The mass spectrometer~--- four hardware oscillators forming a complete
+set of commuting observables on partition coordinate space~--- resolves
+$(n,\ell,m,s)$ directly from interference geometry.
+The ion is measured into existence; it is not retrieved from a database.
+
+\chapter{The Quantupartite Ion Observatory}
+\label{ch:observatory}
+\input{sections/p13_ion_observatory}
+
+% ============================================================
+\part{Dynamics: Matter in Motion}
+\label{part:dynamics}
+% ============================================================
+
+\noindent
+Spectral-native dynamics instantiates particles from hardware oscillations
+without molecular databases.
+The ray march through a volume of partition states simultaneously renders
+and measures: the rendering--measurement identity made operational.
+The two chapters treat the gas regime (sparse networks, $\rho_C \ll 1$)
+and the liquid regime (dense networks, $\rho_C \sim 1$) using a common
+GPU shader architecture.
+
+\chapter{Spectral-Native Gas Dynamics}
+\label{ch:gasdynamics}
+\input{sections/p14_gas_dynamics}
+
+\chapter{Spectral-Native Fluid Dynamics}
+\label{ch:fluiddynamics}
+\input{sections/p15_flux_phenomena}
+
+% ============================================================
+\backmatter
+% ============================================================
+
+\bibliography{%
+  c:/Users/kunda/Documents/physics/maxwell/docs/foundation/observation-boundary/references,%
+  c:/Users/kunda/Documents/physics/maxwell/docs/foundation/gibbs-paradox/references,%
+  c:/Users/kunda/Documents/physics/maxwell/poincare/publication/maxwell-demon/references,%
+  c:/Users/kunda/Documents/physics/maxwell/poincare/docs/kelvin-paradox/references,%
+  c:/Users/kunda/Documents/physics/maxwell/poincare/docs/equations-of-state/references,%
+  c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/references,%
+  c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/single-particle/references,%
+  c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/gas-computation/references,%
+  c:/Users/kunda/Documents/physics/maxwell/maupertuis/docs/publications/gas-dynamics/references,%
+  c:/Users/kunda/Documents/physics/maxwell/maupertuis/docs/publications/flux-phenomena/references%
+}
+
+\end{document}

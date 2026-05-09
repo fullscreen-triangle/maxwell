@@ -1,0 +1,227 @@
+%=============================================================================
+% PART I: TRIPLE EQUIVALENCE AND THERMODYNAMICS
+%=============================================================================
+
+\subsection{Triple Equivalence and Statistical Mechanics}
+\label{part:thermodynamics}
+
+\section{Introduction: The Structure of Bounded Systems}
+\label{sec:introduction_bounded}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/bounded-systems.tex}
+
+\section{Categorical Entropy}
+\label{sec:categorical_entropy}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/categorical-entropy.tex}
+
+\section{Oscillatory Entropy}
+\label{sec:oscillatory_entropy}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/oscillatory-entropy.tex}
+
+\section{Partition Entropy}
+\label{sec:partition_entropy}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/partition-entropy.tex}
+
+\section{Enthalpy and Entropy Equivalence}
+\label{sec:enthalpy}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/enthalpy.tex}
+
+\section{Temperature from Three Perspectives}
+\label{sec:temperature}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/temperature.tex}
+
+\section{Pressure from Three Perspectives}
+\label{sec:pressure}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/pressure.tex}
+
+\section{Internal Energy}
+\label{sec:internal_energy}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/internal-energy.tex}
+
+\section{Derivation of the Ideal Gas Law}
+\label{sec:ideal_gas_law}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/ideal-gas-law.tex}
+
+\section{Maxwell-Boltzmann Distribution}
+\label{sec:maxwell}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/maxwell-distribution.tex}
+
+%=============================================================================
+% PART II: POINCARE COMPUTING ARCHITECTURE
+%=============================================================================
+
+\subsection{Poincar\'e Computing Architecture}
+\label{part:computing}
+
+\section{The S-Entropy Coordinate Space}
+\label{sec:finite_space}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/finite-space.tex}
+
+\section{Initial States and Computational Problems}
+\label{sec:initial_state}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/initial-state.tex}
+
+\section{The Virtual Instrument}
+\label{sec:virtual_instrument}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/virtual-instrument.tex}
+
+\section{Categorical Dynamics}
+\label{sec:categorical_dynamics}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/categorical-dynamics.tex}
+
+\section{Solution Trajectories and Recurrence}
+\label{sec:solution_trajectory}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/solution-trajectory.tex}
+
+\section{Identity Unification}
+\label{sec:identity_unification}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/identity-unification.tex}
+
+\section{Completeness and Answer Equivalence}
+\label{sec:completeness}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/poincares-machine-completeness.tex}
+
+\section{Categorical Complexity Theory}
+\label{sec:complexity}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/complexity.tex}
+
+\section{Exhaustive Computing and Emergent Memory}
+\label{sec:exhaustive}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/exhaustive-computing.tex}
+
+\section{Saint-Entropy Thermodynamics}
+\label{sec:stellas}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/st-stellas-thermodynamics.tex}
+
+\section{The Categorical Compiler}
+\label{sec:compiler}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/categorical-compiler.tex}
+
+%=============================================================================
+% PART III: VALIDATION AND APPLICATIONS
+%=============================================================================
+
+\subsection{Validation and Applications}
+\label{part:validation}
+
+\section{Trajectory Completion in Phase Space}
+\label{sec:trajectory}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/trajectory-completion.tex}
+
+\section{Categorical Memory Implementation}
+\label{sec:categorical_memory}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/categorical-memory.tex}
+
+\section{Ternary Representation}
+\label{sec:ternary}
+
+\input{c:/Users/kunda/Documents/physics/maxwell/conjecture/publication/ideal-gas/sections/ternary-representation.tex}
+
+%=============================================================================
+% DISCUSSION AND CONCLUSION
+%=============================================================================
+
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Resolution of Classical Paradoxes}
+
+The triple equivalence framework resolves several long-standing conceptual difficulties in statistical mechanics.
+
+\subsubsection{Resolution-Dependence of Temperature}
+
+Classical kinetic theory defines temperature through the mean square velocity: $T = m\langle v^2\rangle/(3k_B)$. This definition makes temperature dependent on how velocity is measured---the resolution and averaging procedure introduce apparent ambiguity. In the categorical framework, temperature is instead the rate of categorical actualization:
+\begin{equation}
+T = \frac{\hbar}{k_B}\frac{dM}{dt}
+\end{equation}
+
+Categories are discrete and countable; no resolution ambiguity arises. The classical definition emerges as a projection onto the velocity observable, which introduces apparent resolution-dependence through the measurement process. The categorical rate $dM/dt$ is intrinsic to the system and independent of how we choose to observe it.
+
+\subsubsection{Localization of Pressure}
+
+Classical kinetic theory derives pressure from molecular collisions with container walls, suggesting pressure is fundamentally a boundary phenomenon. Yet we routinely measure pressure in the bulk of fluids, far from any boundaries. In the categorical framework, pressure is categorical density:
+\begin{equation}
+P = k_B T \left(\frac{\partial M}{\partial V}\right)_S
+\end{equation}
+
+This is an intrinsic property existing throughout the volume, not localized at boundaries. Wall collisions are one manifestation of categorical density---the rate at which trajectories encounter boundaries---but not its definition. Pressure exists in the bulk because categorical structure exists in the bulk.
+
+\subsubsection{Infinite Velocity Tail}
+
+The Maxwell-Boltzmann distribution $f(v) \propto v^2 e^{-mv^2/(2k_BT)}$ extends to $v \to \infty$, assigning non-zero probability to arbitrarily high velocities. In the categorical framework, the distribution is over discrete categories $m = 0, 1, \ldots, M_{\max}$, where $M_{\max}$ corresponds to $v_{\max} = c$. The distribution is intrinsically bounded:
+\begin{equation}
+f(m) = \frac{e^{-\beta E_m}}{\sum_{m=0}^{M_{\max}} e^{-\beta E_m}}
+\end{equation}
+
+No particle can occupy category $m > M_{\max}$, automatically enforcing $v \leq c$.
+
+\subsection{Unification of Thermodynamics and Computing}
+
+The central insight of this work is that thermodynamics and computation are two perspectives on the same underlying categorical structure. The ideal gas law $PV = Nk_BT$ is simultaneously:
+\begin{itemize}
+    \item A thermodynamic relation between macroscopic observables
+    \item A categorical balance condition in bounded phase space
+    \item A constraint on valid solution trajectories in Poincar\'e Computing
+\end{itemize}
+
+The processor-oscillator duality ($R_{\text{compute}} = \omega/(2\pi)$) establishes that every oscillator is simultaneously a processor, and vice versa. Hardware timing jitter is not noise to be minimized but categorical information to be exploited.
+
+\subsection{The $\epsilon$-Boundary and Asymptotic Solutions}
+
+Solutions in Poincar\'e Computing are recognized at the $\epsilon$-boundary---exactly one categorical step from closure. This is not approximation but the fundamental nature of categorical computation: categorical irreversibility forbids exact return to the initial state. The ``solution'' IS being one step away; this represents the maximum possible knowledge given G\"odelian constraints.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have established that oscillation, categorical distinction, and partition operation are three equivalent descriptions of bounded dynamical systems. From this triple equivalence, we derived:
+
+\textbf{Thermodynamic Results:}
+\begin{enumerate}
+    \item Entropy in three equivalent forms: $S_{\text{cat}} = k_B M \ln n$, $S_{\text{osc}} = k_B \sum_i \ln(A_i/A_0)$, $S_{\text{part}} = k_B \sum_a \ln(1/s_a)$
+    \item Temperature as categorical rate: $T = \hbar(dM/dt)/k_B$
+    \item Pressure as categorical density: $P = k_BT(\partial M/\partial V)_S$
+    \item The ideal gas law as categorical balance: $PV = Nk_BT$
+    \item Maxwell-Boltzmann distribution bounded at $v = c$
+\end{enumerate}
+
+\textbf{Computational Results:}
+\begin{enumerate}
+    \item S-entropy space $\Sspace = [0,1]^3$ satisfies Poincar\'e recurrence
+    \item Solutions correspond to recurrent trajectories satisfying constraints
+    \item Identity unification: address = processor state = semantic content
+    \item Categorical incomparability with Turing computation
+    \item Complexity measured in Poincar\'es (categorical completions)
+    \item Non-halting dynamics with emergent memory
+    \item $3^k$ recursive self-similarity with scale ambiguity
+    \item Processor-oscillator duality and processor-memory unification
+    \item $\epsilon$-boundary solution recognition
+\end{enumerate}
+
+The deeper implication is that thermodynamics and computation are unified through categorical structure in bounded phase space. Temperature measures categorical rate; entropy counts categories; pressure is categorical density; computation is trajectory completion. These are not separate phenomena but projections of a single mathematical structure onto different observables.
+
+All results derive from a single foundational premise: physical systems occupy finite domains. From this boundedness, the triple equivalence structure emerges necessarily, and from the triple equivalence, both statistical mechanics and Poincar\'e Computing follow as mathematical consequences.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
