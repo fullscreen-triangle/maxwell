@@ -1,29 +1,38 @@
 # =============================================================================
-# Maxwell - Workspace Configuration
-# =============================================================================
-# Complementarity-Aware Processor for Categorical Phase-Lock Dynamics
+# Maxwell - Complementarity-Aware Processor for Categorical Phase-Lock Dynamics
 # Resolution of Maxwell's Demon Through Categorical Phase-Lock Topology
 # =============================================================================
 
-[workspace]
-resolver = "2"
-members = [
-    "processor",
-]
-
-[workspace.package]
+[package]
+name = "maxwell-processor"
 version = "0.1.0"
 edition = "2021"
 rust-version = "1.75"
 authors = ["Kundai Farai Sachikonye <kundai.sachikonye@wzw.tum.de>"]
+description = "Complementarity-Aware Processor for Categorical Phase-Lock Dynamics"
 license = "MIT"
 repository = "https://github.com/sachikonye/maxwell"
 homepage = "https://github.com/sachikonye/maxwell"
 documentation = "https://github.com/sachikonye/maxwell"
 keywords = ["categorical-dynamics", "phase-lock", "thermodynamics", "maxwell-demon", "information-theory"]
 categories = ["science", "simulation", "mathematics"]
+# Python examples, papers and the web app are not part of the crate.
+exclude = ["docs/", "web/", "examples/**/*.py"]
 
-[workspace.dependencies]
+[lib]
+name = "maxwell_processor"
+path = "src/lib.rs"
+
+[[bin]]
+name = "maxwell"
+path = "src/main.rs"
+
+[[bench]]
+name = "processor_benchmarks"
+path = "src/benches/processor_benchmarks.rs"
+harness = false
+
+[dependencies]
 # Core numerics
 ndarray = "0.15"
 num-complex = "0.4"
@@ -37,7 +46,7 @@ rand_distr = "0.4"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 
-# Graph structures
+# Graph structures for phase-lock networks
 petgraph = "0.6"
 
 # Parallel computation
@@ -51,13 +60,20 @@ anyhow = "1.0"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 
-# CLI
-clap = { version = "4.4", features = ["derive"] }
-
 # Synchronization
 parking_lot = "0.12"
 
-# Testing
+# CLI
+clap = { version = "4.4", features = ["derive"] }
+
+# Python bindings (optional)
+pyo3 = { version = "0.20", features = ["extension-module"], optional = true }
+
+[features]
+default = []
+python = ["pyo3"]
+
+[dev-dependencies]
 criterion = "0.5"
 approx = "0.5"
 
@@ -74,4 +90,3 @@ strip = true
 [profile.bench]
 inherits = "release"
 debug = true
-

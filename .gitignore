@@ -231,3 +231,14 @@ docs/**/figures/*.gif
 # Uncomment if you want to ignore all generated figures:
 # docs/**/figures/*.png
 
+
+# -----------------------------------------------------------------------------
+# Local tool caches (purpose, spraypaint, wind tunnel, okgg)
+# -----------------------------------------------------------------------------
+.purpose/*
+!.purpose/lens.toml
+.spraypaint/*
+!.spraypaint/scenes.toml
+.wt/
+.okgg/
+.agw.json

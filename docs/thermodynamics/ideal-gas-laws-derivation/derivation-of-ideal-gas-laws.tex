@@ -1,0 +1,1019 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  citecolor=blue!50!black,
+  urlcolor=blue!50!black,
+  pdftitle={The Ideal Gas Laws from a Bounded Phase Space Resolved at a Fixed Resolution},
+  pdfauthor={Kundai Farai Sachikonye}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}{Axiom}
+\renewcommand{\theaxiom}{R\arabic{axiom}}
+\newtheorem{hypothesis}{Hypothesis}
+\renewcommand{\thehypothesis}{\Alph{hypothesis}}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Sym}{\mathfrak{S}}
+\newcommand{\kB}{k_{\mathrm{B}}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\Pmech}{P_{\mathrm{mech}}}
+
+\title{\textbf{The Ideal Gas Laws from a Bounded Phase Space\\Resolved at a Fixed Resolution}}
+\author{
+Kundai Farai Sachikonye\\
+AIMe Registry for Artificial Intelligence\\
+\texttt{kundai.sachikonye@bitspark.com}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+The textbook derivation of the ideal gas law rests on five ingredients.
+The five ingredients are a phase-space cell of fixed size, the division by $N!$ for identical particles, equal weights for equal phase-space measure, the identification of entropy with the logarithm of a count, and an energy shell of positive thickness.
+Each ingredient is usually introduced as a postulate or as a convenience.
+This paper derives all five from four stated axioms about an observer that resolves a bounded phase space at a fixed resolution, together with one explicitly stated dynamical hypothesis.
+The axioms fix the cell size as a unit, force the energy constraint to have positive width, and require identical particles to carry no labels.
+Entropy is defined operationally as the minimum average number of binary distinctions needed to locate the state among the resolved alternatives, and it is shown to equal $\kB\ln K$ to within one distinction, where $K$ is the count of resolved states.
+With temperature and pressure defined as the conjugates of energy and volume, the relation $PV=N\kB T$ follows exactly, for every particle number $N\ge1$, every mass, and every energy function that does not depend on position.
+The independence of the law from the nature of the particles yields Avogadro's law.
+Equipartition holds up to a correction that is bounded explicitly and vanishes as $N^{-1}$.
+The mechanical pressure, computed as the time-averaged impulse on the walls, satisfies $\Pmech V=\tfrac23 E$ exactly and agrees with the thermodynamic pressure within the same bound.
+For a single particle the mechanical law holds exactly, and its identification with the temperature requires the other particles of the gas.
+Dalton's law, the Sackur--Tetrode entropy, the resolution of the Gibbs mixing paradox, the adiabatic law, and the Maxwell--Boltzmann distribution follow within the same framework.
+\end{abstract}
+
+\tableofcontents
+
+%======================================================================
+\section{Introduction}
+\label{sec:intro}
+%======================================================================
+
+\subsection{The ingredients of the standard derivation}
+
+The ideal gas law $PV=N\kB T$ relates the pressure $P$, the volume $V$, the particle number $N$ and the temperature $T$ of a dilute gas.
+Here $\kB$ is a positive constant that fixes the unit of temperature.
+In the statistical derivation due to Boltzmann and Gibbs, and in its modern textbook form \citep{boltzmann1877,gibbs1902,huang1987}, the law is obtained from five ingredients:
+\begin{enumerate}[label=(I\arabic*),leftmargin=3em]
+\item\label{ing:cell} a phase-space cell of fixed measure $h^{3}$ per particle, which turns a measure into a count;
+\item\label{ing:nfact} a division of that count by $N!$ for identical particles;
+\item\label{ing:equal} equal weights for regions of equal phase-space measure;
+\item\label{ing:log} the identification of the entropy with $\kB$ times the logarithm of the count;
+\item\label{ing:shell} an energy shell of positive thickness in place of the energy surface.
+\end{enumerate}
+Ingredient~\ref{ing:cell} is usually justified by quantum mechanics, \ref{ing:nfact} by indistinguishability or by the requirement that the entropy be extensive, \ref{ing:equal} by an appeal to ignorance or to ergodicity, \ref{ing:log} by Boltzmann's principle, and \ref{ing:shell} by convenience \citep{huang1987,khinchin1949,jaynes1965}.
+
+\subsection{Approach}
+
+This paper treats the five ingredients as consequences rather than as postulates.
+The starting point is an observer that resolves a bounded phase space at a fixed, finite resolution.
+Four axioms state what such an observer can and cannot name (Section~\ref{sec:setting}).
+One dynamical hypothesis, ergodicity on the energy surface, is stated separately because it is the one assumption whose status is not settled for the systems of interest (Hypothesis~\ref{hyp:ergodic}).
+From the axioms and the hypothesis, ingredient~\ref{ing:cell} follows as the definition of a unit, \ref{ing:shell} from the positivity of the resolution, and \ref{ing:nfact} from the absence of particle labels.
+Ingredient~\ref{ing:equal} follows from the dynamics together with the absence of distinguished cells, and \ref{ing:log} from an operational definition of entropy as a locating cost.
+
+\subsection{Summary of results}
+
+The principal results are the following.
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item The description of an energy at a fixed resolution has positive width (Lemma~\ref{lem:noshell}).
+\item The states of identical particles are permutation orbits, and the measure of a symmetric region on the space of orbits is its phase-space measure divided by $N!$ (Lemma~\ref{lem:quotient}).
+\item The minimum average number of binary distinctions needed to locate one of $K$ equally weighted states lies in $[\log_2K,\log_2K+1)$ (Theorem~\ref{thm:locating}).
+\item With temperature and pressure defined as conjugates, $PV=N\kB T$ holds exactly for every $N\ge1$ (Theorem~\ref{thm:igl}), for every position-independent energy function (Theorem~\ref{thm:carrier}).
+\item The energy satisfies $E=\tfrac32N\kB T(1-\eta)$ with an explicit bound on $\eta$ of order $N^{-1}$ (Theorem~\ref{thm:equipartition}).
+\item The time-averaged impulse on the walls gives $\Pmech V=\tfrac23E$ exactly for every trajectory without interparticle collisions (Theorem~\ref{thm:mech}).
+\item One particle obeys $\Pmech V=\tfrac23\varepsilon$ exactly; within a gas of $N$ particles its time-averaged pressure obeys $p_1V=\kB T$ up to the same correction (Theorems~\ref{thm:single-isolated} and~\ref{thm:single-gas}).
+\end{enumerate}
+
+\subsection{Organisation}
+
+Section~\ref{sec:setting} defines the phase space, the ideal gas and the axioms.
+Section~\ref{sec:resolution} draws the consequences of a fixed resolution for the energy constraint.
+Section~\ref{sec:labels} constructs the states of identical particles and the count of a region.
+Section~\ref{sec:weights} obtains the weights of states from the dynamics.
+Section~\ref{sec:entropy} defines the entropy as a locating cost and computes it.
+Section~\ref{sec:laws} derives the equation of state, equipartition and the adiabatic law.
+Section~\ref{sec:mech} computes the mechanical pressure.
+Section~\ref{sec:single} treats a single particle and the Maxwell--Boltzmann distribution.
+Section~\ref{sec:mixtures} treats mixtures.
+Section~\ref{sec:expansion} treats free expansion.
+Section~\ref{sec:discussion} states what was assumed and what was derived.
+
+%======================================================================
+\section{Setting and axioms}
+\label{sec:setting}
+%======================================================================
+
+\subsection{Phase space}
+
+\begin{definition}[Container, phase space and Liouville measure]
+\label{def:phase}
+The \emph{container} is the closed cube $\Lambda=[0,L]^{3}$ of side $L>0$ and volume $V=L^{3}$.
+The \emph{single-particle phase space} is $\X_1=\Lambda\times\R^{3}$, whose points $y=(q,p)$ consist of a position $q\in\Lambda$ and a momentum $p\in\R^{3}$.
+For an integer $N\ge1$, the \emph{$N$-particle phase space} is the product $\X_N=\X_1^{N}$, whose points are $x=(y_1,\dots,y_N)$ with $y_i=(q_i,p_i)$.
+The \emph{Liouville measure} $\mu_N$ is Lebesgue measure on $\X_N\subset\R^{6N}$.
+\end{definition}
+
+\begin{definition}[Ideal gas]
+\label{def:ideal}
+An \emph{ideal gas} of $N$ particles of mass $m>0$ is the phase space $\X_N$ together with the energy function
+\begin{equation}
+H_N(x)=\sum_{i=1}^{N}\varepsilon(p_i),\qquad \varepsilon(p)=\frac{|p|^{2}}{2m},
+\label{eq:hamiltonian}
+\end{equation}
+and the motion in which each particle moves freely in the interior of $\Lambda$ and reflects specularly at its faces.
+Specular reflection at a face reverses the momentum component normal to that face and leaves the other two components unchanged.
+The quantity $\varepsilon(p_i)$ is the \emph{kinetic energy} of particle $i$, and $H_N$ is the \emph{energy}.
+\end{definition}
+
+The energy~\eqref{eq:hamiltonian} does not depend on the positions.
+This independence is the defining property of ideality used below, and Theorem~\ref{thm:carrier} shows that it is the only property of $H_N$ on which the equation of state depends.
+
+\begin{definition}[Energy surface, ball and shell]
+\label{def:shell}
+For $E>0$, the \emph{energy surface} is $\Sigma_E=\{x\in\X_N:H_N(x)=E\}$ and the \emph{energy ball} is $B_E=\{x\in\X_N:H_N(x)\le E\}$.
+For $0<\Delta E\le E$, the \emph{energy shell} of thickness $\Delta E$ is
+\begin{equation}
+W(E,\Delta E)=\{x\in\X_N:\ E-\Delta E<H_N(x)\le E\}=B_E\setminus B_{E-\Delta E}.
+\label{eq:shell}
+\end{equation}
+Its \emph{relative thickness} is $\delta=\Delta E/E\in(0,1]$.
+When $V$ and $N$ must be shown, the shell is written $W(E,\Delta E;V,N)$.
+\end{definition}
+
+The volume of the unit ball in $\R^{d}$ is denoted
+\begin{equation}
+\omega_d=\frac{\pi^{d/2}}{\Gamma\!\left(\tfrac d2+1\right)},
+\label{eq:omega}
+\end{equation}
+where $\Gamma$ is Euler's gamma function, $\Gamma(z)=\int_0^\infty t^{z-1}e^{-t}\,\dd t$ for $z>0$.
+
+\subsection{The observer}
+
+The \emph{observer} is whatever draws distinctions between states of the gas: an instrument, a record, or an agent.
+An \emph{observable} is a measurable function $f\colon\X_N\to\R$ whose values the observer can register.
+A \emph{description} is a set of states that the observer can name, such as ``the energy lies in a given interval''.
+The four axioms constrain what the observer can name.
+
+\begin{axiom}[Boundedness]
+\label{ax:bounded}
+Every description names a region of $\X_N$ of finite positive Liouville measure.
+\end{axiom}
+
+\begin{axiom}[Fixed resolution]
+\label{ax:resolution}
+The observer resolves $\X_1$ into \emph{cells}, which are measurable sets of equal Liouville measure $h^{3}$ for a fixed constant $h>0$.
+The $N$-particle cells are the products of $N$ single-particle cells, of measure $h^{3N}$.
+Every description is a union of cells, up to sets of measure zero, and the \emph{count} of a description is its measure in units of the cell measure.
+\end{axiom}
+
+\begin{axiom}[No distinguished particle]
+\label{ax:labels}
+The particles are identical: every observable is invariant under every permutation of the particle indices.
+That is, $f(y_{\sigma(1)},\dots,y_{\sigma(N)})=f(y_1,\dots,y_N)$ for every observable $f$ and every permutation $\sigma$ of $\{1,\dots,N\}$.
+\end{axiom}
+
+\begin{axiom}[No distinguished cell]
+\label{ax:cells}
+Within a description, no cell receives more weight than another unless some observable distinguishes them.
+\end{axiom}
+
+\begin{remark}[On the axioms]
+\label{rem:axioms}
+Axiom~\ref{ax:resolution} fixes $h$ as a unit and gives it no further interpretation; the results of Section~\ref{sec:laws} do not depend on its value (Proposition~\ref{prop:hdep}).
+Axiom~\ref{ax:labels} states that the index $i$ is a bookkeeping device of the theorist and not a property of the gas.
+Assigning a particle a name in advance of any observation that distinguishes it would be an act of selection that the gas does not support.
+Axiom~\ref{ax:cells} applies the same principle to cells instead of particles.
+\end{remark}
+
+\subsection{The dynamics}
+
+The motion of Definition~\ref{def:ideal} defines a flow $\phi_t\colon\X_N\to\X_N$, $t\in\R$, away from a set of measure zero of trajectories that meet an edge or a corner of $\Lambda$.
+The flow conserves $H_N$, so it maps each energy surface $\Sigma_E$ into itself.
+It also preserves the Liouville measure.
+For free motion this preservation is Liouville's theorem \citep{arnold1989}, and for motion with specular reflection at the faces of a polyhedron it is a standard property of billiard flows \citep{chernov2006}.
+The flow therefore preserves the \emph{surface measure} $\nu_E$ defined, for measurable $A\subseteq\X_N$, by
+\begin{equation}
+\nu_E(A)=\int_{A\cap\Sigma_E}\frac{\dd\sigma}{|\nabla H_N|},
+\label{eq:surface-measure}
+\end{equation}
+where $\sigma$ is the $(6N-1)$-dimensional surface measure on $\Sigma_E$ and $\nabla H_N$ is the gradient of $H_N$ in $\R^{6N}$ \citep{khinchin1949}.
+
+\begin{hypothesis}[Ergodicity on the energy surface]
+\label{hyp:ergodic}
+For each $E>0$, the flow restricted to $\Sigma_E$ is ergodic with respect to $\nu_E$: every measurable subset of $\Sigma_E$ that the flow maps into itself has $\nu_E$-measure zero or full $\nu_E$-measure.
+\end{hypothesis}
+
+\begin{remark}[Status of the hypothesis]
+\label{rem:ergodic-status}
+Hypothesis~\ref{hyp:ergodic} fails for the strictly non-interacting gas of Definition~\ref{def:ideal}.
+Under specular reflection in a cube, the magnitudes $|p_{i,x}|$, $|p_{i,y}|$ and $|p_{i,z}|$ of every momentum component of every particle are conserved separately.
+An ideal gas is therefore understood, here as elsewhere, as the limit of a gas of rarely interacting particles.
+The interaction is rare enough to make a negligible contribution to the energy and to the pressure, and frequent enough to make the motion ergodic.
+For hard disks in a torus, ergodicity has been proved for typical systems \citep{simanyi2003}.
+Every result below that uses Hypothesis~\ref{hyp:ergodic} says so.
+The results of Sections~\ref{sec:resolution}, \ref{sec:labels}, \ref{sec:entropy}, \ref{sec:laws} and~\ref{sec:mech} do not use it.
+\end{remark}
+
+%======================================================================
+\section{Consequences of a fixed resolution}
+\label{sec:resolution}
+%======================================================================
+
+\begin{lemma}[No sharp energy surface]
+\label{lem:noshell}
+Under Axioms~\ref{ax:bounded} and~\ref{ax:resolution}, no description equals the energy surface $\Sigma_E$ up to a set of measure zero.
+Every description that contains $\Sigma_E$ up to a set of measure zero has Liouville measure at least $h^{3N}$.
+\end{lemma}
+
+\begin{proof}
+The surface $\Sigma_E$ is the product of $\Lambda^{N}$ with a sphere of radius $\sqrt{2mE}$ in $\R^{3N}$, so $\mu_N(\Sigma_E)=0$.
+By Axiom~\ref{ax:resolution} a description is a union of cells, and a non-empty union of cells has measure at least $h^{3N}>0$.
+No set of positive measure equals a set of measure zero up to a null set.
+A description containing $\Sigma_E$ is non-empty, so its measure is at least $h^{3N}$.
+\end{proof}
+
+The observer therefore cannot describe the gas as having energy exactly $E$.
+The smallest description consistent with energy $E$ is a band of energies of positive width, and this band is modelled here by the shell $W(E,\Delta E)$ of Definition~\ref{def:shell}.
+The thickness $\Delta E>0$ is fixed by the resolution and is treated as a parameter.
+Theorem~\ref{thm:equipartition} and Corollary~\ref{cor:shell-insensitive} show that the results do not depend on it at leading order in $N$.
+
+\begin{lemma}[Measure of the shell]
+\label{lem:shell-measure}
+Write $a=3N/2$.
+The energy ball and the energy shell have Liouville measures
+\begin{align}
+\mu_N(B_E)&=V^{N}\,\omega_{3N}\,(2mE)^{a},\label{eq:ball-measure}\\
+\mu_N\bigl(W(E,\Delta E)\bigr)&=V^{N}\,\omega_{3N}\,(2mE)^{a}\,\bigl[1-(1-\delta)^{a}\bigr].\label{eq:shell-measure}
+\end{align}
+Both are finite and positive, so the shell satisfies Axiom~\ref{ax:bounded}.
+\end{lemma}
+
+\begin{proof}
+The energy does not depend on positions, so $B_E=\Lambda^{N}\times\{p\in\R^{3N}:|p|^{2}\le2mE\}$.
+The first factor has measure $V^{N}$ and the second is a ball of radius $\sqrt{2mE}$ in $\R^{3N}$, of measure $\omega_{3N}(2mE)^{3N/2}$.
+The shell is $B_E\setminus B_{E-\Delta E}$ with $B_{E-\Delta E}\subseteq B_E$, and $(E-\Delta E)^{a}=E^{a}(1-\delta)^{a}$.
+\end{proof}
+
+%======================================================================
+\section{States without labels}
+\label{sec:labels}
+%======================================================================
+
+\subsection{Permutation orbits}
+
+The symmetric group $\Sym_N$ of permutations of $\{1,\dots,N\}$ acts on $\X_N$ by $\sigma\cdot(y_1,\dots,y_N)=(y_{\sigma(1)},\dots,y_{\sigma(N)})$.
+The \emph{orbit} of $x$ is $\Sym_N\cdot x=\{\sigma\cdot x:\sigma\in\Sym_N\}$.
+A region $A\subseteq\X_N$ is \emph{symmetric} if $\sigma\cdot A=A$ for every $\sigma\in\Sym_N$.
+The shells and balls of Definition~\ref{def:shell} are symmetric.
+
+\begin{proposition}[States are orbits]
+\label{prop:orbits}
+Under Axiom~\ref{ax:labels}, two points of the same orbit take the same value on every observable.
+Hence the observer cannot separate them, and its states are the orbits of $\Sym_N$ in $\X_N$.
+\end{proposition}
+
+\begin{proof}
+If $x'=\sigma\cdot x$, then $f(x')=f(x)$ for every observable $f$ by Axiom~\ref{ax:labels}.
+\end{proof}
+
+\begin{lemma}[Measure on the space of orbits]
+\label{lem:quotient}
+Let $F=\{x\in\X_N:\ q_{1,1}<q_{2,1}<\dots<q_{N,1}\}$, where $q_{i,1}$ is the first Cartesian coordinate of the position of particle $i$.
+Then:
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item the sets $\sigma\cdot F$, $\sigma\in\Sym_N$, are pairwise disjoint, and their union is $\X_N$ minus a set of measure zero;
+\item every orbit outside that null set meets $F$ in exactly one point;
+\item for every symmetric measurable region $A$, $\mu_N(A\cap F)=\mu_N(A)/N!$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Let $D=\{x:\ q_{i,1}=q_{j,1}\text{ for some }i\ne j\}$.
+Each set $\{q_{i,1}=q_{j,1}\}$ is a hyperplane of $\R^{6N}$, so $\mu_N(D)=0$.
+For $x\notin D$ the first coordinates are distinct, and exactly one permutation $\sigma$ sorts them into increasing order, which places $\sigma^{-1}\cdot x$ in $F$.
+The uniqueness of the sorting permutation gives (i) and (ii).
+For (iii), each permutation preserves $\mu_N$ and $A$ is symmetric, so $\mu_N(A\cap\sigma\cdot F)=\mu_N(\sigma\cdot(A\cap F))=\mu_N(A\cap F)$.
+Summing over the $N!$ disjoint sets $\sigma\cdot F$ gives $\mu_N(A)=N!\,\mu_N(A\cap F)$.
+\end{proof}
+
+The region $F$ represents the space of orbits: each state of the observer corresponds to one point of $F$, up to measure zero.
+The measure of a symmetric region, counted in states rather than in labelled points, is therefore $\mu_N(A)/N!$.
+
+\subsection{The count of a region}
+
+\begin{definition}[Count]
+\label{def:count}
+The \emph{count} of a symmetric region $A\subseteq\X_N$ of finite measure at resolution $h$ is
+\begin{equation}
+K(A)=\frac{\mu_N(A)}{N!\,h^{3N}}.
+\label{eq:count}
+\end{equation}
+For the shell, write $K(E,V,N)=K\bigl(W(E,\Delta E;V,N)\bigr)$, with $\Delta E$ held fixed.
+\end{definition}
+
+The count~\eqref{eq:count} is the measure of the region on the space of orbits (Lemma~\ref{lem:quotient}), expressed in units of the cell measure (Axiom~\ref{ax:resolution}).
+Ingredients~\ref{ing:cell} and~\ref{ing:nfact} of Section~\ref{sec:intro} are thereby obtained from Axioms~\ref{ax:resolution} and~\ref{ax:labels}.
+
+\subsection{Occupation counting in the dilute regime}
+
+The count~\eqref{eq:count} uses measure on the space of orbits.
+A second way to count states without labels uses occupations of position cells, and the two agree when the gas is dilute.
+
+\begin{proposition}[Occupation counts]
+\label{prop:occupation}
+Partition $\Lambda$ into $M$ congruent position cells of volume $v=V/M$, and let $N\le M/2$.
+A positional configuration of $N$ unlabelled particles at this resolution is an \emph{occupation function} $n\colon\{1,\dots,M\}\to\{0,1,2,\dots\}$ with $\sum_jn(j)=N$.
+Let $C_{\le1}$ be the number of occupation functions with every $n(j)\le1$, and $C$ the number of all occupation functions.
+Then
+\begin{equation}
+\frac{(M-N)^{N}}{N!}\le C_{\le1}=\binom{M}{N}\le\frac{M^{N}}{N!}\le C=\binom{M+N-1}{N}\le\frac{(M+N)^{N}}{N!},
+\label{eq:occupation-bounds}
+\end{equation}
+and both $\ln C_{\le1}$ and $\ln C$ differ from $\ln\bigl(M^{N}/N!\bigr)$ by at most $2N^{2}/M$.
+\end{proposition}
+
+\begin{proof}
+An occupation function with values in $\{0,1\}$ is a choice of $N$ of the $M$ cells, so $C_{\le1}=\binom MN=\prod_{j=0}^{N-1}(M-j)/N!$.
+Each factor lies in $[M-N,M]$, which gives the first two inequalities.
+An arbitrary occupation function is a multiset of size $N$ drawn from $M$ cells, so $C=\binom{M+N-1}{N}=\prod_{j=0}^{N-1}(M+j)/N!$.
+Each factor lies in $[M,M+N]$, which gives the last two inequalities.
+For the logarithms, $0\le-N\ln(1-N/M)\le2N^{2}/M$ when $N/M\le\tfrac12$, since $-\ln(1-u)\le u/(1-u)\le2u$ for $0\le u\le\tfrac12$.
+Likewise $0\le N\ln(1+N/M)\le N^{2}/M$.
+\end{proof}
+
+The quantity $M^{N}/N!=V^{N}/(N!\,v^{N})$ is the positional factor of~\eqref{eq:count} when the single-particle cell of measure $h^{3}$ is the product of a position cell of volume $v$ and a momentum cell of volume $h^{3}/v$.
+Proposition~\ref{prop:occupation} shows that the counts with and without multiple occupation of a cell agree with this factor to within $2N^{2}/M$ in the logarithm.
+Per particle the discrepancy is at most $2N/M=2(N/V)v$, the number density times twice the cell volume.
+The ideal gas is the regime in which this number is small, and in that regime the statistics of multiple occupation do not affect the count.
+
+%======================================================================
+\section{Weights from the traversal}
+\label{sec:weights}
+%======================================================================
+
+\begin{theorem}[Weights on the energy surface]
+\label{thm:weights}
+Assume Hypothesis~\ref{hyp:ergodic}.
+For every $E>0$, every measurable $A\subseteq\Sigma_E$, and $\nu_E$-almost every initial point $x\in\Sigma_E$,
+\begin{equation}
+\lim_{\tau\to\infty}\frac1\tau\int_0^{\tau}\mathbf 1_A\bigl(\phi_t(x)\bigr)\,\dd t=\frac{\nu_E(A)}{\nu_E(\Sigma_E)},
+\label{eq:birkhoff}
+\end{equation}
+where $\mathbf 1_A$ is the indicator function of $A$.
+More generally, for every $\nu_E$-integrable function $g$ on $\Sigma_E$, the time average of $g$ along almost every trajectory equals the $\nu_E$-average of $g$.
+\end{theorem}
+
+\begin{proof}
+The flow preserves the finite measure $\nu_E$ and is ergodic with respect to it.
+The statement is the ergodic theorem for flows \citep{birkhoff1931,walters1982}.
+\end{proof}
+
+\begin{proposition}[Weights on the shell]
+\label{prop:shell-weights}
+The normalised Liouville measure $\mu_N(\,\cdot\cap W)/\mu_N(W)$ on the shell $W=W(E,\Delta E)$ is invariant under the flow.
+It gives equal weight to cells of equal measure, and it decomposes as
+\begin{equation}
+\mu_N(A\cap W)=\int_{E-\Delta E}^{E}\nu_{E'}(A\cap\Sigma_{E'})\,\dd E'
+\label{eq:coarea}
+\end{equation}
+for every measurable $A$.
+\end{proposition}
+
+\begin{proof}
+Invariance holds because the flow preserves $\mu_N$ and maps $W$ into itself.
+Equal weight for equal measure holds by construction.
+Equation~\eqref{eq:coarea} is the coarea formula applied to $H_N$ with the density~\eqref{eq:surface-measure}.
+\end{proof}
+
+Theorem~\ref{thm:weights} fixes the weights along each energy surface from the dynamics alone.
+The observer cannot resolve which surface of the shell the gas occupies (Lemma~\ref{lem:noshell}).
+By Axiom~\ref{ax:cells} it then gives all cells of the shell equal weight, which is the normalised Liouville measure of Proposition~\ref{prop:shell-weights}.
+By~\eqref{eq:coarea}, this measure is the superposition, with uniform density in energy, of the surface measures that the dynamics produces.
+The two sources of weight are therefore consistent, and ingredient~\ref{ing:equal} is obtained.
+
+\begin{remark}[Visiting does not change the count]
+\label{rem:three-counts}
+Three different numbers are associated with the gas, and they should not be confused.
+The first is the count $K$ of resolved states in a description, which depends only on the description and the resolution.
+The second is $\log_2K$, the number of binary distinctions needed to locate one state among them (Section~\ref{sec:entropy}).
+The third is the number of times the trajectory enters a given cell during an interval of time, which grows without bound by Poincar\'e recurrence \citep{poincare1890}.
+The trajectory enters cells without any act of the observer, and the number of such entries does not alter $K$.
+No quantity defined from $K$ changes with the duration of observation.
+\end{remark}
+
+%======================================================================
+\section{Entropy as a locating cost}
+\label{sec:entropy}
+%======================================================================
+
+\subsection{Locating a state}
+
+\begin{definition}[Locating procedure and cost]
+\label{def:locating}
+Let a finite set of $K\ge1$ alternatives be given.
+A \emph{locating procedure} is a rooted binary tree whose $K$ leaves are labelled bijectively by the alternatives.
+Each internal node is a \emph{binary distinction}: a question with two answers that sends the alternatives consistent with that node to its two children.
+The \emph{cost} of locating an alternative is the depth of its leaf, the number of distinctions on the path from the root to it.
+\end{definition}
+
+\begin{theorem}[Cost of locating]
+\label{thm:locating}
+Let $K\ge1$ alternatives carry equal weights $1/K$.
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item Every locating procedure has average cost at least $\log_2K$.
+\item There is a locating procedure whose cost is at most $\lceil\log_2K\rceil$ for every alternative, so that the minimum average cost lies in $[\log_2K,\log_2K+1)$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) Let $d_1,\dots,d_K$ be the leaf depths of a locating procedure.
+The leaves of a binary tree satisfy Kraft's inequality $\sum_{j}2^{-d_j}\le1$ \citep{kraft1949,cover2006}.
+The function $u\mapsto2^{-u}$ is convex, so by Jensen's inequality $2^{-\bar d}\le\frac1K\sum_j2^{-d_j}\le\frac1K$, where $\bar d=\frac1K\sum_jd_j$.
+Hence $\bar d\ge\log_2K$.
+(ii) Assign distinct binary strings of length $\lceil\log_2K\rceil$ to the alternatives, which is possible because $2^{\lceil\log_2K\rceil}\ge K$.
+Then ask for the digits in order and prune the branches that carry no alternative.
+Each alternative is reached in at most $\lceil\log_2K\rceil<\log_2K+1$ distinctions.
+\end{proof}
+
+\subsection{Definition and value of the entropy}
+
+\begin{definition}[Entropy]
+\label{def:entropy}
+The \emph{entropy} of the shell is
+\begin{equation}
+S(E,V,N)=\kB\ln K(E,V,N),
+\label{eq:entropy}
+\end{equation}
+where $K$ is the count of Definition~\ref{def:count} and $\kB>0$ is a constant that fixes the unit of entropy.
+\end{definition}
+
+By Theorem~\ref{thm:locating}, $S/(\kB\ln2)$ is the minimum average number of binary distinctions needed to locate the state of the gas among the resolved states of its description, to within one distinction.
+The equal weights required by Theorem~\ref{thm:locating} are those of Section~\ref{sec:weights}.
+Each binary distinction contributes $\kB\ln2$ to the entropy.
+Definition~\ref{def:entropy} therefore gives ingredient~\ref{ing:log} an operational meaning: the entropy is the cost of locating the state, in units of $\kB\ln2$ per distinction.
+The count $K$ need not be an integer, and replacing it by an integer part changes $S$ by less than $\kB\ln(1+1/\lfloor K\rfloor)$.
+
+\begin{proposition}[Entropy of the ideal gas]
+\label{prop:entropy-explicit}
+With $a=3N/2$ and $\delta=\Delta E/E$,
+\begin{equation}
+\frac{S}{\kB}=N\ln V+\ln\omega_{3N}+a\ln(2mE)+\ln\bigl[1-(1-\delta)^{a}\bigr]-\ln N!-3N\ln h.
+\label{eq:entropy-explicit}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Insert~\eqref{eq:shell-measure} into~\eqref{eq:count} and take the logarithm.
+\end{proof}
+
+\begin{proposition}[Role of the resolution]
+\label{prop:hdep}
+The resolution $h$ enters~\eqref{eq:entropy-explicit} only through the additive term $-3N\kB\ln h$.
+Every derivative of $S$ with respect to $E$ or $V$ is independent of $h$.
+At fixed $E$, $V$ and $N$, $S\to+\infty$ as $h\to0^{+}$.
+\end{proposition}
+
+\begin{proof}
+The first two statements follow by inspection of~\eqref{eq:entropy-explicit}, and the third because $-3N\ln h\to+\infty$.
+\end{proof}
+
+Proposition~\ref{prop:hdep} is the precise sense in which a fixed resolution is needed.
+Temperature and pressure (Section~\ref{sec:laws}) do not depend on $h$, but the entropy itself has a finite value only while $h$ is held fixed.
+
+\subsection{Extensivity and the Sackur--Tetrode form}
+
+\begin{proposition}[Sackur--Tetrode entropy]
+\label{prop:sackur}
+The entropy~\eqref{eq:entropy-explicit} satisfies
+\begin{equation}
+\frac{S}{\kB}=N\left[\ln\!\left(\frac VN\left(\frac{4\pi mE}{3Nh^{2}}\right)^{3/2}\right)+\frac52\right]+R_N,
+\label{eq:sackur}
+\end{equation}
+with remainder
+\begin{equation}
+R_N=-\ln\bigl(\sqrt6\,\pi N\bigr)+\ln\bigl[1-(1-\delta)^{3N/2}\bigr]-\frac{\theta_1}{18N}-\frac{\theta_2}{12N},
+\label{eq:remainder}
+\end{equation}
+for some $\theta_1,\theta_2\in(0,1)$.
+\end{proposition}
+
+\begin{proof}
+For real $z>0$, Stirling's formula with remainder gives $\ln\Gamma(z+1)=z\ln z-z+\tfrac12\ln(2\pi z)+\theta/(12z)$ for some $\theta\in(0,1)$.
+Apply it with $z=a=3N/2$ to $\ln\omega_{3N}=a\ln\pi-\ln\Gamma(a+1)$, and with $z=N$ to $\ln N!=\ln\Gamma(N+1)$.
+Collecting terms, $a\ln\pi-a\ln a+a\ln(2mE)-3N\ln h=\tfrac{3N}{2}\ln\bigl(4\pi mE/(3Nh^{2})\bigr)$.
+Further, $N\ln V-N\ln N=N\ln(V/N)$ and $a+N=\tfrac52N$.
+The remaining terms are $-\tfrac12\ln(2\pi a)-\tfrac12\ln(2\pi N)=-\ln(\sqrt6\,\pi N)$ and the two Stirling remainders, with $12a=18N$.
+\end{proof}
+
+The bracket in~\eqref{eq:sackur} depends only on $V/N$ and $E/N$, and $R_N/N\to0$ as $N\to\infty$ at fixed $\delta$.
+The entropy per particle is therefore a function of the volume and energy per particle alone, up to a term that vanishes as $N\to\infty$.
+Equation~\eqref{eq:sackur} is the entropy of Sackur and Tetrode \citep{sackur1911,tetrode1912}.
+Without the factor $N!$ of Lemma~\ref{lem:quotient}, the term $N\ln(V/N)$ would read $N\ln V$, and the entropy per particle would grow with $N$ at fixed $V/N$.
+Section~\ref{sec:mixtures} quantifies the consequence.
+
+%======================================================================
+\section{Temperature, pressure and the equation of state}
+\label{sec:laws}
+%======================================================================
+
+\subsection{Definitions}
+
+\begin{definition}[Temperature and pressure]
+\label{def:TP}
+The \emph{temperature} $T$ and the \emph{pressure} $P$ of the shell are defined by
+\begin{equation}
+\frac1T=\left(\frac{\partial S}{\partial E}\right)_{V,N},\qquad
+P=T\left(\frac{\partial S}{\partial V}\right)_{E,N},
+\label{eq:TP}
+\end{equation}
+with the thickness $\Delta E$ held fixed in both derivatives.
+\end{definition}
+
+Equations~\eqref{eq:TP} are the standard thermodynamic definitions of temperature and pressure as conjugates of energy and volume.
+The pressure of Definition~\ref{def:TP} is called the \emph{thermodynamic pressure}, to distinguish it from the mechanical pressure of Section~\ref{sec:mech}.
+By~\eqref{eq:entropy-explicit}, $\partial S/\partial E>0$, so $T$ is positive and finite.
+
+\subsection{The ideal gas law}
+
+\begin{theorem}[Ideal gas law]
+\label{thm:igl}
+For every $N\ge1$, every $m>0$, every $h>0$ and every $\Delta E\in(0,E]$,
+\begin{equation}
+PV=N\kB T.
+\label{eq:igl}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By~\eqref{eq:entropy-explicit}, $V$ enters $S$ only through the term $N\kB\ln V$.
+Hence $(\partial S/\partial V)_{E,N}=N\kB/V$, and~\eqref{eq:TP} gives $P=N\kB T/V$.
+\end{proof}
+
+Relation~\eqref{eq:igl} is exact, and it holds for one particle as well as for many.
+Its proof uses only the factor $V^{N}$ in the measure of the shell.
+That factor arises because the energy does not depend on positions and the positions range over the container independently.
+The same proof applies to every region whose measure contains $V$ only through such a factor.
+
+\begin{theorem}[Independence from the nature of the particles]
+\label{thm:carrier}
+Let each particle carry, besides its position $q_i\in\Lambda$, internal and kinetic coordinates $z_i$ in a measure space $(Z,\lambda)$, and let the energy be $H(x)=\sum_i\varphi(z_i)$ for a measurable function $\varphi\colon Z\to\R$ that does not involve positions.
+Let the count of the shell $\{E-\Delta E<H\le E\}$ be finite and positive, with cells of fixed measure in $\Lambda\times Z$.
+Then $PV=N\kB T$ holds exactly, whatever $Z$, $\lambda$ and $\varphi$ are.
+\end{theorem}
+
+\begin{proof}
+The shell is $\Lambda^{N}\times B$ for a set $B\subseteq Z^{N}$ that does not depend on $V$.
+Its measure is $V^{N}\lambda^{N}(B)$, and the proof of Theorem~\ref{thm:igl} applies unchanged.
+\end{proof}
+
+\begin{corollary}[Avogadro's law]
+\label{cor:avogadro}
+Two ideal gases in the sense of Theorem~\ref{thm:carrier} at the same pressure, volume and temperature contain the same number of particles, whatever their masses, internal structure or energy functions.
+\end{corollary}
+
+\begin{proof}
+By Theorem~\ref{thm:carrier}, $N=PV/(\kB T)$ for each gas.
+\end{proof}
+
+\begin{corollary}[Boyle, Charles and Gay-Lussac]
+\label{cor:classical}
+At fixed $N$: at fixed $T$ the product $PV$ is constant; at fixed $P$ the volume is proportional to $T$; at fixed $V$ the pressure is proportional to $T$.
+\end{corollary}
+
+\begin{proof}
+Each statement is~\eqref{eq:igl} with two of $P$, $V$ and $T$ related at fixed $N$.
+\end{proof}
+
+\subsection{Equipartition}
+
+\begin{theorem}[Equipartition]
+\label{thm:equipartition}
+Let $a=3N/2$ and $\delta=\Delta E/E$.
+The temperature of Definition~\ref{def:TP} satisfies
+\begin{equation}
+E=a\,\kB T\,(1-\eta),\qquad
+\eta=\frac{\delta\,(1-\delta)^{a-1}}{1-(1-\delta)^{a}}\in[0,1).
+\label{eq:equipartition}
+\end{equation}
+If $a\delta\ge1$, then
+\begin{equation}
+0\le\eta\le\frac{1}{(e-1)(a-1)}=\frac{2}{(e-1)(3N-2)},
+\label{eq:eta-bound}
+\end{equation}
+where $e$ is the base of the natural logarithm.
+\end{theorem}
+
+\begin{proof}
+By~\eqref{eq:shell-measure}, $S/\kB=c+\ln\bigl[E^{a}-(E-\Delta E)^{a}\bigr]$ with $c$ independent of $E$.
+Differentiating at fixed $\Delta E$,
+\[
+\frac{1}{\kB T}=\frac{a\bigl[E^{a-1}-(E-\Delta E)^{a-1}\bigr]}{E^{a}-(E-\Delta E)^{a}}=\frac aE\cdot\frac{1-(1-\delta)^{a-1}}{1-(1-\delta)^{a}}.
+\]
+The last factor equals $1-\eta$ with $\eta$ as in~\eqref{eq:equipartition}, since $1-(1-\delta)^{a}-\delta(1-\delta)^{a-1}=1-(1-\delta)^{a-1}$.
+It lies in $(0,1]$ because $a\ge\tfrac32$, which gives $\eta\in[0,1)$.
+For the bound, $(1-\delta)^{a-1}\le e^{-\delta(a-1)}$ because $a-1>0$, and $1-(1-\delta)^{a}\ge1-e^{-a\delta}\ge1-e^{-1}$ when $a\delta\ge1$.
+Hence $\eta\le\delta e^{-\delta(a-1)}/(1-e^{-1})$.
+The function $\delta\mapsto\delta e^{-\delta(a-1)}$ has maximum $1/\bigl(e(a-1)\bigr)$ over $\delta>0$, and $e/(e-1)\cdot1/\bigl(e(a-1)\bigr)=1/\bigl((e-1)(a-1)\bigr)$.
+\end{proof}
+
+\begin{corollary}[Insensitivity to the thickness]
+\label{cor:shell-insensitive}
+If the thickness satisfies $\Delta E\ge2E/(3N)$, then $E=\tfrac32N\kB T\,(1-\eta)$ with $0\le\eta\le2/\bigl((e-1)(3N-2)\bigr)$.
+In particular $E/(N\kB T)\to\tfrac32$ as $N\to\infty$, whatever the thickness, provided it is not smaller than $2E/(3N)$.
+\end{corollary}
+
+\begin{proof}
+The condition is $a\delta\ge1$; apply Theorem~\ref{thm:equipartition}.
+\end{proof}
+
+\begin{remark}[Ball and shell]
+\label{rem:ball}
+If the shell is replaced by the ball $B_E$, which is the case $\delta=1$, then $\eta=0$ and $E=\tfrac32N\kB T$ holds exactly.
+The ball contains energies far below that of the gas, which the flow never reaches because it conserves the energy, while the shell contains only energies within the resolved width.
+The difference between the two choices is the difference between the entropies of Gibbs and of Boltzmann, discussed in \citep{gibbs1902,dunkel2014}.
+By~\eqref{eq:eta-bound} the difference is of relative order $N^{-1}$.
+\end{remark}
+
+\begin{corollary}[General quadratic energy]
+\label{cor:quadratic}
+In the setting of Theorem~\ref{thm:carrier}, let $Z=\R^{f}$ with Lebesgue measure, and let $\varphi$ be a positive-definite quadratic form on $\R^{f}$.
+Then $E=\tfrac f2N\kB T(1-\eta_f)$, where $\eta_f$ is given by~\eqref{eq:equipartition} with $a=fN/2$.
+\end{corollary}
+
+\begin{proof}
+The set $\{z\in\R^{fN}:\sum_i\varphi(z_i)\le E\}$ is an ellipsoid, whose measure is a constant times $E^{fN/2}$.
+The proof of Theorem~\ref{thm:equipartition} applies with $a=fN/2$.
+\end{proof}
+
+\subsection{The adiabatic law}
+
+\begin{proposition}[Adiabatic law]
+\label{prop:adiabatic}
+Consider a change of $E$ and $V$ at fixed $N$ that keeps the entropy and the relative thickness $\delta$ constant.
+Along such a change, $VE^{3/2}$ and $PV^{5/3}$ are constant.
+\end{proposition}
+
+\begin{proof}
+At fixed $N$ and $\delta$,~\eqref{eq:entropy-explicit} reads $S/\kB=N\ln V+\tfrac{3N}{2}\ln E+c$ with $c$ constant.
+Constant $S$ therefore means constant $VE^{3/2}$.
+By Theorems~\ref{thm:igl} and~\ref{thm:equipartition}, $PV=N\kB T=\tfrac23E/(1-\eta)$, and $\eta$ depends only on $\delta$ and $N$.
+Writing $E=C^{2/3}V^{-2/3}$ for the constant $C=VE^{3/2}$ gives $PV^{5/3}=\tfrac23C^{2/3}/(1-\eta)$, which is constant.
+\end{proof}
+
+%======================================================================
+\section{Mechanical pressure}
+\label{sec:mech}
+%======================================================================
+
+The pressure of Definition~\ref{def:TP} is defined from the entropy.
+This section computes the pressure as a force on the walls and compares the two.
+
+\begin{definition}[Mechanical pressure]
+\label{def:mech}
+Along a trajectory, a particle that reflects at a face transfers to that face the \emph{impulse} $2|p_\perp|$, where $p_\perp$ is its momentum component normal to the face.
+Let $J(\tau)$ be the total impulse transferred to all six faces during the time interval $[0,\tau]$.
+The \emph{mechanical pressure} of the trajectory is
+\begin{equation}
+\Pmech=\lim_{\tau\to\infty}\frac{J(\tau)}{\tau\cdot6L^{2}},
+\label{eq:pmech}
+\end{equation}
+the time-averaged force per unit area of wall, whenever the limit exists.
+\end{definition}
+
+\begin{theorem}[Mechanical pressure]
+\label{thm:mech}
+For every trajectory of the ideal gas of Definition~\ref{def:ideal} that meets no edge or corner of $\Lambda$, the limit~\eqref{eq:pmech} exists and
+\begin{equation}
+\Pmech V=\tfrac23H_N(x),
+\label{eq:pmech-value}
+\end{equation}
+where $H_N(x)$ is the energy of the trajectory.
+The identity holds for every $N\ge1$.
+\end{theorem}
+
+\begin{proof}
+Particles of Definition~\ref{def:ideal} do not interact, so the impulse is a sum over particles and over the three axes.
+Fix a particle and the $x$-axis, and let $v_x=p_x/m$ be its velocity component along that axis.
+If $v_x=0$, the particle never meets the faces normal to the $x$-axis, and its contribution is $0=p_x^{2}/(mL)\cdot\tau$.
+If $v_x\ne0$, the magnitude $|v_x|$ is conserved, and the $x$-coordinate moves back and forth across $[0,L]$ with period $2L/|v_x|$.
+In each period the particle meets each of the two faces once and transfers an impulse $2|p_x|$ at each meeting.
+The number of meetings during $[0,\tau]$ is $\tau|v_x|/L+r$ with $|r|\le2$, so the impulse transferred to the two faces is $2|p_x|\bigl(\tau|v_x|/L+r\bigr)=\tau\,2p_x^{2}/(mL)+O(1)$.
+Summing over the three axes and over the particles gives $J(\tau)=\tau\,\frac{2}{mL}\sum_i|p_i|^{2}+O(1)=\tau\,\frac{4}{L}H_N(x)+O(1)$.
+Dividing by $6L^{2}\tau$ and letting $\tau\to\infty$ gives $\Pmech=\tfrac{2}{3}H_N(x)/L^{3}$.
+\end{proof}
+
+Relation~\eqref{eq:pmech-value} is the kinetic pressure of Clausius, here obtained as an exact time average rather than as an average over a distribution of velocities.
+It needs neither Hypothesis~\ref{hyp:ergodic} nor any statement about the distribution of momenta.
+When the particles interact rarely, the same identity holds for the time averages by the virial theorem, provided the interparticle forces contribute negligibly to the virial \citep{clausius1870}.
+
+\begin{corollary}[Agreement of the two pressures]
+\label{cor:agreement}
+Let a trajectory have energy $E_0\in(E-\Delta E,E]$, so that it lies in the shell $W(E,\Delta E)$.
+Its mechanical pressure and the thermodynamic pressure $P$ of the shell satisfy
+\begin{equation}
+(1-\delta)(1-\eta)\,P<\Pmech\le(1-\eta)\,P,
+\label{eq:agreement}
+\end{equation}
+with $\eta$ as in Theorem~\ref{thm:equipartition}.
+\end{corollary}
+
+\begin{proof}
+By Theorems~\ref{thm:igl} and~\ref{thm:equipartition}, $PV=N\kB T=\tfrac23E/(1-\eta)$.
+By Theorem~\ref{thm:mech}, $\Pmech V=\tfrac23E_0$, and $E(1-\delta)<E_0\le E$.
+\end{proof}
+
+The mechanical and thermodynamic pressures therefore agree up to the factor $1-\eta$, which tends to one as $N\to\infty$ by Corollary~\ref{cor:shell-insensitive}, and up to the resolved width of the energy.
+
+%======================================================================
+\section{One particle}
+\label{sec:single}
+%======================================================================
+
+\subsection{An isolated particle}
+
+\begin{theorem}[An isolated particle]
+\label{thm:single-isolated}
+Let $N=1$ and let the particle have kinetic energy $\varepsilon$.
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item Its mechanical pressure satisfies $\Pmech V=\tfrac23\varepsilon$ exactly.
+\item The thermodynamic pressure and temperature of the shell $W(\varepsilon,\Delta E;V,1)$ satisfy $PV=\kB T$ exactly.
+\item That temperature satisfies $\kB T=\tfrac23\varepsilon/(1-\eta_1)$ with
+\begin{equation}
+1-\eta_1=\frac{1-(1-\delta)^{1/2}}{1-(1-\delta)^{3/2}},
+\label{eq:eta-one}
+\end{equation}
+which increases from $\tfrac13$ as $\delta\to0^{+}$ to $1$ at $\delta=1$.
+Hence $\tfrac23\varepsilon\le\kB T<2\varepsilon$, and the temperature of an isolated particle is fixed by its energy only up to a factor that depends on the resolved width of that energy.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Part (i) is Theorem~\ref{thm:mech} with $N=1$, and part (ii) is Theorem~\ref{thm:igl} with $N=1$.
+For (iii), set $a=\tfrac32$ in the proof of Theorem~\ref{thm:equipartition}, which gives $1/(\kB T)=\tfrac{3}{2\varepsilon}(1-\eta_1)$ with~\eqref{eq:eta-one}.
+As $\delta\to0^{+}$, numerator and denominator of~\eqref{eq:eta-one} behave as $\delta/2$ and $3\delta/2$, so $1-\eta_1\to\tfrac13$.
+At $\delta=1$ the ratio equals one.
+The ratio is increasing on $(0,1]$, because with $s=(1-\delta)^{1/2}\in[0,1)$ it equals $(1-s)/(1-s^{3})=1/(1+s+s^{2})$, which decreases in $s$.
+\end{proof}
+
+A single isolated particle thus obeys the mechanical law $\Pmech V=\tfrac23\varepsilon$ exactly, and the thermodynamic law $PV=\kB T$ exactly.
+What it lacks is a temperature fixed by its energy alone.
+Theorem~\ref{thm:single-gas} shows that the other particles of a gas supply that temperature.
+
+\subsection{One particle among many}
+
+\begin{definition}[Kinetic pressure of one particle]
+\label{def:p1}
+In a gas of $N$ particles, the \emph{kinetic pressure} of particle $1$ along a trajectory is
+\begin{equation}
+p_1=\frac{2}{3V}\,\overline{\varepsilon_1},\qquad
+\overline{\varepsilon_1}=\lim_{\tau\to\infty}\frac1\tau\int_0^{\tau}\varepsilon\bigl(p_1(t)\bigr)\,\dd t,
+\label{eq:p1}
+\end{equation}
+whenever the time average $\overline{\varepsilon_1}$ exists.
+\end{definition}
+
+By Theorem~\ref{thm:mech} applied to a single particle, $p_1$ is the time-averaged pressure that particle $1$ exerts on the walls during every interval in which it moves freely.
+
+\begin{theorem}[One particle in a gas]
+\label{thm:single-gas}
+Assume Hypothesis~\ref{hyp:ergodic}.
+Let the gas have energy $E_0\in(E-\Delta E,E]$.
+For almost every trajectory on $\Sigma_{E_0}$, the time-averaged kinetic energy of particle $1$ is $\overline{\varepsilon_1}=E_0/N$, and its kinetic pressure satisfies
+\begin{equation}
+(1-\delta)(1-\eta)\,\kB T<p_1V\le(1-\eta)\,\kB T,
+\label{eq:p1-law}
+\end{equation}
+where $T$ is the temperature of the shell $W(E,\Delta E;V,N)$ and $\eta$ is as in Theorem~\ref{thm:equipartition}.
+If $N\to\infty$ with $E/N$ and $V/N$ fixed, $\delta\to0$ and $N\delta\to\infty$, then $p_1V/(\kB T)\to1$.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:weights}, $\overline{\varepsilon_1}$ equals the $\nu_{E_0}$-average of $\varepsilon(p_1)$ for almost every trajectory.
+The surface measure $\nu_{E_0}$ is invariant under permutations of the particles, so the $\nu_{E_0}$-averages of $\varepsilon(p_i)$ are equal for all $i$.
+Their sum is the average of $H_N$, which equals $E_0$ on $\Sigma_{E_0}$, so each equals $E_0/N$.
+Then $p_1V=\tfrac23E_0/N$, and~\eqref{eq:p1-law} follows from $\tfrac23E/N=\kB T(1-\eta)$, which is Theorem~\ref{thm:equipartition}, and $E(1-\delta)<E_0\le E$.
+In the limit, $N\delta\to\infty$ gives $a\delta\ge1$ for all large $N$, so $\eta\to0$ by~\eqref{eq:eta-bound}, and $\delta\to0$ gives $1-\delta\to1$.
+Both bounds in~\eqref{eq:p1-law} therefore tend to one.
+\end{proof}
+
+\begin{remark}
+\label{rem:single}
+The two conditions on $\delta$ in Theorem~\ref{thm:single-gas} can be met together, for instance with $\delta=N^{-1/2}$.
+The law $p_1V=\kB T$ for one particle is therefore a statement about one particle among many.
+The time average along the history of that one particle replaces the average over the gas, by Theorem~\ref{thm:weights}.
+The remaining $N-1$ particles act as the reservoir that fixes the temperature, which an isolated particle lacks (Theorem~\ref{thm:single-isolated}).
+\end{remark}
+
+\subsection{The Maxwell--Boltzmann distribution}
+
+\begin{proposition}[Distribution of one momentum]
+\label{prop:mb}
+Let $N\ge2$ and let $\rho_N$ be the density of the momentum $p_1$ of particle $1$ under the normalised surface measure $\nu_{E}/\nu_{E}(\Sigma_{E})$.
+Then, with $d=3N$ and $R=\sqrt{2mE}$,
+\begin{equation}
+\rho_N(p)=\frac{\Gamma(d/2)}{\pi^{3/2}\,\Gamma\!\left(\frac{d-3}{2}\right)R^{3}}\left(1-\frac{|p|^{2}}{R^{2}}\right)^{\frac{d-5}{2}}\quad\text{for }|p|<R,
+\label{eq:rho-n}
+\end{equation}
+and $\rho_N(p)=0$ otherwise.
+If $N\to\infty$ with $\vartheta=2E/(3N)$ fixed, then for every $p\in\R^{3}$,
+\begin{equation}
+\rho_N(p)\to\bigl(2\pi m\vartheta\bigr)^{-3/2}\exp\!\left(-\frac{|p|^{2}}{2m\vartheta}\right).
+\label{eq:mb}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+On $\Sigma_E$ the gradient of $H_N$ with respect to the momenta has magnitude $|p|/m=R/m$, which is constant.
+Hence $\nu_E$ is a constant multiple of the product of Lebesgue measure on $\Lambda^{N}$ and the uniform surface measure on the sphere of radius $R$ in $\R^{d}$.
+For a point uniformly distributed on that sphere, the first three coordinates have the density~\eqref{eq:rho-n} \citep{diaconis1987}.
+For the limit, $R^{2}=2mE=3Nm\vartheta$, so $\bigl(1-|p|^{2}/R^{2}\bigr)^{(d-5)/2}=\bigl(1-|p|^{2}/(3Nm\vartheta)\bigr)^{(3N-5)/2}\to\exp\bigl(-|p|^{2}/(2m\vartheta)\bigr)$.
+For the prefactor, $\Gamma(d/2)/\Gamma\bigl((d-3)/2\bigr)\sim(d/2)^{3/2}$ as $d\to\infty$, and $R^{3}=(dm\vartheta)^{3/2}$, so the prefactor tends to $\pi^{-3/2}(2m\vartheta)^{-3/2}$.
+\end{proof}
+
+By Theorem~\ref{thm:equipartition}, $\vartheta=\kB T(1-\eta)\to\kB T$ under the conditions of Corollary~\ref{cor:shell-insensitive}, so the limit~\eqref{eq:mb} is the Maxwell--Boltzmann distribution at temperature $T$ \citep{maxwell1860}.
+By Theorem~\ref{thm:weights} it is also the distribution of the momentum of particle $1$ over time, along almost every trajectory.
+For finite $N$ the density~\eqref{eq:rho-n} vanishes for $|p|\ge R$, since no particle can carry more than the whole energy.
+For $N=1$ the momentum is confined to a sphere and has no density in $\R^{3}$, in agreement with Theorem~\ref{thm:single-isolated}.
+
+%======================================================================
+\section{Mixtures}
+\label{sec:mixtures}
+%======================================================================
+
+\begin{definition}[Mixture]
+\label{def:mixture}
+A \emph{mixture} of $r$ species consists of $N_j\ge1$ particles of species $j$, $j=1,\dots,r$, with $N=\sum_jN_j$, in the container $\Lambda$.
+The energy is a sum of position-independent single-particle terms that may differ between species.
+Axiom~\ref{ax:labels} is replaced by invariance of every observable under permutations within each species.
+The count of a symmetric region $A$ is $\mu_N(A)/\bigl(\prod_jN_j!\,h^{3N}\bigr)$.
+\end{definition}
+
+The denominator $\prod_jN_j!$ follows from Lemma~\ref{lem:quotient} applied to the group of permutations within species, whose order is $\prod_jN_j!$.
+
+\begin{theorem}[Dalton's law]
+\label{thm:dalton}
+Define the \emph{partial pressure} of species $j$ as $P_j=N_j\kB T/V$.
+Then the thermodynamic pressure of the mixture is $P=\sum_jP_j$.
+\end{theorem}
+
+\begin{proof}
+The shell has measure $V^{N}$ times a factor independent of $V$.
+As in Theorem~\ref{thm:igl}, $P=N\kB T/V=\sum_jN_j\kB T/V$.
+\end{proof}
+
+\begin{theorem}[Entropy of mixing]
+\label{thm:mixing}
+Let the container be divided by a partition into parts of volumes $V_j=x_jV$, with $x_j=N_j/N$, and let species $j$ be confined to part $j$, with the energy shell fixed.
+Removing the partition increases the entropy by
+\begin{equation}
+\Delta S=-\kB\sum_{j=1}^{r}N_j\ln x_j.
+\label{eq:mixing}
+\end{equation}
+If instead all particles belong to a single species, with $N_j$ particles initially in part $j$, removing the partition increases the entropy by
+\begin{equation}
+\Delta S_{\mathrm{same}}=-\kB\ln\frac{N!}{\prod_jN_j!}-\kB\sum_jN_j\ln x_j
+=\frac{r-1}{2}\,\kB\ln(2\pi N)+\frac{\kB}{2}\sum_j\ln x_j+O\!\left(\frac{\kB}{N}\right)
+\label{eq:mixing-same}
+\end{equation}
+as $N\to\infty$ at fixed $x_j$.
+\end{theorem}
+
+\begin{proof}
+The momentum part of the shell is unchanged by the partition, so only the positional factor changes.
+For distinct species, the positional measure with the partition is $\prod_jV_j^{N_j}$ and without it is $V^{N}$, and the symmetry factor $\prod_jN_j!$ is the same in both cases.
+The ratio of counts is $V^{N}/\prod_jV_j^{N_j}=\prod_jx_j^{-N_j}$, which gives~\eqref{eq:mixing}.
+For a single species, the symmetry factor is $N!$ in both cases.
+With the partition, the labelled positional measure of the configurations with exactly $N_j$ particles in part $j$ is $\frac{N!}{\prod_jN_j!}\prod_jV_j^{N_j}$, since $N!/\prod_jN_j!$ counts the assignments of labelled particles to parts.
+Without the partition it is $V^{N}$.
+The ratio of counts, without the partition to with it, is $\frac{\prod_jN_j!}{N!}\prod_jx_j^{-N_j}$, which gives the first expression in~\eqref{eq:mixing-same}.
+By Stirling's formula, $\ln\bigl(N!/\prod_jN_j!\bigr)=-\sum_jN_j\ln x_j-\tfrac{r-1}{2}\ln(2\pi N)-\tfrac12\sum_j\ln x_j+O(N^{-1})$, which gives the second.
+\end{proof}
+
+Equation~\eqref{eq:mixing} is the entropy of mixing of distinct gases, extensive in $N$.
+For identical gases the increase~\eqref{eq:mixing-same} grows only logarithmically, so the entropy per particle does not change when the partition is removed.
+Had the count omitted the factor $N!$, the configurations with the partition would have been counted with the labelled measure $\prod_jV_j^{N_j}$ and the increase for identical gases would have been $-\kB\sum_jN_j\ln x_j$.
+An entropy increase proportional to $N$ on joining two samples of the same gas is the Gibbs mixing paradox.
+The paradox is thus absent when states carry no labels, as Axiom~\ref{ax:labels} requires.
+
+%======================================================================
+\section{Free expansion}
+\label{sec:expansion}
+%======================================================================
+
+\begin{proposition}[Rarity of the contracted state]
+\label{prop:expansion}
+Let $\Lambda_{\mathrm L}=[0,L/2]\times[0,L]^{2}$ be the left half of the container and let $A_{\mathrm L}=\{x\in\Sigma_E:\ q_i\in\Lambda_{\mathrm L}\text{ for all }i\}$.
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item $\nu_E(A_{\mathrm L})/\nu_E(\Sigma_E)=2^{-N}$.
+\item Under Hypothesis~\ref{hyp:ergodic}, almost every trajectory spends the fraction $2^{-N}$ of its time in $A_{\mathrm L}$.
+\item The entropy of the shell restricted to the left half is lower than that of the full shell by $N\kB\ln2$, which is $N$ binary distinctions.
+\item If the flow sampled at a fixed time step $\tau_0>0$ is ergodic, the mean number of steps between successive entries into $A_{\mathrm L}$ is $2^{N}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(i) The surface measure factorises into a positional factor, Lebesgue measure on $\Lambda^{N}$, and a momentum factor, and $\mathrm{vol}(\Lambda_{\mathrm L})^{N}/\mathrm{vol}(\Lambda)^{N}=2^{-N}$.
+(ii) follows from (i) and Theorem~\ref{thm:weights}.
+(iii) The restriction replaces $V^{N}$ by $(V/2)^{N}$ in~\eqref{eq:shell-measure}, which changes $S$ by $-N\kB\ln2$.
+(iv) is Kac's lemma \citep{kac1947}: for an ergodic measure-preserving map of a probability space, the mean return time to a set of positive measure, starting in it, is the reciprocal of its measure.
+\end{proof}
+
+A gas released from the left half of the container is found there again only for the fraction $2^{-N}$ of the time.
+For a macroscopic $N$ this fraction is too small for the event to be observed, although Poincar\'e recurrence guarantees that it occurs \citep{poincare1890}.
+The entropy difference $N\kB\ln2$ is the cost of locating the gas in one half, one binary distinction per particle.
+
+%======================================================================
+\section{Discussion}
+\label{sec:discussion}
+%======================================================================
+
+\subsection{What was assumed and what was derived}
+
+Table~\ref{tab:status} lists the five ingredients of Section~\ref{sec:intro} and the source of each in the present derivation.
+
+\begin{table}[ht]
+\centering
+\caption{Status of the ingredients of the standard derivation.}
+\label{tab:status}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Ingredient & Standard status & Here \\
+\midrule
+\ref{ing:cell} cell of measure $h^{3}$ & quantum mechanics & unit of resolution (Axiom~\ref{ax:resolution}) \\
+\ref{ing:nfact} division by $N!$ & indistinguishability & orbits (Lemma~\ref{lem:quotient}) \\
+\ref{ing:equal} equal weights & postulate & dynamics and Axiom~\ref{ax:cells} (Section~\ref{sec:weights}) \\
+\ref{ing:log} $S=\kB\ln K$ & Boltzmann's principle & locating cost (Theorem~\ref{thm:locating}) \\
+\ref{ing:shell} shell thickness & convenience & positive resolution (Lemma~\ref{lem:noshell}) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Two inputs remain assumptions.
+The first is Hypothesis~\ref{hyp:ergodic}, whose status for interacting gases is discussed in Remark~\ref{rem:ergodic-status}.
+It is used only in Theorems~\ref{thm:weights} and~\ref{thm:single-gas}, in part (ii) of Proposition~\ref{prop:expansion}, and in the reading of Proposition~\ref{prop:mb} as a time average.
+The second is the form of the energy.
+The equation of state needs only that the energy not depend on positions (Theorem~\ref{thm:carrier}), while the factor $\tfrac32$ of equipartition needs the quadratic kinetic energy~\eqref{eq:hamiltonian} in three dimensions (Corollary~\ref{cor:quadratic}).
+The constant $\kB$ is a choice of unit and is not derived.
+
+\subsection{The role of the resolution}
+
+The resolution enters in three places.
+It makes the energy constraint a band of positive width (Lemma~\ref{lem:noshell}).
+It turns measures into counts (Definition~\ref{def:count}).
+It gives the entropy a finite absolute value, which diverges as the resolution is refined without bound (Proposition~\ref{prop:hdep}).
+Temperature, pressure, the equation of state, equipartition and the entropy of mixing do not depend on its value.
+The resolution is therefore necessary for the entropy to be a number, and irrelevant to the laws that relate measurable quantities.
+
+\subsection{The equation of state and its exactness}
+
+The relation $PV=N\kB T$ holds exactly for the thermodynamic pressure, for every $N\ge1$ (Theorem~\ref{thm:igl}).
+Its exactness reflects the factor $V^{N}$ in the measure of the shell, and nothing about the energy except that it does not involve positions (Theorem~\ref{thm:carrier}).
+The approximations of the standard treatment enter only in the relations between energy, temperature and mechanical pressure, and they are bounded explicitly by~\eqref{eq:eta-bound} and~\eqref{eq:agreement}.
+
+\subsection{Scope}
+
+The derivation is classical and treats a cubic container with specular walls.
+For a container of another shape, the positional factor is still $V^{N}$ and Theorems~\ref{thm:igl} and~\ref{thm:carrier} hold unchanged.
+Theorem~\ref{thm:mech} uses the cube to compute the impulse on the faces, and for other shapes the virial theorem gives the same time-averaged relation \citep{clausius1870}.
+Interactions that depend on positions modify the positional factor, and with it the equation of state.
+For hard spheres of diameter $\sigma_0$, the excluded configurations have relative positional measure at most $\binom N2\frac{4\pi\sigma_0^{3}}{3V}$, so the positional factor tends to $V^{N}$ as $\sigma_0\to0$.
+Quantum statistics enter through the occupation counts of Proposition~\ref{prop:occupation}, and they do not affect the count when $N/M$ is small.
+
+\subsection{Conclusion}
+
+Four axioms about an observer that resolves a bounded phase space at a fixed resolution, together with ergodicity on the energy surface, yield the ideal gas law and the laws of Avogadro, Dalton, Boyle, Charles and Gay-Lussac.
+The same assumptions yield the Sackur--Tetrode entropy, the entropy of mixing, the adiabatic law and the Maxwell--Boltzmann distribution.
+The five ingredients of the standard derivation appear as consequences: a unit, a band of positive width, the absence of labels, a superposition of dynamical weights, and a locating cost.
+The equation of state is exact for every particle number, and the approximations are confined to equipartition and to the mechanical pressure, where they are bounded by a term of order $N^{-1}$.
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\end{document}

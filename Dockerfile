@@ -20,7 +20,7 @@ WORKDIR /app
 
 # Copy workspace files
 COPY Cargo.toml Cargo.lock* ./
-COPY processor/ processor/
+COPY src/ src/
 
 # Build release binary
 RUN cargo build --release --package maxwell-processor

@@ -44,11 +44,11 @@ bench:
 
 install-validation:
 	@echo "📦 Installing Python validation package..."
-	cd validation && pip install -e ".[dev]"
+	cd examples/computing/validation && pip install -e ".[dev]"
 
 run-validation:
 	@echo "🔬 Running Python validation suite..."
-	cd validation && python -m maxwell_validation.dissolution
+	cd examples/computing/validation && python -m maxwell_validation.dissolution
 
 validate-all: install-validation run-validation
 
@@ -164,7 +164,7 @@ clean-all: clean docs-latex-clean
 
 install:
 	@echo "📦 Installing Maxwell processor..."
-	cargo install --path processor
+	cargo install --path .
 
 uninstall:
 	@echo "🗑️ Uninstalling Maxwell processor..."

@@ -2,7 +2,7 @@
 
 
 <div align="center">
-  <img src="assets/mbende.jpg" alt="Logo" width="300"/>
+  <img src="docs/assets/mbende.jpg" alt="Logo" width="300"/>
 </div>
 
 
@@ -14,11 +14,12 @@ This repository contains the theoretical foundation and experimental validation 
 
 | Component | Description | Documentation |
 |-----------|-------------|---------------|
-| **Categorical Processor** | Oscillator-based computation through phase-lock networks | `docs/processor/` |
-| **Categorical Memory** | S-entropy coordinate addressing with precision-by-difference navigation | `docs/categorical-memory/` |
-| **Categorical Computing** | Unified computation through molecular structure prediction | `docs/categorical-computing/` |
-| **Maxwell Demon Resolution** | Seven-argument dissolution through categorical phase-lock topology | `docs/resolution/` |
-| **Poincaré Computing** | Unified computation where recurrence = solution | `poincare/` |
+| **Categorical Thermodynamics** | Monograph and gas-law papers | `docs/thermodynamics/` |
+| **Categorical Processor** | Oscillator-based computation through phase-lock networks | `docs/computing/processor/`, `src/` |
+| **Categorical Memory** | S-entropy coordinate addressing with precision-by-difference navigation | `docs/computing/categorical-memory/` |
+| **Categorical Computing** | Unified computation through molecular structure prediction | `docs/computing/categorical-computing/` |
+| **Maxwell Demon Resolution** | Dissolution through categorical phase-lock topology | `docs/thermodynamics/maxwell-demon/` |
+| **Poincaré Computing** | Unified computation where recurrence = solution | `examples/thermodynamics/poincare/` |
 
 ## Core Concepts
 
@@ -63,37 +64,33 @@ There is no separation between these subsystems. The categorical state doesn't "
 
 ```
 maxwell/
-├── docs/
-│   ├── foundation/              # Theoretical papers
-│   ├── resolution/              # Maxwell Demon resolution
-│   │   └── sections/
-│   ├── processor/               # Categorical Processing Unit
-│   │   └── sections/
-│   ├── categorical-memory/      # Categorical Memory architecture
-│   │   └── sections/
-│   └── categorical-computing/   # Unified categorical computing
-│       └── sections/
-├── poincare/                    # Virtual Gas Ensemble implementation
-│   ├── src/
-│   │   ├── virtual_molecule.py
-│   │   ├── virtual_spectrometer.py
-│   │   ├── virtual_chamber.py
-│   │   ├── maxwell_demon.py
-│   │   ├── molecular_dynamics.py
-│   │   ├── thermodynamics.py
-│   │   └── visualization.py
-│   └── results/
-├── validation/                  # Experimental validation
-│   └── src/maxwell_validation/
-└── processor/                   # Rust processor implementation
+├── docs/                        # Papers (LaTeX + PDF), figures, notes — by topic
+│   ├── thermodynamics/          # Monograph, gas laws, gas/flux dynamics, Maxwell demon
+│   ├── computing/               # Processor, memory, categorical/trajectory computing
+│   ├── measurement/             # Hardware timing, zero-backaction, trisection
+│   ├── biochemistry/            # Catalysis, intracellular trajectories, microscopy
+│   ├── physics/                 # Light derivation
+│   ├── assets/
+│   └── DUPLICATES.md            # Byte-identical copies removed in the 2026-11 cleanup
+├── examples/                    # Python code, mirroring the docs topics
+│   ├── thermodynamics/poincare/ # Virtual Gas Ensemble implementation
+│   ├── computing/validation/    # Experimental validation (maxwell_validation)
+│   ├── <topic>/<paper>/         # Figure scripts for the paper in docs/<topic>/<paper>/
+│   └── basic_demo.rs            # Rust example (cargo run --example basic_demo)
+├── src/                         # Rust processor (maxwell-processor crate)
+└── web/                         # Next.js / three.js visualisation app (maupertuis)
 ```
+
+Figure scripts were moved out of their paper folders without changing their paths, so
+a script in `examples/<topic>/<paper>/` that writes `figures/...` relative to itself
+needs pointing at `docs/<topic>/<paper>/` before it is re-run.
 
 ## Running the Virtual Gas Ensemble
 
-The `poincare/` package implements the virtual gas ensemble from hardware timing measurements.
+The `examples/thermodynamics/poincare/` package implements the virtual gas ensemble from hardware timing measurements.
 
 ```bash
-cd poincare
+cd examples/thermodynamics/poincare
 
 # Run all experiments
 python run_all_experiments.py
@@ -108,12 +105,12 @@ python src/run_thermodynamics.py
 python src/generate_panels.py
 ```
 
-Results are saved to `poincare/results/` as JSON files.
+Results are saved to `examples/thermodynamics/poincare/results/` as JSON files.
 
 ## Running Validation
 
 ```bash
-cd validation
+cd examples/computing/validation
 pip install -e .
 
 # Run complete framework validation
@@ -142,10 +139,11 @@ The demon is not an agent—it is a projection artifact arising from observing o
 
 | Paper | Location | Description |
 |-------|----------|-------------|
-| Categorical Processing Unit | `docs/processor/categorical-processing-unit.tex` | Oscillator-processor duality and biological semiconductor computation |
-| Categorical Memory | `docs/categorical-memory/molecular-dynamics-categorical-memory.tex` | S-entropy addressing and precision-by-difference navigation |
-| Categorical Computing | `docs/categorical-computing/maxwell-categorical-computing.tex` | Semantic processing through molecular structure prediction |
-| Maxwell Demon Resolution | `docs/resolution/resolution-of-maxwell-demons.tex` | Seven-argument dissolution through phase-lock topology |
+| Categorical Thermodynamics (monograph) | `docs/thermodynamics/monograph/monogram.tex` | Fifteen papers assembled into one theory; plan in `monogram.md` |
+| Categorical Processing Unit | `docs/computing/processor/categorical-processing-unit.tex` | Oscillator-processor duality and biological semiconductor computation |
+| Categorical Memory | `docs/computing/categorical-memory/molecular-dynamics-categorical-memory.tex` | S-entropy addressing and precision-by-difference navigation |
+| Categorical Computing | `docs/computing/categorical-computing/maxwell-categorical-computing.tex` | Semantic processing through molecular structure prediction |
+| Maxwell Demon Paradox | `docs/thermodynamics/maxwell-demon/maxwell-demon-paradox.tex` | Dissolution through phase-lock topology |
 
 Each paper includes a section on virtual gas ensembles establishing the categorical foundation.
 

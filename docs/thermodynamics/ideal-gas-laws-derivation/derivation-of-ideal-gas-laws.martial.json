@@ -1,0 +1,12 @@
+{
+  "version": "martial/v0",
+  "profile": "manuscript",
+  "sources": "sources",
+  "evidence": [
+    {
+      "claim": "For hard disks in a torus, ergodicity has been proved for",
+      "source": "simanyi2003",
+      "quote": "We prove the ergodicity (actually, the B-mixing property) of such systems for almost every selection"
+    }
+  ]
+}

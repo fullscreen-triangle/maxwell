@@ -65,17 +65,17 @@ jobs:
       
       - name: Install dependencies
         run: |
-          cd validation
+          cd examples/computing/validation
           pip install -e ".[dev]"
       
       - name: Run validation
         run: |
-          cd validation
+          cd examples/computing/validation
           python -m maxwell_validation.dissolution
       
       - name: Run pytest
         run: |
-          cd validation
+          cd examples/computing/validation
           pytest -v || true  # Don't fail if no tests yet
 
   # ---------------------------------------------------------------------------

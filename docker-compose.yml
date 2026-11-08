@@ -28,7 +28,7 @@ services:
     container_name: maxwell-validation
     working_dir: /app
     volumes:
-      - ./validation:/app
+      - ./examples/computing/validation:/app
     command: >
       bash -c "pip install -e . && python -m maxwell_validation.dissolution"
     depends_on:
