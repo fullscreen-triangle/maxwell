@@ -1,0 +1,7 @@
+data/
+analysis/*.pkl
+analysis/*.npy
+analysis/*.npz
+analysis/*.json
+analysis/*.csv
+analysis/__pycache__/

@@ -1,0 +1,12 @@
+{
+  "version": "martial/v0",
+  "profile": "manuscript",
+  "sources": "sources",
+  "evidence": [
+    {
+      "claim": "The repository describes itself as a repository dedicated to the collection of training data",
+      "source": "kretschmer2024",
+      "quote": "is a repository dedicated to the collection of training data"
+    }
+  ]
+}

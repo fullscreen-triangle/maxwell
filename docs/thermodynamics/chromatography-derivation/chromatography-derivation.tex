@@ -1,0 +1,673 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  citecolor=blue!50!black,
+  urlcolor=blue!50!black,
+  pdftitle={Chromatography as Two-Velocity Transport},
+  pdfauthor={Kundai Farai Sachikonye}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}{Axiom}
+\renewcommand{\theaxiom}{R\arabic{axiom}}
+\newtheorem{hypothesis}{Hypothesis}
+\renewcommand{\thehypothesis}{\Alph{hypothesis}}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\kB}{k_{\mathrm{B}}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\Mob}{\mathsf{M}}
+\newcommand{\Sta}{\mathsf{S}}
+
+\title{\textbf{Chromatography as Two-Velocity Transport:\\Retention, Band Broadening and Resolution\\from a Bounded Phase Space at Fixed Resolution}}
+\author{
+Kundai Farai Sachikonye\\
+AIMe Registry for Artificial Intelligence\\
+\texttt{kundai.sachikonye@bitspark.com}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Chromatography is treated here as a special case of transport by a flowing fluid.
+A dilute analyte alternates between a mobile state, in which the fluid carries it, and a stationary state, in which it is held at rest.
+The general problem of transport between two states of different velocities is solved first, and chromatography is the case in which one velocity is zero.
+The starting point is an observer that resolves a bounded phase space at a fixed resolution, stated as four axioms, together with three explicit hypotheses: ergodicity, local equilibrium under flow, and independence of successive sojourns.
+From the axioms and the ergodicity hypothesis, the retention factor is the ratio of the Boltzmann-weighted measures of the two phases.
+Its logarithm is a difference of locating costs, and its temperature dependence is the van~'t~Hoff relation.
+From local equilibrium, the band moves at the velocity of the fluid times the fraction of time spent in the mobile state, which gives the retention law $t_R=t_0(1+k)$.
+From independent sojourns, the band spreads diffusively, its shape tends to a Gaussian, and its plate height takes the van Deemter form $H=A+B/u+Cu$.
+Each coefficient is given explicitly in terms of the mean and variance of the sojourn times, the diffusion coefficient and the heterogeneity of the flow paths.
+Exclusion counting of binding sites gives the Langmuir isotherm and identifies linear chromatography as its dilute limit.
+The resolution of two analytes, the column length needed to separate them, and the peak capacity follow exactly from these results.
+The column length required for a separation grows without bound as the selectivity tends to one.
+Two analytes with equal retention factors cannot be separated by any column length.
+The number of orthogonal separation dimensions needed to locate one of $K$ analytes is at least $\log K/\log n_c$, where $n_c$ is the peak capacity of one dimension.
+The transport formulas and the isotherm were checked against direct simulation.
+\end{abstract}
+
+\tableofcontents
+
+%======================================================================
+\section{Introduction}
+\label{sec:intro}
+%======================================================================
+
+\subsection{Chromatography as transport}
+
+In elution chromatography a fluid, the \emph{mobile phase}, flows through a column that contains a second, immobile medium, the \emph{stationary phase}.
+A small amount of an \emph{analyte} is introduced at the inlet.
+Each analyte molecule spends part of its time in the mobile phase, where the flow carries it towards the outlet, and part in the stationary phase, where it is held.
+Different analytes divide their time differently between the two phases and therefore arrive at the outlet at different times.
+The record of arrivals at a detector placed at the outlet is the \emph{chromatogram}.
+
+The classical theory of this process has three parts.
+The plate theory of Martin and Synge treats the column as a sequence of equilibrium stages \citep{martin1941}.
+The stochastic theory of Giddings and Eyring treats each molecule as alternating at random between the two phases \citep{giddings1955}.
+The rate theory of van Deemter, Zuiderweg and Klinkenberg describes the spreading of the band by a plate height with three terms \citep{vandeemter1956}.
+A systematic account is given by Giddings \citep{giddings1965}.
+
+\subsection{Approach}
+
+This paper derives the same results from a single setting.
+The setting is an observer that resolves a bounded phase space at a fixed resolution, stated as four axioms in Section~\ref{sec:setting}.
+Three hypotheses are stated separately because each is a modelling assumption that may fail in a given column.
+The transport problem is solved in general for two states with different velocities, so that chromatography appears as the special case in which one velocity is zero.
+The same general problem describes the dispersion of a solute between the fast and slow layers of a flow, studied by Taylor and by Aris \citep{taylor1953,aris1956}.
+
+\subsection{Summary of results}
+
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item The retention factor $k$ is the ratio of the Boltzmann-weighted measures of the stationary and mobile regions, and $\ln k$ is linear in $1/T$ (Theorem~\ref{thm:k}).
+\item The band moves at the velocity $u/(1+k)$, so the retention time is $t_R=t_0(1+k)$ (Theorem~\ref{thm:retention}).
+\item The variance of the position grows linearly in time with an explicit rate, and the position is asymptotically Gaussian (Theorem~\ref{thm:dispersion}).
+\item The plate height is $H=A+B/u+Cu$ with explicit coefficients (Theorem~\ref{thm:vandeemter} and Proposition~\ref{prop:eddy}).
+\item Exclusion counting of binding sites gives the Langmuir isotherm (Proposition~\ref{prop:langmuir}).
+\item The resolution, the required column length and the peak capacity follow exactly (Section~\ref{sec:separation}).
+\item Locating one of $K$ analytes needs at least $\log K/\log n_c$ orthogonal dimensions (Theorem~\ref{thm:dimensions}).
+\end{enumerate}
+
+%======================================================================
+\section{Setting}
+\label{sec:setting}
+%======================================================================
+
+\subsection{The column and the analyte}
+
+\begin{definition}[Column]
+\label{def:column}
+The \emph{column} is a bounded region $\Omega=[0,L]\times\Lambda_\perp$, where $L>0$ is its length and $\Lambda_\perp$ is a bounded cross-section.
+The coordinate along the column is $x\in[0,L]$, called the \emph{axial position}.
+The column is divided into two disjoint measurable regions: the \emph{mobile region} $\Mob$, of volume $V_\Mob$, and the \emph{stationary region} $\Sta$, of volume $V_\Sta$.
+The \emph{phase ratio} is $\Phi=V_\Sta/V_\Mob$.
+\end{definition}
+
+\begin{definition}[Analyte and medium]
+\label{def:analyte}
+An \emph{analyte molecule} is a particle of mass $m$ with position $q\in\Omega$ and momentum $p\in\R^{3}$.
+Its energy is $\varepsilon_A(q,p)=|p|^{2}/(2m)+U(q)$, where $U\colon\Omega\to\R$ is the \emph{interaction energy} with the stationary phase.
+The \emph{medium} is everything else in the column: the molecules of the mobile phase and the stationary phase.
+The medium exchanges energy with the analyte.
+\end{definition}
+
+\begin{definition}[Flat binding]
+\label{def:flat}
+The interaction energy is \emph{flat} if $U=-\varepsilon_b$ on $\Sta$ and $U=0$ on $\Mob$, for a constant \emph{binding energy} $\varepsilon_b\in\R$.
+\end{definition}
+
+\subsection{Axioms}
+
+The observer draws distinctions between states; an \emph{observable} is a measurable function of the state whose values it can register; a \emph{description} is a set of states it can name.
+
+\begin{axiom}[Boundedness]
+\label{ax:bounded}
+Every description names a region of phase space of finite positive Liouville measure.
+\end{axiom}
+
+\begin{axiom}[Fixed resolution]
+\label{ax:resolution}
+The observer resolves the phase space of one particle into cells of equal Liouville measure $h^{3}$, for a fixed constant $h>0$.
+Every description is a union of cells up to sets of measure zero.
+\end{axiom}
+
+\begin{axiom}[No distinguished particle]
+\label{ax:labels}
+Particles of one species are identical: every observable is invariant under permutations of their indices.
+\end{axiom}
+
+\begin{axiom}[No distinguished cell]
+\label{ax:cells}
+Within a description, no cell receives more weight than another unless some observable distinguishes them.
+\end{axiom}
+
+\begin{remark}
+\label{rem:axioms}
+The axioms state what can be named and how it is weighted, not how the analyte moves.
+Axiom~\ref{ax:resolution} fixes $h$ as a unit; no result below depends on its value.
+Axiom~\ref{ax:labels} implies that a count of states of $N$ identical particles carries a factor $1/N!$, because the states are orbits of the permutation group acting on labelled configurations.
+Axiom~\ref{ax:cells} implies that cells of equal measure within one description carry equal weight.
+\end{remark}
+
+\subsection{Hypotheses}
+
+\begin{hypothesis}[Ergodicity]
+\label{hyp:ergodic}
+In the absence of flow, the motion of the analyte together with the medium is ergodic on each surface of constant total energy, with respect to the measure that the Liouville measure induces on that surface.
+\end{hypothesis}
+
+\begin{hypothesis}[Local equilibrium]
+\label{hyp:local}
+Under flow, the sequence of phases that the analyte visits, and the durations of its stays in them, have the same joint law as in the absence of flow.
+The flow only adds an axial displacement, at a velocity that depends on the region the analyte occupies.
+\end{hypothesis}
+
+\begin{hypothesis}[Independent sojourns]
+\label{hyp:renewal}
+A \emph{sojourn} is a maximal interval of time that the analyte spends in one region.
+The durations of successive sojourns are independent random variables.
+Sojourns in $\Mob$ are identically distributed with mean $m_\Mob$ and variance $v_\Mob$, and sojourns in $\Sta$ are identically distributed with mean $m_\Sta$ and variance $v_\Sta$, all finite.
+During a sojourn in region $j\in\{\Mob,\Sta\}$ of duration $\tau$, the axial displacement is $u_j\tau+\sqrt{2D_j}\,W$, where $u_j\ge0$ is the axial velocity of that region, $D_j\ge0$ is its axial diffusion coefficient, and $W$ is a standard normal variable independent of everything else.
+\end{hypothesis}
+
+\begin{remark}[Status of the hypotheses]
+\label{rem:hyp-status}
+Hypothesis~\ref{hyp:ergodic} is the dynamical assumption under which time averages equal averages over the energy surface \citep{birkhoff1931,walters1982}.
+Hypothesis~\ref{hyp:local} holds when the flow does not change the sorption dynamics, for instance when the flow is slow compared with the transverse motion that brings the analyte to the stationary phase.
+Hypothesis~\ref{hyp:renewal} holds when each sojourn ends by an event that does not remember the earlier sojourns.
+Exponentially distributed sojourns, which arise from first-order exchange kinetics, are the standard case \citep{giddings1955}, but the results below hold for any distributions with finite variance.
+In chromatography $u_\Sta=0$ and $D_\Sta=0$; the general case is kept because it costs nothing and covers dispersion between layers of a flow.
+\end{remark}
+
+%======================================================================
+\section{Equilibrium between the phases}
+\label{sec:equilibrium}
+%======================================================================
+
+\subsection{Weights from the medium}
+
+The medium is modelled as an ideal gas of $N$ particles, so that the weight it confers on the analyte can be computed exactly.
+The total energy of the analyte and the medium is $E$, and the medium's energy is $E-\varepsilon_A$.
+
+\begin{proposition}[Weights from an ideal medium]
+\label{prop:weights}
+Assume Hypothesis~\ref{hyp:ergodic}, and let the medium be an ideal gas of $N\ge1$ particles with energy $\sum_i|p_i|^{2}/(2m_i)$ in a container of volume $V$.
+Then the time-averaged density of the analyte's state $(q,p)$ is proportional to
+\begin{equation}
+w_N(\varepsilon_A)=\left(1-\frac{\varepsilon_A}{E}\right)^{\frac{3N}{2}-1}\quad\text{for }\varepsilon_A<E,
+\label{eq:weight-finite}
+\end{equation}
+and to zero otherwise.
+If $N\to\infty$ with $\vartheta=2E/(3N)$ fixed, then $w_N(\varepsilon)\to\exp(-\varepsilon/\vartheta)$ for every $\varepsilon$.
+\end{proposition}
+
+\begin{proof}
+The measure that the Liouville measure induces on the joint energy surface, projected onto the analyte's state, has density proportional to the surface measure of the medium at energy $E-\varepsilon_A$.
+For the ideal gas, the Liouville measure of the region of energy at most $E'$ is $V^{N}\omega_{3N}c\,E'^{3N/2}$ for constants $\omega_{3N}$ and $c$ that do not depend on $E'$.
+Its derivative with respect to $E'$, the surface measure, is proportional to $E'^{3N/2-1}$.
+Setting $E'=E-\varepsilon_A$ and dividing by $E^{3N/2-1}$ gives~\eqref{eq:weight-finite}.
+By Hypothesis~\ref{hyp:ergodic} and the ergodic theorem, time averages equal averages with respect to this measure \citep{birkhoff1931}.
+For the limit, $(1-\varepsilon/E)^{3N/2-1}=\bigl(1-\varepsilon/(\tfrac32N\vartheta)\bigr)^{3N/2-1}\to e^{-\varepsilon/\vartheta}$.
+\end{proof}
+
+In the limit of Proposition~\ref{prop:weights}, $\vartheta$ is the energy per particle of the medium in units in which $\kB T=\vartheta$.
+The quantity $T$ is the temperature of the medium, and $\beta=1/(\kB T)$ is its inverse in energy units.
+The remaining sections use the limiting weight $e^{-\beta\varepsilon_A}$.
+
+\subsection{The retention factor}
+
+\begin{definition}[Retention factor]
+\label{def:k}
+The \emph{retention factor} $k$ is the ratio of the long-run fraction of time that the analyte spends in $\Sta$ to the fraction it spends in $\Mob$.
+The fractions are written $f_\Sta=k/(1+k)$ and $f_\Mob=1/(1+k)$.
+\end{definition}
+
+\begin{theorem}[Retention factor as a ratio of weighted measures]
+\label{thm:k}
+Assume Hypothesis~\ref{hyp:ergodic} and the limiting weight of Proposition~\ref{prop:weights}.
+Then
+\begin{equation}
+k=\frac{Z_\Sta}{Z_\Mob},\qquad Z_j=\int_{j}e^{-\beta U(q)}\,\dd q\quad(j=\Mob,\Sta).
+\label{eq:k}
+\end{equation}
+For flat binding (Definition~\ref{def:flat}),
+\begin{equation}
+k=\Phi\,e^{\beta\varepsilon_b},\qquad \ln k=\ln\Phi+\frac{\varepsilon_b}{\kB T}.
+\label{eq:k-flat}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The weight $e^{-\beta\varepsilon_A}$ factorises as $e^{-\beta|p|^{2}/(2m)}e^{-\beta U(q)}$.
+The fraction of time spent in a region $j$ of positions is the weight of $j\times\R^{3}$ divided by the weight of $\Omega\times\R^{3}$.
+The momentum integral is the same for both regions and cancels in the ratio of the two fractions.
+For flat binding, $Z_\Sta=V_\Sta e^{\beta\varepsilon_b}$ and $Z_\Mob=V_\Mob$.
+\end{proof}
+
+\begin{corollary}[Van~'t~Hoff relation]
+\label{cor:vanthoff}
+For flat binding, $\ln k$ is a linear function of $1/T$ with slope $\varepsilon_b/\kB$ and intercept $\ln\Phi$.
+\end{corollary}
+
+\begin{corollary}[What a column measures]
+\label{cor:measures}
+The retention factor depends on the analyte only through the function $U$ on $\Omega$.
+Two analytes with the same weighted measures $Z_\Sta$ and $Z_\Mob$ have the same retention factor, whatever their chemical identities.
+\end{corollary}
+
+\begin{proof}
+Equation~\eqref{eq:k} contains no property of the analyte other than $U$.
+\end{proof}
+
+\begin{remark}[Retention factor as a locating cost]
+\label{rem:locating}
+The quantities $\ln Z_\Sta$ and $\ln Z_\Mob$ are the logarithms of weighted measures.
+Up to the common factor $\ln2$, they are the numbers of binary distinctions needed to locate the analyte within each region at the resolution $h$.
+A set of $K$ equally weighted cells requires at least $\log_2K$ binary distinctions on average \citep{cover2006}.
+The logarithm of the retention factor is therefore the difference between the costs of locating the analyte in the two phases.
+\end{remark}
+
+\subsection{Binding sites and the Langmuir isotherm}
+
+The flat binding of Definition~\ref{def:flat} lets any number of analyte molecules occupy the stationary region.
+If the stationary phase instead consists of discrete binding sites, the resolution of Axiom~\ref{ax:resolution} limits the occupancy of each site.
+
+\begin{definition}[Binding sites]
+\label{def:sites}
+The stationary phase consists of $M$ \emph{binding sites}, each a cell of volume $v_s$ in which an analyte molecule has energy $-\varepsilon_b$.
+A site holds at most one molecule, since two molecules in one cell are not distinguished from one by any description at the resolution of the cell.
+The mobile region has volume $V_\Mob$, and $N$ analyte molecules are present, of which $n$ are bound.
+The \emph{coverage} is $\theta=n/M$ and the mobile concentration is $c=(N-n)/V_\Mob$.
+\end{definition}
+
+\begin{proposition}[Langmuir isotherm]
+\label{prop:langmuir}
+Under Axioms~\ref{ax:labels} and~\ref{ax:cells} and the limiting weight of Proposition~\ref{prop:weights}, the weight of the configurations with $n$ bound molecules is
+\begin{equation}
+W(n)=\binom Mn\,v_s^{n}e^{n\beta\varepsilon_b}\,\frac{V_\Mob^{N-n}}{(N-n)!}.
+\label{eq:langmuir-weight}
+\end{equation}
+Let $K_L=v_se^{\beta\varepsilon_b}$.
+A most probable occupation $n^\ast$, with coverage $\theta^\ast$ and concentration $c^\ast$, satisfies
+\begin{equation}
+(1-\theta^\ast)\,K_Lc^\ast\le\theta^\ast+\frac1M,
+\qquad
+\Bigl(1-\theta^\ast+\frac1M\Bigr)K_L\Bigl(c^\ast+\frac1{V_\Mob}\Bigr)\ge\theta^\ast.
+\label{eq:langmuir-bounds}
+\end{equation}
+Consequently $\theta^\ast=K_Lc^\ast/(1+K_Lc^\ast)$ in the limit $M,V_\Mob\to\infty$ at fixed $c^\ast$ and $\theta^\ast$.
+\end{proposition}
+
+\begin{proof}
+The bound molecules occupy $n$ distinct sites; by Axiom~\ref{ax:labels} the choice of sites, not of which molecule occupies which, is counted, which gives $\binom Mn$.
+Each bound molecule has positional measure $v_s$ and weight $e^{\beta\varepsilon_b}$.
+The free molecules are unlabelled and have positional measure $V_\Mob^{N-n}/(N-n)!$.
+The momentum factors are the same for every $n$ and are omitted.
+At a maximum, $W(n^\ast+1)\le W(n^\ast)$ and $W(n^\ast)\ge W(n^\ast-1)$.
+The first gives $(M-n^\ast)(N-n^\ast)K_L/V_\Mob\le n^\ast+1$, and the second gives $(M-n^\ast+1)(N-n^\ast+1)K_L/V_\Mob\ge n^\ast$.
+Dividing by $M$ yields~\eqref{eq:langmuir-bounds}, and the limit follows.
+\end{proof}
+
+The isotherm $\theta=K_Lc/(1+K_Lc)$ is Langmuir's \citep{langmuir1918}.
+When $K_Lc\ll1$, the bound amount is proportional to the mobile concentration, $n\approx MK_Lc$.
+The ratio of bound to free molecules is then $n/(N-n)\approx Mv_se^{\beta\varepsilon_b}/V_\Mob$, which is~\eqref{eq:k-flat} with $V_\Sta=Mv_s$.
+Linear chromatography, in which $k$ does not depend on the amount of analyte, is therefore the dilute limit of exclusion counting, just as the ideal gas is the dilute limit of a gas.
+Outside that limit $k$ decreases with concentration, and the results of the following sections, which assume a constant $k$, no longer apply.
+
+%======================================================================
+\section{Transport between two velocities}
+\label{sec:transport}
+%======================================================================
+
+\subsection{Sojourn statistics}
+
+\begin{lemma}[Time fractions from sojourns]
+\label{lem:fractions}
+Under Hypothesis~\ref{hyp:renewal}, the long-run fraction of time spent in $\Mob$ is $m_\Mob/(m_\Mob+m_\Sta)$ almost surely.
+Under Hypotheses~\ref{hyp:ergodic} and~\ref{hyp:local} in addition, $m_\Sta/m_\Mob=k$.
+\end{lemma}
+
+\begin{proof}
+The process alternates between the two regions, so after $n$ complete cycles the time in $\Mob$ is a sum of $n$ independent mobile sojourns and the total time is a sum of $n$ cycle durations.
+By the strong law of large numbers, their ratio tends to $m_\Mob/(m_\Mob+m_\Sta)$ \citep{cox1962}.
+By Hypothesis~\ref{hyp:local} the same law holds without flow, where by Theorem~\ref{thm:k} the fraction of time in $\Mob$ is $1/(1+k)$.
+Equating the two gives $m_\Sta/m_\Mob=k$.
+\end{proof}
+
+Lemma~\ref{lem:fractions} links a kinetic quantity, the ratio of mean sojourn times, to an equilibrium quantity, the ratio of weighted measures.
+
+\subsection{Mean motion and retention}
+
+Let $X(t)$ be the axial position of the analyte at time $t$, and let $\tau_\Mob(t)$ be the total time spent in $\Mob$ during $[0,t]$.
+
+\begin{theorem}[Band velocity and retention time]
+\label{thm:retention}
+Assume Hypotheses~\ref{hyp:ergodic}--\ref{hyp:renewal}.
+Then, almost surely,
+\begin{equation}
+\lim_{t\to\infty}\frac{X(t)}{t}=v_b,\qquad v_b=f_\Mob u_\Mob+f_\Sta u_\Sta.
+\label{eq:vb}
+\end{equation}
+In chromatography, where $u_\Mob=u$ and $u_\Sta=0$, the \emph{band velocity} is $v_b=u/(1+k)$.
+Let $t_0=L/u$ be the \emph{dead time}, the time a molecule that never enters $\Sta$ needs to traverse the column.
+The time at which the analyte first reaches $x=L$, divided by $t_0(1+k)$, tends to one almost surely as $L\to\infty$.
+That is, the \emph{retention time} is $t_R=t_0(1+k)$ to leading order in $L$.
+\end{theorem}
+
+\begin{proof}
+The displacement is $X(t)=u_\Mob\tau_\Mob(t)+u_\Sta\bigl(t-\tau_\Mob(t)\bigr)+Y(t)$, where $Y(t)$ is the diffusive part.
+Conditional on the sojourns, $Y(t)$ is normal with mean zero and variance $2D_\Mob\tau_\Mob(t)+2D_\Sta(t-\tau_\Mob(t))\le2\max(D_\Mob,D_\Sta)\,t$, so $Y(t)/t\to0$ almost surely.
+By Lemma~\ref{lem:fractions}, $\tau_\Mob(t)/t\to f_\Mob$ almost surely, which gives~\eqref{eq:vb}.
+For chromatography, $v_b=u/(1+k)$ by Definition~\ref{def:k}.
+For the first-passage time $T_L$, the law of large numbers for $X$ transfers to $T_L/L\to1/v_b$ almost surely \citep{gut2009}.
+Hence $T_L/(t_0(1+k))=T_L u/(L(1+k))\to1$.
+\end{proof}
+
+The retention law $t_R=t_0(1+k)$ thus follows from the visiting frequencies alone.
+The analyte moves only while it is in the mobile phase, and it is there for the fraction $1/(1+k)$ of the time.
+
+\subsection{Dispersion}
+
+\begin{theorem}[Dispersion and Gaussian band]
+\label{thm:dispersion}
+Assume Hypotheses~\ref{hyp:ergodic}--\ref{hyp:renewal}, and write $m=m_\Mob+m_\Sta$.
+Then, as $t\to\infty$, $\Var X(t)=2D_{\mathrm{eff}}\,t+o(t)$ with
+\begin{equation}
+2D_{\mathrm{eff}}=(u_\Mob-u_\Sta)^{2}\,\frac{f_\Sta^{2}v_\Mob+f_\Mob^{2}v_\Sta}{m}+2\bigl(f_\Mob D_\Mob+f_\Sta D_\Sta\bigr),
+\label{eq:deff}
+\end{equation}
+and $\bigl(X(t)-v_bt\bigr)/\sqrt{2D_{\mathrm{eff}}t}$ converges in distribution to a standard normal variable.
+For exponentially distributed sojourns, $v_j=m_j^{2}$, and the first term of~\eqref{eq:deff} equals $2(u_\Mob-u_\Sta)^{2}m_\Mob^{2}m_\Sta^{2}/m^{3}$.
+\end{theorem}
+
+\begin{proof}
+Write $X(t)-v_bt=(u_\Mob-u_\Sta)\bigl(\tau_\Mob(t)-f_\Mob t\bigr)+Y(t)$, using $v_b=u_\Sta+(u_\Mob-u_\Sta)f_\Mob$.
+The time spent in one state of an alternating process with independent sojourns satisfies a central limit theorem.
+In that theorem $\tau_\Mob(t)-f_\Mob t$ is asymptotically normal with variance $t\,(f_\Sta^{2}v_\Mob+f_\Mob^{2}v_\Sta)/m$ \citep{takacs1957,cox1962}.
+The variance is that of the cycle reward $f_\Sta M-f_\Mob S$ per unit mean cycle length, where $M$ and $S$ are one mobile and one stationary sojourn.
+Conditional on the sojourns, $Y(t)$ is normal with variance $2D_\Mob\tau_\Mob(t)+2D_\Sta(t-\tau_\Mob(t))$, which is $2(f_\Mob D_\Mob+f_\Sta D_\Sta)t+o(t)$ almost surely.
+$Y(t)$ has conditional mean zero, so it is uncorrelated with $\tau_\Mob(t)$ and the two variances add.
+The sum of an asymptotically normal term and a conditionally normal term with asymptotically constant variance is asymptotically normal.
+For exponential sojourns, $f_\Sta m_\Mob=f_\Mob m_\Sta=m_\Mob m_\Sta/m$, so both parts of the numerator equal $(m_\Mob m_\Sta/m)^{2}$.
+\end{proof}
+
+The first term of~\eqref{eq:deff} is dispersion by exchange between states of different velocity.
+It is proportional to the square of the velocity contrast, and it is the mechanism of Taylor dispersion in a flow with fast and slow layers \citep{taylor1953,aris1956}.
+The second term is the diffusion that each state contributes in proportion to the time spent in it.
+
+\subsection{The band as a transported density}
+
+\begin{corollary}[Advection--dispersion]
+\label{cor:advection}
+Let $\rho(x,t)$ be the probability density of $X(t)$ for an analyte released at $x=0$ at $t=0$.
+To leading order as $t\to\infty$, $\rho$ has the mean and variance of the solution of
+\begin{equation}
+\frac{\partial\rho}{\partial t}+v_b\frac{\partial\rho}{\partial x}=D_{\mathrm{eff}}\frac{\partial^{2}\rho}{\partial x^{2}},
+\qquad\rho(x,0)=\delta(x),
+\label{eq:advection}
+\end{equation}
+and its shape tends to the Gaussian solution of~\eqref{eq:advection}.
+\end{corollary}
+
+\begin{proof}
+The solution of~\eqref{eq:advection} is the normal density with mean $v_bt$ and variance $2D_{\mathrm{eff}}t$.
+Theorems~\ref{thm:retention} and~\ref{thm:dispersion} give the same mean and variance to leading order and the same limiting shape.
+\end{proof}
+
+Equation~\eqref{eq:advection} is the equation of transport of a conserved density by a fluid with velocity $v_b$ and dispersion coefficient $D_{\mathrm{eff}}$.
+On long scales the analyte band is therefore an object of fluid dynamics.
+Its velocity and dispersion are not those of the mobile phase but are renormalised by the exchange with the stationary phase.
+
+%======================================================================
+\section{The plate height}
+\label{sec:plate}
+%======================================================================
+
+\begin{definition}[Plate height and plate number]
+\label{def:plate}
+The \emph{plate height} is $H=\lim_{t\to\infty}\Var X(t)/\E X(t)$, the variance of the band per unit distance travelled.
+For a column of length $L$, the \emph{plate number} is $N_p=L/H$.
+\end{definition}
+
+\begin{theorem}[Van Deemter form]
+\label{thm:vandeemter}
+For chromatography ($u_\Mob=u$, $u_\Sta=0$, $D_\Sta=0$, $D_\Mob=D_m$), under Hypotheses~\ref{hyp:ergodic}--\ref{hyp:renewal},
+\begin{equation}
+H=\frac Bu+Cu,\qquad B=2D_m,\qquad C=\frac{k^{2}v_\Mob+v_\Sta}{m_\Mob(1+k)^{2}}.
+\label{eq:vandeemter}
+\end{equation}
+For exponentially distributed sojourns, $C=2k\,m_\Sta/(1+k)^{2}$.
+\end{theorem}
+
+\begin{proof}
+By Theorems~\ref{thm:retention} and~\ref{thm:dispersion}, $H=2D_{\mathrm{eff}}/v_b$.
+With $f_\Mob=1/(1+k)$, $f_\Sta=k/(1+k)$ and $m=m_\Mob(1+k)$ from Lemma~\ref{lem:fractions}, the exchange term of $2D_{\mathrm{eff}}$ is $u^{2}(k^{2}v_\Mob+v_\Sta)/\bigl(m_\Mob(1+k)^{3}\bigr)$.
+The diffusion term is $2D_m/(1+k)$.
+Dividing by $v_b=u/(1+k)$ gives~\eqref{eq:vandeemter}.
+For exponential sojourns, $k^{2}v_\Mob+v_\Sta=k^{2}m_\Mob^{2}+m_\Sta^{2}=2m_\Sta^{2}$, and $m_\Sta^{2}/m_\Mob=k\,m_\Sta$.
+\end{proof}
+
+The term $B/u$ is longitudinal diffusion in the mobile phase, and $Cu$ is resistance to mass transfer between the phases.
+The exponential case of $C$ is the result of Giddings and Eyring \citep{giddings1955}.
+Equation~\eqref{eq:vandeemter} extends it to arbitrary sojourn distributions.
+A broad distribution of stationary sojourns, with $v_\Sta>m_\Sta^{2}$, raises $C$, which is the stochastic origin of peak tailing on heterogeneous surfaces.
+
+The third term of the van Deemter equation arises from the heterogeneity of the mobile phase itself.
+
+\begin{proposition}[Flow-path heterogeneity]
+\label{prop:eddy}
+Suppose the mobile phase consists of flow paths among which the analyte switches after each axial distance $\ell$, choosing the axial velocity of the next segment independently from a fixed distribution.
+Let $s$ be the \emph{slowness} of a segment, the reciprocal of its velocity, with mean $\bar s$ and variance $\sigma_s^{2}$.
+Then this heterogeneity contributes to the plate height the constant
+\begin{equation}
+A=\ell\,\frac{\sigma_s^{2}}{\bar s^{2}},
+\label{eq:eddy}
+\end{equation}
+which does not depend on the mean velocity.
+\end{proposition}
+
+\begin{proof}
+The time to cross $L=n\ell$ is $\ell\sum_{i=1}^{n}s_i$, with mean $L\bar s$ and variance $L\ell\sigma_s^{2}$.
+Converting a time variance into a distance variance at the mean velocity $1/\bar s$ multiplies it by $1/\bar s^{2}$, which gives a distance variance $L\ell\sigma_s^{2}/\bar s^{2}$.
+Dividing by $L$ gives~\eqref{eq:eddy}.
+Scaling every velocity by a common factor scales $\bar s$ and $\sigma_s$ by the same factor and leaves $A$ unchanged.
+\end{proof}
+
+\begin{corollary}[Optimal velocity]
+\label{cor:optimum}
+If the contributions are independent, $H=A+B/u+Cu$, which is minimal at $u^\ast=\sqrt{B/C}$ with $H_{\min}=A+2\sqrt{BC}$.
+\end{corollary}
+
+\begin{proof}
+The derivative $-B/u^{2}+C$ vanishes at $u^\ast$, and the second derivative $2B/u^{3}$ is positive.
+\end{proof}
+
+%======================================================================
+\section{Separation and resolution}
+\label{sec:separation}
+%======================================================================
+
+Throughout this section, the elution time of each analyte is treated as normally distributed, with mean $t_R$ and standard deviation $\sigma=t_R/\sqrt{N_p}$.
+This form follows from Theorems~\ref{thm:retention} and~\ref{thm:dispersion} to leading order in $L$, since the distance variance is $HL$ and the band velocity converts it into a time variance $HL/v_b^{2}=t_R^{2}/N_p$.
+All analytes are assumed to share the plate number $N_p$.
+
+\begin{definition}[Resolution]
+\label{def:resolution}
+The \emph{resolution} of two analytes with elution times $t_1<t_2$ and standard deviations $\sigma_1,\sigma_2$ is
+\begin{equation}
+R_s=\frac{t_2-t_1}{2(\sigma_1+\sigma_2)}.
+\label{eq:resolution-def}
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Resolution]
+\label{thm:resolution}
+For two analytes with retention factors $k_1<k_2$,
+\begin{equation}
+R_s=\frac{\sqrt{N_p}}{2}\cdot\frac{k_2-k_1}{2+k_1+k_2}.
+\label{eq:resolution}
+\end{equation}
+A resolution $R_s$ requires the plate number
+\begin{equation}
+N_p=4R_s^{2}\left(\frac{2+k_1+k_2}{k_2-k_1}\right)^{2},
+\label{eq:np-required}
+\end{equation}
+and hence the column length $L=N_pH$.
+\end{theorem}
+
+\begin{proof}
+With $t_i=t_0(1+k_i)$ and $\sigma_i=t_i/\sqrt{N_p}$, the numerator of~\eqref{eq:resolution-def} is $t_0(k_2-k_1)$ and the denominator is $2t_0(2+k_1+k_2)/\sqrt{N_p}$.
+Solving for $N_p$ gives~\eqref{eq:np-required}.
+\end{proof}
+
+\begin{corollary}[Cost of a thin distinction]
+\label{cor:cost}
+Let $\alpha=k_2/k_1>1$ be the \emph{selectivity}.
+At fixed $R_s$ and $k_1$, the required column length and the retention time both grow as $(\alpha-1)^{-2}$ as $\alpha\to1$.
+Two analytes with $\alpha=1$ have $R_s=0$ for every column length.
+\end{corollary}
+
+\begin{proof}
+With $k_2-k_1=k_1(\alpha-1)$, equation~\eqref{eq:np-required} is $N_p=4R_s^{2}\bigl(2+k_1(1+\alpha)\bigr)^{2}/\bigl(k_1^{2}(\alpha-1)^{2}\bigr)$.
+The column length is $N_pH$ and the retention time is proportional to $L$ at fixed velocity.
+For $\alpha=1$ the numerator of~\eqref{eq:resolution} vanishes.
+\end{proof}
+
+A column separates analytes only through their weighted measure ratios (Corollary~\ref{cor:measures}).
+The smaller the difference between those ratios, the longer the column and the longer the time needed to separate them, without any finite bound as the difference tends to zero.
+
+\begin{theorem}[Peak capacity]
+\label{thm:capacity}
+Let peaks be counted as resolved when adjacent peaks are separated by $4\sigma$, and let elution occur between $t_0$ and $t_{\max}$.
+Then the number of resolvable peaks, the \emph{peak capacity}, is
+\begin{equation}
+n_c=1+\frac{\sqrt{N_p}}{4}\ln\frac{t_{\max}}{t_0}.
+\label{eq:capacity}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+A peak at time $t$ occupies the width $4\sigma(t)=4t/\sqrt{N_p}$, so the number of peaks that fit between $t_0$ and $t_{\max}$, beyond the first, is $\int_{t_0}^{t_{\max}}\dd t/(4t/\sqrt{N_p})=(\sqrt{N_p}/4)\ln(t_{\max}/t_0)$.
+\end{proof}
+
+Equation~\eqref{eq:capacity} is the peak capacity of Giddings \citep{giddings1967}.
+
+\begin{theorem}[Orthogonal dimensions needed to locate an analyte]
+\label{thm:dimensions}
+Suppose a separation consists of $d$ independent dimensions with peak capacities $n_{c,1},\dots,n_{c,d}$, so that the joint capacity is $\prod_in_{c,i}$.
+If every one of $K$ analytes is to occupy its own resolvable position, then $\prod_in_{c,i}\ge K$.
+If every dimension has capacity $n_c\ge2$, then $d\ge\log K/\log n_c$.
+\end{theorem}
+
+\begin{proof}
+If $K$ analytes occupy fewer than $K$ positions, then by the pigeonhole principle two of them share a position, and the separation does not distinguish them.
+For equal capacities, $n_c^{d}\ge K$ is equivalent to $d\ge\log K/\log n_c$.
+\end{proof}
+
+Each resolvable position contributes $\log_2n_c$ binary distinctions, and locating one of $K$ equally weighted analytes needs $\log_2K$ distinctions on average \citep{cover2006}.
+Theorem~\ref{thm:dimensions} states that the distinctions supplied by independent dimensions add, and that they must together reach that cost.
+
+%======================================================================
+\section{Verification by simulation}
+\label{sec:simulation}
+%======================================================================
+
+The formulas of Sections~\ref{sec:transport}--\ref{sec:plate} were compared with direct simulation of the process of Hypothesis~\ref{hyp:renewal}.
+The parameters were $u=1$, $L=2000$, $m_\Mob=1$ and $m_\Sta=3$, so that $k=3$, $t_0=2000$ and $t_R=8000$.
+With $4000$ simulated molecules and exponential sojourns, the mean elution time was $8005$ and its variance $3.67\times10^{4}$.
+Theorem~\ref{thm:retention} predicts the mean $8000$, and the elution-time variance $t_R^{2}/N_p$ of Section~\ref{sec:separation} predicts $3.60\times10^{4}$.
+With gamma-distributed sojourns of the same means and variances $v_\Mob=0.5$ and $v_\Sta=18$, the variance was $4.33\times10^{4}$ against the predicted $4.50\times10^{4}$.
+With axial diffusion $D_m=0.5$ and exponential sojourns, the plate height at $t=8000$ was $2.14$ against $2.125$ from Theorem~\ref{thm:vandeemter}.
+For flow-path heterogeneity with $\ell=1$ and velocities $0.8$ and $1.2$, the variance of the crossing time was $87.4$ against $86.8$ from the proof of Proposition~\ref{prop:eddy}.
+For binding sites with $M=1000$, $N=5000$, $V_\Mob=10^{5}$, $v_s=1$ and $\beta\varepsilon_b=3$, the most probable coverage was $0.4760$ against $0.4761$ from Proposition~\ref{prop:langmuir}.
+Each difference is within the sampling error of the corresponding estimate.
+
+%======================================================================
+\section{Discussion}
+\label{sec:discussion}
+%======================================================================
+
+\subsection{What was assumed and what was derived}
+
+\begin{table}[ht]
+\centering
+\caption{Sources of the results.}
+\label{tab:sources}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Result & Rests on \\
+\midrule
+$k=Z_\Sta/Z_\Mob$, van~'t~Hoff & Axioms, Hypothesis~\ref{hyp:ergodic}, ideal medium \\
+Langmuir isotherm & Axioms~\ref{ax:resolution}--\ref{ax:cells}, ideal medium \\
+$m_\Sta/m_\Mob=k$ & Hypotheses~\ref{hyp:ergodic}--\ref{hyp:renewal} \\
+$t_R=t_0(1+k)$ & Hypotheses~\ref{hyp:ergodic}--\ref{hyp:renewal} \\
+Gaussian band, $D_{\mathrm{eff}}$, $H=B/u+Cu$ & Hypotheses~\ref{hyp:ergodic}--\ref{hyp:renewal} \\
+$A$ term & segment model of Proposition~\ref{prop:eddy} \\
+Resolution, capacity, dimensions & the above, with a common $N_p$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The equilibrium results depend on the axioms and on ergodicity, and not on the flow.
+The transport results depend on the hypotheses about the flow and the sojourns, and not on the axioms beyond the value of $k$.
+The separation results combine the two.
+
+\subsection{Chromatography as a special case of transport}
+
+The general result of Section~\ref{sec:transport} concerns a particle that alternates between two states moving at velocities $u_\Mob$ and $u_\Sta$.
+Its band moves at the time-weighted mean velocity and spreads at a rate proportional to the square of the velocity contrast.
+Chromatography is the case $u_\Sta=0$, in which the contrast equals the flow velocity and the band velocity is reduced by the factor $1+k$.
+The case of two moving layers is the dispersion of a solute in a sheared flow \citep{taylor1953,aris1956}.
+On long scales both obey the advection--dispersion equation~\eqref{eq:advection}, with coefficients fixed by the exchange between the states.
+
+\subsection{Visiting and locating}
+
+The analyte enters and leaves the stationary phase without any act of the observer.
+Its time fractions are visiting frequencies, fixed by the weighted measures of the two phases (Theorem~\ref{thm:k}).
+The cost of separation is paid elsewhere: in column length and time, which grow without bound as the distinction between two analytes becomes thinner (Corollary~\ref{cor:cost}).
+The cost is also paid in the number of independent dimensions, which must supply at least the number of binary distinctions needed to locate one analyte among $K$ (Theorem~\ref{thm:dimensions}).
+
+\subsection{Scope}
+
+The results describe linear, isocratic chromatography of a dilute analyte at constant temperature.
+Nonlinear chromatography, in which $k$ depends on concentration, begins where the Langmuir isotherm departs from its linear limit (Proposition~\ref{prop:langmuir}).
+Gradient elution, in which $U$ changes during the run, and temperature programming, in which $\beta$ changes, make the sojourn statistics time-dependent and are not treated.
+The medium was modelled as an ideal gas to obtain the Boltzmann weight with an explicit finite-size form; any medium whose surface measure grows as a power of the energy gives the same limit.
+The independence of successive sojourns excludes correlated re-adsorption, which can be treated by replacing the renewal structure with a Markov chain on more than two states.
+
+\subsection{Conclusion}
+
+Retention, band broadening and resolution in linear chromatography follow from an observer that resolves a bounded phase space at a fixed resolution, together with ergodicity, local equilibrium and independent sojourns.
+The retention factor is a ratio of weighted measures, and the retention law is a statement about visiting frequencies.
+The van Deemter plate height follows from the statistics of sojourns in two states of different velocity, and its kinetic term holds for any sojourn distribution.
+Chromatography is the special case of two-velocity transport in which one velocity is zero.
+On long scales the band obeys an advection--dispersion equation whose velocity and dispersion are renormalised by the exchange between the phases.
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\end{document}
