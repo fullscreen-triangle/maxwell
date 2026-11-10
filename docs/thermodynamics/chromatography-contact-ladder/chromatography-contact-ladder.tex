@@ -62,7 +62,11 @@ Across 10\,212 pairs of datasets, the elution order under the same contacts but 
 A different column or organic modifier lowered it (0.953 and 0.926), and gradient steepness shifted the elution composition in the predicted direction, with an implied solvent sensitivity of 13.
 The hypothesis that the five hydrophobic-subtraction parameters of a stationary phase transfer column-specific retention to an unseen column was not supported.
 Their predictions did not improve on a column-agnostic elution order, and the parameters could not be recovered from retention data.
-The carrier is therefore eliminable as the ladder predicts, while a five-number contact description of the stationary phase is insufficient for the analytes in these data.
+In an exploratory follow-up, the contact description was extended to 23 numbers per dataset: 14 for the stationary phase and 9 for the eluent.
+The 14 stationary-phase numbers did not transfer the column-specific order either.
+The eluent numbers (pH, additive and temperature) did predict the direction of the dataset-specific order, on held-out columns for methanol and on held-out laboratories for both modifiers.
+The carrier is therefore eliminable as the ladder predicts.
+Of the contacts, those set by the eluent transfer between laboratories, while the stationary-phase contacts are not yet captured by tabulated column parameters.
 \end{abstract}
 
 \tableofcontents
@@ -367,6 +371,36 @@ The column-specific part of the order was the residual of the observed order aft
 For the inverse direction, the five parameters of the held-out column were predicted from its dataset factors by a ridge map learned on the other columns.
 The predictions were compared with the database values by Spearman correlation, against 2000 random permutations of the columns.
 
+\subsection{Richer contact descriptions}
+\label{sec:rich-methods}
+
+This analysis was designed after Prediction~\ref{pr:hsm} failed and is exploratory.
+It used the datasets whose column has both hydrophobic-subtraction parameters and the parameters of the Tanaka test \citep{kimata1989}.
+That left 85 datasets on 18 columns with 716 compounds for acetonitrile, and 92 datasets on 14 columns with 600 compounds for methanol.
+Each dataset received four nested contact descriptions.
+\begin{itemize}
+\item \emph{HSM (5 numbers)}: the five parameters of Prediction~\ref{pr:hsm}.
+\item \emph{Column (14 numbers)}: the HSM numbers plus $C$ at pH 7.0, the ethylbenzene retention factor, the six Tanaka parameters ($k_{PB}$, $\alpha_{CH_2}$, $\alpha_{T/O}$, $\alpha_{C/P}$, and $\alpha_{B/P}$ at pH 7.6 and 2.7) and the pore size.
+\item \emph{Eluent (9 numbers)}: pH, column temperature, indicators for formic acid, trifluoroacetic acid, acetic acid, ammonium salts and basic additives, and indicators for a missing pH or temperature.
+Missing values were replaced by the median.
+\item \emph{All (23 numbers)}: the column and eluent descriptions together.
+\end{itemize}
+All numbers were standardised on the training data of each fold.
+
+Two models were fitted.
+Model~A was the low-rank model above, with the ridge map from the contact numbers to the dataset factors; its rank was chosen as before and was 4 for acetonitrile and 6 for methanol.
+Model~B made every compound respond linearly to the contact numbers, $\varphi_e(i,d)=\mu_d+b_i+\mathbf w_i\cdot\mathbf z_d$, with a ridge penalty on $\mathbf w_i$.
+In both models the ridge strength was chosen by an inner cross-validation over training columns.
+Two hold-out designs were used: leave one column out, as above, and leave one laboratory out, in which all datasets from one source publication were removed.
+In the second design the eluent effects must be learned from other laboratories.
+The score was the Spearman correlation between the predicted and observed column-specific parts of the order, averaged within each held-out column or laboratory and tested by a one-sided Wilcoxon signed-rank test across those units.
+
+Two similarity tests did not fit any coordinates.
+In the first, each held-out dataset was compared with the training dataset on another column whose contact numbers were nearest.
+The advantage was the Spearman correlation of the two elution orders, minus the mean correlation with all training datasets on other columns.
+The null distribution came from 1000 permutations of the contact vectors among columns.
+In the second, the held-out order was predicted as an average of training orders weighted by a Gaussian kernel of the contact distance, with the bandwidth chosen by inner cross-validation.
+
 %======================================================================
 \section{Results}
 \label{sec:results}
@@ -496,6 +530,65 @@ Across pairs of different columns, the distance between their parameter vectors 
 \label{fig:hsm}
 \end{figure}
 
+\subsection{Richer contact descriptions}
+
+Table~\ref{tab:rich} and Figure~\ref{fig:rich} give the results of the exploratory analysis of Section~\ref{sec:rich-methods}.
+Adding nine stationary-phase numbers to the five did not help.
+With 14 numbers, no model predicted the column-specific order on a held-out column for either modifier (Table~\ref{tab:rich}, rows 2 and 6).
+In Model~A, the largest ridge strength offered was selected in 94--100\% of the folds for every description but one, so the cross-validation preferred to shrink the map towards zero.
+The exception was the eluent description for methanol, with 57\%.
+
+The eluent numbers carried a signal.
+For methanol, on held-out columns, the eluent description gave a mean column-specific correlation of 0.25 in Model~B (Table~\ref{tab:rich}, row 7).
+The predicted direction was correct for 82\% of the held-out datasets.
+Model~A gave 0.28 with the same description.
+When whole laboratories were held out, the eluent description still predicted the specific order for both modifiers.
+The means were 0.18 for acetonitrile and 0.32 for methanol, both with $p<10^{-4}$ (Table~\ref{tab:rich}, rows 3 and 7).
+Of the eluent numbers, the additive indicators carried more of the signal than the pH (Figure~\ref{fig:rich}, right).
+
+The eluent prediction had the right direction but not the right size.
+The overall elution order it predicted on held-out columns was no better than the column-agnostic order (Table~ef{tab:rich}, caption).
+The column-specific part is small compared with the shared order, and the fitted responses over-shot it.
+
+The five HSM numbers also scored well when laboratories were held out (0.33 and 0.28; Figure~\ref{fig:rich}, right).
+That score does not measure transfer to an unseen phase, because the column of a held-out laboratory was used by another laboratory in 49 of 85 acetonitrile datasets and 41 of 92 methanol datasets.
+
+The two similarity tests were weak.
+For acetonitrile, the training dataset nearest in the five HSM numbers agreed with the held-out order better than an average training dataset.
+The advantage was 0.019 in Spearman correlation, with a permutation $p$-value of 0.017.
+For methanol the advantage was 0.042, with $p=0.06$.
+With the 14 column numbers neither advantage was significant ($p=0.15$ and $0.24$).
+Kernel-weighted transfer was worse than the column-agnostic order for both modifiers.
+
+\begin{table}[ht]
+\centering
+\caption{Prediction of the column-specific elution order from contact descriptions of increasing size (Model~B). Each entry is the mean, over held-out columns or laboratories, of the Spearman correlation between predicted and observed column-specific order, with the one-sided Wilcoxon $p$-value. A dash marks a combination that was not run. On held-out columns, the overall elution order predicted from the eluent description had a mean Spearman correlation of 0.926 (acetonitrile) and 0.910 (methanol), against 0.941 and 0.902 for the column-agnostic order.}
+\label{tab:rich}
+\begin{tabular}{llcccc}
+\toprule
+ & & \multicolumn{2}{c}{held-out column} & \multicolumn{2}{c}{held-out laboratory} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Modifier & Description & mean & $p$ & mean & $p$ \\
+\midrule
+Acetonitrile & HSM (5) & $-0.01$ & 0.66 & 0.33 & $<10^{-6}$ \\
+ & Column (14) & $-0.04$ & 0.80 & -- & -- \\
+ & Eluent (9) & 0.04 & 0.08 & 0.18 & $<10^{-5}$ \\
+ & All (23) & $-0.01$ & 0.62 & 0.50 & $<10^{-9}$ \\
+Methanol & HSM (5) & 0.13 & 0.03 & 0.28 & $<10^{-3}$ \\
+ & Column (14) & 0.07 & 0.18 & -- & -- \\
+ & Eluent (9) & 0.25 & $<10^{-3}$ & 0.32 & $<10^{-4}$ \\
+ & All (23) & 0.24 & $<10^{-3}$ & 0.40 & $<10^{-4}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{figures/fig4_contacts.pdf}
+\caption{Prediction of the column-specific elution order from contact descriptions (Model~B); the number of contact numbers is in parentheses. Each point is one held-out column (left) or one held-out laboratory (right), and bars mark means.}
+\label{fig:rich}
+\end{figure}
+
 %======================================================================
 \section{Discussion}
 \label{sec:discussion}
@@ -517,15 +610,20 @@ An unreported dwell volume is the likeliest source of the remaining disagreement
 
 The fourth prediction failed.
 Five numbers per stationary phase did not carry the column-specific part of the elution order to an unseen column, and could not be recovered from retention.
-Three reasons are plausible, and the data do not separate them.
-First, the parameters are measured with a small set of neutral test solutes at fixed conditions \citep{snyder2004}, while the compounds here are metabolites, many of them ionisable, separated with a variety of additives.
-Second, the dataset factors combine the stationary phase with the additive, temperature and dwell volume, which the parameters do not describe.
-Third, with 15 to 19 columns per modifier the maps between parameters and factors are estimated from few points.
+The exploratory analysis separates two of the possible reasons.
+The dataset factors combine the stationary phase with the eluent, which the column parameters do not describe.
+When the eluent was described, its contacts carried the specific order to new columns for methanol and to new laboratories for both modifiers (Table~\ref{tab:rich}).
+Ammonium salts or basic additives were used in 16 of 92 methanol datasets but only 8 of 85 acetonitrile datasets.
+Its larger eluent effect is consistent with the ionisation of the analytes, which those additives control.
+Adding stationary-phase numbers did not help.
+The Tanaka and HSM parameters are measured with a few neutral test solutes at fixed conditions \citep{snyder2004,kimata1989}, while the compounds here are metabolites, many of them ionisable.
+With 14 to 18 columns per modifier, the maps from 14 numbers are also estimated from few points.
 
 For the design of separations by their contacts, the consequence is specific.
 The carrier can be set aside (Tables~\ref{tab:flow} and~\ref{tab:carrier}), so a separation is described by the contacts of each analyte with each stationary phase and mobile phase.
-Those contacts are, however, not summarised by the five parameters for analytes of this kind.
-Calculating a material backwards from a desired ladder therefore needs a richer description of the contacts on the analyte side as well as the stationary-phase side, measured or learned on analytes that resemble the targets.
+The mobile-phase contacts transfer between laboratories through a handful of numbers, which makes changing the eluent a change of contacts in the sense intended.
+The stationary-phase contacts are not summarised by tabulated test-solute parameters for analytes of this kind.
+Calculating a stationary phase backwards from a desired ladder therefore needs contact numbers measured with analytes that resemble the targets, under the eluent that will be used.
 
 \subsection{Limitations}
 
@@ -544,7 +642,9 @@ Liquid chromatography can be written as a contact ladder.
 An analyte's elution is fixed by its stays in the stationary phase and by the schedule on which they occur, and the column bed, geometry and flow can be removed from the description.
 The gradient form of the ladder has an exact solution for a linear program that contains no column dimension or flow rate.
 On public data the description predicted retention across flow rates, kept the elution order fixed across laboratories with shared contacts, and predicted the effect of gradient steepness.
-It did not allow retention to be transferred between stationary phases through their five hydrophobic-subtraction parameters, which identifies the description of the contacts themselves as the open problem.
+It did not allow retention to be transferred between stationary phases through their five hydrophobic-subtraction parameters, nor through 14 tabulated column parameters.
+Nine numbers describing the eluent did carry the direction of the column-specific order to new laboratories.
+The open problem is therefore the description of the stationary-phase contacts.
 
 \section*{Data and code availability}
 \addcontentsline{toc}{section}{Data and code availability}
